@@ -17,7 +17,7 @@ class Proxy extends unfiltered.filter.Plan {
   val logger = Logger(classOf[App])
   val whiteList = List("maeda_", "t6s", "dico_leque", "machimotako", "bleis",
 		       "clairvy", "yusuke_kokubo", "lgfuser", "b1tl1fe", "sunflat",
-		       "umejava", "sumim")
+		       "umejava", "sumim", "SergeStinckwich")
 
   case class Binary(f: (java.io.OutputStream => Unit)) extends Responder[Any]{
     def respond(res: HttpResponse[Any]) {
@@ -99,13 +99,16 @@ class Proxy extends unfiltered.filter.Plan {
       Ok ~> ResponseString(user)
     case PUT(_) & Log.In(_) => Pass
     case PUT(_) & Log.NotIn(_) => Status(503)
-    case Path(Seg("tweet":: msg :: Nil)) & Log.In(user) =>
+    case Path(Seg("tweet":: msg)) & Log.In(user) =>
       def withFooter(str:String) = {
       	  val footer = " (by %s) #dynagoya".format(user)
       	  "%s%s".format(str.take(140 - footer.length), footer)
       }
+      val message = decode(msg.mkString("/"), "UTF-8")
+
       ResponseString(h(
-        twitter.Status.update(withFooter(decode(msg, "UTF-8"))) as_str))
+        twitter.Status.update(withFooter(message)) as_str))
+
     case GET(_) & Log.In(_) & Params(params) if params.contains("remote")=>
       Ok ~> Binary( out =>
 	h ( url(params("remote").mkString) >>> out)
