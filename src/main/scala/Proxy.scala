@@ -99,11 +99,13 @@ class Proxy extends unfiltered.filter.Plan {
       Ok ~> ResponseString(user)
     case PUT(_) & Log.In(_) => Pass
     case PUT(_) & Log.NotIn(_) => Status(503)
-    case Path(Seg("tweet":: msg :: Nil)) =>
-/*      ResponseString(h(
-        twitter.Status.update(decode(msg, "UTF-8")) as_str))
-*/
-	ResponseString(decode(msg, "UTF-8"))
+    case Path(Seg("tweet":: msg :: Nil)) & Log.In(user) =>
+      def withFooter(str:String) = {
+      	  val footer = " (by %s) #dynagoya".format(user)
+      	  "%s%s".format(str.take(140 - footer.length), footer)
+      }
+      ResponseString(h(
+        twitter.Status.update(withFooter(decode(msg, "UTF-8"))) as_str))
     case GET(_) & Log.In(_) & Params(params) if params.contains("remote")=>
       Ok ~> Binary( out =>
 	h ( url(params("remote").mkString) >>> out)
