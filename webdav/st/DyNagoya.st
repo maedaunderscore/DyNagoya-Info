@@ -6,7 +6,7 @@ Widget subclass: #EntryPoint
 !EntryPoint methodsFor: 'initialization'!
 
 start
-	Screen clear. 
+	Screen clear.
 	Screen show.
 ! !
 
@@ -53,6 +53,12 @@ imageUrl
 
 style
 	^ 'margin-top: 10px'
+! !
+
+!Dolphin class methodsFor: 'not yet classified'!
+
+tweet: msg
+	jQuery ajax: 'tweet/', (< encodeURI(msg) >)
 ! !
 
 Icon subclass: #Logo
@@ -152,7 +158,7 @@ renderOn: html
 	html root
 		with: Dolphin new;
 		with: Logo new;
-		with: Board new.
+		with: Board new
 ! !
 
 Widget subclass: #Login
