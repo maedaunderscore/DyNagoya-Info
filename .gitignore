@@ -1,0 +1,6 @@
+*~
+ivy2
+target
+project/target
+project/plugins/target
+src/main/scala/Key.scala
