@@ -96,7 +96,7 @@ class Proxy extends unfiltered.filter.Plan {
     case Path(Seg("authorized" :: Nil)) & Log.Authorized(redirectUrl) => 
       Ok ~> Redirect(redirectUrl)
     case Path(Seg("name":: Nil)) & Log.In(user) => 
-      Ok ~> ResponseString(user)
+      PlainTextContent ~> ResponseString(user)
     case PUT(_) & Log.In(_) => Pass
     case PUT(_) & Log.NotIn(_) => Status(503)
     case Path(Seg("tweet":: msg)) & Log.In(user) =>
