@@ -59,7 +59,7 @@ class Proxy extends unfiltered.filter.Plan {
     object Authorize{
       def unapply(r: HttpRequest[HttpServletRequest]) = r match {
 	case Session(ss) => 
-	  val tok = h(Auth.request_token(con, "http://dynagoya.info/authorized"))
+	  val tok = h(Auth.request_token(con, Keys.host + "/authorized"))
 	  ss.setAttribute("secret_token", tok.secret)
 	  Some(tok)
 	case _ => None
