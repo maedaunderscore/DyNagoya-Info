@@ -482,6 +482,23 @@ referencedClasses: []
 }),
 smalltalk.Place);
 
+smalltalk.addMethod(
+unescape('_gCalString'),
+smalltalk.method({
+selector: unescape('gCalString'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_address", []), "__comma", [unescape("%28")]), "__comma", [smalltalk.send(self, "_name", [])]), "__comma", [unescape("%29")]);
+    return self;
+},
+args: [],
+source: unescape('gCalString%0A%20%20%5E%20%28self%20address%29%2C%20%27%28%27%2C%20%28self%20name%29%2C%20%27%29%27'),
+messageSends: [unescape("%2C"), "address", "name"],
+referencedClasses: []
+}),
+smalltalk.Place);
+
 
 
 smalltalk.addClass('Doerya', smalltalk.Place, [], 'DyNagoya');
@@ -526,11 +543,11 @@ selector: unescape('name'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return unescape("%u3069%u3048%u308A%u3083%u3042");
+    return unescape("Cafe%20%u3069%u3048%u308A%u3083%u3042");
     return self;
 },
 args: [],
-source: unescape('name%0A%09%5E%20%27%u3069%u3048%u308A%u3083%u3042%27'),
+source: unescape('name%0A%09%5E%20%27Cafe%20%u3069%u3048%u308A%u3083%u3042%27'),
 messageSends: [],
 referencedClasses: []
 }),
@@ -648,5 +665,267 @@ smalltalk.LinkMenu);
 
 
 smalltalk.addClass('NameOfSubclass', smalltalk.Object, [], 'DyNagoya');
+
+
+smalltalk.addClass('Event', smalltalk.Object, ['title', 'date', 'start', 'end', 'place', 'detail'], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_title_'),
+smalltalk.method({
+selector: unescape('title%3A'),
+category: 'accessing',
+fn: function (str) {
+    var self = this;
+    self['@title'] = str;
+    return self;
+},
+args: ["str"],
+source: unescape('title%3A%20str%0A%20%20title%20%3A%3D%20str'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_date_'),
+smalltalk.method({
+selector: unescape('date%3A'),
+category: 'accessing',
+fn: function (aDate) {
+    var self = this;
+    self['@date'] = aDate;
+    return self;
+},
+args: ["aDate"],
+source: unescape('date%3A%20aDate%0A%20%20date%20%3A%3D%20aDate'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_start_'),
+smalltalk.method({
+selector: unescape('start%3A'),
+category: 'accessing',
+fn: function (aTime) {
+    var self = this;
+    self['@start'] = aTime;
+    return self;
+},
+args: ["aTime"],
+source: unescape('start%3A%20aTime%0A%20%20start%20%3A%3D%20aTime'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_end_'),
+smalltalk.method({
+selector: unescape('end%3A'),
+category: 'accessing',
+fn: function (aTime) {
+    var self = this;
+    self['@end'] = aTime;
+    return self;
+},
+args: ["aTime"],
+source: unescape('end%3A%20aTime%0A%20%20end%20%3A%3D%20aTime'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_place_'),
+smalltalk.method({
+selector: unescape('place%3A'),
+category: 'accessing',
+fn: function (aPlace) {
+    var self = this;
+    self['@place'] = aPlace;
+    return self;
+},
+args: ["aPlace"],
+source: unescape('place%3A%20aPlace%0A%20%20place%20%3A%3D%20aPlace'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_detail_'),
+smalltalk.method({
+selector: unescape('detail%3A'),
+category: 'accessing',
+fn: function (str) {
+    var self = this;
+    self['@detail'] = str;
+    return self;
+},
+args: ["str"],
+source: unescape('detail%3A%20str%0A%20%20detail%20%3A%3D%20str'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_gcalUrl'),
+smalltalk.method({
+selector: unescape('gcalUrl'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [smalltalk.send([smalltalk.send(unescape("src%3D"), "__comma", [smalltalk.send(self, "_dstokaiId", [])]), unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [self['@title']]), smalltalk.send(unescape("details%3D"), "__comma", [smalltalk.send(self, "_description", [])]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_gCalString", [])]), smalltalk.send(smalltalk.send(smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(self, "_format_", [self['@start']])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])], "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}])]);
+    return self;
+},
+args: [],
+source: unescape('gcalUrl%0A%09%5E%20Util%20encodeURI%3A%20%28%7B%0A%09%09%27src%3D%27%2C%20self%20dstokaiId.%0A%09%09%27ctz%3DAsia/Tokyo%27.%0A%09%09%27ctext%3D%27%2C%20title.%0A%09%09%27details%3D%27%2C%20self%20description.%0A%09%09%27location%3D%27%2C%20%28place%20new%20gCalString%29.%0A%09%09%27dates%3D%27%2C%20%28self%20format%3A%20start%29%20%2C%20%27/%27%2C%20%28self%20format%3A%20end%29%0A%09%7D%20%0A%09inject%3A%20%27http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE%27%0A%09into%3A%20%5B%20%3Aacc%20%3Ax%20%7C%20acc%2C%20%27%26%27%2C%20x%20%5D%29'),
+messageSends: ["encodeURI:", "inject:into:", unescape("%2C"), "dstokaiId", "description", "gCalString", "new", "format:"],
+referencedClasses: ["Util"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_dstokaiId'),
+smalltalk.method({
+selector: unescape('dstokaiId'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return unescape("6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com");
+    return self;
+},
+args: [],
+source: unescape('dstokaiId%0A%09%5E%20%276ef63uicdv7l17h035m1grg7fs@group.calendar.google.com%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_format_'),
+smalltalk.method({
+selector: unescape('format%3A'),
+category: 'google calendar',
+fn: function (aTime) {
+    var self = this;
+    var d = nil;
+    var formatted = nil;
+    d = smalltalk.send(smalltalk.Date || Date, "_fromString_", [smalltalk.send(smalltalk.send(self['@date'], "__comma", [" "]), "__comma", [aTime])]);
+    formatted = moment(d).add("minutes", moment(d).zone()).format("YYYYMMDDTHHmmss");
+    return smalltalk.send(formatted, "__comma", ["Z"]);
+    return self;
+},
+args: ["aTime"],
+source: unescape('format%3A%20aTime%0A%20%20%7C%20d%20formatted%20%7C%0A%20%20d%20%3A%3D%20Date%20fromString%3A%20%28date%2C%20%27%20%27%2C%20aTime%29.%0A%20%20formatted%20%3A%3D%20%28%3C%20moment%28d%29.add%28%27minutes%27%2C%20moment%28d%29.zone%28%29%29.format%28%27YYYYMMDDTHHmmss%27%29%20%3E%29.%0A%20%20%5E%20formatted%2C%20%27Z%27'),
+messageSends: ["fromString:", unescape("%2C")],
+referencedClasses: ["Date"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_description'),
+smalltalk.method({
+selector: unescape('description'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return unescape("%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E");
+    return self;
+},
+args: [],
+source: unescape('description%0A%20%20%5E%20%27%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_newCalendar'),
+smalltalk.method({
+selector: unescape('newCalendar'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl", []), "_blank"]);
+    return self;
+},
+args: [],
+source: unescape('newCalendar%0A%20%20window%20open%3A%20%28self%20gcalUrl%29%20target%3A%20%27_blank%27'),
+messageSends: ["open:target:", "gcalUrl"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_tweet'),
+smalltalk.method({
+selector: unescape('tweet'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.Dolphin || Dolphin, "_tweet_", [smalltalk.send(self, "_tweetMessage", [])]);
+    return self;
+},
+args: [],
+source: unescape('tweet%0A%09Dolphin%20tweet%3A%20self%20tweetMessage'),
+messageSends: ["tweet:", "tweetMessage"],
+referencedClasses: ["Dolphin"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_formatPeriod'),
+smalltalk.method({
+selector: unescape('formatPeriod'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(moment(this['@date']).format("YYYY/MM/DD(ddd) "), "__comma", [self['@start']]), "__comma", [unescape("%u301C")]), "__comma", [self['@end']]);
+    return self;
+},
+args: [],
+source: unescape('formatPeriod%0A%20%20%5E%20%28%3C%20moment%28this%5B%27@date%27%5D%29.format%28%22YYYY/MM/DD%28ddd%29%20%22%29%20%3E%29%2C%20start%2C%20%27%u301C%27%2C%20end'),
+messageSends: [unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_tweetMessage'),
+smalltalk.method({
+selector: unescape('tweetMessage'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002http%3A//dynagoya.info/")]);
+    return self;
+},
+args: [],
+source: unescape('tweetMessage%0A%09%5E%20%27%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F%27%2C%0A%09%28self%20formatPeriod%29%2C%0A%09%27%20%27%2C%20%28place%20new%20name%29%2C%0A%09%27%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002http%3A//dynagoya.info/%27'),
+messageSends: [unescape("%2C"), "formatPeriod", "name", "new"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+
+smalltalk.addMethod(
+unescape('_mtg02'),
+smalltalk.method({
+selector: unescape('mtg02'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('mtg02%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%uFF0302%27%3B%0A%09%09date%3A%20%272012/01/28%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B%27%0A%7D'),
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["Doerya"]
+}),
+smalltalk.Event.klass);
 
 

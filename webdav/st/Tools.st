@@ -261,3 +261,13 @@ circleStyle
 	^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;position:absolute;'
 ! !
 
+Object subclass: #Util
+	instanceVariableNames: ''
+	category: 'Tools'!
+
+!Util class methodsFor: 'not yet classified'!
+
+encodeURI: str
+	^ (< encodeURI(str) >)
+! !
+

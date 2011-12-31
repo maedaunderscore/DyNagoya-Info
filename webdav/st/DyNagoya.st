@@ -238,6 +238,10 @@ address
 !
 
 url
+!
+
+gCalString
+  ^ (self address), '(', (self name), ')'
 ! !
 
 Place subclass: #Doerya
@@ -255,7 +259,7 @@ url
 !
 
 name
-	^ 'どえりゃあ'
+	^ 'Cafe どえりゃあ'
 ! !
 
 DialogBox subclass: #Links
@@ -337,4 +341,101 @@ style
 Object subclass: #NameOfSubclass
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
+
+Object subclass: #Event
+	instanceVariableNames: 'title date start end place detail'
+	category: 'DyNagoya'!
+
+!Event methodsFor: 'Twitter'!
+
+tweet
+	Dolphin tweet: self tweetMessage
+!
+
+formatPeriod
+  ^ (< moment(this['@date']).format("YYYY/MM/DD(ddd) ") >), start, '〜', end
+!
+
+tweetMessage
+	^ '次回のミーティングは',
+	(self formatPeriod),
+	' ', (place new name),
+	' で開催します。http://dynagoya.info/'
+! !
+
+!Event methodsFor: 'accessing'!
+
+title: str
+  title := str
+!
+
+date: aDate
+  date := aDate
+!
+
+start: aTime
+  start := aTime
+!
+
+end: aTime
+  end := aTime
+!
+
+place: aPlace
+  place := aPlace
+!
+
+detail: str
+  detail := str
+! !
+
+!Event methodsFor: 'google calendar'!
+
+gcalUrl
+	^ Util encodeURI: ({
+		'src=', self dstokaiId.
+		'ctz=Asia/Tokyo'.
+		'ctext=', title.
+		'details=', self description.
+		'location=', (place new gCalString).
+		'dates=', (self format: start) , '/', (self format: end)
+	} 
+	inject: 'http://www.google.com/calendar/event?action=TEMPLATE'
+	into: [ :acc :x | acc, '&', x ])
+!
+
+dstokaiId
+	^ '6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com'
+!
+
+format: aTime
+  | d formatted |
+  d := Date fromString: (date, ' ', aTime).
+  formatted := (< moment(d).add('minutes', moment(d).zone()).format('YYYYMMDDTHHmmss') >).
+  ^ formatted, 'Z'
+!
+
+description
+  ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
+!
+
+newCalendar
+  window open: (self gcalUrl) target: '_blank'
+! !
+
+!Event class methodsFor: 'events'!
+
+mtg02
+	^ self new 
+		title: 'DyNagoya MTG＃02';
+		date: '2012/01/28';
+		start: '17:00:00';
+		end: '20:00:00';
+		place: Doerya;
+		detail: {
+'Make:Ogakiのネタを考える'.
+'Smalltalk入門(希望者がいれば)'.
+'イルカの名前を考える'
+}
+! !
 

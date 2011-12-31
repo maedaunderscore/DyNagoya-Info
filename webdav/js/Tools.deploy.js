@@ -522,3 +522,18 @@ smalltalk.Circle);
 
 
 
+smalltalk.addClass('Util', smalltalk.Object, [], 'Tools');
+
+smalltalk.addMethod(
+'_encodeURI_',
+smalltalk.method({
+selector: 'encodeURI:',
+fn: function (str) {
+    var self = this;
+    return encodeURI(str);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+

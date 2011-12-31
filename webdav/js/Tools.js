@@ -724,3 +724,23 @@ smalltalk.Circle);
 
 
 
+smalltalk.addClass('Util', smalltalk.Object, [], 'Tools');
+
+smalltalk.addMethod(
+unescape('_encodeURI_'),
+smalltalk.method({
+selector: unescape('encodeURI%3A'),
+category: 'not yet classified',
+fn: function (str) {
+    var self = this;
+    return encodeURI(str);
+    return self;
+},
+args: ["str"],
+source: unescape('encodeURI%3A%20str%0A%09%5E%20%28%3C%20encodeURI%28str%29%20%3E%29'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Util.klass);
+
+
