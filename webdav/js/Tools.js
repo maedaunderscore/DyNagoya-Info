@@ -641,12 +641,12 @@ selector: unescape('renderOn%3A'),
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [unescape("position%3Aabsolute%3Btop%3A280px%3Bleft%3A330px")]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [smalltalk.send(smalltalk.send(self, "_circleStyle", []), "__comma", [smalltalk.send(self, "_style", [])])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27circle%27%3B%20style%3A%20%27position%3Aabsolute%3Btop%3A280px%3Bleft%3A330px%27%3B%20with%3A%20%5B%0A%09%09html%20div%20style%3A%20self%20style%3B%20with%3A%5B%0A%09%09%09self%20body%3A%20html%0A%09%09%5D%0A%09%5D'),
-messageSends: ["class:", "style:", "with:", "style", "body:", "div"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27circle%27%3B%20style%3A%20%28self%20circleStyle%2C%20self%20style%29%3B%20with%3A%20%5B%0A%09%09%09self%20body%3A%20html%0A%09%5D'),
+messageSends: ["class:", "style:", unescape("%2C"), "circleStyle", "style", "with:", "body:", "div"],
 referencedClasses: []
 }),
 smalltalk.Circle);
@@ -702,9 +702,9 @@ referencedClasses: []
 smalltalk.Circle);
 
 smalltalk.addMethod(
-unescape('_style'),
+unescape('_circleStyle'),
 smalltalk.method({
-selector: unescape('style'),
+selector: unescape('circleStyle'),
 category: 'rendering',
 fn: function () {
     var self = this;
@@ -712,11 +712,11 @@ fn: function () {
     var ry = nil;
     rx = smalltalk.send(self, "_radiusX", []);
     ry = smalltalk.send(self, "_radiusY", []);
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bbackground%3Ared%3B")]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B")]);
     return self;
 },
 args: [],
-source: unescape('style%0A%09%7C%20rx%20ry%20%7C%0A%09rx%20%3A%3D%20self%20radiusX.%0A%09ry%20%3A%3D%20self%20radiusY.%0A%09%5E%20%27width%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3Bheight%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20-moz-border-radius%3A%27%2Crx%2C%27px%3B-webkit-border-radius%3A%27%2Crx%2C%27px%3Bborder-radius%3A%20%27%2C%20rx%2C%20%27px%3B%20line-height%3A%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20text-align%3Acenter%3Bbackground%3Ared%3B%27'),
+source: unescape('circleStyle%0A%09%7C%20rx%20ry%20%7C%0A%09rx%20%3A%3D%20self%20radiusX.%0A%09ry%20%3A%3D%20self%20radiusY.%0A%09%5E%20%27width%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3Bheight%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20-moz-border-radius%3A%27%2Crx%2C%27px%3B-webkit-border-radius%3A%27%2Crx%2C%27px%3Bborder-radius%3A%20%27%2C%20rx%2C%20%27px%3B%20line-height%3A%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B%27'),
 messageSends: ["radiusX", "radiusY", unescape("%2C"), unescape("*")],
 referencedClasses: []
 }),

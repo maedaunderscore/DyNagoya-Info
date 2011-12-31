@@ -256,7 +256,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_root", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.LinkMenu || LinkMenu, "_new", [])]);}(smalltalk.send(html, "_root", [])));
     return self;
 }
 }),
@@ -308,7 +308,7 @@ smalltalk.method({
 selector: 'body',
 fn: function () {
     var self = this;
-    return function (html) {smalltalk.send(html, "_h2_", [unescape("DyNagoya%20%3D")]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
+    return function (html) {smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
     return self;
 }
 }),
@@ -456,5 +456,20 @@ fn: function (html) {
 }),
 smalltalk.LinkMenu);
 
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return unescape("top%3A350px%3Bleft%3A330px%3Bbackground%3Ared%3B");
+    return self;
+}
+}),
+smalltalk.LinkMenu);
+
+
+
+smalltalk.addClass('NameOfSubclass', smalltalk.Object, [], 'DyNagoya');
 
 

@@ -158,7 +158,8 @@ renderOn: html
 	html root
 		with: Dolphin new;
 		with: Logo new;
-		with: Board new
+		with: Board new;
+		with: LinkMenu new
 ! !
 
 Widget subclass: #Login
@@ -218,8 +219,8 @@ open
 
 body
 	^ [:html |
-		html h2: 'DyNagoya ='.
-		html h2 css: 'margin-left' put: '20px'; with: 'Dynamic language, Dynabook, or etc...'.
+		html h2: 'DyNagoya are ...'.
+		html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
 		html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
 	]
 ! !
@@ -327,5 +328,13 @@ body: html
 		css: 'font-size' put: '24px';
 		css: 'color' put: 'white';
 		with: 'Links'
+!
+
+style
+  ^ 'top:350px;left:330px;background:red;'
 ! !
+
+Object subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
 

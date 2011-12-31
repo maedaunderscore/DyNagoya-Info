@@ -352,13 +352,13 @@ selector: unescape('renderOn%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_root", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.LinkMenu || LinkMenu, "_new", [])]);}(smalltalk.send(html, "_root", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20root%0A%09%09with%3A%20Dolphin%20new%3B%0A%09%09with%3A%20Logo%20new%3B%0A%09%09with%3A%20Board%20new'),
+source: unescape('renderOn%3A%20html%0A%09html%20root%0A%09%09with%3A%20Dolphin%20new%3B%0A%09%09with%3A%20Logo%20new%3B%0A%09%09with%3A%20Board%20new%3B%0A%09%09with%3A%20LinkMenu%20new'),
 messageSends: ["with:", "new", "root"],
-referencedClasses: ["Dolphin", "Logo", "Board"]
+referencedClasses: ["Dolphin", "Logo", "Board", "LinkMenu"]
 }),
 smalltalk.Page);
 
@@ -421,11 +421,11 @@ selector: unescape('body'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return function (html) {smalltalk.send(html, "_h2_", [unescape("DyNagoya%20%3D")]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
+    return function (html) {smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
     return self;
 },
 args: [],
-source: unescape('body%0A%09%5E%20%5B%3Ahtml%20%7C%0A%09%09html%20h2%3A%20%27DyNagoya%20%3D%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%09%5D%0A'),
+source: unescape('body%0A%09%5E%20%5B%3Ahtml%20%7C%0A%09%09html%20h2%3A%20%27DyNagoya%20are%20...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%09%5D%0A'),
 messageSends: ["h2:", "css:put:", "with:", "h2"],
 referencedClasses: []
 }),
@@ -628,5 +628,25 @@ referencedClasses: ["Links"]
 }),
 smalltalk.LinkMenu);
 
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("top%3A350px%3Bleft%3A330px%3Bbackground%3Ared%3B");
+    return self;
+},
+args: [],
+source: unescape('style%0A%20%20%5E%20%27top%3A350px%3Bleft%3A330px%3Bbackground%3Ared%3B%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LinkMenu);
+
+
+
+smalltalk.addClass('NameOfSubclass', smalltalk.Object, [], 'DyNagoya');
 
 

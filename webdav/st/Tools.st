@@ -246,20 +246,18 @@ radiusY
 !Circle methodsFor: 'rendering'!
 
 renderOn: html
-	html div class: 'circle'; style: 'position:absolute;top:280px;left:330px'; with: [
-		html div style: self style; with:[
+	html div class: 'circle'; style: (self circleStyle, self style); with: [
 			self body: html
-		]
 	]
 !
 
 body: html
 !
 
-style
+circleStyle
 	| rx ry |
 	rx := self radiusX.
 	ry := self radiusY.
-	^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;background:red;'
+	^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;position:absolute;'
 ! !
 
