@@ -140,11 +140,13 @@ renderOn: html
 		html div class: 'container'; with:[
 			html ul style: 'float:right'; class: 'nav'; with:[
 				Login new appendToBrush: html li.
+			].
+			html ul style: 'float:left'; class: 'nav'; with:[
+				html li: [ html a href: '#'; onClick: [ Browser open ]; with: 'Open Browser' ].
 				html li: [ html a href: '#'; onClick: [ AboutDyNagoya new open ]; with: 'About' ].
 				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
 				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
-				html li: [ html a href: '#'; onClick: [ Browser open ]; with: 'Open Browser' ]
 			]
 		]
 	]
