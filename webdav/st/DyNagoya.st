@@ -452,3 +452,7 @@ mtg02
 }
 ! !
 
+RemoteObject subclass: #Participation
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+

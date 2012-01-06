@@ -672,3 +672,6 @@ fn: function () {
 smalltalk.Event.klass);
 
 
+smalltalk.addClass('Participation', smalltalk.RemoteObject, [], 'DyNagoya');
+
+
