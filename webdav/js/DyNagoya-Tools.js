@@ -743,4 +743,45 @@ referencedClasses: []
 }),
 smalltalk.Util.klass);
 
+smalltalk.addMethod(
+unescape('_split_with_'),
+smalltalk.method({
+selector: unescape('split%3Awith%3A'),
+category: 'not yet classified',
+fn: function (str, delimiter) {
+    var self = this;
+    return str.split(delimiter);
+    return self;
+},
+args: ["str", "delimiter"],
+source: unescape('split%3A%20str%20with%3A%20delimiter%0A%09%5E%20%3C%20str.split%28delimiter%29%20%3E'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+unescape('_messageMap_'),
+smalltalk.method({
+selector: unescape('messageMap%3A'),
+category: 'not yet classified',
+fn: function (aMessage) {
+    var self = this;
+    var selectors = nil;
+    var arguments = nil;
+    var ret = nil;
+    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
+    arguments = smalltalk.send(aMessage, "_arguments", []);
+    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
+    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
+    return ret;
+    return self;
+},
+args: ["aMessage"],
+source: unescape('messageMap%3A%20aMessage%0A%09%7C%20selectors%20arguments%20ret%20%7C%0A%09selectors%20%3A%3D%20Util%20split%3A%20%28aMessage%20selector%29%20with%3A%20%27%3A%27.%0A%09arguments%20%3A%3D%20aMessage%20arguments.%0A%09ret%20%3A%3D%20Array%20new.%0A%09arguments%20withIndexDo%3A%20%5B%20%3Aeach%20%3Ai%20%7C%20ret%20add%3A%20%28%28selectors%20at%3A%20i%29%20-%3E%20each%20%29%5D.%0A%09%5E%20ret'),
+messageSends: ["split:with:", "selector", "arguments", "new", "withIndexDo:", "add:", unescape("-%3E"), "at:"],
+referencedClasses: ["Util", "Array"]
+}),
+smalltalk.Util.klass);
+
 

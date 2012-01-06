@@ -536,4 +536,35 @@ fn: function (str) {
 }),
 smalltalk.Util.klass);
 
+smalltalk.addMethod(
+'_split_with_',
+smalltalk.method({
+selector: 'split:with:',
+fn: function (str, delimiter) {
+    var self = this;
+    return str.split(delimiter);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+'_messageMap_',
+smalltalk.method({
+selector: 'messageMap:',
+fn: function (aMessage) {
+    var self = this;
+    var selectors = nil;
+    var arguments = nil;
+    var ret = nil;
+    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
+    arguments = smalltalk.send(aMessage, "_arguments", []);
+    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
+    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
+    return ret;
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
 
