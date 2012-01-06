@@ -269,5 +269,18 @@ Object subclass: #Util
 
 encodeURI: str
 	^ (< encodeURI(str) >)
+!
+
+split: str with: delimiter
+	^ < str.split(delimiter) >
+!
+
+messageMap: aMessage
+	| selectors arguments ret |
+	selectors := Util split: (aMessage selector) with: ':'.
+	arguments := aMessage arguments.
+	ret := Array new.
+	arguments withIndexDo: [ :each :i | ret add: ((selectors at: i) -> each )].
+	^ ret
 ! !
 
