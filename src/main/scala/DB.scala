@@ -29,25 +29,25 @@ object DB extends DBSetting{
   def dropTable():Unit = S { Store.ddl drop }
 
   def list(clazz: String) = {
-    val query = for (v <- Store if (v.clazz is clazz)) yield Store.m
+    val query = for (v <- Store if (v.clazz is clazz)) yield (v.group ~ v.key ~ v.body)
     S{ query list }
   }
   def list(clazz: String, group: String) = {
      val query = for (v <- Store if (v.clazz is clazz) && (v.group is group))
-		 yield Store.m
+		 yield (v.group ~ v.key ~ v.body)
      S{ query list }
   }
 
   def search(clazz: String)(key: String) = {
     val query = for (v <- Store 
 		     if (v.clazz is clazz) && (v.key is key)) 
-		yield Store.m 
+		yield (v.group ~ v.key ~ v.body)
     S{ query firstOption }
   }
   def search(clazz: String, group: String)(key: String) = S{
     val query = for (v <- Store 
 		     if (v.clazz is clazz) && (v.group is group) && (v.key is key)) 
-		yield Store.m
+		yield (v.group ~ v.key ~ v.body)
     S{ query firstOption}
   }
 

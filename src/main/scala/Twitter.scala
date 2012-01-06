@@ -24,7 +24,7 @@ object Twitter {
   }
 
   def filter : unfiltered.filter.Plan.Intent = {
-    case Path(Seg("tweet":: msg)) & Auth.LogIn(user) =>
+    case Path(Seg("tweet":: msg)) & Auth.Write(user) =>
       def withFooter(str:String) = {
       	val footer = " (by %s) #dynagoya".format(user)
       	"%s%s".format(str.take(140 - footer.length), footer)

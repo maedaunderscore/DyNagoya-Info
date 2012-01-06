@@ -35,7 +35,7 @@ object Auth{
   val Write = new {
     def unapply(r: HttpRequest[HttpServletRequest]) = r match {
       case Session(ss) => 
-	Option(ss.getAttribute(SessionWritable)) collect {
+	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
 	  case "true" => ()
 	}
     }
