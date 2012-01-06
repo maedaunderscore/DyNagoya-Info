@@ -142,6 +142,7 @@ renderOn: html
 				Login new appendToBrush: html li.
 				html li: [ html a href: '#'; onClick: [ AboutDyNagoya new open ]; with: 'About' ].
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
+				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
 				html li: [ html a href: '#'; onClick: [ Browser open ]; with: 'Open Browser' ]
 			]
 		]
