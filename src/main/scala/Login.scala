@@ -51,33 +51,6 @@ object Auth{
   val NoWrite = Not(Write.unapply)
   val NotLogIn = Not(LogIn.unapply)
   
-  object Authorize{
-    def unapply(r: HttpRequest[HttpServletRequest]) = r match {
-      case Session(ss) => 
-	val tok = Access.http(TwitterAuth.request_token(con, Keys.host + "/authorized"))
-	ss.setAttribute("secret_token", tok.secret)
-	Some(tok)
-      case _ => None
-    }
-  }
-  object Authorized{
-    def unapply(r: HttpRequest[HttpServletRequest]) = r match {
-      case GET(_) & Params(params) & Session(ss) if params.contains("oauth_verifier") =>
-	(for{
-	  Seq(token) <- params.get("oauth_token")
-	  Seq(verifier) <- params.get("oauth_verifier")
-	  secret_token <- Option(ss.getAttribute("secret_token").asInstanceOf[String])
-	  (_, _, name) <- Some(Access.http(TwitterAuth.access_token(
-	    con, 
-	    oauth.Token(token, secret_token), 
-	    verifier)))
-	} yield {
-	  ss.setAttribute(SessionUserName, name)
-	  ss.setAttribute(SessionWritable, whiteList.contains(name))
-	}) map { _ => "index.html" }
-    }
-  }
-
   import unfiltered.filter.Plan.Intent
 
   object LoginOnly{
@@ -88,16 +61,34 @@ object Auth{
       override def isDefinedAt(x: Request) = login.isDefinedAt(x) && base.isDefinedAt(x)
     }
   }
+
   def filter : Intent = {
-    case Path(Seg("login" :: Nil)) & Authorize(tok) => 
+    case Path(Seg("name":: Nil)) & LogIn(user) => 
+      PlainTextContent ~> ResponseString(user)
+    case Path(Seg("login" :: Nil)) & Session(ss) => 
+      val tok = Access.http(
+	TwitterAuth.request_token(con, Keys.host + "/authorized")
+      )
+      ss.setAttribute("secret_token", tok.secret)
       Redirect(TwitterAuth.authorize_url(tok).to_uri.toString)
     case Path(Seg("logout" :: Nil)) & Session(ss) => {
       ss.invalidate
       Redirect("/index.html")
     }
-    case Path(Seg("authorized" :: Nil)) & Authorized(redirectUrl) => 
-      Ok ~> Redirect(redirectUrl)
-    case Path(Seg("name":: Nil)) & LogIn(user) => 
-      PlainTextContent ~> ResponseString(user)
+    case Path(Seg("authorized" :: Nil)) & Params(params) & Session(ss) => 
+      for{
+	Seq(token) <- params.get("oauth_token")
+	Seq(verifier) <- params.get("oauth_verifier")
+	secret_token <- Option(ss.getAttribute("secret_token").asInstanceOf[String])
+	(_, _, name) <- Some(Access.http(TwitterAuth.access_token(
+	  con, 
+	  oauth.Token(token, secret_token), 
+	  verifier)))
+      } yield {
+	ss.setAttribute(SessionUserName, name)
+	ss.setAttribute(SessionWritable, whiteList.contains(name))
+      }
+
+      Ok ~> Redirect("index.html")
   }
 }
