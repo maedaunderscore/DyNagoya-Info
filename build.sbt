@@ -10,7 +10,10 @@ libraryDependencies ++= Seq(
    "org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "jetty",
    "org.clapper" %% "avsl" % "0.3.6",
    "net.databinder" %% "dispatch-http" % "0.8.7",
-   "net.databinder" %% "dispatch-oauth" % "0.8.7"
+   "net.databinder" %% "dispatch-oauth" % "0.8.7",
+   "org.scalaquery" % "scalaquery_2.9.0-1" % "0.9.5",
+   "com.h2database" % "h2" % "1.2.140",
+   "net.liftweb" % "lift-json_2.8.1" % "2.3"
 )
 
 seq(webSettings :_*)
