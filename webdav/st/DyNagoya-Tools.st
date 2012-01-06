@@ -284,3 +284,39 @@ messageMap: aMessage
 	^ ret
 ! !
 
+Object subclass: #RemoteObject
+	instanceVariableNames: ''
+	category: 'DyNagoya-Tools'!
+
+!RemoteObject class methodsFor: 'not yet classified'!
+
+list: group
+	^ jQuery
+		ajax: ('/data/', self asString, '/', group)
+		option: #{
+			'type' -> 'GET'.
+			'dataType' -> 'json'
+		}
+!
+
+doesNotUnderstand: aMessage
+	| map group key |
+	map := Util messageMap: aMessage.
+	group := map first value.
+	key := map second value.
+	self put: self group: group key: key body: ((HashedCollection fromPairs: map) asJSONString)
+!
+
+put: clazz group: group key: key body: body
+	^ jQuery
+		ajax: (self url: (clazz asString) group: group key: key)
+		option: #{
+			'type' -> 'PUT'.
+			'data' -> #{'body' -> body} asJSON
+		}
+!
+
+url: clazz group: group key: key
+	^ '/data/', clazz asString, '/', group, '/', key
+! !
+

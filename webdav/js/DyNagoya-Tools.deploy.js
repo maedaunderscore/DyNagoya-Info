@@ -568,3 +568,60 @@ fn: function (aMessage) {
 smalltalk.Util.klass);
 
 
+smalltalk.addClass('RemoteObject', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+'_list_',
+smalltalk.method({
+selector: 'list:',
+fn: function (group) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_doesNotUnderstand_',
+smalltalk.method({
+selector: 'doesNotUnderstand:',
+fn: function (aMessage) {
+    var self = this;
+    var map = nil;
+    var group = nil;
+    var key = nil;
+    map = smalltalk.send(smalltalk.Util || Util, "_messageMap_", [aMessage]);
+    group = smalltalk.send(smalltalk.send(map, "_first", []), "_value", []);
+    key = smalltalk.send(smalltalk.send(map, "_second", []), "_value", []);
+    smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_put_group_key_body_',
+smalltalk.method({
+selector: 'put:group:key:body:',
+fn: function (clazz, group, key, body) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_url_group_key_',
+smalltalk.method({
+selector: 'url:group:key:',
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+
