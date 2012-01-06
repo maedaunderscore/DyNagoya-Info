@@ -142,7 +142,7 @@ renderOn: html
 				Login new appendToBrush: html li.
 			].
 			html ul style: 'float:left'; class: 'nav'; with:[
-				html li: [ html a href: '#'; onClick: [ Browser open ]; with: 'Open Browser' ].
+				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Open Browser' ].
 				html li: [ html a href: '#'; onClick: [ AboutDyNagoya new open ]; with: 'About' ].
 				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
