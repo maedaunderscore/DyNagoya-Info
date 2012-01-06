@@ -50,7 +50,7 @@
 
   <filter>
     <filter-name>Proxy</filter-name>
-    <filter-class>info.dynagoya.Proxy</filter-class>
+    <filter-class>info.dynagoya.Server</filter-class>
     <init-param>
       <param-name>maxUploadSize</param-name>
       <param-value>2000000000</param-value>
