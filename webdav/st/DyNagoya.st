@@ -297,7 +297,11 @@ list
 		self			
 			link: 'A Smalltalk by the Seaside'
 			url: 'http://www.asmalltalkbytheseaside.com/'
-			description: 'Amberで作られたゲームライブラリとゲームのサンプル'
+			description: 'Amberで作られたゲームライブラリとゲームのサンプル'.
+		self
+			link: 'cog blog - Under Cover Contexts and the Big Frame-Up'
+			url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'
+			description: 'thisContextの説明'
 
 	}
 ! !
