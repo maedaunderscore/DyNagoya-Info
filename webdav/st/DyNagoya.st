@@ -92,8 +92,8 @@ renderOn: html
 			html h2: '内容：'.
 			html h3 with: (html div style: 'margin-left:30px'; with:[
 				html div with: 'Make:Ogakiのネタを考える'.
+				html div with: 'このページの説明'.
 				html div with: 'Smalltalk入門(希望者がいれば)'.
-				html div with: 'イルカの名前を考える'
 			])
 		]
 ! !
@@ -141,6 +141,7 @@ renderOn: html
 			html ul style: 'float:right'; class: 'nav'; with:[
 				Login new appendToBrush: html li.
 				html li: [ html a href: '#'; onClick: [ AboutDyNagoya new open ]; with: 'About' ].
+				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
 				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
 				html li: [ html a href: '#'; onClick: [ Browser open ]; with: 'Open Browser' ]
