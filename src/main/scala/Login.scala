@@ -7,11 +7,6 @@ import dispatch._
 import dispatch.twitter.{Auth => TwitterAuth, _}
 
 object Auth{
-  object Session{
-    import javax.servlet.http.HttpServletRequest
-    def unapply(r: HttpRequest[HttpServletRequest]) = Some(r.underlying.getSession(true))
-  }
-
   val whiteList = List("maeda_", "t6s", "dico_leque", "machimotako", "bleis",
 		       "clairvy", "yusuke_kokubo", "lgfuser", "b1tl1fe", "sunflat",
 		       "umejava", "sumim", "SergeStinckwich")
@@ -21,19 +16,17 @@ object Auth{
 
   val con = oauth.Consumer(Keys.Auth.consumerKey, Keys.Auth.consumerKey_secret)
 
-  import javax.servlet.http.HttpServletRequest
-
-  def Not[A]( base: HttpRequest[HttpServletRequest] =>  Option[A] ) = 
-    new {
-      def unapply(r: HttpRequest[HttpServletRequest]) = 
-	base(r) match {
-	  case Some(_) => None
-	  case None => Some(())
-	}
+  type Req = HttpRequest[javax.servlet.http.HttpServletRequest]
+  type Extractor[A] = { def unapply(r: Req):Option[A] }
+  def Not[A]( base: Extractor[A]) = new {
+    def unapply(r: Req) = base.unapply(r) match {
+      case Some(_) => None
+      case None => Some(())
     }
+  }
 
-  object Write {
-    def unapply(r: HttpRequest[HttpServletRequest]) = r match {
+  val Write = new {
+    def unapply(r: Req) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
 	  case "true" => ()
@@ -41,15 +34,19 @@ object Auth{
     }
   }
 
-  object LogIn {
-    def unapply(r: HttpRequest[HttpServletRequest]) = r match {
+  val LogIn = new{
+    def unapply(r: Req) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionUserName)) map {_.toString}
     }
   }
 
-  val NoWrite = Not(Write.unapply)
-  val NotLogIn = Not(LogIn.unapply)
+  val NoWrite = Not(Write)
+  val NotLogIn = Not(LogIn)
+
+  object Session{
+    def unapply(r: Req) = Some(r.underlying.getSession(true))
+  }
   
   import unfiltered.filter.Plan.Intent
 
