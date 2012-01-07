@@ -32,7 +32,7 @@ object Auth{
 	}
     }
 
-  val Write = new {
+  object Write {
     def unapply(r: HttpRequest[HttpServletRequest]) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
@@ -41,7 +41,7 @@ object Auth{
     }
   }
 
-  val LogIn = new {
+  object LogIn {
     def unapply(r: HttpRequest[HttpServletRequest]) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionUserName)) map {_.toString}
@@ -76,15 +76,16 @@ object Auth{
       Redirect("/index.html")
     }
     case Path(Seg("authorized" :: Nil)) & Params(params) & Session(ss) => 
+      def accessToken(token: String, secret_token: String, verifier: String) = Access.http(
+	TwitterAuth.access_token(con, oauth.Token(token, secret_token),  verifier)
+      )
+
       for{
 	Seq(token) <- params.get("oauth_token")
 	Seq(verifier) <- params.get("oauth_verifier")
 	secret_token <- Option(ss.getAttribute("secret_token").asInstanceOf[String])
-	(_, _, name) <- Some(Access.http(TwitterAuth.access_token(
-	  con, 
-	  oauth.Token(token, secret_token), 
-	  verifier)))
       } yield {
+	val (_, _, name) = accessToken(token, secret_token, verifier)
 	ss.setAttribute(SessionUserName, name)
 	ss.setAttribute(SessionWritable, whiteList.contains(name))
       }
