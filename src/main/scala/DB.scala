@@ -24,38 +24,40 @@ object DB extends DBSetting{
   }
 
   def S[T](f : => T) = db.withSession(f)
+  import scala.util.control.Exception._
+  def Exceptional[T](f : => T) = S{ allCatch either f }
+
 
   def createTable():Unit = S { Store.ddl create }
   def dropTable():Unit = S { Store.ddl drop }
 
-  def list(clazz: String) = {
-    val query = for (v <- Store if (v.clazz is clazz)) yield (v.group ~ v.key ~ v.body)
-    S{ query list }
-  }
-  def list(clazz: String, group: String) = {
-     val query = for (v <- Store if (v.clazz is clazz) && (v.group is group))
-		 yield (v.group ~ v.key ~ v.body)
-     S{ query list }
+  def query(clazz: String, group: Option[String] = None, key: Option[String] = None) = 
+    ((Store.where(_.clazz === clazz) /: group) { (query, value) =>
+      query.where(_.group === value)
+    } /: key) { (query, value) =>
+      query.where(_.key === value)
+    }.map{ v => v.group ~ v.key ~ v.body }
+
+  def list(clazz: String) = S{ query(clazz) list }
+  def list(clazz: String, group: String) = S{ query(clazz, Some(group)) list }
+
+  def search(clazz: String)(key: String) = S{
+    query(clazz, None, Some(key)) firstOption
   }
 
-  def search(clazz: String)(key: String) = {
-    val query = for (v <- Store 
-		     if (v.clazz is clazz) && (v.key is key)) 
-		yield (v.group ~ v.key ~ v.body)
-    S{ query firstOption }
-  }
   def search(clazz: String, group: String)(key: String) = S{
-    val query = for (v <- Store 
-		     if (v.clazz is clazz) && (v.group is group) && (v.key is key)) 
-		yield (v.group ~ v.key ~ v.body)
-    S{ query firstOption}
+    query(clazz, Some(group), Some(key)) firstOption
   }
 
-  import scala.util.control.Exception._
-  def insert(clazz: String)(key: String, body: String):Either[Throwable, Int] = 
-    insert(clazz, "")(key, body)
-  def insert(clazz: String, group: String)(key: String, body: String) = S{
-    allCatch either { Store.insert(clazz, group, key, body) }
+  def write(clazz: String, group: String)(key: String, body: String) = S{
+    val q = query(clazz, Some(group), Some(key))
+    q firstOption match {
+      case Some(_) => q.update(group, key, body)
+      case None => Store.insert(clazz, group, key, body) 
+    }
+  }
+
+  def delete(clazz: String, group: String)(key: String) = S{
+    Store.where(v => (v.clazz is clazz) && (v.group is group) && (v.key is key)).delete
   }
 }
-

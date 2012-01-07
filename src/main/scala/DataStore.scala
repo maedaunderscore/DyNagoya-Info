@@ -14,22 +14,26 @@ object DataStore {
   implicit def forPipe[A](x : A) = new {
     def |>[B] (f: (A => B)) = f(x)
   }
-
-  private def insertResponse[T] = (_:Either[Throwable, Int]) match {
-    case Left(ex) => Status(500) ~> ResponseString(ex.toString)
-    case Right(_) => Status(200)
+  implicit def forComposite[A, B](f1: A => B) = new {
+    def >>[C] (f2: B => C) = (x : A) => f2(f1(x))
   }
 
-  import unfiltered.filter.Plan.Intent
-  def filter:Intent = ({
+  private def jsonResponse = toJson _ >> ResponseString.apply
+  private def intResponse(x:Int) = ResponseString(x.toString)
+
+  def filter = Auth.Anonymouse{
     case GET(_) & Path(Seg("data" :: clazz :: Nil)) =>
-      DB.list(clazz) |> toJson |> ResponseString.apply
+      DB.list(clazz) |> jsonResponse
     case GET(_) & Path(Seg("data" :: clazz :: group :: Nil)) =>
-      DB.list(clazz, group) |> toJson |> ResponseString.apply
-  }:Intent) orElse Auth.LoginOnly {
+      DB.list(clazz, group) |> jsonResponse
+  } orElse Auth.LoginOnly {
     case PUT(_) & Path(Seg("data" :: clazz :: key :: Nil)) & Params(Body(body)) =>
-      DB.insert(clazz)(key, body) |> insertResponse
+      DB.write(clazz, "")(key, body) |> intResponse
     case PUT(_) & Path(Seg("data" :: clazz :: group :: key :: Nil)) & Params(Body(body)) =>
-      DB.insert(clazz, group)(key, body) |> insertResponse
+      DB.write(clazz, group)(key, body)  |> intResponse
+    case DELETE(_) & Path(Seg("data" :: clazz :: key :: Nil)) =>
+      DB.delete(clazz, "")(key) |> intResponse
+    case DELETE(_) & Path(Seg("data" :: clazz :: group :: key :: Nil)) =>
+      DB.delete(clazz, group)(key) |> intResponse
   }
 }

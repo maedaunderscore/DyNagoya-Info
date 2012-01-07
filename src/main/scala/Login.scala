@@ -50,6 +50,9 @@ object Auth{
   
   import unfiltered.filter.Plan.Intent
 
+  object Anonymouse{
+    def apply(base: Intent) = base
+  }
   object LoginOnly{
     val login:Intent = { case LogIn(_) => Ok }
     def apply(base: Intent) = new Intent{
