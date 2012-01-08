@@ -16,17 +16,17 @@ object Auth{
 
   val con = oauth.Consumer(Keys.Auth.consumerKey, Keys.Auth.consumerKey_secret)
 
-  type Req = HttpRequest[javax.servlet.http.HttpServletRequest]
-  type Extractor[A] = { def unapply(r: Req):Option[A] }
+  type Request = HttpRequest[javax.servlet.http.HttpServletRequest]
+  type Extractor[A] = { def unapply(r: Request):Option[A] }
   def Not[A]( base: Extractor[A]) = new {
-    def unapply(r: Req) = base.unapply(r) match {
+    def unapply(r: Request) = base.unapply(r) match {
       case Some(_) => None
       case None => Some(())
     }
   }
 
   val Write = new {
-    def unapply(r: Req) = r match {
+    def unapply(r: Request) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
 	  case "true" => ()
@@ -35,7 +35,7 @@ object Auth{
   }
 
   val LogIn = new{
-    def unapply(r: Req) = r match {
+    def unapply(r: Request) = r match {
       case Session(ss) => 
 	Option(ss.getAttribute(SessionUserName)) map {_.toString}
     }
@@ -45,7 +45,7 @@ object Auth{
   val NotLogIn = Not(LogIn)
 
   object Session{
-    def unapply(r: Req) = Some(r.underlying.getSession(true))
+    def unapply(r: Request) = Some(r.underlying.getSession(true))
   }
   
   import unfiltered.filter.Plan.Intent
@@ -56,7 +56,6 @@ object Auth{
   object LoginOnly{
     val login:Intent = { case LogIn(_) => Ok }
     def apply(base: Intent) = new Intent{
-      type Request = unfiltered.request.HttpRequest[javax.servlet.http.HttpServletRequest]
       override def apply(x: Request) = base.apply(x)
       override def isDefinedAt(x: Request) = login.isDefinedAt(x) && base.isDefinedAt(x)
     }

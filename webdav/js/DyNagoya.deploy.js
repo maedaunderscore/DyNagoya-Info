@@ -96,7 +96,7 @@ smalltalk.method({
 selector: 'style',
 fn: function () {
     var self = this;
-    return unescape("margin-top%3A%2010px");
+    return unescape("top%3A%2060px%3B%20left%3A60px%3B%20width%3A%20376px%3B%20position%3A%20absolute");
     return self;
 }
 }),
@@ -135,7 +135,7 @@ smalltalk.method({
 selector: 'style',
 fn: function () {
     var self = this;
-    return unescape("left%3A%20176px%3B%20top%3A%209px%3B%20position%3A%20relative%3B");
+    return unescape("left%3A%2060px%3B%20top%3A%20390px%3B%20position%3A%20absolute%3B");
     return self;
 }
 }),
@@ -150,7 +150,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable")]);smalltalk.send($rec, "_style_", [unescape("left%3A%20503px%3B%20top%3A%20-384px%3B%20width%3A500px")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_h2_", [unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F")]);smalltalk.send(html, "_h2_", [unescape("2012/1/28%28%u571F%29%2017%3A00%20%u301C%2020%3A00")]);smalltalk.send(html, "_h2_", [unescape("%u5834%u6240%uFF1A%u3069%u3048%u308A%u3083%u3042")]);smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);return smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A30px")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B")]);smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u8AAC%u660E")]);return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]);}]);}(smalltalk.send(html, "_div", []))]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable")]);smalltalk.send($rec, "_style_", [unescape("left%3A%20450px%3B%20top%3A%2025px%3B%20width%3A500px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -271,12 +271,37 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_options_", [unescape("/name"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("success", "__minus_gt", [function (x) {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/logout")]);return smalltalk.send($rec, "_with_", [smalltalk.send(x, "__comma", [" Log Out"])]);}(smalltalk.send(html, "_a", []));}]), smalltalk.send("error", "__minus_gt", [function (x) {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/login")]);return smalltalk.send($rec, "_with_", [" Log In"]);}(smalltalk.send(html, "_a", []));}])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_options_", [unescape("/name"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("success", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [x]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/logout")]);return smalltalk.send($rec, "_with_", [smalltalk.send(x, "__comma", [" Log Out"])]);}(smalltalk.send(html, "_a", []));}]), smalltalk.send("error", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [nil]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/login")]);return smalltalk.send($rec, "_with_", [" Log In"]);}(smalltalk.send(html, "_a", []));}])])]);
     return self;
 }
 }),
 smalltalk.Login);
 
+
+smalltalk.Login.klass.iVarNames = ['user'];
+smalltalk.addMethod(
+'_user_',
+smalltalk.method({
+selector: 'user:',
+fn: function (aStr) {
+    var self = this;
+    self['@user'] = aStr;
+    return self;
+}
+}),
+smalltalk.Login.klass);
+
+smalltalk.addMethod(
+'_user',
+smalltalk.method({
+selector: 'user',
+fn: function () {
+    var self = this;
+    return self['@user'];
+    return self;
+}
+}),
+smalltalk.Login.klass);
 
 
 smalltalk.addClass('ToDo', smalltalk.Object, [], 'DyNagoya');
@@ -474,15 +499,12 @@ smalltalk.method({
 selector: 'style',
 fn: function () {
     var self = this;
-    return unescape("top%3A350px%3Bleft%3A330px%3Bbackground%3Ared%3B");
+    return unescape("top%3A250px%3Bleft%3A280px%3Bbackground%3Ared%3B");
     return self;
 }
 }),
 smalltalk.LinkMenu);
 
-
-
-smalltalk.addClass('NameOfSubclass', smalltalk.Object, [], 'DyNagoya');
 
 
 smalltalk.addClass('Event', smalltalk.Object, ['title', 'date', 'start', 'end', 'place', 'detail'], 'DyNagoya');
@@ -559,18 +581,6 @@ fn: function (str) {
 smalltalk.Event);
 
 smalltalk.addMethod(
-'_gcalUrl',
-smalltalk.method({
-selector: 'gcalUrl',
-fn: function () {
-    var self = this;
-    return smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [smalltalk.send([smalltalk.send(unescape("src%3D"), "__comma", [smalltalk.send(self, "_dstokaiId", [])]), unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [self['@title']]), smalltalk.send(unescape("details%3D"), "__comma", [smalltalk.send(self, "_description", [])]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_gCalString", [])]), smalltalk.send(smalltalk.send(smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(self, "_format_", [self['@start']])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])], "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}])]);
-    return self;
-}
-}),
-smalltalk.Event);
-
-smalltalk.addMethod(
 '_dstokaiId',
 smalltalk.method({
 selector: 'dstokaiId',
@@ -604,19 +614,7 @@ smalltalk.method({
 selector: 'description',
 fn: function () {
     var self = this;
-    return unescape("%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E");
-    return self;
-}
-}),
-smalltalk.Event);
-
-smalltalk.addMethod(
-'_newCalendar',
-smalltalk.method({
-selector: 'newCalendar',
-fn: function () {
-    var self = this;
-    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl", []), "_blank"]);
+    return smalltalk.send(smalltalk.send(unescape("%3Cul%3E"), "__comma", [smalltalk.send(smalltalk.send(self['@detail'], "_collect_", [function (each) {return smalltalk.send(smalltalk.send(unescape("%3Cli%3E"), "__comma", [each]), "__comma", [unescape("%3C/li%3E")]);}]), "_join_", [""])]), "__comma", [unescape("%3C/ul%3E")]);
     return self;
 }
 }),
@@ -658,14 +656,170 @@ fn: function () {
 }),
 smalltalk.Event);
 
-
 smalltalk.addMethod(
-'_mtg02',
+'_join',
 smalltalk.method({
-selector: 'mtg02',
+selector: 'join',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", [])]);}();
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_cancel',
+smalltalk.method({
+selector: 'cancel',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_delete_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", []), true]);}();
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_list_',
+smalltalk.method({
+selector: 'list:',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.Participation || Participation, "_list_callback_", [self['@title'], aBlock]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    var place = nil;
+    smalltalk.send(html, "_h1_", [self['@title']]);
+    smalltalk.send(html, "_h2_", [smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])])]);
+    smalltalk.send(html, "_h2_", [smalltalk.send(unescape("%u5834%u6240%uFF1A"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_name", [])])]);
+    smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);
+    smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A%2030px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self['@detail'], "_do_", [function (each) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [each]);}]);}]);}(smalltalk.send(html, "_div", []))]);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["participants"]);
+    (function ($rec) {smalltalk.send($rec, "_event_", [self]);return smalltalk.send($rec, "_render", []);}(smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_new", [])));
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_listDo_',
+smalltalk.method({
+selector: 'listDo:',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self, "_list_", [function (list) {return smalltalk.send(list, "_do_", [aBlock]);}]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_addToCalendar',
+smalltalk.method({
+selector: 'addToCalendar',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl", []), "_blank"]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_addToDSTokai',
+smalltalk.method({
+selector: 'addToDSTokai',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl_description_", [smalltalk.send(self, "_dstokaiId", []), smalltalk.send(self, "_descriptionForDSTokai", [])]), "_blank"]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalUrl',
+smalltalk.method({
+selector: 'gcalUrl',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_gcalUrl_description_", [nil, smalltalk.send(self, "_description", [])]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_descriptionForDSTokai',
+smalltalk.method({
+selector: 'descriptionForDSTokai',
+fn: function () {
+    var self = this;
+    return unescape("%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E");
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalUrl_description_',
+smalltalk.method({
+selector: 'gcalUrl:description:',
+fn: function (src, aStr) {
+    var self = this;
+    return smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [smalltalk.send(smalltalk.send(self, "_gcalParams_desc_", [src, aStr]), "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}])]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalParams_desc_',
+smalltalk.method({
+selector: 'gcalParams:desc:',
+fn: function (src, aStr) {
+    var self = this;
+    var base = nil;
+    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [self['@title']]), smalltalk.send(unescape("details%3D"), "__comma", [aStr]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_gCalString", [])]), smalltalk.send(smalltalk.send(smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(self, "_format_", [self['@start']])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])];
+    ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send(unescape("src%3D"), "__comma", [src])]);}() : nil;
+    return base;
+    return self;
+}
+}),
+smalltalk.Event);
+
+
+smalltalk.addMethod(
+'_latest',
+smalltalk.method({
+selector: 'latest',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_meeting02", []);
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+'_meeting02',
+smalltalk.method({
+selector: 'meeting02',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E"), unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
@@ -673,5 +827,150 @@ smalltalk.Event.klass);
 
 
 smalltalk.addClass('Participation', smalltalk.RemoteObject, [], 'DyNagoya');
+
+smalltalk.addMethod(
+'_afterDelete',
+smalltalk.method({
+selector: 'afterDelete',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);
+    return self;
+}
+}),
+smalltalk.Participation.klass);
+
+smalltalk.addMethod(
+'_afterPut',
+smalltalk.method({
+selector: 'afterPut',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);
+    return self;
+}
+}),
+smalltalk.Participation.klass);
+
+
+smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.addMethod(
+'_iconUrl_',
+smalltalk.method({
+selector: 'iconUrl:',
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(unescape("http%3A//img.tweetimag.es/i/"), "__comma", [user]), "__comma", ["_m"]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+'_linkUrl_',
+smalltalk.method({
+selector: 'linkUrl:',
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+'_link_user_',
+smalltalk.method({
+selector: 'link:user:',
+fn: function (html, user) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_linkUrl_", [user])]);smalltalk.send($rec, "_at_put_", ["title", user]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [smalltalk.send(self, "_iconUrl_", [user])]);}]);}(smalltalk.send(html, "_a", [])));
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+
+smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');
+smalltalk.addMethod(
+'_event_',
+smalltalk.method({
+selector: 'event:',
+fn: function (aEvent) {
+    var self = this;
+    self['@event'] = aEvent;
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_renderButton_users_',
+smalltalk.method({
+selector: 'renderButton:users:',
+fn: function (html, users) {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u306B%u306F%u30ED%u30B0%u30A4%u30F3%u304C%u5FC5%u8981%u3067%u3059")]);return smalltalk.send($rec, "_href_", [unescape("/login")]);}(smalltalk.send(html, "_a", []));}() : function () {return ($receiver = smalltalk.send(users, "_includes_", [smalltalk.send(smalltalk.Login || Login, "_user", [])])).klass === smalltalk.Boolean ? !$receiver ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}() : function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}() : smalltalk.send($receiver, "_ifFalse_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}, function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}]);}();
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    var users = nil;
+    smalltalk.send(self['@event'], "_list_", [function (list) {smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [unescape("%u53C2%u52A0%u8005%uFF1A")]);smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {users = smalltalk.send(list, "_collect_", [function (each) {return smalltalk.send(each, "_user", []);}]);return smalltalk.send(users, "_do_", [function (each) {return smalltalk.send(smalltalk.Twitter || Twitter, "_link_user_", [html, each]);}]);}]);return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-top"), "15px"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(self, "_renderButton_users_", [html, users]);return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "10px"]);smalltalk.send($rec, "_with_", [unescape("Google%20Calendar%u306B%u767B%u9332")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_addToCalendar", []);}]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_div", []));}]);
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_render',
+smalltalk.method({
+selector: 'render',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_class", []), "_render", []);
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+
+smalltalk.ParticipantsList.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+'_render',
+smalltalk.method({
+selector: 'render',
+fn: function () {
+    var self = this;
+    var html = nil;
+    html = smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [smalltalk.send(unescape("%23participants"), "_asJQuery", [])]);
+    smalltalk.send(smalltalk.send(html, "_root", []), "_empty", []);
+    smalltalk.send(smalltalk.send(self, "_new", []), "_renderOn_", [html]);
+    return self;
+}
+}),
+smalltalk.ParticipantsList.klass);
+
+smalltalk.addMethod(
+'_new',
+smalltalk.method({
+selector: 'new',
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.Widget.klass);}() : $receiver;
+    return self['@s'];
+    return self;
+}
+}),
+smalltalk.ParticipantsList.klass);
 
 

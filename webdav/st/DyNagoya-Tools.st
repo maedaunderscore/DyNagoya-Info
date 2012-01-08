@@ -285,8 +285,42 @@ messageMap: aMessage
 ! !
 
 Object subclass: #RemoteObject
-	instanceVariableNames: ''
+	instanceVariableNames: 'obj group key'
 	category: 'DyNagoya-Tools'!
+
+!RemoteObject methodsFor: 'not yet classified'!
+
+doesNotUnderstand: aMessage
+	aMessage arguments 
+		ifEmpty:[ ^ obj at: aMessage selector ];
+		ifNotEmpty: [ ^ super doesNotUnderStand: aMessage ]
+!
+
+delete
+	RemoteObject delete: self class group: group key: key
+!
+
+initialize: aObj group: aGroup key: aKey
+	obj := aObj.
+	group := aGroup.
+	key := aKey
+! !
+
+!RemoteObject class methodsFor: 'event handling'!
+
+afterGet: aBlock
+	^ [ :all | 
+		aBlock value: 
+			(all collect: [ :each | self new initialize: each body group: each group key: each key] ) ]
+!
+
+afterPut
+	^ [ :num | ]
+!
+
+afterDelete
+	^ [ :num | ]
+! !
 
 !RemoteObject class methodsFor: 'not yet classified'!
 
@@ -295,7 +329,8 @@ list: group
 		ajax: ('/data/', self asString, '/', group)
 		option: #{
 			'type' -> 'GET'.
-			'dataType' -> 'json'
+			'dataType' -> 'json'.
+			'success' -> self onSuccess
 		}
 !
 
@@ -304,7 +339,9 @@ doesNotUnderstand: aMessage
 	map := Util messageMap: aMessage.
 	group := map first value.
 	key := map second value.
-	self put: self group: group key: key body: ((HashedCollection fromPairs: map) asJSONString)
+	map last key = 'delete'
+		ifTrue: [ self delete: self group: group key: key]
+		ifFalse: [ self put: self group: group key: key body: ((HashedCollection fromPairs: map) asJSONString) ]
 !
 
 put: clazz group: group key: key body: body
@@ -312,9 +349,31 @@ put: clazz group: group key: key body: body
 		ajax: (self url: (clazz asString) group: group key: key)
 		option: #{
 			'type' -> 'PUT'.
-			'data' -> #{'body' -> body} asJSON
+			'data' -> #{'body' -> body} asJSON.
+			'success' -> self afterPut
 		}
 !
+
+list: group callback: aBlock
+	^ jQuery
+		ajax: ('/data/', self asString, '/', group)
+		option: #{
+			'type' -> 'GET'.
+			'dataType' -> 'json'.
+			'success' -> (self afterGet: aBlock)
+		}
+!
+
+delete: clazz group: group key: key
+	^ jQuery
+		ajax: (self url: (clazz asString) group: group key: key)
+		option: #{
+			'type' -> 'DELETE'.
+			'success' -> self afterDelete
+		}
+! !
+
+!RemoteObject class methodsFor: 'private'!
 
 url: clazz group: group key: key
 	^ '/data/', clazz asString, '/', group, '/', key

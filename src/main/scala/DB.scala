@@ -8,19 +8,24 @@ import org.scalaquery.ql.extended.H2Driver
 import org.scalaquery.ql.extended.H2Driver.Implicit._
 import org.scalaquery.ql.extended.{ExtendedTable => Table}
 
+import java.sql.Timestamp
+
 trait DBSetting{
   lazy val db = Database.forURL("jdbc:h2:./database", driver = "org.h2.Driver") 
 }
 
 object DB extends DBSetting{
-  val Store = new Table[(String, String, String, String)]("Store") {
+  val Store = new Table[(String, String, String, String, Timestamp)]("Store") {
+    val currentTime = "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP"
     def clazz = column[String]("class")
     def group = column[String]("group")
     def key = column[String]("key")
     def body = column[String]("body", O.DBType("varchar(4096)"))
+    def created = column[Timestamp]("created", O.DBType(currentTime))
+
     def pk = primaryKey("pk_Store", clazz ~ group ~ key)
-    def * = clazz ~ group ~ key ~ body
-    def m = group ~ key ~ body
+    def * = clazz ~ group ~ key ~ body ~ created
+    def m = clazz ~ group ~ key ~ body
   }
 
   def S[T](f : => T) = db.withSession(f)
@@ -36,7 +41,7 @@ object DB extends DBSetting{
       query.where(_.group === value)
     } /: key) { (query, value) =>
       query.where(_.key === value)
-    }.map{ v => v.group ~ v.key ~ v.body }
+    }.flatMap{ v => Query.orderBy(v.created).map{ _ => v.group ~ v.key ~ v.body } }
 
   def list(clazz: String) = S{ query(clazz) list }
   def list(clazz: String, group: String) = S{ query(clazz, Some(group)) list }
@@ -53,7 +58,7 @@ object DB extends DBSetting{
     val q = query(clazz, Some(group), Some(key))
     q firstOption match {
       case Some(_) => q.update(group, key, body)
-      case None => Store.insert(clazz, group, key, body) 
+      case None => Store.m.insert(clazz, group, key, body) 
     }
   }
 

@@ -52,7 +52,7 @@ imageUrl
 !
 
 style
-	^ 'margin-top: 10px'
+	^ 'top: 60px; left:60px; width: 376px; position: absolute'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
@@ -72,7 +72,7 @@ imageUrl
 !
 
 style
-  ^ 'left: 176px; top: 9px; position: relative;'
+  ^ 'left: 60px; top: 390px; position: absolute;'
 ! !
 
 Widget subclass: #Board
@@ -84,18 +84,8 @@ Widget subclass: #Board
 renderOn: html
 	html div 
 		class: 'alert-message block-message warning ui-draggable';
-		style: 'left: 503px; top: -384px; width:500px';
-		 with:[ 
-			html h2: '次回のミーティングは'.
-			html h2: '2012/1/28(土) 17:00 〜 20:00'.
-			html h2: '場所：どえりゃあ'.
-			html h2: '内容：'.
-			html h3 with: (html div style: 'margin-left:30px'; with:[
-				html div with: 'Make:Ogakiのネタを考える'.
-				html div with: 'このページの説明'.
-				html div with: 'Smalltalk入門(希望者がいれば)'.
-			])
-		]
+		style: 'left: 450px; top: 25px; width:500px';
+		with:[  Event latest renderOn: html ]
 ! !
 
 Object subclass: #Screen
@@ -174,9 +164,25 @@ Widget subclass: #Login
 
 renderOn: html
 	jQuery ajax: '/name' options: #{ 
-		'success' -> [ :x | html a href: '/logout'; with: ( x, ' Log Out' ) ].
-		 'error'       -> [ :x | html a href: '/login'; with: ' Log In'  ]
+		'success' -> [ :x | 
+			Login user: x.
+			html a href: '/logout'; with: ( x, ' Log Out' ) ].
+		 'error'       -> [ :x | 
+			Login user: nil.
+			html a href: '/login'; with: ' Log In'  ]
 	}
+! !
+
+Login class instanceVariableNames: 'user'!
+
+!Login class methodsFor: 'not yet classified'!
+
+user: aStr
+	user := aStr
+!
+
+user
+	^user
 ! !
 
 Object subclass: #ToDo
@@ -187,6 +193,7 @@ ToDo subclass: #ForThisPage
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
 !ForThisPage commentStamp!
+Loginの実装がひどい
 開催履歴を残す。
 開催場所を分かりやすく表示
 開催情報を引っ張って、dstokaiカレンダーに新規イベント登録画面を開くブックマークレット
@@ -348,16 +355,15 @@ body: html
 !
 
 style
-  ^ 'top:350px;left:330px;background:red;'
+  ^ 'top:250px;left:280px;background:red;'
 ! !
-
-Object subclass: #NameOfSubclass
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
 
 Object subclass: #Event
 	instanceVariableNames: 'title date start end place detail'
 	category: 'DyNagoya'!
+!Event commentStamp!
+Event latest addToDSTokai
+Event latest tweet!
 
 !Event methodsFor: 'Twitter'!
 
@@ -404,19 +410,6 @@ detail: str
 
 !Event methodsFor: 'google calendar'!
 
-gcalUrl
-	^ Util encodeURI: ({
-		'src=', self dstokaiId.
-		'ctz=Asia/Tokyo'.
-		'ctext=', title.
-		'details=', self description.
-		'location=', (place new gCalString).
-		'dates=', (self format: start) , '/', (self format: end)
-	} 
-	inject: 'http://www.google.com/calendar/event?action=TEMPLATE'
-	into: [ :acc :x | acc, '&', x ])
-!
-
 dstokaiId
 	^ '6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com'
 !
@@ -429,16 +422,91 @@ format: aTime
 !
 
 description
+  ^ '<ul>', (
+	(detail collect: [:each | '<li>', each, '</li>' ]) join: ''
+  ), '</ul>'
+!
+
+addToCalendar
+  window open: (self gcalUrl) target: '_blank'
+!
+
+addToDSTokai
+  window open: (self gcalUrl: self dstokaiId description: self descriptionForDSTokai) target: '_blank'
+!
+
+gcalUrl
+	^ self gcalUrl: nil description: self description
+!
+
+descriptionForDSTokai
   ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
 !
 
-newCalendar
-  window open: (self gcalUrl) target: '_blank'
+gcalUrl: src description: aStr
+	^ Util encodeURI: ((self gcalParams: src desc: aStr)
+		inject: 'http://www.google.com/calendar/event?action=TEMPLATE'
+		into: [ :acc :x | acc, '&', x ])
+!
+
+gcalParams: src desc: aStr
+	| base |
+	base := {
+		'ctz=Asia/Tokyo'.
+		'ctext=', title.
+		'details=', aStr.
+		'location=', (place new gCalString).
+		'dates=', (self format: start) , '/', (self format: end)
+	}.
+
+	src ifNotNil: [ base add: 'src=', src ].
+	^ base
+! !
+
+!Event methodsFor: 'participation'!
+
+join
+	Login user 
+		ifNotNil: [ Participation event: title user: Login user ]
+		ifNil: [ Window alert: 'You need to log in!!' ]
+!
+
+cancel
+	Login user 
+		ifNotNil: [ Participation event: title user: Login user delete: true ]
+		ifNil: [ Window alert: 'You need to log in!!' ]
+!
+
+list: aBlock
+	Participation list: title callback: aBlock
+!
+
+listDo: aBlock
+	self list: [ :list | list do: aBlock ]
+! !
+
+!Event methodsFor: 'rendering'!
+
+renderOn: html
+	| place |
+	html h1: title.
+	html h2: '日時：', self formatPeriod.
+	html h2: '場所：', place new name.
+	html h2: '内容：'.
+	html h3 with: (html div style: 'margin-left: 30px'; with:[
+		detail do: [ :each | html div with: each ].
+	]).
+	html div id: 'participants'.
+	ParticipantsList new event: self; render.
 ! !
 
 !Event class methodsFor: 'events'!
 
-mtg02
+latest
+	^ self meeting02
+!
+
+meeting02
 	^ self new 
 		title: 'DyNagoya MTG＃02';
 		date: '2012/01/28';
@@ -446,6 +514,7 @@ mtg02
 		end: '20:00:00';
 		place: Doerya;
 		detail: {
+'このページについて説明'.
 'Make:Ogakiのネタを考える'.
 'Smalltalk入門(希望者がいれば)'.
 'イルカの名前を考える'
@@ -455,4 +524,99 @@ mtg02
 RemoteObject subclass: #Participation
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
+!Participation commentStamp!
+Participation event: 'meeting02' name: 'maeda_'
+Participation event: 'meeting02' name: 'bleis'
+
+Participation list: 'meeting02' callback: [ :list | console log: list size ]
+Participation list: 'meeting02' callback: [ :list | list inspect ] 
+
+Participation list: 'meeting02' callback: [ :list | list do: [:each | each delete] ]!
+
+!Participation class methodsFor: 'not yet classified'!
+
+afterDelete
+	ParticipantsList render
+!
+
+afterPut
+	ParticipantsList render
+! !
+
+Object subclass: #Twitter
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Twitter class methodsFor: 'not yet classified'!
+
+iconUrl: user 
+	^ 'http://img.tweetimag.es/i/', user, '_m'
+!
+
+linkUrl: user 
+	^ 'http://twitter.com/', user
+!
+
+link: html user: user
+	html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[
+		html img src: (self iconUrl: user)
+	]
+! !
+
+Object subclass: #ParticipantsList
+	instanceVariableNames: 'event'
+	category: 'DyNagoya'!
+
+!ParticipantsList methodsFor: 'accessing'!
+
+event: aEvent
+	event := aEvent
+! !
+
+!ParticipantsList methodsFor: 'rendering'!
+
+renderButton: html users: users
+		Login user 
+			ifNil: [ html a class: 'btn'; with: '参加にはログインが必要です'; href: '/login']
+			ifNotNil:[
+				(users includes: Login user)
+					ifFalse: [ html a class: 'btn'; with: '参加する'; onClick: [ event join ] ]
+					ifTrue: [html a class: 'btn'; with: '参加を取り消す'; onClick: [event  cancel ] ]
+			]
+!
+
+renderOn: html
+	| users |
+	event list: [ :list |
+		html h2 with: '参加者：'.
+		html div with: [
+			users := list collect: [ :each | each user ].
+			users do:[ :each | Twitter link:html user: each ]
+		].
+		html div css: 'margin-top' put: '15px'; with: [
+			self renderButton: html users: users.
+			html a class: 'btn'; css: 'margin-left' put: '10px'; with: 'Google Calendarに登録'; onClick: [ event addToCalendar ]
+		]
+	]
+!
+
+render
+	self class render
+! !
+
+ParticipantsList class instanceVariableNames: 's'!
+
+!ParticipantsList class methodsFor: 'not yet classified'!
+
+render
+	| html |
+	html := HTMLCanvas onJQuery: '#participants' asJQuery.
+	html root empty.
+	self new renderOn: html.
+!
+
+new
+	s ifNil: [  s := super new ].
+	^ s
+! !
 

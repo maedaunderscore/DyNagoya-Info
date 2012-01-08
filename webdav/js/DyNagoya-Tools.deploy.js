@@ -568,7 +568,52 @@ fn: function (aMessage) {
 smalltalk.Util.klass);
 
 
-smalltalk.addClass('RemoteObject', smalltalk.Object, [], 'DyNagoya-Tools');
+smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+'_doesNotUnderstand_',
+smalltalk.method({
+selector: 'doesNotUnderstand:',
+fn: function (aMessage) {
+    var self = this;
+    try {
+        (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return function () {throw {name: "stReturn", selector: "_doesNotUnderstand_", fn: function () {return smalltalk.send(self['@obj'], "_at_", [smalltalk.send(aMessage, "_selector", [])]);}};}();}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return function () {throw {name: "stReturn", selector: "_doesNotUnderstand_", fn: function () {return smalltalk.send(self, "_doesNotUnderStand_", [aMessage], smalltalk.Object);}};}();}]);}(smalltalk.send(aMessage, "_arguments", [])));
+        return self;
+    } catch (e) {
+        if (e.name === "stReturn" && e.selector === "_doesNotUnderstand_") {
+            return e.fn();
+        }
+        throw e;
+    }
+}
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+'_delete',
+smalltalk.method({
+selector: 'delete',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
+    return self;
+}
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+'_initialize_group_key_',
+smalltalk.method({
+selector: 'initialize:group:key:',
+fn: function (aObj, aGroup, aKey) {
+    var self = this;
+    self['@obj'] = aObj;
+    self['@group'] = aGroup;
+    self['@key'] = aKey;
+    return self;
+}
+}),
+smalltalk.RemoteObject);
+
 
 smalltalk.addMethod(
 '_list_',
@@ -576,7 +621,7 @@ smalltalk.method({
 selector: 'list:',
 fn: function (group) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"])])]);
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
     return self;
 }
 }),
@@ -594,7 +639,7 @@ fn: function (aMessage) {
     map = smalltalk.send(smalltalk.Util || Util, "_messageMap_", [aMessage]);
     group = smalltalk.send(smalltalk.send(map, "_first", []), "_value", []);
     key = smalltalk.send(smalltalk.send(map, "_second", []), "_value", []);
-    smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);
+    ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(map, "_last", []), "_key", []), "__eq", ["delete"])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_delete_group_key_", [self, group, key]);}() : function () {return smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_delete_group_key_", [self, group, key]);}, function () {return smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);}]);
     return self;
 }
 }),
@@ -606,7 +651,7 @@ smalltalk.method({
 selector: 'put:group:key:body:',
 fn: function (clazz, group, key, body) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])])])]);
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
     return self;
 }
 }),
@@ -619,6 +664,66 @@ selector: 'url:group:key:',
 fn: function (clazz, group, key) {
     var self = this;
     return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_list_callback_',
+smalltalk.method({
+selector: 'list:callback:',
+fn: function (group, aBlock) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterGet_", [aBlock])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_delete_group_key_',
+smalltalk.method({
+selector: 'delete:group:key:',
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_afterGet_',
+smalltalk.method({
+selector: 'afterGet:',
+fn: function (aBlock) {
+    var self = this;
+    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_afterPut',
+smalltalk.method({
+selector: 'afterPut',
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+'_afterDelete',
+smalltalk.method({
+selector: 'afterDelete',
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
     return self;
 }
 }),
