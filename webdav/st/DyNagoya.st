@@ -488,16 +488,23 @@ listDo: aBlock
 !Event methodsFor: 'rendering'!
 
 renderOn: html
-	| place |
 	html h1: title.
 	html h2: '日時：', self formatPeriod.
-	html h2 with:[ html span with: '場所：', place name. GoogleMap link: html address: place address ].
+	self renderPlace: html.
 	html h2: '内容：'.
 	html h3 with: (html div style: 'margin-left: 30px'; with:[
 		detail do: [ :each | html div with: each ].
 	]).
 	html div id: 'participants'.
 	ParticipantsList new event: self; render.
+!
+
+renderPlace: html
+	html h2 with:[ 
+		html span with: '場所：'.
+		html a href: place url; at: 'target' put: '_blank'; with: place name. 
+		GoogleMap link: html address: place address 
+	]
 ! !
 
 !Event class methodsFor: 'events'!
