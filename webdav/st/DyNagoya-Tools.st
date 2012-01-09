@@ -282,6 +282,10 @@ messageMap: aMessage
 	ret := Array new.
 	arguments withIndexDo: [ :each :i | ret add: ((selectors at: i) -> each )].
 	^ ret
+!
+
+escape: str
+	^ (< escape(str) >)
 ! !
 
 Object subclass: #RemoteObject
@@ -400,7 +404,7 @@ link: html user: user
 !
 
 tweet: msg
-	jQuery ajax: 'tweet/', (Util encodeURI: msg)
+	jQuery ajax: 'tweet/', (Util escape: msg)
 ! !
 
 Object subclass: #GoogleMap
@@ -410,7 +414,7 @@ Object subclass: #GoogleMap
 !GoogleMap class methodsFor: 'not yet classified'!
 
 url: address
-	^ 'http://maps.google.co.jp/maps?q=', (Util encodeURI: address)
+	^ 'http://maps.google.co.jp/maps?q=', (Util escape: address)
 !
 
 link: html address: aStr
