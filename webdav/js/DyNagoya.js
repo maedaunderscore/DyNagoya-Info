@@ -150,13 +150,13 @@ selector: unescape('tweet%3A'),
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [encodeURI(msg)])]);
+    smalltalk.send(smalltalk.Twitter || Twitter, "_tweet_", [msg]);
     return self;
 },
 args: ["msg"],
-source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20%28%3C%20encodeURI%28msg%29%20%3E%29'),
-messageSends: ["ajax:", unescape("%2C")],
-referencedClasses: []
+source: unescape('tweet%3A%20msg%0A%09Twitter%20tweet%3A%20msg'),
+messageSends: ["tweet:"],
+referencedClasses: ["Twitter"]
 }),
 smalltalk.Dolphin.klass);
 

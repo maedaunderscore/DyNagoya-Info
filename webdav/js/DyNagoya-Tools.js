@@ -1060,6 +1060,23 @@ referencedClasses: []
 }),
 smalltalk.Twitter.klass);
 
+smalltalk.addMethod(
+unescape('_tweet_'),
+smalltalk.method({
+selector: unescape('tweet%3A'),
+category: 'not yet classified',
+fn: function (msg) {
+    var self = this;
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_encodeURI_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.Util || Util]), msg]);
+    return self;
+},
+args: ["msg"],
+source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20Util%20encodeURI%3A%20msg'),
+messageSends: ["ajax:encodeURI:", unescape("%2C")],
+referencedClasses: ["Util"]
+}),
+smalltalk.Twitter.klass);
+
 
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 

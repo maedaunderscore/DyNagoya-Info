@@ -768,6 +768,18 @@ fn: function (html, user) {
 }),
 smalltalk.Twitter.klass);
 
+smalltalk.addMethod(
+'_tweet_',
+smalltalk.method({
+selector: 'tweet:',
+fn: function (msg) {
+    var self = this;
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_encodeURI_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.Util || Util]), msg]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
 
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 

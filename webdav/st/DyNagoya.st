@@ -58,7 +58,7 @@ style
 !Dolphin class methodsFor: 'not yet classified'!
 
 tweet: msg
-	jQuery ajax: 'tweet/', (< encodeURI(msg) >)
+	Twitter tweet: msg
 ! !
 
 Icon subclass: #Logo
