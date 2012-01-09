@@ -1310,60 +1310,6 @@ referencedClasses: []
 smalltalk.ParticipantsList.klass);
 
 
-smalltalk.addClass('Z-Tres', smalltalk.Place, [], 'DyNagoya');
-smalltalk.addMethod(
-unescape('_address'),
-smalltalk.method({
-selector: unescape('address'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
-    return self;
-},
-args: [],
-source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Z-Tres);
-
-smalltalk.addMethod(
-unescape('_url'),
-smalltalk.method({
-selector: unescape('url'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return unescape("http%3A//www.forvex.co.jp/ztres/");
-    return self;
-},
-args: [],
-source: unescape('url%0A%09%5E%20%27http%3A//www.forvex.co.jp/ztres/%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Z-Tres);
-
-smalltalk.addMethod(
-unescape('_name'),
-smalltalk.method({
-selector: unescape('name'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return unescape("Cafe%20Z-TRES");
-    return self;
-},
-args: [],
-source: unescape('name%0A%09%5E%20%27Cafe%20Z-TRES%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Z-Tres);
-
-
-
 smalltalk.addClass('ATeam', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 unescape('_address'),
@@ -1577,6 +1523,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('ZTres', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.forvex.co.jp/ztres/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.forvex.co.jp/ztres/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20Z-TRES");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Cafe%20Z-TRES%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
 
 
 

@@ -946,45 +946,6 @@ fn: function () {
 smalltalk.ParticipantsList.klass);
 
 
-smalltalk.addClass('Z-Tres', smalltalk.Place, [], 'DyNagoya');
-smalltalk.addMethod(
-'_address',
-smalltalk.method({
-selector: 'address',
-fn: function () {
-    var self = this;
-    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
-    return self;
-}
-}),
-smalltalk.Z-Tres);
-
-smalltalk.addMethod(
-'_url',
-smalltalk.method({
-selector: 'url',
-fn: function () {
-    var self = this;
-    return unescape("http%3A//www.forvex.co.jp/ztres/");
-    return self;
-}
-}),
-smalltalk.Z-Tres);
-
-smalltalk.addMethod(
-'_name',
-smalltalk.method({
-selector: 'name',
-fn: function () {
-    var self = this;
-    return unescape("Cafe%20Z-TRES");
-    return self;
-}
-}),
-smalltalk.Z-Tres);
-
-
-
 smalltalk.addClass('ATeam', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 '_address',
@@ -1138,6 +1099,45 @@ fn: function () {
 }
 }),
 smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('ZTres', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
+    return self;
+}
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.forvex.co.jp/ztres/");
+    return self;
+}
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20Z-TRES");
+    return self;
+}
+}),
+smalltalk.ZTres);
 
 
 

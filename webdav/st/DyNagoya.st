@@ -607,24 +607,6 @@ new
 	^ s
 ! !
 
-Place subclass: #Z-Tres
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Z-Tres methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中村区椿町3番19号ウイングビル2F'
-!
-
-url
-	^ 'http://www.forvex.co.jp/ztres/'
-!
-
-name
-	^ 'Cafe Z-TRES'
-! !
-
 Place subclass: #ATeam
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
@@ -695,5 +677,23 @@ url
 
 name
 	^ 'カフェ ヴァンサンヌドゥ'
+! !
+
+Place subclass: #ZTres
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!ZTres methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中村区椿町3番19号ウイングビル2F'
+!
+
+url
+	^ 'http://www.forvex.co.jp/ztres/'
+!
+
+name
+	^ 'Cafe Z-TRES'
 ! !
 
