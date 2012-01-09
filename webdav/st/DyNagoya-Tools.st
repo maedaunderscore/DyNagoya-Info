@@ -379,3 +379,37 @@ url: clazz group: group key: key
 	^ '/data/', clazz asString, '/', group, '/', key
 ! !
 
+Object subclass: #Twitter
+	instanceVariableNames: ''
+	category: 'DyNagoya-Tools'!
+
+!Twitter class methodsFor: 'not yet classified'!
+
+iconUrl: user 
+	^ 'http://img.tweetimag.es/i/', user, '_m'
+!
+
+linkUrl: user 
+	^ 'http://twitter.com/', user
+!
+
+link: html user: user
+	html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[
+		html img src: (self iconUrl: user)
+	]
+! !
+
+Object subclass: #GoogleMap
+	instanceVariableNames: ''
+	category: 'DyNagoya-Tools'!
+
+!GoogleMap class methodsFor: 'not yet classified'!
+
+url: address
+	^ 'http://maps.google.co.jp/maps?q=', (Util encodeURI: address)
+!
+
+link: html address: aStr
+	html a href: (self url: aStr); title: aStr; at: 'target' put: '_blank'; with:'(map)'
+! !
+

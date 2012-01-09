@@ -1007,3 +1007,94 @@ referencedClasses: []
 smalltalk.RemoteObject.klass);
 
 
+smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+unescape('_iconUrl_'),
+smalltalk.method({
+selector: unescape('iconUrl%3A'),
+category: 'not yet classified',
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(unescape("http%3A//img.tweetimag.es/i/"), "__comma", [user]), "__comma", ["_m"]);
+    return self;
+},
+args: ["user"],
+source: unescape('iconUrl%3A%20user%20%0A%09%5E%20%27http%3A//img.tweetimag.es/i/%27%2C%20user%2C%20%27_m%27'),
+messageSends: [unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+unescape('_linkUrl_'),
+smalltalk.method({
+selector: unescape('linkUrl%3A'),
+category: 'not yet classified',
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
+    return self;
+},
+args: ["user"],
+source: unescape('linkUrl%3A%20user%20%0A%09%5E%20%27http%3A//twitter.com/%27%2C%20user'),
+messageSends: [unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+unescape('_link_user_'),
+smalltalk.method({
+selector: unescape('link%3Auser%3A'),
+category: 'not yet classified',
+fn: function (html, user) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_linkUrl_", [user])]);smalltalk.send($rec, "_at_put_", ["title", user]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [smalltalk.send(self, "_iconUrl_", [user])]);}]);}(smalltalk.send(html, "_a", [])));
+    return self;
+},
+args: ["html", "user"],
+source: unescape('link%3A%20html%20user%3A%20user%0A%09html%20a%20href%3A%20%28self%20linkUrl%3A%20user%29%3B%20at%3A%20%27title%27%20put%3A%20user%3B%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20with%3A%5B%0A%09%09html%20img%20src%3A%20%28self%20iconUrl%3A%20user%29%0A%09%5D'),
+messageSends: ["href:", "linkUrl:", "at:put:", "with:", "src:", "img", "iconUrl:", "a"],
+referencedClasses: []
+}),
+smalltalk.Twitter.klass);
+
+
+smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+unescape('_url_'),
+smalltalk.method({
+selector: unescape('url%3A'),
+category: 'not yet classified',
+fn: function (address) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [address])]);
+    return self;
+},
+args: ["address"],
+source: unescape('url%3A%20address%0A%09%5E%20%27http%3A//maps.google.co.jp/maps%3Fq%3D%27%2C%20%28Util%20encodeURI%3A%20address%29'),
+messageSends: [unescape("%2C"), "encodeURI:"],
+referencedClasses: ["Util"]
+}),
+smalltalk.GoogleMap.klass);
+
+smalltalk.addMethod(
+unescape('_link_address_'),
+smalltalk.method({
+selector: unescape('link%3Aaddress%3A'),
+category: 'not yet classified',
+fn: function (html, aStr) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
+    return self;
+},
+args: ["html", "aStr"],
+source: unescape('link%3A%20html%20address%3A%20aStr%0A%09html%20a%20href%3A%20%28self%20url%3A%20aStr%29%3B%20title%3A%20aStr%3B%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20with%3A%27%28map%29%27%0A%09'),
+messageSends: ["href:", "url:", "title:", "at:put:", "with:", "a"],
+referencedClasses: []
+}),
+smalltalk.GoogleMap.klass);
+
+
