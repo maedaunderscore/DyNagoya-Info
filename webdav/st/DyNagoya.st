@@ -298,9 +298,9 @@ list
 			url: 'http://www.mirandabanda.org/cogblog'
 			description: '高速Smalltalk VMの実装説明'.
 		self
-			link: '日本人のためのSqueakサイトの歩き方'
-			url: 'http://www.mars.dti.ne.jp/~umejava/smalltalk/squeak/sqwalker.html'
-			description: '梅沢さんがまとめてくれたサイト'.
+			link: '自由自在Squeakプログラミング PDF版ドラフト'
+			url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'
+			description: '梅沢さんが鋭意PDF化中'.
 		self			
 			link: 'Yengawa Blog'
 			url: 'http://blog.yengawa.com/'
