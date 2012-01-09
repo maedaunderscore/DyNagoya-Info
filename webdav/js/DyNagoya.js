@@ -468,7 +468,7 @@ smalltalk.AboutDyNagoya);
 
 
 
-smalltalk.addClass('Place', smalltalk.Object, [], 'DyNagoya');
+smalltalk.addClass('Place', smalltalk.Widget, [], 'DyNagoya');
 smalltalk.addMethod(
 unescape('_name'),
 smalltalk.method({
@@ -716,7 +716,7 @@ smalltalk.LinkMenu);
 
 
 
-smalltalk.addClass('Event', smalltalk.Object, ['title', 'date', 'start', 'end', 'place', 'detail'], 'DyNagoya');
+smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail'], 'DyNagoya');
 smalltalk.Event.comment=unescape('Event%20latest%20addToDSTokai%0AEvent%20latest%20tweet')
 smalltalk.addMethod(
 unescape('_title_'),
