@@ -253,6 +253,14 @@ url
 
 gCalString
   ^ (self address), '(', (self name), ')'
+!
+
+renderOn: html
+	html h2 with:[ 
+		html span with: '場所：'.
+		html a href: self url; at: 'target' put: '_blank'; with: self name. 
+		GoogleMap link: html address: self address 
+	]
 ! !
 
 Place subclass: #Doerya
@@ -490,21 +498,13 @@ listDo: aBlock
 renderOn: html
 	html h1: title.
 	html h2: '日時：', self formatPeriod.
-	self renderPlace: html.
+	place renderOn: html.
 	html h2: '内容：'.
 	html h3 with: (html div style: 'margin-left: 30px'; with:[
 		detail do: [ :each | html div with: each ].
 	]).
 	html div id: 'participants'.
 	ParticipantsList new event: self; render.
-!
-
-renderPlace: html
-	html h2 with:[ 
-		html span with: '場所：'.
-		html a href: place url; at: 'target' put: '_blank'; with: place name. 
-		GoogleMap link: html address: place address 
-	]
 ! !
 
 !Event class methodsFor: 'events'!
