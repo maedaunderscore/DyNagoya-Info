@@ -397,6 +397,10 @@ link: html user: user
 	html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[
 		html img src: (self iconUrl: user)
 	]
+!
+
+tweet: msg
+	jQuery ajax: 'tweet/', Util encodeURI: msg
 ! !
 
 Object subclass: #GoogleMap
