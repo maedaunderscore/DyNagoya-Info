@@ -400,7 +400,7 @@ link: html user: user
 !
 
 tweet: msg
-	jQuery ajax: 'tweet/', Util encodeURI: msg
+	jQuery ajax: 'tweet/', (Util encodeURI: msg)
 ! !
 
 Object subclass: #GoogleMap
