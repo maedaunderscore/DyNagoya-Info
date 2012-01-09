@@ -23,13 +23,15 @@ object Twitter {
       this / "update.json" << Map("status" -> status) <@ (consumer, token)
   }
 
+  object Tweet extends Params.Extract("tweet", Params.first)
+
   def filter : unfiltered.filter.Plan.Intent = {
-    case Path(Seg("tweet":: msg)) & Auth.Write(user) =>
+    case Path(Seg("tweet":: Nil)) & Auth.Write(user) & Params(Tweet(tweet)) =>
       def withFooter(str:String) = {
       	val footer = " (by %s) #dynagoya".format(user)
       	"%s%s".format(str.take(140 - footer.length), footer)
       }
-    val message = decode(msg.mkString("/"), "UTF-8")
+    val message = decode(tweet, "UTF-8")
     ResponseString(Access.http(Status.update(withFooter(message)) as_str))
   }
 }

@@ -408,7 +408,13 @@ link: html user: user
 !
 
 tweet: msg
-	jQuery ajax: 'tweet/', (Util encode: msg)
+	jQuery
+		ajax: '/tweet'
+		option: #{
+			'type' -> 'POST'.
+			'dataType' -> 'json'.
+			'data' -> #{'tweet' -> msg} asJSON
+		}
 ! !
 
 Object subclass: #GoogleMap

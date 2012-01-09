@@ -798,7 +798,7 @@ smalltalk.method({
 selector: 'tweet:',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [msg])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [unescape("/tweet"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("tweet", "__minus_gt", [msg])]), "_asJSON", [])])])]);
     return self;
 }
 }),

@@ -1101,13 +1101,13 @@ selector: unescape('tweet%3A'),
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [msg])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [unescape("/tweet"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("tweet", "__minus_gt", [msg])]), "_asJSON", [])])])]);
     return self;
 },
 args: ["msg"],
-source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20%28Util%20encode%3A%20msg%29'),
-messageSends: ["ajax:", unescape("%2C"), "encode:"],
-referencedClasses: ["Util"]
+source: unescape('tweet%3A%20msg%0A%09jQuery%0A%09%09ajax%3A%20%27/tweet%27%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27POST%27.%0A%09%09%09%27dataType%27%20-%3E%20%27json%27.%0A%09%09%09%27data%27%20-%3E%20%23%7B%27tweet%27%20-%3E%20msg%7D%20asJSON%0A%09%09%7D'),
+messageSends: ["ajax:option:", unescape("-%3E"), "asJSON"],
+referencedClasses: []
 }),
 smalltalk.Twitter.klass);
 

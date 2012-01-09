@@ -515,7 +515,7 @@ latest
 
 meeting02
 	^ self new 
-		title: 'DyNagoya MTG #02';
+		title: 'DyNagoya MTG ＃02';
 		date: '2012/01/28';
 		start: '17:00:00';
 		end: '20:00:00';

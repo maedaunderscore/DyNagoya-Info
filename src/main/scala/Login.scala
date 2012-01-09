@@ -34,10 +34,12 @@ object Auth{
 
   val Write = new {
     def unapply(r: Request) = r match {
-      case LogIn(user) & Session(ss) => 
-	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
-	  case "true" => user
-	}
+      case Session(ss) => 
+	for{
+	  writable <- Option(ss.getAttribute(SessionWritable))
+	  if writable.toString == "true"
+	  user <- Option(ss.getAttribute(SessionUserName))
+	} yield user
     }
   }
 
