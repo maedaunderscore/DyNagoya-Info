@@ -543,26 +543,6 @@ afterPut
 	^ [ ParticipantsList render ]
 ! !
 
-Object subclass: #Twitter
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Twitter class methodsFor: 'not yet classified'!
-
-iconUrl: user 
-	^ 'http://img.tweetimag.es/i/', user, '_m'
-!
-
-linkUrl: user 
-	^ 'http://twitter.com/', user
-!
-
-link: html user: user
-	html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[
-		html img src: (self iconUrl: user)
-	]
-! !
-
 Object subclass: #ParticipantsList
 	instanceVariableNames: 'event'
 	category: 'DyNagoya'!
@@ -618,19 +598,5 @@ render
 new
 	s ifNil: [  s := super new ].
 	^ s
-! !
-
-Object subclass: #GoogleMap
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!GoogleMap class methodsFor: 'not yet classified'!
-
-url: address
-	^ 'http://maps.google.co.jp/maps?q=', (Util encodeURI: address)
-!
-
-link: html address: aStr
-	html a href: (self url: aStr); title: aStr; at: 'target' put: '_blank'; with:'(map)'
 ! !
 

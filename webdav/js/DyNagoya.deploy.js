@@ -853,45 +853,6 @@ fn: function () {
 smalltalk.Participation.klass);
 
 
-smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya');
-
-smalltalk.addMethod(
-'_iconUrl_',
-smalltalk.method({
-selector: 'iconUrl:',
-fn: function (user) {
-    var self = this;
-    return smalltalk.send(smalltalk.send(unescape("http%3A//img.tweetimag.es/i/"), "__comma", [user]), "__comma", ["_m"]);
-    return self;
-}
-}),
-smalltalk.Twitter.klass);
-
-smalltalk.addMethod(
-'_linkUrl_',
-smalltalk.method({
-selector: 'linkUrl:',
-fn: function (user) {
-    var self = this;
-    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
-    return self;
-}
-}),
-smalltalk.Twitter.klass);
-
-smalltalk.addMethod(
-'_link_user_',
-smalltalk.method({
-selector: 'link:user:',
-fn: function (html, user) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_linkUrl_", [user])]);smalltalk.send($rec, "_at_put_", ["title", user]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [smalltalk.send(self, "_iconUrl_", [user])]);}]);}(smalltalk.send(html, "_a", [])));
-    return self;
-}
-}),
-smalltalk.Twitter.klass);
-
-
 smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');
 smalltalk.addMethod(
 '_event_',
@@ -972,32 +933,5 @@ fn: function () {
 }
 }),
 smalltalk.ParticipantsList.klass);
-
-
-smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya');
-
-smalltalk.addMethod(
-'_url_',
-smalltalk.method({
-selector: 'url:',
-fn: function (address) {
-    var self = this;
-    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [address])]);
-    return self;
-}
-}),
-smalltalk.GoogleMap.klass);
-
-smalltalk.addMethod(
-'_link_address_',
-smalltalk.method({
-selector: 'link:address:',
-fn: function (html, aStr) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
-    return self;
-}
-}),
-smalltalk.GoogleMap.klass);
 
 
