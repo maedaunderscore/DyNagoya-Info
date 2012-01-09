@@ -607,3 +607,93 @@ new
 	^ s
 ! !
 
+Place subclass: #Z-Tres
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Z-Tres methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中村区椿町3番19号ウイングビル2F'
+!
+
+url
+	^ 'http://www.forvex.co.jp/ztres/'
+!
+
+name
+	^ 'Cafe Z-TRES'
+! !
+
+Place subclass: #ATeam
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!ATeam methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市西区牛島町6番1号 名古屋ルーセントタワー32F'
+!
+
+url
+	^ 'http://www.a-tm.co.jp/'
+!
+
+name
+	^ '株式会社エイチーム'
+! !
+
+Place subclass: #NewCast
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!NewCast methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市東区葵３丁目２２−８'
+!
+
+url
+	^ 'http://www.xmldo.jp/about/seminarroom/'
+!
+
+name
+	^ 'ニューキャスト'
+! !
+
+Place subclass: #Edelweiss
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Edelweiss methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市東区東桜1-10-1'
+!
+
+url
+	^ 'http://www8.ocn.ne.jp/~edel/'
+!
+
+name
+	^ 'エーデルワイス'
+! !
+
+Place subclass: #Vinceness
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Vinceness methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区錦3-6-29 サウスハウスB1'
+!
+
+url
+	^ 'http://www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi?category=5&page=1'
+!
+
+name
+	^ 'カフェ ヴァンサンヌドゥ'
+! !
+
