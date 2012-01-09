@@ -579,6 +579,18 @@ fn: function (str) {
 }),
 smalltalk.Util.klass);
 
+smalltalk.addMethod(
+'_encode_',
+smalltalk.method({
+selector: 'encode:',
+fn: function (str) {
+    var self = this;
+    return encodeURIComponent(str);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
 
 smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
 smalltalk.addMethod(
@@ -786,7 +798,7 @@ smalltalk.method({
 selector: 'tweet:',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_escape_", [msg])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [msg])])]);
     return self;
 }
 }),
@@ -801,7 +813,7 @@ smalltalk.method({
 selector: 'url:',
 fn: function (address) {
     var self = this;
-    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_escape_", [address])]);
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
     return self;
 }
 }),

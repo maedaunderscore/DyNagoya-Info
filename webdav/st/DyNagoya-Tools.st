@@ -286,6 +286,10 @@ messageMap: aMessage
 
 escape: str
 	^ (< escape(str) >)
+!
+
+encode: str
+	^ (< encodeURIComponent(str) >)
 ! !
 
 Object subclass: #RemoteObject
@@ -404,7 +408,7 @@ link: html user: user
 !
 
 tweet: msg
-	jQuery ajax: 'tweet/', (Util escape: msg)
+	jQuery ajax: 'tweet/', (Util encode: msg)
 ! !
 
 Object subclass: #GoogleMap
@@ -414,7 +418,7 @@ Object subclass: #GoogleMap
 !GoogleMap class methodsFor: 'not yet classified'!
 
 url: address
-	^ 'http://maps.google.co.jp/maps?q=', (Util escape: address)
+	^ 'http://maps.google.co.jp/maps?q=', (Util encode: address)
 !
 
 link: html address: aStr

@@ -801,6 +801,23 @@ referencedClasses: []
 }),
 smalltalk.Util.klass);
 
+smalltalk.addMethod(
+unescape('_encode_'),
+smalltalk.method({
+selector: unescape('encode%3A'),
+category: 'not yet classified',
+fn: function (str) {
+    var self = this;
+    return encodeURIComponent(str);
+    return self;
+},
+args: ["str"],
+source: unescape('encode%3A%20str%0A%09%5E%20%28%3C%20encodeURIComponent%28str%29%20%3E%29'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Util.klass);
+
 
 smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
 smalltalk.addMethod(
@@ -1084,12 +1101,12 @@ selector: unescape('tweet%3A'),
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_escape_", [msg])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [msg])])]);
     return self;
 },
 args: ["msg"],
-source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20%28Util%20escape%3A%20msg%29'),
-messageSends: ["ajax:", unescape("%2C"), "escape:"],
+source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20%28Util%20encode%3A%20msg%29'),
+messageSends: ["ajax:", unescape("%2C"), "encode:"],
 referencedClasses: ["Util"]
 }),
 smalltalk.Twitter.klass);
@@ -1104,12 +1121,12 @@ selector: unescape('url%3A'),
 category: 'not yet classified',
 fn: function (address) {
     var self = this;
-    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_escape_", [address])]);
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
     return self;
 },
 args: ["address"],
-source: unescape('url%3A%20address%0A%09%5E%20%27http%3A//maps.google.co.jp/maps%3Fq%3D%27%2C%20%28Util%20escape%3A%20address%29'),
-messageSends: [unescape("%2C"), "escape:"],
+source: unescape('url%3A%20address%0A%09%5E%20%27http%3A//maps.google.co.jp/maps%3Fq%3D%27%2C%20%28Util%20encode%3A%20address%29'),
+messageSends: [unescape("%2C"), "encode:"],
 referencedClasses: ["Util"]
 }),
 smalltalk.GoogleMap.klass);
