@@ -25,15 +25,6 @@ object Auth{
     }
   }
 
-  val Write = new {
-    def unapply(r: Request) = r match {
-      case Session(ss) => 
-	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
-	  case "true" => ()
-	}
-    }
-  }
-
   val LogIn = new{
     def unapply(r: Request) = r match {
       case Session(ss) => 
@@ -41,8 +32,17 @@ object Auth{
     }
   }
 
-  val NoWrite = Not(Write)
+  val Write = new {
+    def unapply(r: Request) = r match {
+      case LogIn(user) & Session(ss) => 
+	Option(ss.getAttribute(SessionWritable)) map {_.toString } collect {
+	  case "true" => user
+	}
+    }
+  }
+
   val NotLogIn = Not(LogIn)
+  val NoWrite = Not(Write)
 
   object Session{
     def unapply(r: Request) = Some(r.underlying.getSession(true))
