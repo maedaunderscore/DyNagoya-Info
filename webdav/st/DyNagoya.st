@@ -378,7 +378,7 @@ formatPeriod
 tweetMessage
 	^ '次回のミーティングは',
 	(self formatPeriod),
-	' ', (place new name),
+	' ', (place name),
 	' で開催します。http://dynagoya.info/'
 ! !
 
@@ -400,8 +400,8 @@ end: aTime
   end := aTime
 !
 
-place: aPlace
-  place := aPlace
+place: aPlaceClass
+  place := aPlaceClass new
 !
 
 detail: str
@@ -455,7 +455,7 @@ gcalParams: src desc: aStr
 		'ctz=Asia/Tokyo'.
 		'ctext=', title.
 		'details=', aStr.
-		'location=', (place new gCalString).
+		'location=', (place gCalString).
 		'dates=', (self format: start) , '/', (self format: end)
 	}.
 
@@ -491,7 +491,7 @@ renderOn: html
 	| place |
 	html h1: title.
 	html h2: '日時：', self formatPeriod.
-	html h2: '場所：', place new name.
+	html h2 with:[ html span with: '場所：', place name. GoogleMap link: html address: place address ].
 	html h2: '内容：'.
 	html h3 with: (html div style: 'margin-left: 30px'; with:[
 		detail do: [ :each | html div with: each ].
@@ -536,11 +536,11 @@ Participation list: 'meeting02' callback: [ :list | list do: [:each | each delet
 !Participation class methodsFor: 'not yet classified'!
 
 afterDelete
-	ParticipantsList render
+	^ [ ParticipantsList render ]
 !
 
 afterPut
-	ParticipantsList render
+	^ [ ParticipantsList render ]
 ! !
 
 Object subclass: #Twitter
@@ -618,5 +618,19 @@ render
 new
 	s ifNil: [  s := super new ].
 	^ s
+! !
+
+Object subclass: #GoogleMap
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!GoogleMap class methodsFor: 'not yet classified'!
+
+url: address
+	^ 'http://maps.google.co.jp/maps?q=', (Util encodeURI: address)
+!
+
+link: html address: aStr
+	html a href: (self url: aStr); title: aStr; at: 'target' put: '_blank'; with:'(map)'
 ! !
 

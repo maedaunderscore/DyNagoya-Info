@@ -560,9 +560,9 @@ smalltalk.addMethod(
 '_place_',
 smalltalk.method({
 selector: 'place:',
-fn: function (aPlace) {
+fn: function (aPlaceClass) {
     var self = this;
-    self['@place'] = aPlace;
+    self['@place'] = smalltalk.send(aPlaceClass, "_new", []);
     return self;
 }
 }),
@@ -650,7 +650,7 @@ smalltalk.method({
 selector: 'tweetMessage',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002http%3A//dynagoya.info/")]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002http%3A//dynagoya.info/")]);
     return self;
 }
 }),
@@ -703,7 +703,7 @@ fn: function (html) {
     var place = nil;
     smalltalk.send(html, "_h1_", [self['@title']]);
     smalltalk.send(html, "_h2_", [smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])])]);
-    smalltalk.send(html, "_h2_", [smalltalk.send(unescape("%u5834%u6240%uFF1A"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_name", [])])]);
+    smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(unescape("%u5834%u6240%uFF1A"), "__comma", [smalltalk.send(self['@place'], "_name", [])])]);return smalltalk.send(smalltalk.GoogleMap || GoogleMap, "_link_address_", [html, smalltalk.send(self['@place'], "_address", [])]);}]);
     smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);
     smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A%2030px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self['@detail'], "_do_", [function (each) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [each]);}]);}]);}(smalltalk.send(html, "_div", []))]);
     smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["participants"]);
@@ -792,7 +792,7 @@ selector: 'gcalParams:desc:',
 fn: function (src, aStr) {
     var self = this;
     var base = nil;
-    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [self['@title']]), smalltalk.send(unescape("details%3D"), "__comma", [aStr]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.send(self['@place'], "_new", []), "_gCalString", [])]), smalltalk.send(smalltalk.send(smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(self, "_format_", [self['@start']])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])];
+    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [self['@title']]), smalltalk.send(unescape("details%3D"), "__comma", [aStr]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(self['@place'], "_gCalString", [])]), smalltalk.send(smalltalk.send(smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(self, "_format_", [self['@start']])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])];
     ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send(unescape("src%3D"), "__comma", [src])]);}() : nil;
     return base;
     return self;
@@ -834,7 +834,7 @@ smalltalk.method({
 selector: 'afterDelete',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
     return self;
 }
 }),
@@ -846,7 +846,7 @@ smalltalk.method({
 selector: 'afterPut',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
     return self;
 }
 }),
@@ -972,5 +972,32 @@ fn: function () {
 }
 }),
 smalltalk.ParticipantsList.klass);
+
+
+smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.addMethod(
+'_url_',
+smalltalk.method({
+selector: 'url:',
+fn: function (address) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [address])]);
+    return self;
+}
+}),
+smalltalk.GoogleMap.klass);
+
+smalltalk.addMethod(
+'_link_address_',
+smalltalk.method({
+selector: 'link:address:',
+fn: function (html, aStr) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
+    return self;
+}
+}),
+smalltalk.GoogleMap.klass);
 
 
