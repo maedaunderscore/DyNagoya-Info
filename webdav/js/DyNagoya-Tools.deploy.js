@@ -774,7 +774,7 @@ smalltalk.method({
 selector: 'tweet:',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_encodeURI_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.Util || Util]), msg]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [msg])])]);
     return self;
 }
 }),

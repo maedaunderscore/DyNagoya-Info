@@ -1067,12 +1067,12 @@ selector: unescape('tweet%3A'),
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_encodeURI_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.Util || Util]), msg]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_", [smalltalk.send(unescape("tweet/"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [msg])])]);
     return self;
 },
 args: ["msg"],
-source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20Util%20encodeURI%3A%20msg'),
-messageSends: ["ajax:encodeURI:", unescape("%2C")],
+source: unescape('tweet%3A%20msg%0A%09jQuery%20ajax%3A%20%27tweet/%27%2C%20%28Util%20encodeURI%3A%20msg%29'),
+messageSends: ["ajax:", unescape("%2C"), "encodeURI:"],
 referencedClasses: ["Util"]
 }),
 smalltalk.Twitter.klass);

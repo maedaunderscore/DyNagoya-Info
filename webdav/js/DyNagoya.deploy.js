@@ -778,7 +778,7 @@ smalltalk.method({
 selector: 'gcalUrl:description:',
 fn: function (src, aStr) {
     var self = this;
-    return smalltalk.send(smalltalk.Util || Util, "_encodeURI_", [smalltalk.send(smalltalk.send(self, "_gcalParams_desc_", [src, aStr]), "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}])]);
+    return smalltalk.send(smalltalk.Util || Util, "_escape_", [smalltalk.send(smalltalk.send(self, "_gcalParams_desc_", [src, aStr]), "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}])]);
     return self;
 }
 }),
