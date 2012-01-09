@@ -236,7 +236,7 @@ body
 	]
 ! !
 
-Object subclass: #Place
+Widget subclass: #Place
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
 
@@ -366,7 +366,7 @@ style
   ^ 'top:250px;left:280px;background:red;'
 ! !
 
-Object subclass: #Event
+Widget subclass: #Event
 	instanceVariableNames: 'title date start end place detail'
 	category: 'DyNagoya'!
 !Event commentStamp!
