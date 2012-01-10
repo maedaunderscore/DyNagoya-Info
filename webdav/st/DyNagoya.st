@@ -320,7 +320,11 @@ list
 		self
 			link: 'cog blog - Under Cover Contexts and the Big Frame-Up'
 			url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'
-			description: 'Contextの実装についての説明'
+			description: 'Contextの実装についての説明'.
+		self
+			link: 'DyNagoya Google Document'
+			url: 'https://docs.google.com/?tab=wo&authuser=0&pli=1#folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy'
+			description: 'DyNagoya のミーティングまとめ'
 
 	}
 ! !
