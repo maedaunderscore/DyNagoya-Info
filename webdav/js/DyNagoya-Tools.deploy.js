@@ -127,7 +127,7 @@ smalltalk.method({
 selector: 'modal:',
 fn: function (flag) {
     var self = this;
-    smalltalk.send(self['@option'], "_at_put_", [smalltalk.symbolFor("modal"), flag]);
+    smalltalk.send(self['@option'], "_at_put_", ["modal", flag]);
     return self;
 }
 }),
