@@ -328,8 +328,11 @@ list
 		self
 			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
 			url: 'http://squab.no-ip.com:8080/mosaren/'
-			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。
-'
+			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.
+		self
+			link: 'Scratch + Arduino'
+			url: 'http://www.yengawa.com/scratch_arduino'
+			description: 'Scratch から Arduinoを使う方法'
 	}
 ! !
 
