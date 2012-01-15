@@ -43,7 +43,7 @@ message: aMessage
 !
 
 modal: flag
-	option at: #modal put: flag
+	option at: 'modal' put: flag
 !
 
 option
