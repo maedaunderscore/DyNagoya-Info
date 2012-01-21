@@ -63,6 +63,10 @@ with: aBlock
 	body := HTMLCanvas new.
 	aBlock value: body.
 	^ self body: body root.
+!
+
+widget: aWidget
+	^ self with: [:html | aWidget renderOn: html ]
 ! !
 
 !DialogBox methodsFor: 'action'!
