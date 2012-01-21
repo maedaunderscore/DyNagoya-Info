@@ -196,6 +196,18 @@ fn: function (aBlock) {
 }),
 smalltalk.DialogBox);
 
+smalltalk.addMethod(
+'_widget_',
+smalltalk.method({
+selector: 'widget:',
+fn: function (aWidget) {
+    var self = this;
+    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
 
 smalltalk.addMethod(
 '_withCancel',
