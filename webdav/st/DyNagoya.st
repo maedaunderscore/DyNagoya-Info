@@ -58,7 +58,7 @@ style
 !Dolphin class methodsFor: 'not yet classified'!
 
 tweet: msg
-	Twitter tweet: msg
+	^Twitter tweet: msg
 ! !
 
 Icon subclass: #Logo
@@ -387,7 +387,7 @@ Event latest tweet!
 !Event methodsFor: 'Twitter'!
 
 tweet
-	Dolphin tweet: self tweetMessage
+	^ Dolphin tweet: self tweetMessage
 !
 
 formatPeriod
