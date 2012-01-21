@@ -418,7 +418,8 @@ tweet: msg
 			'type' -> 'POST'.
 			'dataType' -> 'json'.
 			'data' -> #{'tweet' -> msg} asJSON
-		}
+		}.
+  ^ msg
 ! !
 
 Object subclass: #GoogleMap
