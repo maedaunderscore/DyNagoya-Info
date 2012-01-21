@@ -662,7 +662,7 @@ smalltalk.method({
 selector: 'tweetMessage',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002http%3A//dynagoya.info/")]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/")]);
     return self;
 }
 }),
