@@ -433,6 +433,10 @@ url: address
 !
 
 link: html address: aStr
-	html a href: (self url: aStr); title: aStr; at: 'target' put: '_blank'; with:'(map)'
+	html a 
+		href: (self url: aStr);
+		title: aStr;
+		at: 'target' put: '_blank'; 
+		with:'(map)'
 ! !
 
