@@ -1160,7 +1160,7 @@ fn: function (html, aStr) {
     return self;
 },
 args: ["html", "aStr"],
-source: unescape('link%3A%20html%20address%3A%20aStr%0A%09html%20a%20href%3A%20%28self%20url%3A%20aStr%29%3B%20title%3A%20aStr%3B%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20with%3A%27%28map%29%27%0A%09'),
+source: unescape('link%3A%20html%20address%3A%20aStr%0A%09html%20a%20%0A%09%09href%3A%20%28self%20url%3A%20aStr%29%3B%0A%09%09title%3A%20aStr%3B%0A%09%09at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20%0A%09%09with%3A%27%28map%29%27%0A%09'),
 messageSends: ["href:", "url:", "title:", "at:put:", "with:", "a"],
 referencedClasses: []
 }),
