@@ -1634,3 +1634,57 @@ smalltalk.Maruichi);
 
 
 
+smalltalk.addClass('AnyWhere', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u672A%u5B9A");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u672A%u5B9A%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+
+
