@@ -530,7 +530,7 @@ meeting02
 		date: '2012/01/28';
 		start: '17:00:00';
 		end: '20:00:00';
-		place: Doerya;
+		place: Maruichi;
 		detail: {
 'このページについて説明'.
 'Make:Ogakiのネタを考える'.
@@ -706,5 +706,23 @@ url
 
 name
 	^ 'Cafe Z-TRES'
+! !
+
+Place subclass: #Maruichi
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Maruichi methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区栄3-8-102'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230103/23030942/'
+!
+
+name
+	^ '炭火焼き鳥 まるいち'
 ! !
 
