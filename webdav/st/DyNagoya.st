@@ -530,7 +530,7 @@ meeting02
 		date: '2012/01/28';
 		start: '17:00:00';
 		end: '20:00:00';
-		place: Maruichi;
+		place: Doerya;
 		detail: {
 'このページについて説明'.
 'Make:Ogakiのネタを考える'.
