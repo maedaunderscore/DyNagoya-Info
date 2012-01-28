@@ -726,3 +726,21 @@ name
 	^ '炭火焼き鳥 まるいち'
 ! !
 
+Place subclass: #AnyWhere
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!AnyWhere methodsFor: 'not yet classified'!
+
+address
+	^ ''
+!
+
+url
+	^ ''
+!
+
+name
+	^ '未定'
+! !
+
