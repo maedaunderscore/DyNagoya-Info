@@ -1149,13 +1149,13 @@ selector: unescape('meeting02'),
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E"), unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Maruichi || Maruichi]);return smalltalk.send($rec, "_detail_", [[unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E"), unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: unescape('meeting02%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0302%27%3B%0A%09%09date%3A%20%272012/01/28%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E%27.%0A%27Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B%27%0A%7D'),
+source: unescape('meeting02%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0302%27%3B%0A%09%09date%3A%20%272012/01/28%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Maruichi%3B%0A%09%09detail%3A%20%7B%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E%27.%0A%27Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B%27%0A%7D'),
 messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
-referencedClasses: ["Doerya"]
+referencedClasses: ["Maruichi"]
 }),
 smalltalk.Event.klass);
 
@@ -1577,6 +1577,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ZTres);
+
+
+
+smalltalk.addClass('Maruichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
 
 
 
