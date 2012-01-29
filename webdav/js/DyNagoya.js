@@ -1132,12 +1132,12 @@ selector: unescape('latest'),
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting02", []);
+    return smalltalk.send(self, "_meeting03", []);
     return self;
 },
 args: [],
-source: unescape('latest%0A%09%5E%20self%20meeting02'),
-messageSends: ["meeting02"],
+source: unescape('latest%0A%09%5E%20self%20meeting03'),
+messageSends: ["meeting03"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -1156,6 +1156,23 @@ args: [],
 source: unescape('meeting02%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0302%27%3B%0A%09%09date%3A%20%272012/01/28%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E%27.%0A%27Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B%27%0A%7D'),
 messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["Doerya"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting03'),
+smalltalk.method({
+selector: unescape('meeting03'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/18")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Syushin || Syushin]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u5BD2%u30D6%u30EA%u306E%u3057%u3083%u3076%u3057%u3083%u3076%u3092%u98DF%u3079%u308B%28%u8D85%u3046%u307E%u3044%29"), unescape("%u203BTAPL%u52C9%u5F37%u4F1A%u306E%u5F8C%u306B%u3057%u307E%u3057%u305F")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/18%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Syushin%3B%0A%09%09detail%3A%20%7B%0A%27amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u5BD2%u30D6%u30EA%u306E%u3057%u3083%u3076%u3057%u3083%u3076%u3092%u98DF%u3079%u308B%28%u8D85%u3046%u307E%u3044%29%27.%0A%27%u203BTAPL%u52C9%u5F37%u4F1A%u306E%u5F8C%u306B%u3057%u307E%u3057%u305F%27%0A%7D'),
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["Syushin"]
 }),
 smalltalk.Event.klass);
 
