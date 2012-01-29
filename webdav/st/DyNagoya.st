@@ -762,3 +762,21 @@ name
 	^ 'ボンドコーヒー'
 ! !
 
+Place subclass: #Syushin
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Syushin methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区錦１－１３－３１ミツワビル１Ｆ'
+!
+
+url
+	^ 'http://www.hotpepper.jp/strJ000021742/'
+!
+
+name
+	^ '居酒屋 酒神'
+! !
+
