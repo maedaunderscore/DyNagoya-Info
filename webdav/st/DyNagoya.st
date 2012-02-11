@@ -817,3 +817,21 @@ notice
   ^ '日曜日休み'
 ! !
 
+Place subclass: #Katatumuri
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Katatumuri methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区丸の内2-14-15 河合ビル　２Ｆ'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230102/23007756/'
+!
+
+name
+	^ 'カタツムリ'
+! !
+
