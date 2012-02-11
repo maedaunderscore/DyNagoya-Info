@@ -1813,3 +1813,74 @@ smalltalk.Syushin);
 
 
 
+smalltalk.addClass('LokantaAYHAN', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//star.gmobb.jp/lokanta_ayhan/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//star.gmobb.jp/lokanta_ayhan/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_notice'),
+smalltalk.method({
+selector: unescape('notice'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u65E5%u66DC%u65E5%u4F11%u307F");
+    return self;
+},
+args: [],
+source: unescape('notice%0A%20%20%5E%20%27%u65E5%u66DC%u65E5%u4F11%u307F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+
+
