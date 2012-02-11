@@ -795,3 +795,25 @@ name
 	^ '居酒屋 酒神'
 ! !
 
+Place subclass: #LokantaAYHAN
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!LokantaAYHAN methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区栄１－１４－２８'
+!
+
+url
+	^ 'http://star.gmobb.jp/lokanta_ayhan/'
+!
+
+name
+	^ 'Lokanta AYHAN ロカンタアイハン'
+!
+
+notice
+  ^ '日曜日休み'
+! !
+
