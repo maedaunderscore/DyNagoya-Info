@@ -1360,3 +1360,42 @@ smalltalk.LokantaAYHAN);
 
 
 
+smalltalk.addClass('Katatumuri', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u4E38%u306E%u51852-14-15%20%u6CB3%u5408%u30D3%u30EB%u3000%uFF12%uFF26");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230102/23007756/");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30BF%u30C4%u30E0%u30EA");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+
+
