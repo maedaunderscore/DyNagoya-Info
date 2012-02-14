@@ -542,15 +542,13 @@ meeting02
 meeting03
 	^ self new 
 		title: 'DyNagoya MTG ＃03';
-		date: '2012/02/18';
+		date: '2012/02/26';
 		start: '17:00:00';
 		end: '20:00:00';
-		place: Syushin;
+		place: AnyWhere;
 		detail: {
 'amber smalltalk上のMVCフレームワーク'.
-'Smalltalk入門(希望者がいれば)'.
-'寒ブリのしゃぶしゃぶを食べる(超うまい)'.
-'※TAPL勉強会の後にしました'
+'Smalltalk入門(希望者がいれば)'
 }
 ! !
 
