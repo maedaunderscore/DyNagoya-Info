@@ -1166,13 +1166,13 @@ selector: unescape('meeting03'),
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.AnyWhere || AnyWhere]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20AnyWhere%3B%0A%09%09detail%3A%20%7B%0A%27amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Hakkaku%3B%0A%09%09detail%3A%20%7B%0A%27amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF%27.%0A%27Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
 messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
-referencedClasses: ["AnyWhere"]
+referencedClasses: ["Hakkaku"]
 }),
 smalltalk.Event.klass);
 
@@ -1935,6 +1935,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Katatumuri);
+
+
+
+smalltalk.addClass('Hakkaku', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.gnavi.co.jp/n004601/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.gnavi.co.jp/n004601/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
 
 
 
