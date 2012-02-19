@@ -550,7 +550,7 @@ meeting03
 		end: '20:30:00';
 		place: Hakkaku;
 		detail: {
-'amber smalltalk上のMVCフレームワーク'.
+'cogdroidについて'.
 'Testについて考える'.
 'このページのリンク集の表示をかえる'.
 'Smalltalk入門(希望者がいれば)'
@@ -854,23 +854,5 @@ url
 
 name
 	^ '浪花ろばた 八角 大名古屋ビル店 '
-! !
-
-Widget subclass: #Block
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Block methodsFor: 'not yet classified'!
-
-renderOn: html
-  html div style: self style; with:'hello'
-!
-
-width
-  ^ '800px'
-!
-
-style
-  ^ 'width:', self width, ';float:left;background:red'
 ! !
 
