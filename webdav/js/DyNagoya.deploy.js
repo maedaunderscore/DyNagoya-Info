@@ -842,7 +842,7 @@ smalltalk.method({
 selector: 'meeting03',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
@@ -1435,6 +1435,45 @@ fn: function () {
 }
 }),
 smalltalk.Hakkaku);
+
+
+
+smalltalk.addClass('Block', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", ["hello"]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.Block);
+
+smalltalk.addMethod(
+'_width',
+smalltalk.method({
+selector: 'width',
+fn: function () {
+    var self = this;
+    return "800px";
+    return self;
+}
+}),
+smalltalk.Block);
+
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("width:", "__comma", [smalltalk.send(self, "_width", [])]), "__comma", [unescape("%3Bfloat%3Aleft%3Bbackground%3Ared")]);
+    return self;
+}
+}),
+smalltalk.Block);
 
 
 
