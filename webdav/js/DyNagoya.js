@@ -1166,11 +1166,11 @@ selector: unescape('meeting03'),
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("cogdroid%u306B%u3064%u3044%u3066"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Hakkaku%3B%0A%09%09detail%3A%20%7B%0A%27amber%20smalltalk%u4E0A%u306EMVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF%27.%0A%27Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Hakkaku%3B%0A%09%09detail%3A%20%7B%0A%27cogdroid%u306B%u3064%u3044%u3066%27.%0A%27Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
 messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["Hakkaku"]
 }),
@@ -1989,60 +1989,6 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Hakkaku);
-
-
-
-smalltalk.addClass('Block', smalltalk.Widget, [], 'DyNagoya');
-smalltalk.addMethod(
-unescape('_renderOn_'),
-smalltalk.method({
-selector: unescape('renderOn%3A'),
-category: 'not yet classified',
-fn: function (html) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", ["hello"]);}(smalltalk.send(html, "_div", [])));
-    return self;
-},
-args: ["html"],
-source: unescape('renderOn%3A%20html%0A%20%20html%20div%20style%3A%20self%20style%3B%20with%3A%27hello%27'),
-messageSends: ["style:", "style", "with:", "div"],
-referencedClasses: []
-}),
-smalltalk.Block);
-
-smalltalk.addMethod(
-unescape('_width'),
-smalltalk.method({
-selector: unescape('width'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return "800px";
-    return self;
-},
-args: [],
-source: unescape('width%0A%20%20%5E%20%27800px%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Block);
-
-smalltalk.addMethod(
-unescape('_style'),
-smalltalk.method({
-selector: unescape('style'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return smalltalk.send(smalltalk.send("width:", "__comma", [smalltalk.send(self, "_width", [])]), "__comma", [unescape("%3Bfloat%3Aleft%3Bbackground%3Ared")]);
-    return self;
-},
-args: [],
-source: unescape('style%0A%20%20%5E%20%27width%3A%27%2C%20self%20width%2C%20%27%3Bfloat%3Aleft%3Bbackground%3Ared%27'),
-messageSends: [unescape("%2C"), "width"],
-referencedClasses: []
-}),
-smalltalk.Block);
 
 
 
