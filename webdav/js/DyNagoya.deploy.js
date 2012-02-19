@@ -96,7 +96,7 @@ smalltalk.method({
 selector: 'style',
 fn: function () {
     var self = this;
-    return unescape("top%3A%2060px%3B%20left%3A60px%3B%20width%3A%20376px%3B%20position%3A%20absolute");
+    return unescape("top%3A%2060px%3B%20left%3A60px%3B%20width%3A%20376px");
     return self;
 }
 }),
@@ -135,7 +135,7 @@ smalltalk.method({
 selector: 'style',
 fn: function () {
     var self = this;
-    return unescape("left%3A%2060px%3B%20top%3A%20390px%3B%20position%3A%20absolute%3B");
+    return unescape("left%3A%2060px%3B%20top%3A%20390px%3B");
     return self;
 }
 }),
@@ -150,7 +150,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable")]);smalltalk.send($rec, "_style_", [unescape("left%3A%20450px%3B%20top%3A%2025px%3B%20width%3A500px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span6")]);smalltalk.send($rec, "_style_", ["width:500px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -256,7 +256,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.LinkMenu || LinkMenu, "_new", [])]);}(smalltalk.send(html, "_root", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_class_", ["span8 offset1"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));return function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_root", [])));
     return self;
 }
 }),
