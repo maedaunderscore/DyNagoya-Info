@@ -354,12 +354,12 @@ selector: unescape('renderOn%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(smalltalk.send(self, "_class", []), "_asString", [])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09id%3A%20%27%23%27%2C%20self%20class%3B%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
-messageSends: ["class:", "id:", unescape("%2C"), "class", "style:", "style", "with:", "renderBody:", "div"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09id%3A%20self%20class%20asString%3B%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+messageSends: ["class:", "id:", "asString", "class", "style:", "style", "with:", "renderBody:", "div"],
 referencedClasses: []
 }),
 smalltalk.Page);
@@ -423,12 +423,12 @@ selector: unescape('top'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])]), "_asJQuery", []), "_offset", []), "_top", []);
+    return smalltalk.send(unescape("%23"), "__comma", [self]);
     return self;
 },
 args: [],
-source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%20class%29%20asJQuery%20offset%20top'),
-messageSends: ["top", "offset", "asJQuery", unescape("%2C"), "class"],
+source: unescape('top%0A%22%20%20%5E%20%28%27%23%27%2C%20self%29%20asJQuery%20offset%20top%22%0A%20%20%5E%20%28%27%23%27%2C%20self%29%20'),
+messageSends: [unescape("%2C")],
 referencedClasses: []
 }),
 smalltalk.Page);
@@ -441,12 +441,12 @@ selector: unescape('top'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [self]), "_asJQuery", []), "_offset", []), "_top", []);
+    return ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_asString", [])]), "_asJQuery", []), "_offset", []), "_top", [])).klass === smalltalk.Number ? $receiver - 40 : smalltalk.send($receiver, "__minus", [40]);
     return self;
 },
 args: [],
-source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%29%20asJQuery%20offset%20top'),
-messageSends: ["top", "offset", "asJQuery", unescape("%2C")],
+source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%20asString%29%20asJQuery%20offset%20top%20-%2040'),
+messageSends: [unescape("-"), "top", "offset", "asJQuery", unescape("%2C"), "asString"],
 referencedClasses: []
 }),
 smalltalk.Page.klass);
