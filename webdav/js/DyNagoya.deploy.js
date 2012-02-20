@@ -192,6 +192,8 @@ fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
     smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     return self;
 }
 }),
@@ -313,7 +315,7 @@ smalltalk.addClass('ForThisPage', smalltalk.ToDo, [], 'DyNagoya');
 smalltalk.addClass('ForDyNagoya', smalltalk.ToDo, [], 'DyNagoya');
 
 
-smalltalk.addClass('AboutDyNagoya', smalltalk.DialogBox, [], 'DyNagoya');
+smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
 '_open',
 smalltalk.method({
@@ -334,6 +336,20 @@ selector: 'body',
 fn: function () {
     var self = this;
     return function (html) {smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
+    return self;
+}
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", [])));
     return self;
 }
 }),
@@ -1445,12 +1461,27 @@ smalltalk.method({
 selector: 'renderBody:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A20px")]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
 smalltalk.TopPage);
+
+
+
+smalltalk.addClass('AboutSmalltalk', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [unescape("Smalltalk%u3068%u306F")]);
+    return self;
+}
+}),
+smalltalk.AboutSmalltalk);
 
 
 

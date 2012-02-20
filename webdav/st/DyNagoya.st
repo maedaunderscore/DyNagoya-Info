@@ -104,6 +104,8 @@ clear
 show
 	ToolBar new appendToJQuery: self toolbar.
 	TopPage new appendToJQuery: self container.
+	AboutDyNagoya new appendToJQuery: self container.
+	AboutSmalltalk new appendToJQuery: self container.
 !
 
 container
@@ -209,7 +211,7 @@ Make:Ogakiの作品づくり
 最強のEditorを作る
 Smalltalk-72とかSTEPS projectとかもさわりたい!
 
-DialogBox subclass: #AboutDyNagoya
+Page subclass: #AboutDyNagoya
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
 
@@ -229,6 +231,12 @@ body
 		html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
 		html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
 	]
+!
+
+renderBody: html
+	html h2: 'DyNagoya are ...'.
+	html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
+	html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
 ! !
 
 Widget subclass: #Place
@@ -855,11 +863,19 @@ Page subclass: #TopPage
 !TopPage methodsFor: 'not yet classified'!
 
 renderBody: html
-		html div class: 'span8'; style: 'margin-top:20px'; with: [
-			html root 
+		html div class: 'span8'; style: 'margin-top: 10px';
 				with: Dolphin new;
-				with: Logo new
-		].
+				with: Logo new.
 		html div class: 'span6'; with: Board new
+! !
+
+Page subclass: #AboutSmalltalk
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!AboutSmalltalk methodsFor: 'not yet classified'!
+
+renderBody: html
+	html h1: 'Smalltalkとは'
 ! !
 
