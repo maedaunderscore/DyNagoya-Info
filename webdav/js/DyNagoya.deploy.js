@@ -256,7 +256,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_class_", ["span8 offset1"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));return function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_root", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -1439,5 +1439,18 @@ smalltalk.Hakkaku);
 
 
 smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span8 offset1"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.TopPage);
+
 
 

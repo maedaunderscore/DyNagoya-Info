@@ -149,14 +149,7 @@ Widget subclass: #Page
 !Page methodsFor: 'not yet classified'!
 
 renderOn: html
-	html root class: 'row'; with: [
-		html div class: 'span8 offset1'; with: [
-			html root 
-				with: Dolphin new;
-				with: Logo new
-		].
-		html div class: 'span6'; with: Board new
-	]
+	html div class: 'row'; with: [ self renderBody: html ]
 ! !
 
 Widget subclass: #Login
@@ -859,4 +852,15 @@ name
 Page subclass: #TopPage
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
+
+!TopPage methodsFor: 'not yet classified'!
+
+renderBody: html
+		html div class: 'span8 offset1'; with: [
+			html root 
+				with: Dolphin new;
+				with: Logo new
+		].
+		html div class: 'span6'; with: Board new
+! !
 
