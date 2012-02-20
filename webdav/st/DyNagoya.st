@@ -83,7 +83,7 @@ Widget subclass: #Board
 
 renderOn: html
 	html div 
-		class: 'alert-message block-message warning ui-draggable span8';
+		class: 'alert-message block-message warning ui-draggable span10';
 		with:[  Event latest renderOn: html ]
 ! !
 
@@ -152,12 +152,12 @@ Widget subclass: #Page
 renderOn: html
 	html div 
 		class: 'row'; 
-		style: self style; 
+		style: self style;
 		with: [ self renderBody: html ]
 !
 
 style
-  ^ self height ifNil: [ '' ] ifNotNil: [ 'height: ', self height ]
+  ^ self height ifNil: [ '' ] ifNotNil: [ 'height: ', self height, 'px;' ]
 !
 
 height
@@ -232,6 +232,10 @@ renderBody: html
 	html h1: 'DyNagoya are ...'.
 	html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
 	html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
+!
+
+height
+  ^ '800'
 ! !
 
 Widget subclass: #Place
@@ -858,7 +862,7 @@ Page subclass: #TopPage
 !TopPage methodsFor: 'not yet classified'!
 
 renderBody: html
-		html div class: 'span8'; style: 'margin-top: 10px';
+		html div class: 'span7'; style: 'margin-top: 10px';
 				with: Dolphin new;
 				with: Logo new.
 		html div class: 'span6'; with: Board new
@@ -872,5 +876,9 @@ Page subclass: #AboutSmalltalk
 
 renderBody: html
 	html h1: 'Smalltalkとは'
+!
+
+height
+  ^ '4000'
 ! !
 

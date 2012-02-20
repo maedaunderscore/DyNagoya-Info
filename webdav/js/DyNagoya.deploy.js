@@ -150,7 +150,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span8")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span10")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -271,7 +271,7 @@ selector: 'style',
 fn: function () {
     var self = this;
     return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
-        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]);}();
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send(smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]), "__comma", [unescape("px%3B")]);}();
     return self;
 }
 }),
@@ -350,6 +350,18 @@ fn: function (html) {
     smalltalk.send(html, "_h1_", ["DyNagoya are ..."]);
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", [])));
+    return self;
+}
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return "800";
     return self;
 }
 }),
@@ -1461,7 +1473,7 @@ smalltalk.method({
 selector: 'renderBody:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
@@ -1478,6 +1490,18 @@ selector: 'renderBody:',
 fn: function (html) {
     var self = this;
     smalltalk.send(html, "_h1_", [unescape("Smalltalk%u3068%u306F")]);
+    return self;
+}
+}),
+smalltalk.AboutSmalltalk);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return "4000";
     return self;
 }
 }),
