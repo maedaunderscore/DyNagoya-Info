@@ -258,7 +258,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(smalltalk.send(self, "_class", []), "_asString", [])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -307,7 +307,7 @@ smalltalk.method({
 selector: 'top',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])]), "_asJQuery", []), "_offset", []), "_top", []);
+    return smalltalk.send(unescape("%23"), "__comma", [self]);
     return self;
 }
 }),
@@ -320,7 +320,7 @@ smalltalk.method({
 selector: 'top',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [self]), "_asJQuery", []), "_offset", []), "_top", []);
+    return ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_asString", [])]), "_asJQuery", []), "_offset", []), "_top", [])).klass === smalltalk.Number ? $receiver - 40 : smalltalk.send($receiver, "__minus", [40]);
     return self;
 }
 }),

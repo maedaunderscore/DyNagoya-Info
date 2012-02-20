@@ -152,7 +152,7 @@ Widget subclass: #Page
 renderOn: html
 	html div 
 		class: 'row'; 
-		id: '#', self class;
+		id: self class asString;
 		style: self style;
 		with: [ self renderBody: html ]
 !
@@ -170,13 +170,14 @@ pan
 !
 
 top
-  ^ ('#', self class) asJQuery offset top
+"  ^ ('#', self) asJQuery offset top"
+  ^ ('#', self)
 ! !
 
 !Page class methodsFor: 'not yet classified'!
 
 top
-  ^ ('#', self) asJQuery offset top
+  ^ ('#', self asString) asJQuery offset top - 40
 !
 
 pan
