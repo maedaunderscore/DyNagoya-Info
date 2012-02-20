@@ -262,13 +262,13 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
-    smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09Page%20new%20appendToJQuery%3A%20self%20container.%0A'),
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%0A'),
 messageSends: ["appendToJQuery:", "new", "toolbar", "container"],
-referencedClasses: ["ToolBar", "Page"]
+referencedClasses: ["ToolBar", "TopPage"]
 }),
 smalltalk.Screen.klass);
 
@@ -1990,5 +1990,8 @@ referencedClasses: []
 }),
 smalltalk.Hakkaku);
 
+
+
+smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
 
 
