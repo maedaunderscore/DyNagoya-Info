@@ -352,13 +352,13 @@ selector: unescape('renderOn%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_class_", ["span8 offset1"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));return function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_root", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20root%20class%3A%20%27row%27%3B%20with%3A%20%5B%0A%09%09html%20div%20class%3A%20%27span8%20offset1%27%3B%20with%3A%20%5B%0A%09%09%09html%20root%20%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new%0A%09%09%5D.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A%09%5D'),
-messageSends: ["class:", "with:", "new", "root", "div"],
-referencedClasses: ["Dolphin", "Logo", "Board"]
+source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27row%27%3B%20with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+messageSends: ["class:", "with:", "renderBody:", "div"],
+referencedClasses: []
 }),
 smalltalk.Page);
 
@@ -1993,5 +1993,23 @@ smalltalk.Hakkaku);
 
 
 smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span8 offset1"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span8%20offset1%27%3B%20with%3A%20%5B%0A%09%09%09html%20root%20%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new%0A%09%09%5D.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
+messageSends: ["class:", "with:", "new", "root", "div"],
+referencedClasses: ["Dolphin", "Logo", "Board"]
+}),
+smalltalk.TopPage);
+
 
 
