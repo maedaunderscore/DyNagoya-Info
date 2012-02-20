@@ -354,12 +354,47 @@ selector: unescape('renderOn%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27row%27%3B%20with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
-messageSends: ["class:", "with:", "renderBody:", "div"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09style%3A%20self%20style%3B%20%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+messageSends: ["class:", "style:", "style", "with:", "renderBody:", "div"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]);}();
+    return self;
+},
+args: [],
+source: unescape('style%0A%20%20%5E%20self%20height%20ifNil%3A%20%5B%20%27%27%20%5D%20ifNotNil%3A%20%5B%20%27height%3A%20%27%2C%20self%20height%20%5D'),
+messageSends: ["ifNil:ifNotNil:", "height", unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return nil;
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20nil'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Page);
@@ -434,55 +469,20 @@ smalltalk.ForDyNagoya.comment=unescape('%u95A2%u6570%u578B%u8A00%u8A9E%u5316%0AM
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
-unescape('_open'),
-smalltalk.method({
-selector: unescape('open'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_title_", ["About DyNagoya"]);smalltalk.send($rec, "_with_", [smalltalk.send(self, "_body", [])]);return smalltalk.send($rec, "_width_", [580]);}(self));
-    smalltalk.send(self, "_open", [], smalltalk.DialogBox);
-    return self;
-},
-args: [],
-source: unescape('open%0A%09self%20%0A%09%09title%3A%20%27About%20DyNagoya%27%3B%0A%09%09with%3A%20self%20body%3B%0A%09%09width%3A%20580.%0A%09super%20open.'),
-messageSends: ["title:", "with:", "body", "width:", "open"],
-referencedClasses: []
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
-unescape('_body'),
-smalltalk.method({
-selector: unescape('body'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return function (html) {smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
-    return self;
-},
-args: [],
-source: unescape('body%0A%09%5E%20%5B%3Ahtml%20%7C%0A%09%09html%20h2%3A%20%27DyNagoya%20are%20...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%09%5D%0A'),
-messageSends: ["h2:", "css:put:", "with:", "h2"],
-referencedClasses: []
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
 unescape('_renderBody_'),
 smalltalk.method({
 selector: unescape('renderBody%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);
+    smalltalk.send(html, "_h1_", ["DyNagoya are ..."]);
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderBody%3A%20html%0A%09html%20h2%3A%20%27DyNagoya%20are%20...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%0A'),
-messageSends: ["h2:", "css:put:", "with:", "h2"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27DyNagoya%20are%20...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%0A'),
+messageSends: ["h1:", "css:put:", "with:", "h2"],
 referencedClasses: []
 }),
 smalltalk.AboutDyNagoya);
