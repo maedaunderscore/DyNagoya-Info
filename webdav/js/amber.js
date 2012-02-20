@@ -189,7 +189,6 @@ amber = (function() {
 
       if (spec.ready) {
         spec.ready();
-	loadJS('lib/bootstrap-dropdown.js');
       }
     }
   };
