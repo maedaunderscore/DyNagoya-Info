@@ -354,12 +354,12 @@ selector: unescape('renderOn%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
-messageSends: ["class:", "style:", "style", "with:", "renderBody:", "div"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09id%3A%20%27%23%27%2C%20self%20class%3B%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+messageSends: ["class:", "id:", unescape("%2C"), "class", "style:", "style", "with:", "renderBody:", "div"],
 referencedClasses: []
 }),
 smalltalk.Page);
@@ -399,6 +399,74 @@ referencedClasses: []
 }),
 smalltalk.Page);
 
+smalltalk.addMethod(
+unescape('_pan'),
+smalltalk.method({
+selector: unescape('pan'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+},
+args: [],
+source: unescape('pan%0A%20%20%27html%2Cbody%27%20asJQuery%20animate%3A%20%23%7B%20%27scrollTop%27%20-%3E%20self%20top%20%7D%20with%3A%20%27slow%27'),
+messageSends: ["animate:with:", "asJQuery", unescape("-%3E"), "top"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_top'),
+smalltalk.method({
+selector: unescape('top'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])]), "_asJQuery", []), "_offset", []), "_top", []);
+    return self;
+},
+args: [],
+source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%20class%29%20asJQuery%20offset%20top'),
+messageSends: ["top", "offset", "asJQuery", unescape("%2C"), "class"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+
+smalltalk.addMethod(
+unescape('_top'),
+smalltalk.method({
+selector: unescape('top'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [self]), "_asJQuery", []), "_offset", []), "_top", []);
+    return self;
+},
+args: [],
+source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%29%20asJQuery%20offset%20top'),
+messageSends: ["top", "offset", "asJQuery", unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Page.klass);
+
+smalltalk.addMethod(
+unescape('_pan'),
+smalltalk.method({
+selector: unescape('pan'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+},
+args: [],
+source: unescape('pan%0A%20%20%27html%2Cbody%27%20asJQuery%20animate%3A%20%23%7B%20%27scrollTop%27%20-%3E%20self%20top%20%7D%20with%3A%20%27slow%27'),
+messageSends: ["animate:with:", "asJQuery", unescape("-%3E"), "top"],
+referencedClasses: []
+}),
+smalltalk.Page.klass);
 
 
 smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');
