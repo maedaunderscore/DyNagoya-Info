@@ -206,11 +206,11 @@ selector: unescape('renderOn%3A'),
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span8")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span10")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27alert-message%20block-message%20warning%20ui-draggable%20span8%27%3B%0A%09%09with%3A%5B%20%20Event%20latest%20renderOn%3A%20html%20%5D'),
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27alert-message%20block-message%20warning%20ui-draggable%20span10%27%3B%0A%09%09with%3A%5B%20%20Event%20latest%20renderOn%3A%20html%20%5D'),
 messageSends: ["class:", "with:", "renderOn:", "latest", "div"],
 referencedClasses: ["Event"]
 }),
@@ -358,7 +358,7 @@ fn: function (html) {
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09style%3A%20self%20style%3B%20%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
 messageSends: ["class:", "style:", "style", "with:", "renderBody:", "div"],
 referencedClasses: []
 }),
@@ -372,11 +372,11 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
-        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]);}();
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send(smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]), "__comma", [unescape("px%3B")]);}();
     return self;
 },
 args: [],
-source: unescape('style%0A%20%20%5E%20self%20height%20ifNil%3A%20%5B%20%27%27%20%5D%20ifNotNil%3A%20%5B%20%27height%3A%20%27%2C%20self%20height%20%5D'),
+source: unescape('style%0A%20%20%5E%20self%20height%20ifNil%3A%20%5B%20%27%27%20%5D%20ifNotNil%3A%20%5B%20%27height%3A%20%27%2C%20self%20height%2C%20%27px%3B%27%20%5D'),
 messageSends: ["ifNil:ifNotNil:", "height", unescape("%2C")],
 referencedClasses: []
 }),
@@ -483,6 +483,23 @@ fn: function (html) {
 args: ["html"],
 source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27DyNagoya%20are%20...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%0A'),
 messageSends: ["h1:", "css:put:", "with:", "h2"],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "800";
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20%27800%27%0A'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.AboutDyNagoya);
@@ -2021,12 +2038,12 @@ selector: unescape('renderBody%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span8%27%3B%20style%3A%20%27margin-top%3A%2010px%27%3B%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
+source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span7%27%3B%20style%3A%20%27margin-top%3A%2010px%27%3B%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
 messageSends: ["class:", "style:", "with:", "new", "div"],
 referencedClasses: ["Dolphin", "Logo", "Board"]
 }),
@@ -2048,6 +2065,23 @@ fn: function (html) {
 args: ["html"],
 source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27Smalltalk%u3068%u306F%27%0A'),
 messageSends: ["h1:"],
+referencedClasses: []
+}),
+smalltalk.AboutSmalltalk);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "4000";
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20%274000%27'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.AboutSmalltalk);
