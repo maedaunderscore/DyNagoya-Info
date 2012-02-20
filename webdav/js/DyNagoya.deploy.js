@@ -258,7 +258,7 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -289,6 +289,54 @@ fn: function () {
 }),
 smalltalk.Page);
 
+smalltalk.addMethod(
+'_pan',
+smalltalk.method({
+selector: 'pan',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_top',
+smalltalk.method({
+selector: 'top',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_class", [])]), "_asJQuery", []), "_offset", []), "_top", []);
+    return self;
+}
+}),
+smalltalk.Page);
+
+
+smalltalk.addMethod(
+'_top',
+smalltalk.method({
+selector: 'top',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [self]), "_asJQuery", []), "_offset", []), "_top", []);
+    return self;
+}
+}),
+smalltalk.Page.klass);
+
+smalltalk.addMethod(
+'_pan',
+smalltalk.method({
+selector: 'pan',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+}
+}),
+smalltalk.Page.klass);
 
 
 smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');

@@ -152,6 +152,7 @@ Widget subclass: #Page
 renderOn: html
 	html div 
 		class: 'row'; 
+		id: '#', self class;
 		style: self style;
 		with: [ self renderBody: html ]
 !
@@ -162,6 +163,24 @@ style
 
 height
   ^ nil
+!
+
+pan
+  'html,body' asJQuery animate: #{ 'scrollTop' -> self top } with: 'slow'
+!
+
+top
+  ^ ('#', self class) asJQuery offset top
+! !
+
+!Page class methodsFor: 'not yet classified'!
+
+top
+  ^ ('#', self) asJQuery offset top
+!
+
+pan
+  'html,body' asJQuery animate: #{ 'scrollTop' -> self top } with: 'slow'
 ! !
 
 Widget subclass: #Login
