@@ -134,13 +134,22 @@ renderOn: html
 			].
 			html ul style: 'float:left'; class: 'nav'; with:[
 				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Open Browser' ].
-				html li: [ html a href: '#'; onClick: [ AboutDyNagoya new open ]; with: 'About' ].
+				self renderAbout: html.
 				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
 				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
 			]
 		]
 	]
+!
+
+renderAbout: html
+  html li class: 'dropdown'; with: [ 
+	html a href: '#'; class: 'dropdown-toggle'; with: 'About'.
+	html ul class: 'dropdown-menu'; with: [
+		html li: [ html a href: '#'; onClick: [ AboutDyNagoya pan ]; with: 'DyNagoya' ]
+	]
+  ]
 ! !
 
 Widget subclass: #Page
