@@ -263,12 +263,14 @@ fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
     smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%0A'),
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A'),
 messageSends: ["appendToJQuery:", "new", "toolbar", "container"],
-referencedClasses: ["ToolBar", "TopPage"]
+referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk"]
 }),
 smalltalk.Screen.klass);
 
@@ -430,7 +432,7 @@ smalltalk.addClass('ForDyNagoya', smalltalk.ToDo, [], 'DyNagoya');
 smalltalk.ForDyNagoya.comment=unescape('%u95A2%u6570%u578B%u8A00%u8A9E%u5316%0AMake%3AOgaki%u306E%u4F5C%u54C1%u3065%u304F%u308A%0A%u6700%u5F37%u306EEditor%u3092%u4F5C%u308B%0ASmalltalk-72%u3068%u304BSTEPS%20project%u3068%u304B%u3082%u3055%u308F%u308A%u305F%u3044')
 
 
-smalltalk.addClass('AboutDyNagoya', smalltalk.DialogBox, [], 'DyNagoya');
+smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
 unescape('_open'),
 smalltalk.method({
@@ -461,6 +463,25 @@ fn: function () {
 },
 args: [],
 source: unescape('body%0A%09%5E%20%5B%3Ahtml%20%7C%0A%09%09html%20h2%3A%20%27DyNagoya%20are%20...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%09%5D%0A'),
+messageSends: ["h2:", "css:put:", "with:", "h2"],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h2%3A%20%27DyNagoya%20are%20...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%27about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...%27.%0A%09html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20css%3A%20%27color%27%20put%3A%20%27red%27%3B%20with%3A%20%27@Nagoya%27%0A%0A'),
 messageSends: ["h2:", "css:put:", "with:", "h2"],
 referencedClasses: []
 }),
@@ -2000,16 +2021,36 @@ selector: unescape('renderBody%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A20px")]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_root", []));}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span8"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span8%27%3B%20style%3A%20%27margin-top%3A20px%27%3B%20with%3A%20%5B%0A%09%09%09html%20root%20%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new%0A%09%09%5D.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
-messageSends: ["class:", "style:", "with:", "new", "root", "div"],
+source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span8%27%3B%20style%3A%20%27margin-top%3A%2010px%27%3B%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
+messageSends: ["class:", "style:", "with:", "new", "div"],
 referencedClasses: ["Dolphin", "Logo", "Board"]
 }),
 smalltalk.TopPage);
+
+
+
+smalltalk.addClass('AboutSmalltalk', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [unescape("Smalltalk%u3068%u306F")]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27Smalltalk%u3068%u306F%27%0A'),
+messageSends: ["h1:"],
+referencedClasses: []
+}),
+smalltalk.AboutSmalltalk);
 
 
 
