@@ -150,7 +150,18 @@ Widget subclass: #Page
 !Page methodsFor: 'not yet classified'!
 
 renderOn: html
-	html div class: 'row'; with: [ self renderBody: html ]
+	html div 
+		class: 'row'; 
+		style: self style; 
+		with: [ self renderBody: html ]
+!
+
+style
+  ^ self height ifNil: [ '' ] ifNotNil: [ 'height: ', self height ]
+!
+
+height
+  ^ nil
 ! !
 
 Widget subclass: #Login
@@ -217,24 +228,8 @@ Page subclass: #AboutDyNagoya
 
 !AboutDyNagoya methodsFor: 'not yet classified'!
 
-open
-	self 
-		title: 'About DyNagoya';
-		with: self body;
-		width: 580.
-	super open.
-!
-
-body
-	^ [:html |
-		html h2: 'DyNagoya are ...'.
-		html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
-		html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
-	]
-!
-
 renderBody: html
-	html h2: 'DyNagoya are ...'.
+	html h1: 'DyNagoya are ...'.
 	html h2 css: 'margin-left' put: '20px'; with: 'about Dynamic language, Dynabook, or etc...'.
 	html h2 css: 'margin-left' put: '20px'; css: 'color' put: 'red'; with: '@Nagoya'
 ! !

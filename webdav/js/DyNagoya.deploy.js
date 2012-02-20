@@ -258,7 +258,32 @@ smalltalk.method({
 selector: 'renderOn:',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]);}();
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return nil;
     return self;
 }
 }),
@@ -317,37 +342,12 @@ smalltalk.addClass('ForDyNagoya', smalltalk.ToDo, [], 'DyNagoya');
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
-'_open',
-smalltalk.method({
-selector: 'open',
-fn: function () {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_title_", ["About DyNagoya"]);smalltalk.send($rec, "_with_", [smalltalk.send(self, "_body", [])]);return smalltalk.send($rec, "_width_", [580]);}(self));
-    smalltalk.send(self, "_open", [], smalltalk.DialogBox);
-    return self;
-}
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
-'_body',
-smalltalk.method({
-selector: 'body',
-fn: function () {
-    var self = this;
-    return function (html) {smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);(function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", []));};
-    return self;
-}
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
 '_renderBody_',
 smalltalk.method({
 selector: 'renderBody:',
 fn: function (html) {
     var self = this;
-    smalltalk.send(html, "_h2_", ["DyNagoya are ..."]);
+    smalltalk.send(html, "_h1_", ["DyNagoya are ..."]);
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [unescape("about%20Dynamic%20language%2C%20Dynabook%2C%20or%20etc...")]);}(smalltalk.send(html, "_h2", [])));
     (function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);smalltalk.send($rec, "_css_put_", ["color", "red"]);return smalltalk.send($rec, "_with_", [unescape("@Nagoya")]);}(smalltalk.send(html, "_h2", [])));
     return self;
