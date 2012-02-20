@@ -121,7 +121,7 @@ add: brush
 ! !
 
 Widget subclass: #ToolBar
-	instanceVariableNames: ''
+	instanceVariableNames: 'menu'
 	category: 'DyNagoya'!
 
 !ToolBar methodsFor: 'not yet classified'!
@@ -144,9 +144,8 @@ renderOn: html
 !
 
 renderAbout: html
-  | menu |
   menu := html li class: 'dropdown'; with: [ 
-	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ x := menu. console log: menu. x class: 'open'  ]; with: 'About'.
+	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ menu class: 'open'  ]; with: 'About'.
 	html ul class: 'dropdown-menu'; with: [
 		html li: [ html a href: '#'; onClick: [ AboutDyNagoya pan ]; with: 'DyNagoya' ]
 	]

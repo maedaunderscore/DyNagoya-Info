@@ -236,7 +236,7 @@ fn: function (brush) {
 smalltalk.Screen.klass);
 
 
-smalltalk.addClass('ToolBar', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addClass('ToolBar', smalltalk.Widget, ['menu'], 'DyNagoya');
 smalltalk.addMethod(
 '_renderOn_',
 smalltalk.method({
@@ -255,8 +255,7 @@ smalltalk.method({
 selector: 'renderAbout:',
 fn: function (html) {
     var self = this;
-    var menu = nil;
-    menu = function ($rec) {smalltalk.send($rec, "_class_", ["dropdown"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {x = menu;smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", [menu]);return smalltalk.send(typeof x == "undefined" ? nil : x, "_class_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["About"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);}]);return smalltalk.send($rec, "_with_", ["DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", []));
+    self['@menu'] = function ($rec) {smalltalk.send($rec, "_class_", ["dropdown"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@menu'], "_class_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["About"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);}]);return smalltalk.send($rec, "_with_", ["DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", []));
     return self;
 }
 }),
