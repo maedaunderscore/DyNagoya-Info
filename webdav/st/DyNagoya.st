@@ -144,8 +144,8 @@ renderOn: html
 !
 
 renderAbout: html
-  menu := html li class: 'dropdown'; with: [ 
-	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ menu class: 'open'  ]; with: 'About'.
+  html li class: 'dropdown class'; with: [ 
+	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'About'.
 	html ul class: 'dropdown-menu'; with: [
 		html li: [ html a href: '#'; onClick: [ AboutDyNagoya pan ]; with: 'DyNagoya' ]
 	]
