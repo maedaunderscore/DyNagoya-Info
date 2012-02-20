@@ -104,7 +104,7 @@ clear
 
 show
 	ToolBar new appendToJQuery: self toolbar.
-	Page new appendToJQuery: self container.
+	TopPage new appendToJQuery: self container.
 !
 
 container
@@ -855,4 +855,8 @@ url
 name
 	^ '浪花ろばた 八角 大名古屋ビル店 '
 ! !
+
+Page subclass: #TopPage
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
 

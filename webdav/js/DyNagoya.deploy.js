@@ -191,7 +191,7 @@ selector: 'show',
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
-    smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     return self;
 }
 }),
@@ -1436,5 +1436,8 @@ fn: function () {
 }),
 smalltalk.Hakkaku);
 
+
+
+smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
 
 
