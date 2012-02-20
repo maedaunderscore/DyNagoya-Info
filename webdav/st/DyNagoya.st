@@ -83,8 +83,7 @@ Widget subclass: #Board
 
 renderOn: html
 	html div 
-		class: 'alert-message block-message warning ui-draggable span6';
-		style: 'width:500px';
+		class: 'alert-message block-message warning ui-draggable span8';
 		with:[  Event latest renderOn: html ]
 ! !
 
@@ -856,7 +855,7 @@ Page subclass: #TopPage
 !TopPage methodsFor: 'not yet classified'!
 
 renderBody: html
-		html div class: 'span8 offset1'; with: [
+		html div class: 'span8'; style: 'margin-top:20px'; with: [
 			html root 
 				with: Dolphin new;
 				with: Logo new
