@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title> Stu Nicholls | CSSplay | 404 Error Page </title>
+<meta name="Keywords" content="cssplay, css, play, Cascading, Style, Sheets, demonstraition, examples, error, page" />
+<meta name="Description" content="CSS play - error 404 page" />
+
+<meta name="Author" content="Stu Nicholls" />
+<meta name="verify-v1" content="n3Dpx4NklZjg5p/Tq7h1q+Oj6Ml83crtkO/PwepVQ6Y=" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="meta" href="http://www.cssplay.co.uk/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+<meta http-equiv="pics-Label" content='(pics-1.1 "http://www.icra.org/pics/vocabularyv03/" l gen true for "http://cssplay.co.uk" r (n 0 s 0 v 0 l 0 oa 0 ob 0 oc 0 od 0 oe 0 of 0 og 0 oh 0 c 0)  gen true for "http://www.cssplay.co.uk" r (n 0 s 0 v 0 l 0 oa 0 ob 0 oc 0 od 0 oe 0 of 0 og 0 oh 0 c 0))' />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.cssplay.co.uk/feed.xml" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" href="favicon.ico" type="image/ico" />
+
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:500,700' rel='stylesheet' type='text/css' />
+
+<!--[if gte IE 7]><!-->
+<script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'fdc2c422-ae8d-414c-a5bb-68c389e4688d'});</script>
+<!--<![endif]-->
+
+<link rel="stylesheet" media="all" type="text/css" href="../styles/default.css" />
+
+<link rel="stylesheet" href="menu.css" type="text/css" />
+<style type="text/css">
+#info a img {margin:0 auto; border:0;}
+#left_column img.icon {display:block; float:left; padding:0 10px 10px 0;}
+</style>
+
+</head>
+
+<body id="www-cssplay-co-uk">
+<div id="wrapper">
+
+	<div id="topad">
+				<div id="googletop">
+			<script type="text/javascript">
+			Vertical1242022 = false;
+			ShowAdHereBanner1242022 = true;
+			RepeatAll1242022 = false;
+			NoFollowAll1242022 = false;
+			BannerStyles1242022 = new Array(
+				"a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden; float:left;}",
+				"img{border:0;}",
+				"a.adhere{color:#666;font-weight:bold;font-size:12px;background:#f8f8f8;text-align:center;}",
+				"a.adhere:hover{background:#ddd;color:#333;}"
+			);
+			document.write(unescape("%3Cscript src='"+document.location.protocol+"//s3.buysellads.com/1242022/1242022.js?v="+Date.parse(new Date())+"' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</div>
+		<img src="../ads/shadow_logo.png" alt="" />
+		<img src="../ads/advertise-here.jpg" alt="Advertise here" />
+	</div> <!-- end topad -->
+
+	<div id="header">
+				<div id="logo">
+			<h1><a accesskey="1" href="../index.html" title="Home Page">CSS</a></h1>
+			<h2><a accesskey="1" href="../index.html" title="Home Page"><i>p</i>lay</a></h2>
+			<h3>Experiments with Cascading Style Sheets</h3>
+		</div> <!-- end of logo -->
+
+		<ul id="main_menu">
+			<li id="demos"><a accesskey="A" href="../menu/">Demos</a></li>
+			<li id="menus"><a accesskey="M" href="../menus/">Menus</a></li>
+			<li id="layouts"><a accesskey="Y" href="../layouts/">Layouts</a></li>
+			<li id="boxes"><a accesskey="B" href="../boxes/">Boxes</a></li>
+			<li id="mozilla"><a accesskey="Z" href="../mozilla/">Mozilla</a></li>
+			<li id="explorer"><a accesskey="E" href="../ie/">Explorer</a></li>
+			<li id="opacity"><a accesskey="O" href="../opacity/">Opacity</a></li>
+			<li id="java"><a accesskey="J" href="http://www.stunicholls.com" rel="nofollow" title="Over to http://www.stunicholls.com">Javascript</a></li>
+		</ul>
+
+		<ul id="sub_menu">
+			<li id="help"><a accesskey="H" href="../service.html" title="Help and Services">HELP &amp; ASSISTANCE</a></li>
+			<li id="faqs"><a accesskey="Q" href="../faqs.html" title="FAQ page">FAQs</a></li>
+			<li id="contact"><a accesskey="N" href="../w3c/contact.html" title="Contact us">CONTACT ME</a></li>
+			<li id="privacy"><a accesskey="V" href="../w3c/privacy.html" title="Privacy Policy">PRIVACY POLICY</a></li>
+			<li id="sitemap"><a accesskey="S" href="../sitemap.html" title="Site map">SITE MAP</a></li>
+			<li id="keys"><a accesskey="K" href="../accesskeys.html" title="Accesskeys">ACCESSKEYS</a></li>
+			<li id="support"><a accesskey="P" href="../support.html" title="Support">SUPPORT</a></li>
+			<li id="feed"><a accesskey="R" href="http://www.cssplay.co.uk/feed.xml" title="RSS2.0 feed"><img src="../images/rss.png" alt="rss feed" title="RSS2.0 feed" /></a></li>
+		</ul>
+
+		<ul id="navigation">
+			<li><a href="../index.html">HOME</a></li>
+					</ul>
+
+		<div id="search">
+			<div class="cse-branding-right" style="background-color:transparent;color:#000000">
+				<div class="cse-branding-form">
+					<form action="../search.html" id="cse-search-box">
+						<div>
+							<input type="hidden" name="cx" value="partner-pub-6651950180071236:chrtwm-4ria" />
+							<input type="hidden" name="cof" value="FORID:10" />
+							<input type="hidden" name="ie" value="UTF-8" />
+							<input type="text" name="q" size="19" class="search" />
+							<input type="submit" name="sa" value=" Search" />
+						</div>
+					</form>
+				</div>
+				<div class="cse-branding-logo">
+					<img src="http://www.google.com/images/poweredby_transparent/poweredby_000000.gif" alt="Google" />
+				</div>
+				<div class="cse-branding-text">
+					Custom Search
+				</div>
+			</div>
+		</div> <!-- end of search -->
+	</div> <!-- end header -->
+
+	<div id="content">
+		<div id="info">
+			<img class="oops" src="../graphic/oops.gif" alt="Oooops!" title="Oooops!" width="750" height="200" />
+		</div> <!-- end info -->
+
+		<div id="infoBottom">
+						<div class="box800">
+				<script type="text/javascript"><!--
+				google_ad_client = "pub-6651950180071236";
+				/* 728x90, created 3/24/09 */
+				google_ad_slot = "2160454816";
+				google_ad_width = 728;
+				google_ad_height = 90;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+			</div>
+		</div>
+
+		<div id="leftCol"> 
+
+			<h3>Information</h3>
+
+<p>You have probably arrived here from a 'link' in one of my demonstrations. If so then please use the back button to return to that demonstration.</p>
+<p class="bold">If you have arrived here from an external link then I apologise, the page you are searching for has almost certainly been renamed.</p>
+<p>This site has been extensively redesigned and a lot of the pages and examples have been re-organised.</p>
+<p class="highlight">HOWEVER, if you are looking for cutting edge css, you have come to the right place.</p>
+<p>Please feel free to browse.</p>
+<p>Below is a typical example of the class of CSS only (no javascript) menus and demonstrations that can be found on CSSplay. It evens works in IE6!</p>
+<h3>Professional Flyline menu #1</h3>
+<p class="date">6th October 2008</p>
+
+<div id="pro_linedrop">
+<ul class="select">
+<li><a class="draw" href="#nogo"><b>Draw</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Draw : </li>
+		<li><a href="#nogo">Arc</a></li>
+		<li><a href="#nogo">Line</a></li>
+		<li><a href="#nogo">Circle</a></li>
+		<li><a href="#nogo">Square</a></li>
+		<li><a class="last" href="#nogo">Triangle</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="help" href="#nogo"><b>Help</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Help : </li>
+		<li><a href="#nogo">Help 1</a></li>
+		<li><a href="#nogo">Help 2</a></li>
+		<li><a href="#nogo">Help 3</a></li>
+		<li><a href="#nogo">Help 4</a></li>
+		<li><a class="last" href="#nogo">Help 5</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="contact" href="#nogo"><b>Contact</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Contact : </li>
+		<li><a href="#nogo">Email</a></li>
+		<li><a href="#nogo">Form</a></li>
+		<li><a href="#nogo">SMS</a></li>
+		<li><a href="#nogo">Phone</a></li>
+		<li><a class="last" href="#nogo">Letter</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="music" href="#nogo"><b>Music</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Music : </li>
+		<li><a href="#nogo">Song 1</a></li>
+		<li><a href="#nogo">Song 2</a></li>
+		<li><a href="#nogo">Song 3</a></li>
+		<li><a href="#nogo">Song 4</a></li>
+		<li><a class="last" href="#nogo">Song 5</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="phone" href="#nogo"><b>Telephone</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Phone : </li>
+		<li><a href="#nogo">Landline</a></li>
+		<li><a href="#nogo">Mobile</a></li>
+		<li><a href="#nogo">SMS</a></li>
+		<li><a class="last" href="#nogo">Fax</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="photo" href="#nogo"><b>Photos</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Photos : </li>
+		<li><a href="#nogo">Landscapes</a></li>
+		<li><a href="#nogo">Portraits</a></li>
+		<li><a href="#nogo">Wildlife</a></li>
+		<li><a class="last" href="#nogo">Flora</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="stocks" href="#nogo"><b>Stocks</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Stocks : </li>
+		<li><a href="#nogo">Stock 1</a></li>
+		<li><a href="#nogo">Stock 2</a></li>
+
+		<li><a href="#nogo">Stock 3</a></li>
+		<li><a href="#nogo">Stock 4</a></li>
+		<li><a class="last" href="#nogo">Stock 5</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="video" href="#nogo"><b>Video</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Videos : </li>
+		<li><a href="#nogo">Video 1</a></li>
+		<li><a href="#nogo">Video 2</a></li>
+		<li><a href="#nogo">Video 3</a></li>
+		<li><a href="#nogo">Video 4</a></li>
+		<li><a class="last" href="#nogo">Video 5</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="weather" href="#nogo"><b>Weather</b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul class="sub">
+		<li class="item">Weather : </li>
+		<li><a href="#nogo">Local</a></li>
+		<li><a href="#nogo">National</a></li>
+		<li><a href="#nogo">World</a></li>
+		<li><a class="last" href="#nogo">Forecast</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+</ul>
+</div>
+<img class="lady" src="icons2/lady.jpg" alt="" />
+<p class="clear">photograph &copy; <a href='http://www.dreamstime.com/Egorr_info'>George Mayer</a> | <a href='http://www.dreamstime.com/'>Dreamstime.com</a></p>
+<p>menu &copy; Stu Nicholls - CSSplay</p>
+<p class="highlight">Not to be used without written permission and a donation to support CSSplay.</p>
+
+			<br />
+
+			<div class="box475">
+								<script type="text/javascript"><!--
+				google_ad_client = "pub-6651950180071236";
+				/* 468x60, created 3/20/09 */
+				google_ad_slot = "7558797043";
+				google_ad_width = 468;
+				google_ad_height = 60;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+			</div>
+
+		</div> <!-- end leftCol -->
+
+		<div id="midCol">
+						<div class="box300">
+				<ul class="cssplay">
+				<li>
+				<br />				</li></ul>
+			</div>
+
+
+			<div class="box300">
+				<ul class="cssplay">
+					<li>Each week the Creare Group produce video tutorials for <a href="http://www.seo-creare.co.uk/">SEO</a> and tips and tricks for the <a href="http://www.webdesigncreare.co.uk/">web design</a> industry.</li>
+				</ul>
+			</div>
+
+			<div class="box300">
+				<ul class="cssplay">
+					<li>Offering bespoke <a href="http://www.brandfluent-digital.co.uk/">Search Engine Optimisation</a>, Social Media Optimisation and PPC campaigns to London businesses.</li>
+				</ul>
+			</div>
+
+			<div class="box300">
+				<h3>Recommended Sites</h3>
+				<ul class="cssplay">
+					<li><a href="http://www.uk-cheapest.co.uk/">Register Domain Name</a></li>
+					<li><a href="http://www.netzensolutions.com/">IT Support Bristol</a></li>
+					<li><a href="http://www.lava.com.au/">Web Design</a></li>
+					<li><a href="http://www.marketingquotes.co.uk/website-design/">Website Designers</a> - Compare quotes from local website designers</li>
+					<li><span class="text">Top <a href="http://www.clarewebdesign.co.uk/home">Website Design</a> Company CWD.<br />Get the Perfect Website!</span></li>
+					<li><span class="text"><a href="http://www.bluemonkeyweb.co.uk/">Web Design Birmingham</a> - Expert web design, marketing and support</span></li>
+					<li>UK's white label <a href="http://www.silentwebsolutions.com/">Web Design</a> specialist</li>
+					<li><a href="http://www.eudesignstudio.com">Affordable Web Design</a> from EU Design Studio</li>
+				</ul>
+			</div>
+
+		</div> <!-- end midCol -->
+		<br class="clear" />
+	</div> <!-- end content -->
+
+	<div id="rightCol">
+				<div class="googlemedium">
+			<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-6651950180071236";
+				/* medium rectangle */
+				google_ad_slot = "4755057509";
+				google_ad_width = 300;
+				google_ad_height = 250;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+
+		<div class="box300">
+			<h3>Please Support CSS play</h3>
+			<div style="width:258px; text-align:center;">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<div>
+						<input type="hidden" name="cmd" value="_s-xclick" />
+						<input type="hidden" name="hosted_button_id" value="3206316" />
+						<input type="image" src="../graphic/paypal2.png" name="submit" alt="PayPal - The safer, easier way to pay online." />
+						<img alt="" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="box300">
+			<h3>CSS play Recommend</h3>
+			<p><a class="bannerad" href="http://www.dynamicdrive.com/style/"><img src="../ads/dynamicdrive.gif" alt="Free, practical CSS menus, layouts, and examples" title="Free, practical CSS menus, layouts, and examples" width="220" height="100" /></a></p>
+		</div>
+
+		<div class="box300" style="text-align:center; width:220px; padding:15px 39px;">
+			<script type="text/javascript">
+			Vertical1241863 = false;
+			ShowAdHereBanner1241863 = true;
+			RepeatAll1241863 = false;
+			NoFollowAll1241863 = false;
+			BannerStyles1241863 = new Array(
+				"a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;}",
+				"img{border:0; margin-bottom:8px;}",
+				"a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ddd;background:#f0f0f0;text-align:center;}",
+				"a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}"
+			);
+			document.write(unescape("%3Cscript src='"+document.location.protocol+"//s3.buysellads.com/1241863/1241863.js?v="+Date.parse(new Date())+"' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</div>
+
+		<div class="box300">
+			<h3>Follow CSS play</h3>
+			<br />
+			<p><a href="http://www.facebook.com/pages/CSS-play/133940426647902" rel="nofollow"><img src="../graphic/facebook.png" alt="Facebook" /></a>&nbsp;&nbsp;&nbsp;<a href="http://twitter.com/stucssplay" rel="nofollow"><img src="../graphic/twitter.png" alt="Twitter" /></a>&nbsp;&nbsp;&nbsp;<a href="../facebook-fan-page.html" rel="nofollow"><img src="../graphic/fanpage.jpg" alt="Facebook Fan Page" /></a><span  class='st_sharethis_large' ></span><br />
+			</p>
+			<div class="g-plusone"></div>
+			<script type="text/javascript">
+			  (function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			  })();
+			</script>
+		</div>
+
+		<div class="box300">
+			<h3><a href="http://www.justcss.com/" rel="nofollow">Just <abbr title="Cascading Style Sheets">CSS</abbr></a> | Designs for the future</h3>
+			<p>Like the <a href="http://www.csszengarden.com/" rel="nofollow"><b><abbr title="Cascading Style Sheets">CSS</abbr> Zen Garden</b></a>?<br />Then why not visit <a href="http://www.justcss.com/" rel="nofollow"><b>Just <abbr title="Cascading Style Sheets">CSS</abbr></b></a> and see it you can design for the future.</p>
+		</div>
+
+		<div class="box300">
+			<h3>CSS play pages</h3>
+			<ul>
+				<li><a href="../favicon_ads.html">Favicon Advertising</a></li>
+				<li><a href="../ads_page.html">Advertising rates</a></li>
+				<li><a href="../service.html">Web design &amp; assistance</a></li>
+				<li><a href="http://www.istu.co.uk/" rel="nofollow"><b>iStu</b> - NEW website!</a></li>
+				<li><a href="http://www.w3css.co.uk/" rel="nofollow"><b>w3css</b> - NEW website!</a></li>
+			</ul>
+		</div>
+	</div> <!-- end rightCol -->
+
+	<br class="clear" /><br />
+
+</div> <!-- end wrapper -->
+
+<div id="footer">
+	<div id="foot">
+		<p>&copy; 2005-2012 Stu Nicholls - CSS play - All rights reserved</p>
+	</div> <!-- end foot -->
+</div> <!-- end footer -->
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-451410-1";
+urchinTracker();
+</script>
+
+
+</body>
+</html>
