@@ -1,0 +1,25 @@
+
+/* ================================================================ 
+This copyright notice must be kept untouched in the stylesheet at 
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/cssplay-click-droplist.html
+Copyright (c) Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+
+/* this is a CSS answer to fix the hover/focus '~' and hover/focus '+' problem in safari and chrome */
+html {-webkit-animation: safariSelectorFix infinite 1s;}
+@-webkit-keyframes safariSelectorFix {
+0% {zoom:1;} 
+100% {zoom:1;}
+}
+
+/* for Internet Explorer to force a menu refresh after :active + ul */
+#nav li a,
+body {behavior:url(cssplay45/trigger.htc)}
+
+
+#nav {width:744px; height:35px; background:#000; position:relative; border:3px solid #000; border-width:3px 3px 0 3px; font-family:arial, sans-serif; z-ind
