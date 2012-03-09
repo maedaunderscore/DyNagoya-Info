@@ -361,10 +361,6 @@ list
 			url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'
 			description: 'Contextの実装についての説明'.
 		self
-			link: 'DyNagoya Google Document'
-			url: 'https://docs.google.com/?tab=wo&authuser=0&pli=1#folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy'
-			description: 'DyNagoya のミーティングまとめ'.
-		self
 			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
 			url: 'http://squab.no-ip.com:8080/mosaren/'
 			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.
@@ -935,6 +931,6 @@ renderBody: html
 !
 
 height
-  ^ '4000'
+  ^ '400'
 ! !
 
