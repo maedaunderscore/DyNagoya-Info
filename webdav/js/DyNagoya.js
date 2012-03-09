@@ -265,12 +265,13 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A'),
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A'),
 messageSends: ["appendToJQuery:", "new", "toolbar", "container"],
-referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk"]
+referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk", "Links"]
 }),
 smalltalk.Screen.klass);
 
@@ -351,13 +352,31 @@ selector: unescape('renderAbout%3A'),
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["dropdown class"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.send("li.dropdown", "_asJQuery", []), "_addClass_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["About"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);}]);return smalltalk.send($rec, "_with_", ["DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["dropdown class"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.send("li.dropdown", "_asJQuery", []), "_addClass_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["Menu"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About Smalltalk"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.Links || Links, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", [])));
+    smalltalk.send(smalltalk.send(unescape("%23container"), "_asJQuery", []), "_bind_do_", ["click", function () {return smalltalk.send(self, "_clearMenus", []);}]);
     return self;
 },
 args: ["html"],
-source: unescape('renderAbout%3A%20html%0A%20%20html%20li%20class%3A%20%27dropdown%20class%27%3B%20with%3A%20%5B%20%0A%09html%20a%20href%3A%20%27%23%27%3B%20class%3A%20%27dropdown-toggle%27%3B%20at%3A%20%27data-toggle%27%20put%3A%20%27dropdown%27%3B%20onClick%3A%20%5B%20%27li.dropdown%27%20asJQuery%20addClass%3A%20%27open%27%20%20%5D%3B%20with%3A%20%27About%27.%0A%09html%20ul%20class%3A%20%27dropdown-menu%27%3B%20with%3A%20%5B%0A%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20AboutDyNagoya%20pan%20%5D%3B%20with%3A%20%27DyNagoya%27%20%5D%0A%09%5D%0A%20%20%5D'),
-messageSends: ["class:", "with:", "href:", "at:put:", "onClick:", "addClass:", "asJQuery", "a", "li:", "pan", "ul", "li"],
-referencedClasses: ["AboutDyNagoya"]
+source: unescape('renderAbout%3A%20html%0A%20%20html%20li%20class%3A%20%27dropdown%20class%27%3B%20with%3A%20%5B%20%0A%09html%20a%20href%3A%20%27%23%27%3B%20class%3A%20%27dropdown-toggle%27%3B%20at%3A%20%27data-toggle%27%20put%3A%20%27dropdown%27%3B%20onClick%3A%20%5B%20%27li.dropdown%27%20asJQuery%20addClass%3A%20%27open%27%20%20%5D%3B%20with%3A%20%27Menu%27.%0A%09html%20ul%20class%3A%20%27dropdown-menu%27%3B%20with%3A%20%5B%0A%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20AboutDyNagoya%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27About%20DyNagoya%27%20%5D.%0A%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20AboutSmalltalk%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27About%20Smalltalk%27%20%5D.%0A%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20Links%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27Links%27%20%5D%0A%09%5D%0A%20%20%5D.%0A%20%20%27%23container%27%20asJQuery%20bind%3A%20%27click%27%20do%3A%20%5Bself%20clearMenus%20%5D'),
+messageSends: ["class:", "with:", "href:", "at:put:", "onClick:", "addClass:", "asJQuery", "a", "li:", "pan", "clearMenus", "ul", "li", "bind:do:"],
+referencedClasses: ["AboutDyNagoya", "AboutSmalltalk", "Links"]
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+unescape('_clearMenus'),
+smalltalk.method({
+selector: unescape('clearMenus'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(unescape("a.menu%2C%20.dropdown-toggle"), "_asJQuery", []), "_parent_", ["li"]), "_removeClass_", ["open"]);
+    return self;
+},
+args: [],
+source: unescape('clearMenus%0A%09%28%27a.menu%2C%20.dropdown-toggle%27%20asJQuery%20parent%3A%20%27li%27%29%20removeClass%3A%20%27open%27'),
+messageSends: ["removeClass:", "parent:", "asJQuery"],
+referencedClasses: []
 }),
 smalltalk.ToolBar);
 
@@ -730,7 +749,7 @@ smalltalk.Doerya);
 
 
 
-smalltalk.addClass('Links', smalltalk.DialogBox, [], 'DyNagoya');
+smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
 unescape('_link_url_description_'),
 smalltalk.method({
@@ -755,29 +774,12 @@ selector: unescape('list'),
 category: 'link',
 fn: function () {
     var self = this;
-    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", unescape("http%3A//amber-lang.net/"), unescape("Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002")]), smalltalk.send(self, "_link_url_description_", ["cog blog", unescape("http%3A//www.mirandabanda.org/cogblog"), unescape("%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8"), unescape("http%3A//www.box.com/s/bbc7kz53el13ktbxeed4"), unescape("%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D")]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", unescape("http%3A//blog.yengawa.com/"), unescape("Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream"), unescape("http%3A//www.ustream.tv/recorded/18226602"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2")]), smalltalk.send(self, "_link_url_description_", [unescape("ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B"), unescape("http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE")]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", unescape("http%3A//www.asmalltalkbytheseaside.com/"), unescape("Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB")]), smalltalk.send(self, "_link_url_description_", [unescape("cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up"), unescape("http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/"), unescape("Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", ["DyNagoya Google Document", unescape("https%3A//docs.google.com/%3Ftab%3Dwo%26authuser%3D0%26pli%3D1%23folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy"), unescape("DyNagoya%20%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u307E%u3068%u3081")]), smalltalk.send(self, "_link_url_description_", [unescape("Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6"), unescape("http%3A//squab.no-ip.com%3A8080/mosaren/"), unescape("MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("Scratch%20+%20Arduino"), unescape("http%3A//www.yengawa.com/scratch_arduino"), unescape("Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5")])];
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", unescape("http%3A//amber-lang.net/"), unescape("Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002")]), smalltalk.send(self, "_link_url_description_", ["cog blog", unescape("http%3A//www.mirandabanda.org/cogblog"), unescape("%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8"), unescape("http%3A//www.box.com/s/bbc7kz53el13ktbxeed4"), unescape("%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D")]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", unescape("http%3A//blog.yengawa.com/"), unescape("Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream"), unescape("http%3A//www.ustream.tv/recorded/18226602"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2")]), smalltalk.send(self, "_link_url_description_", [unescape("ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B"), unescape("http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE")]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", unescape("http%3A//www.asmalltalkbytheseaside.com/"), unescape("Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB")]), smalltalk.send(self, "_link_url_description_", [unescape("cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up"), unescape("http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/"), unescape("Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", ["DyNagoya Google Document", unescape("https%3A//docs.google.com/%3Ftab%3Dwo%26authuser%3D0%26pli%3D1%23folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy"), unescape("DyNagoya%20%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u307E%u3068%u3081")]), smalltalk.send(self, "_link_url_description_", [unescape("Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6"), unescape("http%3A//squab.no-ip.com%3A8080/mosaren/"), unescape("MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("Scratch%20+%20Arduino"), unescape("http%3A//www.yengawa.com/scratch_arduino"), unescape("Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5")]), smalltalk.send(self, "_link_url_description_", ["scat", unescape("http%3A//code.google.com/p/scat/"), unescape("%u6A19%u6E96%u306EScratch%u306FIDE%u304C%u3057%u3087%u307C%u3044%u306E%u3067Pharo%u306BScrach%u3092%u5165%u308C%u308B%u3002")])];
     return self;
 },
 args: [],
-source: unescape('list%0A%09%5E%20%7B%0A%09%09self%20%0A%09%09%09link%3A%20%27Amber%20Smalltalk%27%0A%09%09%09url%3A%20%27http%3A//amber-lang.net/%27%0A%09%09%09description%3A%20%27Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog%27%0A%09%09%09description%3A%20%27%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8%27%0A%09%09%09url%3A%20%27http%3A//www.box.com/s/bbc7kz53el13ktbxeed4%27%0A%09%09%09description%3A%20%27%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27Yengawa%20Blog%27%0A%09%09%09url%3A%20%27http%3A//blog.yengawa.com/%27%0A%09%09%09description%3A%20%27Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream%27%0A%09%09%09url%3A%20%27http%3A//www.ustream.tv/recorded/18226602%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B%27%0A%09%09%09url%3A%20%27http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27A%20Smalltalk%20by%20the%20Seaside%27%0A%09%09%09url%3A%20%27http%3A//www.asmalltalkbytheseaside.com/%27%0A%09%09%09description%3A%20%27Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/%27%0A%09%09%09description%3A%20%27Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27DyNagoya%20Google%20Document%27%0A%09%09%09url%3A%20%27https%3A//docs.google.com/%3Ftab%3Dwo%26authuser%3D0%26pli%3D1%23folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy%27%0A%09%09%09description%3A%20%27DyNagoya%20%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u307E%u3068%u3081%27.%0A%09%09self%0A%09%09%09link%3A%20%27Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%27%0A%09%09%09url%3A%20%27http%3A//squab.no-ip.com%3A8080/mosaren/%27%0A%09%09%09description%3A%20%27MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27Scratch%20+%20Arduino%27%0A%09%09%09url%3A%20%27http%3A//www.yengawa.com/scratch_arduino%27%0A%09%09%09description%3A%20%27Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5%27%0A%09%7D%0A%09%09'),
+source: unescape('list%0A%09%5E%20%7B%0A%09%09self%20%0A%09%09%09link%3A%20%27Amber%20Smalltalk%27%0A%09%09%09url%3A%20%27http%3A//amber-lang.net/%27%0A%09%09%09description%3A%20%27Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog%27%0A%09%09%09description%3A%20%27%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8%27%0A%09%09%09url%3A%20%27http%3A//www.box.com/s/bbc7kz53el13ktbxeed4%27%0A%09%09%09description%3A%20%27%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27Yengawa%20Blog%27%0A%09%09%09url%3A%20%27http%3A//blog.yengawa.com/%27%0A%09%09%09description%3A%20%27Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream%27%0A%09%09%09url%3A%20%27http%3A//www.ustream.tv/recorded/18226602%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B%27%0A%09%09%09url%3A%20%27http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27A%20Smalltalk%20by%20the%20Seaside%27%0A%09%09%09url%3A%20%27http%3A//www.asmalltalkbytheseaside.com/%27%0A%09%09%09description%3A%20%27Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/%27%0A%09%09%09description%3A%20%27Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27DyNagoya%20Google%20Document%27%0A%09%09%09url%3A%20%27https%3A//docs.google.com/%3Ftab%3Dwo%26authuser%3D0%26pli%3D1%23folders/0B59kC1IGKRCoYzAzNjUzYzMtNWYwZS00MGY5LWE0MTItMzRkYmIxYmNmNTIy%27%0A%09%09%09description%3A%20%27DyNagoya%20%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u307E%u3068%u3081%27.%0A%09%09self%0A%09%09%09link%3A%20%27Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%27%0A%09%09%09url%3A%20%27http%3A//squab.no-ip.com%3A8080/mosaren/%27%0A%09%09%09description%3A%20%27MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27Scratch%20+%20Arduino%27%0A%09%09%09url%3A%20%27http%3A//www.yengawa.com/scratch_arduino%27%0A%09%09%09description%3A%20%27Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5%27.%0A%09%09self%0A%09%09%09link%3A%20%27scat%27%0A%09%09%09url%3A%20%27http%3A//code.google.com/p/scat/%27%0A%09%09%09description%3A%20%27%u6A19%u6E96%u306EScratch%u306FIDE%u304C%u3057%u3087%u307C%u3044%u306E%u3067Pharo%u306BScrach%u3092%u5165%u308C%u308B%u3002%27%0A%09%7D%0A%09%09'),
 messageSends: ["link:url:description:"],
-referencedClasses: []
-}),
-smalltalk.Links);
-
-smalltalk.addMethod(
-unescape('_renderOn_'),
-smalltalk.method({
-selector: unescape('renderOn%3A'),
-category: 'rendering',
-fn: function (html) {
-    var self = this;
-    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
-    return self;
-},
-args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09%28html%20tag%3A%20%27dl%27%29%20with%3A%20%5B%0A%09%09self%20list%20do%3A%20%5B%20%3Alink%20%7C%0A%09%09%09%28html%20tag%3A%20%27dt%27%29%20with%3A%20%5B%20html%20a%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20href%3A%20%28link%20at%3A%202%29%3B%20with%3A%20%28link%20at%3A%201%29%20%5D.%0A%09%09%09%28html%20tag%3A%20%27dd%27%29%20with%3A%20%28link%20at%3A%203%29%0A%09%09%5D%0A%09%5D%0A'),
-messageSends: ["with:", "tag:", "do:", "list", "at:put:", "href:", "at:", "a"],
 referencedClasses: []
 }),
 smalltalk.Links);
@@ -796,6 +798,24 @@ fn: function () {
 args: [],
 source: unescape('open%0A%09self%20title%3A%20%27Links%27%3B%20with%3A%20%5B%3Ahtml%20%7C%20self%20renderOn%3A%20html%20%5D%3B%20width%3A%20600.%0A%09super%20open.'),
 messageSends: ["title:", "with:", "renderOn:", "width:", "open"],
+referencedClasses: []
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", ["Links"]);
+    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27Links%27.%0A%09%28html%20tag%3A%20%27dl%27%29%20with%3A%20%5B%0A%09%09self%20list%20do%3A%20%5B%20%3Alink%20%7C%0A%09%09%09%28html%20tag%3A%20%27dt%27%29%20with%3A%20%5B%20html%20a%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20href%3A%20%28link%20at%3A%202%29%3B%20with%3A%20%28link%20at%3A%201%29%20%5D.%0A%09%09%09%28html%20tag%3A%20%27dd%27%29%20with%3A%20%28link%20at%3A%203%29%0A%09%09%5D%0A%09%5D%0A'),
+messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:", "a"],
 referencedClasses: []
 }),
 smalltalk.Links);
@@ -1255,12 +1275,12 @@ selector: unescape('latest'),
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting03", []);
+    return smalltalk.send(self, "_meeting04", []);
     return self;
 },
 args: [],
-source: unescape('latest%0A%09%5E%20self%20meeting03'),
-messageSends: ["meeting03"],
+source: unescape('latest%0A%09%5E%20self%20meeting04'),
+messageSends: ["meeting04"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -1296,6 +1316,23 @@ args: [],
 source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Hakkaku%3B%0A%09%09detail%3A%20%7B%0A%27cogdroid%u306B%u3064%u3044%u3066%27.%0A%27Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
 messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["Hakkaku"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting04'),
+smalltalk.method({
+selector: unescape('meeting04'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0304")]);smalltalk.send($rec, "_date_", [unescape("2012/03/24")]);smalltalk.send($rec, "_start_", ["17:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("Scratch%20%u3092%u3044%u3058%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting04%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0304%27%3B%0A%09%09date%3A%20%272012/03/24%27%3B%0A%09%09start%3A%20%2717%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27Scratch%20%u3092%u3044%u3058%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["Doerya"]
 }),
 smalltalk.Event.klass);
 

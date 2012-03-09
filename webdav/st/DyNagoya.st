@@ -106,6 +106,7 @@ show
 	TopPage new appendToJQuery: self container.
 	AboutDyNagoya new appendToJQuery: self container.
 	AboutSmalltalk new appendToJQuery: self container.
+	Links new appendToJQuery: self container.
 !
 
 container
@@ -145,11 +146,18 @@ renderOn: html
 
 renderAbout: html
   html li class: 'dropdown class'; with: [ 
-	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'About'.
+	html a href: '#'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'Menu'.
 	html ul class: 'dropdown-menu'; with: [
-		html li: [ html a href: '#'; onClick: [ AboutDyNagoya pan ]; with: 'DyNagoya' ]
+		html li: [ html a href: '#'; onClick: [ AboutDyNagoya pan. self clearMenus ]; with: 'About DyNagoya' ].
+		html li: [ html a href: '#'; onClick: [ AboutSmalltalk pan. self clearMenus ]; with: 'About Smalltalk' ].
+		html li: [ html a href: '#'; onClick: [ Links pan. self clearMenus ]; with: 'Links' ]
 	]
-  ]
+  ].
+  '#container' asJQuery bind: 'click' do: [self clearMenus ]
+!
+
+clearMenus
+	('a.menu, .dropdown-toggle' asJQuery parent: 'li') removeClass: 'open'
 ! !
 
 Widget subclass: #Page
@@ -312,7 +320,7 @@ name
 	^ 'Cafe どえりゃあ'
 ! !
 
-DialogBox subclass: #Links
+Page subclass: #Links
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
 
@@ -363,7 +371,11 @@ list
 		self
 			link: 'Scratch + Arduino'
 			url: 'http://www.yengawa.com/scratch_arduino'
-			description: 'Scratch から Arduinoを使う方法'
+			description: 'Scratch から Arduinoを使う方法'.
+		self
+			link: 'scat'
+			url: 'http://code.google.com/p/scat/'
+			description: '標準のScratchはIDEがしょぼいのでPharoにScrachを入れる。'
 	}
 ! !
 
@@ -380,7 +392,8 @@ open
 
 !Links methodsFor: 'rendering'!
 
-renderOn: html
+renderBody: html
+	html h1: 'Links'.
 	(html tag: 'dl') with: [
 		self list do: [ :link |
 			(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].
@@ -552,7 +565,7 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 latest
-	^ self meeting03
+	^ self meeting04
 !
 
 meeting02
@@ -581,6 +594,20 @@ meeting03
 'cogdroidについて'.
 'Testについて考える'.
 'このページのリンク集の表示をかえる'.
+'Smalltalk入門(希望者がいれば)'
+}
+!
+
+meeting04
+	^ self new 
+		title: 'DyNagoya MTG ＃04';
+		date: '2012/03/24';
+		start: '17:30:00';
+		end: '20:30:00';
+		place: Doerya;
+		detail: {
+'Scratch をいじる'.
+'このページのAboutの内容を考える'.
 'Smalltalk入門(希望者がいれば)'
 }
 ! !
