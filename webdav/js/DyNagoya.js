@@ -859,7 +859,7 @@ smalltalk.LinkMenu);
 
 
 
-smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail'], 'DyNagoya');
+smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail', 'fixed'], 'DyNagoya');
 smalltalk.Event.comment=unescape('Event%20latest%20addToDSTokai%0AEvent%20latest%20tweet')
 smalltalk.addMethod(
 unescape('_title_'),
@@ -1271,14 +1271,31 @@ smalltalk.addMethod(
 unescape('_fixed'),
 smalltalk.method({
 selector: unescape('fixed'),
-category: 'google calendar',
+category: 'accessing',
 fn: function () {
     var self = this;
-    return true;
+    return ($receiver = self['@fixed']) == nil || $receiver == undefined ? function () {return true;}() : $receiver;
     return self;
 },
 args: [],
-source: unescape('fixed%0A%20%20%5E%20true'),
+source: unescape('fixed%0A%20%20%5E%20fixed%20ifNil%3A%20%5B%20true%20%5D'),
+messageSends: ["ifNil:"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_fixed_'),
+smalltalk.method({
+selector: unescape('fixed%3A'),
+category: 'accessing',
+fn: function (aBool) {
+    var self = this;
+    self['@fixed'] = aBool;
+    return self;
+},
+args: ["aBool"],
+source: unescape('fixed%3A%20aBool%0A%20%20fixed%20%3A%3D%20aBool'),
 messageSends: [],
 referencedClasses: []
 }),
@@ -1343,12 +1360,12 @@ selector: unescape('meeting04'),
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0304")]);smalltalk.send($rec, "_date_", [unescape("2012/03/24")]);smalltalk.send($rec, "_start_", ["17:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("Scratch%20%u3092%u3044%u3058%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [false]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0304")]);smalltalk.send($rec, "_date_", [unescape("2012/03/31")]);smalltalk.send($rec, "_start_", ["17:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("Scratch%20%u3092%u3044%u3058%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: unescape('meeting04%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0304%27%3B%0A%09%09date%3A%20%272012/03/24%27%3B%0A%09%09start%3A%20%2717%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27Scratch%20%u3092%u3044%u3058%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
-messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+source: unescape('meeting04%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20false%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0304%27%3B%0A%09%09date%3A%20%272012/03/31%27%3B%0A%09%09start%3A%20%2717%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27Scratch%20%u3092%u3044%u3058%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["Doerya"]
 }),
 smalltalk.Event.klass);
