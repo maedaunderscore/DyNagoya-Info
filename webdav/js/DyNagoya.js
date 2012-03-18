@@ -1130,7 +1130,7 @@ category: 'rendering',
 fn: function (html) {
     var self = this;
     smalltalk.send(html, "_h1_", [self['@title']]);
-    smalltalk.send(html, "_h2_", [smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])])]);
+    smalltalk.send(html, "_h2_", [smalltalk.send(smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [($receiver = smalltalk.send(self, "_fixed", [])).klass === smalltalk.Boolean ? $receiver ? function () {return "";}() : function () {return unescape("%3F");}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "";}, function () {return unescape("%3F");}])])]);
     smalltalk.send(self['@place'], "_renderOn_", [html]);
     smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);
     smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A%2030px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self['@detail'], "_do_", [function (each) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [each]);}]);}]);}(smalltalk.send(html, "_div", []))]);
@@ -1139,8 +1139,8 @@ fn: function (html) {
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20h1%3A%20title.%0A%09html%20h2%3A%20%27%u65E5%u6642%uFF1A%27%2C%20self%20formatPeriod.%0A%09place%20renderOn%3A%20html.%0A%09html%20h2%3A%20%27%u5185%u5BB9%uFF1A%27.%0A%09html%20h3%20with%3A%20%28html%20div%20style%3A%20%27margin-left%3A%2030px%27%3B%20with%3A%5B%0A%09%09detail%20do%3A%20%5B%20%3Aeach%20%7C%20html%20div%20with%3A%20each%20%5D.%0A%09%5D%29.%0A%09html%20div%20id%3A%20%27participants%27.%0A%09ParticipantsList%20new%20event%3A%20self%3B%20render.%0A'),
-messageSends: ["h1:", "h2:", unescape("%2C"), "formatPeriod", "renderOn:", "with:", "h3", "style:", "do:", "div", "id:", "event:", "render", "new"],
+source: unescape('renderOn%3A%20html%0A%09html%20h1%3A%20title.%0A%09html%20h2%3A%20%27%u65E5%u6642%uFF1A%27%2C%20self%20formatPeriod%2C%20%28self%20fixed%20ifTrue%3A%20%5B%27%27%5D%20ifFalse%3A%20%5B%20%27%3F%27%20%5D%29.%0A%09place%20renderOn%3A%20html.%0A%09html%20h2%3A%20%27%u5185%u5BB9%uFF1A%27.%0A%09html%20h3%20with%3A%20%28html%20div%20style%3A%20%27margin-left%3A%2030px%27%3B%20with%3A%5B%0A%09%09detail%20do%3A%20%5B%20%3Aeach%20%7C%20html%20div%20with%3A%20each%20%5D.%0A%09%5D%29.%0A%09html%20div%20id%3A%20%27participants%27.%0A%09ParticipantsList%20new%20event%3A%20self%3B%20render.%0A'),
+messageSends: ["h1:", "h2:", unescape("%2C"), "formatPeriod", "ifTrue:ifFalse:", "fixed", "renderOn:", "with:", "h3", "style:", "do:", "div", "id:", "event:", "render", "new"],
 referencedClasses: ["ParticipantsList"]
 }),
 smalltalk.Event);
@@ -1264,6 +1264,23 @@ args: ["src", "aStr"],
 source: unescape('gcalParams%3A%20src%20desc%3A%20aStr%0A%09%7C%20base%20%7C%0A%09base%20%3A%3D%20%7B%0A%09%09%27ctz%3DAsia/Tokyo%27.%0A%09%09%27ctext%3D%27%2C%20%28Util%20encode%3A%20title%29.%0A%09%09%27details%3D%27%2C%20%28Util%20encode%3A%20aStr%29.%0A%09%09%27location%3D%27%2C%20%28Util%20encode%3A%20place%20gCalString%29.%0A%09%09%27dates%3D%27%2C%20%28Util%20encode%3A%20%28%28self%20format%3A%20start%29%20%2C%20%27/%27%2C%20%28self%20format%3A%20end%29%29%29%0A%09%7D.%0A%0A%09src%20ifNotNil%3A%20%5B%20base%20add%3A%20%27src%3D%27%2C%20src%20%5D.%0A%09%5E%20base%0A'),
 messageSends: [unescape("%2C"), "encode:", "gCalString", "format:", "ifNotNil:", "add:"],
 referencedClasses: ["Util"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_fixed'),
+smalltalk.method({
+selector: unescape('fixed'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return true;
+    return self;
+},
+args: [],
+source: unescape('fixed%0A%20%20%5E%20true'),
+messageSends: [],
+referencedClasses: []
 }),
 smalltalk.Event);
 
