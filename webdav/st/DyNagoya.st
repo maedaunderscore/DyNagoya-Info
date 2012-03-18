@@ -418,7 +418,7 @@ style
 ! !
 
 Widget subclass: #Event
-	instanceVariableNames: 'title date start end place detail'
+	instanceVariableNames: 'title date start end place detail fixed'
 	category: 'DyNagoya'!
 !Event commentStamp!
 Event latest addToDSTokai
@@ -465,6 +465,14 @@ place: aPlaceClass
 
 detail: str
   detail := str
+!
+
+fixed
+  ^ fixed ifNil: [ true ]
+!
+
+fixed: aBool
+  fixed := aBool
 ! !
 
 !Event methodsFor: 'google calendar'!
@@ -520,10 +528,6 @@ gcalParams: src desc: aStr
 
 	src ifNotNil: [ base add: 'src=', src ].
 	^ base
-!
-
-fixed
-  ^ true
 ! !
 
 !Event methodsFor: 'participation'!
@@ -600,8 +604,9 @@ meeting03
 
 meeting04
 	^ self new 
+		fixed: false;
 		title: 'DyNagoya MTG ＃04';
-		date: '2012/03/24';
+		date: '2012/03/31';
 		start: '17:30:00';
 		end: '20:30:00';
 		place: Doerya;
