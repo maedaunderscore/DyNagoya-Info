@@ -604,15 +604,16 @@ meeting03
 
 meeting04
 	^ self new 
-		fixed: false;
+		fixed: true;
 		title: 'DyNagoya MTG ＃04';
 		date: '2012/03/31';
-		start: '17:30:00';
+		start: '18:30:00';
 		end: '20:30:00';
-		place: Doerya;
+		place: DyNagoyaBuilding;
 		detail: {
 'Scratch をいじる'.
 'このページのAboutの内容を考える'.
+'Newspeakをいじる'.
 'Smalltalk入門(希望者がいれば)'
 }
 ! !
@@ -941,5 +942,23 @@ renderBody: html
 
 height
   ^ '400'
+! !
+
+Place subclass: #DyNagoyaBuilding
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!DyNagoyaBuilding methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'
+!
+
+url
+	^ 'http://www.dainagoya-building.com/'
+!
+
+name
+	^ '大名古屋ビルヂング '
 ! !
 
