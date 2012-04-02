@@ -611,6 +611,7 @@ smalltalk.AboutDyNagoya);
 
 
 smalltalk.addClass('Place', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.Place.comment=unescape('DialogBox%20new%20widget%3A%20%28Edelweiss%20new%29%3B%20open%20')
 smalltalk.addMethod(
 unescape('_name'),
 smalltalk.method({
@@ -2295,6 +2296,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.DyNagoyaBuilding);
+
+
+
+smalltalk.addClass('Moyorino', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//moyo-reno.com/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//moyo-reno.com/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
 
 
 
