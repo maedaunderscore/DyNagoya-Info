@@ -272,7 +272,7 @@ renderBody: html
 動的言語全般を扱ってますが、中心となるのはSmalltalkです。
 Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータDynabookの暫定実装が起点となって、誕生しました。
 DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。'.
-	html h2 css: 'margin-left' put: '20px'; with: 'DyNagoyaの具体的な活動は、月に１回の会合を開いています。その会では、おいしいご飯を食べながら、動的言語について語り合っています。
+	html h2 css: 'margin-left' put: '20px'; with: 'DyNagoyaでは、月に１回の会合を開いています。その会では、おいしいご飯を食べながら、動的言語について語り合っています。
 何の準備も心構えも必要ありません。お気軽にご参加ください。'
 !
 
