@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'DyNagoya-Tools' properties: #{}!
 Widget subclass: #DialogBox
-	instanceVariableNames: 'message option body aspectRatio'
+	instanceVariableNames: 'message option body aspectRatio fontSize'
 	category: 'DyNagoya-Tools'!
 !DialogBox commentStamp!
 Must need to use 'with' or message.
@@ -67,6 +67,14 @@ with: aBlock
 
 widget: aWidget
 	^ self with: [:html | aWidget renderOn: html ]
+!
+
+fontSize
+	^ fontSize ifNil: [ '18px' ] ifNotNil: [ fontSize ]
+!
+
+fontSize: sizeStr
+	fontSize := sizeStr
 ! !
 
 !DialogBox methodsFor: 'action'!
@@ -76,7 +84,7 @@ close
 !
 
 open
-	 body asJQuery dialog: option
+	 body asJQuery css: 'font-size' at: (self fontSize); dialog: option
 ! !
 
 !DialogBox methodsFor: 'initialization'!
