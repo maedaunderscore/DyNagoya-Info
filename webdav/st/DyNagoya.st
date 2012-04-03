@@ -135,7 +135,8 @@ renderOn: html
 				Login new appendToBrush: html li.
 			].
 			html ul style: 'float:left'; class: 'nav'; with:[
-				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Open Browser' ].
+				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Browser' ].
+				html li: [ html a href: '#'; onClick: [ DialogBox new widget: (SourceArea new); modal: false; open ]; with: 'Workspace' ].
 				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
 				self renderAbout: html.
 				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
