@@ -1,5 +1,5 @@
 smalltalk.addPackage('DyNagoya-Tools', {});
-smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio'], 'DyNagoya-Tools');
+smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize'], 'DyNagoya-Tools');
 smalltalk.addMethod(
 '_body',
 smalltalk.method({
@@ -139,7 +139,7 @@ smalltalk.method({
 selector: 'open',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", [self['@option']]);
+    (function ($rec) {smalltalk.send($rec, "_css_at_", [unescape("font-size"), smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
     return self;
 }
 }),
@@ -203,6 +203,30 @@ selector: 'widget:',
 fn: function (aWidget) {
     var self = this;
     return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+'_fontSize',
+smalltalk.method({
+selector: 'fontSize',
+fn: function () {
+    var self = this;
+    return ($receiver = self['@fontSize']) == nil || $receiver == undefined ? function () {return "18px";}() : function () {return self['@fontSize'];}();
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+'_fontSize_',
+smalltalk.method({
+selector: 'fontSize:',
+fn: function (sizeStr) {
+    var self = this;
+    self['@fontSize'] = sizeStr;
     return self;
 }
 }),
