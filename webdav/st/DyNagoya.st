@@ -84,6 +84,7 @@ Widget subclass: #Board
 renderOn: html
 	html div 
 		class: 'alert-message block-message warning ui-draggable span10';
+		style: 'margin: 10px';
 		with:[  Event latest renderOn: html ]
 ! !
 
