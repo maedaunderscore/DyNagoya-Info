@@ -92,6 +92,8 @@ Object subclass: #Screen
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
 
+Screen class instanceVariableNames: 'flag'!
+
 !Screen class methodsFor: 'not yet classified'!
 
 with: brush
