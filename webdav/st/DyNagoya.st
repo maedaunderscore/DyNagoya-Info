@@ -126,9 +126,11 @@ add: brush
 !
 
 onLeft
+  console log: 'left'
 !
 
 onRight
+  console log: 'right'
 ! !
 
 Widget subclass: #ToolBar

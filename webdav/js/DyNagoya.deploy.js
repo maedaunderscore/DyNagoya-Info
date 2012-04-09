@@ -243,6 +243,7 @@ smalltalk.method({
 selector: 'onLeft',
 fn: function () {
     var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["left"]);
     return self;
 }
 }),
@@ -254,6 +255,7 @@ smalltalk.method({
 selector: 'onRight',
 fn: function () {
     var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["right"]);
     return self;
 }
 }),
