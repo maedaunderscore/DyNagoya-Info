@@ -220,6 +220,7 @@ smalltalk.Board);
 
 smalltalk.addClass('Screen', smalltalk.Object, [], 'DyNagoya');
 
+smalltalk.Screen.klass.iVarNames = ['flag'];
 smalltalk.addMethod(
 unescape('_with_'),
 smalltalk.method({
