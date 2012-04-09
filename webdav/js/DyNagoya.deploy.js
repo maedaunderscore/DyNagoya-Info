@@ -160,7 +160,7 @@ smalltalk.Board);
 
 smalltalk.addClass('Screen', smalltalk.Object, [], 'DyNagoya');
 
-smalltalk.Screen.klass.iVarNames = ['flag'];
+smalltalk.Screen.klass.iVarNames = ['action','flag'];
 smalltalk.addMethod(
 '_with_',
 smalltalk.method({
@@ -196,7 +196,9 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-    ($receiver = self['@flag']) == nil || $receiver == undefined ? function () {self['@flag'] = true;return smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);}() : $receiver;
+    self['@action'] = smalltalk.send(smalltalk.Action || Action, "_new", []);
+    ($receiver = typeof flag == "undefined" ? nil : flag) == nil ||
+        $receiver == undefined ? function () {flag = true;return smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);}() : $receiver;
     return self;
 }
 }),
@@ -244,7 +246,7 @@ smalltalk.method({
 selector: 'onLeft',
 fn: function () {
     var self = this;
-    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["left"]);
+    smalltalk.send(self['@action'], "_prev", []);
     return self;
 }
 }),
@@ -256,7 +258,7 @@ smalltalk.method({
 selector: 'onRight',
 fn: function () {
     var self = this;
-    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["right"]);
+    smalltalk.send(self['@action'], "_next", []);
     return self;
 }
 }),
@@ -1733,6 +1735,61 @@ fn: function () {
 }
 }),
 smalltalk.Moyorino);
+
+
+
+smalltalk.addClass('Action', smalltalk.Object, ['idx'], 'DyNagoya');
+smalltalk.addMethod(
+'_next',
+smalltalk.method({
+selector: 'next',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [""]);
+    self['@idx'] = ($receiver = self['@idx']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", ["strong"]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_prev',
+smalltalk.method({
+selector: 'prev',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [""]);
+    self['@idx'] = smalltalk.send(($receiver = self['@idx']).klass === smalltalk.Number ? $receiver - 1 : smalltalk.send($receiver, "__minus", [1]), "_max_", [1]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", ["strong"]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_all',
+smalltalk.method({
+selector: 'all',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23AboutDyNagoya%20span"), "_asJQuery", []), "_toArray", []), "_addAll_", [smalltalk.send(smalltalk.send(unescape("%23AboutSmalltalk%20span"), "_asJQuery", []), "_toArray", [])]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_initialize',
+smalltalk.method({
+selector: 'initialize',
+fn: function () {
+    var self = this;
+    self['@idx'] = 1;
+    return self;
+}
+}),
+smalltalk.Action);
 
 
 
