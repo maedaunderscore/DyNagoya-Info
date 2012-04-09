@@ -195,6 +195,7 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(self, "_container", []), "_bind_do_", ["keydown", function (ev) {return smalltalk.send(self, "_halt", []);}]);
     return self;
 }
 }),
