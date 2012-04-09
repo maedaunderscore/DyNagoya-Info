@@ -577,7 +577,7 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 latest
-	^ self meeting04
+	^ self meeting05
 !
 
 meeting02
@@ -622,6 +622,21 @@ meeting04
 'Scratch をいじる'.
 'このページのAboutの内容を考える'.
 'Newspeakをいじる'.
+'Smalltalk入門(希望者がいれば)'
+}
+!
+
+meeting05
+	^ self new 
+		fixed: true;
+		title: 'DyNagoya MTG ＃05';
+		date: '2012/04/22';
+		start: '18:30:00';
+		end: '20:30:00';
+		place: AnyWhere;
+		detail: {
+'合同勉強会用に名古屋的ネタを考える'.
+'このページのAboutの内容を考える'.
 'Smalltalk入門(希望者がいれば)'
 }
 ! !
