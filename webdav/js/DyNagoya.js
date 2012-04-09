@@ -334,11 +334,12 @@ selector: unescape('onLeft'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["left"]);
     return self;
 },
 args: [],
-source: unescape('onLeft'),
-messageSends: [],
+source: unescape('onLeft%0A%20%20console%20log%3A%20%27left%27'),
+messageSends: ["log:"],
 referencedClasses: []
 }),
 smalltalk.Screen.klass);
@@ -350,11 +351,12 @@ selector: unescape('onRight'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["right"]);
     return self;
 },
 args: [],
-source: unescape('onRight'),
-messageSends: [],
+source: unescape('onRight%0A%20%20console%20log%3A%20%27right%27'),
+messageSends: ["log:"],
 referencedClasses: []
 }),
 smalltalk.Screen.klass);
