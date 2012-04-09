@@ -445,7 +445,7 @@ formatPeriod
 tweetMessage
 	^ '次回のミーティングは',
 	(self formatPeriod),
-	' ', (place name),
+	' 場所:', (place name),
 	' で開催します。参加登録はこちら → http://dynagoya.info/'
 ! !
 
