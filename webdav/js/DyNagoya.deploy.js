@@ -1738,15 +1738,15 @@ smalltalk.Moyorino);
 
 
 
-smalltalk.addClass('Action', smalltalk.Object, ['idx'], 'DyNagoya');
+smalltalk.addClass('Action', smalltalk.Object, ['idx', 'maxSize'], 'DyNagoya');
 smalltalk.addMethod(
 '_next',
 smalltalk.method({
 selector: 'next',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [""]);
-    self['@idx'] = ($receiver = self['@idx']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+    ($receiver = smalltalk.send(self['@idx'], "__eq", [0])).klass === smalltalk.Boolean ? !$receiver ? function () {return smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [" "]);}() : nil : smalltalk.send($receiver, "_ifFalse_", [function () {return smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [" "]);}]);
+    self['@idx'] = smalltalk.send(($receiver = self['@idx']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]), "_max_", [self['@maxSize']]);
     smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", ["strong"]);
     return self;
 }
@@ -1786,6 +1786,7 @@ selector: 'initialize',
 fn: function () {
     var self = this;
     self['@idx'] = 1;
+    max = smalltalk.send(smalltalk.send(self, "_all", []), "_size", []);
     return self;
 }
 }),
