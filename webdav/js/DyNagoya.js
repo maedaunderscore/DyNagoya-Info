@@ -173,4 +173,2243 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('imageUrl%0A%20%20%5E%20%20%27data%3Aimage/png%3Bbase64%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
+source: unescape('imageUrl%0A%20%20%5E%20%20%27data%3Aimage/png%3Bbase64%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%27%20'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Logo);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return unescape("left%3A%2060px%3B%20top%3A%20390px%3B");
+    return self;
+},
+args: [],
+source: unescape('style%0A%20%20%5E%20%27left%3A%2060px%3B%20top%3A%20390px%3B%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Logo);
+
+
+
+smalltalk.addClass('Board', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span10")]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27alert-message%20block-message%20warning%20ui-draggable%20span10%27%3B%0A%09%09style%3A%20%27margin%3A%2010px%27%3B%0A%09%09with%3A%5B%20%20Event%20latest%20renderOn%3A%20html%20%5D'),
+messageSends: ["class:", "style:", "with:", "renderOn:", "latest", "div"],
+referencedClasses: ["Event"]
+}),
+smalltalk.Board);
+
+
+
+smalltalk.addClass('Screen', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.Screen.klass.iVarNames = ['flag'];
+smalltalk.addMethod(
+unescape('_with_'),
+smalltalk.method({
+selector: unescape('with%3A'),
+category: 'not yet classified',
+fn: function (brush) {
+    var self = this;
+    return self;
+},
+args: ["brush"],
+source: unescape('with%3A%20brush'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_clear'),
+smalltalk.method({
+selector: unescape('clear'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_toolbar", []), "_html_", [""]);
+    smalltalk.send(smalltalk.send(self, "_container", []), "_html_", [""]);
+    return self;
+},
+args: [],
+source: unescape('clear%0A%09self%20toolbar%20html%3A%20%27%27.%09%0A%09self%20container%20html%3A%20%27%27.%0A'),
+messageSends: ["html:", "toolbar", "container"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_show'),
+smalltalk.method({
+selector: unescape('show'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    try {
+        smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
+        smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+        smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+        smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+        smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+        smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = self['@flag']) == nil || $receiver == undefined ? function () {self['@flag'] = true;return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onLeft", []);return false;}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_onLeft", []);return false;}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}]);}]);}() : $receiver;}]);
+        return self;
+    } catch (e) {
+        if (e.name === "stReturn" && e.selector === "_show") {
+            return e.fn();
+        }
+        throw e;
+    }
+},
+args: [],
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%20%20%20%20%20%20%20%20%27body%27%20asJQuery%20%20keydown%3A%20%5B%20%3Aev%20%7C%20%0A%09%09flag%20ifNil%3A%20%5B%20flag%20%3A%3D%20true.%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft.%20false%20%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight.%20%5E%20false%20%5D%5D%20%5D%20%5D'),
+messageSends: ["appendToJQuery:", "new", "toolbar", "container", "keydown:", "asJQuery", "ifNil:", "ifTrue:ifFalse:", unescape("%3D"), "keyCode", "onLeft", "ifTrue:", "onRight"],
+referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk", "Links"]
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_container'),
+smalltalk.method({
+selector: unescape('container'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23container"), "_asJQuery", []);
+    return self;
+},
+args: [],
+source: unescape('container%0A%20%20%5E%20%27%23container%27%20asJQuery'),
+messageSends: ["asJQuery"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_toolbar'),
+smalltalk.method({
+selector: unescape('toolbar'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23toolbar"), "_asJQuery", []);
+    return self;
+},
+args: [],
+source: unescape('toolbar%0A%20%20%5E%20%27%23toolbar%27%20asJQuery'),
+messageSends: ["asJQuery"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_add_'),
+smalltalk.method({
+selector: unescape('add%3A'),
+category: 'not yet classified',
+fn: function (brush) {
+    var self = this;
+    smalltalk.send(brush, "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    return self;
+},
+args: ["brush"],
+source: unescape('add%3A%20brush%0A%09brush%20appendToJQuery%3A%20self%20container'),
+messageSends: ["appendToJQuery:", "container"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_onLeft'),
+smalltalk.method({
+selector: unescape('onLeft'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["left"]);
+    return self;
+},
+args: [],
+source: unescape('onLeft%0A%20%20console%20log%3A%20%27left%27'),
+messageSends: ["log:"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_onRight'),
+smalltalk.method({
+selector: unescape('onRight'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof console == "undefined" ? nil : console, "_log_", ["right"]);
+    return self;
+},
+args: [],
+source: unescape('onRight%0A%20%20console%20log%3A%20%27right%27'),
+messageSends: ["log:"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+
+smalltalk.addClass('ToolBar', smalltalk.Widget, ['menu'], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["fill"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["float:right"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Login || Login, "_new", []), "_appendToBrush_", [smalltalk.send(html, "_li", [])]);}]);}(smalltalk.send(html, "_ul", [])));return function ($rec) {smalltalk.send($rec, "_style_", ["float:left"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.Browser || Browser, "_openOn_", [smalltalk.EntryPoint || EntryPoint]);}]);return smalltalk.send($rec, "_with_", ["Browser"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", [])]);smalltalk.send($rec, "_fontSize_", ["20px"]);smalltalk.send($rec, "_title_", ["Workspace"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}]);return smalltalk.send($rec, "_with_", ["Workspace"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.EntryPoint || EntryPoint, "_start", []);}]);return smalltalk.send($rec, "_with_", ["Redraw"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(self, "_renderAbout_", [html]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("http%3A//twitter.com/dynagoya_info")]);return smalltalk.send($rec, "_with_", ["Twitter"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("https%3A//github.com/maeda-/DyNagoya-Info")]);return smalltalk.send($rec, "_with_", ["GitHub"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27fill%27%3B%20with%3A%5B%0A%09%09html%20div%20class%3A%20%27container%27%3B%20with%3A%5B%0A%09%09%09html%20ul%20style%3A%20%27float%3Aright%27%3B%20class%3A%20%27nav%27%3B%20with%3A%5B%0A%09%09%09%09Login%20new%20appendToBrush%3A%20html%20li.%0A%09%09%09%5D.%0A%09%09%09html%20ul%20style%3A%20%27float%3Aleft%27%3B%20class%3A%20%27nav%27%3B%20with%3A%5B%0A%09%09%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20Browser%20openOn%3A%20EntryPoint%20%5D%3B%20with%3A%20%27Browser%27%20%5D.%0A%09%09%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20DialogBox%20new%20widget%3A%20%28SourceArea%20new%29%3B%20fontSize%3A%20%2720px%27%3B%20title%3A%20%27Workspace%27%3B%20modal%3A%20false%3B%20open%20%5D%3B%20with%3A%20%27Workspace%27%20%5D.%0A%09%09%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27%23%27%3B%20onClick%3A%20%5B%20EntryPoint%20start%20%5D%3B%20with%3A%20%27Redraw%27%20%5D.%0A%09%09%09%09self%20renderAbout%3A%20html.%0A%09%09%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27http%3A//twitter.com/dynagoya_info%27%3B%20with%3A%20%27Twitter%27%20%5D.%0A%09%09%09%09html%20li%3A%20%5B%20html%20a%20href%3A%20%27https%3A//github.com/maeda-/DyNagoya-Info%27%3B%20with%3A%20%27GitHub%27%20%5D.%0A%09%09%09%5D%0A%09%09%5D%0A%09%5D'),
+messageSends: ["class:", "with:", "style:", "appendToBrush:", "new", "li", "ul", "li:", "href:", "onClick:", "openOn:", "a", "widget:", "fontSize:", "title:", "modal:", "open", "start", "renderAbout:", "div"],
+referencedClasses: ["Login", "Browser", "EntryPoint", "SourceArea", "DialogBox"]
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+unescape('_renderAbout_'),
+smalltalk.method({
+selector: unescape('renderAbout%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["dropdown class"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.send("li.dropdown", "_asJQuery", []), "_addClass_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["Menu"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About Smalltalk"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.Links || Links, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", [])));
+    smalltalk.send(smalltalk.send(unescape("%23container"), "_asJQuery", []), "_bind_do_", ["click", function () {return smalltalk.send(self, "_clearMenus", []);}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderAbout%3A%20html%0A%20%20html%20li%20class%3A%20%27dropdown%20class%27%3B%20with%3A%20%5B%20%0A%09html%20a%20style%3A%20%27cursor%3A%20pointer%27%3B%20class%3A%20%27dropdown-toggle%27%3B%20at%3A%20%27data-toggle%27%20put%3A%20%27dropdown%27%3B%20onClick%3A%20%5B%20%27li.dropdown%27%20asJQuery%20addClass%3A%20%27open%27%20%20%5D%3B%20with%3A%20%27Menu%27.%0A%09html%20ul%20class%3A%20%27dropdown-menu%27%3B%20with%3A%20%5B%0A%09%09html%20li%3A%20%5B%20html%20a%20style%3A%20%27cursor%3A%20pointer%27%3BonClick%3A%20%5B%20AboutDyNagoya%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27About%20DyNagoya%27%20%5D.%0A%09%09html%20li%3A%20%5B%20html%20a%20style%3A%20%27cursor%3A%20pointer%27%3B%20onClick%3A%20%5B%20AboutSmalltalk%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27About%20Smalltalk%27%20%5D.%0A%09%09html%20li%3A%20%5B%20html%20a%20style%3A%20%27cursor%3A%20pointer%27%3B%20onClick%3A%20%5B%20Links%20pan.%20self%20clearMenus%20%5D%3B%20with%3A%20%27Links%27%20%5D%0A%09%5D%0A%20%20%5D.%0A%20%20%27%23container%27%20asJQuery%20bind%3A%20%27click%27%20do%3A%20%5Bself%20clearMenus%20%5D'),
+messageSends: ["class:", "with:", "style:", "at:put:", "onClick:", "addClass:", "asJQuery", "a", "li:", "pan", "clearMenus", "ul", "li", "bind:do:"],
+referencedClasses: ["AboutDyNagoya", "AboutSmalltalk", "Links"]
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+unescape('_clearMenus'),
+smalltalk.method({
+selector: unescape('clearMenus'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(unescape("a.menu%2C%20.dropdown-toggle"), "_asJQuery", []), "_parent_", ["li"]), "_removeClass_", ["open"]);
+    return self;
+},
+args: [],
+source: unescape('clearMenus%0A%09%28%27a.menu%2C%20.dropdown-toggle%27%20asJQuery%20parent%3A%20%27li%27%29%20removeClass%3A%20%27open%27'),
+messageSends: ["removeClass:", "parent:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.ToolBar);
+
+
+
+smalltalk.addClass('Page', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(smalltalk.send(self, "_class", []), "_asString", [])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27row%27%3B%20%0A%09%09id%3A%20self%20class%20asString%3B%0A%09%09style%3A%20self%20style%3B%0A%09%09with%3A%20%5B%20self%20renderBody%3A%20html%20%5D%0A'),
+messageSends: ["class:", "id:", "asString", "class", "style:", "style", "with:", "renderBody:", "div"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send(smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]), "__comma", [unescape("px%3B")]);}();
+    return self;
+},
+args: [],
+source: unescape('style%0A%20%20%5E%20self%20height%20ifNil%3A%20%5B%20%27%27%20%5D%20ifNotNil%3A%20%5B%20%27height%3A%20%27%2C%20self%20height%2C%20%27px%3B%27%20%5D'),
+messageSends: ["ifNil:ifNotNil:", "height", unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return nil;
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20nil'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_pan'),
+smalltalk.method({
+selector: unescape('pan'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+},
+args: [],
+source: unescape('pan%0A%20%20%27html%2Cbody%27%20asJQuery%20animate%3A%20%23%7B%20%27scrollTop%27%20-%3E%20self%20top%20%7D%20with%3A%20%27slow%27'),
+messageSends: ["animate:with:", "asJQuery", unescape("-%3E"), "top"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+unescape('_top'),
+smalltalk.method({
+selector: unescape('top'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23"), "__comma", [self]);
+    return self;
+},
+args: [],
+source: unescape('top%0A%22%20%20%5E%20%28%27%23%27%2C%20self%29%20asJQuery%20offset%20top%22%0A%20%20%5E%20%28%27%23%27%2C%20self%29%20'),
+messageSends: [unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+
+smalltalk.addMethod(
+unescape('_top'),
+smalltalk.method({
+selector: unescape('top'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_asString", [])]), "_asJQuery", []), "_offset", []), "_top", [])).klass === smalltalk.Number ? $receiver - 40 : smalltalk.send($receiver, "__minus", [40]);
+    return self;
+},
+args: [],
+source: unescape('top%0A%20%20%5E%20%28%27%23%27%2C%20self%20asString%29%20asJQuery%20offset%20top%20-%2040'),
+messageSends: [unescape("-"), "top", "offset", "asJQuery", unescape("%2C"), "asString"],
+referencedClasses: []
+}),
+smalltalk.Page.klass);
+
+smalltalk.addMethod(
+unescape('_pan'),
+smalltalk.method({
+selector: unescape('pan'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+},
+args: [],
+source: unescape('pan%0A%20%20%27html%2Cbody%27%20asJQuery%20animate%3A%20%23%7B%20%27scrollTop%27%20-%3E%20self%20top%20%7D%20with%3A%20%27slow%27'),
+messageSends: ["animate:with:", "asJQuery", unescape("-%3E"), "top"],
+referencedClasses: []
+}),
+smalltalk.Page.klass);
+
+
+smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_options_", [unescape("/name"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("success", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [x]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/logout")]);return smalltalk.send($rec, "_with_", [smalltalk.send(x, "__comma", [" Log Out"])]);}(smalltalk.send(html, "_a", []));}]), smalltalk.send("error", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [nil]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/login")]);return smalltalk.send($rec, "_with_", [" Log In"]);}(smalltalk.send(html, "_a", []));}])])]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09jQuery%20ajax%3A%20%27/name%27%20options%3A%20%23%7B%20%0A%09%09%27success%27%20-%3E%20%5B%20%3Ax%20%7C%20%0A%09%09%09Login%20user%3A%20x.%0A%09%09%09html%20a%20href%3A%20%27/logout%27%3B%20with%3A%20%28%20x%2C%20%27%20Log%20Out%27%20%29%20%5D.%0A%09%09%20%27error%27%20%20%20%20%20%20%20-%3E%20%5B%20%3Ax%20%7C%20%0A%09%09%09Login%20user%3A%20nil.%0A%09%09%09html%20a%20href%3A%20%27/login%27%3B%20with%3A%20%27%20Log%20In%27%20%20%5D%0A%09%7D'),
+messageSends: ["ajax:options:", unescape("-%3E"), "user:", "href:", "with:", unescape("%2C"), "a"],
+referencedClasses: ["Login"]
+}),
+smalltalk.Login);
+
+
+smalltalk.Login.klass.iVarNames = ['user'];
+smalltalk.addMethod(
+unescape('_user_'),
+smalltalk.method({
+selector: unescape('user%3A'),
+category: 'not yet classified',
+fn: function (aStr) {
+    var self = this;
+    self['@user'] = aStr;
+    return self;
+},
+args: ["aStr"],
+source: unescape('user%3A%20aStr%0A%09user%20%3A%3D%20aStr'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Login.klass);
+
+smalltalk.addMethod(
+unescape('_user'),
+smalltalk.method({
+selector: unescape('user'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@user'];
+    return self;
+},
+args: [],
+source: unescape('user%0A%09%5Euser'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Login.klass);
+
+
+smalltalk.addClass('ToDo', smalltalk.Object, [], 'DyNagoya');
+
+
+smalltalk.addClass('ForThisPage', smalltalk.ToDo, [], 'DyNagoya');
+smalltalk.ForThisPage.comment=unescape('Login%u306E%u5B9F%u88C5%u304C%u3072%u3069%u3044%20%u2192%20MVC%u30D5%u30EC%u30FC%u30E0%u30EF%u30FC%u30AF%u304C%u5FC5%u8981%0A%22%u958B%u50AC%u5C65%u6B74%u3092%u6B8B%u3059%u3002%22%0A%22%u958B%u50AC%u5834%u6240%u3092%u5206%u304B%u308A%u3084%u3059%u304F%u8868%u793A%22%0A%22%u958B%u50AC%u60C5%u5831%u3092%u5F15%u3063%u5F35%u3063%u3066%u3001dstokai%u30AB%u30EC%u30F3%u30C0%u30FC%u306B%u65B0%u898F%u30A4%u30D9%u30F3%u30C8%u767B%u9332%u753B%u9762%u3092%u958B%u304F%u30D6%u30C3%u30AF%u30DE%u30FC%u30AF%u30EC%u30C3%u30C8%22%0A%u30EA%u30F3%u30AF%u96C6%u2192%u30AB%u30C6%u30B4%u30EA%u304C%u307B%u3057%u3044%uFF08%u30A2%u30B3%u30FC%u30C7%u30A3%u30AA%u30F3%u3068%u304B%uFF09%0A%u6BCE%u56DE%u30ED%u30B0%u30A4%u30F3%u3057%u306A%u304F%u3066%u3082%u3088%u304F%u3059%u308B%20%0A%u30ED%u30B0%u30A4%u30F3%u6642%u306B%u7DE8%u96C6%u4E2D%u306E%u5185%u5BB9%u304C%u6D88%u3048%u308B%u8B66%u544A%u30C0%u30A4%u30A2%u30ED%u30B0%0A%22%u30C7%u30FC%u30BF%u3092%u6C38%u7D9A%u304B%u51FA%u6765%u308B%u3088%u3046%u306B%u3057%u305F%u3044%u3002%u3067%u3082git%u3067%u7BA1%u7406%u3067%u304D%u308B%u3088%u3046%u306B%u3082%u3057%u305F%u3044%22%0A%22%u30EA%u30E2%u30FC%u30C8%u30C7%u30FC%u30BF%u901A%u4FE1%u3092%u900F%u904E%u7684%u306B%u6271%u3046%u30AF%u30E9%u30B9%22%20%u2192%20javascript%u306E%u5236%u9650%u3067callback%u304C%u5FC5%u9808%20%u2192%20%u7D99%u7D9A%u304C%u6B32%u3057%u3044%0A%22%u53C2%u52A0%u8005%u30EA%u30B9%u30C8%22%0A%22%u6A29%u9650%22')
+
+
+smalltalk.addClass('ForDyNagoya', smalltalk.ToDo, [], 'DyNagoya');
+smalltalk.ForDyNagoya.comment=unescape('%u95A2%u6570%u578B%u8A00%u8A9E%u5316%0AMake%3AOgaki%u306E%u4F5C%u54C1%u3065%u304F%u308A%0A%u6700%u5F37%u306EEditor%u3092%u4F5C%u308B%0ASmalltalk-72%u3068%u304BSTEPS%20project%u3068%u304B%u3082%u3055%u308F%u308A%u305F%u3044')
+
+
+smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2030px")]);return smalltalk.send($rec, "_with_", [unescape("DyNagoya%20%u3068%u306F%20...")]);}(smalltalk.send(html, "_h1", [])));
+    smalltalk.send([[unescape("%u540D%u53E4%u5C4B%u3067%u52D5%u7684%u8A00%u8A9E%28Dynamic%20Language%29%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3046%u30D7%u30ED%u30B0%u30E9%u30DE%u96C6%u56E3%u304CDyNagoya%28Dynamic%20language%20+%20Nagoya%20%3D%20DyNagoya%29%u3067%u3059%u3002"), unescape("%u52D5%u7684%u8A00%u8A9E%u5168%u822C%u3092%u6271%u3063%u3066%u307E%u3059%u304C%u3001%u4E2D%u5FC3%u3068%u306A%u308B%u306E%u306FSmalltalk%u3067%u3059%u3002"), unescape("Smalltalk%u306F%u30A2%u30E9%u30F3%u30B1%u30A4%28Alan%20Kay%201940%20-%20%29%u306E%u7406%u60F3%u306E%u30D1%u30FC%u30BD%u30CA%u30EB%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3067%u3042%u308B%u300EDynabook%u300F%u306E%u66AB%u5B9A%u5B9F%u88C5%u304B%u3089%u8A95%u751F%u3057%u307E%u3057%u305F%u3002"), unescape("DyNagoya%u306E%u300CDy%u300D%u306FDynabook%u306E%u300CDy%u300D%u3082%u517C%u306D%u3066%u3044%u307E%u3059%u3002%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3068%u79C1%u305F%u3061%u306E%u7406%u60F3%u306E%u95A2%u4FC2%u3092%u6A21%u7D22%u3059%u308B%u3053%u3068%u304CDyNagoya%u306E%u76EE%u7684%u3067%u3059%u3002")], [unescape("DyNagoya%u3067%u306F%u3001%u6708%u306B%uFF11%u56DE%u306E%u4F1A%u5408%u3092%u958B%u3044%u3066%u3044%u307E%u3059%u3002%u3053%u306E%u4F1A%u3067%u306F%u3001%u304A%u3044%u3057%u3044%u3054%u98EF%u3092%u98DF%u3079%u306A%u304C%u3089%u3001%u52D5%u7684%u8A00%u8A9E%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3063%u3066%u3044%u307E%u3059%u3002"), unescape("%u4F55%u306E%u6E96%u5099%u3082%u5FC3%u69CB%u3048%u3082%u5FC5%u8981%u3042%u308A%u307E%u305B%u3093%u3002%u304A%u6C17%u8EFD%u306B%u3054%u53C2%u52A0%u304F%u3060%u3055%u3044%u3002")]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h2", []));}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%20style%3A%20%27margin-top%3A%2030px%27%3B%20with%3A%20%27DyNagoya%20%u3068%u306F%20...%27.%20%0A%7B%0A%7B%20%0A%27%u540D%u53E4%u5C4B%u3067%u52D5%u7684%u8A00%u8A9E%28Dynamic%20Language%29%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3046%u30D7%u30ED%u30B0%u30E9%u30DE%u96C6%u56E3%u304CDyNagoya%28Dynamic%20language%20+%20Nagoya%20%3D%20DyNagoya%29%u3067%u3059%u3002%27%20.%0A%27%u52D5%u7684%u8A00%u8A9E%u5168%u822C%u3092%u6271%u3063%u3066%u307E%u3059%u304C%u3001%u4E2D%u5FC3%u3068%u306A%u308B%u306E%u306FSmalltalk%u3067%u3059%u3002%27%20.%0A%27Smalltalk%u306F%u30A2%u30E9%u30F3%u30B1%u30A4%28Alan%20Kay%201940%20-%20%29%u306E%u7406%u60F3%u306E%u30D1%u30FC%u30BD%u30CA%u30EB%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3067%u3042%u308B%u300EDynabook%u300F%u306E%u66AB%u5B9A%u5B9F%u88C5%u304B%u3089%u8A95%u751F%u3057%u307E%u3057%u305F%u3002%27%20.%0A%27DyNagoya%u306E%u300CDy%u300D%u306FDynabook%u306E%u300CDy%u300D%u3082%u517C%u306D%u3066%u3044%u307E%u3059%u3002%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3068%u79C1%u305F%u3061%u306E%u7406%u60F3%u306E%u95A2%u4FC2%u3092%u6A21%u7D22%u3059%u308B%u3053%u3068%u304CDyNagoya%u306E%u76EE%u7684%u3067%u3059%u3002%27%20%0A%7D%20%20.%0A%7B%0A%27DyNagoya%u3067%u306F%u3001%u6708%u306B%uFF11%u56DE%u306E%u4F1A%u5408%u3092%u958B%u3044%u3066%u3044%u307E%u3059%u3002%u3053%u306E%u4F1A%u3067%u306F%u3001%u304A%u3044%u3057%u3044%u3054%u98EF%u3092%u98DF%u3079%u306A%u304C%u3089%u3001%u52D5%u7684%u8A00%u8A9E%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3063%u3066%u3044%u307E%u3059%u3002%27.%0A%27%u4F55%u306E%u6E96%u5099%u3082%u5FC3%u69CB%u3048%u3082%u5FC5%u8981%u3042%u308A%u307E%u305B%u3093%u3002%u304A%u6C17%u8EFD%u306B%u3054%u53C2%u52A0%u304F%u3060%u3055%u3044%u3002%27%20%0A%7D%0A%7D%0Ado%3A%20%5B%20%3Aeach%20%7C%20html%20h2%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%5B%20each%20do%3A%20%5B%20%3Aeach2%20%7C%20html%20span%20with%3A%20each2%20%5D%20%5D%20%5D.%0A%0A'),
+messageSends: ["style:", "with:", "h1", "do:", "css:put:", "span", "h2"],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "800";
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20%27800%27%0A'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+
+
+smalltalk.addClass('Place', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.Place.comment=unescape('DialogBox%20new%20widget%3A%20%28Edelweiss%20new%29%3B%20open%20')
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: unescape('name'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: unescape('address'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: unescape('url'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+unescape('_gCalString'),
+smalltalk.method({
+selector: unescape('gCalString'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_address", []), "__comma", [unescape("%28")]), "__comma", [smalltalk.send(self, "_name", [])]), "__comma", [unescape("%29")]);
+    return self;
+},
+args: [],
+source: unescape('gCalString%0A%20%20%5E%20%28self%20address%29%2C%20%27%28%27%2C%20%28self%20name%29%2C%20%27%29%27'),
+messageSends: [unescape("%2C"), "address", "name"],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'accessing',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [unescape("%u5834%u6240%uFF1A")]);(function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url", [])]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_name", [])]);}(smalltalk.send(html, "_a", [])));return smalltalk.send(smalltalk.GoogleMap || GoogleMap, "_link_address_", [html, smalltalk.send(self, "_address", [])]);}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09html%20h2%20with%3A%5B%20%0A%09%09html%20span%20with%3A%20%27%u5834%u6240%uFF1A%27.%0A%09%09html%20a%20href%3A%20self%20url%3B%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20with%3A%20self%20name.%20%0A%09%09GoogleMap%20link%3A%20html%20address%3A%20self%20address%20%0A%09%5D%0A'),
+messageSends: ["with:", "h2", "span", "href:", "url", "at:put:", "name", "a", "link:address:", "address"],
+referencedClasses: ["GoogleMap"]
+}),
+smalltalk.Place);
+
+
+
+smalltalk.addClass('Doerya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-25-20");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-25-20%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//doerya.gensg.jp/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//doerya.gensg.jp/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20%u3069%u3048%u308A%u3083%u3042");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Cafe%20%u3069%u3048%u308A%u3083%u3042%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+
+
+smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_link_url_description_'),
+smalltalk.method({
+selector: unescape('link%3Aurl%3Adescription%3A'),
+category: 'private',
+fn: function (title, aUrl, aDescription) {
+    var self = this;
+    return [title, aUrl, aDescription];
+    return self;
+},
+args: ["title", "aUrl", "aDescription"],
+source: unescape('link%3A%20title%20url%3A%20aUrl%20description%3A%20aDescription%0A%09%5E%20%7B%20title.%20aUrl.%20aDescription%20%7D%0A%09%09'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+unescape('_list'),
+smalltalk.method({
+selector: unescape('list'),
+category: 'link',
+fn: function () {
+    var self = this;
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", unescape("http%3A//amber-lang.net/"), unescape("Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002")]), smalltalk.send(self, "_link_url_description_", ["cog blog", unescape("http%3A//www.mirandabanda.org/cogblog"), unescape("%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8"), unescape("http%3A//www.box.com/s/bbc7kz53el13ktbxeed4"), unescape("%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D")]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", unescape("http%3A//blog.yengawa.com/"), unescape("Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream"), unescape("http%3A//www.ustream.tv/recorded/18226602"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2")]), smalltalk.send(self, "_link_url_description_", [unescape("ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B"), unescape("http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE")]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", unescape("http%3A//www.asmalltalkbytheseaside.com/"), unescape("Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB")]), smalltalk.send(self, "_link_url_description_", [unescape("cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up"), unescape("http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/"), unescape("Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6"), unescape("http%3A//squab.no-ip.com%3A8080/mosaren/"), unescape("MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("Scratch%20+%20Arduino"), unescape("http%3A//www.yengawa.com/scratch_arduino"), unescape("Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5")]), smalltalk.send(self, "_link_url_description_", ["scat", unescape("http%3A//code.google.com/p/scat/"), unescape("%u6A19%u6E96%u306EScratch%u306FIDE%u304C%u3057%u3087%u307C%u3044%u306E%u3067Pharo%u306BScrach%u3092%u5165%u308C%u308B%u3002")])];
+    return self;
+},
+args: [],
+source: unescape('list%0A%09%5E%20%7B%0A%09%09self%20%0A%09%09%09link%3A%20%27Amber%20Smalltalk%27%0A%09%09%09url%3A%20%27http%3A//amber-lang.net/%27%0A%09%09%09description%3A%20%27Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog%27%0A%09%09%09description%3A%20%27%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8%27%0A%09%09%09url%3A%20%27http%3A//www.box.com/s/bbc7kz53el13ktbxeed4%27%0A%09%09%09description%3A%20%27%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27Yengawa%20Blog%27%0A%09%09%09url%3A%20%27http%3A//blog.yengawa.com/%27%0A%09%09%09description%3A%20%27Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream%27%0A%09%09%09url%3A%20%27http%3A//www.ustream.tv/recorded/18226602%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B%27%0A%09%09%09url%3A%20%27http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop%27%0A%09%09%09description%3A%20%27%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE%27.%0A%09%09self%09%09%09%0A%09%09%09link%3A%20%27A%20Smalltalk%20by%20the%20Seaside%27%0A%09%09%09url%3A%20%27http%3A//www.asmalltalkbytheseaside.com/%27%0A%09%09%09description%3A%20%27Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB%27.%0A%09%09self%0A%09%09%09link%3A%20%27cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up%27%0A%09%09%09url%3A%20%27http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/%27%0A%09%09%09description%3A%20%27Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E%27.%0A%09%09self%0A%09%09%09link%3A%20%27Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%27%0A%09%09%09url%3A%20%27http%3A//squab.no-ip.com%3A8080/mosaren/%27%0A%09%09%09description%3A%20%27MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002%27.%0A%09%09self%0A%09%09%09link%3A%20%27Scratch%20+%20Arduino%27%0A%09%09%09url%3A%20%27http%3A//www.yengawa.com/scratch_arduino%27%0A%09%09%09description%3A%20%27Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5%27.%0A%09%09self%0A%09%09%09link%3A%20%27scat%27%0A%09%09%09url%3A%20%27http%3A//code.google.com/p/scat/%27%0A%09%09%09description%3A%20%27%u6A19%u6E96%u306EScratch%u306FIDE%u304C%u3057%u3087%u307C%u3044%u306E%u3067Pharo%u306BScrach%u3092%u5165%u308C%u308B%u3002%27%0A%09%7D%0A%09%09'),
+messageSends: ["link:url:description:"],
+referencedClasses: []
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+unescape('_open'),
+smalltalk.method({
+selector: unescape('open'),
+category: 'private',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_title_", ["Links"]);smalltalk.send($rec, "_with_", [function (html) {return smalltalk.send(self, "_renderOn_", [html]);}]);return smalltalk.send($rec, "_width_", [600]);}(self));
+    smalltalk.send(self, "_open", [], smalltalk.DialogBox);
+    return self;
+},
+args: [],
+source: unescape('open%0A%09self%20title%3A%20%27Links%27%3B%20with%3A%20%5B%3Ahtml%20%7C%20self%20renderOn%3A%20html%20%5D%3B%20width%3A%20600.%0A%09super%20open.'),
+messageSends: ["title:", "with:", "renderOn:", "width:", "open"],
+referencedClasses: []
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", ["Links"]);
+    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27Links%27.%0A%09%28html%20tag%3A%20%27dl%27%29%20with%3A%20%5B%0A%09%09self%20list%20do%3A%20%5B%20%3Alink%20%7C%0A%09%09%09%28html%20tag%3A%20%27dt%27%29%20with%3A%20%5B%20html%20a%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20href%3A%20%28link%20at%3A%202%29%3B%20with%3A%20%28link%20at%3A%201%29%20%5D.%0A%09%09%09%28html%20tag%3A%20%27dd%27%29%20with%3A%20%28link%20at%3A%203%29%0A%09%09%5D%0A%09%5D%0A'),
+messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:", "a"],
+referencedClasses: []
+}),
+smalltalk.Links);
+
+
+
+smalltalk.addClass('LinkMenu', smalltalk.Circle, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_body_'),
+smalltalk.method({
+selector: unescape('body%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_open", []);return false;}]);smalltalk.send($rec, "_css_put_", [unescape("font-size"), "24px"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('body%3A%20html%0A%09html%20a%20%0A%09%09href%3A%27%23%27%3B%0A%09%09onClick%3A%20%5B%20Links%20new%20open.%20false%20%5D%3B%0A%09%09css%3A%20%27font-size%27%20put%3A%20%2724px%27%3B%0A%09%09css%3A%20%27color%27%20put%3A%20%27white%27%3B%0A%09%09with%3A%20%27Links%27'),
+messageSends: ["href:", "onClick:", "open", "new", "css:put:", "with:", "a"],
+referencedClasses: ["Links"]
+}),
+smalltalk.LinkMenu);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("top%3A250px%3Bleft%3A280px%3Bbackground%3Ared%3B");
+    return self;
+},
+args: [],
+source: unescape('style%0A%20%20%5E%20%27top%3A250px%3Bleft%3A280px%3Bbackground%3Ared%3B%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LinkMenu);
+
+
+
+smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail', 'fixed'], 'DyNagoya');
+smalltalk.Event.comment=unescape('Event%20latest%20addToDSTokai%0AEvent%20latest%20tweet')
+smalltalk.addMethod(
+unescape('_title_'),
+smalltalk.method({
+selector: unescape('title%3A'),
+category: 'accessing',
+fn: function (str) {
+    var self = this;
+    self['@title'] = str;
+    return self;
+},
+args: ["str"],
+source: unescape('title%3A%20str%0A%20%20title%20%3A%3D%20str'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_date_'),
+smalltalk.method({
+selector: unescape('date%3A'),
+category: 'accessing',
+fn: function (aDate) {
+    var self = this;
+    self['@date'] = aDate;
+    return self;
+},
+args: ["aDate"],
+source: unescape('date%3A%20aDate%0A%20%20date%20%3A%3D%20aDate'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_start_'),
+smalltalk.method({
+selector: unescape('start%3A'),
+category: 'accessing',
+fn: function (aTime) {
+    var self = this;
+    self['@start'] = aTime;
+    return self;
+},
+args: ["aTime"],
+source: unescape('start%3A%20aTime%0A%20%20start%20%3A%3D%20aTime'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_end_'),
+smalltalk.method({
+selector: unescape('end%3A'),
+category: 'accessing',
+fn: function (aTime) {
+    var self = this;
+    self['@end'] = aTime;
+    return self;
+},
+args: ["aTime"],
+source: unescape('end%3A%20aTime%0A%20%20end%20%3A%3D%20aTime'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_place_'),
+smalltalk.method({
+selector: unescape('place%3A'),
+category: 'accessing',
+fn: function (aPlaceClass) {
+    var self = this;
+    self['@place'] = smalltalk.send(aPlaceClass, "_new", []);
+    return self;
+},
+args: ["aPlaceClass"],
+source: unescape('place%3A%20aPlaceClass%0A%20%20place%20%3A%3D%20aPlaceClass%20new'),
+messageSends: ["new"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_detail_'),
+smalltalk.method({
+selector: unescape('detail%3A'),
+category: 'accessing',
+fn: function (str) {
+    var self = this;
+    self['@detail'] = str;
+    return self;
+},
+args: ["str"],
+source: unescape('detail%3A%20str%0A%20%20detail%20%3A%3D%20str'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_dstokaiId'),
+smalltalk.method({
+selector: unescape('dstokaiId'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return unescape("6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com");
+    return self;
+},
+args: [],
+source: unescape('dstokaiId%0A%09%5E%20%276ef63uicdv7l17h035m1grg7fs@group.calendar.google.com%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_format_'),
+smalltalk.method({
+selector: unescape('format%3A'),
+category: 'google calendar',
+fn: function (aTime) {
+    var self = this;
+    var d = nil;
+    var formatted = nil;
+    d = smalltalk.send(smalltalk.Date || Date, "_fromString_", [smalltalk.send(smalltalk.send(self['@date'], "__comma", [" "]), "__comma", [aTime])]);
+    formatted = moment(d).add("minutes", moment(d).zone()).format("YYYYMMDDTHHmmss");
+    return smalltalk.send(formatted, "__comma", ["Z"]);
+    return self;
+},
+args: ["aTime"],
+source: unescape('format%3A%20aTime%0A%20%20%7C%20d%20formatted%20%7C%0A%20%20d%20%3A%3D%20Date%20fromString%3A%20%28date%2C%20%27%20%27%2C%20aTime%29.%0A%20%20formatted%20%3A%3D%20%28%3C%20moment%28d%29.add%28%27minutes%27%2C%20moment%28d%29.zone%28%29%29.format%28%27YYYYMMDDTHHmmss%27%29%20%3E%29.%0A%20%20%5E%20formatted%2C%20%27Z%27'),
+messageSends: ["fromString:", unescape("%2C")],
+referencedClasses: ["Date"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_description'),
+smalltalk.method({
+selector: unescape('description'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(unescape("%3Cul%3E"), "__comma", [smalltalk.send(smalltalk.send(self['@detail'], "_collect_", [function (each) {return smalltalk.send(smalltalk.send(unescape("%3Cli%3E"), "__comma", [each]), "__comma", [unescape("%3C/li%3E")]);}]), "_join_", [""])]), "__comma", [unescape("%3C/ul%3E")]);
+    return self;
+},
+args: [],
+source: unescape('description%0A%20%20%5E%20%27%3Cul%3E%27%2C%20%28%0A%09%28detail%20collect%3A%20%5B%3Aeach%20%7C%20%27%3Cli%3E%27%2C%20each%2C%20%27%3C/li%3E%27%20%5D%29%20join%3A%20%27%27%0A%20%20%29%2C%20%27%3C/ul%3E%27'),
+messageSends: [unescape("%2C"), "join:", "collect:"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_tweet'),
+smalltalk.method({
+selector: unescape('tweet'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Dolphin || Dolphin, "_tweet_", [smalltalk.send(self, "_tweetMessage", [])]);
+    return self;
+},
+args: [],
+source: unescape('tweet%0A%09%5E%20Dolphin%20tweet%3A%20self%20tweetMessage'),
+messageSends: ["tweet:", "tweetMessage"],
+referencedClasses: ["Dolphin"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_formatPeriod'),
+smalltalk.method({
+selector: unescape('formatPeriod'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(moment(this['@date']).format("YYYY/MM/DD(ddd) "), "__comma", [self['@start']]), "__comma", [unescape("%u301C")]), "__comma", [self['@end']]);
+    return self;
+},
+args: [],
+source: unescape('formatPeriod%0A%20%20%5E%20%28%3C%20moment%28this%5B%27@date%27%5D%29.format%28%22YYYY/MM/DD%28ddd%29%20%22%29%20%3E%29%2C%20start%2C%20%27%u301C%27%2C%20end'),
+messageSends: [unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_tweetMessage'),
+smalltalk.method({
+selector: unescape('tweetMessage'),
+category: 'Twitter',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [unescape("%20%u5834%u6240%3A")]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/")]);
+    return self;
+},
+args: [],
+source: unescape('tweetMessage%0A%09%5E%20%27%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F%27%2C%0A%09%28self%20formatPeriod%29%2C%0A%09%27%20%u5834%u6240%3A%27%2C%20%28place%20name%29%2C%0A%09%27%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/%27'),
+messageSends: [unescape("%2C"), "formatPeriod", "name"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_join'),
+smalltalk.method({
+selector: unescape('join'),
+category: 'participation',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", [])]);}();
+    return self;
+},
+args: [],
+source: unescape('join%0A%09Login%20user%20%0A%09%09ifNotNil%3A%20%5B%20Participation%20event%3A%20title%20user%3A%20Login%20user%20%5D%0A%09%09ifNil%3A%20%5B%20Window%20alert%3A%20%27You%20need%20to%20log%20in%21%27%20%5D'),
+messageSends: ["ifNotNil:ifNil:", "user", "alert:", "event:user:"],
+referencedClasses: ["Login", "Window", "Participation"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_cancel'),
+smalltalk.method({
+selector: unescape('cancel'),
+category: 'participation',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_delete_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", []), true]);}();
+    return self;
+},
+args: [],
+source: unescape('cancel%0A%09Login%20user%20%0A%09%09ifNotNil%3A%20%5B%20Participation%20event%3A%20title%20user%3A%20Login%20user%20delete%3A%20true%20%5D%0A%09%09ifNil%3A%20%5B%20Window%20alert%3A%20%27You%20need%20to%20log%20in%21%27%20%5D'),
+messageSends: ["ifNotNil:ifNil:", "user", "alert:", "event:user:delete:"],
+referencedClasses: ["Login", "Window", "Participation"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_list_'),
+smalltalk.method({
+selector: unescape('list%3A'),
+category: 'participation',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.Participation || Participation, "_list_callback_", [self['@title'], aBlock]);
+    return self;
+},
+args: ["aBlock"],
+source: unescape('list%3A%20aBlock%0A%09Participation%20list%3A%20title%20callback%3A%20aBlock'),
+messageSends: ["list:callback:"],
+referencedClasses: ["Participation"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [self['@title']]);
+    smalltalk.send(html, "_h2_", [smalltalk.send(smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [($receiver = smalltalk.send(self, "_fixed", [])).klass === smalltalk.Boolean ? $receiver ? function () {return "";}() : function () {return unescape("%3F");}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "";}, function () {return unescape("%3F");}])])]);
+    smalltalk.send(self['@place'], "_renderOn_", [html]);
+    smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);
+    smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A%2030px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self['@detail'], "_do_", [function (each) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [each]);}]);}]);}(smalltalk.send(html, "_div", []))]);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["participants"]);
+    (function ($rec) {smalltalk.send($rec, "_event_", [self]);return smalltalk.send($rec, "_render", []);}(smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_new", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09html%20h1%3A%20title.%0A%09html%20h2%3A%20%27%u65E5%u6642%uFF1A%27%2C%20self%20formatPeriod%2C%20%28self%20fixed%20ifTrue%3A%20%5B%27%27%5D%20ifFalse%3A%20%5B%20%27%3F%27%20%5D%29.%0A%09place%20renderOn%3A%20html.%0A%09html%20h2%3A%20%27%u5185%u5BB9%uFF1A%27.%0A%09html%20h3%20with%3A%20%28html%20div%20style%3A%20%27margin-left%3A%2030px%27%3B%20with%3A%5B%0A%09%09detail%20do%3A%20%5B%20%3Aeach%20%7C%20html%20div%20with%3A%20each%20%5D.%0A%09%5D%29.%0A%09html%20div%20id%3A%20%27participants%27.%0A%09ParticipantsList%20new%20event%3A%20self%3B%20render.%0A'),
+messageSends: ["h1:", "h2:", unescape("%2C"), "formatPeriod", "ifTrue:ifFalse:", "fixed", "renderOn:", "with:", "h3", "style:", "do:", "div", "id:", "event:", "render", "new"],
+referencedClasses: ["ParticipantsList"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_listDo_'),
+smalltalk.method({
+selector: unescape('listDo%3A'),
+category: 'participation',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self, "_list_", [function (list) {return smalltalk.send(list, "_do_", [aBlock]);}]);
+    return self;
+},
+args: ["aBlock"],
+source: unescape('listDo%3A%20aBlock%0A%09self%20list%3A%20%5B%20%3Alist%20%7C%20list%20do%3A%20aBlock%20%5D'),
+messageSends: ["list:", "do:"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_addToCalendar'),
+smalltalk.method({
+selector: unescape('addToCalendar'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl", []), "_blank"]);
+    return self;
+},
+args: [],
+source: unescape('addToCalendar%0A%20%20window%20open%3A%20%28self%20gcalUrl%29%20target%3A%20%27_blank%27'),
+messageSends: ["open:target:", "gcalUrl"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_addToDSTokai'),
+smalltalk.method({
+selector: unescape('addToDSTokai'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl_description_", [smalltalk.send(self, "_dstokaiId", []), smalltalk.send(self, "_descriptionForDSTokai", [])]), "_blank"]);
+    return self;
+},
+args: [],
+source: unescape('addToDSTokai%0A%20%20window%20open%3A%20%28self%20gcalUrl%3A%20self%20dstokaiId%20description%3A%20self%20descriptionForDSTokai%29%20target%3A%20%27_blank%27'),
+messageSends: ["open:target:", "gcalUrl:description:", "dstokaiId", "descriptionForDSTokai"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_gcalUrl'),
+smalltalk.method({
+selector: unescape('gcalUrl'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_gcalUrl_description_", [nil, smalltalk.send(self, "_description", [])]);
+    return self;
+},
+args: [],
+source: unescape('gcalUrl%0A%09%5E%20self%20gcalUrl%3A%20nil%20description%3A%20self%20description'),
+messageSends: ["gcalUrl:description:", "description"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_descriptionForDSTokai'),
+smalltalk.method({
+selector: unescape('descriptionForDSTokai'),
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return unescape("%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E");
+    return self;
+},
+args: [],
+source: unescape('descriptionForDSTokai%0A%20%20%5E%20%27%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_gcalUrl_description_'),
+smalltalk.method({
+selector: unescape('gcalUrl%3Adescription%3A'),
+category: 'google calendar',
+fn: function (src, aStr) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_gcalParams_desc_", [src, aStr]), "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}]);
+    return self;
+},
+args: ["src", "aStr"],
+source: unescape('gcalUrl%3A%20src%20description%3A%20aStr%0A%09%5E%20%20%28self%20gcalParams%3A%20src%20desc%3A%20aStr%29%0A%09%09inject%3A%20%27http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE%27%0A%09%09into%3A%20%5B%20%3Aacc%20%3Ax%20%7C%20acc%2C%20%27%26%27%2C%20x%20%5D'),
+messageSends: ["inject:into:", "gcalParams:desc:", unescape("%2C")],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_gcalParams_desc_'),
+smalltalk.method({
+selector: unescape('gcalParams%3Adesc%3A'),
+category: 'google calendar',
+fn: function (src, aStr) {
+    var self = this;
+    var base = nil;
+    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [self['@title']])]), smalltalk.send(unescape("details%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [aStr])]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(self['@place'], "_gCalString", [])])]), smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(smalltalk.send(smalltalk.send(self, "_format_", [self['@start']]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])])])];
+    ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send(unescape("src%3D"), "__comma", [src])]);}() : nil;
+    return base;
+    return self;
+},
+args: ["src", "aStr"],
+source: unescape('gcalParams%3A%20src%20desc%3A%20aStr%0A%09%7C%20base%20%7C%0A%09base%20%3A%3D%20%7B%0A%09%09%27ctz%3DAsia/Tokyo%27.%0A%09%09%27ctext%3D%27%2C%20%28Util%20encode%3A%20title%29.%0A%09%09%27details%3D%27%2C%20%28Util%20encode%3A%20aStr%29.%0A%09%09%27location%3D%27%2C%20%28Util%20encode%3A%20place%20gCalString%29.%0A%09%09%27dates%3D%27%2C%20%28Util%20encode%3A%20%28%28self%20format%3A%20start%29%20%2C%20%27/%27%2C%20%28self%20format%3A%20end%29%29%29%0A%09%7D.%0A%0A%09src%20ifNotNil%3A%20%5B%20base%20add%3A%20%27src%3D%27%2C%20src%20%5D.%0A%09%5E%20base%0A'),
+messageSends: [unescape("%2C"), "encode:", "gCalString", "format:", "ifNotNil:", "add:"],
+referencedClasses: ["Util"]
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_fixed'),
+smalltalk.method({
+selector: unescape('fixed'),
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return ($receiver = self['@fixed']) == nil || $receiver == undefined ? function () {return true;}() : $receiver;
+    return self;
+},
+args: [],
+source: unescape('fixed%0A%20%20%5E%20fixed%20ifNil%3A%20%5B%20true%20%5D'),
+messageSends: ["ifNil:"],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+unescape('_fixed_'),
+smalltalk.method({
+selector: unescape('fixed%3A'),
+category: 'accessing',
+fn: function (aBool) {
+    var self = this;
+    self['@fixed'] = aBool;
+    return self;
+},
+args: ["aBool"],
+source: unescape('fixed%3A%20aBool%0A%20%20fixed%20%3A%3D%20aBool'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+
+smalltalk.addMethod(
+unescape('_latest'),
+smalltalk.method({
+selector: unescape('latest'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_meeting05", []);
+    return self;
+},
+args: [],
+source: unescape('latest%0A%09%5E%20self%20meeting05'),
+messageSends: ["meeting05"],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting02'),
+smalltalk.method({
+selector: unescape('meeting02'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E"), unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting02%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0302%27%3B%0A%09%09date%3A%20%272012/01/28%27%3B%0A%09%09start%3A%20%2717%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A00%3A00%27%3B%0A%09%09place%3A%20Doerya%3B%0A%09%09detail%3A%20%7B%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E%27.%0A%27Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27.%0A%27%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B%27%0A%7D'),
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["Doerya"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting03'),
+smalltalk.method({
+selector: unescape('meeting03'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("cogdroid%u306B%u3064%u3044%u3066"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting03%0A%09%5E%20self%20new%20%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0303%27%3B%0A%09%09date%3A%20%272012/02/26%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Hakkaku%3B%0A%09%09detail%3A%20%7B%0A%27cogdroid%u306B%u3064%u3044%u3066%27.%0A%27Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["Hakkaku"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting04'),
+smalltalk.method({
+selector: unescape('meeting04'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0304")]);smalltalk.send($rec, "_date_", [unescape("2012/03/31")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.DyNagoyaBuilding || DyNagoyaBuilding]);return smalltalk.send($rec, "_detail_", [[unescape("Scratch%20%u3092%u3044%u3058%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Newspeak%u3092%u3044%u3058%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting04%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0304%27%3B%0A%09%09date%3A%20%272012/03/31%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20DyNagoyaBuilding%3B%0A%09%09detail%3A%20%7B%0A%27Scratch%20%u3092%u3044%u3058%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27Newspeak%u3092%u3044%u3058%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["DyNagoyaBuilding"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting05'),
+smalltalk.method({
+selector: unescape('meeting05'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0305")]);smalltalk.send($rec, "_date_", [unescape("2012/04/22")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.AnyWhere || AnyWhere]);return smalltalk.send($rec, "_detail_", [[unescape("%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting05%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0305%27%3B%0A%09%09date%3A%20%272012/04/22%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20AnyWhere%3B%0A%09%09detail%3A%20%7B%0A%27%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["AnyWhere"]
+}),
+smalltalk.Event.klass);
+
+
+smalltalk.addClass('Participation', smalltalk.RemoteObject, [], 'DyNagoya');
+smalltalk.Participation.comment=unescape('Participation%20event%3A%20%27meeting02%27%20name%3A%20%27maeda_%27%0AParticipation%20event%3A%20%27meeting02%27%20name%3A%20%27bleis%27%0A%0AParticipation%20list%3A%20%27meeting02%27%20callback%3A%20%5B%20%3Alist%20%7C%20console%20log%3A%20list%20size%20%5D%0AParticipation%20list%3A%20%27meeting02%27%20callback%3A%20%5B%20%3Alist%20%7C%20list%20inspect%20%5D%20%0A%0AParticipation%20list%3A%20%27meeting02%27%20callback%3A%20%5B%20%3Alist%20%7C%20list%20do%3A%20%5B%3Aeach%20%7C%20each%20delete%5D%20%5D%20')
+
+smalltalk.addMethod(
+unescape('_afterDelete'),
+smalltalk.method({
+selector: unescape('afterDelete'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+},
+args: [],
+source: unescape('afterDelete%0A%09%5E%20%5B%20ParticipantsList%20render%20%5D'),
+messageSends: ["render"],
+referencedClasses: ["ParticipantsList"]
+}),
+smalltalk.Participation.klass);
+
+smalltalk.addMethod(
+unescape('_afterPut'),
+smalltalk.method({
+selector: unescape('afterPut'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+},
+args: [],
+source: unescape('afterPut%0A%09%5E%20%5B%20ParticipantsList%20render%20%5D'),
+messageSends: ["render"],
+referencedClasses: ["ParticipantsList"]
+}),
+smalltalk.Participation.klass);
+
+
+smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_event_'),
+smalltalk.method({
+selector: unescape('event%3A'),
+category: 'accessing',
+fn: function (aEvent) {
+    var self = this;
+    self['@event'] = aEvent;
+    return self;
+},
+args: ["aEvent"],
+source: unescape('event%3A%20aEvent%0A%09event%20%3A%3D%20aEvent'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+unescape('_renderButton_users_'),
+smalltalk.method({
+selector: unescape('renderButton%3Ausers%3A'),
+category: 'rendering',
+fn: function (html, users) {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn disabled"]);return smalltalk.send($rec, "_with_", [unescape("%u7533%u3057%u8FBC%u307F%u306B%u306F%u30ED%u30B0%u30A4%u30F3%28%u53F3%u4E0A%29%u304C%u5FC5%u8981%u3067%u3059")]);}(smalltalk.send(html, "_span", []));}() : function () {return ($receiver = smalltalk.send(users, "_includes_", [smalltalk.send(smalltalk.Login || Login, "_user", [])])).klass === smalltalk.Boolean ? !$receiver ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}() : function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}() : smalltalk.send($receiver, "_ifFalse_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}, function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}]);}();
+    return self;
+},
+args: ["html", "users"],
+source: unescape('renderButton%3A%20html%20users%3A%20users%0A%09%09Login%20user%20%0A%09%09%09ifNil%3A%20%5B%20html%20span%20class%3A%20%27btn%20disabled%27%3B%20with%3A%20%27%u7533%u3057%u8FBC%u307F%u306B%u306F%u30ED%u30B0%u30A4%u30F3%28%u53F3%u4E0A%29%u304C%u5FC5%u8981%u3067%u3059%27%20%5D%0A%09%09%09ifNotNil%3A%5B%0A%09%09%09%09%28users%20includes%3A%20Login%20user%29%0A%09%09%09%09%09ifFalse%3A%20%5B%20html%20a%20class%3A%20%27btn%27%3B%20with%3A%20%27%u53C2%u52A0%u3059%u308B%27%3B%20onClick%3A%20%5B%20event%20join%20%5D%20%5D%0A%09%09%09%09%09ifTrue%3A%20%5Bhtml%20a%20class%3A%20%27btn%27%3B%20with%3A%20%27%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059%27%3B%20onClick%3A%20%5Bevent%20%20cancel%20%5D%20%5D%0A%09%09%09%5D%0A'),
+messageSends: ["ifNil:ifNotNil:", "user", "class:", "with:", "span", "ifFalse:ifTrue:", "includes:", "onClick:", "join", "a", "cancel"],
+referencedClasses: ["Login"]
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+unescape('_renderOn_'),
+smalltalk.method({
+selector: unescape('renderOn%3A'),
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    var users = nil;
+    smalltalk.send(self['@event'], "_list_", [function (list) {smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [unescape("%u53C2%u52A0%u8005%uFF1A")]);smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {users = smalltalk.send(list, "_collect_", [function (each) {return smalltalk.send(each, "_user", []);}]);return smalltalk.send(users, "_do_", [function (each) {return smalltalk.send(smalltalk.Twitter || Twitter, "_link_user_", [html, each]);}]);}]);return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-top"), "15px"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(self, "_renderButton_users_", [html, users]);return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "10px"]);smalltalk.send($rec, "_with_", [unescape("Google%20Calendar%u306B%u767B%u9332")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_addToCalendar", []);}]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_div", []));}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderOn%3A%20html%0A%09%7C%20users%20%7C%0A%09event%20list%3A%20%5B%20%3Alist%20%7C%0A%09%09html%20h2%20with%3A%20%27%u53C2%u52A0%u8005%uFF1A%27.%0A%09%09html%20div%20with%3A%20%5B%0A%09%09%09users%20%3A%3D%20list%20collect%3A%20%5B%20%3Aeach%20%7C%20each%20user%20%5D.%0A%09%09%09users%20do%3A%5B%20%3Aeach%20%7C%20Twitter%20link%3Ahtml%20user%3A%20each%20%5D%0A%09%09%5D.%0A%09%09html%20div%20css%3A%20%27margin-top%27%20put%3A%20%2715px%27%3B%20with%3A%20%5B%0A%09%09%09self%20renderButton%3A%20html%20users%3A%20users.%0A%09%09%09html%20a%20class%3A%20%27btn%27%3B%20css%3A%20%27margin-left%27%20put%3A%20%2710px%27%3B%20with%3A%20%27Google%20Calendar%u306B%u767B%u9332%27%3B%20onClick%3A%20%5B%20event%20addToCalendar%20%5D%0A%09%09%5D%0A%09%5D'),
+messageSends: ["list:", "with:", "h2", "div", "collect:", "user", "do:", "link:user:", "css:put:", "renderButton:users:", "class:", "onClick:", "addToCalendar", "a"],
+referencedClasses: ["Twitter"]
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+unescape('_render'),
+smalltalk.method({
+selector: unescape('render'),
+category: 'rendering',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_class", []), "_render", []);
+    return self;
+},
+args: [],
+source: unescape('render%0A%09self%20class%20render'),
+messageSends: ["render", "class"],
+referencedClasses: []
+}),
+smalltalk.ParticipantsList);
+
+
+smalltalk.ParticipantsList.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+unescape('_render'),
+smalltalk.method({
+selector: unescape('render'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var html = nil;
+    html = smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [smalltalk.send(unescape("%23participants"), "_asJQuery", [])]);
+    smalltalk.send(smalltalk.send(html, "_root", []), "_empty", []);
+    smalltalk.send(smalltalk.send(self, "_new", []), "_renderOn_", [html]);
+    return self;
+},
+args: [],
+source: unescape('render%0A%09%7C%20html%20%7C%0A%09html%20%3A%3D%20HTMLCanvas%20onJQuery%3A%20%27%23participants%27%20asJQuery.%0A%09html%20root%20empty.%0A%09self%20new%20renderOn%3A%20html.'),
+messageSends: ["onJQuery:", "asJQuery", "empty", "root", "renderOn:", "new"],
+referencedClasses: ["HTMLCanvas"]
+}),
+smalltalk.ParticipantsList.klass);
+
+smalltalk.addMethod(
+unescape('_new'),
+smalltalk.method({
+selector: unescape('new'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.Widget.klass);}() : $receiver;
+    return self['@s'];
+    return self;
+},
+args: [],
+source: unescape('new%0A%09s%20ifNil%3A%20%5B%20%20s%20%3A%3D%20super%20new%20%5D.%0A%09%5E%20s'),
+messageSends: ["ifNil:", "new"],
+referencedClasses: []
+}),
+smalltalk.ParticipantsList.klass);
+
+
+smalltalk.addClass('ATeam', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u897F%u533A%u725B%u5CF6%u753A6%u756A1%u53F7%20%u540D%u53E4%u5C4B%u30EB%u30FC%u30BB%u30F3%u30C8%u30BF%u30EF%u30FC32F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u897F%u533A%u725B%u5CF6%u753A6%u756A1%u53F7%20%u540D%u53E4%u5C4B%u30EB%u30FC%u30BB%u30F3%u30C8%u30BF%u30EF%u30FC32F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.a-tm.co.jp/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.a-tm.co.jp/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u682A%u5F0F%u4F1A%u793E%u30A8%u30A4%u30C1%u30FC%u30E0");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u682A%u5F0F%u4F1A%u793E%u30A8%u30A4%u30C1%u30FC%u30E0%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+
+
+smalltalk.addClass('NewCast', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u8475%uFF13%u4E01%u76EE%uFF12%uFF12%u2212%uFF18");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u8475%uFF13%u4E01%u76EE%uFF12%uFF12%u2212%uFF18%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.xmldo.jp/about/seminarroom/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.xmldo.jp/about/seminarroom/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30CB%u30E5%u30FC%u30AD%u30E3%u30B9%u30C8");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30CB%u30E5%u30FC%u30AD%u30E3%u30B9%u30C8%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+
+
+smalltalk.addClass('Edelweiss', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u6771%u685C1-10-1");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u6771%u685C1-10-1%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www8.ocn.ne.jp/%7Eedel/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www8.ocn.ne.jp/%7Eedel/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30A8%u30FC%u30C7%u30EB%u30EF%u30A4%u30B9");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30A8%u30FC%u30C7%u30EB%u30EF%u30A4%u30B9%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+
+
+smalltalk.addClass('Vinceness', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-6-29%20%u30B5%u30A6%u30B9%u30CF%u30A6%u30B9B1");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-6-29%20%u30B5%u30A6%u30B9%u30CF%u30A6%u30B9B1%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi%3Fcategory%3D5%26page%3D1");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi%3Fcategory%3D5%26page%3D1%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30D5%u30A7%20%u30F4%u30A1%u30F3%u30B5%u30F3%u30CC%u30C9%u30A5");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30AB%u30D5%u30A7%20%u30F4%u30A1%u30F3%u30B5%u30F3%u30CC%u30C9%u30A5%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('ZTres', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.forvex.co.jp/ztres/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.forvex.co.jp/ztres/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20Z-TRES");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Cafe%20Z-TRES%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+
+
+smalltalk.addClass('Maruichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+
+
+smalltalk.addClass('AnyWhere', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u672A%u5B9A");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u672A%u5B9A%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+
+
+smalltalk.addClass('BondCoffee', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%u30FC%uFF11%uFF11%u30FC%uFF16");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%u30FC%uFF11%uFF11%u30FC%uFF16%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.bondcoffee.jp/index.html");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.bondcoffee.jp/index.html%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30DC%u30F3%u30C9%u30B3%u30FC%u30D2%u30FC");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30DC%u30F3%u30C9%u30B3%u30FC%u30D2%u30FC%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+
+
+smalltalk.addClass('Syushin', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u9326%uFF11%uFF0D%uFF11%uFF13%uFF0D%uFF13%uFF11%u30DF%u30C4%u30EF%u30D3%u30EB%uFF11%uFF26");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u9326%uFF11%uFF0D%uFF11%uFF13%uFF0D%uFF13%uFF11%u30DF%u30C4%u30EF%u30D3%u30EB%uFF11%uFF26%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.hotpepper.jp/strJ000021742/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.hotpepper.jp/strJ000021742/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u5C45%u9152%u5C4B%20%u9152%u795E");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u5C45%u9152%u5C4B%20%u9152%u795E%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+
+
+smalltalk.addClass('LokantaAYHAN', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//star.gmobb.jp/lokanta_ayhan/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//star.gmobb.jp/lokanta_ayhan/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+unescape('_notice'),
+smalltalk.method({
+selector: unescape('notice'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u65E5%u66DC%u65E5%u4F11%u307F");
+    return self;
+},
+args: [],
+source: unescape('notice%0A%20%20%5E%20%27%u65E5%u66DC%u65E5%u4F11%u307F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+
+
+smalltalk.addClass('Katatumuri', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u4E38%u306E%u51852-14-15%20%u6CB3%u5408%u30D3%u30EB%u3000%uFF12%uFF26");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u4E38%u306E%u51852-14-15%20%u6CB3%u5408%u30D3%u30EB%u3000%uFF12%uFF26%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230102/23007756/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.tabelog.com/aichi/A2301/A230102/23007756/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30BF%u30C4%u30E0%u30EA");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30AB%u30BF%u30C4%u30E0%u30EA%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+
+
+smalltalk.addClass('Hakkaku', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.gnavi.co.jp/n004601/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.gnavi.co.jp/n004601/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+
+
+smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span6"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09%09html%20div%20class%3A%20%27span7%27%3B%20style%3A%20%27margin-top%3A%2010px%27%3B%0A%09%09%09%09with%3A%20Dolphin%20new%3B%0A%09%09%09%09with%3A%20Logo%20new.%0A%09%09html%20div%20class%3A%20%27span6%27%3B%20with%3A%20Board%20new%0A'),
+messageSends: ["class:", "style:", "with:", "new", "div"],
+referencedClasses: ["Dolphin", "Logo", "Board"]
+}),
+smalltalk.TopPage);
+
+
+
+smalltalk.addClass('AboutSmalltalk', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_renderBody_'),
+smalltalk.method({
+selector: unescape('renderBody%3A'),
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [unescape("Smalltalk%u3068%u306F")]);
+    smalltalk.send([[unescape("Smalltalk%u3068%u805E%u304F%u3068%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306E%u30A4%u30E1%u30FC%u30B8%u304C%u5F37%u3044%u306E%u3067%u306F%u306A%u3044%u3067%u3057%u3087%u3046%u304B%uFF1F"), unescape("%u307E%u305F%u3001Java%u3084C++%u306A%u3069%u3067%u4E16%u306B%u6D78%u900F%u3057%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068Smalltalk%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068%u306F%u9055%u3046%u3068%u805E%u3044%u305F%u3053%u3068%u304C%u3042%u308B%u304B%u3082%u77E5%u308C%u307E%u305B%u3093%u3002"), unescape("%u5B9F%u969B%u5168%u304F%u7570%u306A%u308B%u3082%u306E%u3067%u3059%u304C%u3001%u8AAC%u660E%u3059%u308B%u306E%u3082%u9762%u5012%u306A%u306E%u3067%u3001%u3068%u308A%u3042%u3048%u305A%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306F%u7F6E%u3044%u3066%u304A%u304D%u307E%u3057%u3087%u3046%u3002")], [], [unescape("Smalltalk%u306F%u8A00%u8A9E%u3068%u3044%u3046%u3088%u308A%u74B0%u5883%u3067%u3059%u3002"), unescape("PC%u4E0A%u306BSmalltalk%u3068%u3044%u3046%u4EEE%u60F3%u74B0%u5883%u3092%u8D77%u52D5%u3057%u3001%u305D%u306E%u4EEE%u60F3%u74B0%u5883%u306E%u4E2D%u3067%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u8A18%u8FF0%u3057%u307E%u3059%u3002"), unescape("%u91CD%u8981%u306A%u30DD%u30A4%u30F3%u30C8%u306F%u4EEE%u60F3%u74B0%u5883%u81EA%u4F53%u304CSmalltalk%u306E%u6587%u6CD5%u3067%u8A18%u8FF0%u3055%u308C%u3066%u3044%u308B%u70B9%u3067%u3059%u3002"), unescape("Smalltalk%u306E%u6587%u6CD5%u306F%u975E%u5E38%u306B%u30B7%u30F3%u30D7%u30EB%u3067%u3001%u305D%u306E%u30B7%u30F3%u30D7%u30EB%u306A%u6587%u6CD5%u3067%u4EEE%u60F3%u74B0%u5883%u3059%u3079%u3066%u304C%u8A18%u8FF0%u3055%u308C%u3066%u3044%u307E%u3059%u3002%u3057%u304B%u3082%u7C21%u5358%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u53EF%u80FD%u3067%u3059%u3002"), unescape("%u4F8B%u3048%u3070%u3001%u4EEE%u60F3%u74B0%u5883%u306B%u306FIDE%u3082%u542B%u307E%u308C%u3066%u3044%u307E%u3059%u304C%u3001%u305D%u306EIDE%u81EA%u4F53%u306E%u30B3%u30FC%u30C9%u3092%u66F8%u304D%u63DB%u3048%u3066%u3001%u81EA%u5206%u597D%u307F%u306EIDE%u306B%u4ED5%u7ACB%u3066%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002"), unescape("IDE%u3060%u3051%u3067%u306A%u304F%u3001%u30B3%u30F3%u30D1%u30A4%u30E9%u3084%u30A4%u30F3%u30BF%u30D7%u30EA%u30BF%u3001%u6587%u5B57%u5217%u30AF%u30E9%u30B9%u3084%u6570%u5024%u30AF%u30E9%u30B9%u306A%u3069%u306E%u57FA%u672C%u30AF%u30E9%u30B9%u3082%u30D7%u30ED%u30B0%u30E9%u30E0%u5B9F%u884C%u4E2D%u306B%u597D%u304D%u52DD%u624B%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002"), unescape("%u4E16%u9593%u4E00%u822C%u306E%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u8A00%u8A9E%u3067%u306F%u3001%u30B3%u30FC%u30C9%u3092%u66F8%u304F%u30D5%u30A7%u30FC%u30BA%u3068%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u30D5%u30A7%u30FC%u30BA%u306F%u5225%u7269%u3067%u3059%u304C%u3001Smalltalk%u306B%u306F%u305D%u306E%u57A3%u6839%u304C%u3086%u308B%u304F%u66D6%u6627%u306B%u306A%u3063%u3066%u3044%u307E%u3059%u3002"), unescape("%u751F%u304D%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3092%u6355%u307E%u3048%u3066%u3001%u305D%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3068%u5BFE%u8A71%u7684%u306B%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u3053%u3068%u3082%u3067%u304D%u307E%u3059%u3002")], [unescape("Smalltalk%u306E%u5F37%u529B%u3055%u3092%u6D3B%u304B%u3057%u3066%u3001%u5B9F%u52D9%u3067%u4F7F%u3063%u3066%u3044%u308B%u65B9%u3082%u3044%u307E%u3059%28%u6570%u306F%u5C11%u306A%u3044%u3068%u306F%u601D%u3044%u307E%u3059%u304C%u30FB%u30FB%u30FB%29%u3002"), unescape("%u4E00%u65B9%u3067Smalltalk%u306F%u7406%u60F3%u306E%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u74B0%u5883%u3092%u8FFD%u6C42%u3059%u308B%u305F%u3081%u306E%u5B9F%u9A13%u5834%u3068%u3082%u8A00%u3048%u307E%u3059%u3002"), unescape("%u65B0%u3057%u3044%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u306B%u3082%u7A4D%u6975%u7684%u3067%u3001Arduino%u3084Kinect%u306A%u3069%u306E%u5916%u90E8%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u3082%u53EF%u80FD%u3067%u3059%u3002"), unescape("iPad%u3084Android%u4E0A%u3067%u52D5%u4F5C%u3059%u308BSmalltalk%u3082%u6D3B%u767A%u306B%u958B%u767A%u3055%u308C%u3066%u3044%u307E%u3059%u3002")]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h3", []));}]);
+    return self;
+},
+args: ["html"],
+source: unescape('renderBody%3A%20html%0A%09html%20h1%3A%20%27Smalltalk%u3068%u306F%27.%0A%7B%0A%7B%20%27Smalltalk%u3068%u805E%u304F%u3068%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306E%u30A4%u30E1%u30FC%u30B8%u304C%u5F37%u3044%u306E%u3067%u306F%u306A%u3044%u3067%u3057%u3087%u3046%u304B%uFF1F%27.%0A%27%u307E%u305F%u3001Java%u3084C++%u306A%u3069%u3067%u4E16%u306B%u6D78%u900F%u3057%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068Smalltalk%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068%u306F%u9055%u3046%u3068%u805E%u3044%u305F%u3053%u3068%u304C%u3042%u308B%u304B%u3082%u77E5%u308C%u307E%u305B%u3093%u3002%27.%0A%27%u5B9F%u969B%u5168%u304F%u7570%u306A%u308B%u3082%u306E%u3067%u3059%u304C%u3001%u8AAC%u660E%u3059%u308B%u306E%u3082%u9762%u5012%u306A%u306E%u3067%u3001%u3068%u308A%u3042%u3048%u305A%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306F%u7F6E%u3044%u3066%u304A%u304D%u307E%u3057%u3087%u3046%u3002%27%20%7D.%20%7B%7D.%20%0A%7B%0A%27Smalltalk%u306F%u8A00%u8A9E%u3068%u3044%u3046%u3088%u308A%u74B0%u5883%u3067%u3059%u3002%27.%0A%27PC%u4E0A%u306BSmalltalk%u3068%u3044%u3046%u4EEE%u60F3%u74B0%u5883%u3092%u8D77%u52D5%u3057%u3001%u305D%u306E%u4EEE%u60F3%u74B0%u5883%u306E%u4E2D%u3067%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u8A18%u8FF0%u3057%u307E%u3059%u3002%27.%0A%27%u91CD%u8981%u306A%u30DD%u30A4%u30F3%u30C8%u306F%u4EEE%u60F3%u74B0%u5883%u81EA%u4F53%u304CSmalltalk%u306E%u6587%u6CD5%u3067%u8A18%u8FF0%u3055%u308C%u3066%u3044%u308B%u70B9%u3067%u3059%u3002%27.%0A%27Smalltalk%u306E%u6587%u6CD5%u306F%u975E%u5E38%u306B%u30B7%u30F3%u30D7%u30EB%u3067%u3001%u305D%u306E%u30B7%u30F3%u30D7%u30EB%u306A%u6587%u6CD5%u3067%u4EEE%u60F3%u74B0%u5883%u3059%u3079%u3066%u304C%u8A18%u8FF0%u3055%u308C%u3066%u3044%u307E%u3059%u3002%u3057%u304B%u3082%u7C21%u5358%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u53EF%u80FD%u3067%u3059%u3002%27.%0A%27%u4F8B%u3048%u3070%u3001%u4EEE%u60F3%u74B0%u5883%u306B%u306FIDE%u3082%u542B%u307E%u308C%u3066%u3044%u307E%u3059%u304C%u3001%u305D%u306EIDE%u81EA%u4F53%u306E%u30B3%u30FC%u30C9%u3092%u66F8%u304D%u63DB%u3048%u3066%u3001%u81EA%u5206%u597D%u307F%u306EIDE%u306B%u4ED5%u7ACB%u3066%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002%27%20.%0A%27IDE%u3060%u3051%u3067%u306A%u304F%u3001%u30B3%u30F3%u30D1%u30A4%u30E9%u3084%u30A4%u30F3%u30BF%u30D7%u30EA%u30BF%u3001%u6587%u5B57%u5217%u30AF%u30E9%u30B9%u3084%u6570%u5024%u30AF%u30E9%u30B9%u306A%u3069%u306E%u57FA%u672C%u30AF%u30E9%u30B9%u3082%u30D7%u30ED%u30B0%u30E9%u30E0%u5B9F%u884C%u4E2D%u306B%u597D%u304D%u52DD%u624B%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002%27.%0A%27%u4E16%u9593%u4E00%u822C%u306E%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u8A00%u8A9E%u3067%u306F%u3001%u30B3%u30FC%u30C9%u3092%u66F8%u304F%u30D5%u30A7%u30FC%u30BA%u3068%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u30D5%u30A7%u30FC%u30BA%u306F%u5225%u7269%u3067%u3059%u304C%u3001Smalltalk%u306B%u306F%u305D%u306E%u57A3%u6839%u304C%u3086%u308B%u304F%u66D6%u6627%u306B%u306A%u3063%u3066%u3044%u307E%u3059%u3002%27%20.%0A%27%u751F%u304D%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3092%u6355%u307E%u3048%u3066%u3001%u305D%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3068%u5BFE%u8A71%u7684%u306B%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u3053%u3068%u3082%u3067%u304D%u307E%u3059%u3002%27%0A%7D%20.%0A%22%27Eclipse%u3084Visual%20Studio%u306A%u3069%u306E%u30C7%u30D0%u30C3%u30B0%u5B9F%u884C%u306E%u30A4%u30E1%u30FC%u30B8%u304C%u8FD1%u3044%u304B%u3082%u77E5%u308C%u307E%u305B%u3093%u3002Smalltalk%u306E%u958B%u767A%u306F%u3001OS%u3084%u30B3%u30F3%u30D1%u30A4%u30E9%u81EA%u4F53%u3092%u30C7%u30D0%u30C3%u30B0%u30E2%u30FC%u30C9%u3067%u52D5%u304B%u3057%u3066%u3001%u30B9%u30C6%u30C3%u30D7%u5B9F%u884C%u3057%u305F%u308A%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u306E%u72B6%u614B%u3092%u898B%u306A%u304C%u3089%u3001%0A%u30B3%u30FC%u30C9%u3092%u66F8%u304D%u63DB%u3048%u3066%u3044%u308D%u3044%u308D%u8A66%u3057%u305F%u308A%u3067%u304D%u307E%u3059%u3002%27.%22%0A%7B%0A%27Smalltalk%u306E%u5F37%u529B%u3055%u3092%u6D3B%u304B%u3057%u3066%u3001%u5B9F%u52D9%u3067%u4F7F%u3063%u3066%u3044%u308B%u65B9%u3082%u3044%u307E%u3059%28%u6570%u306F%u5C11%u306A%u3044%u3068%u306F%u601D%u3044%u307E%u3059%u304C%u30FB%u30FB%u30FB%29%u3002%27.%0A%27%u4E00%u65B9%u3067Smalltalk%u306F%u7406%u60F3%u306E%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u74B0%u5883%u3092%u8FFD%u6C42%u3059%u308B%u305F%u3081%u306E%u5B9F%u9A13%u5834%u3068%u3082%u8A00%u3048%u307E%u3059%u3002%27.%0A%27%u65B0%u3057%u3044%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u306B%u3082%u7A4D%u6975%u7684%u3067%u3001Arduino%u3084Kinect%u306A%u3069%u306E%u5916%u90E8%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u3082%u53EF%u80FD%u3067%u3059%u3002%27.%0A%27iPad%u3084Android%u4E0A%u3067%u52D5%u4F5C%u3059%u308BSmalltalk%u3082%u6D3B%u767A%u306B%u958B%u767A%u3055%u308C%u3066%u3044%u307E%u3059%u3002%27%0A%7D%0A%7D%20do%3A%20%5B%20%3Aeach%20%7C%20html%20h3%20css%3A%20%27margin-left%27%20put%3A%20%2720px%27%3B%20with%3A%20%5B%20each%20do%3A%20%5B%20%3Aeach2%20%7C%20html%20span%20with%3A%20each2%20%20%5D%5D%5D%0A%0A'),
+messageSends: ["h1:", "do:", "css:put:", "with:", "span", "h3"],
+referencedClasses: []
+}),
+smalltalk.AboutSmalltalk);
+
+smalltalk.addMethod(
+unescape('_height'),
+smalltalk.method({
+selector: unescape('height'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "800";
+    return self;
+},
+args: [],
+source: unescape('height%0A%20%20%5E%20%27800%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AboutSmalltalk);
+
+
+
+smalltalk.addClass('DyNagoyaBuilding', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.dainagoya-building.com/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.dainagoya-building.com/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0%20");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0%20%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+
+
+smalltalk.addClass('Moyorino', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//moyo-reno.com/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//moyo-reno.com/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+
+
