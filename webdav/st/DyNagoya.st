@@ -108,7 +108,9 @@ show
 	AboutDyNagoya new appendToJQuery: self container.
 	AboutSmalltalk new appendToJQuery: self container.
 	Links new appendToJQuery: self container.
-        self container  bind: 'keydown' do: [ :ev | self halt ]
+        'body' asJQuery  bind: 'keydown' do: [ :ev | 
+		(ev keyCode) = 37 ifTrue: [ self onLeft ] ifFalse: [
+		(ev keyCode) = 39 ifTrue: [ self onRight ]] ]
 !
 
 container
@@ -121,6 +123,12 @@ toolbar
 
 add: brush
 	brush appendToJQuery: self container
+!
+
+onLeft
+!
+
+onRight
 ! !
 
 Widget subclass: #ToolBar

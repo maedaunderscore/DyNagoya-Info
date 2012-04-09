@@ -195,7 +195,7 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-    smalltalk.send(smalltalk.send(self, "_container", []), "_bind_do_", ["keydown", function (ev) {return smalltalk.send(self, "_halt", []);}]);
+    smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_bind_do_", ["keydown", function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);
     return self;
 }
 }),
@@ -232,6 +232,28 @@ selector: 'add:',
 fn: function (brush) {
     var self = this;
     smalltalk.send(brush, "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_onLeft',
+smalltalk.method({
+selector: 'onLeft',
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_onRight',
+smalltalk.method({
+selector: 'onRight',
+fn: function () {
+    var self = this;
     return self;
 }
 }),
