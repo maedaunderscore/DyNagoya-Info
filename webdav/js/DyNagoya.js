@@ -266,12 +266,12 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-    smalltalk.send(smalltalk.send(self, "_container", []), "_bind_do_", ["keydown", function (ev) {return smalltalk.send(self, "_halt", []);}]);
+    smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_bind_do_", ["keydown", function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);
     return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%20%20%20%20%20%20%20%20self%20container%20%20bind%3A%20%27keydown%27%20do%3A%20%5B%20%3Aev%20%7C%20self%20halt%20%5D'),
-messageSends: ["appendToJQuery:", "new", "toolbar", "container", "bind:do:", "halt"],
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%20%20%20%20%20%20%20%20%27body%27%20asJQuery%20%20bind%3A%20%27keydown%27%20do%3A%20%5B%20%3Aev%20%7C%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight%20%5D%5D%20%5D'),
+messageSends: ["appendToJQuery:", "new", "toolbar", "container", "bind:do:", "asJQuery", "ifTrue:ifFalse:", unescape("%3D"), "keyCode", "onLeft", "ifTrue:", "onRight"],
 referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk", "Links"]
 }),
 smalltalk.Screen.klass);
@@ -323,6 +323,38 @@ fn: function (brush) {
 args: ["brush"],
 source: unescape('add%3A%20brush%0A%09brush%20appendToJQuery%3A%20self%20container'),
 messageSends: ["appendToJQuery:", "container"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_onLeft'),
+smalltalk.method({
+selector: unescape('onLeft'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: unescape('onLeft'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+unescape('_onRight'),
+smalltalk.method({
+selector: unescape('onRight'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: unescape('onRight'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Screen.klass);
