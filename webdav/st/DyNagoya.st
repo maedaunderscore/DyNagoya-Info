@@ -108,7 +108,7 @@ show
 	AboutDyNagoya new appendToJQuery: self container.
 	AboutSmalltalk new appendToJQuery: self container.
 	Links new appendToJQuery: self container.
-        self container  bind: 'keydown' do: [ :ev | self halt ]
+        'body' asJQuery  bind: 'keydown' do: [ :ev | ev inspect ]
 !
 
 container
