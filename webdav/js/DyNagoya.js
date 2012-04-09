@@ -262,24 +262,17 @@ selector: unescape('show'),
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    try {
-        smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
-        smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-        smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-        smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-        smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
-        smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = self['@flag']) == nil || $receiver == undefined ? function () {self['@flag'] = true;return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onLeft", []);return false;}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_onLeft", []);return false;}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {smalltalk.send(self, "_onRight", []);return function () {throw {name: "stReturn", selector: "_show", fn: function () {return false;}};}();}]);}]);}() : $receiver;}]);
-        return self;
-    } catch (e) {
-        if (e.name === "stReturn" && e.selector === "_show") {
-            return e.fn();
-        }
-        throw e;
-    }
+    smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    ($receiver = self['@flag']) == nil || $receiver == undefined ? function () {self['@flag'] = true;return smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);}() : $receiver;
+    return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%20%20%20%20%20%20%20%20%27body%27%20asJQuery%20%20keydown%3A%20%5B%20%3Aev%20%7C%20%0A%09%09flag%20ifNil%3A%20%5B%20flag%20%3A%3D%20true.%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft.%20false%20%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight.%20%5E%20false%20%5D%5D%20%5D%20%5D'),
-messageSends: ["appendToJQuery:", "new", "toolbar", "container", "keydown:", "asJQuery", "ifNil:", "ifTrue:ifFalse:", unescape("%3D"), "keyCode", "onLeft", "ifTrue:", "onRight"],
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%09flag%20ifNil%3A%20%5B%20flag%20%3A%3D%20true.%20%0A%20%20%20%20%20%20%20%20%09%27body%27%20asJQuery%20%20keydown%3A%20%5B%20%3Aev%20%7C%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft.%20%20%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight.%20%20%5D%5D%20%5D%20%5D'),
+messageSends: ["appendToJQuery:", "new", "toolbar", "container", "ifNil:", "keydown:", "asJQuery", "ifTrue:ifFalse:", unescape("%3D"), "keyCode", "onLeft", "ifTrue:", "onRight"],
 referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk", "Links"]
 }),
 smalltalk.Screen.klass);

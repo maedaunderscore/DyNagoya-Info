@@ -110,10 +110,10 @@ show
 	AboutDyNagoya new appendToJQuery: self container.
 	AboutSmalltalk new appendToJQuery: self container.
 	Links new appendToJQuery: self container.
-        'body' asJQuery  keydown: [ :ev | 
-		flag ifNil: [ flag := true. 
-		(ev keyCode) = 37 ifTrue: [ self onLeft. false  ] ifFalse: [
-		(ev keyCode) = 39 ifTrue: [ self onRight. ^ false ]] ] ]
+	flag ifNil: [ flag := true. 
+        	'body' asJQuery  keydown: [ :ev | 
+		(ev keyCode) = 37 ifTrue: [ self onLeft.   ] ifFalse: [
+		(ev keyCode) = 39 ifTrue: [ self onRight.  ]] ] ]
 !
 
 container
