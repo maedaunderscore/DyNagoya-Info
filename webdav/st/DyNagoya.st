@@ -268,15 +268,20 @@ Page subclass: #AboutDyNagoya
 !AboutDyNagoya methodsFor: 'not yet classified'!
 
 renderBody: html
-	html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'.
-	html h2 css: 'margin-left' put: '20px'; with: [ { 
+	html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'. 
+{
+{ 
 '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .
 '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .
 'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .
 'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' 
-} do: [ :each | html span with: each ] ].
-	html h2 css: 'margin-left' put: '20px'; with: 'DyNagoyaでは、月に１回の会合を開いています。この会では、おいしいご飯を食べながら、動的言語について語り合っています。
-何の準備も心構えも必要ありません。お気軽にご参加ください。'
+}  .
+{
+'DyNagoyaでは、月に１回の会合を開いています。この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.
+'何の準備も心構えも必要ありません。お気軽にご参加ください。' 
+}
+}
+do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
 !
 
 height
