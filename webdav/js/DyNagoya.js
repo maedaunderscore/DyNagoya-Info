@@ -1060,11 +1060,11 @@ selector: unescape('tweetMessage'),
 category: 'Twitter',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" "]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/")]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [unescape("%20%u5834%u6240%3A")]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/")]);
     return self;
 },
 args: [],
-source: unescape('tweetMessage%0A%09%5E%20%27%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F%27%2C%0A%09%28self%20formatPeriod%29%2C%0A%09%27%20%27%2C%20%28place%20name%29%2C%0A%09%27%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/%27'),
+source: unescape('tweetMessage%0A%09%5E%20%27%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F%27%2C%0A%09%28self%20formatPeriod%29%2C%0A%09%27%20%u5834%u6240%3A%27%2C%20%28place%20name%29%2C%0A%09%27%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/%27'),
 messageSends: [unescape("%2C"), "formatPeriod", "name"],
 referencedClasses: []
 }),
