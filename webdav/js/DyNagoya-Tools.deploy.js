@@ -66,7 +66,7 @@ smalltalk.method({
 selector: 'defaultOption',
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true])]);
     return self;
 }
 }),
@@ -140,6 +140,7 @@ selector: 'open',
 fn: function () {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_css_at_", [unescape("font-size"), smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);return smalltalk.send($rec, "_css_at_", ["top", "50px"]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
     return self;
 }
 }),
