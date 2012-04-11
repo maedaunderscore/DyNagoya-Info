@@ -84,13 +84,18 @@ close
 !
 
 open
-	 body asJQuery css: 'font-size' at: (self fontSize); dialog: option
+	 body asJQuery
+		css: 'font-size' at: (self fontSize); 
+		dialog: option.
+         body asJQuery parent
+		css: 'position' at: 'fixed';
+		css: 'top' at: '50px'
 ! !
 
 !DialogBox methodsFor: 'initialization'!
 
 defaultOption
-	^ #{ 'modal' -> true }
+	^ #{ 'modal' -> true . #sticky -> true}
 !
 
 initialize
