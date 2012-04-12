@@ -334,6 +334,12 @@ renderOn: html
 	]
 ! !
 
+!Place class methodsFor: 'not yet classified'!
+
+openInDialog
+	DialogBox new widget: self; open
+! !
+
 Place subclass: #Doerya
 	instanceVariableNames: ''
 	category: 'DyNagoya'!
