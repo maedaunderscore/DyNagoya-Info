@@ -535,7 +535,7 @@ smalltalk.method({
 selector: 'openInDialog',
 fn: function () {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_widget_", [self]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(self, "_new", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
     return self;
 }
 }),
