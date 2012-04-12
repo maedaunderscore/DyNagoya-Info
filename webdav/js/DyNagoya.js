@@ -732,6 +732,23 @@ referencedClasses: ["GoogleMap"]
 smalltalk.Place);
 
 
+smalltalk.addMethod(
+unescape('_openInDialog'),
+smalltalk.method({
+selector: unescape('openInDialog'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return self;
+},
+args: [],
+source: unescape('openInDialog%0A%09DialogBox%20new%20widget%3A%20self%3B%20open%20'),
+messageSends: ["widget:", "open", "new"],
+referencedClasses: ["DialogBox"]
+}),
+smalltalk.Place.klass);
+
 
 smalltalk.addClass('Doerya', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
