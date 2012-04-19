@@ -206,12 +206,12 @@ selector: unescape('renderOn%3A'),
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span10")]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Event || Event, "_latest", []), "_renderOn_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span10")]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Event || Event, "_latest", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27alert-message%20block-message%20warning%20ui-draggable%20span10%27%3B%0A%09%09style%3A%20%27margin%3A%2010px%27%3B%0A%09%09with%3A%5B%20%20Event%20latest%20renderOn%3A%20html%20%5D'),
-messageSends: ["class:", "style:", "with:", "renderOn:", "latest", "div"],
+source: unescape('renderOn%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27alert-message%20block-message%20warning%20ui-draggable%20span10%27%3B%0A%09%09style%3A%20%27margin%3A%2010px%27%3B%0A%09%09with%3A%20Event%20latest'),
+messageSends: ["class:", "style:", "with:", "latest", "div"],
 referencedClasses: ["Event"]
 }),
 smalltalk.Board);
