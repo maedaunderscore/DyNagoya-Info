@@ -1084,3 +1084,21 @@ initialize
    maxSize := (self all size)
 ! !
 
+Place subclass: #Kako
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Kako methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中村区名駅5-30-4　名駅KDビル1F'
+!
+
+url
+	^ 'http://www.coffeekako.com/index.html'
+!
+
+name
+	^ 'Coffee shop KAKO'
+! !
+
