@@ -2501,3 +2501,57 @@ smalltalk.Action);
 
 
 
+smalltalk.addClass('Kako', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C55-30-4%u3000%u540D%u99C5KD%u30D3%u30EB1F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C55-30-4%u3000%u540D%u99C5KD%u30D3%u30EB1F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.coffeekako.com/index.html");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.coffeekako.com/index.html%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "Coffee shop KAKO";
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27Coffee%20shop%20KAKO%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+
+
