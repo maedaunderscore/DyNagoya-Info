@@ -661,9 +661,9 @@ meeting05
 		fixed: true;
 		title: 'DyNagoya MTG ＃05';
 		date: '2012/04/28';
-		start: '18:30:00';
+		start: '18:00:00';
 		end: '20:30:00';
-		place: LokantaAYHAN;
+		place: Tagen;
 		detail: {
 '合同勉強会用に名古屋的ネタを考える'.
 'このページのAboutの内容を考える'.
@@ -1101,5 +1101,23 @@ url
 
 name
 	^ 'Coffee shop KAKO'
+! !
+
+Place subclass: #Tagen
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Tagen methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市千種区不老町'
+!
+
+url
+	^ 'http://www.math.nagoya-u.ac.jp/ja/direction/campus.html'
+!
+
+name
+	^ '名古屋大学多元数理科学棟'
 ! !
 
