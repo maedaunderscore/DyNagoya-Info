@@ -1432,13 +1432,13 @@ selector: unescape('meeting05'),
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0305")]);smalltalk.send($rec, "_date_", [unescape("2012/04/28")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.LokantaAYHAN || LokantaAYHAN]);return smalltalk.send($rec, "_detail_", [[unescape("%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("VMMaker%u3092%u52D5%u304B%u3059"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0305")]);smalltalk.send($rec, "_date_", [unescape("2012/04/28")]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Tagen || Tagen]);return smalltalk.send($rec, "_detail_", [[unescape("%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("VMMaker%u3092%u52D5%u304B%u3059"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: unescape('meeting05%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0305%27%3B%0A%09%09date%3A%20%272012/04/28%27%3B%0A%09%09start%3A%20%2718%3A30%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20LokantaAYHAN%3B%0A%09%09detail%3A%20%7B%0A%27%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27VMMaker%u3092%u52D5%u304B%u3059%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+source: unescape('meeting05%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0305%27%3B%0A%09%09date%3A%20%272012/04/28%27%3B%0A%09%09start%3A%20%2718%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20Tagen%3B%0A%09%09detail%3A%20%7B%0A%27%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B%27.%0A%27%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B%27.%0A%27VMMaker%u3092%u52D5%u304B%u3059%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
 messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
-referencedClasses: ["LokantaAYHAN"]
+referencedClasses: ["Tagen"]
 }),
 smalltalk.Event.klass);
 
@@ -2552,6 +2552,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Kako);
+
+
+
+smalltalk.addClass('Tagen', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u4E0D%u8001%u753A");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u4E0D%u8001%u753A%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.math.nagoya-u.ac.jp/ja/direction/campus.html");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//www.math.nagoya-u.ac.jp/ja/direction/campus.html%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5927%u5B66%u591A%u5143%u6570%u7406%u79D1%u5B66%u68DF");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u540D%u53E4%u5C4B%u5927%u5B66%u591A%u5143%u6570%u7406%u79D1%u5B66%u68DF%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
 
 
 
