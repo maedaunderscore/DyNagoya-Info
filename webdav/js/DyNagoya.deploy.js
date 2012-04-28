@@ -123,4 +123,1803 @@ smalltalk.method({
 selector: 'imageUrl',
 fn: function () {
     var self = this;
-    return unescape("data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAXgAAABOCAYAAAAqyQ2iAAAPKklEQVR4nO2dW29c1RXH+Rb+BiO19OIXqxeqeZm2qmj9MJSqxQ+mDzRFfoBWTacSpVzcqhQiSxUQLNFysShUmUpFxSAIU4IIE5PYuDCTKTgxttPYSUwST2J77GPP2Offh+OJJ55znb322Xsfr5+0XqJoZp09a/29z76sdQuYxGPbQKMObFq71qgDsFV7xjCMTG5R7QBDjA3MzwHPDgE/ziyiu6via+nUJ/jdwFV8UADqlmrnGYahpE3gcwM20qlP8P2ecxJsBgeyl/HgwCr+OtTAu6PAhTkWFgquLAL39a8FCnqQ9facwUfFLdWPwzAMAW0Cf0emKiwSndpdmVm8OlJHdVHFUJiJZQF3SvnNxnB1YVv14zEMI0CbwGcVCvxeezy3hNWqimExg/cKkP4b/GvksurHZBimQ7QW+Kb19pRxZUHF8OjLozn54t60J3KfqX5chmE6wAiBb9rPs2exXeejH3dnrdjH/lBuSvVjMwwTEaMEvmmnCvt3V3ag31Y27uOFJdWPzzBMBIwU+O6uCu7NfuIc8N5HfFCMb1nG3U4BNm+8MowpGCvwjo2hYe2PI33bNvAV5eNdwZHhedVDwTBMSAwXeEfksdVQMXaxcnhI9ey9Zbx5Fs8wRpAAga8gnXpPxdjFRmNLj9l700rFa6qHhGGYECRC4Lu7kn3K4+8juszeHevteV/1kDAME4LECHx3VwXzU+sqxlA6X9RgbG+2ST6uyjAGkCiB7+46nriTNbWaXrP3pP8xZZgkkTCBr+DFoRkV4yiNyQk9Bf7I8Dmpz729BVg1YLkKrOxYbdmMMseNuuPr0uKurTV915hWvzdqwNVFZ9w3LWg/5iagIqYTJ/DdXSU0rDXPB15ZBo6NAicK0ezYKFzr4mzbwDsdfN6JAjBdDv6BHomxJEEUuzc7ESnQglivAa/ngXuyy6G+/wc9M3hqsIbpMmArPim7XAVeGgZu75kP5ftdmVm8lXdEXyWry8Ab+XBlpZ0xP4NXhi3S+lCm5WMUdIjpBAp8BYdyFc8Hfm64c8EccXk7WFjo/PPSqaOBPxBFdc906iTWd
+    return unescape("data%3Aimage/png%3Bbase64%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");
+    return self;
+}
+}),
+smalltalk.Logo);
+
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return unescape("left%3A%2060px%3B%20top%3A%20390px%3B");
+    return self;
+}
+}),
+smalltalk.Logo);
+
+
+
+smalltalk.addClass('Board', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", [unescape("alert-message%20block-message%20warning%20ui-draggable%20span9")]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Event || Event, "_latest", [])]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.Board);
+
+
+
+smalltalk.addClass('Screen', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.Screen.klass.iVarNames = ['action','flag'];
+smalltalk.addMethod(
+'_with_',
+smalltalk.method({
+selector: 'with:',
+fn: function (brush) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_clear',
+smalltalk.method({
+selector: 'clear',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_toolbar", []), "_html_", [""]);
+    smalltalk.send(smalltalk.send(self, "_container", []), "_html_", [""]);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_show',
+smalltalk.method({
+selector: 'show',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.ToolBar || ToolBar, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_toolbar", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.TopPage || TopPage, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    self['@action'] = smalltalk.send(smalltalk.Action || Action, "_new", []);
+    ($receiver = typeof flag == "undefined" ? nil : flag) == nil ||
+        $receiver == undefined ? function () {flag = true;return smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);}() : $receiver;
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_container',
+smalltalk.method({
+selector: 'container',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23container"), "_asJQuery", []);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_toolbar',
+smalltalk.method({
+selector: 'toolbar',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23toolbar"), "_asJQuery", []);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_add_',
+smalltalk.method({
+selector: 'add:',
+fn: function (brush) {
+    var self = this;
+    smalltalk.send(brush, "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_onLeft',
+smalltalk.method({
+selector: 'onLeft',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@action'], "_prev", []);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+'_onRight',
+smalltalk.method({
+selector: 'onRight',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@action'], "_next", []);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+
+smalltalk.addClass('ToolBar', smalltalk.Widget, ['menu'], 'DyNagoya');
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["fill"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["float:right"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Login || Login, "_new", []), "_appendToBrush_", [smalltalk.send(html, "_li", [])]);}]);}(smalltalk.send(html, "_ul", [])));return function ($rec) {smalltalk.send($rec, "_style_", ["float:left"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.Browser || Browser, "_openOn_", [smalltalk.EntryPoint || EntryPoint]);}]);return smalltalk.send($rec, "_with_", ["Browser"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {return function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", [])]);smalltalk.send($rec, "_fontSize_", ["20px"]);smalltalk.send($rec, "_title_", ["Workspace"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}]);return smalltalk.send($rec, "_with_", ["Workspace"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.EntryPoint || EntryPoint, "_start", []);}]);return smalltalk.send($rec, "_with_", ["Redraw"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(self, "_renderAbout_", [html]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("http%3A//twitter.com/dynagoya_info")]);return smalltalk.send($rec, "_with_", ["Twitter"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("https%3A//github.com/maeda-/DyNagoya-Info")]);return smalltalk.send($rec, "_with_", ["GitHub"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+'_renderAbout_',
+smalltalk.method({
+selector: 'renderAbout:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["dropdown class"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.send("li.dropdown", "_asJQuery", []), "_addClass_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["Menu"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About Smalltalk"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.Links || Links, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", [])));
+    smalltalk.send(smalltalk.send(unescape("%23container"), "_asJQuery", []), "_bind_do_", ["click", function () {return smalltalk.send(self, "_clearMenus", []);}]);
+    return self;
+}
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+'_clearMenus',
+smalltalk.method({
+selector: 'clearMenus',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(unescape("a.menu%2C%20.dropdown-toggle"), "_asJQuery", []), "_parent_", ["li"]), "_removeClass_", ["open"]);
+    return self;
+}
+}),
+smalltalk.ToolBar);
+
+
+
+smalltalk.addClass('Page', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["row"]);smalltalk.send($rec, "_id_", [smalltalk.send(smalltalk.send(self, "_class", []), "_asString", [])]);smalltalk.send($rec, "_style_", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_renderBody_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(self, "_height", [])) == nil ||
+        $receiver == undefined ? function () {return "";}() : function () {return smalltalk.send(smalltalk.send("height: ", "__comma", [smalltalk.send(self, "_height", [])]), "__comma", [unescape("px%3B")]);}();
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return nil;
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_pan',
+smalltalk.method({
+selector: 'pan',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+}
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+'_top',
+smalltalk.method({
+selector: 'top',
+fn: function () {
+    var self = this;
+    return smalltalk.send(unescape("%23"), "__comma", [self]);
+    return self;
+}
+}),
+smalltalk.Page);
+
+
+smalltalk.addMethod(
+'_top',
+smalltalk.method({
+selector: 'top',
+fn: function () {
+    var self = this;
+    return ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_asString", [])]), "_asJQuery", []), "_offset", []), "_top", [])).klass === smalltalk.Number ? $receiver - 40 : smalltalk.send($receiver, "__minus", [40]);
+    return self;
+}
+}),
+smalltalk.Page.klass);
+
+smalltalk.addMethod(
+'_pan',
+smalltalk.method({
+selector: 'pan',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(unescape("html%2Cbody"), "_asJQuery", []), "_animate_with_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("scrollTop", "__minus_gt", [smalltalk.send(self, "_top", [])])]), "slow"]);
+    return self;
+}
+}),
+smalltalk.Page.klass);
+
+
+smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_options_", [unescape("/name"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("success", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [x]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/logout")]);return smalltalk.send($rec, "_with_", [smalltalk.send(x, "__comma", [" Log Out"])]);}(smalltalk.send(html, "_a", []));}]), smalltalk.send("error", "__minus_gt", [function (x) {smalltalk.send(smalltalk.Login || Login, "_user_", [nil]);return function ($rec) {smalltalk.send($rec, "_href_", [unescape("/login")]);return smalltalk.send($rec, "_with_", [" Log In"]);}(smalltalk.send(html, "_a", []));}])])]);
+    return self;
+}
+}),
+smalltalk.Login);
+
+
+smalltalk.Login.klass.iVarNames = ['user'];
+smalltalk.addMethod(
+'_user_',
+smalltalk.method({
+selector: 'user:',
+fn: function (aStr) {
+    var self = this;
+    self['@user'] = aStr;
+    return self;
+}
+}),
+smalltalk.Login.klass);
+
+smalltalk.addMethod(
+'_user',
+smalltalk.method({
+selector: 'user',
+fn: function () {
+    var self = this;
+    return self['@user'];
+    return self;
+}
+}),
+smalltalk.Login.klass);
+
+
+smalltalk.addClass('ToDo', smalltalk.Object, [], 'DyNagoya');
+
+
+smalltalk.addClass('ForThisPage', smalltalk.ToDo, [], 'DyNagoya');
+
+
+smalltalk.addClass('ForDyNagoya', smalltalk.ToDo, [], 'DyNagoya');
+
+
+smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2030px")]);return smalltalk.send($rec, "_with_", [unescape("DyNagoya%20%u3068%u306F%20...")]);}(smalltalk.send(html, "_h1", [])));
+    smalltalk.send([[unescape("%u540D%u53E4%u5C4B%u3067%u52D5%u7684%u8A00%u8A9E%28Dynamic%20Language%29%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3046%u30D7%u30ED%u30B0%u30E9%u30DE%u96C6%u56E3%u304CDyNagoya%28Dynamic%20language%20+%20Nagoya%20%3D%20DyNagoya%29%u3067%u3059%u3002"), unescape("%u52D5%u7684%u8A00%u8A9E%u5168%u822C%u3092%u6271%u3063%u3066%u307E%u3059%u304C%u3001%u4E2D%u5FC3%u3068%u306A%u308B%u306E%u306FSmalltalk%u3067%u3059%u3002"), unescape("Smalltalk%u306F%u30A2%u30E9%u30F3%u30B1%u30A4%28Alan%20Kay%201940%20-%20%29%u306E%u7406%u60F3%u306E%u30D1%u30FC%u30BD%u30CA%u30EB%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3067%u3042%u308B%u300EDynabook%u300F%u306E%u66AB%u5B9A%u5B9F%u88C5%u304B%u3089%u8A95%u751F%u3057%u307E%u3057%u305F%u3002"), unescape("DyNagoya%u306E%u300CDy%u300D%u306FDynabook%u306E%u300CDy%u300D%u3082%u517C%u306D%u3066%u3044%u307E%u3059%u3002"), unescape("%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3068%u79C1%u305F%u3061%u306E%u7406%u60F3%u306E%u95A2%u4FC2%u3092%u6A21%u7D22%u3059%u308B%u3053%u3068%u304CDyNagoya%u306E%u76EE%u7684%u3067%u3059%u3002")], [unescape("DyNagoya%u3067%u306F%u3001%u6708%u306B%uFF11%u56DE%u306E%u4F1A%u5408%u3092%u958B%u3044%u3066%u3044%u307E%u3059%u3002"), unescape("%u3053%u306E%u4F1A%u3067%u306F%u3001%u304A%u3044%u3057%u3044%u3054%u98EF%u3092%u98DF%u3079%u306A%u304C%u3089%u3001%u52D5%u7684%u8A00%u8A9E%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3063%u3066%u3044%u307E%u3059%u3002"), unescape("%u4F55%u306E%u6E96%u5099%u3082%u5FC3%u69CB%u3048%u3082%u5FC5%u8981%u3042%u308A%u307E%u305B%u3093%u3002%u304A%u6C17%u8EFD%u306B%u3054%u53C2%u52A0%u304F%u3060%u3055%u3044%u3002")]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h2", []));}]);
+    return self;
+}
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return "800";
+    return self;
+}
+}),
+smalltalk.AboutDyNagoya);
+
+
+
+smalltalk.addClass('Place', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+'_gCalString',
+smalltalk.method({
+selector: 'gCalString',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_address", []), "__comma", [unescape("%28")]), "__comma", [smalltalk.send(self, "_name", [])]), "__comma", [unescape("%29")]);
+    return self;
+}
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [unescape("%u5834%u6240%uFF1A")]);(function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url", [])]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_name", [])]);}(smalltalk.send(html, "_a", [])));return smalltalk.send(smalltalk.GoogleMap || GoogleMap, "_link_address_", [html, smalltalk.send(self, "_address", [])]);}]);
+    return self;
+}
+}),
+smalltalk.Place);
+
+
+smalltalk.addMethod(
+'_openInDialog',
+smalltalk.method({
+selector: 'openInDialog',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(self, "_new", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return self;
+}
+}),
+smalltalk.Place.klass);
+
+
+smalltalk.addClass('Doerya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-25-20");
+    return self;
+}
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//doerya.gensg.jp/");
+    return self;
+}
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20%u3069%u3048%u308A%u3083%u3042");
+    return self;
+}
+}),
+smalltalk.Doerya);
+
+
+
+smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_link_url_description_',
+smalltalk.method({
+selector: 'link:url:description:',
+fn: function (title, aUrl, aDescription) {
+    var self = this;
+    return [title, aUrl, aDescription];
+    return self;
+}
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+'_list',
+smalltalk.method({
+selector: 'list',
+fn: function () {
+    var self = this;
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", unescape("http%3A//amber-lang.net/"), unescape("Smalltalk%u306EJavascript%u5B9F%u88C5%u3002%u300CLearn%u300D%u304B%u3089Smalltalk%u306E%u52C9%u5F37%u304C%u59CB%u3081%u308C%u308B%u3002")]), smalltalk.send(self, "_link_url_description_", ["cog blog", unescape("http%3A//www.mirandabanda.org/cogblog"), unescape("%u9AD8%u901FSmalltalk%20VM%u306E%u5B9F%u88C5%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("%u81EA%u7531%u81EA%u5728Squeak%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%20PDF%u7248%u30C9%u30E9%u30D5%u30C8"), unescape("http%3A//www.box.com/s/bbc7kz53el13ktbxeed4"), unescape("%u6885%u6CA2%u3055%u3093%u304C%u92ED%u610FPDF%u5316%u4E2D")]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", unescape("http%3A//blog.yengawa.com/"), unescape("Scratch%20+%20arduino%20%u306E%u5148%u99C6%u8005%u3002%u3059%u3067%u306BMake%3ATokyo%u306B%u51FA%u5C55%u3057%u3066%u3044%u305F%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("%u7B2C37%u56DE%20Smalltalk%u52C9%u5F37%u4F1A-%u6771%u4EAC%20UStream"), unescape("http%3A//www.ustream.tv/recorded/18226602"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u30C7%u30E2")]), smalltalk.send(self, "_link_url_description_", [unescape("ITPro%20%u7C21%u5358%u3060%u3051%u3069%u5965%u6DF1%u3044%21%20Scratch%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u306E%u9B45%u529B"), unescape("http%3A//itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/%3FST%3Ddevelop"), unescape("%u963F%u90E8%u3055%u3093%u306EScratch%20+%20Arduino%u306E%u8A18%u4E8B%20%u51685%u56DE")]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", unescape("http%3A//www.asmalltalkbytheseaside.com/"), unescape("Amber%u3067%u4F5C%u3089%u308C%u305F%u30B2%u30FC%u30E0%u30E9%u30A4%u30D6%u30E9%u30EA%u3068%u30B2%u30FC%u30E0%u306E%u30B5%u30F3%u30D7%u30EB")]), smalltalk.send(self, "_link_url_description_", [unescape("cog%20blog%20-%20Under%20Cover%20Contexts%20and%20the%20Big%20Frame-Up"), unescape("http%3A//www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/"), unescape("Context%u306E%u5B9F%u88C5%u306B%u3064%u3044%u3066%u306E%u8AAC%u660E")]), smalltalk.send(self, "_link_url_description_", [unescape("Squeak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6"), unescape("http%3A//squab.no-ip.com%3A8080/mosaren/"), unescape("MOSA%u767A%u884C%u306E%u30E1%u30FC%u30EB%u30DE%u30AC%u30B8%u30F3%u300CMOSA%20Developer%20News%u300D%u3001%u7565%u79F0%u201C%u30E2%u30B5%u4F1D%u201D%u3067%202007-04-17%u3000%u7B2C248%u53F7%u307E%u3067%u9023%u8F09%u3055%u308C%u305F%u3001%u300CSqueak%u3067%u306F%u3058%u3081%u308BSmalltalk%u5165%u9580%u300D%u306E%u30D0%u30C3%u30AF%u30CA%u30F3%u30D0%u30FC%u30FB%u30A2%u30FC%u30AB%u30A4%u30D6%u30DA%u30FC%u30B8%u3067%u3059%u3002%u57F7%u7B46%u6642%u70B9%u306E%u53E4%u3044%u60C5%u5831%u3084%u30EA%u30F3%u30AF%u3092%u542B%u3093%u3067%u3044%u308B%u306E%u3067%u6CE8%u610F%u3057%u3066%u304F%u3060%u3055%u3044%u3002")]), smalltalk.send(self, "_link_url_description_", [unescape("Scratch%20+%20Arduino"), unescape("http%3A//www.yengawa.com/scratch_arduino"), unescape("Scratch%20%u304B%u3089%20Arduino%u3092%u4F7F%u3046%u65B9%u6CD5")]), smalltalk.send(self, "_link_url_description_", ["scat", unescape("http%3A//code.google.com/p/scat/"), unescape("%u6A19%u6E96%u306EScratch%u306FIDE%u304C%u3057%u3087%u307C%u3044%u306E%u3067Pharo%u306BScrach%u3092%u5165%u308C%u308B%u3002")])];
+    return self;
+}
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+'_open',
+smalltalk.method({
+selector: 'open',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_title_", ["Links"]);smalltalk.send($rec, "_with_", [function (html) {return smalltalk.send(self, "_renderOn_", [html]);}]);return smalltalk.send($rec, "_width_", [600]);}(self));
+    smalltalk.send(self, "_open", [], smalltalk.DialogBox);
+    return self;
+}
+}),
+smalltalk.Links);
+
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", ["Links"]);
+    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
+    return self;
+}
+}),
+smalltalk.Links);
+
+
+
+smalltalk.addClass('LinkMenu', smalltalk.Circle, [], 'DyNagoya');
+smalltalk.addMethod(
+'_body_',
+smalltalk.method({
+selector: 'body:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_open", []);return false;}]);smalltalk.send($rec, "_css_put_", [unescape("font-size"), "24px"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", [])));
+    return self;
+}
+}),
+smalltalk.LinkMenu);
+
+smalltalk.addMethod(
+'_style',
+smalltalk.method({
+selector: 'style',
+fn: function () {
+    var self = this;
+    return unescape("top%3A250px%3Bleft%3A280px%3Bbackground%3Ared%3B");
+    return self;
+}
+}),
+smalltalk.LinkMenu);
+
+
+
+smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail', 'fixed'], 'DyNagoya');
+smalltalk.addMethod(
+'_title_',
+smalltalk.method({
+selector: 'title:',
+fn: function (str) {
+    var self = this;
+    self['@title'] = str;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_date_',
+smalltalk.method({
+selector: 'date:',
+fn: function (aDate) {
+    var self = this;
+    self['@date'] = aDate;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_start_',
+smalltalk.method({
+selector: 'start:',
+fn: function (aTime) {
+    var self = this;
+    self['@start'] = aTime;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_end_',
+smalltalk.method({
+selector: 'end:',
+fn: function (aTime) {
+    var self = this;
+    self['@end'] = aTime;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_place_',
+smalltalk.method({
+selector: 'place:',
+fn: function (aPlaceClass) {
+    var self = this;
+    self['@place'] = smalltalk.send(aPlaceClass, "_new", []);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_detail_',
+smalltalk.method({
+selector: 'detail:',
+fn: function (str) {
+    var self = this;
+    self['@detail'] = str;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_dstokaiId',
+smalltalk.method({
+selector: 'dstokaiId',
+fn: function () {
+    var self = this;
+    return unescape("6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com");
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_format_',
+smalltalk.method({
+selector: 'format:',
+fn: function (aTime) {
+    var self = this;
+    var d = nil;
+    var formatted = nil;
+    d = smalltalk.send(smalltalk.Date || Date, "_fromString_", [smalltalk.send(smalltalk.send(self['@date'], "__comma", [" "]), "__comma", [aTime])]);
+    formatted = moment(d).add("minutes", moment(d).zone()).format("YYYYMMDDTHHmmss");
+    return smalltalk.send(formatted, "__comma", ["Z"]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_description',
+smalltalk.method({
+selector: 'description',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(unescape("%3Cul%3E"), "__comma", [smalltalk.send(smalltalk.send(self['@detail'], "_collect_", [function (each) {return smalltalk.send(smalltalk.send(unescape("%3Cli%3E"), "__comma", [each]), "__comma", [unescape("%3C/li%3E")]);}]), "_join_", [""])]), "__comma", [unescape("%3C/ul%3E")]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_tweet',
+smalltalk.method({
+selector: 'tweet',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Dolphin || Dolphin, "_tweet_", [smalltalk.send(self, "_tweetMessage", [])]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_formatPeriod',
+smalltalk.method({
+selector: 'formatPeriod',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(moment(this['@date']).format("YYYY/MM/DD(ddd) "), "__comma", [self['@start']]), "__comma", [unescape("%u301C")]), "__comma", [self['@end']]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_tweetMessage',
+smalltalk.method({
+selector: 'tweetMessage',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%u6B21%u56DE%u306E%u30DF%u30FC%u30C6%u30A3%u30F3%u30B0%u306F"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [unescape("%20%u5834%u6240%3A")]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [unescape("%20%u3067%u958B%u50AC%u3057%u307E%u3059%u3002%u53C2%u52A0%u767B%u9332%u306F%u3053%u3061%u3089%20%u2192%20http%3A//dynagoya.info/")]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_join',
+smalltalk.method({
+selector: 'join',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", [])]);}();
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_cancel',
+smalltalk.method({
+selector: 'cancel',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return smalltalk.send(smalltalk.Window || Window, "_alert_", [unescape("You%20need%20to%20log%20in%21")]);}() : function () {return smalltalk.send(smalltalk.Participation || Participation, "_event_user_delete_", [self['@title'], smalltalk.send(smalltalk.Login || Login, "_user", []), true]);}();
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_list_',
+smalltalk.method({
+selector: 'list:',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.Participation || Participation, "_list_callback_", [self['@title'], aBlock]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [self['@title']]);
+    smalltalk.send(html, "_h2_", [smalltalk.send(smalltalk.send(unescape("%u65E5%u6642%uFF1A"), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [($receiver = smalltalk.send(self, "_fixed", [])).klass === smalltalk.Boolean ? $receiver ? function () {return "";}() : function () {return unescape("%3F");}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "";}, function () {return unescape("%3F");}])])]);
+    smalltalk.send(self['@place'], "_renderOn_", [html]);
+    smalltalk.send(html, "_h2_", [unescape("%u5185%u5BB9%uFF1A")]);
+    smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-left%3A%2030px")]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self['@detail'], "_do_", [function (each) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [each]);}]);}]);}(smalltalk.send(html, "_div", []))]);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["participants"]);
+    (function ($rec) {smalltalk.send($rec, "_event_", [self]);return smalltalk.send($rec, "_render", []);}(smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_new", [])));
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_listDo_',
+smalltalk.method({
+selector: 'listDo:',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self, "_list_", [function (list) {return smalltalk.send(list, "_do_", [aBlock]);}]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_addToCalendar',
+smalltalk.method({
+selector: 'addToCalendar',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl", []), "_blank"]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_addToDSTokai',
+smalltalk.method({
+selector: 'addToDSTokai',
+fn: function () {
+    var self = this;
+    smalltalk.send(typeof window == "undefined" ? nil : window, "_open_target_", [smalltalk.send(self, "_gcalUrl_description_", [smalltalk.send(self, "_dstokaiId", []), smalltalk.send(self, "_descriptionForDSTokai", [])]), "_blank"]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalUrl',
+smalltalk.method({
+selector: 'gcalUrl',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_gcalUrl_description_", [nil, smalltalk.send(self, "_description", [])]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_descriptionForDSTokai',
+smalltalk.method({
+selector: 'descriptionForDSTokai',
+fn: function () {
+    var self = this;
+    return unescape("%u52D5%u7684%u8A00%u8A9E%u3001%u7279%u306BSmalltalk%u3092%u4E2D%u5FC3%u3068%u3057%u305F%u96C6%u307E%u308A%3Ca%20href%3D%22http%3A//dynagoya.info/index.html%22%20target%3D%22_blank%22%3E%u30DA%u30FC%u30B8%3C/a%3E");
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalUrl_description_',
+smalltalk.method({
+selector: 'gcalUrl:description:',
+fn: function (src, aStr) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_gcalParams_desc_", [src, aStr]), "_inject_into_", [unescape("http%3A//www.google.com/calendar/event%3Faction%3DTEMPLATE"), function (acc, x) {return smalltalk.send(smalltalk.send(acc, "__comma", [unescape("%26")]), "__comma", [x]);}]);
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_gcalParams_desc_',
+smalltalk.method({
+selector: 'gcalParams:desc:',
+fn: function (src, aStr) {
+    var self = this;
+    var base = nil;
+    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [self['@title']])]), smalltalk.send(unescape("details%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [aStr])]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(self['@place'], "_gCalString", [])])]), smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(smalltalk.send(smalltalk.send(self, "_format_", [self['@start']]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])])])];
+    ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send(unescape("src%3D"), "__comma", [src])]);}() : nil;
+    return base;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_fixed',
+smalltalk.method({
+selector: 'fixed',
+fn: function () {
+    var self = this;
+    return ($receiver = self['@fixed']) == nil || $receiver == undefined ? function () {return true;}() : $receiver;
+    return self;
+}
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
+'_fixed_',
+smalltalk.method({
+selector: 'fixed:',
+fn: function (aBool) {
+    var self = this;
+    self['@fixed'] = aBool;
+    return self;
+}
+}),
+smalltalk.Event);
+
+
+smalltalk.addMethod(
+'_latest',
+smalltalk.method({
+selector: 'latest',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_meeting05", []);
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+'_meeting02',
+smalltalk.method({
+selector: 'meeting02',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0302")]);smalltalk.send($rec, "_date_", [unescape("2012/01/28")]);smalltalk.send($rec, "_start_", ["17:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [[unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306B%u3064%u3044%u3066%u8AAC%u660E"), unescape("Make%3AOgaki%u306E%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29"), unescape("%u30A4%u30EB%u30AB%u306E%u540D%u524D%u3092%u8003%u3048%u308B")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+'_meeting03',
+smalltalk.method({
+selector: 'meeting03',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0303")]);smalltalk.send($rec, "_date_", [unescape("2012/02/26")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Hakkaku || Hakkaku]);return smalltalk.send($rec, "_detail_", [[unescape("cogdroid%u306B%u3064%u3044%u3066"), unescape("Test%u306B%u3064%u3044%u3066%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306E%u30EA%u30F3%u30AF%u96C6%u306E%u8868%u793A%u3092%u304B%u3048%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+'_meeting04',
+smalltalk.method({
+selector: 'meeting04',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0304")]);smalltalk.send($rec, "_date_", [unescape("2012/03/31")]);smalltalk.send($rec, "_start_", ["18:30:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Captina || Captina]);return smalltalk.send($rec, "_detail_", [[unescape("Scratch%20%u3092%u3044%u3058%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("Newspeak%u3092%u3044%u3058%u308B"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+'_meeting05',
+smalltalk.method({
+selector: 'meeting05',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0305")]);smalltalk.send($rec, "_date_", [unescape("2012/04/28")]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Tagen || Tagen]);return smalltalk.send($rec, "_detail_", [[unescape("%u5408%u540C%u52C9%u5F37%u4F1A%u7528%u306B%u540D%u53E4%u5C4B%u7684%u30CD%u30BF%u3092%u8003%u3048%u308B"), unescape("%u3053%u306E%u30DA%u30FC%u30B8%u306EAbout%u306E%u5185%u5BB9%u3092%u8003%u3048%u308B"), unescape("VMMaker%u3092%u52D5%u304B%u3059"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+
+smalltalk.addClass('Participation', smalltalk.RemoteObject, [], 'DyNagoya');
+
+smalltalk.addMethod(
+'_afterDelete',
+smalltalk.method({
+selector: 'afterDelete',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+}
+}),
+smalltalk.Participation.klass);
+
+smalltalk.addMethod(
+'_afterPut',
+smalltalk.method({
+selector: 'afterPut',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+}
+}),
+smalltalk.Participation.klass);
+
+
+smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');
+smalltalk.addMethod(
+'_event_',
+smalltalk.method({
+selector: 'event:',
+fn: function (aEvent) {
+    var self = this;
+    self['@event'] = aEvent;
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_renderButton_users_',
+smalltalk.method({
+selector: 'renderButton:users:',
+fn: function (html, users) {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.Login || Login, "_user", [])) == nil ||
+        $receiver == undefined ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn disabled"]);return smalltalk.send($rec, "_with_", [unescape("%u7533%u3057%u8FBC%u307F%u306B%u306F%u30ED%u30B0%u30A4%u30F3%28%u53F3%u4E0A%29%u304C%u5FC5%u8981%u3067%u3059")]);}(smalltalk.send(html, "_span", []));}() : function () {return ($receiver = smalltalk.send(users, "_includes_", [smalltalk.send(smalltalk.Login || Login, "_user", [])])).klass === smalltalk.Boolean ? !$receiver ? function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}() : function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}() : smalltalk.send($receiver, "_ifFalse_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3059%u308B")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_join", []);}]);}(smalltalk.send(html, "_a", []));}, function () {return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_with_", [unescape("%u53C2%u52A0%u3092%u53D6%u308A%u6D88%u3059")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_cancel", []);}]);}(smalltalk.send(html, "_a", []));}]);}();
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_renderOn_',
+smalltalk.method({
+selector: 'renderOn:',
+fn: function (html) {
+    var self = this;
+    var users = nil;
+    smalltalk.send(self['@event'], "_list_", [function (list) {smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [unescape("%u53C2%u52A0%u8005%uFF1A")]);smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {users = smalltalk.send(list, "_collect_", [function (each) {return smalltalk.send(each, "_user", []);}]);return smalltalk.send(users, "_do_", [function (each) {return smalltalk.send(smalltalk.Twitter || Twitter, "_link_user_", [html, each]);}]);}]);return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-top"), "15px"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(self, "_renderButton_users_", [html, users]);return function ($rec) {smalltalk.send($rec, "_class_", ["btn"]);smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "10px"]);smalltalk.send($rec, "_with_", [unescape("Google%20Calendar%u306B%u767B%u9332")]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@event'], "_addToCalendar", []);}]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_div", []));}]);
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+smalltalk.addMethod(
+'_render',
+smalltalk.method({
+selector: 'render',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_class", []), "_render", []);
+    return self;
+}
+}),
+smalltalk.ParticipantsList);
+
+
+smalltalk.ParticipantsList.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+'_render',
+smalltalk.method({
+selector: 'render',
+fn: function () {
+    var self = this;
+    var html = nil;
+    html = smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [smalltalk.send(unescape("%23participants"), "_asJQuery", [])]);
+    smalltalk.send(smalltalk.send(html, "_root", []), "_empty", []);
+    smalltalk.send(smalltalk.send(self, "_new", []), "_renderOn_", [html]);
+    return self;
+}
+}),
+smalltalk.ParticipantsList.klass);
+
+smalltalk.addMethod(
+'_new',
+smalltalk.method({
+selector: 'new',
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.Widget.klass);}() : $receiver;
+    return self['@s'];
+    return self;
+}
+}),
+smalltalk.ParticipantsList.klass);
+
+
+smalltalk.addClass('ATeam', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u897F%u533A%u725B%u5CF6%u753A6%u756A1%u53F7%20%u540D%u53E4%u5C4B%u30EB%u30FC%u30BB%u30F3%u30C8%u30BF%u30EF%u30FC32F");
+    return self;
+}
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.a-tm.co.jp/");
+    return self;
+}
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u682A%u5F0F%u4F1A%u793E%u30A8%u30A4%u30C1%u30FC%u30E0");
+    return self;
+}
+}),
+smalltalk.ATeam);
+
+
+
+smalltalk.addClass('NewCast', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u8475%uFF13%u4E01%u76EE%uFF12%uFF12%u2212%uFF18");
+    return self;
+}
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.xmldo.jp/about/seminarroom/");
+    return self;
+}
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30CB%u30E5%u30FC%u30AD%u30E3%u30B9%u30C8");
+    return self;
+}
+}),
+smalltalk.NewCast);
+
+
+
+smalltalk.addClass('Edelweiss', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u6771%u685C1-10-1");
+    return self;
+}
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www8.ocn.ne.jp/%7Eedel/");
+    return self;
+}
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30A8%u30FC%u30C7%u30EB%u30EF%u30A4%u30B9");
+    return self;
+}
+}),
+smalltalk.Edelweiss);
+
+
+
+smalltalk.addClass('Vinceness', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-6-29%20%u30B5%u30A6%u30B9%u30CF%u30A6%u30B9B1");
+    return self;
+}
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi%3Fcategory%3D5%26page%3D1");
+    return self;
+}
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30D5%u30A7%20%u30F4%u30A1%u30F3%u30B5%u30F3%u30CC%u30C9%u30A5");
+    return self;
+}
+}),
+smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('ZTres', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
+    return self;
+}
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.forvex.co.jp/ztres/");
+    return self;
+}
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20Z-TRES");
+    return self;
+}
+}),
+smalltalk.ZTres);
+
+
+
+smalltalk.addClass('Maruichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102");
+    return self;
+}
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/");
+    return self;
+}
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061");
+    return self;
+}
+}),
+smalltalk.Maruichi);
+
+
+
+smalltalk.addClass('AnyWhere', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+}
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+}
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u672A%u5B9A");
+    return self;
+}
+}),
+smalltalk.AnyWhere);
+
+
+
+smalltalk.addClass('BondCoffee', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%u30FC%uFF11%uFF11%u30FC%uFF16");
+    return self;
+}
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.bondcoffee.jp/index.html");
+    return self;
+}
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30DC%u30F3%u30C9%u30B3%u30FC%u30D2%u30FC");
+    return self;
+}
+}),
+smalltalk.BondCoffee);
+
+
+
+smalltalk.addClass('Syushin', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u9326%uFF11%uFF0D%uFF11%uFF13%uFF0D%uFF13%uFF11%u30DF%u30C4%u30EF%u30D3%u30EB%uFF11%uFF26");
+    return self;
+}
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.hotpepper.jp/strJ000021742/");
+    return self;
+}
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u5C45%u9152%u5C4B%20%u9152%u795E");
+    return self;
+}
+}),
+smalltalk.Syushin);
+
+
+
+smalltalk.addClass('LokantaAYHAN', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18");
+    return self;
+}
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//star.gmobb.jp/lokanta_ayhan/");
+    return self;
+}
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3");
+    return self;
+}
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+'_notice',
+smalltalk.method({
+selector: 'notice',
+fn: function () {
+    var self = this;
+    return unescape("%u65E5%u66DC%u65E5%u4F11%u307F");
+    return self;
+}
+}),
+smalltalk.LokantaAYHAN);
+
+
+
+smalltalk.addClass('Katatumuri', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u4E38%u306E%u51852-14-15%20%u6CB3%u5408%u30D3%u30EB%u3000%uFF12%uFF26");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230102/23007756/");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30BF%u30C4%u30E0%u30EA");
+    return self;
+}
+}),
+smalltalk.Katatumuri);
+
+
+
+smalltalk.addClass('Hakkaku', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1");
+    return self;
+}
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.gnavi.co.jp/n004601/");
+    return self;
+}
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20");
+    return self;
+}
+}),
+smalltalk.Hakkaku);
+
+
+
+smalltalk.addClass('TopPage', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.TopPage);
+
+
+
+smalltalk.addClass('AboutSmalltalk', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+'_renderBody_',
+smalltalk.method({
+selector: 'renderBody:',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [unescape("Smalltalk%u3068%u306F")]);
+    smalltalk.send([[unescape("Smalltalk%u3068%u805E%u304F%u3068%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306E%u30A4%u30E1%u30FC%u30B8%u304C%u5F37%u3044%u306E%u3067%u306F%u306A%u3044%u3067%u3057%u3087%u3046%u304B%uFF1F"), unescape("%u307E%u305F%u3001Java%u3084C++%u306A%u3069%u3067%u4E16%u306B%u6D78%u900F%u3057%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068Smalltalk%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u3068%u306F%u9055%u3046%u3068%u805E%u3044%u305F%u3053%u3068%u304C%u3042%u308B%u304B%u3082%u77E5%u308C%u307E%u305B%u3093%u3002"), unescape("%u5B9F%u969B%u5168%u304F%u7570%u306A%u308B%u3082%u306E%u3067%u3059%u304C%u3001%u8AAC%u660E%u3059%u308B%u306E%u3082%u9762%u5012%u306A%u306E%u3067%u3001%u3068%u308A%u3042%u3048%u305A%u3001%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u6307%u5411%u306F%u7F6E%u3044%u3066%u304A%u304D%u307E%u3057%u3087%u3046%u3002")], [], [unescape("Smalltalk%u306F%u8A00%u8A9E%u3068%u3044%u3046%u3088%u308A%u74B0%u5883%u3067%u3059%u3002"), unescape("PC%u4E0A%u306BSmalltalk%u3068%u3044%u3046%u4EEE%u60F3%u74B0%u5883%u3092%u8D77%u52D5%u3057%u3001%u305D%u306E%u4EEE%u60F3%u74B0%u5883%u306E%u4E2D%u3067%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u8A18%u8FF0%u3057%u307E%u3059%u3002"), unescape("%u91CD%u8981%u306A%u30DD%u30A4%u30F3%u30C8%u306F%u3001%u4EEE%u60F3%u74B0%u5883%u81EA%u4F53%u304CSmalltalk%u306E%u30B7%u30F3%u30D7%u30EB%u306A%u6587%u6CD5%u3067%u8A18%u8FF0%u3055%u308C%u3066%u3044%u308B%u70B9%u3042%u308A%u3001%u3057%u304B%u3082%u5B9F%u884C%u4E2D%u306B%u7C21%u5358%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u53EF%u80FD%u3067%u3059%u3002"), unescape("%u4F8B%u3048%u3070%u3001%u4EEE%u60F3%u74B0%u5883%u306B%u306FIDE%u3082%u542B%u307E%u308C%u3066%u3044%u307E%u3059%u304C%u3001%u305D%u306EIDE%u81EA%u4F53%u306E%u30B3%u30FC%u30C9%u3092%u66F8%u304D%u63DB%u3048%u3066%u3001%u81EA%u5206%u597D%u307F%u306EIDE%u306B%u4ED5%u7ACB%u3066%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002"), unescape("IDE%u3060%u3051%u3067%u306A%u304F%u3001%u30B3%u30F3%u30D1%u30A4%u30E9%u3084%u30A4%u30F3%u30BF%u30D7%u30EA%u30BF%u3001%u6587%u5B57%u5217%u30AF%u30E9%u30B9%u3084%u6570%u5024%u30AF%u30E9%u30B9%u306A%u3069%u306E%u57FA%u672C%u30AF%u30E9%u30B9%u3082%u30D7%u30ED%u30B0%u30E9%u30E0%u5B9F%u884C%u4E2D%u306B%u597D%u304D%u52DD%u624B%u306B%u66F8%u304D%u63DB%u3048%u308B%u3053%u3068%u304C%u3067%u304D%u307E%u3059%u3002"), unescape("%u4E16%u9593%u4E00%u822C%u306E%u30D7%u30ED%u30B0%u30E9%u30DF%u30F3%u30B0%u8A00%u8A9E%u3067%u306F%u3001%u30B3%u30FC%u30C9%u3092%u66F8%u304F%u30D5%u30A7%u30FC%u30BA%u3068%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u30D5%u30A7%u30FC%u30BA%u306F%u5225%u7269%u3067%u3059%u304C%u3001Smalltalk%u306B%u306F%u305D%u306E%u57A3%u6839%u304C%u3086%u308B%u304F%u66D6%u6627%u306B%u306A%u3063%u3066%u3044%u307E%u3059%u3002"), unescape("%u751F%u304D%u3066%u3044%u308B%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3092%u6355%u307E%u3048%u3066%u3001%u305D%u306E%u30AA%u30D6%u30B8%u30A7%u30AF%u30C8%u3068%u5BFE%u8A71%u7684%u306B%u30D7%u30ED%u30B0%u30E9%u30E0%u3092%u52D5%u304B%u3059%u3053%u3068%u3082%u3067%u304D%u307E%u3059%u3002")], [unescape("Smalltalk%u306E%u5F37%u529B%u3055%u3092%u6D3B%u304B%u3057%u3066%u3001%u5B9F%u52D9%u3067%u4F7F%u3063%u3066%u3044%u308B%u65B9%u3082%u3044%u307E%u3059"), unescape("%28%u6570%u306F%u5C11%u306A%u3044%u3068%u306F%u601D%u3044%u307E%u3059%u304C%u30FB%u30FB%u30FB%29%u3002"), unescape("%u4E00%u65B9%u3067Smalltalk%u306F%u7406%u60F3%u306E%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u74B0%u5883%u3092%u8FFD%u6C42%u3059%u308B%u305F%u3081%u306E%u5B9F%u9A13%u5834%u3068%u3082%u8A00%u3048%u307E%u3059%u3002"), unescape("%u65B0%u3057%u3044%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u306B%u3082%u7A4D%u6975%u7684%u3067%u3001Arduino%u3084Kinect%u306A%u3069%u306E%u5916%u90E8%u30C7%u30D0%u30A4%u30B9%u3068%u306E%u9023%u643A%u3082%u53EF%u80FD%u3067%u3059%u3002"), unescape("iPad%u3084Android%u4E0A%u3067%u52D5%u4F5C%u3059%u308BSmalltalk%u3082%u6D3B%u767A%u306B%u958B%u767A%u3055%u308C%u3066%u3044%u307E%u3059%u3002")]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h3", []));}]);
+    return self;
+}
+}),
+smalltalk.AboutSmalltalk);
+
+smalltalk.addMethod(
+'_height',
+smalltalk.method({
+selector: 'height',
+fn: function () {
+    var self = this;
+    return "800";
+    return self;
+}
+}),
+smalltalk.AboutSmalltalk);
+
+
+
+smalltalk.addClass('DyNagoyaBuilding', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0");
+    return self;
+}
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.dainagoya-building.com/");
+    return self;
+}
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0%20");
+    return self;
+}
+}),
+smalltalk.DyNagoyaBuilding);
+
+
+
+smalltalk.addClass('Moyorino', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F");
+    return self;
+}
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//moyo-reno.com/");
+    return self;
+}
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29");
+    return self;
+}
+}),
+smalltalk.Moyorino);
+
+
+
+smalltalk.addClass('Action', smalltalk.Object, ['idx', 'maxSize'], 'DyNagoya');
+smalltalk.addMethod(
+'_next',
+smalltalk.method({
+selector: 'next',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(self['@idx'], "__eq", [0])).klass === smalltalk.Boolean ? !$receiver ? function () {return smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [" "]);}() : nil : smalltalk.send($receiver, "_ifFalse_", [function () {return smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [" "]);}]);
+    self['@idx'] = smalltalk.send(($receiver = self['@idx']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]), "_min_", [self['@maxSize']]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", ["strong"]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_prev',
+smalltalk.method({
+selector: 'prev',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", [" "]);
+    self['@idx'] = smalltalk.send(($receiver = self['@idx']).klass === smalltalk.Number ? $receiver - 1 : smalltalk.send($receiver, "__minus", [1]), "_max_", [1]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_all", []), "_at_", [self['@idx']]), "_className_", ["strong"]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_all',
+smalltalk.method({
+selector: 'all',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23AboutDyNagoya%20span"), "_asJQuery", []), "_toArray", []), "__comma", [smalltalk.send(smalltalk.send(unescape("%23AboutSmalltalk%20span"), "_asJQuery", []), "_toArray", [])]);
+    return self;
+}
+}),
+smalltalk.Action);
+
+smalltalk.addMethod(
+'_initialize',
+smalltalk.method({
+selector: 'initialize',
+fn: function () {
+    var self = this;
+    self['@idx'] = 0;
+    self['@maxSize'] = smalltalk.send(smalltalk.send(self, "_all", []), "_size", []);
+    return self;
+}
+}),
+smalltalk.Action);
+
+
+
+smalltalk.addClass('Kako', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C55-30-4%u3000%u540D%u99C5KD%u30D3%u30EB1F");
+    return self;
+}
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.coffeekako.com/index.html");
+    return self;
+}
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return "Coffee shop KAKO";
+    return self;
+}
+}),
+smalltalk.Kako);
+
+
+
+smalltalk.addClass('Tagen', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u4E0D%u8001%u753A");
+    return self;
+}
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.math.nagoya-u.ac.jp/ja/direction/campus.html");
+    return self;
+}
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5927%u5B66%u591A%u5143%u6570%u7406%u79D1%u5B66%u68DF");
+    return self;
+}
+}),
+smalltalk.Tagen);
+
+
+
+smalltalk.addClass('Captina', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+'_address',
+smalltalk.method({
+selector: 'address',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0");
+    return self;
+}
+}),
+smalltalk.Captina);
+
+smalltalk.addMethod(
+'_url',
+smalltalk.method({
+selector: 'url',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.dainagoya-building.com/cgi-bin/shop/page.cgi%3Fact%3Dpage%26id%3D5");
+    return self;
+}
+}),
+smalltalk.Captina);
+
+smalltalk.addMethod(
+'_name',
+smalltalk.method({
+selector: 'name',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30D7%u30C1%u30FC%u30CA%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97");
+    return self;
+}
+}),
+smalltalk.Captina);
+
+
+
