@@ -981,7 +981,7 @@ renderBody: html
 		html div class: 'span7'; style: 'margin-top: 10px';
 				with: Dolphin new;
 				with: Logo new.
-		html div class: 'span6'; with: Board new
+		html div class: 'span7'; with: Board new
 ! !
 
 Page subclass: #AboutSmalltalk
