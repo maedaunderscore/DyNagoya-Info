@@ -83,7 +83,7 @@ Widget subclass: #Board
 
 renderOn: html
 	html div 
-		class: 'alert-message block-message warning ui-draggable span10';
+		class: 'alert-message block-message warning ui-draggable span9';
 		style: 'margin: 10px';
 		with: Event latest
 ! !
@@ -607,7 +607,7 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 latest
-	^ self meeting05
+	^ self meeting04
 !
 
 meeting02
@@ -647,7 +647,7 @@ meeting04
 		date: '2012/03/31';
 		start: '18:30:00';
 		end: '20:30:00';
-		place: DyNagoyaBuilding;
+		place: Captina;
 		detail: {
 'Scratch をいじる'.
 'このページのAboutの内容を考える'.
@@ -1119,5 +1119,23 @@ url
 
 name
 	^ '名古屋大学多元数理科学棟'
+! !
+
+Place subclass: #Captina
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Captina methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'
+!
+
+url
+	^ 'http://www.dainagoya-building.com/cgi-bin/shop/page.cgi?act=page&id=5'
+!
+
+name
+	^ 'カプチーナ 大名古屋ビル店'
 ! !
 
