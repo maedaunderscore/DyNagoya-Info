@@ -1202,3 +1202,24 @@ referencedClasses: []
 smalltalk.GoogleMap.klass);
 
 
+smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+smalltalk.ProxyImageEditor.comment=unescape('x%20%3A%3D%20ProxyImageEditor%20open%3A%20%27http%3A//cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg%27%3B%20open')
+
+smalltalk.addMethod(
+unescape('_open_'),
+smalltalk.method({
+selector: unescape('open%3A'),
+category: 'not yet classified',
+fn: function (url) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
+    return self;
+},
+args: ["url"],
+source: unescape('open%3A%20url%0A%09%5E%20self%20new%20openWithProxy%3A%20url'),
+messageSends: ["openWithProxy:", "new"],
+referencedClasses: []
+}),
+smalltalk.ProxyImageEditor.klass);
+
+

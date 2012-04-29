@@ -870,3 +870,18 @@ fn: function (html, aStr) {
 smalltalk.GoogleMap.klass);
 
 
+smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+'_open_',
+smalltalk.method({
+selector: 'open:',
+fn: function (url) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
+    return self;
+}
+}),
+smalltalk.ProxyImageEditor.klass);
+
+
