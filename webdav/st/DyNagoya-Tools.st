@@ -453,3 +453,15 @@ link: html address: aStr
 		with:'(map)'
 ! !
 
+ImageEditor subclass: #ProxyImageEditor
+	instanceVariableNames: ''
+	category: 'DyNagoya-Tools'!
+!ProxyImageEditor commentStamp!
+x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open!
+
+!ProxyImageEditor class methodsFor: 'not yet classified'!
+
+open: url
+	^ self new openWithProxy: url
+! !
+
