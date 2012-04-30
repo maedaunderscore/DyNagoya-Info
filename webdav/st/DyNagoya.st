@@ -1141,3 +1141,21 @@ name
 	^ 'カプチーナ 大名古屋ビル店'
 ! !
 
+Place subclass: #Lancia
+	instanceVariableNames: ''
+	category: 'DyNagoya'!
+
+!Lancia methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市昭和区隼人町1-4 清楽ビル1F'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230108/23005243/'
+!
+
+name
+	^ 'サラダショップ Lancia '
+! !
+
