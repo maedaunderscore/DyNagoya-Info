@@ -2663,3 +2663,57 @@ smalltalk.Captina);
 
 
 
+smalltalk.addClass('Lancia', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+unescape('_address'),
+smalltalk.method({
+selector: unescape('address'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u662D%u548C%u533A%u96BC%u4EBA%u753A1-4%20%u6E05%u697D%u30D3%u30EB1F");
+    return self;
+},
+args: [],
+source: unescape('address%0A%09%5E%20%27%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u662D%u548C%u533A%u96BC%u4EBA%u753A1-4%20%u6E05%u697D%u30D3%u30EB1F%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+smalltalk.addMethod(
+unescape('_url'),
+smalltalk.method({
+selector: unescape('url'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230108/23005243/");
+    return self;
+},
+args: [],
+source: unescape('url%0A%09%5E%20%27http%3A//r.tabelog.com/aichi/A2301/A230108/23005243/%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+smalltalk.addMethod(
+unescape('_name'),
+smalltalk.method({
+selector: unescape('name'),
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30B5%u30E9%u30C0%u30B7%u30E7%u30C3%u30D7%20Lancia%20");
+    return self;
+},
+args: [],
+source: unescape('name%0A%09%5E%20%27%u30B5%u30E9%u30C0%u30B7%u30E7%u30C3%u30D7%20Lancia%20%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+
+
