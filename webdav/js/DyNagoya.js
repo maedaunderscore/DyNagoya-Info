@@ -268,13 +268,11 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     smalltalk.send(smalltalk.send(smalltalk.Links || Links, "_new", []), "_appendToJQuery_", [smalltalk.send(self, "_container", [])]);
     self['@action'] = smalltalk.send(smalltalk.Action || Action, "_new", []);
-    ($receiver = typeof flag == "undefined" ? nil : flag) == nil ||
-        $receiver == undefined ? function () {flag = true;return smalltalk.send(smalltalk.send("body", "_asJQuery", []), "_keydown_", [function (ev) {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [37])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onLeft", []);}() : function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_onLeft", []);}, function () {return ($receiver = smalltalk.send(smalltalk.send(ev, "_keyCode", []), "__eq", [39])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_onRight", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(self, "_onRight", []);}]);}]);}]);}() : $receiver;
     return self;
 },
 args: [],
-source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%09action%20%3A%3D%20Action%20new.%0A%09flag%20ifNil%3A%20%5B%20flag%20%3A%3D%20true.%20%0A%20%20%20%20%20%20%20%20%09%27body%27%20asJQuery%20%20keydown%3A%20%5B%20%3Aev%20%7C%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft.%20%20%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight.%20%20%5D%5D%20%5D%20%5D'),
-messageSends: ["appendToJQuery:", "new", "toolbar", "container", "ifNil:", "keydown:", "asJQuery", "ifTrue:ifFalse:", unescape("%3D"), "keyCode", "onLeft", "ifTrue:", "onRight"],
+source: unescape('show%0A%09ToolBar%20new%20appendToJQuery%3A%20self%20toolbar.%0A%09TopPage%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutDyNagoya%20new%20appendToJQuery%3A%20self%20container.%0A%09AboutSmalltalk%20new%20appendToJQuery%3A%20self%20container.%0A%09Links%20new%20appendToJQuery%3A%20self%20container.%0A%09action%20%3A%3D%20Action%20new.%0A%0A%22%09flag%20ifNil%3A%20%5B%20flag%20%3A%3D%20true.%20%0A%20%20%20%20%20%20%20%20%09%27body%27%20asJQuery%20%20keydown%3A%20%5B%20%3Aev%20%7C%20%0A%09%09%28ev%20keyCode%29%20%3D%2037%20ifTrue%3A%20%5B%20self%20onLeft.%20%20%20%5D%20ifFalse%3A%20%5B%0A%09%09%28ev%20keyCode%29%20%3D%2039%20ifTrue%3A%20%5B%20self%20onRight.%20%20%5D%5D%20%5D%20%5D%22'),
+messageSends: ["appendToJQuery:", "new", "toolbar", "container"],
 referencedClasses: ["ToolBar", "TopPage", "AboutDyNagoya", "AboutSmalltalk", "Links", "Action"]
 }),
 smalltalk.Screen.klass);
@@ -1454,6 +1452,23 @@ fn: function () {
 },
 args: [],
 source: unescape('meeting06%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0306%27%3B%0A%09%09date%3A%20%272012/05/19%27%3B%0A%09%09start%3A%20%2718%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20LokantaAYHAN%3B%0A%09%09detail%3A%20%7B%0A%27%u5408%u540CSmalltalk%u52C9%u5F37%u4F1A%u306E%u6BB5%u53D6%u308A%u3092%u6C7A%u3081%u308B%27.%0A%27%u30D1%u30FC%u30B5%u30FC%u306E%u3044%u3058%u308A%u65B9%27.%0A%27VMMaker%u3092%u52D5%u304B%u3059%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["LokantaAYHAN"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+unescape('_meeting07'),
+smalltalk.method({
+selector: unescape('meeting07'),
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", [unescape("DyNagoya%20MTG%20%uFF0307")]);smalltalk.send($rec, "_date_", [unescape("2012/06/19")]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.LokantaAYHAN || LokantaAYHAN]);return smalltalk.send($rec, "_detail_", [[unescape("%u5408%u540CSmalltalk%u52C9%u5F37%u4F1A%u306E%u6BB5%u53D6%u308A%u3092%u6C7A%u3081%u308B"), unescape("%u30D1%u30FC%u30B5%u30FC%u306E%u3044%u3058%u308A%u65B9"), unescape("VMMaker%u3092%u52D5%u304B%u3059"), unescape("Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29")]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: unescape('meeting07%0A%09%5E%20self%20new%20%0A%09%09fixed%3A%20true%3B%0A%09%09title%3A%20%27DyNagoya%20MTG%20%uFF0307%27%3B%0A%09%09date%3A%20%272012/06/19%27%3B%0A%09%09start%3A%20%2718%3A00%3A00%27%3B%0A%09%09end%3A%20%2720%3A30%3A00%27%3B%0A%09%09place%3A%20LokantaAYHAN%3B%0A%09%09detail%3A%20%7B%0A%27%u5408%u540CSmalltalk%u52C9%u5F37%u4F1A%u306E%u6BB5%u53D6%u308A%u3092%u6C7A%u3081%u308B%27.%0A%27%u30D1%u30FC%u30B5%u30FC%u306E%u3044%u3058%u308A%u65B9%27.%0A%27VMMaker%u3092%u52D5%u304B%u3059%27.%0A%27Smalltalk%u5165%u9580%28%u5E0C%u671B%u8005%u304C%u3044%u308C%u3070%29%27%0A%7D'),
 messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["LokantaAYHAN"]
 }),
