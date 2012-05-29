@@ -111,10 +111,11 @@ show
 	AboutSmalltalk new appendToJQuery: self container.
 	Links new appendToJQuery: self container.
 	action := Action new.
-	flag ifNil: [ flag := true. 
+
+"	flag ifNil: [ flag := true. 
         	'body' asJQuery  keydown: [ :ev | 
 		(ev keyCode) = 37 ifTrue: [ self onLeft.   ] ifFalse: [
-		(ev keyCode) = 39 ifTrue: [ self onRight.  ]] ] ]
+		(ev keyCode) = 39 ifTrue: [ self onRight.  ]] ] ]"
 !
 
 container
@@ -677,6 +678,22 @@ meeting06
 		fixed: true;
 		title: 'DyNagoya MTG ＃06';
 		date: '2012/05/19';
+		start: '18:00:00';
+		end: '20:30:00';
+		place: LokantaAYHAN;
+		detail: {
+'合同Smalltalk勉強会の段取りを決める'.
+'パーサーのいじり方'.
+'VMMakerを動かす'.
+'Smalltalk入門(希望者がいれば)'
+}
+!
+
+meeting07
+	^ self new 
+		fixed: true;
+		title: 'DyNagoya MTG ＃07';
+		date: '2012/06/19';
 		start: '18:00:00';
 		end: '20:30:00';
 		place: LokantaAYHAN;
