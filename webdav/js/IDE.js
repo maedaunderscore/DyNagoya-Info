@@ -3277,11 +3277,12 @@ category: 'actions',
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val", []), "__comma", [smalltalk.send(smalltalk.String || String, "_cr", [])])]);
+    smalltalk.send(self, "_moveBottom", []);
     return self;
 },
 args: [],
-source: "cr\x0a    textarea asJQuery val: textarea asJQuery val, String cr.",
-messageSends: ["val:", "asJQuery", ",", "val", "cr"],
+source: "cr\x0a    textarea asJQuery val: textarea asJQuery val, String cr.\x0a    self moveBottom.",
+messageSends: ["val:", "asJQuery", ",", "val", "cr", "moveBottom"],
 referencedClasses: ["String"]
 }),
 smalltalk.IDETranscript);
@@ -3299,6 +3300,23 @@ fn: function () {
 args: [],
 source: "label\x0a    ^'Transcript'",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IDETranscript);
+
+smalltalk.addMethod(
+"_moveBottom",
+smalltalk.method({
+selector: "moveBottom",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_scrollTop_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_at_", [0]), "_scrollHeight", [])]);
+    return self;
+},
+args: [],
+source: "moveBottom\x0a\x09textarea asJQuery scrollTop: ((textarea asJQuery at:0) scrollHeight).",
+messageSends: ["scrollTop:", "asJQuery", "scrollHeight", "at:"],
 referencedClasses: []
 }),
 smalltalk.IDETranscript);
@@ -3364,11 +3382,12 @@ fn: function (anObject) {
     var self = this;
     ($receiver = self['@textarea']) == nil || $receiver == undefined ? function () {return smalltalk.send(self, "_open", []);}() : $receiver;
     smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val", []), "__comma", [smalltalk.send(anObject, "_asString", [])])]);
+    smalltalk.send(self, "_moveBottom", []);
     return self;
 },
 args: ["anObject"],
-source: "show: anObject\x0a    textarea ifNil: [self open].\x0a    textarea asJQuery val: textarea asJQuery val, anObject asString.",
-messageSends: ["ifNil:", "open", "val:", "asJQuery", ",", "val", "asString"],
+source: "show: anObject\x0a    textarea ifNil: [self open].\x0a    textarea asJQuery val: textarea asJQuery val, anObject asString.\x0a    self moveBottom.",
+messageSends: ["ifNil:", "open", "val:", "asJQuery", ",", "val", "asString", "moveBottom"],
 referencedClasses: []
 }),
 smalltalk.IDETranscript);
