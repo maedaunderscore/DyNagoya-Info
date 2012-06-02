@@ -177,7 +177,7 @@ workspace
 messages
 	^{
 	 'Type a line below on workspace, then click "DoIt"'.
-	 '    AboutDynagoya show    "to see what DyNagoya is"'.
+	 '    AboutDyNagoya show    "to see what DyNagoya is"'.
 	 '    Links show                      "to see Links about our interest"'.
 	 '    Browser open                 "to open class browser"'.
 	 '    EntryPoint start               "to restart this page"'

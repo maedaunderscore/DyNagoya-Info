@@ -424,11 +424,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type a line below on workspace, then click \"DoIt\"", "    AboutDynagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
+    return ["Type a line below on workspace, then click \"DoIt\"", "", "    AboutDyNagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type a line below on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDynagoya show    \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                      \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                 \x22to open class browser\x22'.\x0a\x09 '    EntryPoint start               \x22to restart this page\x22'\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type a line below on workspace, then click \x22DoIt\x22'.\x0a\x09 ''.\x0a\x09 '    AboutDyNagoya show    \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                      \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                 \x22to open class browser\x22'.\x0a\x09 '    EntryPoint start               \x22to restart this page\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
