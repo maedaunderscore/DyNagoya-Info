@@ -1,13 +1,6 @@
 Object subclass: #FileServer
-	instanceVariableNames: 'path http fs url port basePath sys oauth oAuth'
-	category: 'FileServer'!
-
-!FileServer methodsFor: 'oauth'!
-
-isLogin: req
-	 console log: req.
-	 ^ true
-! !
+	instanceVariableNames: 'path http fs url port basePath util'
+	package: 'FileServer'!
 
 !FileServer methodsFor: 'accessing'!
 
@@ -30,19 +23,8 @@ initialize
 	path := self require: 'path'.
 	http := self require: 'http'.
 	fs := self require: 'fs'.
-	sys := self require: 'sys'.
-	url := self require: 'url'.
-
-	(< var oAuth = self['@oAuth'] = require('oauth').OAuth; self['@oauth'] = new oAuth(
-	 'http://api.twitter.com/oauth/request_token', 
-	 'http://api.twitter.com/oauth/access_token', 
-	 'rPKP8TOjxQJZI0kVcdjOQ',
-	 '891Uaz9iiR0heRcGYclcCT3ZhC5WyN7QPB5Genouc1g',
-	 '1.0', 
-	 'http://dynagoya.info/login', 
-	 'HMAC-SHA1' 
-	  ) >)
-
+	util := self require: 'util'.
+	url := self require: 'url'
 ! !
 
 !FileServer methodsFor: 'private'!
@@ -66,43 +48,45 @@ respondNotFoundTo: aResponse
 !
 
 handleRequest: aRequest respondTo: aResponse
+
 	aRequest method = 'PUT'
-		ifTrue: [self handlePUTRequest: aRequest respondTo: aResponse]
-		ifFalse: [self handleGETRequest: aRequest respondTo: aResponse]
+		ifTrue: [self handlePUTRequest: aRequest respondTo: aResponse].
+	aRequest method = 'GET'
+		ifTrue:[self handleGETRequest: aRequest respondTo: aResponse].
+	aRequest method = 'OPTIONS'
+		ifTrue:[self handleOPTIONSRequest: aRequest respondTo: aResponse]
+
 !
 
 handleGETRequest: aRequest respondTo: aResponse
 	| uri filename |
 	uri := (url parse: aRequest url) pathname.
-	uri = '/login' 
-	    ifTrue: [ self handleLogin: aRequest respondTo: aResponse ]
-	    ifFalse: [ 
-	    	filename := path join: self basePath with: uri.
-			path exists: filename do: [:boolean | 
-			boolean 
-				ifFalse: [self respondNotFoundTo: aResponse]
-				ifTrue: [self respondFileNamed: filename to: aResponse]]]
-!
-
-handleLogin: aRequest respondTo: aResponse
-	oauth getOAuthRequestToken: [ :error :oauthToken :oauthTokenSecret :results |
-	      console log: oauthToken.
-	      aResponse redirect: 
-	      		'https://api.twitter.com/oauth/authorize?oauth_token=',
-	      		oauthToken.
-	]
+	filename := path join: self basePath with: uri.
+	path exists: filename do: [:boolean | 
+		boolean 
+			ifFalse: [self respondNotFoundTo: aResponse]
+			ifTrue: [self respondFileNamed: filename to: aResponse]]
 !
 
 handlePUTRequest: aRequest respondTo: aResponse
-	| stream |
-	stream := fs createWriteStream: '.', aRequest url.
+	|stream |
+	stream := fs createWriteStream: '.' , aRequest url.
+        aRequest setEncoding: 'utf8'.
+        aRequest on: 'data' do: [:data | stream write: data].
 
-	aRequest setEncoding: 'utf8'.
-	aRequest on: #data do: [:data | stream write: data].
+        aRequest on: 'end' do: [
+                stream end.
+                self respondOKTo: aResponse]
 
-	aRequest on: #end do: [
-		stream end.
-		self respondOKTo: aResponse]
+!
+
+handleOPTIONSRequest: aRequest respondTo: aResponse
+	aResponse writeHead: 200 options: #{'Access-Control-Allow-Origin' -> '*'.
+					'Access-Control-Allow-Methods' -> 'GET, PUT, POST, DELETE, OPTIONS'.
+					'Access-Control-Allow-Headers' -> 'Content-Type, Accept'.
+					'Content-Length' -> 0.
+					'Access-Control-Max-Age' -> 10}.
+	aResponse end
 !
 
 respondFileNamed: aFilename to: aResponse
@@ -116,11 +100,13 @@ respondFileNamed: aFilename to: aResponse
 		ex notNil 
 			ifTrue: [self respondInternalErrorTo: aResponse]
 			ifFalse: [
-        			type := self class mimeTypeFor: filename.
+				type := self class mimeTypeFor: filename.
+				type = 'application/javascript'
+					ifTrue: [ type:=type,';charset=utf-8' ].
 				aResponse 
-                          		writeHead: 200 options:  #{'Content-Type' -> type};
-					write: file binary: 'binary';
-                          		end]]
+					writeHead: 200 options:  #{'Content-Type' -> type};
+					write: file encoding: 'binary';
+					end]]
 !
 
 respondInternalErrorTo: aResponse
@@ -132,8 +118,9 @@ respondInternalErrorTo: aResponse
 
 respondOKTo: aResponse
 	aResponse 
-		writeHead: 200 options: #{'Content-Type' -> 'text/plain'};
-		end
+		writeHead: 200 options: #{'Content-Type' -> 'text/plain'. 'Access-Control-Allow-Origin' -> '*'}.
+	aResponse end.
+					
 ! !
 
 !FileServer methodsFor: 'starting'!

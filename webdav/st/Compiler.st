@@ -1,7 +1,7 @@
 Smalltalk current createPackage: 'Compiler' properties: #{}!
 Object subclass: #ChunkParser
 	instanceVariableNames: 'stream'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !ChunkParser methodsFor: 'accessing'!
 
@@ -40,45 +40,135 @@ on: aStream
 	^self new stream: aStream
 ! !
 
-Object subclass: #Importer
-	instanceVariableNames: ''
-	category: 'Compiler'!
+Object subclass: #Compiler
+	instanceVariableNames: 'currentClass source unknownVariables'
+	package: 'Compiler'!
 
-!Importer methodsFor: 'fileIn'!
+!Compiler methodsFor: 'accessing'!
 
-import: aStream
-    | chunk result parser lastEmpty |
-    parser := ChunkParser on: aStream.
-    lastEmpty := false.
-    [chunk := parser nextChunk.
-     chunk isNil] whileFalse: [
-        chunk isEmpty
-       		ifTrue: [lastEmpty := true]
-       		ifFalse: [
-        		result := Compiler new loadExpression: chunk.
-        		lastEmpty 
-            			ifTrue: [
-                                  	lastEmpty := false.
-                                  	result scanFrom: parser]]]
+codeGeneratorClass
+	^FunCodeGenerator
+!
+
+currentClass
+	^currentClass
+!
+
+currentClass: aClass
+	currentClass := aClass
+!
+
+source
+	^source ifNil: ['']
+!
+
+source: aString
+	source := aString
+!
+
+unknownVariables
+	^unknownVariables
+!
+
+unknownVariables: aCollection
+	unknownVariables := aCollection
 ! !
+
+!Compiler methodsFor: 'compiling'!
+
+compile: aString
+	^self compileNode: (self parse: aString)
+!
+
+compile: aString forClass: aClass
+	self currentClass: aClass.
+	self source: aString.
+	^self compile: aString
+!
+
+compileExpression: aString
+	self currentClass: DoIt.
+	self source: 'doIt ^[', aString, '] value'.
+	^self compileNode: (self parse: self source)
+!
+
+compileNode: aNode
+	| generator result |
+	generator := self codeGeneratorClass new.
+	generator
+		source: self source;
+		currentClass: self currentClass.
+	result := generator compileNode: aNode.
+	self unknownVariables: generator unknownVariables.
+	^result
+!
+
+eval: aString
+	<return eval(aString)>
+!
+
+evaluateExpression: aString
+	"Unlike #eval: evaluate a Smalltalk expression and answer the returned object"
+	| result |
+	DoIt addCompiledMethod: (self eval: (self compileExpression: aString)).
+	result := DoIt new doIt.
+	DoIt removeCompiledMethod: (DoIt methodDictionary at: 'doIt').
+	^result
+!
+
+install: aString forClass: aBehavior category: anotherString
+	| compiled |
+	compiled := self eval: (self compile: aString forClass: aBehavior).
+	compiled category: anotherString.
+	aBehavior addCompiledMethod: compiled.
+	^compiled
+!
+
+parse: aString
+    ^Smalltalk current parse: aString
+!
+
+parseExpression: aString
+    ^self parse: 'doIt ^[', aString, '] value'
+!
+
+recompile: aClass
+	aClass methodDictionary do: [:each |
+		self install: each source forClass: aClass category: each category].
+	self setupClass: aClass.
+	aClass isMetaclass ifFalse: [self recompile: aClass class]
+!
+
+recompileAll
+	Smalltalk current classes do: [:each |
+		Transcript show: each; cr.
+		[self recompile: each] valueWithTimeout: 100]
+!
+
+setupClass: aClass
+	<smalltalk.init(aClass)>
+! !
+
+!Compiler class methodsFor: 'compiling'!
+
+recompile: aClass
+	self new recompile: aClass
+!
+
+recompileAll
+	Smalltalk current classes do: [:each |
+		self recompile: each]
+! !
+
+Object subclass: #DoIt
+	instanceVariableNames: ''
+	package: 'Compiler'!
 
 Object subclass: #Exporter
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !Exporter methodsFor: 'fileOut'!
-
-exportPackage: packageName
-	"Export a given package by name."
-
-	| package |
-	^String streamContents: [:stream |
-                package := Smalltalk current packageAt: packageName.
-                self exportPackageDefinitionOf: package on: stream.
-	    	package classes do: [:each |
-                        stream nextPutAll: (self exportClass: each)].
-		self exportPackageExtensionsOf: package on: stream]
-!
 
 exportAll
     "Export all packages in the system."
@@ -96,9 +186,33 @@ exportClass: aClass
 		self exportMethodsOf: aClass on: stream.
 		self exportMetaDefinitionOf: aClass on: stream.
 		self exportMethodsOf: aClass class on: stream]
+!
+
+exportPackage: packageName
+	"Export a given package by name."
+
+	| package |
+	^String streamContents: [:stream |
+                package := Smalltalk current packageAt: packageName.
+                self exportPackageDefinitionOf: package on: stream.
+
+		"Export classes in dependency order.
+		Update (issue #171): Remove duplicates for export"
+	    	package sortedClasses asSet do: [:each |
+                        stream nextPutAll: (self exportClass: each)].
+		self exportPackageExtensionsOf: package on: stream]
 ! !
 
 !Exporter methodsFor: 'private'!
+
+classNameFor: aClass
+	^aClass isMetaclass
+	    ifTrue: [aClass instanceClass name, '.klass']
+	    ifFalse: [
+		aClass isNil
+		    ifTrue: ['nil']
+		    ifFalse: [aClass name]]
+!
 
 exportDefinitionOf: aClass on: aStream
 	aStream 
@@ -119,7 +233,7 @@ exportDefinitionOf: aClass on: aStream
 		nextPutAll: 'smalltalk.';
 		nextPutAll: (self classNameFor: aClass);
 		nextPutAll: '.comment=';
-		nextPutAll: 'unescape(''', aClass comment escaped, ''')'].
+		nextPutAll: aClass comment asJavascript].
 	aStream lf
 !
 
@@ -134,32 +248,16 @@ exportMetaDefinitionOf: aClass on: aStream
 	    aStream nextPutAll: '];', String lf]
 !
 
-exportMethodsOf: aClass on: aStream
-	aClass methodDictionary values do: [:each |
-		(each category match: '^\*') ifFalse: [
-			self exportMethod: each of: aClass on: aStream]].
-	aStream lf
-!
-
-classNameFor: aClass
-	^aClass isMetaclass
-	    ifTrue: [aClass instanceClass name, '.klass']
-	    ifFalse: [
-		aClass isNil
-		    ifTrue: ['nil']
-		    ifFalse: [aClass name]]
-!
-
 exportMethod: aMethod of: aClass on: aStream
 	aStream 
 		nextPutAll: 'smalltalk.addMethod(';lf;
-		nextPutAll: 'unescape(''', aMethod selector asSelector escaped, '''),';lf;
+		nextPutAll: aMethod selector asSelector asJavascript, ',';lf;
 		nextPutAll: 'smalltalk.method({';lf;
-		nextPutAll: 'selector: unescape(''', aMethod selector escaped, '''),';lf;
+		nextPutAll: 'selector: ', aMethod selector asJavascript, ',';lf;
 		nextPutAll: 'category: ''', aMethod category, ''',';lf;
 		nextPutAll: 'fn: ', aMethod fn compiledSource, ',';lf;
 		nextPutAll: 'args: ', aMethod arguments asJavascript, ','; lf;
-		nextPutAll: 'source: unescape(''', aMethod source escaped, '''),';lf;
+		nextPutAll: 'source: ', aMethod source asJavascript, ',';lf;
 		nextPutAll: 'messageSends: ', aMethod messageSends asJavascript, ',';lf;
 		nextPutAll: 'referencedClasses: ', aMethod referencedClasses asJavascript.
 	aStream
@@ -169,13 +267,13 @@ exportMethod: aMethod of: aClass on: aStream
 		nextPutAll: ');';lf;lf
 !
 
-exportPackageExtensionsOf: package on: aStream
-	| name |
-	name := package name.
-	Smalltalk current classes, (Smalltalk current classes collect: [:each | each class]) do: [:each |
-		each methodDictionary values do: [:method |
-			method category = ('*', name) ifTrue: [
-				self exportMethod: method of: each on: aStream]]]
+exportMethodsOf: aClass on: aStream
+	"Issue #143: sort methods alphabetically"
+
+	((aClass methodDictionary values) sorted: [:a :b | a selector <= b selector]) do: [:each |
+		(each category match: '^\*') ifFalse: [
+			self exportMethod: each of: aClass on: aStream]].
+	aStream lf
 !
 
 exportPackageDefinitionOf: package on: aStream
@@ -183,49 +281,59 @@ exportPackageDefinitionOf: package on: aStream
 	    nextPutAll: 'smalltalk.addPackage(';
 	    nextPutAll: '''', package name, ''', ', package propertiesAsJSON , ');'.
 	aStream lf
+!
+
+exportPackageExtensionsOf: package on: aStream
+	"Issue #143: sort classes and methods alphabetically"
+
+	| name |
+	name := package name.
+	(Package sortedClasses: Smalltalk current classes) do: [:each |
+		{each. each class} do: [:aClass | 
+			((aClass methodDictionary values) sorted: [:a :b | a selector <= b selector]) do: [:method |
+				(method category match: '^\*', name) ifTrue: [
+					self exportMethod: method of: aClass on: aStream ]]]]
 ! !
 
 Exporter subclass: #ChunkExporter
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !ChunkExporter methodsFor: 'not yet classified'!
 
+chunkEscape: aString
+	"Replace all occurrences of !! with !!!! and trim at both ends."
+
+	^(aString replace: '!!' with: '!!!!') trimBoth
+!
+
+classNameFor: aClass
+	^aClass isMetaclass
+	    ifTrue: [aClass instanceClass name, ' class']
+	    ifFalse: [
+		aClass isNil
+		    ifTrue: ['nil']
+		    ifFalse: [aClass name]]
+!
+
 exportDefinitionOf: aClass on: aStream
-	"Chunk format."
+    "Chunk format."
 
-	aStream 
-	    nextPutAll: (self classNameFor: aClass superclass);
-	    nextPutAll: ' subclass: #', (self classNameFor: aClass); lf;
-	    nextPutAll: '	instanceVariableNames: '''.
-	aClass instanceVariableNames 
-	    do: [:each | aStream nextPutAll: each]
-	    separatedBy: [aStream nextPutAll: ' '].
-	aStream	
-	    nextPutAll: ''''; lf;
-	    nextPutAll: '	category: ''', aClass category, '''!!'; lf.
- 	aClass comment notEmpty ifTrue: [
-	    aStream 
-		nextPutAll: '!!', (self classNameFor: aClass), ' commentStamp!!';lf;
-		nextPutAll: (self chunkEscape: aClass comment), '!!';lf].
-	aStream lf
-!
-
-exportMethod: aMethod of: aClass on: aStream
-	aStream 
-		lf; lf; nextPutAll: (self chunkEscape: aMethod source); lf;
-		nextPutAll: '!!'
-!
-
-exportMethodsOf: aClass on: aStream
-
-   aClass protocolsDo: [:category :methods |
-	(category match: '^\*') ifFalse: [ 
-		self
-			exportMethods: methods
-			category: category
-			of: aClass
-			on: aStream]]
+    aStream 
+        nextPutAll: (self classNameFor: aClass superclass);
+        nextPutAll: ' subclass: #', (self classNameFor: aClass); lf;
+        nextPutAll: '	instanceVariableNames: '''.
+    aClass instanceVariableNames 
+        do: [:each | aStream nextPutAll: each]
+        separatedBy: [aStream nextPutAll: ' '].
+    aStream 
+        nextPutAll: ''''; lf;
+        nextPutAll: '	package: ''', aClass category, '''!!'; lf.
+    aClass comment notEmpty ifTrue: [
+        aStream 
+        nextPutAll: '!!', (self classNameFor: aClass), ' commentStamp!!';lf;
+        nextPutAll: (self chunkEscape: aClass comment), '!!';lf].
+    aStream lf
 !
 
 exportMetaDefinitionOf: aClass on: aStream
@@ -241,42 +349,37 @@ exportMetaDefinitionOf: aClass on: aStream
 		    nextPutAll: '''!!'; lf; lf]
 !
 
-classNameFor: aClass
-	^aClass isMetaclass
-	    ifTrue: [aClass instanceClass name, ' class']
-	    ifFalse: [
-		aClass isNil
-		    ifTrue: ['nil']
-		    ifFalse: [aClass name]]
-!
-
-chunkEscape: aString
-	"Replace all occurrences of !! with !!!! and trim at both ends."
-
-	^(aString replace: '!!' with: '!!!!') trimBoth
+exportMethod: aMethod of: aClass on: aStream
+	aStream 
+		lf; lf; nextPutAll: (self chunkEscape: aMethod source); lf;
+		nextPutAll: '!!'
 !
 
 exportMethods: methods category: category of: aClass on: aStream
+	"Issue #143: sort methods alphabetically"
 
 	aStream
 		nextPutAll: '!!', (self classNameFor: aClass);
 		nextPutAll: ' methodsFor: ''', category, '''!!'.
-    	methods do: [:each |
-		self exportMethod: each of: aClass on: aStream].
+		(methods sorted: [:a :b | a selector <= b selector]) do: [:each |
+				self exportMethod: each of: aClass on: aStream].
 	aStream nextPutAll: ' !!'; lf; lf
 !
 
-exportPackageExtensionsOf: package on: aStream
-	"We need to override this one too since we need to group
-	all methods in a given protocol under a leading methodsFor: chunk
-	for that class."
+exportMethodsOf: aClass on: aStream
+	"Issue #143: sort protocol alphabetically"
 
-	| name |
-	name := package name.
-	Smalltalk current classes, (Smalltalk current classes collect: [:each | each class]) do: [:each |
-		each protocolsDo: [:category :methods |
-			category = ('*', name) ifTrue: [
-				self exportMethods: methods category: category of: each on: aStream]]]
+	| map |
+	map := Dictionary new.
+	aClass protocolsDo: [:category :methods | 
+		(category match: '^\*') ifFalse: [ map at: category put: methods ]].
+	(map keys sorted: [:a :b | a <= b ]) do: [:category | | methods |
+		methods := map at: category.
+		self
+			exportMethods: methods
+			category: category
+			of: aClass
+			on: aStream ]
 !
 
 exportPackageDefinitionOf: package on: aStream
@@ -285,11 +388,30 @@ exportPackageDefinitionOf: package on: aStream
 	aStream 
 	    nextPutAll: 'Smalltalk current createPackage: ''', package name,
 		''' properties: ', package properties storeString, '!!'; lf.
+!
+
+exportPackageExtensionsOf: package on: aStream
+	"We need to override this one too since we need to group
+	all methods in a given protocol under a leading methodsFor: chunk
+	for that class."
+
+	"Issue #143: sort protocol alphabetically"
+
+	| name map |
+	name := package name.
+	(Package sortedClasses: Smalltalk current classes) do: [:each |
+		{each. each class} do: [:aClass |
+			map := Dictionary new.
+			aClass protocolsDo: [:category :methods | 
+				(category match: '^\*', name) ifTrue: [ map at: category put: methods ]].
+			(map keys sorted: [:a :b | a <= b ]) do: [:category | | methods |
+				methods := map at: category.	
+				self exportMethods: methods category: category of: aClass on: aStream ]]]
 ! !
 
 Exporter subclass: #StrippedExporter
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !StrippedExporter methodsFor: 'private'!
 
@@ -312,27 +434,49 @@ exportDefinitionOf: aClass on: aStream
 exportMethod: aMethod of: aClass on: aStream
 	aStream 
 		nextPutAll: 'smalltalk.addMethod(';lf;
-		nextPutAll: '''', aMethod selector asSelector, ''',';lf;
+		nextPutAll: aMethod selector asSelector asJavascript, ',';lf;
 		nextPutAll: 'smalltalk.method({';lf;
-		nextPutAll: 'selector: ''', aMethod selector, ''',';lf;
+		nextPutAll: 'selector: ', aMethod selector asJavascript, ',';lf;
 		nextPutAll: 'fn: ', aMethod fn compiledSource;lf;
 		nextPutAll: '}),';lf;
 		nextPutAll: 'smalltalk.', (self classNameFor: aClass);
 		nextPutAll: ');';lf;lf
 ! !
 
+Object subclass: #Importer
+	instanceVariableNames: ''
+	package: 'Compiler'!
+
+!Importer methodsFor: 'fileIn'!
+
+import: aStream
+    | chunk result parser lastEmpty |
+    parser := ChunkParser on: aStream.
+    lastEmpty := false.
+    [chunk := parser nextChunk.
+     chunk isNil] whileFalse: [
+        chunk isEmpty
+       		ifTrue: [lastEmpty := true]
+       		ifFalse: [
+        		result := Compiler new evaluateExpression: chunk.
+        		lastEmpty 
+            			ifTrue: [
+                                  	lastEmpty := false.
+                                  	result scanFrom: parser]]]
+! !
+
 Object subclass: #Node
 	instanceVariableNames: 'nodes'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !Node methodsFor: 'accessing'!
 
-nodes
-	^nodes ifNil: [nodes := Array new]
-!
-
 addNode: aNode
 	self nodes add: aNode
+!
+
+nodes
+	^nodes ifNil: [nodes := Array new]
 ! !
 
 !Node methodsFor: 'building'!
@@ -343,15 +487,15 @@ nodes: aCollection
 
 !Node methodsFor: 'testing'!
 
-isValueNode
-	^false
-!
-
 isBlockNode
 	^false
 !
 
 isBlockSequenceNode
+	^false
+!
+
+isValueNode
 	^false
 ! !
 
@@ -361,123 +505,9 @@ accept: aVisitor
 	aVisitor visitNode: self
 ! !
 
-Node subclass: #MethodNode
-	instanceVariableNames: 'selector arguments source'
-	category: 'Compiler'!
-
-!MethodNode methodsFor: 'accessing'!
-
-selector
-	^selector
-!
-
-selector: aString
-	selector := aString
-!
-
-arguments
-	^arguments ifNil: [#()]
-!
-
-arguments: aCollection
-	arguments := aCollection
-!
-
-source
-	^source
-!
-
-source: aString
-	source := aString
-! !
-
-!MethodNode methodsFor: 'visiting'!
-
-accept: aVisitor
-	aVisitor visitMethodNode: self
-! !
-
-Node subclass: #SendNode
-	instanceVariableNames: 'selector arguments receiver'
-	category: 'Compiler'!
-
-!SendNode methodsFor: 'accessing'!
-
-selector
-	^selector
-!
-
-selector: aString
-	selector := aString
-!
-
-arguments
-	^arguments ifNil: [arguments := #()]
-!
-
-arguments: aCollection
-	arguments := aCollection
-!
-
-receiver
-	^receiver
-!
-
-receiver: aNode
-	receiver := aNode
-!
-
-valueForReceiver: anObject
-	^SendNode new
-	    receiver: (self receiver 
-		ifNil: [anObject]
-		ifNotNil: [self receiver valueForReceiver: anObject]);
-	    selector: self selector;
-	    arguments: self arguments;
-	    yourself
-!
-
-cascadeNodeWithMessages: aCollection
-	| first |
-	first := SendNode new
-	    selector: self selector;
-	    arguments: self arguments;
-	    yourself.
-	^CascadeNode new
-	    receiver: self receiver;
-	    nodes: (Array with: first), aCollection;
-	    yourself
-! !
-
-!SendNode methodsFor: 'visiting'!
-
-accept: aVisitor
-	aVisitor visitSendNode: self
-! !
-
-Node subclass: #CascadeNode
-	instanceVariableNames: 'receiver'
-	category: 'Compiler'!
-
-!CascadeNode methodsFor: 'accessing'!
-
-receiver
-	^receiver
-!
-
-receiver: aNode
-	receiver := aNode
-! !
-
-!CascadeNode methodsFor: 'visiting'!
-
-accept: aVisitor
-	aVisitor visitCascadeNode: self
-! !
-
 Node subclass: #AssignmentNode
 	instanceVariableNames: 'left right'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !AssignmentNode methodsFor: 'accessing'!
 
@@ -506,17 +536,9 @@ accept: aVisitor
 
 Node subclass: #BlockNode
 	instanceVariableNames: 'parameters inlined'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !BlockNode methodsFor: 'accessing'!
-
-parameters
-	^parameters ifNil: [parameters := Array new]
-!
-
-parameters: aCollection
-	parameters := aCollection
-!
 
 inlined
 	^inlined ifNil: [false]
@@ -524,6 +546,14 @@ inlined
 
 inlined: aBoolean
 	inlined := aBoolean
+!
+
+parameters
+	^parameters ifNil: [parameters := Array new]
+!
+
+parameters: aCollection
+	parameters := aCollection
 ! !
 
 !BlockNode methodsFor: 'testing'!
@@ -538,11 +568,179 @@ accept: aVisitor
 	aVisitor visitBlockNode: self
 ! !
 
+Node subclass: #CascadeNode
+	instanceVariableNames: 'receiver'
+	package: 'Compiler'!
+
+!CascadeNode methodsFor: 'accessing'!
+
+receiver
+	^receiver
+!
+
+receiver: aNode
+	receiver := aNode
+! !
+
+!CascadeNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitCascadeNode: self
+! !
+
+Node subclass: #DynamicArrayNode
+	instanceVariableNames: ''
+	package: 'Compiler'!
+
+!DynamicArrayNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitDynamicArrayNode: self
+! !
+
+Node subclass: #DynamicDictionaryNode
+	instanceVariableNames: ''
+	package: 'Compiler'!
+
+!DynamicDictionaryNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitDynamicDictionaryNode: self
+! !
+
+Node subclass: #JSStatementNode
+	instanceVariableNames: 'source'
+	package: 'Compiler'!
+
+!JSStatementNode methodsFor: 'accessing'!
+
+source
+	^source ifNil: ['']
+!
+
+source: aString
+	source := aString
+! !
+
+!JSStatementNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitJSStatementNode: self
+! !
+
+Node subclass: #MethodNode
+	instanceVariableNames: 'selector arguments source'
+	package: 'Compiler'!
+
+!MethodNode methodsFor: 'accessing'!
+
+arguments
+	^arguments ifNil: [#()]
+!
+
+arguments: aCollection
+	arguments := aCollection
+!
+
+selector
+	^selector
+!
+
+selector: aString
+	selector := aString
+!
+
+source
+	^source
+!
+
+source: aString
+	source := aString
+! !
+
+!MethodNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitMethodNode: self
+! !
+
+Node subclass: #ReturnNode
+	instanceVariableNames: ''
+	package: 'Compiler'!
+
+!ReturnNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitReturnNode: self
+! !
+
+Node subclass: #SendNode
+	instanceVariableNames: 'selector arguments receiver'
+	package: 'Compiler'!
+
+!SendNode methodsFor: 'accessing'!
+
+arguments
+	^arguments ifNil: [arguments := #()]
+!
+
+arguments: aCollection
+	arguments := aCollection
+!
+
+cascadeNodeWithMessages: aCollection
+	| first |
+	first := SendNode new
+	    selector: self selector;
+	    arguments: self arguments;
+	    yourself.
+	^CascadeNode new
+	    receiver: self receiver;
+	    nodes: (Array with: first), aCollection;
+	    yourself
+!
+
+receiver
+	^receiver
+!
+
+receiver: aNode
+	receiver := aNode
+!
+
+selector
+	^selector
+!
+
+selector: aString
+	selector := aString
+!
+
+valueForReceiver: anObject
+	^SendNode new
+	    receiver: (self receiver 
+		ifNil: [anObject]
+		ifNotNil: [self receiver valueForReceiver: anObject]);
+	    selector: self selector;
+	    arguments: self arguments;
+	    yourself
+! !
+
+!SendNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitSendNode: self
+! !
+
 Node subclass: #SequenceNode
 	instanceVariableNames: 'temps'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !SequenceNode methodsFor: 'accessing'!
+
+placeHolders
+	^ PlaceHolderExtractor new find: self
+!
 
 temps
 	^temps ifNil: [#()]
@@ -569,7 +767,7 @@ accept: aVisitor
 
 SequenceNode subclass: #BlockSequenceNode
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !BlockSequenceNode methodsFor: 'testing'!
 
@@ -583,19 +781,9 @@ accept: aVisitor
 	aVisitor visitBlockSequenceNode: self
 ! !
 
-Node subclass: #ReturnNode
-	instanceVariableNames: ''
-	category: 'Compiler'!
-
-!ReturnNode methodsFor: 'visiting'!
-
-accept: aVisitor
-	aVisitor visitReturnNode: self
-! !
-
 Node subclass: #ValueNode
 	instanceVariableNames: 'value'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !ValueNode methodsFor: 'accessing'!
 
@@ -621,7 +809,7 @@ accept: aVisitor
 
 ValueNode subclass: #VariableNode
 	instanceVariableNames: 'assigned'
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !VariableNode methodsFor: 'accessing'!
 
@@ -641,7 +829,7 @@ accept: aVisitor
 
 VariableNode subclass: #ClassReferenceNode
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !ClassReferenceNode methodsFor: 'visiting'!
 
@@ -649,29 +837,9 @@ accept: aVisitor
 	aVisitor visitClassReferenceNode: self
 ! !
 
-Node subclass: #JSStatementNode
-	instanceVariableNames: 'source'
-	category: 'Compiler'!
-
-!JSStatementNode methodsFor: 'accessing'!
-
-source
-	^source ifNil: ['']
-!
-
-source: aString
-	source := aString
-! !
-
-!JSStatementNode methodsFor: 'visiting'!
-
-accept: aVisitor
-	aVisitor visitJSStatementNode: self
-! !
-
 Object subclass: #NodeVisitor
 	instanceVariableNames: ''
-	category: 'Compiler'!
+	package: 'Compiler'!
 
 !NodeVisitor methodsFor: 'visiting'!
 
@@ -679,23 +847,43 @@ visit: aNode
 	aNode accept: self
 !
 
-visitNode: aNode
+visitAssignmentNode: aNode
+	self visitNode: aNode
+!
+
+visitBlockNode: aNode
+	self visitNode: aNode
+!
+
+visitBlockSequenceNode: aNode
+	self visitNode: aNode
+!
+
+visitCascadeNode: aNode
+	self visitNode: aNode
+!
+
+visitClassReferenceNode: aNode
+	self visitNode: aNode
+!
+
+visitDynamicArrayNode: aNode
+	self visitNode: aNode
+!
+
+visitDynamicDictionaryNode: aNode
+	self visitNode: aNode
+!
+
+visitJSStatementNode: aNode
+	self visitNode: aNode
 !
 
 visitMethodNode: aNode
 	self visitNode: aNode
 !
 
-visitSequenceNode: aNode
-	self visitNode: aNode
-!
-
-visitBlockSequenceNode: aNode
-	self visitSequenceNode: aNode
-!
-
-visitBlockNode: aNode
-	self visitNode: aNode
+visitNode: aNode
 !
 
 visitReturnNode: aNode
@@ -706,7 +894,7 @@ visitSendNode: aNode
 	self visitNode: aNode
 !
 
-visitCascadeNode: aNode
+visitSequenceNode: aNode
 	self visitNode: aNode
 !
 
@@ -715,69 +903,14 @@ visitValueNode: aNode
 !
 
 visitVariableNode: aNode
-!
-
-visitAssignmentNode: aNode
-	self visitNode: aNode
-!
-
-visitClassReferenceNode: aNode
-	self 
-	    nextPutAll: 'smalltalk.';
-	    nextPutAll: aNode value
-!
-
-visitJSStatementNode: aNode
-	self 
-	    nextPutAll: 'function(){';
-	    nextPutAll: aNode source;
-	    nextPutAll: '})()'
-!
-
-visitDynamicArrayNode: aNode
-	self visitNode: aNode
-!
-
-visitDynamicDictionaryNode: aNode
 	self visitNode: aNode
 ! !
 
-NodeVisitor subclass: #Compiler
-	instanceVariableNames: 'stream nestedBlocks earlyReturn currentClass currentSelector unknownVariables tempVariables messageSends referencedClasses classReferenced source argVariables'
-	category: 'Compiler'!
+NodeVisitor subclass: #AbstractCodeGenerator
+	instanceVariableNames: 'currentClass source'
+	package: 'Compiler'!
 
-!Compiler methodsFor: 'accessing'!
-
-parser
-	^SmalltalkParser new
-!
-
-currentClass
-	^currentClass
-!
-
-currentClass: aClass
-	currentClass := aClass
-!
-
-unknownVariables
-	^unknownVariables copy
-!
-
-pseudoVariables
-	^#('self' 'super' 'true' 'false' 'nil' 'thisContext')
-!
-
-tempVariables
-	^tempVariables copy
-!
-
-knownVariables
-	^self pseudoVariables 
-		addAll: self tempVariables;
-		addAll: self argVariables;
-		yourself
-!
+!AbstractCodeGenerator methodsFor: 'accessing'!
 
 classNameFor: aClass
 	^aClass isMetaclass
@@ -788,94 +921,72 @@ classNameFor: aClass
 		    ifFalse: [aClass name]]
 !
 
-source
-	^source ifNil: ['']
+currentClass
+	^currentClass
 !
 
-source: aString
-	source := aString
+currentClass: aClass
+	currentClass := aClass
 !
 
-argVariables
-	^argVariables copy
+pseudoVariables
+	^#('self' 'super' 'true' 'false' 'nil' 'thisContext')
 !
 
 safeVariableNameFor: aString
 	^(Smalltalk current reservedWords includes: aString)
 		ifTrue: [aString, '_']
 		ifFalse: [aString]
+!
+
+source
+	^source ifNil: ['']
+!
+
+source: aString
+	source := aString
 ! !
 
-!Compiler methodsFor: 'compiling'!
+!AbstractCodeGenerator methodsFor: 'compiling'!
 
-loadExpression: aString
-	| result |
-	DoIt addCompiledMethod: (self eval: (self compileExpression: aString)).
-	result := DoIt new doIt.
-	DoIt removeCompiledMethod: (DoIt methodDictionary at: #doIt).
-	^result
+compileNode: aNode
+	self subclassResponsibility
+! !
+
+AbstractCodeGenerator subclass: #FunCodeGenerator
+	instanceVariableNames: 'stream nestedBlocks earlyReturn currentSelector unknownVariables tempVariables messageSends referencedClasses classReferenced argVariables'
+	package: 'Compiler'!
+
+!FunCodeGenerator methodsFor: 'accessing'!
+
+argVariables
+	^argVariables copy
 !
 
-load: aString forClass: aClass
-	| compiled |
-	compiled := self eval: (self compile: aString forClass: aClass).
-	self setupClass: aClass.
-	^compiled
+knownVariables
+	^self pseudoVariables 
+		addAll: self tempVariables;
+		addAll: self argVariables;
+		yourself
 !
 
-compile: aString forClass: aClass
-	self currentClass: aClass.
-	self source: aString.
-	^self compile: aString
+tempVariables
+	^tempVariables copy
 !
 
-compileExpression: aString
-	self currentClass: DoIt.
-	self source: 'doIt ^[', aString, '] value'.
-	^self compileNode: (self parse: self source)
-!
+unknownVariables
+	^unknownVariables copy
+! !
 
-eval: aString
-	<return eval(aString)>
-!
-
-compile: aString
-	^self compileNode: (self parse: aString)
-!
+!FunCodeGenerator methodsFor: 'compiling'!
 
 compileNode: aNode
 	stream := '' writeStream.
 	self visit: aNode.
 	^stream contents
-!
-
-parse: aString
-    ^Smalltalk current parse: aString
-!
-
-parseExpression: aString
-    ^self parse: 'doIt ^[', aString, '] value'
-!
-
-recompile: aClass
-	aClass methodDictionary do: [:each || method |
-		method := self load: each source forClass: aClass.
-		method category: each category.
-		aClass addCompiledMethod: method].
-	aClass isMetaclass ifFalse: [self recompile: aClass class]
-!
-
-recompileAll
-	Smalltalk current classes do: [:each |
-		Transcript show: each; cr.
-		[self recompile: each] valueWithTimeout: 100]
-!
-
-setupClass: aClass
-	<smalltalk.init(aClass)>
 ! !
 
-!Compiler methodsFor: 'initialization'!
+!FunCodeGenerator methodsFor: 'initialization'!
 
 initialize
 	super initialize.
@@ -887,10 +998,105 @@ initialize
 	classReferenced := #()
 ! !
 
-!Compiler methodsFor: 'optimizations'!
+!FunCodeGenerator methodsFor: 'optimizations'!
 
 checkClass: aClassName for: receiver
         stream nextPutAll: '((($receiver = ', receiver, ').klass === smalltalk.', aClassName, ') ? '
+!
+
+inline: aSelector receiver: receiver argumentNodes: aCollection
+        | inlined |
+        inlined := false.
+
+	"-- Booleans --"
+
+	(aSelector = 'ifFalse:') ifTrue: [
+		aCollection first isBlockNode ifTrue: [
+                	self checkClass: 'Boolean' for: receiver.
+                	stream nextPutAll: '(!! $receiver ? '.
+                	self visit: aCollection first.
+          		stream nextPutAll: '() : nil)'.
+                	inlined := true]].
+
+	(aSelector = 'ifTrue:') ifTrue: [
+		aCollection first isBlockNode ifTrue: [
+                	self checkClass: 'Boolean' for: receiver.
+                	stream nextPutAll: '($receiver ? '.
+                	self visit: aCollection first.
+          		stream nextPutAll: '() : nil)'.
+                	inlined := true]].
+
+	(aSelector = 'ifTrue:ifFalse:') ifTrue: [
+		(aCollection first isBlockNode and: [aCollection second isBlockNode]) ifTrue: [
+                	self checkClass: 'Boolean' for: receiver.
+                	stream nextPutAll: '($receiver ? '.
+                	self visit: aCollection first.
+          		stream nextPutAll: '() : '.
+          		self visit: aCollection second.
+          		stream nextPutAll: '())'.
+                	inlined := true]].
+
+	(aSelector = 'ifFalse:ifTrue:') ifTrue: [
+		(aCollection first isBlockNode and: [aCollection second isBlockNode]) ifTrue: [
+                	self checkClass: 'Boolean' for: receiver.
+                	stream nextPutAll: '(!! $receiver ? '.
+                	self visit: aCollection first.
+          		stream nextPutAll: '() : '.
+          		self visit: aCollection second.
+          		stream nextPutAll: '())'.
+                	inlined := true]].
+
+	"-- Numbers --"
+
+	(aSelector = '<') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver <'.
+                self visit: aCollection first.
+                inlined := true].
+
+	(aSelector = '<=') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver <='.
+                self visit: aCollection first.
+                inlined := true].
+
+	(aSelector = '>') ifTrue: [ 
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver >'.
+                self visit: aCollection first.
+                inlined := true].
+
+	(aSelector = '>=') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver >='.
+                self visit: aCollection first.
+                inlined := true].
+
+        (aSelector = '+') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver +'.
+                self visit: aCollection first.
+                inlined := true].
+
+        (aSelector = '-') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver -'.
+                self visit: aCollection first.
+                inlined := true].
+
+        (aSelector = '*') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver *'.
+                self visit: aCollection first.
+                inlined := true].
+
+        (aSelector = '/') ifTrue: [
+                self checkClass: 'Number' for: receiver.
+                stream nextPutAll: '$receiver /'.
+                self visit: aCollection first.
+                inlined := true].
+
+        ^inlined
 !
 
 inlineLiteral: aSelector receiverNode: anObject argumentNodes: aCollection
@@ -1038,162 +1244,43 @@ isNode: aNode ofClass: aClass
 	^aNode isValueNode and: [
           	aNode value class = aClass or: [
           		aNode value = 'self' and: [self currentClass = aClass]]]
-!
-
-inline: aSelector receiver: receiver argumentNodes: aCollection
-        | inlined |
-        inlined := false.
-
-	"-- Booleans --"
-
-	(aSelector = 'ifFalse:') ifTrue: [
-		aCollection first isBlockNode ifTrue: [
-                	self checkClass: 'Boolean' for: receiver.
-                	stream nextPutAll: '(!! $receiver ? '.
-                	self visit: aCollection first.
-          		stream nextPutAll: '() : nil)'.
-                	inlined := true]].
-
-	(aSelector = 'ifTrue:') ifTrue: [
-		aCollection first isBlockNode ifTrue: [
-                	self checkClass: 'Boolean' for: receiver.
-                	stream nextPutAll: '($receiver ? '.
-                	self visit: aCollection first.
-          		stream nextPutAll: '() : nil)'.
-                	inlined := true]].
-
-	(aSelector = 'ifTrue:ifFalse:') ifTrue: [
-		(aCollection first isBlockNode and: [aCollection second isBlockNode]) ifTrue: [
-                	self checkClass: 'Boolean' for: receiver.
-                	stream nextPutAll: '($receiver ? '.
-                	self visit: aCollection first.
-          		stream nextPutAll: '() : '.
-          		self visit: aCollection second.
-          		stream nextPutAll: '())'.
-                	inlined := true]].
-
-	(aSelector = 'ifFalse:ifTrue:') ifTrue: [
-		(aCollection first isBlockNode and: [aCollection second isBlockNode]) ifTrue: [
-                	self checkClass: 'Boolean' for: receiver.
-                	stream nextPutAll: '(!! $receiver ? '.
-                	self visit: aCollection first.
-          		stream nextPutAll: '() : '.
-          		self visit: aCollection second.
-          		stream nextPutAll: '())'.
-                	inlined := true]].
-
-	"-- Numbers --"
-
-	(aSelector = '<') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver <'.
-                self visit: aCollection first.
-                inlined := true].
-
-	(aSelector = '<=') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver <='.
-                self visit: aCollection first.
-                inlined := true].
-
-	(aSelector = '>') ifTrue: [ 
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver >'.
-                self visit: aCollection first.
-                inlined := true].
-
-	(aSelector = '>=') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver >='.
-                self visit: aCollection first.
-                inlined := true].
-
-        (aSelector = '+') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver +'.
-                self visit: aCollection first.
-                inlined := true].
-
-        (aSelector = '-') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver -'.
-                self visit: aCollection first.
-                inlined := true].
-
-        (aSelector = '*') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver *'.
-                self visit: aCollection first.
-                inlined := true].
-
-        (aSelector = '/') ifTrue: [
-                self checkClass: 'Number' for: receiver.
-                stream nextPutAll: '$receiver /'.
-                self visit: aCollection first.
-                inlined := true].
-
-        ^inlined
 ! !
 
-!Compiler methodsFor: 'testing'!
+!FunCodeGenerator methodsFor: 'testing'!
 
 performOptimizations
 	^self class performOptimizations
 ! !
 
-!Compiler methodsFor: 'visiting'!
+!FunCodeGenerator methodsFor: 'visiting'!
+
+send: aSelector to: aReceiver arguments: aCollection superSend: aBoolean
+	^String streamContents: [:str || tmp |
+        	tmp := stream.
+		str nextPutAll: 'smalltalk.send('.
+		str nextPutAll: aReceiver.
+		str nextPutAll: ', "', aSelector asSelector, '", ['.
+                stream := str.
+		aCollection
+	    		do: [:each | self visit: each]
+	    		separatedBy: [stream nextPutAll: ', '].
+                stream := tmp.
+                str nextPutAll: ']'.
+		aBoolean ifTrue: [
+			str nextPutAll: ', smalltalk.', (self classNameFor: self currentClass), '.superclass || nil'].
+		str nextPutAll: ')']
+!
 
 visit: aNode
 	aNode accept: self
 !
 
-visitMethodNode: aNode
-	| str currentSelector | 
-	currentSelector := aNode selector asSelector.
-	nestedBlocks := 0.
-	earlyReturn := false.
-	messageSends := #().
-	referencedClasses := #().
-	unknownVariables := #().
-	tempVariables := #().
-	argVariables := #().
-	stream 
-	    nextPutAll: 'smalltalk.method({'; lf;
-	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
-	stream nextPutAll: 'source: unescape("', self source escaped, '"),';lf.
-	stream nextPutAll: 'fn: function('.
-	aNode arguments 
-	    do: [:each | 
-		argVariables add: each.
-		stream nextPutAll: each]
-	    separatedBy: [stream nextPutAll: ', '].
-	stream 
-	    nextPutAll: '){'; lf;
-	    nextPutAll: 'var self=this;'; lf.
-	str := stream.
-	stream := '' writeStream.
-	aNode nodes do: [:each |
-	    self visit: each].
-	earlyReturn ifTrue: [
-	    str nextPutAll: 'try{'].
-	str nextPutAll: stream contents.
-	stream := str.
-	stream 
-	    lf; 
-	    nextPutAll: 'return self;'.
-	earlyReturn ifTrue: [
-	    stream lf; nextPutAll: '} catch(e) {if(e.name === ''stReturn'' && e.selector === ', currentSelector printString, '){return e.fn()} throw(e)}'].
-	stream nextPutAll: '}'.
-	stream 
-		nextPutAll: ',', String lf, 'messageSends: ';
-		nextPutAll: messageSends asJavascript, ','; lf;
-          	nextPutAll: 'args: ', argVariables asJavascript, ','; lf;
-		nextPutAll: 'referencedClasses: ['.
-	referencedClasses 
-		do: [:each | stream nextPutAll: each printString]
-		separatedBy: [stream nextPutAll: ','].
-	stream nextPutAll: ']'.
-	stream nextPutAll: '})'
+visitAssignmentNode: aNode
+	stream nextPutAll: '('.
+	self visit: aNode left.
+	stream nextPutAll: '='.
+	self visit: aNode right.
+	stream nextPutAll: ')'
 !
 
 visitBlockNode: aNode
@@ -1206,17 +1293,6 @@ visitBlockNode: aNode
 	stream nextPutAll: '){'.
 	aNode nodes do: [:each | self visit: each].
 	stream nextPutAll: '})'
-!
-
-visitSequenceNode: aNode
-	aNode temps do: [:each || temp |
-            temp := self safeVariableNameFor: each.
-	    tempVariables add: temp.
-	    stream nextPutAll: 'var ', temp, '=nil;'; lf].
-	aNode nodes do: [:each |
-	    self visit: each.
-	    stream nextPutAll: ';']
-	    separatedBy: [stream lf]
 !
 
 visitBlockSequenceNode: aNode
@@ -1240,21 +1316,115 @@ visitBlockSequenceNode: aNode
 	nestedBlocks := nestedBlocks - 1
 !
 
-visitReturnNode: aNode
-	nestedBlocks > 0 ifTrue: [
-	    earlyReturn := true].
-	earlyReturn
-	    ifTrue: [
-		stream
-		    nextPutAll: '(function(){throw(';
-		    nextPutAll: '{name: ''stReturn'', selector: ';
-		    nextPutAll: currentSelector printString;
-		    nextPutAll: ', fn: function(){return ']
-	    ifFalse: [stream nextPutAll: 'return '].
+visitCascadeNode: aNode
+	| index |
+	index := 0.
+	(tempVariables includes: '$rec') ifFalse: [
+		tempVariables add: '$rec'].
+	stream nextPutAll: '(function($rec){'.
+	aNode nodes do: [:each |
+	    index := index + 1.
+	    index = aNode nodes size ifTrue: [
+		stream nextPutAll: 'return '].
+	    each receiver: (VariableNode new value: '$rec').
+	    self visit: each.
+	    stream nextPutAll: ';'].
+	stream nextPutAll: '})('.
+	self visit: aNode receiver.
+	stream nextPutAll: ')'
+!
+
+visitClassReferenceNode: aNode
+	(referencedClasses includes: aNode value) ifFalse: [
+		referencedClasses add: aNode value].
+	stream nextPutAll: '(smalltalk.', aNode value, ' || ', aNode value, ')'
+!
+
+visitDynamicArrayNode: aNode
+	stream nextPutAll: '['.
+	aNode nodes 
+		do: [:each | self visit: each]
+		separatedBy: [stream nextPutAll: ','].
+	stream nextPutAll: ']'
+!
+
+visitDynamicDictionaryNode: aNode
+	stream nextPutAll: 'smalltalk.HashedCollection._fromPairs_(['.
+		aNode nodes 
+			do: [:each | self visit: each]
+			separatedBy: [stream nextPutAll: ','].
+		stream nextPutAll: '])'
+!
+
+visitFailure: aFailure
+	self error: aFailure asString
+!
+
+visitJSStatementNode: aNode
+	stream nextPutAll: aNode source
+!
+
+visitMethodNode: aNode
+	| str currentSelector | 
+	currentSelector := aNode selector asSelector.
+	nestedBlocks := 0.
+	earlyReturn := false.
+	messageSends := #().
+	referencedClasses := #().
+	unknownVariables := #().
+	tempVariables := #().
+	argVariables := #().
+	stream 
+	    nextPutAll: 'smalltalk.method({'; lf;
+	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
+	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
+	stream nextPutAll: 'fn: function('.
+	aNode arguments 
+	    do: [:each | 
+		argVariables add: each.
+		stream nextPutAll: each]
+	    separatedBy: [stream nextPutAll: ', '].
+	stream 
+	    nextPutAll: '){'; lf;
+	    nextPutAll: 'var self=this;'; lf.
+	str := stream.
+	stream := '' writeStream.
 	aNode nodes do: [:each |
 	    self visit: each].
 	earlyReturn ifTrue: [
-	    stream nextPutAll: '}})})()']
+	    str nextPutAll: 'var $early={};'; lf; nextPutAll: 'try{'].
+	str nextPutAll: stream contents.
+	stream := str.
+	stream 
+	    lf; 
+	    nextPutAll: 'return self;'.
+	earlyReturn ifTrue: [
+	    stream lf; nextPutAll: '} catch(e) {if(e===$early)return e[0]; throw e}'].
+	stream nextPutAll: '}'.
+	stream 
+		nextPutAll: ',', String lf, 'messageSends: ';
+		nextPutAll: messageSends asJavascript, ','; lf;
+          	nextPutAll: 'args: ', argVariables asJavascript, ','; lf;
+		nextPutAll: 'referencedClasses: ['.
+	referencedClasses 
+		do: [:each | stream nextPutAll: each printString]
+		separatedBy: [stream nextPutAll: ','].
+	stream nextPutAll: ']'.
+	stream nextPutAll: '})'
+!
+
+visitReturnNode: aNode
+	nestedBlocks > 0 ifTrue: [
+	    earlyReturn := true].
+	nestedBlocks > 0
+	    ifTrue: [
+		stream
+		    nextPutAll: '(function(){throw $early=[']
+	    ifFalse: [stream nextPutAll: 'return '].
+	aNode nodes do: [:each |
+	    self visit: each].
+	nestedBlocks > 0 ifTrue: [
+	    stream nextPutAll: ']})()']
 !
 
 visitSendNode: aNode
@@ -1277,38 +1447,19 @@ visitSendNode: aNode
 		ifFalse: [stream nextPutAll: (self send: aNode selector to: receiver arguments: aNode arguments superSend: superSend)]
 !
 
-visitCascadeNode: aNode
-	| index |
-	index := 0.
-	(tempVariables includes: '$rec') ifFalse: [
-		tempVariables add: '$rec'].
-	stream nextPutAll: '(function($rec){'.
+visitSequenceNode: aNode
+	aNode temps do: [:each || temp |
+            temp := self safeVariableNameFor: each.
+	    tempVariables add: temp.
+	    stream nextPutAll: 'var ', temp, '=nil;'; lf].
 	aNode nodes do: [:each |
-	    index := index + 1.
-	    index = aNode nodes size ifTrue: [
-		stream nextPutAll: 'return '].
-	    each receiver: (VariableNode new value: '$rec').
 	    self visit: each.
-	    stream nextPutAll: ';'].
-	stream nextPutAll: '})('.
-	self visit: aNode receiver.
-	stream nextPutAll: ')'
+	    stream nextPutAll: ';']
+	    separatedBy: [stream lf]
 !
 
 visitValueNode: aNode
 	stream nextPutAll: aNode value asJavascript
-!
-
-visitAssignmentNode: aNode
-	self visit: aNode left.
-	stream nextPutAll: '='.
-	self visit: aNode right
-!
-
-visitClassReferenceNode: aNode
-	(referencedClasses includes: aNode value) ifFalse: [
-		referencedClasses add: aNode value].
-	stream nextPutAll: '(smalltalk.', aNode value, ' || ', aNode value, ')'
 !
 
 visitVariableNode: aNode
@@ -1327,52 +1478,11 @@ visitVariableNode: aNode
                                   	aNode value = 'thisContext'
                                   		ifTrue: [stream nextPutAll: '(smalltalk.getThisContext())']
                 				ifFalse: [stream nextPutAll: varName]]]
-!
-
-visitJSStatementNode: aNode
-	stream nextPutAll: (aNode source replace: '>>' with: '>')
-!
-
-visitFailure: aFailure
-	self error: aFailure asString
-!
-
-send: aSelector to: aReceiver arguments: aCollection superSend: aBoolean
-	^String streamContents: [:str || tmp |
-        	tmp := stream.
-		str nextPutAll: 'smalltalk.send('.
-		str nextPutAll: aReceiver.
-		str nextPutAll: ', "', aSelector asSelector, '", ['.
-                stream := str.
-		aCollection
-	    		do: [:each | self visit: each]
-	    		separatedBy: [stream nextPutAll: ', '].
-                stream := tmp.
-                str nextPutAll: ']'.
-		aBoolean ifTrue: [
-			str nextPutAll: ', smalltalk.', (self classNameFor: self currentClass superclass)].
-		str nextPutAll: ')']
-!
-
-visitDynamicArrayNode: aNode
-	stream nextPutAll: '['.
-	aNode nodes 
-		do: [:each | self visit: each]
-		separatedBy: [stream nextPutAll: ','].
-	stream nextPutAll: ']'
-!
-
-visitDynamicDictionaryNode: aNode
-	stream nextPutAll: 'smalltalk.HashedCollection._fromPairs_(['.
-		aNode nodes 
-			do: [:each | self visit: each]
-			separatedBy: [stream nextPutAll: ','].
-		stream nextPutAll: '])'
 ! !
 
-Compiler class instanceVariableNames: 'performOptimizations'!
+FunCodeGenerator class instanceVariableNames: 'performOptimizations'!
 
-!Compiler class methodsFor: 'accessing'!
+!FunCodeGenerator class methodsFor: 'accessing'!
 
 performOptimizations
 	^performOptimizations ifNil: [true]
@@ -1382,42 +1492,52 @@ performOptimizations: aBoolean
 	performOptimizations := aBoolean
 ! !
 
-!Compiler class methodsFor: 'compiling'!
+NodeVisitor subclass: #PlaceHolderExtractor
+	instanceVariableNames: 'holders'
+	package: 'Compiler'!
 
-recompile: aClass
-	aClass methodDictionary do: [:each || method |
-		method := self new load: each source forClass: aClass.
-		method category: each category.
-		aClass addCompiledMethod: method].
-	aClass isMetaclass ifFalse: [self recompile: aClass class]
+!PlaceHolderExtractor methodsFor: 'not yet classified'!
+
+find: aNode
+	holders := Set new.
+	self visit: aNode.
+	^ holders asArray sort
 !
 
-recompileAll
-	Smalltalk current classes do: [:each |
-		self recompile: each]
-! !
+visitAssignmentNode: aNode
+	{ aNode left. aNode right } do: [ self visit: %1 ]
+!
 
-Object subclass: #DoIt
-	instanceVariableNames: ''
-	category: 'Compiler'!
+visitCascadeNode: aNode
+	self visit: (aNode receiver).
+	aNode nodes do: [ self visit: %1  ].
+!
 
-Node subclass: #DynamicArrayNode
-	instanceVariableNames: ''
-	category: 'Compiler'!
+visitDynamicArrayNode: aNode
+	aNode nodes do: [ self visit: %1 ]
+!
 
-!DynamicArrayNode methodsFor: 'visiting'!
+visitDynamicDictionaryNode: aNode
+	aNode inspect
+!
 
-accept: aVisitor
-	aVisitor visitDynamicArrayNode: self
-! !
+visitReturnNode: aNode
+	aNode nodes do: [ self visit: %1]
+!
 
-Node subclass: #DynamicDictionaryNode
-	instanceVariableNames: ''
-	category: 'Compiler'!
+visitSendNode: aNode
+	| col |
+	aNode receiver ifNil: [ col := aNode arguments ] ifNotNil: [ col := ({aNode receiver}, aNode arguments) ].
+	^ col do: [ :each | self visit: each ]
+!
 
-!DynamicDictionaryNode methodsFor: 'visiting'!
+visitSequenceNode: aNode
+	aNode nodes do: [ :each | self visit: each ]
+!
 
-accept: aVisitor
-	aVisitor visitDynamicDictionaryNode: self
+visitVariableNode: aNode
+	(aNode value match: 'thisisplaceholder') ifTrue: [ 
+		holders add: (aNode value)
+	]
 ! !
 

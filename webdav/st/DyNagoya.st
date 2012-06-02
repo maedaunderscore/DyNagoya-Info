@@ -1,29 +1,102 @@
 Smalltalk current createPackage: 'DyNagoya' properties: #{}!
-Widget subclass: #EntryPoint
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
+Object subclass: #Action
+	instanceVariableNames: 'idx maxSize'
+	package: 'DyNagoya'!
 
-!EntryPoint methodsFor: 'initialization'!
+!Action methodsFor: 'not yet classified'!
 
-start
-	Screen clear.
-	Screen show.
+all
+	^  ('#AboutDyNagoya span' asJQuery toArray),
+		('#AboutSmalltalk span' asJQuery toArray)
+!
+
+initialize
+    idx := 0.
+   maxSize := (self all size)
+!
+
+next
+  (idx = 0) ifFalse: [  (self all at: idx) className: ' ' ].
+  idx := (idx + 1) min: maxSize.
+  (self all at: idx) className: 'strong'.
+!
+
+prev
+  (self all at: idx) className: ' '.
+  idx := (idx - 1) max: 1.
+  (self all at: idx) className: 'strong'.
 ! !
 
-!EntryPoint methodsFor: 'rendering'!
+Widget subclass: #DraggableWidget
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!DraggableWidget methodsFor: 'not yet classified'!
+
+dragOption
+	| callback |
+	callback := [ :e :ui || x y |
+		console log: ui.
+		x := ui position left.
+		y := ui position top.
+		Mod class: self class attr: 'x' value: '', x, 'px'.
+		Mod class: self class attr: 'y' value: '', y, 'px'.
+		Transcript show: 'Dropped (', x, ':', y, ')'; cr
+	].
+	^ (< { stop: callback }>)
+!
+
+renderBodyOn: html
+!
 
 renderOn: html
+	html div 
+		style: (self style);
+		with: [ self renderBodyOn: html ];
+		|> [ %1 asJQuery draggable: (self dragOption)]
+!
+
+style
+	^ ({
+		(self x) |> [ 'left:', %1 ].
+		(self y) |> [ 'top:', %1 ]
+	   } inject: 'position:relative' into: [ %1, ';', (%2  default: '')]), ';'
+!
+
+x
+	^ nil
+!
+
+y
+	^ nil
 ! !
 
-!EntryPoint class methodsFor: 'not yet classified'!
-
-start
-  self new start
-! !
-
-Widget subclass: #Icon
+DraggableWidget subclass: #Board
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
+
+!Board methodsFor: 'accessing'!
+
+x
+  ^'452px'
+!
+
+y
+  ^'-300px'
+! !
+
+!Board methodsFor: 'rendering'!
+
+renderBodyOn: html
+	html div 
+		class: 'alert-message block-message warning ui-draggable span9';
+		style: 'margin: 10px';
+		with: Event latest
+! !
+
+DraggableWidget subclass: #Icon
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
 
 !Icon methodsFor: 'accessing'!
 
@@ -33,17 +106,13 @@ imageUrl
 
 !Icon methodsFor: 'rendering'!
 
-renderOn: html
-	html img src: self imageUrl; style: self style
-!
-
-style
-  ^ ''
+renderBodyOn: html
+	html img src: self imageUrl
 ! !
 
 Icon subclass: #Dolphin
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
 !Dolphin methodsFor: 'accessing'!
 
@@ -52,7 +121,15 @@ imageUrl
 !
 
 style
-	^ 'top: 60px; left:60px; width: 376px'
+	^ super style,	'width: 376px;'
+!
+
+x
+  ^'-88px'
+!
+
+y
+  ^'148px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
@@ -63,7 +140,7 @@ tweet: msg
 
 Icon subclass: #Logo
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
 !Logo methodsFor: 'accessing'!
 
@@ -71,406 +148,81 @@ imageUrl
   ^  'data:image/png;base64,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'
 !
 
-style
-  ^ 'left: 60px; top: 390px;'
+x
+  ^'89px'
+!
+
+y
+  ^'65px'
 ! !
 
-Widget subclass: #Board
+Object subclass: #EntryPoint
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
-!Board methodsFor: 'rendering'!
+EntryPoint class instanceVariableNames: 'workspace transcript'!
 
-renderOn: html
-	html div 
-		class: 'alert-message block-message warning ui-draggable span9';
-		style: 'margin: 10px';
-		with: Event latest
+!EntryPoint class methodsFor: 'accessing'!
+
+transcript
+	^ transcript
+!
+
+workspace
+	^ workspace
 ! !
 
-Object subclass: #Screen
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
+!EntryPoint class methodsFor: 'not yet classified'!
 
-Screen class instanceVariableNames: 'action flag'!
-
-!Screen class methodsFor: 'not yet classified'!
-
-with: brush
-!
-
-clear
-	self toolbar html: ''.	
-	self container html: ''.
-!
-
-show
-	ToolBar new appendToJQuery: self toolbar.
-	TopPage new appendToJQuery: self container.
-	AboutDyNagoya new appendToJQuery: self container.
-	AboutSmalltalk new appendToJQuery: self container.
-	Links new appendToJQuery: self container.
-	action := Action new.
-
-"	flag ifNil: [ flag := true. 
-        	'body' asJQuery  keydown: [ :ev | 
-		(ev keyCode) = 37 ifTrue: [ self onLeft.   ] ifFalse: [
-		(ev keyCode) = 39 ifTrue: [ self onRight.  ]] ] ]"
-!
-
-container
-  ^ '#container' asJQuery
-!
-
-toolbar
-  ^ '#toolbar' asJQuery
-!
-
-add: brush
-	brush appendToJQuery: self container
-!
-
-onLeft
-  action prev.
-!
-
-onRight
-  action next.
-! !
-
-Widget subclass: #ToolBar
-	instanceVariableNames: 'menu'
-	category: 'DyNagoya'!
-
-!ToolBar methodsFor: 'not yet classified'!
-
-renderOn: html
-	html div class: 'fill'; with:[
-		html div class: 'container'; with:[
-			html ul style: 'float:right'; class: 'nav'; with:[
-				Login new appendToBrush: html li.
-			].
-			html ul style: 'float:left'; class: 'nav'; with:[
-				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Browser' ].
-				html li: [ html a style: 'cursor: pointer'; onClick: [ DialogBox new widget: (SourceArea new); fontSize: '20px'; title: 'Workspace'; modal: false; open ]; with: 'Workspace' ].
-				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
-				self renderAbout: html.
-				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
-				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
-			]
-		]
-	]
-!
-
-renderAbout: html
-  html li class: 'dropdown class'; with: [ 
-	html a style: 'cursor: pointer'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'Menu'.
-	html ul class: 'dropdown-menu'; with: [
-		html li: [ html a style: 'cursor: pointer';onClick: [ AboutDyNagoya pan. self clearMenus ]; with: 'About DyNagoya' ].
-		html li: [ html a style: 'cursor: pointer'; onClick: [ AboutSmalltalk pan. self clearMenus ]; with: 'About Smalltalk' ].
-		html li: [ html a style: 'cursor: pointer'; onClick: [ Links pan. self clearMenus ]; with: 'Links' ]
-	]
-  ].
-  '#container' asJQuery bind: 'click' do: [self clearMenus ]
-!
-
-clearMenus
-	('a.menu, .dropdown-toggle' asJQuery parent: 'li') removeClass: 'open'
-! !
-
-Widget subclass: #Page
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Page methodsFor: 'not yet classified'!
-
-renderOn: html
-	html div 
-		class: 'row'; 
-		id: self class asString;
-		style: self style;
-		with: [ self renderBody: html ]
-!
-
-style
-  ^ self height ifNil: [ '' ] ifNotNil: [ 'height: ', self height, 'px;' ]
-!
-
-height
-  ^ nil
-!
-
-pan
-  'html,body' asJQuery animate: #{ 'scrollTop' -> self top } with: 'slow'
-!
-
-top
-"  ^ ('#', self) asJQuery offset top"
-  ^ ('#', self)
-! !
-
-!Page class methodsFor: 'not yet classified'!
-
-top
-  ^ ('#', self asString) asJQuery offset top - 40
-!
-
-pan
-  'html,body' asJQuery animate: #{ 'scrollTop' -> self top } with: 'slow'
-! !
-
-Widget subclass: #Login
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Login methodsFor: 'not yet classified'!
-
-renderOn: html
-	jQuery ajax: '/name' options: #{ 
-		'success' -> [ :x | 
-			Login user: x.
-			html a href: '/logout'; with: ( x, ' Log Out' ) ].
-		 'error'       -> [ :x | 
-			Login user: nil.
-			html a href: '/login'; with: ' Log In'  ]
+messages
+	^{
+	 'Type a line below on workspace, then click "DoIt"'.
+	 '    AboutDynagoya show    "to see what DyNagoya is"'.
+	 '    Links show                      "to see Links about our interest"'.
+	 '    Browser open                 "to open class browser"'.
+	 '    EntryPoint start               "to restart this page"'
 	}
-! !
-
-Login class instanceVariableNames: 'user'!
-
-!Login class methodsFor: 'not yet classified'!
-
-user: aStr
-	user := aStr
 !
 
-user
-	^user
-! !
-
-Object subclass: #ToDo
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-ToDo subclass: #ForThisPage
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-!ForThisPage commentStamp!
-Loginの実装がひどい → MVCフレームワークが必要
-"開催履歴を残す。"
-"開催場所を分かりやすく表示"
-"開催情報を引っ張って、dstokaiカレンダーに新規イベント登録画面を開くブックマークレット"
-リンク集→カテゴリがほしい（アコーディオンとか）
-毎回ログインしなくてもよくする 
-ログイン時に編集中の内容が消える警告ダイアログ
-"データを永続か出来るようにしたい。でもgitで管理できるようにもしたい"
-"リモートデータ通信を透過的に扱うクラス" → javascriptの制限でcallbackが必須 → 継続が欲しい
-"参加者リスト"
-"権限"!
-
-ToDo subclass: #ForDyNagoya
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-!ForDyNagoya commentStamp!
-関数型言語化
-Make:Ogakiの作品づくり
-最強のEditorを作る
-Smalltalk-72とかSTEPS projectとかもさわりたい!
-
-Page subclass: #AboutDyNagoya
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!AboutDyNagoya methodsFor: 'not yet classified'!
-
-renderBody: html
-	html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'. 
-{
-  { 
-     '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .
-     '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .
-     'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .
-     'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。'. 
-     'コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' 
-   }  .
-   {
-     'DyNagoyaでは、月に１回の会合を開いています。'.
-     'この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.
-     '何の準備も心構えも必要ありません。お気軽にご参加ください。' 
-   }
-}
-do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
+screenPreparation
+	'#screen' asJQuery remove.
+	Screen new appendToJQuery: ('body' asJQuery).
+	Screen new flip: (TopPage new).
 !
 
-height
-  ^ '800'
-! !
-
-Widget subclass: #Place
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-!Place commentStamp!
-DialogBox new widget: (Edelweiss new); open!
-
-!Place methodsFor: 'accessing'!
-
-name
-!
-
-address
-!
-
-url
-!
-
-gCalString
-  ^ (self address), '(', (self name), ')'
-!
-
-renderOn: html
-	html h2 with:[ 
-		html span with: '場所：'.
-		html a href: self url; at: 'target' put: '_blank'; with: self name. 
-		GoogleMap link: html address: self address 
+showMessage
+	self messages do: [
+		Transcript show: %1; cr
 	]
-! !
-
-!Place class methodsFor: 'not yet classified'!
-
-openInDialog
-	DialogBox new widget: (self new); open
-! !
-
-Place subclass: #Doerya
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Doerya methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中区錦3-25-20'
 !
 
-url
-	^ 'http://doerya.gensg.jp/'
-!
+start
+  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].
+  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].
 
-name
-	^ 'Cafe どえりゃあ'
-! !
+  workspace open.
+  transcript open.
 
-Page subclass: #Links
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Links methodsFor: 'link'!
-
-list
-	^ {
-		self 
-			link: 'Amber Smalltalk'
-			url: 'http://amber-lang.net/'
-			description: 'SmalltalkのJavascript実装。「Learn」からSmalltalkの勉強が始めれる。'.
-		self
-			link: 'cog blog'
-			url: 'http://www.mirandabanda.org/cogblog'
-			description: '高速Smalltalk VMの実装説明'.
-		self
-			link: '自由自在Squeakプログラミング PDF版ドラフト'
-			url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'
-			description: '梅沢さんが鋭意PDF化中'.
-		self			
-			link: 'Yengawa Blog'
-			url: 'http://blog.yengawa.com/'
-			description: 'Scratch + arduino の先駆者。すでにMake:Tokyoに出展していた。'.
-		self			
-			link: '第37回 Smalltalk勉強会-東京 UStream'
-			url: 'http://www.ustream.tv/recorded/18226602'
-			description: '阿部さんのScratch + Arduinoのデモ'.
-		self			
-			link: 'ITPro 簡単だけど奥深い!! Scratchプログラミングの魅力'
-			url: 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop'
-			description: '阿部さんのScratch + Arduinoの記事 全5回'.
-		self			
-			link: 'A Smalltalk by the Seaside'
-			url: 'http://www.asmalltalkbytheseaside.com/'
-			description: 'Amberで作られたゲームライブラリとゲームのサンプル'.
-		self
-			link: 'cog blog - Under Cover Contexts and the Big Frame-Up'
-			url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'
-			description: 'Contextの実装についての説明'.
-		self
-			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
-			url: 'http://squab.no-ip.com:8080/mosaren/'
-			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.
-		self
-			link: 'Scratch + Arduino'
-			url: 'http://www.yengawa.com/scratch_arduino'
-			description: 'Scratch から Arduinoを使う方法'.
-		self
-			link: 'scat'
-			url: 'http://code.google.com/p/scat/'
-			description: '標準のScratchはIDEがしょぼいのでPharoにScrachを入れる。'
-	}
-! !
-
-!Links methodsFor: 'private'!
-
-link: title url: aUrl description: aDescription
-	^ { title. aUrl. aDescription }
-!
-
-open
-	self title: 'Links'; with: [:html | self renderOn: html ]; width: 600.
-	super open.
-! !
-
-!Links methodsFor: 'rendering'!
-
-renderBody: html
-	html h1: 'Links'.
-	(html tag: 'dl') with: [
-		self list do: [ :link |
-			(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].
-			(html tag: 'dd') with: (link at: 3)
-		]
-	]
-! !
-
-Circle subclass: #LinkMenu
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!LinkMenu methodsFor: 'not yet classified'!
-
-body: html
-	html a 
-		href:'#';
-		onClick: [ Links new open. false ];
-		css: 'font-size' put: '24px';
-		css: 'color' put: 'white';
-		with: 'Links'
-!
-
-style
-  ^ 'top:250px;left:280px;background:red;'
+   self screenPreparation.
+  LoginPanel show.
+  self showMessage.
 ! !
 
 Widget subclass: #Event
 	instanceVariableNames: 'title date start end place detail fixed'
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 !Event commentStamp!
 Event latest addToDSTokai
 Event latest tweet!
 
 !Event methodsFor: 'Twitter'!
 
-tweet
-	^ Dolphin tweet: self tweetMessage
-!
-
 formatPeriod
   ^ (< moment(this['@date']).format("YYYY/MM/DD(ddd) ") >), start, '〜', end
+!
+
+tweet
+	^ Dolphin tweet: self tweetMessage
 !
 
 tweetMessage
@@ -482,28 +234,16 @@ tweetMessage
 
 !Event methodsFor: 'accessing'!
 
-title: str
-  title := str
-!
-
 date: aDate
   date := aDate
 !
 
-start: aTime
-  start := aTime
+detail: str
+  detail := str
 !
 
 end: aTime
   end := aTime
-!
-
-place: aPlaceClass
-  place := aPlaceClass new
-!
-
-detail: str
-  detail := str
 !
 
 fixed
@@ -512,9 +252,39 @@ fixed
 
 fixed: aBool
   fixed := aBool
+!
+
+place: aPlaceClass
+  place := aPlaceClass new
+!
+
+start: aTime
+  start := aTime
+!
+
+title: str
+  title := str
 ! !
 
 !Event methodsFor: 'google calendar'!
+
+addToCalendar
+  window open: (self gcalUrl) target: '_blank'
+!
+
+addToDSTokai
+  window open: (self gcalUrl: self dstokaiId description: self descriptionForDSTokai) target: '_blank'
+!
+
+description
+  ^ '<ul>', (
+	(detail collect: [:each | '<li>', each, '</li>' ]) join: ''
+  ), '</ul>'
+!
+
+descriptionForDSTokai
+  ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
+!
 
 dstokaiId
 	^ '6ef63uicdv7l17h035m1grg7fs@group.calendar.google.com'
@@ -525,34 +295,6 @@ format: aTime
   d := Date fromString: (date, ' ', aTime).
   formatted := (< moment(d).add('minutes', moment(d).zone()).format('YYYYMMDDTHHmmss') >).
   ^ formatted, 'Z'
-!
-
-description
-  ^ '<ul>', (
-	(detail collect: [:each | '<li>', each, '</li>' ]) join: ''
-  ), '</ul>'
-!
-
-addToCalendar
-  window open: (self gcalUrl) target: '_blank'
-!
-
-addToDSTokai
-  window open: (self gcalUrl: self dstokaiId description: self descriptionForDSTokai) target: '_blank'
-!
-
-gcalUrl
-	^ self gcalUrl: nil description: self description
-!
-
-descriptionForDSTokai
-  ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
-!
-
-gcalUrl: src description: aStr
-	^  (self gcalParams: src desc: aStr)
-		inject: 'http://www.google.com/calendar/event?action=TEMPLATE'
-		into: [ :acc :x | acc, '&', x ]
 !
 
 gcalParams: src desc: aStr
@@ -567,19 +309,29 @@ gcalParams: src desc: aStr
 
 	src ifNotNil: [ base add: 'src=', src ].
 	^ base
+!
+
+gcalUrl
+	^ self gcalUrl: nil description: self description
+!
+
+gcalUrl: src description: aStr
+	^  (self gcalParams: src desc: aStr)
+		inject: 'http://www.google.com/calendar/event?action=TEMPLATE'
+		into: [ :acc :x | acc, '&', x ]
 ! !
 
 !Event methodsFor: 'participation'!
 
-join
-	Login user 
-		ifNotNil: [ Participation event: title user: Login user ]
-		ifNil: [ Window alert: 'You need to log in!!' ]
-!
-
 cancel
 	Login user 
 		ifNotNil: [ Participation event: title user: Login user delete: true ]
+		ifNil: [ Window alert: 'You need to log in!!' ]
+!
+
+join
+	Login user 
+		ifNotNil: [ Participation event: title user: Login user ]
 		ifNil: [ Window alert: 'You need to log in!!' ]
 !
 
@@ -600,9 +352,7 @@ renderOn: html
 	html h2: '内容：'.
 	html h3 with: (html div style: 'margin-left: 30px'; with:[
 		detail do: [ :each | html div with: each ].
-	]).
-	html div id: 'participants'.
-	ParticipantsList new event: self; render.
+	])
 ! !
 
 !Event class methodsFor: 'events'!
@@ -687,341 +437,139 @@ meeting06
 'VMMakerを動かす'.
 'Smalltalk入門(希望者がいれば)'
 }
-!
-
-meeting07
-	^ self new 
-		fixed: true;
-		title: 'DyNagoya MTG ＃07';
-		date: '2012/06/19';
-		start: '18:00:00';
-		end: '20:30:00';
-		place: LokantaAYHAN;
-		detail: {
-'合同Smalltalk勉強会の段取りを決める'.
-'パーサーのいじり方'.
-'VMMakerを動かす'.
-'Smalltalk入門(希望者がいれば)'
-}
 ! !
 
-RemoteObject subclass: #Participation
+Circle subclass: #LinkMenu
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
-!Participation commentStamp!
-Participation event: 'meeting02' name: 'maeda_'
-Participation event: 'meeting02' name: 'bleis'
+	package: 'DyNagoya'!
 
-Participation list: 'meeting02' callback: [ :list | console log: list size ]
-Participation list: 'meeting02' callback: [ :list | list inspect ] 
+!LinkMenu methodsFor: 'not yet classified'!
 
-Participation list: 'meeting02' callback: [ :list | list do: [:each | each delete] ]!
-
-!Participation class methodsFor: 'not yet classified'!
-
-afterDelete
-	^ [ ParticipantsList render ]
+body: html
+	html a 
+		href:'#';
+		onClick: [ Links new open. false ];
+		css: 'font-size' put: '24px';
+		css: 'color' put: 'white';
+		with: 'Links'
 !
 
-afterPut
-	^ [ ParticipantsList render ]
+style
+  ^ 'top:250px;left:280px;background:red;'
 ! !
 
-Object subclass: #ParticipantsList
-	instanceVariableNames: 'event'
-	category: 'DyNagoya'!
+Widget subclass: #Login
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
 
-!ParticipantsList methodsFor: 'accessing'!
-
-event: aEvent
-	event := aEvent
-! !
-
-!ParticipantsList methodsFor: 'rendering'!
-
-renderButton: html users: users
-		Login user 
-			ifNil: [ html span class: 'btn disabled'; with: '申し込みにはログイン(右上)が必要です' ]
-			ifNotNil:[
-				(users includes: Login user)
-					ifFalse: [ html a class: 'btn'; with: '参加する'; onClick: [ event join ] ]
-					ifTrue: [html a class: 'btn'; with: '参加を取り消す'; onClick: [event  cancel ] ]
-			]
-!
+!Login methodsFor: 'not yet classified'!
 
 renderOn: html
-	| users |
-	event list: [ :list |
-		html h2 with: '参加者：'.
-		html div with: [
-			users := list collect: [ :each | each user ].
-			users do:[ :each | Twitter link:html user: each ]
-		].
-		html div css: 'margin-top' put: '15px'; with: [
-			self renderButton: html users: users.
-			html a class: 'btn'; css: 'margin-left' put: '10px'; with: 'Google Calendarに登録'; onClick: [ event addToCalendar ]
-		]
-	]
-!
-
-render
-	self class render
+	jQuery ajax: '/name' options: #{ 
+		'success' -> [ :x | 
+			Login user: x.
+			html a href: '/logout'; with: ( x, ' Log Out' ) ].
+		 'error'       -> [ :x | 
+			Login user: nil.
+			html a href: '/login'; with: ' Log In'  ]
+	}
 ! !
 
-ParticipantsList class instanceVariableNames: 's'!
+Login class instanceVariableNames: 'user'!
 
-!ParticipantsList class methodsFor: 'not yet classified'!
+!Login class methodsFor: 'not yet classified'!
 
-render
-	| html |
-	html := HTMLCanvas onJQuery: '#participants' asJQuery.
-	html root empty.
-	self new renderOn: html.
+user
+	^user
 !
+
+user: aStr
+	user := aStr
+! !
+
+Widget subclass: #LoginPanel
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!LoginPanel methodsFor: 'not yet classified'!
+
+renderOn: html
+	html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.
+	html div with: Login new.
+! !
+
+LoginPanel class instanceVariableNames: 'single'!
+
+!LoginPanel class methodsFor: 'not yet classified'!
 
 new
-	s ifNil: [  s := super new ].
-	^ s
+	single ifNil: [ single := super new ].
+
+	^ single
+!
+
+show
+	self new updateToJQuery: '#login' asJQuery
 ! !
 
-Place subclass: #ATeam
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
+Widget subclass: #Page
+	instanceVariableNames: 'body'
+	package: 'DyNagoya'!
 
-!ATeam methodsFor: 'not yet classified'!
+!Page methodsFor: 'not yet classified'!
 
-address
-	^ '名古屋市西区牛島町6番1号 名古屋ルーセントタワー32F'
-!
-
-url
-	^ 'http://www.a-tm.co.jp/'
-!
-
-name
-	^ '株式会社エイチーム'
+renderOn: html
+	self renderBody: html
 ! !
 
-Place subclass: #NewCast
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
+!Page class methodsFor: 'not yet classified'!
 
-!NewCast methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市東区葵３丁目２２−８'
+show
+  Screen new flip: self new
 !
 
-url
-	^ 'http://www.xmldo.jp/about/seminarroom/'
-!
-
-name
-	^ 'ニューキャスト'
+top
+  ^ ('#', self asString) asJQuery offset top - 40
 ! !
 
-Place subclass: #Edelweiss
+Page subclass: #AboutDyNagoya
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
-!Edelweiss methodsFor: 'not yet classified'!
+!AboutDyNagoya methodsFor: 'not yet classified'!
 
-address
-	^ '名古屋市東区東桜1-10-1'
+height
+  ^ '800'
 !
-
-url
-	^ 'http://www8.ocn.ne.jp/~edel/'
-!
-
-name
-	^ 'エーデルワイス'
-! !
-
-Place subclass: #Vinceness
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Vinceness methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中区錦3-6-29 サウスハウスB1'
-!
-
-url
-	^ 'http://www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi?category=5&page=1'
-!
-
-name
-	^ 'カフェ ヴァンサンヌドゥ'
-! !
-
-Place subclass: #ZTres
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!ZTres methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中村区椿町3番19号ウイングビル2F'
-!
-
-url
-	^ 'http://www.forvex.co.jp/ztres/'
-!
-
-name
-	^ 'Cafe Z-TRES'
-! !
-
-Place subclass: #Maruichi
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Maruichi methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市中区栄3-8-102'
-!
-
-url
-	^ 'http://r.tabelog.com/aichi/A2301/A230103/23030942/'
-!
-
-name
-	^ '炭火焼き鳥 まるいち'
-! !
-
-Place subclass: #AnyWhere
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!AnyWhere methodsFor: 'not yet classified'!
-
-address
-	^ ''
-!
-
-url
-	^ ''
-!
-
-name
-	^ '未定'
-! !
-
-Place subclass: #BondCoffee
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!BondCoffee methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中区栄１ー１１ー６'
-!
-
-url
-	^ 'http://www.bondcoffee.jp/index.html'
-!
-
-name
-	^ 'ボンドコーヒー'
-! !
-
-Place subclass: #Syushin
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Syushin methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市中区錦１－１３－３１ミツワビル１Ｆ'
-!
-
-url
-	^ 'http://www.hotpepper.jp/strJ000021742/'
-!
-
-name
-	^ '居酒屋 酒神'
-! !
-
-Place subclass: #LokantaAYHAN
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!LokantaAYHAN methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中区栄１－１４－２８'
-!
-
-url
-	^ 'http://star.gmobb.jp/lokanta_ayhan/'
-!
-
-name
-	^ 'Lokanta AYHAN ロカンタアイハン'
-!
-
-notice
-  ^ '日曜日休み'
-! !
-
-Place subclass: #Katatumuri
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Katatumuri methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市中区丸の内2-14-15 河合ビル　２Ｆ'
-!
-
-url
-	^ 'http://r.tabelog.com/aichi/A2301/A230102/23007756/'
-!
-
-name
-	^ 'カタツムリ'
-! !
-
-Place subclass: #Hakkaku
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Hakkaku methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂングB1'
-!
-
-url
-	^ 'http://r.gnavi.co.jp/n004601/'
-!
-
-name
-	^ '浪花ろばた 八角 大名古屋ビル店 '
-! !
-
-Page subclass: #TopPage
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!TopPage methodsFor: 'not yet classified'!
 
 renderBody: html
-		html div class: 'span7'; style: 'margin-top: 10px';
-				with: Dolphin new;
-				with: Logo new.
-		html div class: 'span7'; with: Board new
+	html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'. 
+{
+  { 
+     '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .
+     '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .
+     'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .
+     'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。'. 
+     'コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' 
+   }  .
+   {
+     'DyNagoyaでは、月に１回の会合を開いています。'.
+     'この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.
+     '何の準備も心構えも必要ありません。お気軽にご参加ください。' 
+   }
+}
+do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
 ! !
 
 Page subclass: #AboutSmalltalk
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
 !AboutSmalltalk methodsFor: 'not yet classified'!
+
+height
+  ^ '800'
+!
 
 renderBody: html
 	html h1: 'Smalltalkとは'.
@@ -1050,115 +598,270 @@ renderBody: html
      'iPadやAndroid上で動作するSmalltalkも活発に開発されています。'
    }
 } do: [ :each | html h3 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2  ]]]
-!
-
-height
-  ^ '800'
 ! !
 
-Place subclass: #DyNagoyaBuilding
+Page subclass: #Links
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
-!DyNagoyaBuilding methodsFor: 'not yet classified'!
+!Links methodsFor: 'link'!
 
-address
-	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'
+list
+	^ {
+		self 
+			link: 'Amber Smalltalk'
+			url: 'http://amber-lang.net/'
+			description: 'SmalltalkのJavascript実装。「Learn」からSmalltalkの勉強が始めれる。'.
+		self
+			link: 'cog blog'
+			url: 'http://www.mirandabanda.org/cogblog'
+			description: '高速Smalltalk VMの実装説明'.
+		self
+			link: '自由自在Squeakプログラミング PDF版ドラフト'
+			url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'
+			description: '梅沢さんが鋭意PDF化中'.
+		self			
+			link: 'Yengawa Blog'
+			url: 'http://blog.yengawa.com/'
+			description: 'Scratch + arduino の先駆者。すでにMake:Tokyoに出展していた。'.
+		self			
+			link: '第37回 Smalltalk勉強会-東京 UStream'
+			url: 'http://www.ustream.tv/recorded/18226602'
+			description: '阿部さんのScratch + Arduinoのデモ'.
+		self			
+			link: 'ITPro 簡単だけど奥深い!! Scratchプログラミングの魅力'
+			url: 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop'
+			description: '阿部さんのScratch + Arduinoの記事 全5回'.
+		self			
+			link: 'A Smalltalk by the Seaside'
+			url: 'http://www.asmalltalkbytheseaside.com/'
+			description: 'Amberで作られたゲームライブラリとゲームのサンプル'.
+		self
+			link: 'cog blog - Under Cover Contexts and the Big Frame-Up'
+			url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'
+			description: 'Contextの実装についての説明'.
+		self
+			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
+			url: 'http://squab.no-ip.com:8080/mosaren/'
+			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.
+		self
+			link: 'Scratch + Arduino'
+			url: 'http://www.yengawa.com/scratch_arduino'
+			description: 'Scratch から Arduinoを使う方法'.
+		self
+			link: 'scat'
+			url: 'http://code.google.com/p/scat/'
+			description: '標準のScratchはIDEがしょぼいのでPharoにScrachを入れる。'
+	}
+! !
+
+!Links methodsFor: 'private'!
+
+link: title url: aUrl description: aDescription
+	^ { title. aUrl. aDescription }
 !
 
-url
-	^ 'http://www.dainagoya-building.com/'
+open
+	self title: 'Links'; with: [:html | self renderOn: html ]; width: 600.
+	super open.
+! !
+
+!Links methodsFor: 'rendering'!
+
+renderBody: html
+	html h1: 'Links'.
+	(html tag: 'dl') with: [
+		self list do: [ :link |
+			(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].
+			(html tag: 'dd') with: (link at: 3)
+		]
+	]
+! !
+
+Page subclass: #TopPage
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!TopPage methodsFor: 'not yet classified'!
+
+renderBody: html
+		html div class: 'span7'; style: 'margin-top: 10px';
+				with: Dolphin new;
+				with: Logo new.
+		html div class: 'span7'; with: Board new
+! !
+
+Object subclass: #ParticipantsList
+	instanceVariableNames: 'event'
+	package: 'DyNagoya'!
+
+!ParticipantsList methodsFor: 'accessing'!
+
+event: aEvent
+	event := aEvent
+! !
+
+!ParticipantsList methodsFor: 'rendering'!
+
+render
+	self class render
+!
+
+renderButton: html users: users
+		Login user 
+			ifNil: [ html span class: 'btn disabled'; with: '申し込みにはログイン(右上)が必要です' ]
+			ifNotNil:[
+				(users includes: Login user)
+					ifFalse: [ html a class: 'btn'; with: '参加する'; onClick: [ event join ] ]
+					ifTrue: [html a class: 'btn'; with: '参加を取り消す'; onClick: [event  cancel ] ]
+			]
+!
+
+renderOn: html
+	| users |
+	event list: [ :list |
+		html h2 with: '参加者：'.
+		html div with: [
+			users := list collect: [ :each | each user ].
+			users do:[ :each | Twitter link:html user: each ]
+		].
+		html div css: 'margin-top' put: '15px'; with: [
+			self renderButton: html users: users.
+			html a class: 'btn'; css: 'margin-left' put: '10px'; with: 'Google Calendarに登録'; onClick: [ event addToCalendar ]
+		]
+	]
+! !
+
+ParticipantsList class instanceVariableNames: 's'!
+
+!ParticipantsList class methodsFor: 'not yet classified'!
+
+new
+	s ifNil: [  s := super new ].
+	^ s
+!
+
+render
+	| html |
+	html := HTMLCanvas onJQuery: '#participants' asJQuery.
+	html root empty.
+	self new renderOn: html.
+! !
+
+RemoteObject subclass: #Participation
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+!Participation commentStamp!
+Participation event: 'meeting02' name: 'maeda_'
+Participation event: 'meeting02' name: 'bleis'
+
+Participation list: 'meeting02' callback: [ :list | console log: list size ]
+Participation list: 'meeting02' callback: [ :list | list inspect ] 
+
+Participation list: 'meeting02' callback: [ :list | list do: [:each | each delete] ]!
+
+!Participation class methodsFor: 'not yet classified'!
+
+afterDelete
+	^ [ ParticipantsList render ]
+!
+
+afterPut
+	^ [ ParticipantsList render ]
+! !
+
+Widget subclass: #Place
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+!Place commentStamp!
+DialogBox new widget: (Edelweiss new); open!
+
+!Place methodsFor: 'accessing'!
+
+address
+!
+
+gCalString
+  ^ (self address), '(', (self name), ')'
 !
 
 name
-	^ '大名古屋ビルヂング '
-! !
+!
 
-Place subclass: #Moyorino
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Moyorino methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市千種区宮根台1-4-16 1F'
+renderOn: html
+	html h2 with:[ 
+		html span with: '場所：'.
+		html a href: self url; at: 'target' put: '_blank'; with: self name. 
+		GoogleMap link: html address: self address 
+	]
 !
 
 url
-	^ 'http://moyo-reno.com/'
+! !
+
+!Place class methodsFor: 'not yet classified'!
+
+openInDialog
+	DialogBox new widget: (self new); open
+! !
+
+Place subclass: #ATeam
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!ATeam methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市西区牛島町6番1号 名古屋ルーセントタワー32F'
 !
 
 name
-	^ 'Moyorino (モヨリノ)'
-! !
-
-Object subclass: #Action
-	instanceVariableNames: 'idx maxSize'
-	category: 'DyNagoya'!
-
-!Action methodsFor: 'not yet classified'!
-
-next
-  (idx = 0) ifFalse: [  (self all at: idx) className: ' ' ].
-  idx := (idx + 1) min: maxSize.
-  (self all at: idx) className: 'strong'.
-!
-
-prev
-  (self all at: idx) className: ' '.
-  idx := (idx - 1) max: 1.
-  (self all at: idx) className: 'strong'.
-!
-
-all
-	^  ('#AboutDyNagoya span' asJQuery toArray),
-		('#AboutSmalltalk span' asJQuery toArray)
-!
-
-initialize
-    idx := 0.
-   maxSize := (self all size)
-! !
-
-Place subclass: #Kako
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Kako methodsFor: 'not yet classified'!
-
-address
-	^ '名古屋市中村区名駅5-30-4　名駅KDビル1F'
+	^ '株式会社エイチーム'
 !
 
 url
-	^ 'http://www.coffeekako.com/index.html'
+	^ 'http://www.a-tm.co.jp/'
+! !
+
+Place subclass: #AnyWhere
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!AnyWhere methodsFor: 'not yet classified'!
+
+address
+	^ ''
 !
 
 name
-	^ 'Coffee shop KAKO'
-! !
-
-Place subclass: #Tagen
-	instanceVariableNames: ''
-	category: 'DyNagoya'!
-
-!Tagen methodsFor: 'not yet classified'!
-
-address
-	^ '愛知県名古屋市千種区不老町'
+	^ '未定'
 !
 
 url
-	^ 'http://www.math.nagoya-u.ac.jp/ja/direction/campus.html'
+	^ ''
+! !
+
+Place subclass: #BondCoffee
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!BondCoffee methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区栄１ー１１ー６'
 !
 
 name
-	^ '名古屋大学多元数理科学棟'
+	^ 'ボンドコーヒー'
+!
+
+url
+	^ 'http://www.bondcoffee.jp/index.html'
 ! !
 
 Place subclass: #Captina
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
 !Captina methodsFor: 'not yet classified'!
 
@@ -1166,17 +869,125 @@ address
 	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'
 !
 
+name
+	^ 'カプチーナ 大名古屋ビル店'
+!
+
 url
 	^ 'http://www.dainagoya-building.com/cgi-bin/shop/page.cgi?act=page&id=5'
+! !
+
+Place subclass: #Doerya
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Doerya methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区錦3-25-20'
 !
 
 name
-	^ 'カプチーナ 大名古屋ビル店'
+	^ 'Cafe どえりゃあ'
+!
+
+url
+	^ 'http://doerya.gensg.jp/'
+! !
+
+Place subclass: #DyNagoyaBuilding
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!DyNagoyaBuilding methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'
+!
+
+name
+	^ '大名古屋ビルヂング '
+!
+
+url
+	^ 'http://www.dainagoya-building.com/'
+! !
+
+Place subclass: #Edelweiss
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Edelweiss methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市東区東桜1-10-1'
+!
+
+name
+	^ 'エーデルワイス'
+!
+
+url
+	^ 'http://www8.ocn.ne.jp/~edel/'
+! !
+
+Place subclass: #Hakkaku
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Hakkaku methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂングB1'
+!
+
+name
+	^ '浪花ろばた 八角 大名古屋ビル店 '
+!
+
+url
+	^ 'http://r.gnavi.co.jp/n004601/'
+! !
+
+Place subclass: #Kako
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Kako methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中村区名駅5-30-4　名駅KDビル1F'
+!
+
+name
+	^ 'Coffee shop KAKO'
+!
+
+url
+	^ 'http://www.coffeekako.com/index.html'
+! !
+
+Place subclass: #Katatumuri
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Katatumuri methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区丸の内2-14-15 河合ビル　２Ｆ'
+!
+
+name
+	^ 'カタツムリ'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230102/23007756/'
 ! !
 
 Place subclass: #Lancia
 	instanceVariableNames: ''
-	category: 'DyNagoya'!
+	package: 'DyNagoya'!
 
 !Lancia methodsFor: 'not yet classified'!
 
@@ -1184,11 +995,262 @@ address
 	^ '愛知県名古屋市昭和区隼人町1-4 清楽ビル1F'
 !
 
+name
+	^ 'サラダショップ Lancia '
+!
+
 url
 	^ 'http://r.tabelog.com/aichi/A2301/A230108/23005243/'
+! !
+
+Place subclass: #LokantaAYHAN
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!LokantaAYHAN methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区栄１－１４－２８'
 !
 
 name
-	^ 'サラダショップ Lancia '
+	^ 'Lokanta AYHAN ロカンタアイハン'
+!
+
+notice
+  ^ '日曜日休み'
+!
+
+url
+	^ 'http://star.gmobb.jp/lokanta_ayhan/'
+! !
+
+Place subclass: #Maruichi
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Maruichi methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区栄3-8-102'
+!
+
+name
+	^ '炭火焼き鳥 まるいち'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230103/23030942/'
+! !
+
+Place subclass: #Moyorino
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Moyorino methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市千種区宮根台1-4-16 1F'
+!
+
+name
+	^ 'Moyorino (モヨリノ)'
+!
+
+url
+	^ 'http://moyo-reno.com/'
+! !
+
+Place subclass: #NewCast
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!NewCast methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市東区葵３丁目２２−８'
+!
+
+name
+	^ 'ニューキャスト'
+!
+
+url
+	^ 'http://www.xmldo.jp/about/seminarroom/'
+! !
+
+Place subclass: #Syushin
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Syushin methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区錦１－１３－３１ミツワビル１Ｆ'
+!
+
+name
+	^ '居酒屋 酒神'
+!
+
+url
+	^ 'http://www.hotpepper.jp/strJ000021742/'
+! !
+
+Place subclass: #Tagen
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Tagen methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市千種区不老町'
+!
+
+name
+	^ '名古屋大学多元数理科学棟'
+!
+
+url
+	^ 'http://www.math.nagoya-u.ac.jp/ja/direction/campus.html'
+! !
+
+Place subclass: #Vinceness
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Vinceness methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区錦3-6-29 サウスハウスB1'
+!
+
+name
+	^ 'カフェ ヴァンサンヌドゥ'
+!
+
+url
+	^ 'http://www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi?category=5&page=1'
+! !
+
+Place subclass: #ZTres
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!ZTres methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中村区椿町3番19号ウイングビル2F'
+!
+
+name
+	^ 'Cafe Z-TRES'
+!
+
+url
+	^ 'http://www.forvex.co.jp/ztres/'
+! !
+
+Widget subclass: #Screen
+	instanceVariableNames: 'index'
+	package: 'DyNagoya'!
+
+!Screen methodsFor: 'not yet classified'!
+
+flip: aPage
+	self rollOut: (self current).
+	self nextIndex.
+	aPage updateToJQuery: (self current).
+	self rollIn: (self current)
+!
+
+initialize
+	index := 1
+!
+
+layers
+	^ { '#layer1'. '#layer2' }
+!
+
+renderOn: html
+	html div id: 'screen'; with: [
+		html div id: 'layer1'.
+		html div id: 'layer2'
+	]
+! !
+
+!Screen methodsFor: 'private'!
+
+current
+	^ ('#layer', index) asJQuery
+!
+
+nextIndex
+	index := index \\ (self layers size ) + 1.
+	^ index
+!
+
+rollIn: jq
+	jq removeClass addClass: 'animated rollIn'
+!
+
+rollOut: jq
+	jq removeClass addClass: 'animated rollOut'
+! !
+
+Screen class instanceVariableNames: 'single'!
+
+!Screen class methodsFor: 'not yet classified'!
+
+new
+	single ifNil: [ 
+		single := super new.
+	].
+	
+	^ single
+!
+
+put:  aPage
+	aPage appendToJQuery: ('#layer1' asJQuery)
+! !
+
+Widget subclass: #ToolBar
+	instanceVariableNames: 'menu'
+	package: 'DyNagoya'!
+
+!ToolBar methodsFor: 'not yet classified'!
+
+clearMenus
+	('a.menu, .dropdown-toggle' asJQuery parent: 'li') removeClass: 'open'
+!
+
+renderAbout: html
+  html li class: 'dropdown class'; with: [ 
+	html a style: 'cursor: pointer'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'Menu'.
+	html ul class: 'dropdown-menu'; with: [
+		html li: [ html a style: 'cursor: pointer';onClick: [ AboutDyNagoya pan. self clearMenus ]; with: 'About DyNagoya' ].
+		html li: [ html a style: 'cursor: pointer'; onClick: [ AboutSmalltalk pan. self clearMenus ]; with: 'About Smalltalk' ].
+		html li: [ html a style: 'cursor: pointer'; onClick: [ Links pan. self clearMenus ]; with: 'Links' ]
+	]
+  ].
+  '#container' asJQuery bind: 'click' do: [self clearMenus ]
+!
+
+renderOn: html
+	html div class: 'fill'; with:[
+		html div class: 'container'; with:[
+			html ul style: 'float:right'; class: 'nav'; with:[
+				Login new appendToBrush: html li.
+			].
+			html ul style: 'float:left'; class: 'nav'; with:[
+				html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Browser' ].
+				html li: [ html a style: 'cursor: pointer'; onClick: [ DialogBox new widget: (SourceArea new); fontSize: '20px'; title: 'Workspace'; modal: false; open ]; with: 'Workspace' ].
+				html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].
+				self renderAbout: html.
+				html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].
+				html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].
+			]
+		]
+	]
 ! !
 

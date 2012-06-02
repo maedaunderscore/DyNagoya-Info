@@ -1,7 +1,39 @@
 Smalltalk current createPackage: 'DyNagoya-Tools' properties: #{}!
+Widget subclass: #Circle
+	instanceVariableNames: ''
+	package: 'DyNagoya-Tools'!
+
+!Circle methodsFor: 'accessing'!
+
+radiusX
+	^ 60
+!
+
+radiusY
+	^ 100
+! !
+
+!Circle methodsFor: 'rendering'!
+
+body: html
+!
+
+circleStyle
+	| rx ry |
+	rx := self radiusX.
+	ry := self radiusY.
+	^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;position:absolute;'
+!
+
+renderOn: html
+	html div class: 'circle'; style: (self circleStyle, self style); with: [
+			self body: html
+	]
+! !
+
 Widget subclass: #DialogBox
-	instanceVariableNames: 'message option body aspectRatio fontSize'
-	category: 'DyNagoya-Tools'!
+	instanceVariableNames: 'message option body aspectRatio fontSize x y'
+	package: 'DyNagoya-Tools'!
 !DialogBox commentStamp!
 Must need to use 'with' or message.
 
@@ -30,6 +62,14 @@ closeButton: label
 		add: (<{text: label, click: function() { $(this).dialog("close"); }}>).
 !
 
+fontSize
+	^ fontSize default: '12px'
+!
+
+fontSize: sizeStr
+	fontSize := sizeStr
+!
+
 height: aHeight
 	option at: 'height' put: aHeight
 !
@@ -50,8 +90,16 @@ option
 	^ option
 !
 
+tabWidget: aWidget
+	^ self with: [:html | aWidget renderBoxOn: html ]
+!
+
 title: aTitle
 	option at: 'title' put: aTitle
+!
+
+widget: aWidget
+	^ self with: [:html | aWidget renderOn: html ]
 !
 
 width: aWidth
@@ -65,16 +113,20 @@ with: aBlock
 	^ self body: body root.
 !
 
-widget: aWidget
-	^ self with: [:html | aWidget renderOn: html ]
+x
+	^ x default: '50px'
 !
 
-fontSize
-	^ fontSize ifNil: [ '18px' ] ifNotNil: [ fontSize ]
+x: strPos
+	x := strPos
 !
 
-fontSize: sizeStr
-	fontSize := sizeStr
+y
+	^ y default: '50px'
+!
+
+y: strPos
+	y := strPos
 ! !
 
 !DialogBox methodsFor: 'action'!
@@ -89,7 +141,8 @@ open
 		dialog: option.
          body asJQuery parent
 		css: 'position' at: 'fixed';
-		css: 'top' at: '50px'
+		css: 'left' at: (self x);
+		css: 'top' at: (self y)
 ! !
 
 !DialogBox methodsFor: 'initialization'!
@@ -111,7 +164,7 @@ withCancel
 
 DialogBox subclass: #ImageEditor
 	instanceVariableNames: 'img canvas jcrop'
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
 !ImageEditor commentStamp!
 x := ImageEditor openWithProxy: 'http://xxxx.com/abc.png'; open
 (* select area by drag the image *)
@@ -246,83 +299,50 @@ proxy:url
 	^ '/proxy?remote=', url
 ! !
 
-Widget subclass: #Circle
+ImageEditor subclass: #ProxyImageEditor
 	instanceVariableNames: ''
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
+!ProxyImageEditor commentStamp!
+x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open!
 
-!Circle methodsFor: 'accessing'!
+!ProxyImageEditor class methodsFor: 'not yet classified'!
 
-radiusX
-	^ 60
-!
-
-radiusY
-	^ 100
+open: url
+	^ self new openWithProxy: url
 ! !
 
-!Circle methodsFor: 'rendering'!
-
-renderOn: html
-	html div class: 'circle'; style: (self circleStyle, self style); with: [
-			self body: html
-	]
-!
-
-body: html
-!
-
-circleStyle
-	| rx ry |
-	rx := self radiusX.
-	ry := self radiusY.
-	^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;position:absolute;'
-! !
-
-Object subclass: #Util
+Object subclass: #GoogleMap
 	instanceVariableNames: ''
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
 
-!Util class methodsFor: 'not yet classified'!
+!GoogleMap class methodsFor: 'not yet classified'!
 
-encodeURI: str
-	^ (< encodeURI(str) >)
+link: html address: aStr
+	html a 
+		href: (self url: aStr);
+		title: aStr;
+		at: 'target' put: '_blank'; 
+		with:'(map)'
 !
 
-split: str with: delimiter
-	^ < str.split(delimiter) >
-!
-
-messageMap: aMessage
-	| selectors arguments ret |
-	selectors := Util split: (aMessage selector) with: ':'.
-	arguments := aMessage arguments.
-	ret := Array new.
-	arguments withIndexDo: [ :each :i | ret add: ((selectors at: i) -> each )].
-	^ ret
-!
-
-escape: str
-	^ (< escape(str) >)
-!
-
-encode: str
-	^ (< encodeURIComponent(str) >)
+url: address
+	^ 'http://maps.google.co.jp/maps?q=', (Util encode: address)
 ! !
 
 Object subclass: #RemoteObject
 	instanceVariableNames: 'obj group key'
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
 
 !RemoteObject methodsFor: 'not yet classified'!
+
+delete
+	RemoteObject delete: self class group: group key: key
+!
 
 doesNotUnderstand: aMessage
 	aMessage arguments 
 		ifEmpty:[ ^ obj at: aMessage selector ];
 		ifNotEmpty: [ ^ super doesNotUnderStand: aMessage ]
-!
-
-delete
-	RemoteObject delete: self class group: group key: key
 !
 
 initialize: aObj group: aGroup key: aKey
@@ -333,6 +353,10 @@ initialize: aObj group: aGroup key: aKey
 
 !RemoteObject class methodsFor: 'event handling'!
 
+afterDelete
+	^ [ :num | ]
+!
+
 afterGet: aBlock
 	^ [ :all | 
 		aBlock value: 
@@ -341,21 +365,16 @@ afterGet: aBlock
 
 afterPut
 	^ [ :num | ]
-!
-
-afterDelete
-	^ [ :num | ]
 ! !
 
 !RemoteObject class methodsFor: 'not yet classified'!
 
-list: group
+delete: clazz group: group key: key
 	^ jQuery
-		ajax: ('/data/', self asString, '/', group)
+		ajax: (self url: (clazz asString) group: group key: key)
 		option: #{
-			'type' -> 'GET'.
-			'dataType' -> 'json'.
-			'success' -> self onSuccess
+			'type' -> 'DELETE'.
+			'success' -> self afterDelete
 		}
 !
 
@@ -369,13 +388,13 @@ doesNotUnderstand: aMessage
 		ifFalse: [ self put: self group: group key: key body: ((HashedCollection fromPairs: map) asJSONString) ]
 !
 
-put: clazz group: group key: key body: body
+list: group
 	^ jQuery
-		ajax: (self url: (clazz asString) group: group key: key)
+		ajax: ('/data/', self asString, '/', group)
 		option: #{
-			'type' -> 'PUT'.
-			'data' -> #{'body' -> body} asJSON.
-			'success' -> self afterPut
+			'type' -> 'GET'.
+			'dataType' -> 'json'.
+			'success' -> self onSuccess
 		}
 !
 
@@ -389,12 +408,13 @@ list: group callback: aBlock
 		}
 !
 
-delete: clazz group: group key: key
+put: clazz group: group key: key body: body
 	^ jQuery
 		ajax: (self url: (clazz asString) group: group key: key)
 		option: #{
-			'type' -> 'DELETE'.
-			'success' -> self afterDelete
+			'type' -> 'PUT'.
+			'data' -> #{'body' -> body} asJSON.
+			'success' -> self afterPut
 		}
 ! !
 
@@ -406,7 +426,7 @@ url: clazz group: group key: key
 
 Object subclass: #Twitter
 	instanceVariableNames: ''
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
 
 !Twitter class methodsFor: 'not yet classified'!
 
@@ -414,14 +434,14 @@ iconUrl: user
 	^ 'http://img.tweetimag.es/i/', user, '_m'
 !
 
-linkUrl: user 
-	^ 'http://twitter.com/', user
-!
-
 link: html user: user
 	html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[
 		html img src: (self iconUrl: user)
 	]
+!
+
+linkUrl: user 
+	^ 'http://twitter.com/', user
 !
 
 tweet: msg
@@ -435,33 +455,34 @@ tweet: msg
   ^ msg
 ! !
 
-Object subclass: #GoogleMap
+Object subclass: #Util
 	instanceVariableNames: ''
-	category: 'DyNagoya-Tools'!
+	package: 'DyNagoya-Tools'!
 
-!GoogleMap class methodsFor: 'not yet classified'!
+!Util class methodsFor: 'not yet classified'!
 
-url: address
-	^ 'http://maps.google.co.jp/maps?q=', (Util encode: address)
+encode: str
+	^ (< encodeURIComponent(str) >)
 !
 
-link: html address: aStr
-	html a 
-		href: (self url: aStr);
-		title: aStr;
-		at: 'target' put: '_blank'; 
-		with:'(map)'
-! !
+encodeURI: str
+	^ (< encodeURI(str) >)
+!
 
-ImageEditor subclass: #ProxyImageEditor
-	instanceVariableNames: ''
-	category: 'DyNagoya-Tools'!
-!ProxyImageEditor commentStamp!
-x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open!
+escape: str
+	^ (< escape(str) >)
+!
 
-!ProxyImageEditor class methodsFor: 'not yet classified'!
+messageMap: aMessage
+	| selectors arguments ret |
+	selectors := Util split: (aMessage selector) with: ':'.
+	arguments := aMessage arguments.
+	ret := Array new.
+	arguments withIndexDo: [ :each :i | ret add: ((selectors at: i) -> each )].
+	^ ret
+!
 
-open: url
-	^ self new openWithProxy: url
+split: str with: delimiter
+	^ < str.split(delimiter) >
 ! !
 

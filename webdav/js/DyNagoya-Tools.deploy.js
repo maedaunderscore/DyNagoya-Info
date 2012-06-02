@@ -1,9 +1,75 @@
 smalltalk.addPackage('DyNagoya-Tools', {});
-smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize'], 'DyNagoya-Tools');
+smalltalk.addClass('Circle', smalltalk.Widget, [], 'DyNagoya-Tools');
 smalltalk.addMethod(
-'_body',
+"_body_",
 smalltalk.method({
-selector: 'body',
+selector: "body:",
+fn: function (html) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_circleStyle",
+smalltalk.method({
+selector: "circleStyle",
+fn: function () {
+    var self = this;
+    var rx = nil;
+    var ry = nil;
+    rx = smalltalk.send(self, "_radiusX", []);
+    ry = smalltalk.send(self, "_radiusY", []);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B")]);
+    return self;
+}
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_radiusX",
+smalltalk.method({
+selector: "radiusX",
+fn: function () {
+    var self = this;
+    return 60;
+    return self;
+}
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_radiusY",
+smalltalk.method({
+selector: "radiusY",
+fn: function () {
+    var self = this;
+    return 100;
+    return self;
+}
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [smalltalk.send(smalltalk.send(self, "_circleStyle", []), "__comma", [smalltalk.send(self, "_style", [])])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.Circle);
+
+
+
+smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_body",
+smalltalk.method({
+selector: "body",
 fn: function () {
     var self = this;
     return smalltalk.send(self['@body'], "_asJQuery", []);
@@ -13,9 +79,9 @@ fn: function () {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_body_',
+"_body_",
 smalltalk.method({
-selector: 'body:',
+selector: "body:",
 fn: function (aBody) {
     var self = this;
     self['@body'] = aBody;
@@ -25,9 +91,9 @@ fn: function (aBody) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_button_action_',
+"_button_action_",
 smalltalk.method({
-selector: 'button:action:',
+selector: "button:action:",
 fn: function (label, aBlock) {
     var self = this;
     smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();$(this).dialog("close");}}]);
@@ -37,9 +103,9 @@ fn: function (label, aBlock) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_close',
+"_close",
 smalltalk.method({
-selector: 'close',
+selector: "close",
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
@@ -49,9 +115,9 @@ fn: function () {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_closeButton_',
+"_closeButton_",
 smalltalk.method({
-selector: 'closeButton:',
+selector: "closeButton:",
 fn: function (label) {
     var self = this;
     smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {$(this).dialog("close");}}]);
@@ -61,9 +127,9 @@ fn: function (label) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_defaultOption',
+"_defaultOption",
 smalltalk.method({
-selector: 'defaultOption',
+selector: "defaultOption",
 fn: function () {
     var self = this;
     return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true])]);
@@ -73,9 +139,33 @@ fn: function () {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_height_',
+"_fontSize",
 smalltalk.method({
-selector: 'height:',
+selector: "fontSize",
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@fontSize'], "_default_", ["12px"]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_fontSize_",
+smalltalk.method({
+selector: "fontSize:",
+fn: function (sizeStr) {
+    var self = this;
+    self['@fontSize'] = sizeStr;
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_height_",
+smalltalk.method({
+selector: "height:",
 fn: function (aHeight) {
     var self = this;
     smalltalk.send(self['@option'], "_at_put_", ["height", aHeight]);
@@ -85,9 +175,9 @@ fn: function (aHeight) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_image_',
+"_image_",
 smalltalk.method({
-selector: 'image:',
+selector: "image:",
 fn: function (url) {
     var self = this;
     return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [url]);}]);
@@ -97,9 +187,9 @@ fn: function (url) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_initialize',
+"_initialize",
 smalltalk.method({
-selector: 'initialize',
+selector: "initialize",
 fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.Widget);
@@ -110,9 +200,9 @@ fn: function () {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_message_',
+"_message_",
 smalltalk.method({
-selector: 'message:',
+selector: "message:",
 fn: function (aMessage) {
     var self = this;
     self['@body'] = smalltalk.send(smalltalk.send(unescape("%3Cdiv%3E"), "__comma", [aMessage]), "__comma", [unescape("%3C/div%3E")]);
@@ -122,9 +212,9 @@ fn: function (aMessage) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_modal_',
+"_modal_",
 smalltalk.method({
-selector: 'modal:',
+selector: "modal:",
 fn: function (flag) {
     var self = this;
     smalltalk.send(self['@option'], "_at_put_", ["modal", flag]);
@@ -134,22 +224,22 @@ fn: function (flag) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_open',
+"_open",
 smalltalk.method({
-selector: 'open',
+selector: "open",
 fn: function () {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_css_at_", [unescape("font-size"), smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
-    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);return smalltalk.send($rec, "_css_at_", ["top", "50px"]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_at_", ["font-size", smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);smalltalk.send($rec, "_css_at_", ["left", smalltalk.send(self, "_x", [])]);return smalltalk.send($rec, "_css_at_", ["top", smalltalk.send(self, "_y", [])]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
     return self;
 }
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_option',
+"_option",
 smalltalk.method({
-selector: 'option',
+selector: "option",
 fn: function () {
     var self = this;
     return self['@option'];
@@ -159,9 +249,21 @@ fn: function () {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_title_',
+"_tabWidget_",
 smalltalk.method({
-selector: 'title:',
+selector: "tabWidget:",
+fn: function (aWidget) {
+    var self = this;
+    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderBoxOn_", [html]);}]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
 fn: function (aTitle) {
     var self = this;
     smalltalk.send(self['@option'], "_at_put_", ["title", aTitle]);
@@ -171,9 +273,21 @@ fn: function (aTitle) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_width_',
+"_widget_",
 smalltalk.method({
-selector: 'width:',
+selector: "widget:",
+fn: function (aWidget) {
+    var self = this;
+    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_width_",
+smalltalk.method({
+selector: "width:",
 fn: function (aWidth) {
     var self = this;
     smalltalk.send(self['@option'], "_at_put_", ["width", aWidth]);
@@ -183,9 +297,9 @@ fn: function (aWidth) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_with_',
+"_with_",
 smalltalk.method({
-selector: 'with:',
+selector: "with:",
 fn: function (aBlock) {
     var self = this;
     var body = nil;
@@ -198,36 +312,48 @@ fn: function (aBlock) {
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_widget_',
+"_x",
 smalltalk.method({
-selector: 'widget:',
-fn: function (aWidget) {
-    var self = this;
-    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
-    return self;
-}
-}),
-smalltalk.DialogBox);
-
-smalltalk.addMethod(
-'_fontSize',
-smalltalk.method({
-selector: 'fontSize',
+selector: "x",
 fn: function () {
     var self = this;
-    return ($receiver = self['@fontSize']) == nil || $receiver == undefined ? function () {return "18px";}() : function () {return self['@fontSize'];}();
+    return smalltalk.send(self['@x'], "_default_", ["50px"]);
     return self;
 }
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-'_fontSize_',
+"_x_",
 smalltalk.method({
-selector: 'fontSize:',
-fn: function (sizeStr) {
+selector: "x:",
+fn: function (strPos) {
     var self = this;
-    self['@fontSize'] = sizeStr;
+    self['@x'] = strPos;
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@y'], "_default_", ["50px"]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_y_",
+smalltalk.method({
+selector: "y:",
+fn: function (strPos) {
+    var self = this;
+    self['@y'] = strPos;
     return self;
 }
 }),
@@ -235,9 +361,9 @@ smalltalk.DialogBox);
 
 
 smalltalk.addMethod(
-'_withCancel',
+"_withCancel",
 smalltalk.method({
-selector: 'withCancel',
+selector: "withCancel",
 fn: function () {
     var self = this;
     return smalltalk.send(smalltalk.send(self, "_new", []), "_closeButton_", ["Cancel"]);
@@ -249,9 +375,9 @@ smalltalk.DialogBox.klass);
 
 smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');
 smalltalk.addMethod(
-'_area',
+"_area",
 smalltalk.method({
-selector: 'area',
+selector: "area",
 fn: function () {
     var self = this;
     try {
@@ -268,9 +394,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_canvas',
+"_canvas",
 smalltalk.method({
-selector: 'canvas',
+selector: "canvas",
 fn: function () {
     var self = this;
     return smalltalk.send(smalltalk.send(self['@canvas'], "_asJQuery", []), "_at_", [0]);
@@ -280,9 +406,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_context',
+"_context",
 smalltalk.method({
-selector: 'context',
+selector: "context",
 fn: function () {
     var self = this;
     return smalltalk.send(smalltalk.send(self, "_canvas", []), "_getContext_", ["2d"]);
@@ -292,9 +418,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_copyToImg',
+"_copyToImg",
 smalltalk.method({
-selector: 'copyToImg',
+selector: "copyToImg",
 fn: function () {
     var self = this;
     smalltalk.send(self, "_src_", [smalltalk.send(smalltalk.send(self, "_canvas", []), "_toDataURL", [])]);
@@ -305,9 +431,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_crop',
+"_crop",
 smalltalk.method({
-selector: 'crop',
+selector: "crop",
 fn: function () {
     var self = this;
     var area = nil;
@@ -321,9 +447,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_croppable',
+"_croppable",
 smalltalk.method({
-selector: 'croppable',
+selector: "croppable",
 fn: function () {
     var self = this;
     var jq = nil;
@@ -336,9 +462,21 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_img',
+"_defaultOption",
 smalltalk.method({
-selector: 'img',
+selector: "defaultOption",
+fn: function () {
+    var self = this;
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false])]);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_img",
+smalltalk.method({
+selector: "img",
 fn: function () {
     var self = this;
     return smalltalk.send(smalltalk.send(self['@img'], "_asJQuery", []), "_at_", [0]);
@@ -348,9 +486,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_isSelected',
+"_isSelected",
 smalltalk.method({
-selector: 'isSelected',
+selector: "isSelected",
 fn: function () {
     var self = this;
     var area = nil;
@@ -362,9 +500,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_open_',
+"_open_",
 smalltalk.method({
-selector: 'open:',
+selector: "open:",
 fn: function (url) {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_with_", [function (html) {self['@img'] = smalltalk.send(html, "_img", []);return self['@canvas'] = smalltalk.send(smalltalk.send(html, "_canvas", []), "_css_put_", ["display", "none"]);}]);smalltalk.send($rec, "_width_", [800]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(self));
@@ -376,9 +514,9 @@ fn: function (url) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_openWithProxy_',
+"_openWithProxy_",
 smalltalk.method({
-selector: 'openWithProxy:',
+selector: "openWithProxy:",
 fn: function (url) {
     var self = this;
     smalltalk.send(self, "_open_", [smalltalk.send(self, "_proxy_", [url])]);
@@ -388,9 +526,9 @@ fn: function (url) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_proxy_',
+"_proxy_",
 smalltalk.method({
-selector: 'proxy:',
+selector: "proxy:",
 fn: function (url) {
     var self = this;
     return smalltalk.send(unescape("/proxy%3Fremote%3D"), "__comma", [url]);
@@ -400,9 +538,9 @@ fn: function (url) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_redraw',
+"_redraw",
 smalltalk.method({
-selector: 'redraw',
+selector: "redraw",
 fn: function () {
     var self = this;
     smalltalk.send(self, "_croppable", []);
@@ -412,9 +550,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_resizeWidth_height_',
+"_resizeWidth_height_",
 smalltalk.method({
-selector: 'resizeWidth:height:',
+selector: "resizeWidth:height:",
 fn: function (w, h) {
     var self = this;
     var area = nil;
@@ -428,9 +566,9 @@ fn: function (w, h) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_selectWidth_height_',
+"_selectWidth_height_",
 smalltalk.method({
-selector: 'selectWidth:height:',
+selector: "selectWidth:height:",
 fn: function (width, height) {
     var self = this;
     var area = nil;
@@ -442,9 +580,9 @@ fn: function (width, height) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_selectX_y_',
+"_selectX_y_",
 smalltalk.method({
-selector: 'selectX:y:',
+selector: "selectX:y:",
 fn: function (x, y) {
     var self = this;
     var area = nil;
@@ -456,9 +594,9 @@ fn: function (x, y) {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_src',
+"_src",
 smalltalk.method({
-selector: 'src',
+selector: "src",
 fn: function () {
     var self = this;
     return smalltalk.send(smalltalk.send(self, "_img", []), "_src", []);
@@ -468,9 +606,9 @@ fn: function () {
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-'_src_',
+"_src_",
 smalltalk.method({
-selector: 'src:',
+selector: "src:",
 fn: function (url) {
     var self = this;
     smalltalk.send(self['@img'], "_src_", [url]);
@@ -479,161 +617,67 @@ fn: function (url) {
 }),
 smalltalk.ImageEditor);
 
+
+
+smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+
 smalltalk.addMethod(
-'_defaultOption',
+"_open_",
 smalltalk.method({
-selector: 'defaultOption',
-fn: function () {
+selector: "open:",
+fn: function (url) {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false])]);
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ProxyImageEditor.klass);
 
 
+smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 
-smalltalk.addClass('Circle', smalltalk.Widget, [], 'DyNagoya-Tools');
 smalltalk.addMethod(
-'_renderOn_',
+"_link_address_",
 smalltalk.method({
-selector: 'renderOn:',
-fn: function (html) {
+selector: "link:address:",
+fn: function (html, aStr) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [smalltalk.send(smalltalk.send(self, "_circleStyle", []), "__comma", [smalltalk.send(self, "_style", [])])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
     return self;
 }
 }),
-smalltalk.Circle);
+smalltalk.GoogleMap.klass);
 
 smalltalk.addMethod(
-'_body_',
+"_url_",
 smalltalk.method({
-selector: 'body:',
-fn: function (html) {
+selector: "url:",
+fn: function (address) {
     var self = this;
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
     return self;
 }
 }),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-'_radiusX',
-smalltalk.method({
-selector: 'radiusX',
-fn: function () {
-    var self = this;
-    return 60;
-    return self;
-}
-}),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-'_radiusY',
-smalltalk.method({
-selector: 'radiusY',
-fn: function () {
-    var self = this;
-    return 100;
-    return self;
-}
-}),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-'_circleStyle',
-smalltalk.method({
-selector: 'circleStyle',
-fn: function () {
-    var self = this;
-    var rx = nil;
-    var ry = nil;
-    rx = smalltalk.send(self, "_radiusX", []);
-    ry = smalltalk.send(self, "_radiusY", []);
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B")]);
-    return self;
-}
-}),
-smalltalk.Circle);
-
-
-
-smalltalk.addClass('Util', smalltalk.Object, [], 'DyNagoya-Tools');
-
-smalltalk.addMethod(
-'_encodeURI_',
-smalltalk.method({
-selector: 'encodeURI:',
-fn: function (str) {
-    var self = this;
-    return encodeURI(str);
-    return self;
-}
-}),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-'_split_with_',
-smalltalk.method({
-selector: 'split:with:',
-fn: function (str, delimiter) {
-    var self = this;
-    return str.split(delimiter);
-    return self;
-}
-}),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-'_messageMap_',
-smalltalk.method({
-selector: 'messageMap:',
-fn: function (aMessage) {
-    var self = this;
-    var selectors = nil;
-    var arguments = nil;
-    var ret = nil;
-    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
-    arguments = smalltalk.send(aMessage, "_arguments", []);
-    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
-    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
-    return ret;
-    return self;
-}
-}),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-'_escape_',
-smalltalk.method({
-selector: 'escape:',
-fn: function (str) {
-    var self = this;
-    return escape(str);
-    return self;
-}
-}),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-'_encode_',
-smalltalk.method({
-selector: 'encode:',
-fn: function (str) {
-    var self = this;
-    return encodeURIComponent(str);
-    return self;
-}
-}),
-smalltalk.Util.klass);
+smalltalk.GoogleMap.klass);
 
 
 smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
 smalltalk.addMethod(
-'_doesNotUnderstand_',
+"_delete",
 smalltalk.method({
-selector: 'doesNotUnderstand:',
+selector: "delete",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
+    return self;
+}
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
 fn: function (aMessage) {
     var self = this;
     try {
@@ -650,21 +694,9 @@ fn: function (aMessage) {
 smalltalk.RemoteObject);
 
 smalltalk.addMethod(
-'_delete',
+"_initialize_group_key_",
 smalltalk.method({
-selector: 'delete',
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
-    return self;
-}
-}),
-smalltalk.RemoteObject);
-
-smalltalk.addMethod(
-'_initialize_group_key_',
-smalltalk.method({
-selector: 'initialize:group:key:',
+selector: "initialize:group:key:",
 fn: function (aObj, aGroup, aKey) {
     var self = this;
     self['@obj'] = aObj;
@@ -677,21 +709,57 @@ smalltalk.RemoteObject);
 
 
 smalltalk.addMethod(
-'_list_',
+"_afterDelete",
 smalltalk.method({
-selector: 'list:',
-fn: function (group) {
+selector: "afterDelete",
+fn: function () {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
+    return function (num) {return nil;};
     return self;
 }
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-'_doesNotUnderstand_',
+"_afterGet_",
 smalltalk.method({
-selector: 'doesNotUnderstand:',
+selector: "afterGet:",
+fn: function (aBlock) {
+    var self = this;
+    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_afterPut",
+smalltalk.method({
+selector: "afterPut",
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_delete_group_key_",
+smalltalk.method({
+selector: "delete:group:key:",
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
 fn: function (aMessage) {
     var self = this;
     var map = nil;
@@ -707,33 +775,21 @@ fn: function (aMessage) {
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-'_put_group_key_body_',
+"_list_",
 smalltalk.method({
-selector: 'put:group:key:body:',
-fn: function (clazz, group, key, body) {
+selector: "list:",
+fn: function (group) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
     return self;
 }
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-'_url_group_key_',
+"_list_callback_",
 smalltalk.method({
-selector: 'url:group:key:',
-fn: function (clazz, group, key) {
-    var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
-    return self;
-}
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-'_list_callback_',
-smalltalk.method({
-selector: 'list:callback:',
+selector: "list:callback:",
 fn: function (group, aBlock) {
     var self = this;
     return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterGet_", [aBlock])])])]);
@@ -743,48 +799,24 @@ fn: function (group, aBlock) {
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-'_delete_group_key_',
+"_put_group_key_body_",
 smalltalk.method({
-selector: 'delete:group:key:',
+selector: "put:group:key:body:",
+fn: function (clazz, group, key, body) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_url_group_key_",
+smalltalk.method({
+selector: "url:group:key:",
 fn: function (clazz, group, key) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
-    return self;
-}
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-'_afterGet_',
-smalltalk.method({
-selector: 'afterGet:',
-fn: function (aBlock) {
-    var self = this;
-    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
-    return self;
-}
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-'_afterPut',
-smalltalk.method({
-selector: 'afterPut',
-fn: function () {
-    var self = this;
-    return function (num) {return nil;};
-    return self;
-}
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-'_afterDelete',
-smalltalk.method({
-selector: 'afterDelete',
-fn: function () {
-    var self = this;
-    return function (num) {return nil;};
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
     return self;
 }
 }),
@@ -794,9 +826,9 @@ smalltalk.RemoteObject.klass);
 smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
-'_iconUrl_',
+"_iconUrl_",
 smalltalk.method({
-selector: 'iconUrl:',
+selector: "iconUrl:",
 fn: function (user) {
     var self = this;
     return smalltalk.send(smalltalk.send(unescape("http%3A//img.tweetimag.es/i/"), "__comma", [user]), "__comma", ["_m"]);
@@ -806,21 +838,9 @@ fn: function (user) {
 smalltalk.Twitter.klass);
 
 smalltalk.addMethod(
-'_linkUrl_',
+"_link_user_",
 smalltalk.method({
-selector: 'linkUrl:',
-fn: function (user) {
-    var self = this;
-    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
-    return self;
-}
-}),
-smalltalk.Twitter.klass);
-
-smalltalk.addMethod(
-'_link_user_',
-smalltalk.method({
-selector: 'link:user:',
+selector: "link:user:",
 fn: function (html, user) {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_linkUrl_", [user])]);smalltalk.send($rec, "_at_put_", ["title", user]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [smalltalk.send(self, "_iconUrl_", [user])]);}]);}(smalltalk.send(html, "_a", [])));
@@ -830,9 +850,21 @@ fn: function (html, user) {
 smalltalk.Twitter.klass);
 
 smalltalk.addMethod(
-'_tweet_',
+"_linkUrl_",
 smalltalk.method({
-selector: 'tweet:',
+selector: "linkUrl:",
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+"_tweet_",
+smalltalk.method({
+selector: "tweet:",
 fn: function (msg) {
     var self = this;
     smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [unescape("/tweet"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("tweet", "__minus_gt", [msg])]), "_asJSON", [])])])]);
@@ -843,45 +875,73 @@ fn: function (msg) {
 smalltalk.Twitter.klass);
 
 
-smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
+smalltalk.addClass('Util', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
-'_url_',
+"_encode_",
 smalltalk.method({
-selector: 'url:',
-fn: function (address) {
+selector: "encode:",
+fn: function (str) {
     var self = this;
-    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
+    return encodeURIComponent(str);
     return self;
 }
 }),
-smalltalk.GoogleMap.klass);
+smalltalk.Util.klass);
 
 smalltalk.addMethod(
-'_link_address_',
+"_encodeURI_",
 smalltalk.method({
-selector: 'link:address:',
-fn: function (html, aStr) {
+selector: "encodeURI:",
+fn: function (str) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
+    return encodeURI(str);
     return self;
 }
 }),
-smalltalk.GoogleMap.klass);
-
-
-smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+smalltalk.Util.klass);
 
 smalltalk.addMethod(
-'_open_',
+"_escape_",
 smalltalk.method({
-selector: 'open:',
-fn: function (url) {
+selector: "escape:",
+fn: function (str) {
     var self = this;
-    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
+    return escape(str);
     return self;
 }
 }),
-smalltalk.ProxyImageEditor.klass);
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_messageMap_",
+smalltalk.method({
+selector: "messageMap:",
+fn: function (aMessage) {
+    var self = this;
+    var selectors = nil;
+    var arguments = nil;
+    var ret = nil;
+    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
+    arguments = smalltalk.send(aMessage, "_arguments", []);
+    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
+    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
+    return ret;
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_split_with_",
+smalltalk.method({
+selector: "split:with:",
+fn: function (str, delimiter) {
+    var self = this;
+    return str.split(delimiter);
+    return self;
+}
+}),
+smalltalk.Util.klass);
 
 

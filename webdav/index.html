@@ -1,54 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>DyNagoya</title>
-    <meta name="description" content="about dynamic language, dynabook, or etc... especially  smalltalk ">
-    <meta name="author" content="dynagoya">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le styles -->
-    <link href="bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="lib/tapmodo-Jcrop-5e58bc9/css/jquery.Jcrop.css" rel="stylesheet">
-    <link href="css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>DyNagoya</title> 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+    <meta name="author" content="Nicolas Petton" /> 
+    <link rel="stylesheet" type="text/css" href='css/style.css' /> 
+    <link rel="stylesheet" type="text/css" href='js/lib/jquery-ui/css/ui-darkness/jquery-ui-1.8.20.custom.css' /> 
+    <link rel="stylesheet" type="text/css" href='css/animate.css' /> 
+    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico"/> 
+    <link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'> 
+    <script type='text/javascript' src='js/amber.js'></script> 
+    <script type='text/javascript' src='js/lib/moment.js'></script> 
+    <script type='text/javascript' src='js/lib/showdown.js'></script> 
     <style type="text/css">
-      body {
-        padding-top: 40px;
+      .ui-dialog { opacity: 0.8 }
+      .ui-dialog-content > .amberTool { top: 0 }
+      #layer1, #layer2 {
+         -moz-animation-delay: 0.2s;
+         -moz-animation-duration: 1s;
+         -moz-animation-fill-mode: both;
+         -moz-animation-timing-function: ease;
+         position:absolute;
+         width:100%;
       }
-      .strong {
-        color: red;
-        font-size: 24px;
+      #screen { 
+        width: 980px;
+        margin:auto;
+        position:relative;
       }
+      body { overflow-x: hidden }
     </style>
-
-    <!-- Le fav and touch icons -->
-<!--    <link rel="shortcut icon" href="images/favicon.ico"> -->
-
-    <script type='text/javascript' src="js/lib/jQuery/jquery-1.6.4.min.js"></script> 
-    <script type='text/javascript' src="js/lib/jQuery/jquery-ui-1.8.16.custom.min.js"></script> 
-    <script type='text/javascript' src="lib/tapmodo-Jcrop-5e58bc9/js/jquery.Jcrop.min.js"></script>
-    <script type='text/javascript' src="lib/moment/moment.min.js"></script>
-    <script type='text/javascript' src="js/amber.js"></script> 
-    
-  </head>
-
-  <body>
-
-    <div id="toolbar" class="topbar">
+  </head> 
+  <body> 
+    <div id="login"></div>
+    <div id="screen">
     </div>
-
-    <div id="container" class="container">
-    </div>
-
-    <script type="text/javascript"> 
-        loadAmber({
-          files: ['DyNagoya-Tools.js', 'DyNagoya.js'],
+    <button style="display:none" onClick="smalltalk.Browser._open()"> Class browser</button>    
+    <script type='text/javascript'> loadAmber({
+          files: ['CodeModification.js', 'DyNagoya-Tools.js', 'DyNagoya.js'],
           ready: function(){ smalltalk.EntryPoint._start(); }
-	});
-    </script>
-  </body>
-</html>
+      }) </script> 
+  </body> 
+</html> 

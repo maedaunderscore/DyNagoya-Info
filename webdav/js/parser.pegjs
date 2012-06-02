@@ -3,7 +3,10 @@ start = method
 separator      = [ \t\v\f\u00A0\uFEFF\n\r\u2028\u2029]+
 comments       = (["][^"]*["])+
 ws             = (separator / comments)*
-identifier     = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
+identifier     = first:[a-zA-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
+varIdentifier  = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
+placeHolderIdentifier = '%' num:[0-9]+ { return '%' + num }
+
 keyword        = first:identifier last:[:] {return first + last}
 className      = first:[A-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
 string         = ['] val:(("''" {return "'"} / [^'])*) ['] {
@@ -11,21 +14,23 @@ string         = ['] val:(("''" {return "'"} / [^'])*) ['] {
                	   	._value_(val.join("").replace(/\"/ig, '"'))
 	         }
 
-symbol         = "#"val:[a-zA-Z0-9]* {
-		  return smalltalk.ValueNode._new()
-               	   	._value_('smalltalk.symbolFor(val.join("").replace(/\"/ig, '"')))
+symbol         = "#"val:(
+			digits:[a-zA-Z0-9\:]+ {return digits.join("")} / 
+			node:string {return node._value()})* {
+		  		    return smalltalk.ValueNode._new()
+               	   		    	   ._value_(smalltalk.symbolFor(val.join("").replace(/\"/ig, '"')))
                	 }
 number         = n:(float / integer) {
 		  return smalltalk.ValueNode._new()
                	   	._value_(n)
                	 }
-float          = neg:[-]?int:integer "." dec:integer {return parseFloat((neg+int+"."+dec), 10)}
+float          = neg:[-]?int:[0-9]+ "." dec:[0-9]+ {return parseFloat((neg + int.join("") + "." + dec.join("")), 10)}
 integer        = neg:[-]?digits:[0-9]+ {return (parseInt(neg+digits.join(""), 10))}
 literalArray   = "#(" ws lits:(lit:literal ws {return lit._value()})* ws ")" {
 		  return smalltalk.ValueNode._new()
                	   	._value_(lits)
                	 }
-dynamicArray   = "{" ws expressions:expressions? ws "}" {
+dynamicArray   = "{" ws expressions:expressions? ws "."? "}" {
 	       	  return smalltalk.DynamicArrayNode._new()
 		        ._nodes_(expressions)
 		  }
@@ -42,7 +47,11 @@ pseudoVariable = val:(
 literal        = pseudoVariable / number / literalArray / dynamicDictionary / dynamicArray / string / symbol / block
 
 
-variable       = identifier:identifier {
+variable       = identifier:varIdentifier {
+		  return smalltalk.VariableNode._new()
+			._value_(identifier)
+		  }
+		/ placeHolderIdentifier {
 		  return smalltalk.VariableNode._new()
 			._value_(identifier)
 		  }
@@ -117,6 +126,7 @@ sequence      = temps:temps? ws statements:statements? ws {
 		}
 
 block         = '[' ws params:blockParamList? ws sequence:sequence? ws ']' {
+	          console.log(sequence);
 	          return smalltalk.BlockNode._new()
 	          	._parameters_(params || [])
 	          	._nodes_([sequence._asBlockSequenceNode()])

@@ -1,10 +1,101 @@
 smalltalk.addPackage('DyNagoya-Tools', {});
-smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize'], 'DyNagoya-Tools');
-smalltalk.DialogBox.comment=unescape('Must%20need%20to%20use%20%27with%27%20or%20message.%0A%0Aex%29%0A%20DialogBox%20new%20message%3A%20%27hoge%27%3B%20title%3A%20%27fuga%27%3B%20open%20')
+smalltalk.addClass('Circle', smalltalk.Widget, [], 'DyNagoya-Tools');
 smalltalk.addMethod(
-unescape('_body'),
+"_body_",
 smalltalk.method({
-selector: unescape('body'),
+selector: "body:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    return self;
+},
+args: ["html"],
+source: "body: html\x0a\x0a\x09\x09",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_circleStyle",
+smalltalk.method({
+selector: "circleStyle",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    var rx = nil;
+    var ry = nil;
+    rx = smalltalk.send(self, "_radiusX", []);
+    ry = smalltalk.send(self, "_radiusY", []);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B")]);
+    return self;
+},
+args: [],
+source: "circleStyle\x0a\x09| rx ry |\x0a\x09rx := self radiusX.\x0a\x09ry := self radiusY.\x0a\x09^ 'width: ', (rx * 2), 'px;height: ', (rx * 2), 'px; -moz-border-radius:',rx,'px;-webkit-border-radius:',rx,'px;border-radius: ', rx, 'px; line-height:', (rx * 2), 'px; text-align:center;position:absolute;'",
+messageSends: ["radiusX", "radiusY", ",", "*"],
+referencedClasses: []
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_radiusX",
+smalltalk.method({
+selector: "radiusX",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return 60;
+    return self;
+},
+args: [],
+source: "radiusX\x0a\x09^ 60",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_radiusY",
+smalltalk.method({
+selector: "radiusY",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return 100;
+    return self;
+},
+args: [],
+source: "radiusY\x0a\x09^ 100",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Circle);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [smalltalk.send(smalltalk.send(self, "_circleStyle", []), "__comma", [smalltalk.send(self, "_style", [])])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html div class: 'circle'; style: (self circleStyle, self style); with: [\x0a\x09\x09\x09self body: html\x0a\x09]",
+messageSends: ["class:", "style:", ",", "circleStyle", "style", "with:", "body:", "div"],
+referencedClasses: []
+}),
+smalltalk.Circle);
+
+
+
+smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y'], 'DyNagoya-Tools');
+smalltalk.DialogBox.comment="Must need to use 'with' or message.\x0a\x0aex)\x0a DialogBox new message: 'hoge'; title: 'fuga'; open "
+smalltalk.addMethod(
+"_body",
+smalltalk.method({
+selector: "body",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -12,16 +103,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('body%0A%09%22%20not%20raw%20body%22%0A%09%5E%20body%20asJQuery'),
+source: "body\x0a\x09\x22 not raw body\x22\x0a\x09^ body asJQuery",
 messageSends: ["asJQuery"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_body_'),
+"_body_",
 smalltalk.method({
-selector: unescape('body%3A'),
+selector: "body:",
 category: 'accessing',
 fn: function (aBody) {
     var self = this;
@@ -29,16 +120,16 @@ fn: function (aBody) {
     return self;
 },
 args: ["aBody"],
-source: unescape('body%3A%20aBody%0A%09%22aBody%20will%20receive%20asJQuery%22%0A%09body%20%3A%3D%20%20aBody'),
+source: "body: aBody\x0a\x09\x22aBody will receive asJQuery\x22\x0a\x09body :=  aBody",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_button_action_'),
+"_button_action_",
 smalltalk.method({
-selector: unescape('button%3Aaction%3A'),
+selector: "button:action:",
 category: 'accessing',
 fn: function (label, aBlock) {
     var self = this;
@@ -46,16 +137,16 @@ fn: function (label, aBlock) {
     return self;
 },
 args: ["label", "aBlock"],
-source: unescape('button%3A%20label%20action%3A%20aBlock%0A%09%28option%20at%3A%20%27buttons%27%20ifAbsentPut%3A%5B%20%7B%7D%20%5D%29%0A%09%09add%3A%20%28%3C%7Btext%3A%20label%2C%20click%3A%20function%28%29%20%7B%20aBlock%28%29%3B%20%24%28this%29.dialog%28%22close%22%29%3B%20%7D%7D%3E%29.%0A'),
+source: "button: label action: aBlock\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { aBlock(); $(this).dialog(\x22close\x22); }}>).\x0a",
 messageSends: ["add:", "at:ifAbsentPut:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_close'),
+"_close",
 smalltalk.method({
-selector: unescape('close'),
+selector: "close",
 category: 'action',
 fn: function () {
     var self = this;
@@ -63,16 +154,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('close%0A%09%20body%20asJQuery%20dialog%3A%20%27destroy%27%0A'),
+source: "close\x0a\x09 body asJQuery dialog: 'destroy'\x0a",
 messageSends: ["dialog:", "asJQuery"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_closeButton_'),
+"_closeButton_",
 smalltalk.method({
-selector: unescape('closeButton%3A'),
+selector: "closeButton:",
 category: 'accessing',
 fn: function (label) {
     var self = this;
@@ -80,16 +171,16 @@ fn: function (label) {
     return self;
 },
 args: ["label"],
-source: unescape('closeButton%3A%20label%0A%09%28option%20at%3A%20%27buttons%27%20ifAbsentPut%3A%5B%20%7B%7D%20%5D%29%0A%09%09add%3A%20%28%3C%7Btext%3A%20label%2C%20click%3A%20function%28%29%20%7B%20%24%28this%29.dialog%28%22close%22%29%3B%20%7D%7D%3E%29.%0A%0A'),
+source: "closeButton: label\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { $(this).dialog(\x22close\x22); }}>).\x0a\x0a",
 messageSends: ["add:", "at:ifAbsentPut:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_defaultOption'),
+"_defaultOption",
 smalltalk.method({
-selector: unescape('defaultOption'),
+selector: "defaultOption",
 category: 'initialization',
 fn: function () {
     var self = this;
@@ -97,16 +188,50 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('defaultOption%0A%09%5E%20%23%7B%20%27modal%27%20-%3E%20true%20.%20%23sticky%20-%3E%20true%7D'),
-messageSends: [unescape("-%3E")],
+source: "defaultOption\x0a\x09^ #{ 'modal' -> true . #sticky -> true}",
+messageSends: ["->"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_height_'),
+"_fontSize",
 smalltalk.method({
-selector: unescape('height%3A'),
+selector: "fontSize",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@fontSize'], "_default_", ["12px"]);
+    return self;
+},
+args: [],
+source: "fontSize\x0a\x09^ fontSize default: '12px'",
+messageSends: ["default:"],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_fontSize_",
+smalltalk.method({
+selector: "fontSize:",
+category: 'accessing',
+fn: function (sizeStr) {
+    var self = this;
+    self['@fontSize'] = sizeStr;
+    return self;
+},
+args: ["sizeStr"],
+source: "fontSize: sizeStr\x0a\x09fontSize := sizeStr",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_height_",
+smalltalk.method({
+selector: "height:",
 category: 'accessing',
 fn: function (aHeight) {
     var self = this;
@@ -114,16 +239,16 @@ fn: function (aHeight) {
     return self;
 },
 args: ["aHeight"],
-source: unescape('height%3A%20aHeight%0A%09option%20at%3A%20%27height%27%20put%3A%20aHeight'),
+source: "height: aHeight\x0a\x09option at: 'height' put: aHeight",
 messageSends: ["at:put:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_image_'),
+"_image_",
 smalltalk.method({
-selector: unescape('image%3A'),
+selector: "image:",
 category: 'accessing',
 fn: function (url) {
     var self = this;
@@ -131,16 +256,16 @@ fn: function (url) {
     return self;
 },
 args: ["url"],
-source: unescape('image%3A%20url%0A%09%5E%20self%20with%3A%20%5B%20%3Ahtml%20%7C%20html%20img%20src%3A%20url%5D'),
+source: "image: url\x0a\x09^ self with: [ :html | html img src: url]",
 messageSends: ["with:", "src:", "img"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_initialize'),
+"_initialize",
 smalltalk.method({
-selector: unescape('initialize'),
+selector: "initialize",
 category: 'initialization',
 fn: function () {
     var self = this;
@@ -149,16 +274,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('initialize%0A%09super%20initialize.%0A%09option%20%3A%3D%20self%20defaultOption'),
+source: "initialize\x0a\x09super initialize.\x0a\x09option := self defaultOption",
 messageSends: ["initialize", "defaultOption"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_message_'),
+"_message_",
 smalltalk.method({
-selector: unescape('message%3A'),
+selector: "message:",
 category: 'accessing',
 fn: function (aMessage) {
     var self = this;
@@ -166,16 +291,16 @@ fn: function (aMessage) {
     return self;
 },
 args: ["aMessage"],
-source: unescape('message%3A%20aMessage%0A%09body%20%3A%3D%20%27%3Cdiv%3E%27%2C%20aMessage%2C%20%27%3C/div%3E%27'),
-messageSends: [unescape("%2C")],
+source: "message: aMessage\x0a\x09body := '<div>', aMessage, '</div>'",
+messageSends: [","],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_modal_'),
+"_modal_",
 smalltalk.method({
-selector: unescape('modal%3A'),
+selector: "modal:",
 category: 'accessing',
 fn: function (flag) {
     var self = this;
@@ -183,34 +308,34 @@ fn: function (flag) {
     return self;
 },
 args: ["flag"],
-source: unescape('modal%3A%20flag%0A%09option%20at%3A%20%27modal%27%20put%3A%20flag'),
+source: "modal: flag\x0a\x09option at: 'modal' put: flag",
 messageSends: ["at:put:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_open'),
+"_open",
 smalltalk.method({
-selector: unescape('open'),
+selector: "open",
 category: 'action',
 fn: function () {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_css_at_", [unescape("font-size"), smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
-    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);return smalltalk.send($rec, "_css_at_", ["top", "50px"]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_at_", ["font-size", smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);smalltalk.send($rec, "_css_at_", ["left", smalltalk.send(self, "_x", [])]);return smalltalk.send($rec, "_css_at_", ["top", smalltalk.send(self, "_y", [])]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
     return self;
 },
 args: [],
-source: unescape('open%0A%09%20body%20asJQuery%0A%09%09css%3A%20%27font-size%27%20at%3A%20%28self%20fontSize%29%3B%20%0A%09%09dialog%3A%20option.%0A%20%20%20%20%20%20%20%20%20body%20asJQuery%20parent%0A%09%09css%3A%20%27position%27%20at%3A%20%27fixed%27%3B%0A%09%09css%3A%20%27top%27%20at%3A%20%2750px%27'),
-messageSends: ["css:at:", "fontSize", "dialog:", "asJQuery", "parent"],
+source: "open\x0a\x09 body asJQuery\x0a\x09\x09css: 'font-size' at: (self fontSize); \x0a\x09\x09dialog: option.\x0a         body asJQuery parent\x0a\x09\x09css: 'position' at: 'fixed';\x0a\x09\x09css: 'left' at: (self x);\x0a\x09\x09css: 'top' at: (self y)",
+messageSends: ["css:at:", "fontSize", "dialog:", "asJQuery", "x", "y", "parent"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_option'),
+"_option",
 smalltalk.method({
-selector: unescape('option'),
+selector: "option",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -218,16 +343,33 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('option%0A%09%5E%20option'),
+source: "option\x0a\x09^ option",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_title_'),
+"_tabWidget_",
 smalltalk.method({
-selector: unescape('title%3A'),
+selector: "tabWidget:",
+category: 'accessing',
+fn: function (aWidget) {
+    var self = this;
+    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderBoxOn_", [html]);}]);
+    return self;
+},
+args: ["aWidget"],
+source: "tabWidget: aWidget\x0a\x09^ self with: [:html | aWidget renderBoxOn: html ]",
+messageSends: ["with:", "renderBoxOn:"],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
 category: 'accessing',
 fn: function (aTitle) {
     var self = this;
@@ -235,16 +377,33 @@ fn: function (aTitle) {
     return self;
 },
 args: ["aTitle"],
-source: unescape('title%3A%20aTitle%0A%09option%20at%3A%20%27title%27%20put%3A%20aTitle'),
+source: "title: aTitle\x0a\x09option at: 'title' put: aTitle",
 messageSends: ["at:put:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_width_'),
+"_widget_",
 smalltalk.method({
-selector: unescape('width%3A'),
+selector: "widget:",
+category: 'accessing',
+fn: function (aWidget) {
+    var self = this;
+    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
+    return self;
+},
+args: ["aWidget"],
+source: "widget: aWidget\x0a\x09^ self with: [:html | aWidget renderOn: html ]",
+messageSends: ["with:", "renderOn:"],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_width_",
+smalltalk.method({
+selector: "width:",
 category: 'accessing',
 fn: function (aWidth) {
     var self = this;
@@ -252,16 +411,16 @@ fn: function (aWidth) {
     return self;
 },
 args: ["aWidth"],
-source: unescape('width%3A%20aWidth%0A%09option%20at%3A%20%27width%27%20put%3A%20aWidth'),
+source: "width: aWidth\x0a\x09option at: 'width' put: aWidth",
 messageSends: ["at:put:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_with_'),
+"_with_",
 smalltalk.method({
-selector: unescape('with%3A'),
+selector: "with:",
 category: 'accessing',
 fn: function (aBlock) {
     var self = this;
@@ -272,58 +431,75 @@ fn: function (aBlock) {
     return self;
 },
 args: ["aBlock"],
-source: unescape('with%3A%20aBlock%0A%09%7C%20body%20%7C%0A%09body%20%3A%3D%20HTMLCanvas%20new.%0A%09aBlock%20value%3A%20body.%0A%09%5E%20self%20body%3A%20body%20root.'),
+source: "with: aBlock\x0a\x09| body |\x0a\x09body := HTMLCanvas new.\x0a\x09aBlock value: body.\x0a\x09^ self body: body root.",
 messageSends: ["new", "value:", "body:", "root"],
 referencedClasses: ["HTMLCanvas"]
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_widget_'),
+"_x",
 smalltalk.method({
-selector: unescape('widget%3A'),
-category: 'accessing',
-fn: function (aWidget) {
-    var self = this;
-    return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
-    return self;
-},
-args: ["aWidget"],
-source: unescape('widget%3A%20aWidget%0A%09%5E%20self%20with%3A%20%5B%3Ahtml%20%7C%20aWidget%20renderOn%3A%20html%20%5D'),
-messageSends: ["with:", "renderOn:"],
-referencedClasses: []
-}),
-smalltalk.DialogBox);
-
-smalltalk.addMethod(
-unescape('_fontSize'),
-smalltalk.method({
-selector: unescape('fontSize'),
+selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return ($receiver = self['@fontSize']) == nil || $receiver == undefined ? function () {return "18px";}() : function () {return self['@fontSize'];}();
+    return smalltalk.send(self['@x'], "_default_", ["50px"]);
     return self;
 },
 args: [],
-source: unescape('fontSize%0A%09%5E%20fontSize%20ifNil%3A%20%5B%20%2718px%27%20%5D%20ifNotNil%3A%20%5B%20fontSize%20%5D'),
-messageSends: ["ifNil:ifNotNil:"],
+source: "x\x0a\x09^ x default: '50px'",
+messageSends: ["default:"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
 
 smalltalk.addMethod(
-unescape('_fontSize_'),
+"_x_",
 smalltalk.method({
-selector: unescape('fontSize%3A'),
+selector: "x:",
 category: 'accessing',
-fn: function (sizeStr) {
+fn: function (strPos) {
     var self = this;
-    self['@fontSize'] = sizeStr;
+    self['@x'] = strPos;
     return self;
 },
-args: ["sizeStr"],
-source: unescape('fontSize%3A%20sizeStr%0A%09fontSize%20%3A%3D%20sizeStr'),
+args: ["strPos"],
+source: "x: strPos\x0a\x09x := strPos",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@y'], "_default_", ["50px"]);
+    return self;
+},
+args: [],
+source: "y\x0a\x09^ y default: '50px'",
+messageSends: ["default:"],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_y_",
+smalltalk.method({
+selector: "y:",
+category: 'accessing',
+fn: function (strPos) {
+    var self = this;
+    self['@y'] = strPos;
+    return self;
+},
+args: ["strPos"],
+source: "y: strPos\x0a\x09y := strPos",
 messageSends: [],
 referencedClasses: []
 }),
@@ -331,9 +507,9 @@ smalltalk.DialogBox);
 
 
 smalltalk.addMethod(
-unescape('_withCancel'),
+"_withCancel",
 smalltalk.method({
-selector: unescape('withCancel'),
+selector: "withCancel",
 category: 'not yet classified',
 fn: function () {
     var self = this;
@@ -341,7 +517,7 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('withCancel%0A%09%5E%20self%20new%20closeButton%3A%20%27Cancel%27%0A'),
+source: "withCancel\x0a\x09^ self new closeButton: 'Cancel'\x0a",
 messageSends: ["closeButton:", "new"],
 referencedClasses: []
 }),
@@ -349,11 +525,11 @@ smalltalk.DialogBox.klass);
 
 
 smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');
-smalltalk.ImageEditor.comment=unescape('x%20%3A%3D%20ImageEditor%20openWithProxy%3A%20%27http%3A//xxxx.com/abc.png%27%3B%20open%0A%28*%20select%20area%20by%20drag%20the%20image%20*%29%0A%0Ax%20crop%0Ax%20src')
+smalltalk.ImageEditor.comment="x := ImageEditor openWithProxy: 'http://xxxx.com/abc.png'; open\x0a(* select area by drag the image *)\x0a\x0ax crop\x0ax src"
 smalltalk.addMethod(
-unescape('_area'),
+"_area",
 smalltalk.method({
-selector: unescape('area'),
+selector: "area",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -368,16 +544,16 @@ fn: function () {
     }
 },
 args: [],
-source: unescape('area%0A%09self%20isSelected%20%0A%09%09ifTrue%3A%20%5B%20%5E%20jcrop%20tellSelect%20%5D%0A%09%09ifFalse%3A%20%5B%20%7C%20imgJQ%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20imgJQ%20%3A%3D%20img%20asJQuery.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5E%20%23%7B%20%23x%20-%3E%200.%20%23y%20-%3E%200.%20%23x2%20-%3E%20imgJQ%20width.%20%23y2%20-%3E%20imgJQ%20height.%20%23w%20-%3E%20imgJQ%20width.%20%23h%20-%3E%20imgJQ%20height%20%7D%20%5D%0A'),
-messageSends: ["ifTrue:ifFalse:", "isSelected", "tellSelect", "asJQuery", unescape("-%3E"), "width", "height"],
+source: "area\x0a\x09self isSelected \x0a\x09\x09ifTrue: [ ^ jcrop tellSelect ]\x0a\x09\x09ifFalse: [ | imgJQ | \x0a                          imgJQ := img asJQuery.\x0a                          ^ #{ #x -> 0. #y -> 0. #x2 -> imgJQ width. #y2 -> imgJQ height. #w -> imgJQ width. #h -> imgJQ height } ]\x0a",
+messageSends: ["ifTrue:ifFalse:", "isSelected", "tellSelect", "asJQuery", "->", "width", "height"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_canvas'),
+"_canvas",
 smalltalk.method({
-selector: unescape('canvas'),
+selector: "canvas",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -385,16 +561,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('canvas%0A%09%5Ecanvas%20asJQuery%20at%3A0%0A'),
+source: "canvas\x0a\x09^canvas asJQuery at:0\x0a",
 messageSends: ["at:", "asJQuery"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_context'),
+"_context",
 smalltalk.method({
-selector: unescape('context'),
+selector: "context",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -402,16 +578,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('context%0A%09%5E%20self%20canvas%20%20getContext%3A%272d%27%0A'),
+source: "context\x0a\x09^ self canvas  getContext:'2d'\x0a",
 messageSends: ["getContext:", "canvas"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_copyToImg'),
+"_copyToImg",
 smalltalk.method({
-selector: unescape('copyToImg'),
+selector: "copyToImg",
 category: 'private',
 fn: function () {
     var self = this;
@@ -420,16 +596,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('copyToImg%0A%09self%20src%3A%20%28self%20canvas%20toDataURL%29.%0A%09self%20redraw.%0A%0A'),
+source: "copyToImg\x0a\x09self src: (self canvas toDataURL).\x0a\x09self redraw.\x0a\x0a",
 messageSends: ["src:", "toDataURL", "canvas", "redraw"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_crop'),
+"_crop",
 smalltalk.method({
-selector: unescape('crop'),
+selector: "crop",
 category: 'action',
 fn: function () {
     var self = this;
@@ -441,16 +617,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('crop%0A%09%7C%20area%7C%0A%09area%20%3A%3D%20self%20area.%0A%09self%20canvas%20width%3A%20%28area%20at%3A%20%23w%29%3B%20height%3A%20%28area%20at%3A%20%23h%29.%0A%09self%20context%20drawImage%3A%20%28self%20img%29%20%0A%09%09sx%3A%20%28area%20at%3A%20%23x%29%09%09sy%3A%20%28area%20at%3A%20%23y%29%0A%09%09sw%3A%20%28area%20at%3A%20%23w%29%09%09sh%3A%20%28area%20at%3A%20%23h%29%0A%09%09dx%3A%200%09%09%09%09%09dy%3A%200%0A%09%09dw%3A%20%28area%20at%3A%20%23w%29%09%09dh%3A%20%28area%20at%3A%20%23h%29.%0A%09self%20copyToImg.%0A%0A%0A'),
+source: "crop\x0a\x09| area|\x0a\x09area := self area.\x0a\x09self canvas width: (area at: #w); height: (area at: #h).\x0a\x09self context drawImage: (self img) \x0a\x09\x09sx: (area at: #x)\x09\x09sy: (area at: #y)\x0a\x09\x09sw: (area at: #w)\x09\x09sh: (area at: #h)\x0a\x09\x09dx: 0\x09\x09\x09\x09\x09dy: 0\x0a\x09\x09dw: (area at: #w)\x09\x09dh: (area at: #h).\x0a\x09self copyToImg.\x0a\x0a\x0a",
 messageSends: ["area", "width:", "at:", "height:", "canvas", "drawImage:sx:sy:sw:sh:dx:dy:dw:dh:", "context", "img", "copyToImg"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_croppable'),
+"_croppable",
 smalltalk.method({
-selector: unescape('croppable'),
+selector: "croppable",
 category: 'private',
 fn: function () {
     var self = this;
@@ -461,16 +637,33 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('croppable%0A%09%7C%20jq%20%7C%0A%09jcrop%20ifNotNil%3A%20%5B%20jcrop%20destroy%20%5D.%0A%09jq%20%3A%3D%20img%20asJQuery.%20%0A%09%3C%20jq.Jcrop%28%7B%7D%2C%20function%28%29%7B%20self%5B%27@jcrop%27%5D%20%3D%20this%7D%29%3E%20'),
+source: "croppable\x0a\x09| jq |\x0a\x09jcrop ifNotNil: [ jcrop destroy ].\x0a\x09jq := img asJQuery. \x0a\x09< jq.Jcrop({}, function(){ self['@jcrop'] = this})> ",
 messageSends: ["ifNotNil:", "destroy", "asJQuery"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_img'),
+"_defaultOption",
 smalltalk.method({
-selector: unescape('img'),
+selector: "defaultOption",
+category: 'initalization',
+fn: function () {
+    var self = this;
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false])]);
+    return self;
+},
+args: [],
+source: "defaultOption\x0a\x09^ #{ 'modal' -> false }\x0a\x0a",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_img",
+smalltalk.method({
+selector: "img",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -478,16 +671,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('img%0A%09%5E%28img%20asJQuery%20at%3A%200%29%20'),
+source: "img\x0a\x09^(img asJQuery at: 0) ",
 messageSends: ["at:", "asJQuery"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_isSelected'),
+"_isSelected",
 smalltalk.method({
-selector: unescape('isSelected'),
+selector: "isSelected",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -497,16 +690,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('isSelected%0A%09%7C%20area%7C%0A%09area%20%3A%3D%20jcrop%20tellSelect.%0A%09%5E%20%28%28area%20at%3A%20%23w%29%20%3D%200%29%20not'),
-messageSends: ["tellSelect", "not", unescape("%3D"), "at:"],
+source: "isSelected\x0a\x09| area|\x0a\x09area := jcrop tellSelect.\x0a\x09^ ((area at: #w) = 0) not",
+messageSends: ["tellSelect", "not", "=", "at:"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_open_'),
+"_open_",
 smalltalk.method({
-selector: unescape('open%3A'),
+selector: "open:",
 category: 'opening',
 fn: function (url) {
     var self = this;
@@ -516,16 +709,16 @@ fn: function (url) {
     return self;
 },
 args: ["url"],
-source: unescape('open%3A%20url%0A%09self%20with%3A%5B%20%3Ahtml%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20img%20%3A%3D%20html%20img.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20canvas%20%3A%3D%20html%20canvas%20css%3A%27display%27%20put%3A%20%27none%27%5D%3B%0A%09%09width%3A800%3B%0A%09%09modal%3A%20false%3B%0A%09%09open.%0A%09self%20src%3A%20url.%0A%09self%20redraw.%0A'),
+source: "open: url\x0a\x09self with:[ :html | \x0a                   img := html img.\x0a                   canvas := html canvas css:'display' put: 'none'];\x0a\x09\x09width:800;\x0a\x09\x09modal: false;\x0a\x09\x09open.\x0a\x09self src: url.\x0a\x09self redraw.\x0a",
 messageSends: ["with:", "img", "css:put:", "canvas", "width:", "modal:", "open", "src:", "redraw"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_openWithProxy_'),
+"_openWithProxy_",
 smalltalk.method({
-selector: unescape('openWithProxy%3A'),
+selector: "openWithProxy:",
 category: 'opening',
 fn: function (url) {
     var self = this;
@@ -533,16 +726,16 @@ fn: function (url) {
     return self;
 },
 args: ["url"],
-source: unescape('openWithProxy%3A%20url%0A%09self%20open%3A%20%28self%20proxy%3A%20url%29'),
+source: "openWithProxy: url\x0a\x09self open: (self proxy: url)",
 messageSends: ["open:", "proxy:"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_proxy_'),
+"_proxy_",
 smalltalk.method({
-selector: unescape('proxy%3A'),
+selector: "proxy:",
 category: 'private',
 fn: function (url) {
     var self = this;
@@ -550,16 +743,16 @@ fn: function (url) {
     return self;
 },
 args: ["url"],
-source: unescape('proxy%3Aurl%0A%09%5E%20%27/proxy%3Fremote%3D%27%2C%20url'),
-messageSends: [unescape("%2C")],
+source: "proxy:url\x0a\x09^ '/proxy?remote=', url",
+messageSends: [","],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_redraw'),
+"_redraw",
 smalltalk.method({
-selector: unescape('redraw'),
+selector: "redraw",
 category: 'action',
 fn: function () {
     var self = this;
@@ -567,16 +760,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('redraw%0A%09self%20croppable'),
+source: "redraw\x0a\x09self croppable",
 messageSends: ["croppable"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_resizeWidth_height_'),
+"_resizeWidth_height_",
 smalltalk.method({
-selector: unescape('resizeWidth%3Aheight%3A'),
+selector: "resizeWidth:height:",
 category: 'action',
 fn: function (w, h) {
     var self = this;
@@ -588,16 +781,16 @@ fn: function (w, h) {
     return self;
 },
 args: ["w", "h"],
-source: unescape('resizeWidth%3A%20w%20height%3Ah%0A%09%7C%20area%20%7C%0A%09area%20%3A%3D%20self%20area.%0A%09self%20canvas%20width%3A%20w%3B%20height%3A%20h.%0A%09self%20context%20drawImage%3A%20%28self%20img%29%20%0A%09%09sx%3A%20%28area%20at%3A%20%23x%29%09%09sy%3A%20%28area%20at%3A%20%23y%29%0A%09%09sw%3A%20%28area%20at%3A%20%23w%29%09%09sh%3A%20%28area%20at%3A%20%23h%29%0A%09%09dx%3A%200%09%09%09%09%09dy%3A%200%0A%09%09dw%3A%20w%09%09dh%3A%20h.%0A%09self%20copyToImg.%0A'),
+source: "resizeWidth: w height:h\x0a\x09| area |\x0a\x09area := self area.\x0a\x09self canvas width: w; height: h.\x0a\x09self context drawImage: (self img) \x0a\x09\x09sx: (area at: #x)\x09\x09sy: (area at: #y)\x0a\x09\x09sw: (area at: #w)\x09\x09sh: (area at: #h)\x0a\x09\x09dx: 0\x09\x09\x09\x09\x09dy: 0\x0a\x09\x09dw: w\x09\x09dh: h.\x0a\x09self copyToImg.\x0a",
 messageSends: ["area", "width:", "height:", "canvas", "drawImage:sx:sy:sw:sh:dx:dy:dw:dh:", "context", "img", "at:", "copyToImg"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_selectWidth_height_'),
+"_selectWidth_height_",
 smalltalk.method({
-selector: unescape('selectWidth%3Aheight%3A'),
+selector: "selectWidth:height:",
 category: 'action',
 fn: function (width, height) {
     var self = this;
@@ -607,16 +800,16 @@ fn: function (width, height) {
     return self;
 },
 args: ["width", "height"],
-source: unescape('selectWidth%3A%20width%20height%3A%20height%0A%09%7C%20area%20%7C%0A%09area%20%3A%3D%20jcrop%20tellSelect.%0A%09jcrop%20animateTo%3A%20%7B%0A%09%09area%20at%3A%20%23x.%0A%09%09area%20at%3A%20%23y.%0A%09%09%28area%20at%3A%20%23x%29%20+%20width.%0A%09%09%28area%20at%3A%20%23y%29%20+%20height%20%7D.'),
-messageSends: ["tellSelect", "animateTo:", "at:", unescape("+")],
+source: "selectWidth: width height: height\x0a\x09| area |\x0a\x09area := jcrop tellSelect.\x0a\x09jcrop animateTo: {\x0a\x09\x09area at: #x.\x0a\x09\x09area at: #y.\x0a\x09\x09(area at: #x) + width.\x0a\x09\x09(area at: #y) + height }.",
+messageSends: ["tellSelect", "animateTo:", "at:", "+"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_selectX_y_'),
+"_selectX_y_",
 smalltalk.method({
-selector: unescape('selectX%3Ay%3A'),
+selector: "selectX:y:",
 category: 'action',
 fn: function (x, y) {
     var self = this;
@@ -626,16 +819,16 @@ fn: function (x, y) {
     return self;
 },
 args: ["x", "y"],
-source: unescape('selectX%3A%20x%20y%3A%20y%0A%09%7C%20area%20%7C%0A%09area%20%3A%3D%20jcrop%20tellSelect.%0A%09jcrop%20animateTo%3A%20%7B%0A%09%09x.%0A%09%09y.%0A%09%09x%20+%20%28area%20at%3A%20%23w%29.%0A%09%09y%20+%20%28area%20at%3A%20%23h%29%20%7D'),
-messageSends: ["tellSelect", "animateTo:", unescape("+"), "at:"],
+source: "selectX: x y: y\x0a\x09| area |\x0a\x09area := jcrop tellSelect.\x0a\x09jcrop animateTo: {\x0a\x09\x09x.\x0a\x09\x09y.\x0a\x09\x09x + (area at: #w).\x0a\x09\x09y + (area at: #h) }",
+messageSends: ["tellSelect", "animateTo:", "+", "at:"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_src'),
+"_src",
 smalltalk.method({
-selector: unescape('src'),
+selector: "src",
 category: 'accessing',
 fn: function () {
     var self = this;
@@ -643,16 +836,16 @@ fn: function () {
     return self;
 },
 args: [],
-source: unescape('src%0A%09%5E%20self%20img%20src'),
+source: "src\x0a\x09^ self img src",
 messageSends: ["src", "img"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
 smalltalk.addMethod(
-unescape('_src_'),
+"_src_",
 smalltalk.method({
-selector: unescape('src%3A'),
+selector: "src:",
 category: 'accessing',
 fn: function (url) {
     var self = this;
@@ -660,222 +853,94 @@ fn: function (url) {
     return self;
 },
 args: ["url"],
-source: unescape('src%3A%20url%0A%09img%20src%3A%20url.%0A'),
+source: "src: url\x0a\x09img src: url.\x0a",
 messageSends: ["src:"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
 
-smalltalk.addMethod(
-unescape('_defaultOption'),
-smalltalk.method({
-selector: unescape('defaultOption'),
-category: 'initalization',
-fn: function () {
-    var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false])]);
-    return self;
-},
-args: [],
-source: unescape('defaultOption%0A%09%5E%20%23%7B%20%27modal%27%20-%3E%20false%20%7D%0A%0A'),
-messageSends: [unescape("-%3E")],
-referencedClasses: []
-}),
-smalltalk.ImageEditor);
 
 
-
-smalltalk.addClass('Circle', smalltalk.Widget, [], 'DyNagoya-Tools');
-smalltalk.addMethod(
-unescape('_renderOn_'),
-smalltalk.method({
-selector: unescape('renderOn%3A'),
-category: 'rendering',
-fn: function (html) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["circle"]);smalltalk.send($rec, "_style_", [smalltalk.send(smalltalk.send(self, "_circleStyle", []), "__comma", [smalltalk.send(self, "_style", [])])]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(self, "_body_", [html]);}]);}(smalltalk.send(html, "_div", [])));
-    return self;
-},
-args: ["html"],
-source: unescape('renderOn%3A%20html%0A%09html%20div%20class%3A%20%27circle%27%3B%20style%3A%20%28self%20circleStyle%2C%20self%20style%29%3B%20with%3A%20%5B%0A%09%09%09self%20body%3A%20html%0A%09%5D'),
-messageSends: ["class:", "style:", unescape("%2C"), "circleStyle", "style", "with:", "body:", "div"],
-referencedClasses: []
-}),
-smalltalk.Circle);
+smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+smalltalk.ProxyImageEditor.comment="x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open"
 
 smalltalk.addMethod(
-unescape('_body_'),
+"_open_",
 smalltalk.method({
-selector: unescape('body%3A'),
-category: 'rendering',
-fn: function (html) {
-    var self = this;
-    return self;
-},
-args: ["html"],
-source: unescape('body%3A%20html%0A%0A%09%09'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-unescape('_radiusX'),
-smalltalk.method({
-selector: unescape('radiusX'),
-category: 'accessing',
-fn: function () {
-    var self = this;
-    return 60;
-    return self;
-},
-args: [],
-source: unescape('radiusX%0A%09%5E%2060'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-unescape('_radiusY'),
-smalltalk.method({
-selector: unescape('radiusY'),
-category: 'accessing',
-fn: function () {
-    var self = this;
-    return 100;
-    return self;
-},
-args: [],
-source: unescape('radiusY%0A%09%5E%20100'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Circle);
-
-smalltalk.addMethod(
-unescape('_circleStyle'),
-smalltalk.method({
-selector: unescape('circleStyle'),
-category: 'rendering',
-fn: function () {
-    var self = this;
-    var rx = nil;
-    var ry = nil;
-    rx = smalltalk.send(self, "_radiusX", []);
-    ry = smalltalk.send(self, "_radiusY", []);
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("width: ", "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3Bheight%3A%20")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20-moz-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3B-webkit-border-radius%3A")]), "__comma", [rx]), "__comma", [unescape("px%3Bborder-radius%3A%20")]), "__comma", [rx]), "__comma", [unescape("px%3B%20line-height%3A")]), "__comma", [($receiver = rx).klass === smalltalk.Number ? $receiver * 2 : smalltalk.send($receiver, "__star", [2])]), "__comma", [unescape("px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B")]);
-    return self;
-},
-args: [],
-source: unescape('circleStyle%0A%09%7C%20rx%20ry%20%7C%0A%09rx%20%3A%3D%20self%20radiusX.%0A%09ry%20%3A%3D%20self%20radiusY.%0A%09%5E%20%27width%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3Bheight%3A%20%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20-moz-border-radius%3A%27%2Crx%2C%27px%3B-webkit-border-radius%3A%27%2Crx%2C%27px%3Bborder-radius%3A%20%27%2C%20rx%2C%20%27px%3B%20line-height%3A%27%2C%20%28rx%20*%202%29%2C%20%27px%3B%20text-align%3Acenter%3Bposition%3Aabsolute%3B%27'),
-messageSends: ["radiusX", "radiusY", unescape("%2C"), unescape("*")],
-referencedClasses: []
-}),
-smalltalk.Circle);
-
-
-
-smalltalk.addClass('Util', smalltalk.Object, [], 'DyNagoya-Tools');
-
-smalltalk.addMethod(
-unescape('_encodeURI_'),
-smalltalk.method({
-selector: unescape('encodeURI%3A'),
+selector: "open:",
 category: 'not yet classified',
-fn: function (str) {
+fn: function (url) {
     var self = this;
-    return encodeURI(str);
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
     return self;
 },
-args: ["str"],
-source: unescape('encodeURI%3A%20str%0A%09%5E%20%28%3C%20encodeURI%28str%29%20%3E%29'),
-messageSends: [],
+args: ["url"],
+source: "open: url\x0a\x09^ self new openWithProxy: url",
+messageSends: ["openWithProxy:", "new"],
 referencedClasses: []
 }),
-smalltalk.Util.klass);
+smalltalk.ProxyImageEditor.klass);
+
+
+smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
-unescape('_split_with_'),
+"_link_address_",
 smalltalk.method({
-selector: unescape('split%3Awith%3A'),
+selector: "link:address:",
 category: 'not yet classified',
-fn: function (str, delimiter) {
+fn: function (html, aStr) {
     var self = this;
-    return str.split(delimiter);
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
     return self;
 },
-args: ["str", "delimiter"],
-source: unescape('split%3A%20str%20with%3A%20delimiter%0A%09%5E%20%3C%20str.split%28delimiter%29%20%3E'),
-messageSends: [],
+args: ["html", "aStr"],
+source: "link: html address: aStr\x0a\x09html a \x0a\x09\x09href: (self url: aStr);\x0a\x09\x09title: aStr;\x0a\x09\x09at: 'target' put: '_blank'; \x0a\x09\x09with:'(map)'\x0a\x09",
+messageSends: ["href:", "url:", "title:", "at:put:", "with:", "a"],
 referencedClasses: []
 }),
-smalltalk.Util.klass);
+smalltalk.GoogleMap.klass);
 
 smalltalk.addMethod(
-unescape('_messageMap_'),
+"_url_",
 smalltalk.method({
-selector: unescape('messageMap%3A'),
+selector: "url:",
 category: 'not yet classified',
-fn: function (aMessage) {
+fn: function (address) {
     var self = this;
-    var selectors = nil;
-    var arguments = nil;
-    var ret = nil;
-    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
-    arguments = smalltalk.send(aMessage, "_arguments", []);
-    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
-    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
-    return ret;
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
     return self;
 },
-args: ["aMessage"],
-source: unescape('messageMap%3A%20aMessage%0A%09%7C%20selectors%20arguments%20ret%20%7C%0A%09selectors%20%3A%3D%20Util%20split%3A%20%28aMessage%20selector%29%20with%3A%20%27%3A%27.%0A%09arguments%20%3A%3D%20aMessage%20arguments.%0A%09ret%20%3A%3D%20Array%20new.%0A%09arguments%20withIndexDo%3A%20%5B%20%3Aeach%20%3Ai%20%7C%20ret%20add%3A%20%28%28selectors%20at%3A%20i%29%20-%3E%20each%20%29%5D.%0A%09%5E%20ret'),
-messageSends: ["split:with:", "selector", "arguments", "new", "withIndexDo:", "add:", unescape("-%3E"), "at:"],
-referencedClasses: ["Util", "Array"]
+args: ["address"],
+source: "url: address\x0a\x09^ 'http://maps.google.co.jp/maps?q=', (Util encode: address)",
+messageSends: [",", "encode:"],
+referencedClasses: ["Util"]
 }),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-unescape('_escape_'),
-smalltalk.method({
-selector: unescape('escape%3A'),
-category: 'not yet classified',
-fn: function (str) {
-    var self = this;
-    return escape(str);
-    return self;
-},
-args: ["str"],
-source: unescape('escape%3A%20str%0A%09%5E%20%28%3C%20escape%28str%29%20%3E%29'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Util.klass);
-
-smalltalk.addMethod(
-unescape('_encode_'),
-smalltalk.method({
-selector: unescape('encode%3A'),
-category: 'not yet classified',
-fn: function (str) {
-    var self = this;
-    return encodeURIComponent(str);
-    return self;
-},
-args: ["str"],
-source: unescape('encode%3A%20str%0A%09%5E%20%28%3C%20encodeURIComponent%28str%29%20%3E%29'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Util.klass);
+smalltalk.GoogleMap.klass);
 
 
 smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
 smalltalk.addMethod(
-unescape('_doesNotUnderstand_'),
+"_delete",
 smalltalk.method({
-selector: unescape('doesNotUnderstand%3A'),
+selector: "delete",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
+    return self;
+},
+args: [],
+source: "delete\x0a\x09RemoteObject delete: self class group: group key: key\x0a\x09",
+messageSends: ["delete:group:key:", "class"],
+referencedClasses: ["RemoteObject"]
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
 category: 'not yet classified',
 fn: function (aMessage) {
     var self = this;
@@ -890,33 +955,16 @@ fn: function (aMessage) {
     }
 },
 args: ["aMessage"],
-source: unescape('doesNotUnderstand%3A%20aMessage%0A%09aMessage%20arguments%20%0A%09%09ifEmpty%3A%5B%20%5E%20obj%20at%3A%20aMessage%20selector%20%5D%3B%0A%09%09ifNotEmpty%3A%20%5B%20%5E%20super%20doesNotUnderStand%3A%20aMessage%20%5D'),
+source: "doesNotUnderstand: aMessage\x0a\x09aMessage arguments \x0a\x09\x09ifEmpty:[ ^ obj at: aMessage selector ];\x0a\x09\x09ifNotEmpty: [ ^ super doesNotUnderStand: aMessage ]",
 messageSends: ["ifEmpty:", "at:", "selector", "ifNotEmpty:", "doesNotUnderStand:", "arguments"],
 referencedClasses: []
 }),
 smalltalk.RemoteObject);
 
 smalltalk.addMethod(
-unescape('_delete'),
+"_initialize_group_key_",
 smalltalk.method({
-selector: unescape('delete'),
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
-    return self;
-},
-args: [],
-source: unescape('delete%0A%09RemoteObject%20delete%3A%20self%20class%20group%3A%20group%20key%3A%20key%0A%09'),
-messageSends: ["delete:group:key:", "class"],
-referencedClasses: ["RemoteObject"]
-}),
-smalltalk.RemoteObject);
-
-smalltalk.addMethod(
-unescape('_initialize_group_key_'),
-smalltalk.method({
-selector: unescape('initialize%3Agroup%3Akey%3A'),
+selector: "initialize:group:key:",
 category: 'not yet classified',
 fn: function (aObj, aGroup, aKey) {
     var self = this;
@@ -926,7 +974,7 @@ fn: function (aObj, aGroup, aKey) {
     return self;
 },
 args: ["aObj", "aGroup", "aKey"],
-source: unescape('initialize%3A%20aObj%20group%3A%20aGroup%20key%3A%20aKey%0A%09obj%20%3A%3D%20aObj.%0A%09group%20%3A%3D%20aGroup.%0A%09key%20%3A%3D%20aKey'),
+source: "initialize: aObj group: aGroup key: aKey\x0a\x09obj := aObj.\x0a\x09group := aGroup.\x0a\x09key := aKey",
 messageSends: [],
 referencedClasses: []
 }),
@@ -934,26 +982,77 @@ smalltalk.RemoteObject);
 
 
 smalltalk.addMethod(
-unescape('_list_'),
+"_afterDelete",
 smalltalk.method({
-selector: unescape('list%3A'),
-category: 'not yet classified',
-fn: function (group) {
+selector: "afterDelete",
+category: 'event handling',
+fn: function () {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
+    return function (num) {return nil;};
     return self;
 },
-args: ["group"],
-source: unescape('list%3A%20group%0A%09%5E%20jQuery%0A%09%09ajax%3A%20%28%27/data/%27%2C%20self%20asString%2C%20%27/%27%2C%20group%29%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27GET%27.%0A%09%09%09%27dataType%27%20-%3E%20%27json%27.%0A%09%09%09%27success%27%20-%3E%20self%20onSuccess%0A%09%09%7D'),
-messageSends: ["ajax:option:", unescape("%2C"), "asString", unescape("-%3E"), "onSuccess"],
+args: [],
+source: "afterDelete\x0a\x09^ [ :num | ]\x0a\x09\x09",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-unescape('_doesNotUnderstand_'),
+"_afterGet_",
 smalltalk.method({
-selector: unescape('doesNotUnderstand%3A'),
+selector: "afterGet:",
+category: 'event handling',
+fn: function (aBlock) {
+    var self = this;
+    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
+    return self;
+},
+args: ["aBlock"],
+source: "afterGet: aBlock\x0a\x09^ [ :all | \x0a\x09\x09aBlock value: \x0a\x09\x09\x09(all collect: [ :each | self new initialize: each body group: each group key: each key] ) ]",
+messageSends: ["value:", "collect:", "initialize:group:key:", "new", "body", "group", "key"],
+referencedClasses: []
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_afterPut",
+smalltalk.method({
+selector: "afterPut",
+category: 'event handling',
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
+    return self;
+},
+args: [],
+source: "afterPut\x0a\x09^ [ :num | ]\x0a\x09\x09",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_delete_group_key_",
+smalltalk.method({
+selector: "delete:group:key:",
+category: 'not yet classified',
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
+    return self;
+},
+args: ["clazz", "group", "key"],
+source: "delete: clazz group: group key: key\x0a\x09^ jQuery\x0a\x09\x09ajax: (self url: (clazz asString) group: group key: key)\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'DELETE'.\x0a\x09\x09\x09'success' -> self afterDelete\x0a\x09\x09}",
+messageSends: ["ajax:option:", "url:group:key:", "asString", "->", "afterDelete"],
+referencedClasses: []
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
 category: 'not yet classified',
 fn: function (aMessage) {
     var self = this;
@@ -967,50 +1066,33 @@ fn: function (aMessage) {
     return self;
 },
 args: ["aMessage"],
-source: unescape('doesNotUnderstand%3A%20aMessage%0A%09%7C%20map%20group%20key%20%7C%0A%09map%20%3A%3D%20Util%20messageMap%3A%20aMessage.%0A%09group%20%3A%3D%20map%20first%20value.%0A%09key%20%3A%3D%20map%20second%20value.%0A%09map%20last%20key%20%3D%20%27delete%27%0A%09%09ifTrue%3A%20%5B%20self%20delete%3A%20self%20group%3A%20group%20key%3A%20key%5D%0A%09%09ifFalse%3A%20%5B%20self%20put%3A%20self%20group%3A%20group%20key%3A%20key%20body%3A%20%28%28HashedCollection%20fromPairs%3A%20map%29%20asJSONString%29%20%5D'),
-messageSends: ["messageMap:", "value", "first", "second", "ifTrue:ifFalse:", unescape("%3D"), "key", "last", "delete:group:key:", "put:group:key:body:", "asJSONString", "fromPairs:"],
+source: "doesNotUnderstand: aMessage\x0a\x09| map group key |\x0a\x09map := Util messageMap: aMessage.\x0a\x09group := map first value.\x0a\x09key := map second value.\x0a\x09map last key = 'delete'\x0a\x09\x09ifTrue: [ self delete: self group: group key: key]\x0a\x09\x09ifFalse: [ self put: self group: group key: key body: ((HashedCollection fromPairs: map) asJSONString) ]",
+messageSends: ["messageMap:", "value", "first", "second", "ifTrue:ifFalse:", "=", "key", "last", "delete:group:key:", "put:group:key:body:", "asJSONString", "fromPairs:"],
 referencedClasses: ["Util", "HashedCollection"]
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-unescape('_put_group_key_body_'),
+"_list_",
 smalltalk.method({
-selector: unescape('put%3Agroup%3Akey%3Abody%3A'),
+selector: "list:",
 category: 'not yet classified',
-fn: function (clazz, group, key, body) {
+fn: function (group) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
     return self;
 },
-args: ["clazz", "group", "key", "body"],
-source: unescape('put%3A%20clazz%20group%3A%20group%20key%3A%20key%20body%3A%20body%0A%09%5E%20jQuery%0A%09%09ajax%3A%20%28self%20url%3A%20%28clazz%20asString%29%20group%3A%20group%20key%3A%20key%29%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27PUT%27.%0A%09%09%09%27data%27%20-%3E%20%23%7B%27body%27%20-%3E%20body%7D%20asJSON.%0A%09%09%09%27success%27%20-%3E%20self%20afterPut%0A%09%09%7D'),
-messageSends: ["ajax:option:", "url:group:key:", "asString", unescape("-%3E"), "asJSON", "afterPut"],
+args: ["group"],
+source: "list: group\x0a\x09^ jQuery\x0a\x09\x09ajax: ('/data/', self asString, '/', group)\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'GET'.\x0a\x09\x09\x09'dataType' -> 'json'.\x0a\x09\x09\x09'success' -> self onSuccess\x0a\x09\x09}",
+messageSends: ["ajax:option:", ",", "asString", "->", "onSuccess"],
 referencedClasses: []
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-unescape('_url_group_key_'),
+"_list_callback_",
 smalltalk.method({
-selector: unescape('url%3Agroup%3Akey%3A'),
-category: 'private',
-fn: function (clazz, group, key) {
-    var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
-    return self;
-},
-args: ["clazz", "group", "key"],
-source: unescape('url%3A%20clazz%20group%3A%20group%20key%3A%20key%0A%09%5E%20%27/data/%27%2C%20clazz%20asString%2C%20%27/%27%2C%20group%2C%20%27/%27%2C%20key'),
-messageSends: [unescape("%2C"), "asString"],
-referencedClasses: []
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-unescape('_list_callback_'),
-smalltalk.method({
-selector: unescape('list%3Acallback%3A'),
+selector: "list:callback:",
 category: 'not yet classified',
 fn: function (group, aBlock) {
     var self = this;
@@ -1018,76 +1100,42 @@ fn: function (group, aBlock) {
     return self;
 },
 args: ["group", "aBlock"],
-source: unescape('list%3A%20group%20callback%3A%20aBlock%0A%09%5E%20jQuery%0A%09%09ajax%3A%20%28%27/data/%27%2C%20self%20asString%2C%20%27/%27%2C%20group%29%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27GET%27.%0A%09%09%09%27dataType%27%20-%3E%20%27json%27.%0A%09%09%09%27success%27%20-%3E%20%28self%20afterGet%3A%20aBlock%29%0A%09%09%7D'),
-messageSends: ["ajax:option:", unescape("%2C"), "asString", unescape("-%3E"), "afterGet:"],
+source: "list: group callback: aBlock\x0a\x09^ jQuery\x0a\x09\x09ajax: ('/data/', self asString, '/', group)\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'GET'.\x0a\x09\x09\x09'dataType' -> 'json'.\x0a\x09\x09\x09'success' -> (self afterGet: aBlock)\x0a\x09\x09}",
+messageSends: ["ajax:option:", ",", "asString", "->", "afterGet:"],
 referencedClasses: []
 }),
 smalltalk.RemoteObject.klass);
 
 smalltalk.addMethod(
-unescape('_delete_group_key_'),
+"_put_group_key_body_",
 smalltalk.method({
-selector: unescape('delete%3Agroup%3Akey%3A'),
+selector: "put:group:key:body:",
 category: 'not yet classified',
+fn: function (clazz, group, key, body) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
+    return self;
+},
+args: ["clazz", "group", "key", "body"],
+source: "put: clazz group: group key: key body: body\x0a\x09^ jQuery\x0a\x09\x09ajax: (self url: (clazz asString) group: group key: key)\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'PUT'.\x0a\x09\x09\x09'data' -> #{'body' -> body} asJSON.\x0a\x09\x09\x09'success' -> self afterPut\x0a\x09\x09}",
+messageSends: ["ajax:option:", "url:group:key:", "asString", "->", "asJSON", "afterPut"],
+referencedClasses: []
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_url_group_key_",
+smalltalk.method({
+selector: "url:group:key:",
+category: 'private',
 fn: function (clazz, group, key) {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
     return self;
 },
 args: ["clazz", "group", "key"],
-source: unescape('delete%3A%20clazz%20group%3A%20group%20key%3A%20key%0A%09%5E%20jQuery%0A%09%09ajax%3A%20%28self%20url%3A%20%28clazz%20asString%29%20group%3A%20group%20key%3A%20key%29%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27DELETE%27.%0A%09%09%09%27success%27%20-%3E%20self%20afterDelete%0A%09%09%7D'),
-messageSends: ["ajax:option:", "url:group:key:", "asString", unescape("-%3E"), "afterDelete"],
-referencedClasses: []
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-unescape('_afterGet_'),
-smalltalk.method({
-selector: unescape('afterGet%3A'),
-category: 'event handling',
-fn: function (aBlock) {
-    var self = this;
-    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
-    return self;
-},
-args: ["aBlock"],
-source: unescape('afterGet%3A%20aBlock%0A%09%5E%20%5B%20%3Aall%20%7C%20%0A%09%09aBlock%20value%3A%20%0A%09%09%09%28all%20collect%3A%20%5B%20%3Aeach%20%7C%20self%20new%20initialize%3A%20each%20body%20group%3A%20each%20group%20key%3A%20each%20key%5D%20%29%20%5D'),
-messageSends: ["value:", "collect:", "initialize:group:key:", "new", "body", "group", "key"],
-referencedClasses: []
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-unescape('_afterPut'),
-smalltalk.method({
-selector: unescape('afterPut'),
-category: 'event handling',
-fn: function () {
-    var self = this;
-    return function (num) {return nil;};
-    return self;
-},
-args: [],
-source: unescape('afterPut%0A%09%5E%20%5B%20%3Anum%20%7C%20%5D%0A%09%09'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.RemoteObject.klass);
-
-smalltalk.addMethod(
-unescape('_afterDelete'),
-smalltalk.method({
-selector: unescape('afterDelete'),
-category: 'event handling',
-fn: function () {
-    var self = this;
-    return function (num) {return nil;};
-    return self;
-},
-args: [],
-source: unescape('afterDelete%0A%09%5E%20%5B%20%3Anum%20%7C%20%5D%0A%09%09'),
-messageSends: [],
+source: "url: clazz group: group key: key\x0a\x09^ '/data/', clazz asString, '/', group, '/', key",
+messageSends: [",", "asString"],
 referencedClasses: []
 }),
 smalltalk.RemoteObject.klass);
@@ -1096,9 +1144,9 @@ smalltalk.RemoteObject.klass);
 smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
-unescape('_iconUrl_'),
+"_iconUrl_",
 smalltalk.method({
-selector: unescape('iconUrl%3A'),
+selector: "iconUrl:",
 category: 'not yet classified',
 fn: function (user) {
     var self = this;
@@ -1106,33 +1154,16 @@ fn: function (user) {
     return self;
 },
 args: ["user"],
-source: unescape('iconUrl%3A%20user%20%0A%09%5E%20%27http%3A//img.tweetimag.es/i/%27%2C%20user%2C%20%27_m%27'),
-messageSends: [unescape("%2C")],
+source: "iconUrl: user \x0a\x09^ 'http://img.tweetimag.es/i/', user, '_m'",
+messageSends: [","],
 referencedClasses: []
 }),
 smalltalk.Twitter.klass);
 
 smalltalk.addMethod(
-unescape('_linkUrl_'),
+"_link_user_",
 smalltalk.method({
-selector: unescape('linkUrl%3A'),
-category: 'not yet classified',
-fn: function (user) {
-    var self = this;
-    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
-    return self;
-},
-args: ["user"],
-source: unescape('linkUrl%3A%20user%20%0A%09%5E%20%27http%3A//twitter.com/%27%2C%20user'),
-messageSends: [unescape("%2C")],
-referencedClasses: []
-}),
-smalltalk.Twitter.klass);
-
-smalltalk.addMethod(
-unescape('_link_user_'),
-smalltalk.method({
-selector: unescape('link%3Auser%3A'),
+selector: "link:user:",
 category: 'not yet classified',
 fn: function (html, user) {
     var self = this;
@@ -1140,16 +1171,33 @@ fn: function (html, user) {
     return self;
 },
 args: ["html", "user"],
-source: unescape('link%3A%20html%20user%3A%20user%0A%09html%20a%20href%3A%20%28self%20linkUrl%3A%20user%29%3B%20at%3A%20%27title%27%20put%3A%20user%3B%20at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20with%3A%5B%0A%09%09html%20img%20src%3A%20%28self%20iconUrl%3A%20user%29%0A%09%5D'),
+source: "link: html user: user\x0a\x09html a href: (self linkUrl: user); at: 'title' put: user; at: 'target' put: '_blank'; with:[\x0a\x09\x09html img src: (self iconUrl: user)\x0a\x09]",
 messageSends: ["href:", "linkUrl:", "at:put:", "with:", "src:", "img", "iconUrl:", "a"],
 referencedClasses: []
 }),
 smalltalk.Twitter.klass);
 
 smalltalk.addMethod(
-unescape('_tweet_'),
+"_linkUrl_",
 smalltalk.method({
-selector: unescape('tweet%3A'),
+selector: "linkUrl:",
+category: 'not yet classified',
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
+    return self;
+},
+args: ["user"],
+source: "linkUrl: user \x0a\x09^ 'http://twitter.com/', user",
+messageSends: [","],
+referencedClasses: []
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+"_tweet_",
+smalltalk.method({
+selector: "tweet:",
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
@@ -1158,68 +1206,105 @@ fn: function (msg) {
     return self;
 },
 args: ["msg"],
-source: unescape('tweet%3A%20msg%0A%09jQuery%0A%09%09ajax%3A%20%27/tweet%27%0A%09%09option%3A%20%23%7B%0A%09%09%09%27type%27%20-%3E%20%27POST%27.%0A%09%09%09%27dataType%27%20-%3E%20%27json%27.%0A%09%09%09%27data%27%20-%3E%20%23%7B%27tweet%27%20-%3E%20msg%7D%20asJSON%0A%09%09%7D.%0A%20%20%5E%20msg'),
-messageSends: ["ajax:option:", unescape("-%3E"), "asJSON"],
+source: "tweet: msg\x0a\x09jQuery\x0a\x09\x09ajax: '/tweet'\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'POST'.\x0a\x09\x09\x09'dataType' -> 'json'.\x0a\x09\x09\x09'data' -> #{'tweet' -> msg} asJSON\x0a\x09\x09}.\x0a  ^ msg",
+messageSends: ["ajax:option:", "->", "asJSON"],
 referencedClasses: []
 }),
 smalltalk.Twitter.klass);
 
 
-smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
+smalltalk.addClass('Util', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
-unescape('_url_'),
+"_encode_",
 smalltalk.method({
-selector: unescape('url%3A'),
+selector: "encode:",
 category: 'not yet classified',
-fn: function (address) {
+fn: function (str) {
     var self = this;
-    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
+    return encodeURIComponent(str);
     return self;
 },
-args: ["address"],
-source: unescape('url%3A%20address%0A%09%5E%20%27http%3A//maps.google.co.jp/maps%3Fq%3D%27%2C%20%28Util%20encode%3A%20address%29'),
-messageSends: [unescape("%2C"), "encode:"],
-referencedClasses: ["Util"]
-}),
-smalltalk.GoogleMap.klass);
-
-smalltalk.addMethod(
-unescape('_link_address_'),
-smalltalk.method({
-selector: unescape('link%3Aaddress%3A'),
-category: 'not yet classified',
-fn: function (html, aStr) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
-    return self;
-},
-args: ["html", "aStr"],
-source: unescape('link%3A%20html%20address%3A%20aStr%0A%09html%20a%20%0A%09%09href%3A%20%28self%20url%3A%20aStr%29%3B%0A%09%09title%3A%20aStr%3B%0A%09%09at%3A%20%27target%27%20put%3A%20%27_blank%27%3B%20%0A%09%09with%3A%27%28map%29%27%0A%09'),
-messageSends: ["href:", "url:", "title:", "at:put:", "with:", "a"],
+args: ["str"],
+source: "encode: str\x0a\x09^ (< encodeURIComponent(str) >)",
+messageSends: [],
 referencedClasses: []
 }),
-smalltalk.GoogleMap.klass);
-
-
-smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
-smalltalk.ProxyImageEditor.comment=unescape('x%20%3A%3D%20ProxyImageEditor%20open%3A%20%27http%3A//cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg%27%3B%20open')
+smalltalk.Util.klass);
 
 smalltalk.addMethod(
-unescape('_open_'),
+"_encodeURI_",
 smalltalk.method({
-selector: unescape('open%3A'),
+selector: "encodeURI:",
 category: 'not yet classified',
-fn: function (url) {
+fn: function (str) {
     var self = this;
-    return smalltalk.send(smalltalk.send(self, "_new", []), "_openWithProxy_", [url]);
+    return encodeURI(str);
     return self;
 },
-args: ["url"],
-source: unescape('open%3A%20url%0A%09%5E%20self%20new%20openWithProxy%3A%20url'),
-messageSends: ["openWithProxy:", "new"],
+args: ["str"],
+source: "encodeURI: str\x0a\x09^ (< encodeURI(str) >)",
+messageSends: [],
 referencedClasses: []
 }),
-smalltalk.ProxyImageEditor.klass);
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_escape_",
+smalltalk.method({
+selector: "escape:",
+category: 'not yet classified',
+fn: function (str) {
+    var self = this;
+    return escape(str);
+    return self;
+},
+args: ["str"],
+source: "escape: str\x0a\x09^ (< escape(str) >)",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_messageMap_",
+smalltalk.method({
+selector: "messageMap:",
+category: 'not yet classified',
+fn: function (aMessage) {
+    var self = this;
+    var selectors = nil;
+    var arguments = nil;
+    var ret = nil;
+    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
+    arguments = smalltalk.send(aMessage, "_arguments", []);
+    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
+    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
+    return ret;
+    return self;
+},
+args: ["aMessage"],
+source: "messageMap: aMessage\x0a\x09| selectors arguments ret |\x0a\x09selectors := Util split: (aMessage selector) with: ':'.\x0a\x09arguments := aMessage arguments.\x0a\x09ret := Array new.\x0a\x09arguments withIndexDo: [ :each :i | ret add: ((selectors at: i) -> each )].\x0a\x09^ ret",
+messageSends: ["split:with:", "selector", "arguments", "new", "withIndexDo:", "add:", "->", "at:"],
+referencedClasses: ["Util", "Array"]
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_split_with_",
+smalltalk.method({
+selector: "split:with:",
+category: 'not yet classified',
+fn: function (str, delimiter) {
+    var self = this;
+    return str.split(delimiter);
+    return self;
+},
+args: ["str", "delimiter"],
+source: "split: str with: delimiter\x0a\x09^ < str.split(delimiter) >",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Util.klass);
 
 
