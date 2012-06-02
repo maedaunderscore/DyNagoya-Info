@@ -230,7 +230,7 @@ tweetMessage
 	^ '次回のミーティングは',
 	(self formatPeriod),
 	' 場所:', (place name),
-	' で開催します。参加登録はこちら → http://dynagoya.info/'
+	' で開催します。詳細はこちら → http://dynagoya.info/'
 ! !
 
 !Event methodsFor: 'accessing'!
