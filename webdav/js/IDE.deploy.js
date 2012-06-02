@@ -2396,6 +2396,7 @@ selector: "cr",
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val", []), "__comma", [smalltalk.send(smalltalk.String || String, "_cr", [])])]);
+    smalltalk.send(self, "_moveBottom", []);
     return self;
 }
 }),
@@ -2408,6 +2409,18 @@ selector: "label",
 fn: function () {
     var self = this;
     return "Transcript";
+    return self;
+}
+}),
+smalltalk.IDETranscript);
+
+smalltalk.addMethod(
+"_moveBottom",
+smalltalk.method({
+selector: "moveBottom",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_scrollTop_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_at_", [0]), "_scrollHeight", [])]);
     return self;
 }
 }),
@@ -2458,6 +2471,7 @@ fn: function (anObject) {
     var self = this;
     ($receiver = self['@textarea']) == nil || $receiver == undefined ? function () {return smalltalk.send(self, "_open", []);}() : $receiver;
     smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@textarea'], "_asJQuery", []), "_val", []), "__comma", [smalltalk.send(anObject, "_asString", [])])]);
+    smalltalk.send(self, "_moveBottom", []);
     return self;
 }
 }),

@@ -1525,6 +1525,11 @@ clear
 
 cr
     textarea asJQuery val: textarea asJQuery val, String cr.
+    self moveBottom.
+!
+
+moveBottom
+	textarea asJQuery scrollTop: ((textarea asJQuery at:0) scrollHeight).
 !
 
 open
@@ -1536,6 +1541,7 @@ open
 show: anObject
     textarea ifNil: [self open].
     textarea asJQuery val: textarea asJQuery val, anObject asString.
+    self moveBottom.
 ! !
 
 !IDETranscript methodsFor: 'rendering'!
