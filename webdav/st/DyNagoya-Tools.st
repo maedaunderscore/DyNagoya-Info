@@ -451,7 +451,7 @@ tweet: msg
 		option: #{
 			'type' -> 'POST'.
 			'dataType' -> 'json'.
-			'data' -> #{'tweet' -> msg} asJSON
+			'data' -> (<{tweet: msg}>)
 		}.
   ^ msg
 ! !
