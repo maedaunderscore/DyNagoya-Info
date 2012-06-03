@@ -1202,13 +1202,13 @@ selector: "tweet:",
 category: 'not yet classified',
 fn: function (msg) {
     var self = this;
-    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [unescape("/tweet"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("tweet", "__minus_gt", [msg])]), "_asJSON", [])])])]);
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", ["/tweet", smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [{tweet: msg}])])]);
     return msg;
     return self;
 },
 args: ["msg"],
-source: "tweet: msg\x0a\x09jQuery\x0a\x09\x09ajax: '/tweet'\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'POST'.\x0a\x09\x09\x09'dataType' -> 'json'.\x0a\x09\x09\x09'data' -> #{'tweet' -> msg} asJSON\x0a\x09\x09}.\x0a  ^ msg",
-messageSends: ["ajax:option:", "->", "asJSON"],
+source: "tweet: msg\x0a\x09jQuery\x0a\x09\x09ajax: '/tweet'\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'POST'.\x0a\x09\x09\x09'dataType' -> 'json'.\x0a\x09\x09\x09'data' -> (<{tweet: msg}>)\x0a\x09\x09}.\x0a  ^ msg",
+messageSends: ["ajax:option:", "->"],
 referencedClasses: []
 }),
 smalltalk.Twitter.klass);
