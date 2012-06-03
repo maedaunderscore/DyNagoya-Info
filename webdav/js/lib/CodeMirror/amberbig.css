@@ -1,0 +1,27 @@
+.amberTool .CodeMirror .cm-s-amberbig{
+    font-size:24px;
+}
+.amberTool .CodeMirror .cm-s-amberbig pre{
+    line-height: 1.3em;
+}
+.cm-s-amberbig span.cm-keyword {color: #7F0000; font-weight: bold;}
+.cm-s-amberbig span.cm-className {font-weight: bold;}
+.cm-s-amberbig span.cm-assignment {font-weight: bold;}
+.cm-s-amberbig span.cm-return {font-weight: bold;}
+.cm-s-amberbig span.cm-atom {color: #219;}
+.cm-s-amberbig span.cm-number {color: #7F0000;}
+.cm-s-amberbig span.cm-def {color: #00f;}
+.cm-s-amberbig span.cm-variable {color: grey;}
+.cm-s-amberbig span.cm-variable-2 {color: #05a;}
+.cm-s-amberbig span.cm-variable-3 {color: #0a5;}
+.cm-s-amberbig span.cm-property {color: black;}
+.cm-s-amberbig span.cm-operator {color: #00007F;}
+.cm-s-amberbig span.cm-comment {color: #007F00;}
+.cm-s-amberbig span.cm-string {color: #7F007F;}
+.cm-s-amberbig span.cm-meta {color: #555;}
+.cm-s-amberbig span.cm-error {color: #f00;}
+.cm-s-amberbig span.cm-qualifier {color: #555;}
+.cm-s-amberbig span.cm-builtin {color: #30a;}
+.cm-s-amberbig span.cm-bracket {color: #cc7;}
+.cm-s-amberbig span.cm-tag {color: #170;}
+.cm-s-amberbig span.cm-attribute {color: #00c;}

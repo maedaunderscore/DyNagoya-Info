@@ -60,7 +60,9 @@ style
 	^ ({
 		(self x) |> [ 'left:', %1 ].
 		(self y) |> [ 'top:', %1 ]
-	   } inject: 'position:relative' into: [ %1, ';', (%2  default: '')]), ';'
+	   } select: [ %1 notNil ])
+	   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]
+	   |> [ %1, ';']
 !
 
 x
@@ -149,11 +151,11 @@ imageUrl
 !
 
 x
-  ^'89px'
+  ^'96px'
 !
 
 y
-  ^'65px'
+  ^'69px'
 ! !
 
 Object subclass: #EntryPoint
@@ -174,9 +176,25 @@ workspace
 
 !EntryPoint class methodsFor: 'not yet classified'!
 
+makeWorkspaceBigTheme
+	| editor |
+	editor := (< smalltalk.EntryPoint["@workspace"]["@widget"]["@sourceArea"]["@editor"]>).
+	editor 
+		setOption: 'lineNumbers' value: false;
+		setOption: 'theme' value: 'amberbig'.
+!
+
+makeWorkspaceNormalTheme
+	| editor |
+	editor := (< smalltalk.EntryPoint["@workspace"]["@widget"]["@sourceArea"]["@editor"]>).
+	editor 
+		setOption: 'lineNumbers' value: true;
+		setOption: 'theme' value: 'amber'.
+!
+
 messages
 	^{
-	 'Type a line below on workspace, then click "DoIt"'.
+	 'Type one of below lines on workspace, then click "DoIt"'.
 	 ''.
 	 '    AboutDyNagoya show    "to see what DyNagoya is"'.
 	 '    Links show                      "to see Links about our interest"'.
@@ -199,6 +217,7 @@ showMessage
 
 start
   workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].
+  self makeWorkspaceBigTheme.
   transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].
 
   workspace open.
@@ -601,7 +620,7 @@ list
 		self
 			link: '自由自在Squeakプログラミング PDF版ドラフト'
 			url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'
-			description: '梅沢さんが鋭意PDF化中'.
+			description: '梅澤さんの本が梅澤さんによりPDF化！！！'.
 		self			
 			link: 'Yengawa Blog'
 			url: 'http://blog.yengawa.com/'

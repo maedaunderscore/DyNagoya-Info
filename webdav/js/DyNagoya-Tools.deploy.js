@@ -65,7 +65,7 @@ smalltalk.Circle);
 
 
 
-smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y'], 'DyNagoya-Tools');
+smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y', 'widget'], 'DyNagoya-Tools');
 smalltalk.addMethod(
 "_body",
 smalltalk.method({
@@ -278,6 +278,7 @@ smalltalk.method({
 selector: "widget:",
 fn: function (aWidget) {
     var self = this;
+    self['@widget'] = aWidget;
     return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
     return self;
 }

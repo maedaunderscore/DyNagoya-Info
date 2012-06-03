@@ -32,7 +32,7 @@ renderOn: html
 ! !
 
 Widget subclass: #DialogBox
-	instanceVariableNames: 'message option body aspectRatio fontSize x y'
+	instanceVariableNames: 'message option body aspectRatio fontSize x y widget'
 	package: 'DyNagoya-Tools'!
 !DialogBox commentStamp!
 Must need to use 'with' or message.
@@ -99,6 +99,7 @@ title: aTitle
 !
 
 widget: aWidget
+	widget := aWidget.
 	^ self with: [:html | aWidget renderOn: html ]
 !
 

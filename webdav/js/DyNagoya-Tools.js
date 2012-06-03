@@ -90,7 +90,7 @@ smalltalk.Circle);
 
 
 
-smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y'], 'DyNagoya-Tools');
+smalltalk.addClass('DialogBox', smalltalk.Widget, ['message', 'option', 'body', 'aspectRatio', 'fontSize', 'x', 'y', 'widget'], 'DyNagoya-Tools');
 smalltalk.DialogBox.comment="Must need to use 'with' or message.\x0a\x0aex)\x0a DialogBox new message: 'hoge'; title: 'fuga'; open "
 smalltalk.addMethod(
 "_body",
@@ -390,11 +390,12 @@ selector: "widget:",
 category: 'accessing',
 fn: function (aWidget) {
     var self = this;
+    self['@widget'] = aWidget;
     return smalltalk.send(self, "_with_", [function (html) {return smalltalk.send(aWidget, "_renderOn_", [html]);}]);
     return self;
 },
 args: ["aWidget"],
-source: "widget: aWidget\x0a\x09^ self with: [:html | aWidget renderOn: html ]",
+source: "widget: aWidget\x0a\x09widget := aWidget.\x0a\x09^ self with: [:html | aWidget renderOn: html ]",
 messageSends: ["with:", "renderOn:"],
 referencedClasses: []
 }),

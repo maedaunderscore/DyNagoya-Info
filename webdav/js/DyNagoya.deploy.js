@@ -99,7 +99,7 @@ smalltalk.method({
 selector: "style",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [smalltalk.send(thisisplaceholder2, "_default_", [""])]);}]), "__comma", [";"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [thisisplaceholder2]);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "__comma", [";"]);}]);
     return self;
 }
 }),
@@ -279,7 +279,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "89px";
+    return "96px";
     return self;
 }
 }),
@@ -291,7 +291,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "65px";
+    return "69px";
     return self;
 }
 }),
@@ -303,12 +303,40 @@ smalltalk.addClass('EntryPoint', smalltalk.Object, [], 'DyNagoya');
 
 smalltalk.EntryPoint.klass.iVarNames = ['workspace','transcript'];
 smalltalk.addMethod(
+"_makeWorkspaceBigTheme",
+smalltalk.method({
+selector: "makeWorkspaceBigTheme",
+fn: function () {
+    var self = this;
+    var editor = nil;
+    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(editor));
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_makeWorkspaceNormalTheme",
+smalltalk.method({
+selector: "makeWorkspaceNormalTheme",
+fn: function () {
+    var self = this;
+    var editor = nil;
+    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(editor));
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
 "_messages",
 smalltalk.method({
 selector: "messages",
 fn: function () {
     var self = this;
-    return ["Type a line below on workspace, then click \"DoIt\"", "", "    AboutDyNagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "", "    AboutDyNagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
     return self;
 }
 }),
@@ -347,6 +375,7 @@ selector: "start",
 fn: function () {
     var self = this;
     ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    smalltalk.send(self, "_makeWorkspaceBigTheme", []);
     ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
     smalltalk.send(self['@workspace'], "_open", []);
     smalltalk.send(self['@transcript'], "_open", []);
@@ -967,7 +996,7 @@ smalltalk.method({
 selector: "list",
 fn: function () {
     var self = this;
-    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "Smalltalk\u306EJavascript\u5B9F\u88C5\u3002\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cog blog", "http://www.mirandabanda.org/cogblog", "\u9AD8\u901FSmalltalk VM\u306E\u5B9F\u88C5\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248\u30C9\u30E9\u30D5\u30C8", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6CA2\u3055\u3093\u304C\u92ED\u610FPDF\u5316\u4E2D"]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", "http://blog.yengawa.com/", "Scratch + arduino \u306E\u5148\u99C6\u8005\u3002\u3059\u3067\u306BMake:Tokyo\u306B\u51FA\u5C55\u3057\u3066\u3044\u305F\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u7B2C37\u56DE Smalltalk\u52C9\u5F37\u4F1A-\u6771\u4EAC UStream", "http://www.ustream.tv/recorded/18226602", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u30C7\u30E2"]), smalltalk.send(self, "_link_url_description_", ["ITPro \u7C21\u5358\u3060\u3051\u3069\u5965\u6DF1\u3044! Scratch\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u306E\u9B45\u529B", "http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u8A18\u4E8B \u51685\u56DE"]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["cog blog - Under Cover Contexts and the Big Frame-Up", "http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/", "Context\u306E\u5B9F\u88C5\u306B\u3064\u3044\u3066\u306E\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"]), smalltalk.send(self, "_link_url_description_", ["Scratch + Arduino", "http://www.yengawa.com/scratch_arduino", "Scratch \u304B\u3089 Arduino\u3092\u4F7F\u3046\u65B9\u6CD5"]), smalltalk.send(self, "_link_url_description_", ["scat", "http://code.google.com/p/scat/", "\u6A19\u6E96\u306EScratch\u306FIDE\u304C\u3057\u3087\u307C\u3044\u306E\u3067Pharo\u306BScrach\u3092\u5165\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cuis smalltalk", "http://www.jvuletich.org/Cuis/Index.html", "\u8EFD\u91CF\u306ASmalltalk\u30A4\u30E1\u30FC\u30B8\u3002\u52C9\u5F37\u7528"]), smalltalk.send(self, "_link_url_description_", ["Smalltalk\u306EHistoricalDocuments", "http://esug.org/data/HistoricalDocuments/", "\u8CB4\u91CD\u306A\u3082\u306E\u304C\u305F\u304F\u3055\u3093"])];
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "Smalltalk\u306EJavascript\u5B9F\u88C5\u3002\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cog blog", "http://www.mirandabanda.org/cogblog", "\u9AD8\u901FSmalltalk VM\u306E\u5B9F\u88C5\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248\u30C9\u30E9\u30D5\u30C8", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6FA4\u3055\u3093\u306E\u672C\u304C\u6885\u6FA4\u3055\u3093\u306B\u3088\u308APDF\u5316\uFF01\uFF01\uFF01"]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", "http://blog.yengawa.com/", "Scratch + arduino \u306E\u5148\u99C6\u8005\u3002\u3059\u3067\u306BMake:Tokyo\u306B\u51FA\u5C55\u3057\u3066\u3044\u305F\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u7B2C37\u56DE Smalltalk\u52C9\u5F37\u4F1A-\u6771\u4EAC UStream", "http://www.ustream.tv/recorded/18226602", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u30C7\u30E2"]), smalltalk.send(self, "_link_url_description_", ["ITPro \u7C21\u5358\u3060\u3051\u3069\u5965\u6DF1\u3044! Scratch\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u306E\u9B45\u529B", "http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u8A18\u4E8B \u51685\u56DE"]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["cog blog - Under Cover Contexts and the Big Frame-Up", "http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/", "Context\u306E\u5B9F\u88C5\u306B\u3064\u3044\u3066\u306E\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"]), smalltalk.send(self, "_link_url_description_", ["Scratch + Arduino", "http://www.yengawa.com/scratch_arduino", "Scratch \u304B\u3089 Arduino\u3092\u4F7F\u3046\u65B9\u6CD5"]), smalltalk.send(self, "_link_url_description_", ["scat", "http://code.google.com/p/scat/", "\u6A19\u6E96\u306EScratch\u306FIDE\u304C\u3057\u3087\u307C\u3044\u306E\u3067Pharo\u306BScrach\u3092\u5165\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cuis smalltalk", "http://www.jvuletich.org/Cuis/Index.html", "\u8EFD\u91CF\u306ASmalltalk\u30A4\u30E1\u30FC\u30B8\u3002\u52C9\u5F37\u7528"]), smalltalk.send(self, "_link_url_description_", ["Smalltalk\u306EHistoricalDocuments", "http://esug.org/data/HistoricalDocuments/", "\u8CB4\u91CD\u306A\u3082\u306E\u304C\u305F\u304F\u3055\u3093"])];
     return self;
 }
 }),

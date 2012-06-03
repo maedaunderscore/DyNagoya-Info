@@ -135,12 +135,12 @@ selector: "style",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [smalltalk.send(thisisplaceholder2, "_default_", [""])]);}]), "__comma", [";"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [thisisplaceholder2]);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "__comma", [";"]);}]);
     return self;
 },
 args: [],
-source: "style\x0a\x09^ ({\x0a\x09\x09(self x) |> [ 'left:', %1 ].\x0a\x09\x09(self y) |> [ 'top:', %1 ]\x0a\x09   } inject: 'position:relative' into: [ %1, ';', (%2  default: '')]), ';'\x0a",
-messageSends: [",", "inject:into:", "|>", "x", "y", "default:"],
+source: "style\x0a\x09^ ({\x0a\x09\x09(self x) |> [ 'left:', %1 ].\x0a\x09\x09(self y) |> [ 'top:', %1 ]\x0a\x09   } select: [ %1 notNil ])\x0a\x09   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]\x0a\x09   |> [ %1, ';']\x0a",
+messageSends: ["|>", "select:", "x", ",", "y", "notNil", "inject:into:"],
 referencedClasses: []
 }),
 smalltalk.DraggableWidget);
@@ -385,11 +385,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "89px";
+    return "96px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'89px'",
+source: "x\x0a  ^'96px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -402,11 +402,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "65px";
+    return "69px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'65px'",
+source: "y\x0a  ^'69px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -418,17 +418,55 @@ smalltalk.addClass('EntryPoint', smalltalk.Object, [], 'DyNagoya');
 
 smalltalk.EntryPoint.klass.iVarNames = ['workspace','transcript'];
 smalltalk.addMethod(
+"_makeWorkspaceBigTheme",
+smalltalk.method({
+selector: "makeWorkspaceBigTheme",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var editor = nil;
+    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(editor));
+    return self;
+},
+args: [],
+source: "makeWorkspaceBigTheme\x0a\x09| editor |\x0a\x09editor := (< smalltalk.EntryPoint[\x22@workspace\x22][\x22@widget\x22][\x22@sourceArea\x22][\x22@editor\x22]>).\x0a\x09editor \x0a\x09\x09setOption: 'lineNumbers' value: false;\x0a\x09\x09setOption: 'theme' value: 'amberbig'.\x0a\x0a\x0a",
+messageSends: ["setOption:value:"],
+referencedClasses: []
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_makeWorkspaceNormalTheme",
+smalltalk.method({
+selector: "makeWorkspaceNormalTheme",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var editor = nil;
+    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(editor));
+    return self;
+},
+args: [],
+source: "makeWorkspaceNormalTheme\x0a\x09| editor |\x0a\x09editor := (< smalltalk.EntryPoint[\x22@workspace\x22][\x22@widget\x22][\x22@sourceArea\x22][\x22@editor\x22]>).\x0a\x09editor \x0a\x09\x09setOption: 'lineNumbers' value: true;\x0a\x09\x09setOption: 'theme' value: 'amber'.\x0a\x0a\x0a",
+messageSends: ["setOption:value:"],
+referencedClasses: []
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
 "_messages",
 smalltalk.method({
 selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type a line below on workspace, then click \"DoIt\"", "", "    AboutDyNagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "", "    AboutDyNagoya show    \"to see what DyNagoya is\"", "    Links show                      \"to see Links about our interest\"", "    Browser open                 \"to open class browser\"", "    EntryPoint start               \"to restart this page\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type a line below on workspace, then click \x22DoIt\x22'.\x0a\x09 ''.\x0a\x09 '    AboutDyNagoya show    \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                      \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                 \x22to open class browser\x22'.\x0a\x09 '    EntryPoint start               \x22to restart this page\x22'\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 ''.\x0a\x09 '    AboutDyNagoya show    \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                      \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                 \x22to open class browser\x22'.\x0a\x09 '    EntryPoint start               \x22to restart this page\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -478,6 +516,7 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    smalltalk.send(self, "_makeWorkspaceBigTheme", []);
     ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
     smalltalk.send(self['@workspace'], "_open", []);
     smalltalk.send(self['@transcript'], "_open", []);
@@ -487,8 +526,8 @@ fn: function () {
     return self;
 },
 args: [],
-source: "start\x0a  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].\x0a  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].\x0a\x0a  workspace open.\x0a  transcript open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
-messageSends: ["ifNil:", "widget:", "new", "x:", "width:", "title:", "modal:", "current", "open", "screenPreparation", "show", "showMessage"],
+source: "start\x0a  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].\x0a  self makeWorkspaceBigTheme.\x0a  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].\x0a\x0a  workspace open.\x0a  transcript open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
+messageSends: ["ifNil:", "widget:", "new", "x:", "width:", "title:", "modal:", "makeWorkspaceBigTheme", "current", "open", "screenPreparation", "show", "showMessage"],
 referencedClasses: ["Workspace", "DialogBox", "IDETranscript", "LoginPanel"]
 }),
 smalltalk.EntryPoint.klass);
@@ -1339,11 +1378,11 @@ selector: "list",
 category: 'link',
 fn: function () {
     var self = this;
-    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "Smalltalk\u306EJavascript\u5B9F\u88C5\u3002\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cog blog", "http://www.mirandabanda.org/cogblog", "\u9AD8\u901FSmalltalk VM\u306E\u5B9F\u88C5\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248\u30C9\u30E9\u30D5\u30C8", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6CA2\u3055\u3093\u304C\u92ED\u610FPDF\u5316\u4E2D"]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", "http://blog.yengawa.com/", "Scratch + arduino \u306E\u5148\u99C6\u8005\u3002\u3059\u3067\u306BMake:Tokyo\u306B\u51FA\u5C55\u3057\u3066\u3044\u305F\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u7B2C37\u56DE Smalltalk\u52C9\u5F37\u4F1A-\u6771\u4EAC UStream", "http://www.ustream.tv/recorded/18226602", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u30C7\u30E2"]), smalltalk.send(self, "_link_url_description_", ["ITPro \u7C21\u5358\u3060\u3051\u3069\u5965\u6DF1\u3044! Scratch\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u306E\u9B45\u529B", "http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u8A18\u4E8B \u51685\u56DE"]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["cog blog - Under Cover Contexts and the Big Frame-Up", "http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/", "Context\u306E\u5B9F\u88C5\u306B\u3064\u3044\u3066\u306E\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"]), smalltalk.send(self, "_link_url_description_", ["Scratch + Arduino", "http://www.yengawa.com/scratch_arduino", "Scratch \u304B\u3089 Arduino\u3092\u4F7F\u3046\u65B9\u6CD5"]), smalltalk.send(self, "_link_url_description_", ["scat", "http://code.google.com/p/scat/", "\u6A19\u6E96\u306EScratch\u306FIDE\u304C\u3057\u3087\u307C\u3044\u306E\u3067Pharo\u306BScrach\u3092\u5165\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cuis smalltalk", "http://www.jvuletich.org/Cuis/Index.html", "\u8EFD\u91CF\u306ASmalltalk\u30A4\u30E1\u30FC\u30B8\u3002\u52C9\u5F37\u7528"]), smalltalk.send(self, "_link_url_description_", ["Smalltalk\u306EHistoricalDocuments", "http://esug.org/data/HistoricalDocuments/", "\u8CB4\u91CD\u306A\u3082\u306E\u304C\u305F\u304F\u3055\u3093"])];
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "Smalltalk\u306EJavascript\u5B9F\u88C5\u3002\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cog blog", "http://www.mirandabanda.org/cogblog", "\u9AD8\u901FSmalltalk VM\u306E\u5B9F\u88C5\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248\u30C9\u30E9\u30D5\u30C8", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6FA4\u3055\u3093\u306E\u672C\u304C\u6885\u6FA4\u3055\u3093\u306B\u3088\u308APDF\u5316\uFF01\uFF01\uFF01"]), smalltalk.send(self, "_link_url_description_", ["Yengawa Blog", "http://blog.yengawa.com/", "Scratch + arduino \u306E\u5148\u99C6\u8005\u3002\u3059\u3067\u306BMake:Tokyo\u306B\u51FA\u5C55\u3057\u3066\u3044\u305F\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u7B2C37\u56DE Smalltalk\u52C9\u5F37\u4F1A-\u6771\u4EAC UStream", "http://www.ustream.tv/recorded/18226602", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u30C7\u30E2"]), smalltalk.send(self, "_link_url_description_", ["ITPro \u7C21\u5358\u3060\u3051\u3069\u5965\u6DF1\u3044! Scratch\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u306E\u9B45\u529B", "http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop", "\u963F\u90E8\u3055\u3093\u306EScratch + Arduino\u306E\u8A18\u4E8B \u51685\u56DE"]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["cog blog - Under Cover Contexts and the Big Frame-Up", "http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/", "Context\u306E\u5B9F\u88C5\u306B\u3064\u3044\u3066\u306E\u8AAC\u660E"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"]), smalltalk.send(self, "_link_url_description_", ["Scratch + Arduino", "http://www.yengawa.com/scratch_arduino", "Scratch \u304B\u3089 Arduino\u3092\u4F7F\u3046\u65B9\u6CD5"]), smalltalk.send(self, "_link_url_description_", ["scat", "http://code.google.com/p/scat/", "\u6A19\u6E96\u306EScratch\u306FIDE\u304C\u3057\u3087\u307C\u3044\u306E\u3067Pharo\u306BScrach\u3092\u5165\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["cuis smalltalk", "http://www.jvuletich.org/Cuis/Index.html", "\u8EFD\u91CF\u306ASmalltalk\u30A4\u30E1\u30FC\u30B8\u3002\u52C9\u5F37\u7528"]), smalltalk.send(self, "_link_url_description_", ["Smalltalk\u306EHistoricalDocuments", "http://esug.org/data/HistoricalDocuments/", "\u8CB4\u91CD\u306A\u3082\u306E\u304C\u305F\u304F\u3055\u3093"])];
     return self;
 },
 args: [],
-source: "list\x0a\x09^ {\x0a\x09\x09self \x0a\x09\x09\x09link: 'Amber Smalltalk'\x0a\x09\x09\x09url: 'http://amber-lang.net/'\x0a\x09\x09\x09description: 'SmalltalkのJavascript実装。「Learn」からSmalltalkの勉強が始めれる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cog blog'\x0a\x09\x09\x09url: 'http://www.mirandabanda.org/cogblog'\x0a\x09\x09\x09description: '高速Smalltalk VMの実装説明'.\x0a\x09\x09self\x0a\x09\x09\x09link: '自由自在Squeakプログラミング PDF版ドラフト'\x0a\x09\x09\x09url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'\x0a\x09\x09\x09description: '梅沢さんが鋭意PDF化中'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'Yengawa Blog'\x0a\x09\x09\x09url: 'http://blog.yengawa.com/'\x0a\x09\x09\x09description: 'Scratch + arduino の先駆者。すでにMake:Tokyoに出展していた。'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: '第37回 Smalltalk勉強会-東京 UStream'\x0a\x09\x09\x09url: 'http://www.ustream.tv/recorded/18226602'\x0a\x09\x09\x09description: '阿部さんのScratch + Arduinoのデモ'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'ITPro 簡単だけど奥深い! Scratchプログラミングの魅力'\x0a\x09\x09\x09url: 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop'\x0a\x09\x09\x09description: '阿部さんのScratch + Arduinoの記事 全5回'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'A Smalltalk by the Seaside'\x0a\x09\x09\x09url: 'http://www.asmalltalkbytheseaside.com/'\x0a\x09\x09\x09description: 'Amberで作られたゲームライブラリとゲームのサンプル'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cog blog - Under Cover Contexts and the Big Frame-Up'\x0a\x09\x09\x09url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'\x0a\x09\x09\x09description: 'Contextの実装についての説明'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SqueakではじめるSmalltalk入門・アーカイブ'\x0a\x09\x09\x09url: 'http://squab.no-ip.com:8080/mosaren/'\x0a\x09\x09\x09description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'Scratch + Arduino'\x0a\x09\x09\x09url: 'http://www.yengawa.com/scratch_arduino'\x0a\x09\x09\x09description: 'Scratch から Arduinoを使う方法'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'scat'\x0a\x09\x09\x09url: 'http://code.google.com/p/scat/'\x0a\x09\x09\x09description: '標準のScratchはIDEがしょぼいのでPharoにScrachを入れる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cuis smalltalk'\x0a\x09\x09\x09url: 'http://www.jvuletich.org/Cuis/Index.html'\x0a\x09\x09\x09description: '軽量なSmalltalkイメージ。勉強用'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SmalltalkのHistoricalDocuments'\x0a\x09\x09\x09url: 'http://esug.org/data/HistoricalDocuments/'\x0a\x09\x09\x09description: '貴重なものがたくさん'\x0a\x09}\x0a\x09\x09",
+source: "list\x0a\x09^ {\x0a\x09\x09self \x0a\x09\x09\x09link: 'Amber Smalltalk'\x0a\x09\x09\x09url: 'http://amber-lang.net/'\x0a\x09\x09\x09description: 'SmalltalkのJavascript実装。「Learn」からSmalltalkの勉強が始めれる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cog blog'\x0a\x09\x09\x09url: 'http://www.mirandabanda.org/cogblog'\x0a\x09\x09\x09description: '高速Smalltalk VMの実装説明'.\x0a\x09\x09self\x0a\x09\x09\x09link: '自由自在Squeakプログラミング PDF版ドラフト'\x0a\x09\x09\x09url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'\x0a\x09\x09\x09description: '梅澤さんの本が梅澤さんによりPDF化！！！'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'Yengawa Blog'\x0a\x09\x09\x09url: 'http://blog.yengawa.com/'\x0a\x09\x09\x09description: 'Scratch + arduino の先駆者。すでにMake:Tokyoに出展していた。'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: '第37回 Smalltalk勉強会-東京 UStream'\x0a\x09\x09\x09url: 'http://www.ustream.tv/recorded/18226602'\x0a\x09\x09\x09description: '阿部さんのScratch + Arduinoのデモ'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'ITPro 簡単だけど奥深い! Scratchプログラミングの魅力'\x0a\x09\x09\x09url: 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111019/371080/?ST=develop'\x0a\x09\x09\x09description: '阿部さんのScratch + Arduinoの記事 全5回'.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'A Smalltalk by the Seaside'\x0a\x09\x09\x09url: 'http://www.asmalltalkbytheseaside.com/'\x0a\x09\x09\x09description: 'Amberで作られたゲームライブラリとゲームのサンプル'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cog blog - Under Cover Contexts and the Big Frame-Up'\x0a\x09\x09\x09url: 'http://www.mirandabanda.org/cogblog/2009/01/14/under-cover-contexts-and-the-big-frame-up/'\x0a\x09\x09\x09description: 'Contextの実装についての説明'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SqueakではじめるSmalltalk入門・アーカイブ'\x0a\x09\x09\x09url: 'http://squab.no-ip.com:8080/mosaren/'\x0a\x09\x09\x09description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'Scratch + Arduino'\x0a\x09\x09\x09url: 'http://www.yengawa.com/scratch_arduino'\x0a\x09\x09\x09description: 'Scratch から Arduinoを使う方法'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'scat'\x0a\x09\x09\x09url: 'http://code.google.com/p/scat/'\x0a\x09\x09\x09description: '標準のScratchはIDEがしょぼいのでPharoにScrachを入れる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'cuis smalltalk'\x0a\x09\x09\x09url: 'http://www.jvuletich.org/Cuis/Index.html'\x0a\x09\x09\x09description: '軽量なSmalltalkイメージ。勉強用'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SmalltalkのHistoricalDocuments'\x0a\x09\x09\x09url: 'http://esug.org/data/HistoricalDocuments/'\x0a\x09\x09\x09description: '貴重なものがたくさん'\x0a\x09}\x0a\x09\x09",
 messageSends: ["link:url:description:"],
 referencedClasses: []
 }),

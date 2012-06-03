@@ -163,6 +163,7 @@ amber = (function() {
 		addJSToLoad('lib/CodeMirror/smalltalk.js');
 		loadCSS('lib/CodeMirror/codemirror.css', 'js');
 		loadCSS('lib/CodeMirror/amber.css', 'js');
+		loadCSS('lib/CodeMirror/amberbig.css', 'js');
 	};
 
 	// This will be called after JS files have been loaded
