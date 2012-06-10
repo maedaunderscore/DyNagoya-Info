@@ -958,6 +958,24 @@ url
 	^ 'http://r.gnavi.co.jp/n004601/'
 ! !
 
+Place subclass: #Hina
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Hina methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区大須4-1-12'
+!
+
+name
+	^ '陽菜(ひな)'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230103/23040495/'
+! !
+
 Place subclass: #Kako
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
