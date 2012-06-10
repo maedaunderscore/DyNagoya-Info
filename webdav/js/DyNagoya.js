@@ -2132,6 +2132,60 @@ smalltalk.Hakkaku);
 
 
 
+smalltalk.addClass('Hina', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u5927\u98084-1-12";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中区大須4-1-12'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u967D\u83DC(\u3072\u306A)";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '陽菜(ひな)'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://r.tabelog.com/aichi/A2301/A230103/23040495/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230103/23040495/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+
+
 smalltalk.addClass('Kako', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 "_address",
