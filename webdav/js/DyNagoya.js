@@ -1259,23 +1259,6 @@ referencedClasses: ["Screen"]
 }),
 smalltalk.Page.klass);
 
-smalltalk.addMethod(
-"_top",
-smalltalk.method({
-selector: "top",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_asString", [])]), "_asJQuery", []), "_offset", []), "_top", [])).klass === smalltalk.Number ? $receiver - 40 : smalltalk.send($receiver, "__minus", [40]);
-    return self;
-},
-args: [],
-source: "top\x0a  ^ ('#', self asString) asJQuery offset top - 40",
-messageSends: ["-", "top", "offset", "asJQuery", ",", "asString"],
-referencedClasses: []
-}),
-smalltalk.Page.klass);
-
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
