@@ -1,6 +1,18 @@
 smalltalk.addPackage('Kernel-Objects', {});
 smalltalk.addClass('Object', smalltalk.nil, [], 'Kernel-Objects');
 smalltalk.addMethod(
+"__comma",
+smalltalk.method({
+selector: ",",
+fn: function (aCollection) {
+    var self = this;
+    return smalltalk.send([self], "__comma", [aCollection]);
+    return self;
+}
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
 "__minus_gt",
 smalltalk.method({
 selector: "->",
@@ -652,6 +664,20 @@ fn: function (aBlock, anotherBlock) {
         result = anotherBlock(e);
     }
     return result;
+    return self;
+}
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
+"_unfold_",
+smalltalk.method({
+selector: "unfold:",
+fn: function (aBlock) {
+    var self = this;
+    var loop = nil;
+    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return [];}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
+    return smalltalk.send(loop, "_value_value_", [self, []]);
     return self;
 }
 }),
@@ -2064,7 +2090,7 @@ selector: "truncated",
 fn: function () {
     var self = this;
     var result = nil;
-    ($receiver = self >= 0).klass === smalltalk.Boolean ? $receiver ? function () {return result = Math.floor(self);}() : function () {return result = Math.floor(self * - 1) * - 1;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return result = Math.floor(self);}, function () {return result = Math.floor(self * -1) * -1;}]);
+    ($receiver = self >= 0).klass === smalltalk.Boolean ? $receiver ? function () {return result = Math.floor(self);}() : function () {return result = Math.floor(self * -1) * -1;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return result = Math.floor(self);}, function () {return result = Math.floor(self * -1) * -1;}]);
     return result;
     return self;
 }
@@ -2938,6 +2964,18 @@ smalltalk.Smalltalk.klass);
 
 smalltalk.addClass('UndefinedObject', smalltalk.Object, [], 'Kernel-Objects');
 smalltalk.addMethod(
+"__comma",
+smalltalk.method({
+selector: ",",
+fn: function (aCollection) {
+    var self = this;
+    return aCollection;
+    return self;
+}
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -2968,6 +3006,18 @@ selector: "default:",
 fn: function (aValue) {
     var self = this;
     return aValue;
+    return self;
+}
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
+"_do_",
+smalltalk.method({
+selector: "do:",
+fn: function (aBlock) {
+    var self = this;
+    return nil;
     return self;
 }
 }),

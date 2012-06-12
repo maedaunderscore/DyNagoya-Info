@@ -91,6 +91,22 @@ yourself
 	^self
 ! !
 
+!Object methodsFor: 'collection handling'!
+
+, aCollection
+	^ { self }, aCollection
+!
+
+unfold: aBlock
+	| loop |
+	loop := [ :state :v | state 
+		ifNil: [ {} ] 
+		ifNotNil: [ 
+			(aBlock value: state)
+			|> [ v ,( loop value: (%1 first) value: (%1 second) ) ]]].
+	^ loop value: self value: {}
+! !
+
 !Object methodsFor: 'comparing'!
 
 = anObject
@@ -1540,6 +1556,16 @@ shallowCopy
 
 |> aBlock
 	self
+! !
+
+!UndefinedObject methodsFor: 'enumerating'!
+
+, aCollection
+	^ aCollection
+!
+
+do: aBlock
+	^ nil
 ! !
 
 !UndefinedObject methodsFor: 'printing'!
