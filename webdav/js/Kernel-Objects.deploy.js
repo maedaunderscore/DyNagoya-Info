@@ -676,8 +676,8 @@ selector: "unfold:",
 fn: function (aBlock) {
     var self = this;
     var loop = nil;
-    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return [];}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
-    return smalltalk.send(loop, "_value_value_", [self, []]);
+    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return nil;}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
+    return smalltalk.send(loop, "_value_value_", [self, nil]);
     return self;
 }
 }),

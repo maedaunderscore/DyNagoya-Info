@@ -100,11 +100,11 @@ yourself
 unfold: aBlock
 	| loop |
 	loop := [ :state :v | state 
-		ifNil: [ {} ] 
+		ifNil: [ nil ] 
 		ifNotNil: [ 
 			(aBlock value: state)
 			|> [ v ,( loop value: (%1 first) value: (%1 second) ) ]]].
-	^ loop value: self value: {}
+	^ loop value: self value: nil
 ! !
 
 !Object methodsFor: 'comparing'!
