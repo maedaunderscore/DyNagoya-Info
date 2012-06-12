@@ -943,12 +943,12 @@ category: 'collection handling',
 fn: function (aBlock) {
     var self = this;
     var loop = nil;
-    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return [];}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
-    return smalltalk.send(loop, "_value_value_", [self, []]);
+    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return nil;}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
+    return smalltalk.send(loop, "_value_value_", [self, nil]);
     return self;
 },
 args: ["aBlock"],
-source: "unfold: aBlock\x0a\x09| loop |\x0a\x09loop := [ :state :v | state \x0a\x09\x09ifNil: [ {} ] \x0a\x09\x09ifNotNil: [ \x0a\x09\x09\x09(aBlock value: state)\x0a\x09\x09\x09|> [ v ,( loop value: (%1 first) value: (%1 second) ) ]]].\x0a\x09^ loop value: self value: {}",
+source: "unfold: aBlock\x0a\x09| loop |\x0a\x09loop := [ :state :v | state \x0a\x09\x09ifNil: [ nil ] \x0a\x09\x09ifNotNil: [ \x0a\x09\x09\x09(aBlock value: state)\x0a\x09\x09\x09|> [ v ,( loop value: (%1 first) value: (%1 second) ) ]]].\x0a\x09^ loop value: self value: nil",
 messageSends: ["ifNil:ifNotNil:", "|>", "value:", ",", "value:value:", "first", "second"],
 referencedClasses: []
 }),
