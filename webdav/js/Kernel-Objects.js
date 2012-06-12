@@ -2,6 +2,23 @@ smalltalk.addPackage('Kernel-Objects', {});
 smalltalk.addClass('Object', smalltalk.nil, [], 'Kernel-Objects');
 smalltalk.Object.comment="*Object is the root of the Smalltalk class system*. All classes in the system are subclasses of Object.\x0a\x0aObject provides default behavior common to all normal objects, such as: \x0a\x0a- access\x0a- copying\x0a- comparison\x0a- error handling\x0a- message sending\x0a- reflection\x0a\x0aAlso utility messages that all objects should respond to are defined here.\x0a\x0aObject has no instance variable.\x0a\x0a##Access\x0a\x0aInstance variables can be accessed with `#instVarAt:` and `#instVarAt:put:`. `Object >> instanceVariableNames` answers a collection of all instance variable names.\x0aAccessing JavaScript properties of an object is done through `#basicAt:`, `#basicAt:put:` and `basicDelete:`.\x0a\x0a##Copying\x0a\x0aCopying an object is handled by `#copy` and `#deepCopy`. The first one performs a shallow copy of the receiver, while the second one performs a deep copy.\x0aThe hook method `#postCopy` can be overriden in subclasses to copy fields as necessary to complete the full copy. It will be sent by the copy of the receiver.\x0a\x0a##Comparison\x0a\x0aObjects understand equality  `#=` and identity `#==` comparison.\x0a\x0a##Error handling\x0a\x0a- `#halt` is the typical message to use for inserting breakpoints during debugging.\x0a- `#error:` throws a generic error exception\x0a- `#doesNotUnderstand:` handles the fact that there was an attempt to send the given message to the receiver but the receiver does not understand this message.\x0a  Overriding this message can be useful to implement proxies for example."
 smalltalk.addMethod(
+"__comma",
+smalltalk.method({
+selector: ",",
+category: 'collection handling',
+fn: function (aCollection) {
+    var self = this;
+    return smalltalk.send([self], "__comma", [aCollection]);
+    return self;
+},
+args: ["aCollection"],
+source: ", aCollection\x0a\x09^ { self }, aCollection",
+messageSends: [","],
+referencedClasses: []
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
 "__minus_gt",
 smalltalk.method({
 selector: "->",
@@ -914,6 +931,25 @@ fn: function (aBlock, anotherBlock) {
 args: ["aBlock", "anotherBlock"],
 source: "try: aBlock catch: anotherBlock\x0a\x09<try{result = aBlock()} catch(e) {result = anotherBlock(e)};\x0a\x09return result;>",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
+"_unfold_",
+smalltalk.method({
+selector: "unfold:",
+category: 'collection handling',
+fn: function (aBlock) {
+    var self = this;
+    var loop = nil;
+    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return [];}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
+    return smalltalk.send(loop, "_value_value_", [self, []]);
+    return self;
+},
+args: ["aBlock"],
+source: "unfold: aBlock\x0a\x09| loop |\x0a\x09loop := [ :state :v | state \x0a\x09\x09ifNil: [ {} ] \x0a\x09\x09ifNotNil: [ \x0a\x09\x09\x09(aBlock value: state)\x0a\x09\x09\x09|> [ v ,( loop value: (%1 first) value: (%1 second) ) ]]].\x0a\x09^ loop value: self value: {}",
+messageSends: ["ifNil:ifNotNil:", "|>", "value:", ",", "value:value:", "first", "second"],
 referencedClasses: []
 }),
 smalltalk.Object);
@@ -2875,7 +2911,7 @@ category: 'converting',
 fn: function () {
     var self = this;
     var result = nil;
-    ($receiver = self >= 0).klass === smalltalk.Boolean ? $receiver ? function () {return result = Math.floor(self);}() : function () {return result = Math.floor(self * - 1) * - 1;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return result = Math.floor(self);}, function () {return result = Math.floor(self * -1) * -1;}]);
+    ($receiver = self >= 0).klass === smalltalk.Boolean ? $receiver ? function () {return result = Math.floor(self);}() : function () {return result = Math.floor(self * -1) * -1;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return result = Math.floor(self);}, function () {return result = Math.floor(self * -1) * -1;}]);
     return result;
     return self;
 },
@@ -4088,6 +4124,23 @@ smalltalk.Smalltalk.klass);
 smalltalk.addClass('UndefinedObject', smalltalk.Object, [], 'Kernel-Objects');
 smalltalk.UndefinedObject.comment="UndefinedObject describes the behavior of its sole instance, `nil`. `nil` represents a prior value for variables that have not been initialized, or for results which are meaningless.\x0a\x0a`nil` is the Smalltalk representation of the `undefined` JavaScript object."
 smalltalk.addMethod(
+"__comma",
+smalltalk.method({
+selector: ",",
+category: 'enumerating',
+fn: function (aCollection) {
+    var self = this;
+    return aCollection;
+    return self;
+},
+args: ["aCollection"],
+source: ", aCollection\x0a\x09^ aCollection",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -4133,6 +4186,23 @@ fn: function (aValue) {
 },
 args: ["aValue"],
 source: "default: aValue\x0a\x09^ aValue",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
+"_do_",
+smalltalk.method({
+selector: "do:",
+category: 'enumerating',
+fn: function (aBlock) {
+    var self = this;
+    return nil;
+    return self;
+},
+args: ["aBlock"],
+source: "do: aBlock\x0a\x09^ nil",
 messageSends: [],
 referencedClasses: []
 }),
