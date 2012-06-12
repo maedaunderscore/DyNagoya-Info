@@ -29,6 +29,10 @@ allSubclasses
 	^result
 !
 
+ancestors
+	^ self unfold: [ { %1 superclass. %1 superclass } ]
+!
+
 comment
     ^(self basicAt: 'comment') ifNil: ['']
 !
