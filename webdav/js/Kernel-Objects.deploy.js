@@ -227,6 +227,18 @@ fn: function () {
 smalltalk.Object);
 
 smalltalk.addMethod(
+"_do_",
+smalltalk.method({
+selector: "do:",
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send([self], "_do_", [aBlock]);
+    return self;
+}
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
 "_doesNotUnderstand_",
 smalltalk.method({
 selector: "doesNotUnderstand:",
@@ -676,7 +688,7 @@ selector: "unfold:",
 fn: function (aBlock) {
     var self = this;
     var loop = nil;
-    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return nil;}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(v, "__comma", [smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])])]);}]);}();};
+    loop = function (state, v) {return ($receiver = state) == nil || $receiver == undefined ? function () {return nil;}() : function () {return smalltalk.send(smalltalk.send(aBlock, "_value_", [state]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(loop, "_value_value_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_second", [])]), "__comma", [v]);}]);}();};
     return smalltalk.send(loop, "_value_value_", [self, nil]);
     return self;
 }
