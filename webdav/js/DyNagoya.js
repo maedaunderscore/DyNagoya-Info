@@ -135,12 +135,12 @@ selector: "style",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [thisisplaceholder2]);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "__comma", [";"]);}]);
+    return smalltalk.send(smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [thisisplaceholder2]);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "__comma", [";"]);}]);
     return self;
 },
 args: [],
-source: "style\x0a\x09^ ({\x0a\x09\x09(self x) |> [ 'left:', %1 ].\x0a\x09\x09(self y) |> [ 'top:', %1 ]\x0a\x09   } select: [ %1 notNil ])\x0a\x09   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]\x0a\x09   |> [ %1, ';']\x0a",
-messageSends: ["|>", "select:", "x", ",", "y", "notNil", "inject:into:"],
+source: "style\x0a\x09^ ({\x0a\x09\x09(self x) >>= [ 'left:', %1 ].\x0a\x09\x09(self y) >>= [ 'top:', %1 ]\x0a\x09   } select: [ %1 notNil ])\x0a\x09   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]\x0a\x09   |> [ %1, ';']\x0a",
+messageSends: ["|>", "select:", ">>=", "x", ",", "y", "notNil", "inject:into:"],
 referencedClasses: []
 }),
 smalltalk.DraggableWidget);
