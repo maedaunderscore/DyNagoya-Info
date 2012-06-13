@@ -49,6 +49,18 @@ fn: function (anObject) {
 smalltalk.Object);
 
 smalltalk.addMethod(
+"__gt_gt_eq",
+smalltalk.method({
+selector: ">>=",
+fn: function (aBlock) {
+    var self = this;
+    return smalltalk.send(aBlock, "_value_", [self]);
+    return self;
+}
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -2988,6 +3000,18 @@ fn: function (aCollection) {
 smalltalk.UndefinedObject);
 
 smalltalk.addMethod(
+"__gt_gt_eq",
+smalltalk.method({
+selector: ">>=",
+fn: function (aBlock) {
+    var self = this;
+    return self;
+    return self;
+}
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -3163,17 +3187,6 @@ selector: "subclass:instanceVariableNames:package:",
 fn: function (aString, aString2, aString3) {
     var self = this;
     return smalltalk.send(smalltalk.send(smalltalk.ClassBuilder || ClassBuilder, "_new", []), "_superclass_subclass_instanceVariableNames_package_", [self, aString, aString2, aString3]);
-    return self;
-}
-}),
-smalltalk.UndefinedObject);
-
-smalltalk.addMethod(
-"_|_gt",
-smalltalk.method({
-selector: "|>",
-fn: function (aBlock) {
-    var self = this;
     return self;
 }
 }),

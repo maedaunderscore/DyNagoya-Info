@@ -232,6 +232,10 @@ initialize
 
 !Object methodsFor: 'message handling'!
 
+>>= aBlock
+	^ aBlock value: self
+!
+
 basicPerform: aSymbol 
 	^self basicPerform: aSymbol withArguments: #()
 !
@@ -1556,10 +1560,6 @@ deepCopy
 
 shallowCopy
 	^self
-!
-
-|> aBlock
-	self
 ! !
 
 !UndefinedObject methodsFor: 'enumerating'!
@@ -1579,6 +1579,10 @@ printString
 ! !
 
 !UndefinedObject methodsFor: 'testing'!
+
+>>= aBlock
+	^ self
+!
 
 ifNil: aBlock
 	"inlined in the Compiler"
