@@ -70,6 +70,23 @@ referencedClasses: []
 smalltalk.Object);
 
 smalltalk.addMethod(
+"__gt_gt_eq",
+smalltalk.method({
+selector: ">>=",
+category: 'message handling',
+fn: function (aBlock) {
+    var self = this;
+    return smalltalk.send(aBlock, "_value_", [self]);
+    return self;
+},
+args: ["aBlock"],
+source: ">>= aBlock\x0a\x09^ aBlock value: self",
+messageSends: ["value:"],
+referencedClasses: []
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -4158,6 +4175,23 @@ referencedClasses: []
 smalltalk.UndefinedObject);
 
 smalltalk.addMethod(
+"__gt_gt_eq",
+smalltalk.method({
+selector: ">>=",
+category: 'testing',
+fn: function (aBlock) {
+    var self = this;
+    return self;
+    return self;
+},
+args: ["aBlock"],
+source: ">>= aBlock\x0a\x09^ self",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.UndefinedObject);
+
+smalltalk.addMethod(
 "_asJSON",
 smalltalk.method({
 selector: "asJSON",
@@ -4410,22 +4444,6 @@ args: ["aString", "aString2", "aString3"],
 source: "subclass: aString instanceVariableNames: aString2 package: aString3\x0a\x09^ClassBuilder new\x0a\x09    superclass: self subclass: aString instanceVariableNames: aString2 package: aString3",
 messageSends: ["superclass:subclass:instanceVariableNames:package:", "new"],
 referencedClasses: ["ClassBuilder"]
-}),
-smalltalk.UndefinedObject);
-
-smalltalk.addMethod(
-"_|_gt",
-smalltalk.method({
-selector: "|>",
-category: 'copying',
-fn: function (aBlock) {
-    var self = this;
-    return self;
-},
-args: ["aBlock"],
-source: "|> aBlock\x0a\x09self",
-messageSends: [],
-referencedClasses: []
 }),
 smalltalk.UndefinedObject);
 
