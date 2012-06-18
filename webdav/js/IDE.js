@@ -2809,6 +2809,26 @@ referencedClasses: []
 smalltalk.Browser.klass);
 
 
+smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
+smalltalk.addMethod(
+"_selectedClass_",
+smalltalk.method({
+selector: "selectedClass:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    self['@selectedClass'] = aClass;
+    return self;
+},
+args: ["aClass"],
+source: "selectedClass: aClass\x0a\x09selectedClass := aClass",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TreeBrowser);
+
+
+
 smalltalk.addClass('Debugger', smalltalk.TabWidget, ['error', 'selectedContext', 'sourceArea', 'ul', 'ul2', 'inspector', 'saveButton', 'unsavedChanges', 'selectedVariable', 'selectedVariableName', 'inspectButton'], 'IDE');
 smalltalk.addMethod(
 "_arguments",
