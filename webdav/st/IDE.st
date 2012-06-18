@@ -1297,6 +1297,13 @@ openOn: aClass
 Browser subclass: #TreeBrowser
 	instanceVariableNames: ''
 	package: 'IDE'!
+!TreeBrowser commentStamp!
+x := DialogBox new 
+  widget: TreeBrowser new; 
+  modal:false; 
+  width: 800;
+  height: 500;
+  open!
 
 !TreeBrowser methodsFor: 'not yet classified'!
 
