@@ -1294,6 +1294,16 @@ openOn: aClass
 	selectClass: aClass
 ! !
 
+Browser subclass: #TreeBrowser
+	instanceVariableNames: ''
+	package: 'IDE'!
+
+!TreeBrowser methodsFor: 'not yet classified'!
+
+selectedClass: aClass
+	selectedClass := aClass
+! !
+
 TabWidget subclass: #Debugger
 	instanceVariableNames: 'error selectedContext sourceArea ul ul2 inspector saveButton unsavedChanges selectedVariable selectedVariableName inspectButton'
 	package: 'IDE'!

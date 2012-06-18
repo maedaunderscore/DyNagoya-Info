@@ -2054,6 +2054,21 @@ fn: function (aClass) {
 smalltalk.Browser.klass);
 
 
+smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
+smalltalk.addMethod(
+"_selectedClass_",
+smalltalk.method({
+selector: "selectedClass:",
+fn: function (aClass) {
+    var self = this;
+    self['@selectedClass'] = aClass;
+    return self;
+}
+}),
+smalltalk.TreeBrowser);
+
+
+
 smalltalk.addClass('Debugger', smalltalk.TabWidget, ['error', 'selectedContext', 'sourceArea', 'ul', 'ul2', 'inspector', 'saveButton', 'unsavedChanges', 'selectedVariable', 'selectedVariableName', 'inspectButton'], 'IDE');
 smalltalk.addMethod(
 "_arguments",
