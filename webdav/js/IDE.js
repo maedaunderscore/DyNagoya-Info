@@ -2810,6 +2810,7 @@ smalltalk.Browser.klass);
 
 
 smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
+smalltalk.TreeBrowser.comment="x := DialogBox new \x0a  widget: TreeBrowser new; \x0a  modal:false; \x0a  width: 800;\x0a  height: 500;\x0a  open "
 smalltalk.addMethod(
 "_selectedClass_",
 smalltalk.method({
