@@ -1791,6 +1791,60 @@ smalltalk.AnyWhere);
 
 
 
+smalltalk.addClass('Bambi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u6771\u533A\u6CC9\u4E00\u4E01\u76EE4-5 \u30B0\u30E9\u30F3\u30C9\u30FC\u30EB\u30B7\u30E3\u30C8\u30FC1F";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市東区泉一丁目4-5 グランドールシャトー1F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u55AB\u8336\u30D0\u30F3\u30D3";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '喫茶バンビ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://r.tabelog.com/aichi/A2301/A230104/23040019/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230104/23040019/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+
+
 smalltalk.addClass('BondCoffee', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 "_address",
