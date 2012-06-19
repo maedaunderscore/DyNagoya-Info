@@ -1232,7 +1232,7 @@ layers
 
 renderOn: html
 	html div id: 'screen'; with: [
-		(1 to: 2 ) do: [ html div id: 'layer', %1; class: 'page' ]
+		(1 to: 2 ) do: [ html div id: 'layer', %1 ]
 	]
 ! !
 
