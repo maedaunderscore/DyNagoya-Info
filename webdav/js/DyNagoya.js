@@ -1015,12 +1015,12 @@ selector: "latest",
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting06", []);
+    return smalltalk.send(self, "_meeting07", []);
     return self;
 },
 args: [],
-source: "latest\x0a\x09^ self meeting06",
-messageSends: ["meeting06"],
+source: "latest\x0a\x09^ self meeting07",
+messageSends: ["meeting07"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -1107,6 +1107,23 @@ args: [],
 source: "meeting06\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: 'DyNagoya MTG ＃06';\x0a\x09\x09date: '2012/05/19';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:30:00';\x0a\x09\x09place: LokantaAYHAN;\x0a\x09\x09detail: {\x0a'合同Smalltalk勉強会の段取りを決める'.\x0a'パーサーのいじり方'.\x0a'VMMakerを動かす'.\x0a'Smalltalk入門(希望者がいれば)'\x0a}",
 messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["LokantaAYHAN"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting07",
+smalltalk.method({
+selector: "meeting07",
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0307"]);smalltalk.send($rec, "_date_", ["2012/06/23"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.AnyWhere || AnyWhere]);return smalltalk.send($rec, "_detail_", [["Smalltalk\u52C9\u5F37\u4F1A\u3000\u672A\u8E0F\u30B9\u30DA\u30B7\u30E3\u30EB \u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF", "\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u6BB5\u53D6\u308A\u3092\u6C7A\u3081\u308B", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: "meeting07\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: 'DyNagoya MTG ＃07';\x0a\x09\x09date: '2012/06/23';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:30:00';\x0a\x09\x09place: AnyWhere;\x0a\x09\x09detail: {\x0a'Smalltalk勉強会　未踏スペシャル フィードバック'.\x0a'合同Smalltalk勉強会の段取りを決める'.\x0a'Smalltalk入門(希望者がいれば)'\x0a}",
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["AnyWhere"]
 }),
 smalltalk.Event.klass);
 
