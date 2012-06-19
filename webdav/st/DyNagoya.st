@@ -848,6 +848,24 @@ url
 	^ ''
 ! !
 
+Place subclass: #Bambi
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Bambi methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市東区泉一丁目4-5 グランドールシャトー1F'
+!
+
+name
+	^ '喫茶バンビ'
+!
+
+url
+	^ 'http://r.tabelog.com/aichi/A2301/A230104/23040019/'
+! !
+
 Place subclass: #BondCoffee
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
