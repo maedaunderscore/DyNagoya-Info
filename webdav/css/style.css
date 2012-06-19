@@ -312,7 +312,11 @@ h1 {
 }
 
 
-.page h1, .page h2, .page h3 {
+#screen h1{
+    font-size: 60px;
+    font-weight: bold
+}
+ #screen h2, #screen h3 {
     font-size: 40px;
     font-weight: bold
 }
