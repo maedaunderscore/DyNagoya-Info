@@ -2948,12 +2948,12 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["layer1"]);return smalltalk.send(smalltalk.send(html, "_div", []), "_id_", ["layer2"]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);return smalltalk.send($rec, "_class_", ["page"]);}(smalltalk.send(html, "_div", []));}]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09html div id: 'screen'; with: [\x0a\x09\x09html div id: 'layer1'.\x0a\x09\x09html div id: 'layer2'\x0a\x09]",
-messageSends: ["id:", "with:", "div"],
+source: "renderOn: html\x0a\x09html div id: 'screen'; with: [\x0a\x09\x09(1 to: 2 ) do: [ html div id: 'layer', %1; class: 'page' ]\x0a\x09]",
+messageSends: ["id:", "with:", "do:", "to:", ",", "class:", "div"],
 referencedClasses: []
 }),
 smalltalk.Screen);
