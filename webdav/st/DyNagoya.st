@@ -380,7 +380,7 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 latest
-	^ self meeting06
+	^ self meeting07
 !
 
 meeting02
@@ -457,6 +457,21 @@ meeting06
 '合同Smalltalk勉強会の段取りを決める'.
 'パーサーのいじり方'.
 'VMMakerを動かす'.
+'Smalltalk入門(希望者がいれば)'
+}
+!
+
+meeting07
+	^ self new 
+		fixed: true;
+		title: 'DyNagoya MTG ＃07';
+		date: '2012/06/23';
+		start: '18:00:00';
+		end: '20:30:00';
+		place: AnyWhere;
+		detail: {
+'Smalltalk勉強会　未踏スペシャル フィードバック'.
+'合同Smalltalk勉強会の段取りを決める'.
 'Smalltalk入門(希望者がいれば)'
 }
 ! !
