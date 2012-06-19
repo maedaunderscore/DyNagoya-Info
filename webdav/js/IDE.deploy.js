@@ -2056,6 +2056,29 @@ smalltalk.Browser.klass);
 
 smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
 smalltalk.addMethod(
+"_renderBoxOn_",
+smalltalk.method({
+selector: "renderBoxOn:",
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["hoge"]);
+    return self;
+}
+}),
+smalltalk.TreeBrowser);
+
+smalltalk.addMethod(
+"_renderButtonsOn_",
+smalltalk.method({
+selector: "renderButtonsOn:",
+fn: function (html) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.TreeBrowser);
+
+smalltalk.addMethod(
 "_selectedClass_",
 smalltalk.method({
 selector: "selectedClass:",
