@@ -1307,6 +1307,13 @@ x := DialogBox new
 
 !TreeBrowser methodsFor: 'not yet classified'!
 
+renderBoxOn: html
+  html div with: 'hoge'
+!
+
+renderButtonsOn: html
+!
+
 selectedClass: aClass
 	selectedClass := aClass
 ! !
