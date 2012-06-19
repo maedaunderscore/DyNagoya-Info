@@ -312,7 +312,7 @@ h1 {
 }
 
 
-.page h1, h2, h3 {
+.page h1, .page h2, .page h3 {
     font-size: 40px;
     font-weight: bold
 }
