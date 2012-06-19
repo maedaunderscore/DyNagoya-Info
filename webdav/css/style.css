@@ -74,7 +74,7 @@ a.selected {
 /* Fonts */
 
 h1, h2, h3 {
-    font-family: 'Istok Web';
+    font-family: 'Tahoma', 'Istok Web';
     font-weight: normal;
     color: #442905;
     line-height: 1.2;
@@ -311,3 +311,16 @@ h1 {
 	text-decoration: underline;
 }
 
+
+h1, h2, h3 {
+    font-family: 'Tahoma', 'Istok Web';
+    font-weight: normal;
+    color: #442905;
+    line-height: 1.2;
+}
+
+h1 {
+    font-weight: bold;
+    color: #333;
+    text-shadow: 0px 1px 1px #FFF;
+}
