@@ -120,10 +120,6 @@ asSet
 	    yourself
 !
 
->>= aBlock
-	^ self collect: aBlock
-!
-
 copyWith: anObject
 	^self copy add: anObject; yourself
 !
