@@ -2061,7 +2061,8 @@ smalltalk.method({
 selector: "renderBoxOn:",
 fn: function (html) {
     var self = this;
-    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["hoge"]);
+    self['@selectedClass'] = smalltalk.Page || Page;
+    smalltalk.send(smalltalk.send(self['@selectedClass'], "__comma", [smalltalk.send(self['@selectedClass'], "_ancestors", [])]), "__gt_gt_eq", [function (each) {self['@selectedClass'] = each;return smalltalk.send(html, "_li_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(each, "_asString", [])]);return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (each) {var sourceBrush = nil;return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(each, "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(sourceBrush, "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(each, "_source", [])]);}]);}(smalltalk.send(html, "_div", [])));return sourceBrush = smalltalk.send(html, "_div", []);}]);}(smalltalk.send(html, "_div", []));}]);}]);}]);
     return self;
 }
 }),

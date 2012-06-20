@@ -1308,7 +1308,27 @@ x := DialogBox new
 !TreeBrowser methodsFor: 'not yet classified'!
 
 renderBoxOn: html
-  html div with: 'hoge'
+  selectedClass := Page.
+
+  (selectedClass, selectedClass ancestors) >>= [ :each |
+	selectedClass := each.
+	html li: [
+	  html div with: each asString.
+	  self methods do: [  :each || sourceBrush |
+		html div 
+			css: 'margin-left' put: '10px';
+			with:  [
+				html div with: each selector;
+					onClick: [  | sourceArea |
+						sourceArea := SourceArea new.
+						sourceBrush with: sourceArea.
+						sourceArea val: each source
+				].
+				sourceBrush := html div.
+			]
+	  ]
+	]
+]
 !
 
 renderButtonsOn: html
