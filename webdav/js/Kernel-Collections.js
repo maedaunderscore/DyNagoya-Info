@@ -142,6 +142,23 @@ referencedClasses: []
 smalltalk.Collection);
 
 smalltalk.addMethod(
+"__gt_gt_eq",
+smalltalk.method({
+selector: ">>=",
+category: 'copying',
+fn: function (aBlock) {
+    var self = this;
+    return smalltalk.send(self, "_collect_", [aBlock]);
+    return self;
+},
+args: ["aBlock"],
+source: ">>= aBlock\x0a\x09^ self collect: aBlock",
+messageSends: ["collect:"],
+referencedClasses: []
+}),
+smalltalk.Collection);
+
+smalltalk.addMethod(
 "_add_",
 smalltalk.method({
 selector: "add:",
