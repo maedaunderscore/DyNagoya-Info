@@ -1310,7 +1310,7 @@ x := DialogBox new
 renderBoxOn: html
   selectedClass := Page.
 
-  (selectedClass, selectedClass ancestors) >>= [ :each |
+  (selectedClass ancestors, selectedClass) do: [ :each |
 	selectedClass := each.
 	html li: [
 	  html div with: each asString.
