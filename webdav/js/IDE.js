@@ -2818,13 +2818,14 @@ selector: "renderBoxOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["hoge"]);
+    self['@selectedClass'] = smalltalk.Page || Page;
+    smalltalk.send(smalltalk.send(self['@selectedClass'], "__comma", [smalltalk.send(self['@selectedClass'], "_ancestors", [])]), "__gt_gt_eq", [function (each) {self['@selectedClass'] = each;return smalltalk.send(html, "_li_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(each, "_asString", [])]);return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (each) {var sourceBrush = nil;return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(each, "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(sourceBrush, "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(each, "_source", [])]);}]);}(smalltalk.send(html, "_div", [])));return sourceBrush = smalltalk.send(html, "_div", []);}]);}(smalltalk.send(html, "_div", []));}]);}]);}]);
     return self;
 },
 args: ["html"],
-source: "renderBoxOn: html\x0a  html div with: 'hoge'",
-messageSends: ["with:", "div"],
-referencedClasses: []
+source: "renderBoxOn: html\x0a  selectedClass := Page.\x0a\x0a  (selectedClass, selectedClass ancestors) >>= [ :each |\x0a\x09selectedClass := each.\x0a\x09html li: [\x0a\x09  html div with: each asString.\x0a\x09  self methods do: [  :each || sourceBrush |\x0a\x09\x09html div \x0a\x09\x09\x09css: 'margin-left' put: '10px';\x0a\x09\x09\x09with:  [\x0a\x09\x09\x09\x09html div with: each selector;\x0a\x09\x09\x09\x09\x09onClick: [  | sourceArea |\x0a\x09\x09\x09\x09\x09\x09sourceArea := SourceArea new.\x0a\x09\x09\x09\x09\x09\x09sourceBrush with: sourceArea.\x0a\x09\x09\x09\x09\x09\x09sourceArea val: each source\x0a\x09\x09\x09\x09].\x0a\x09\x09\x09\x09sourceBrush := html div.\x0a\x09\x09\x09]\x0a\x09  ]\x0a\x09]\x0a]\x0a",
+messageSends: [">>=", ",", "ancestors", "li:", "with:", "div", "asString", "do:", "methods", "css:put:", "selector", "onClick:", "new", "val:", "source"],
+referencedClasses: ["Page", "SourceArea"]
 }),
 smalltalk.TreeBrowser);
 
