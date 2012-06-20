@@ -102,18 +102,6 @@ fn: function (aCollection) {
 smalltalk.Collection);
 
 smalltalk.addMethod(
-"__gt_gt_eq",
-smalltalk.method({
-selector: ">>=",
-fn: function (aBlock) {
-    var self = this;
-    return smalltalk.send(self, "_collect_", [aBlock]);
-    return self;
-}
-}),
-smalltalk.Collection);
-
-smalltalk.addMethod(
 "_add_",
 smalltalk.method({
 selector: "add:",
