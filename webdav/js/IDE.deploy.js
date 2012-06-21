@@ -2141,7 +2141,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@method'], "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_contents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@method'], "_source", [])]);}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@method'], "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@method'], "_source", [])]);}]);}]);}(smalltalk.send(html, "_div", [])));
     self['@sourceView'] = smalltalk.send(html, "_div", []);
     return self;
 }

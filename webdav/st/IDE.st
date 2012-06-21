@@ -1346,7 +1346,7 @@ class: aClass method: aCompiledMethod
 
 renderOn: html
 	html div with: method selector;
-		onClick: [ sourceView contents: [ :html || sourceArea |
+		onClick: [ sourceView toggleContents: [ :html || sourceArea |
 			sourceArea := SourceArea new.
 			sourceView with: sourceArea.
 			sourceArea val: method source
