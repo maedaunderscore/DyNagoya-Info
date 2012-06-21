@@ -1295,19 +1295,63 @@ openOn: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses subsubclasses'
 	package: 'IDE'!
+
+!ClassBrowser methodsFor: 'accessing'!
+
+class: aClass
+	self class: aClass subclasses: aClass subclasses.
+!
+
+class: aClass subclasses: someSubClasses
+	selectedClass := aClass.
+	subclasses := someSubClasses.
+!
+
+subclasses: someSubClasses
+	subclasses := someSubClasses.
+!
+
+subsubclasses: someSubClasses
+	subsubclasses := someSubClasses.
+! !
 
 !ClassBrowser methodsFor: 'rendering'!
 
-renderBoxOn: html
-	selectedClass := Page.
+renderOn: html
 	classView := html div with: selectedClass name.
-	methodView := html div with: 'methods'.
-	subclassView := html div with: 'subclasses'
+	methodTitle := html div with: 'methods';
+		onClick: [ methodView toggleContents: [ :html |
+				self methods do: [  html div with: (MethodBrowser new class: selectedClass method: %1) ] ] ].
+	methodView := html div.
+	subclasses ifNotEmpty: [
+		subclassTitle := html div with: 'subclasses';
+			onClick: [ subclassView toggleContents: [ :html |
+				subclasses do: [ html div with: (ClassBrowser new class: %1) ] ] ].
+		subclassView := html div
+	]
+! !
+
+Browser subclass: #MethodBrowser
+	instanceVariableNames: 'method sourceView'
+	package: 'IDE'!
+
+!MethodBrowser methodsFor: 'rendering'!
+
+class: aClass method: aCompiledMethod
+	selectedClass := aClass.
+	method := aCompiledMethod
 !
 
-renderButtonsOn: html
+renderOn: html
+	html div with: method selector;
+		onClick: [ sourceView contents: [ :html || sourceArea |
+			sourceArea := SourceArea new.
+			sourceView with: sourceArea.
+			sourceArea val: method source
+		] ].
+	sourceView := html div
 ! !
 
 Browser subclass: #TreeBrowser
