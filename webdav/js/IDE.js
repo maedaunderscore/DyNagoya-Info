@@ -2809,42 +2809,134 @@ referencedClasses: []
 smalltalk.Browser.klass);
 
 
-smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView'], 'IDE');
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'subsubclasses'], 'IDE');
 smalltalk.addMethod(
-"_renderBoxOn_",
+"_class_",
 smalltalk.method({
-selector: "renderBoxOn:",
-category: 'rendering',
-fn: function (html) {
+selector: "class:",
+category: 'accessing',
+fn: function (aClass) {
     var self = this;
-    self['@selectedClass'] = smalltalk.Page || Page;
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);
-    self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["methods"]);
-    self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["subclasses"]);
+    smalltalk.send(self, "_class_subclasses_", [aClass, smalltalk.send(aClass, "_subclasses", [])]);
     return self;
 },
-args: ["html"],
-source: "renderBoxOn: html\x0a\x09selectedClass := Page.\x0a\x09classView := html div with: selectedClass name.\x0a\x09methodView := html div with: 'methods'.\x0a\x09subclassView := html div with: 'subclasses'\x0a\x09",
-messageSends: ["with:", "div", "name"],
-referencedClasses: ["Page"]
+args: ["aClass"],
+source: "class: aClass\x0a\x09self class: aClass subclasses: aClass subclasses.",
+messageSends: ["class:subclasses:", "subclasses"],
+referencedClasses: []
 }),
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_renderButtonsOn_",
+"_class_subclasses_",
 smalltalk.method({
-selector: "renderButtonsOn:",
-category: 'rendering',
-fn: function (html) {
+selector: "class:subclasses:",
+category: 'accessing',
+fn: function (aClass, someSubClasses) {
     var self = this;
+    self['@selectedClass'] = aClass;
+    self['@subclasses'] = someSubClasses;
     return self;
 },
-args: ["html"],
-source: "renderButtonsOn: html",
+args: ["aClass", "someSubClasses"],
+source: "class: aClass subclasses: someSubClasses\x0a\x09selectedClass := aClass.\x0a\x09subclasses := someSubClasses.",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);
+    self['@methodTitle'] = function ($rec) {smalltalk.send($rec, "_with_", ["methods"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@methodView'], "_toggleContents_", [function (html) {return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.MethodBrowser || MethodBrowser, "_new", []), "_class_method_", [self['@selectedClass'], thisisplaceholder1])]);}]);}]);}]);}(smalltalk.send(html, "_div", []));
+    self['@methodView'] = smalltalk.send(html, "_div", []);
+    smalltalk.send(self['@subclasses'], "_ifNotEmpty_", [function () {self['@subclassTitle'] = function ($rec) {smalltalk.send($rec, "_with_", ["subclasses"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_", [thisisplaceholder1])]);}]);}]);}]);}(smalltalk.send(html, "_div", []));return self['@subclassView'] = smalltalk.send(html, "_div", []);}]);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09classView := html div with: selectedClass name.\x0a\x09methodTitle := html div with: 'methods';\x0a\x09\x09onClick: [ methodView toggleContents: [ :html |\x0a\x09\x09\x09\x09self methods do: [  html div with: (MethodBrowser new class: selectedClass method: %1) ] ] ].\x0a\x09methodView := html div.\x0a\x09subclasses ifNotEmpty: [\x0a\x09\x09subclassTitle := html div with: 'subclasses';\x0a\x09\x09\x09onClick: [ subclassView toggleContents: [ :html |\x0a\x09\x09\x09\x09subclasses do: [ html div with: (ClassBrowser new class: %1) ] ] ].\x0a\x09\x09subclassView := html div\x0a\x09]\x0a\x09",
+messageSends: ["with:", "div", "name", "onClick:", "toggleContents:", "do:", "methods", "class:method:", "new", "ifNotEmpty:", "class:"],
+referencedClasses: ["MethodBrowser", "ClassBrowser"]
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_subclasses_",
+smalltalk.method({
+selector: "subclasses:",
+category: 'accessing',
+fn: function (someSubClasses) {
+    var self = this;
+    self['@subclasses'] = someSubClasses;
+    return self;
+},
+args: ["someSubClasses"],
+source: "subclasses: someSubClasses\x0a\x09subclasses := someSubClasses.",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_subsubclasses_",
+smalltalk.method({
+selector: "subsubclasses:",
+category: 'accessing',
+fn: function (someSubClasses) {
+    var self = this;
+    self['@subsubclasses'] = someSubClasses;
+    return self;
+},
+args: ["someSubClasses"],
+source: "subsubclasses: someSubClasses\x0a\x09subsubclasses := someSubClasses.",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+
+
+smalltalk.addClass('MethodBrowser', smalltalk.Browser, ['method', 'sourceView'], 'IDE');
+smalltalk.addMethod(
+"_class_method_",
+smalltalk.method({
+selector: "class:method:",
+category: 'rendering',
+fn: function (aClass, aCompiledMethod) {
+    var self = this;
+    self['@selectedClass'] = aClass;
+    self['@method'] = aCompiledMethod;
+    return self;
+},
+args: ["aClass", "aCompiledMethod"],
+source: "class: aClass method: aCompiledMethod\x0a\x09selectedClass := aClass.\x0a\x09method := aCompiledMethod",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.MethodBrowser);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@method'], "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_contents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@method'], "_source", [])]);}]);}]);}(smalltalk.send(html, "_div", [])));
+    self['@sourceView'] = smalltalk.send(html, "_div", []);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html div with: method selector;\x0a\x09\x09onClick: [ sourceView contents: [ :html || sourceArea |\x0a\x09\x09\x09sourceArea := SourceArea new.\x0a\x09\x09\x09sourceView with: sourceArea.\x0a\x09\x09\x09sourceArea val: method source\x0a\x09\x09] ].\x0a\x09sourceView := html div",
+messageSends: ["with:", "selector", "onClick:", "contents:", "new", "val:", "source", "div"],
+referencedClasses: ["SourceArea"]
+}),
+smalltalk.MethodBrowser);
 
 
 
