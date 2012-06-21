@@ -1320,17 +1320,17 @@ subsubclasses: someSubClasses
 !ClassBrowser methodsFor: 'rendering'!
 
 renderOn: html
-	classView := html div with: selectedClass name.
-	methodTitle := html div with: 'methods';
-		onClick: [ methodView toggleContents: [ :html |
+	classView := html div with: [
+		html span with: selectedClass name;
+				onClick: [ 
+					subclassView >>= [ %1 toggleContents: [ :html |
+						subclasses do: [ html div with: (ClassBrowser new class: %1) ] ] ] ].
+		methodTitle := html span css: 'margin-left' put: '10px';  with: 'methods';
+			onClick: [ methodView toggleContents: [ :html |
 				self methods do: [  html div with: (MethodBrowser new class: selectedClass method: %1) ] ] ].
-	methodView := html div.
-	subclasses ifNotEmpty: [
-		subclassTitle := html div with: 'subclasses';
-			onClick: [ subclassView toggleContents: [ :html |
-				subclasses do: [ html div with: (ClassBrowser new class: %1) ] ] ].
-		subclassView := html div
-	]
+	].
+	methodView := html div.	
+	subclasses ifEmpty: [ subclassView := nil ]; ifNotEmpty: [ subclassView := html div ]
 ! !
 
 Browser subclass: #MethodBrowser
