@@ -2809,6 +2809,45 @@ referencedClasses: []
 smalltalk.Browser.klass);
 
 
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView'], 'IDE');
+smalltalk.addMethod(
+"_renderBoxOn_",
+smalltalk.method({
+selector: "renderBoxOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    self['@selectedClass'] = smalltalk.Page || Page;
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);
+    self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["methods"]);
+    self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["subclasses"]);
+    return self;
+},
+args: ["html"],
+source: "renderBoxOn: html\x0a\x09selectedClass := Page.\x0a\x09classView := html div with: selectedClass name.\x0a\x09methodView := html div with: 'methods'.\x0a\x09subclassView := html div with: 'subclasses'\x0a\x09",
+messageSends: ["with:", "div", "name"],
+referencedClasses: ["Page"]
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_renderButtonsOn_",
+smalltalk.method({
+selector: "renderButtonsOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    return self;
+},
+args: ["html"],
+source: "renderButtonsOn: html",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+
+
 smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
 smalltalk.TreeBrowser.comment="x := DialogBox new \x0a  widget: TreeBrowser new; \x0a  modal:false; \x0a  width: 800;\x0a  height: 500;\x0a  open "
 smalltalk.addMethod(
