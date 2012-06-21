@@ -546,6 +546,12 @@ empty
 	self asJQuery empty
 !
 
+toggleContents: aBlock
+	self isEmpty 
+			ifTrue: [ self contents: aBlock ]
+			ifFalse: [ self empty ].
+!
+
 with: anObject
     self append: anObject
 ! !
@@ -614,6 +620,10 @@ href: aString
 
 id: aString
     self at: 'id' put: aString
+!
+
+isEmpty
+	^ self asJQuery html = ''
 !
 
 media: aString
