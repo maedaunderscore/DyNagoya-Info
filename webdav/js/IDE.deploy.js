@@ -2054,6 +2054,35 @@ fn: function (aClass) {
 smalltalk.Browser.klass);
 
 
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView'], 'IDE');
+smalltalk.addMethod(
+"_renderBoxOn_",
+smalltalk.method({
+selector: "renderBoxOn:",
+fn: function (html) {
+    var self = this;
+    self['@selectedClass'] = smalltalk.Page || Page;
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);
+    self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["methods"]);
+    self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["subclasses"]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_renderButtonsOn_",
+smalltalk.method({
+selector: "renderButtonsOn:",
+fn: function (html) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+
+
 smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
 smalltalk.addMethod(
 "_renderBoxOn_",

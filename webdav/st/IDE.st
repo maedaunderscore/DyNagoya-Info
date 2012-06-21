@@ -1294,6 +1294,22 @@ openOn: aClass
 	selectClass: aClass
 ! !
 
+Browser subclass: #ClassBrowser
+	instanceVariableNames: 'classView methodView subclassView'
+	package: 'IDE'!
+
+!ClassBrowser methodsFor: 'rendering'!
+
+renderBoxOn: html
+	selectedClass := Page.
+	classView := html div with: selectedClass name.
+	methodView := html div with: 'methods'.
+	subclassView := html div with: 'subclasses'
+!
+
+renderButtonsOn: html
+! !
+
 Browser subclass: #TreeBrowser
 	instanceVariableNames: ''
 	package: 'IDE'!
