@@ -2533,6 +2533,23 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_isEmpty",
+smalltalk.method({
+selector: "isEmpty",
+category: 'attributes',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_html", []), "__eq", [""]);
+    return self;
+},
+args: [],
+source: "isEmpty\x0a\x09^ self asJQuery html = ''",
+messageSends: ["=", "html", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_media_",
 smalltalk.method({
 selector: "media:",
@@ -3089,6 +3106,23 @@ fn: function (aString) {
 args: ["aString"],
 source: "title: aString\x0a    self at: 'title' put: aString",
 messageSends: ["at:put:"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
+"_toggleContents_",
+smalltalk.method({
+selector: "toggleContents:",
+category: 'adding',
+fn: function (aBlock) {
+    var self = this;
+    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return smalltalk.send(self, "_empty", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return smalltalk.send(self, "_empty", []);}]);
+    return self;
+},
+args: ["aBlock"],
+source: "toggleContents: aBlock\x0a\x09self isEmpty \x0a\x09\x09\x09ifTrue: [ self contents: aBlock ]\x0a\x09\x09\x09ifFalse: [ self empty ].",
+messageSends: ["ifTrue:ifFalse:", "isEmpty", "contents:", "empty"],
 referencedClasses: []
 }),
 smalltalk.TagBrush);
