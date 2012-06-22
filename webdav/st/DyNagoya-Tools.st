@@ -149,7 +149,7 @@ open
 !DialogBox methodsFor: 'initialization'!
 
 defaultOption
-	^ #{ 'modal' -> true . #sticky -> true}
+	^ #{ 'modal' -> true . #sticky -> true. 'close' -> [ self close ]}
 !
 
 initialize
