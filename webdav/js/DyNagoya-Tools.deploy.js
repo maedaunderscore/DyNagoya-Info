@@ -132,7 +132,7 @@ smalltalk.method({
 selector: "defaultOption",
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}])]);
     return self;
 }
 }),

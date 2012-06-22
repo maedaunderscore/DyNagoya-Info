@@ -184,12 +184,12 @@ selector: "defaultOption",
 category: 'initialization',
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}])]);
     return self;
 },
 args: [],
-source: "defaultOption\x0a\x09^ #{ 'modal' -> true . #sticky -> true}",
-messageSends: ["->"],
+source: "defaultOption\x0a\x09^ #{ 'modal' -> true . #sticky -> true. 'close' -> [ self close ]}",
+messageSends: ["->", "close"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
