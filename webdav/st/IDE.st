@@ -1345,7 +1345,8 @@ selectorList: aClass method: aString
 	xs := (aClass ancestors, aClass) collect: [ 'div[name="class-', (%1 name), '"] span.browser-class-name' ].
 	aString ifNotNil: [ 
 		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-method-button').
-		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]')
+		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]').
+		Transcript show: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]')
 	].
 
 	^ xs
