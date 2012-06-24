@@ -2984,14 +2984,14 @@ fn: function (aClass, aString) {
     var self = this;
     var xs = nil;
     xs = smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_collect_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(thisisplaceholder1, "_name", [])]), "__comma", ["\"] span.browser-class-name"]);}]);
-    ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-method-button"])]);smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);return smalltalk.send(smalltalk.Transcript || Transcript, "_show_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);}() : nil;
+    ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-method-button"])]);smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);return smalltalk.send(xs, "_add_", ["dummy"]);}() : nil;
     return xs;
     return self;
 },
 args: ["aClass", "aString"],
-source: "selectorList: aClass method: aString\x0a\x09| xs |\x0a\x09xs := (aClass ancestors, aClass) collect: [ 'div[name=\x22class-', (%1 name), '\x22] span.browser-class-name' ].\x0a\x09aString ifNotNil: [ \x0a\x09\x09xs add: ('div[name=\x22class-', aClass name, '\x22] > div > span.browser-method-button').\x0a\x09\x09xs add: ('div[name=\x22class-', aClass name, '\x22] span[name=\x22method-', aString, '\x22]').\x0a\x09\x09Transcript show: ('div[name=\x22class-', aClass name, '\x22] span[name=\x22method-', aString, '\x22]')\x0a\x09].\x0a\x0a\x09^ xs\x0a",
-messageSends: ["collect:", ",", "ancestors", "name", "ifNotNil:", "add:", "show:"],
-referencedClasses: ["Transcript"]
+source: "selectorList: aClass method: aString\x0a\x09| xs |\x0a\x09xs := (aClass ancestors, aClass) collect: [ 'div[name=\x22class-', (%1 name), '\x22] span.browser-class-name' ].\x0a\x09aString ifNotNil: [ \x0a\x09\x09xs add: ('div[name=\x22class-', aClass name, '\x22] > div > span.browser-method-button').\x0a\x09\x09xs add: ('div[name=\x22class-', aClass name, '\x22] span[name=\x22method-', aString, '\x22]').\x0a\x09\x09xs add: 'dummy' \x22to click last one\x22\x0a\x09].\x0a\x0a\x09^ xs\x0a",
+messageSends: ["collect:", ",", "ancestors", "name", "ifNotNil:", "add:"],
+referencedClasses: []
 }),
 smalltalk.ClassBrowser);
 
