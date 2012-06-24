@@ -185,11 +185,11 @@ selector: "defaultOption",
 category: 'initialization',
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send("sticky", "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}]), smalltalk.send("maxHeight", "__minus_gt", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.8 : smalltalk.send($receiver, "__star", [0.8])])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send("sticky", "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}]), smalltalk.send("maxHeight", "__minus_gt", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])])]);
     return self;
 },
 args: [],
-source: "defaultOption\x0a\x09^ #{ \x0a\x09\x09'modal' -> true .\x0a\x09\x09 'sticky' -> true. \x0a\x09\x09'close' -> [ self close ].\x0a\x09\x09'maxHeight' -> (window innerHeight * 0.8)\x0a\x09}",
+source: "defaultOption\x0a\x09^ #{ \x0a\x09\x09'modal' -> true .\x0a\x09\x09 'sticky' -> true. \x0a\x09\x09'close' -> [ self close ].\x0a\x09\x09'maxHeight' -> (window innerHeight * 0.9)\x0a\x09}",
 messageSends: ["->", "close", "*", "innerHeight"],
 referencedClasses: []
 }),
@@ -538,14 +538,14 @@ fn: function (aClass) {
     var browser = nil;
     var ret = nil;
     browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
-    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
     smalltalk.send(browser, "_open_", [aClass]);
     return ret;
     return self;
 },
 args: ["aClass"],
-source: "open: aClass\x0a\x09| browser ret |\x0a\x09browser := ClassBrowser hierarchy: aClass.\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x22\x09\x09height: '400px';\x22\x0a\x09\x09modal: false;\x0a\x09\x09open.\x0a\x0a\x09browser open: aClass.\x0a\x09^ ret",
-messageSends: ["hierarchy:", "widget:", "width:", "modal:", "open", "new", "open:"],
+source: "open: aClass\x0a\x09| browser ret |\x0a\x09browser := ClassBrowser hierarchy: aClass.\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x09\x09height: (window innerHeight * 0.9);\x0a\x09\x09modal: false;\x0a\x09\x09open.\x0a\x0a\x09browser open: aClass.\x0a\x09^ ret",
+messageSends: ["hierarchy:", "widget:", "width:", "height:", "*", "innerHeight", "modal:", "open", "new", "open:"],
 referencedClasses: ["ClassBrowser"]
 }),
 smalltalk.BrowserDialog.klass);
