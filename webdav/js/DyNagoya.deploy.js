@@ -343,6 +343,29 @@ fn: function () {
 smalltalk.EntryPoint.klass);
 
 smalltalk.addMethod(
+"_position",
+smalltalk.method({
+selector: "position",
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_positionY",
+smalltalk.method({
+selector: "positionY",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 200 : smalltalk.send($receiver, "__minus", [200])]), "__comma", ["px"]);
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
 "_screenPreparation",
 smalltalk.method({
 selector: "screenPreparation",
@@ -376,8 +399,8 @@ fn: function () {
     var self = this;
     ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
     ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
-    smalltalk.send(self['@workspace'], "_open", []);
-    smalltalk.send(self['@transcript'], "_open", []);
+    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@workspace']));
+    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@transcript']));
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
     smalltalk.send(self, "_showMessage", []);
