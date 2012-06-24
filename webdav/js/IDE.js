@@ -2847,17 +2847,34 @@ referencedClasses: []
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_classColor",
+smalltalk.method({
+selector: "classColor",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    return "#AAAAFF";
+    return self;
+},
+args: [],
+source: "classColor\x0a\x09^'#AAAAFF'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_leftBorder",
 smalltalk.method({
 selector: "leftBorder",
 category: 'rendering',
 fn: function () {
     var self = this;
-    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["border-left", "1px solid white"]);return smalltalk.send($rec, "_css_put_", ["padding-left", "5px"]);}(thisisplaceholder1);};
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["border-left", "3px solid white"]);return smalltalk.send($rec, "_css_put_", ["padding-left", "5px"]);}(thisisplaceholder1);};
     return self;
 },
 args: [],
-source: "leftBorder\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'border-left' put: '1px solid white';\x0a\x09css: 'padding-left' put: '5px'\x0a     ]\x0a\x09\x0a",
+source: "leftBorder\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'border-left' put: '3px solid white';\x0a\x09css: 'padding-left' put: '5px'\x0a     ]\x0a\x09\x0a",
 messageSends: ["css:put:"],
 referencedClasses: []
 }),
@@ -2910,6 +2927,23 @@ fn: function () {
 args: [],
 source: "onStyle\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'padding' put: '2px';\x0a\x09css: 'font-size' put: '0.8em';\x0a\x09css: 'border' put: '1px solid white';\x0a\x09css: 'background' put: 'white';\x0a\x09css: 'color' put: 'black'\x0a     ]\x0a\x09\x0a",
 messageSends: ["css:put:"],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_onStyleForClass",
+smalltalk.method({
+selector: "onStyleForClass",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", smalltalk.send("1px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(self, "_classColor", [])]);return smalltalk.send($rec, "_css_put_", ["color", "white"]);}(thisisplaceholder1);};
+    return self;
+},
+args: [],
+source: "onStyleForClass\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'padding' put: '2px';\x0a\x09css: 'font-size' put: '0.8em';\x0a\x09css: 'border' put: '1px solid ', self classColor;\x0a\x09css: 'background' put: self classColor;\x0a\x09css: 'color' put: 'white'\x0a     ]\x0a\x09\x0a",
+messageSends: ["css:put:", ",", "classColor"],
 referencedClasses: []
 }),
 smalltalk.ClassBrowser);
@@ -2999,15 +3033,15 @@ category: 'rendering',
 fn: function (html) {
     var self = this;
     self['@root'] = smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
-    self['@classMethodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
+    self['@classMethodView'] = function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);smalltalk.send($rec, "_css_put_", ["border-left", smalltalk.send("3px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);return smalltalk.send($rec, "_css_put_", ["color", smalltalk.send(self, "_classColor", [])]);}(smalltalk.send(html, "_div", []));
     self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
     (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09classView := html div with: [\x0a\x09\x09html span with: selectedClass name;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em';\x0a\x09\x09\x09\x09onClick: [ \x0a\x09\x09\x09\x09\x09subclassView >>= [ %1 toggleContents: [ :html |\x0a\x09\x09\x09\x09\x09\x09subclasses do: [ \x0a\x09\x09\x09\x09\x09\x09\x09html div with: (ClassBrowser new class: %1 descendants: descendants) ] ] ] ].\x0a\x09\x09selectedClass class methodDictionary ifNotEmpty: [\x0a\x09\x09\x09classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: (selectedClass class) cssClass: 'browser-class-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'classMethodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyle off: self offStyle.\x0a\x09\x09].\x0a\x09\x09selectedClass methodDictionary ifNotEmpty: [\x0a\x09\x09\x09methodTitle :=  self renderMethodButtonOn: html title: 'methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: selectedClass cssClass: 'browser-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'methodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyle off: self offStyle.\x0a\x09\x09]\x0a\x09].\x0a\x09classMethodView := html div |> self leftBorder.\x0a\x09methodView := html div |> self leftBorder.\x0a\x09subclasses \x0a\x09\x09ifEmpty: [ subclassView := nil ]; \x0a\x09\x09ifNotEmpty: [ \x0a\x09\x09\x09subclassView := html div css: 'margin-left' put: '10px'\x0a\x09\x09].",
-messageSends: ["name:", "root", ",", "name", "with:", "div", "class:", "css:put:", "onClick:", ">>=", "toggleContents:", "do:", "class:descendants:", "new", "span", "ifNotEmpty:", "methodDictionary", "class", "renderMethodButtonOn:title:class:cssClass:area:on:off:", "onStyle", "offStyle", "|>", "leftBorder", "ifEmpty:"],
+source: "renderOn: html\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09classView := html div with: [\x0a\x09\x09html span with: selectedClass name;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em';\x0a\x09\x09\x09\x09onClick: [ \x0a\x09\x09\x09\x09\x09subclassView >>= [ %1 toggleContents: [ :html |\x0a\x09\x09\x09\x09\x09\x09subclasses do: [ \x0a\x09\x09\x09\x09\x09\x09\x09html div with: (ClassBrowser new class: %1 descendants: descendants) ] ] ] ].\x0a\x09\x09selectedClass class methodDictionary ifNotEmpty: [\x0a\x09\x09\x09classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: (selectedClass class) cssClass: 'browser-class-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'classMethodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyleForClass off: self offStyle.\x0a\x09\x09].\x0a\x09\x09selectedClass methodDictionary ifNotEmpty: [\x0a\x09\x09\x09methodTitle :=  self renderMethodButtonOn: html title: 'methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: selectedClass cssClass: 'browser-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'methodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyle off: self offStyle.\x0a\x09\x09]\x0a\x09].\x0a\x09classMethodView := html div |> self leftBorder;  \x0a\x09\x09css: 'border-left' put: ('3px solid ', self classColor);\x0a\x09\x09css: 'color' put: self classColor.\x0a\x09methodView := html div |> self leftBorder.\x0a\x09subclasses \x0a\x09\x09ifEmpty: [ subclassView := nil ]; \x0a\x09\x09ifNotEmpty: [ \x0a\x09\x09\x09subclassView := html div css: 'margin-left' put: '10px'\x0a\x09\x09].",
+messageSends: ["name:", "root", ",", "name", "with:", "div", "class:", "css:put:", "onClick:", ">>=", "toggleContents:", "do:", "class:descendants:", "new", "span", "ifNotEmpty:", "methodDictionary", "class", "renderMethodButtonOn:title:class:cssClass:area:on:off:", "onStyleForClass", "offStyle", "onStyle", "|>", "leftBorder", "classColor", "ifEmpty:"],
 referencedClasses: ["ClassBrowser"]
 }),
 smalltalk.ClassBrowser);
