@@ -356,66 +356,6 @@ url: address
 	^ 'http://maps.google.co.jp/maps?q=', (Util encode: address)
 ! !
 
-Widget subclass: #IconText
-	instanceVariableNames: 'image text size root'
-	package: 'DyNagoya-Tools'!
-
-!IconText methodsFor: 'accessing'!
-
-image: url
-	image := url
-!
-
-redraw
-	root contents: [ :html |  html span
-		with: text;
-		css: 'padding-left' put: '', (size + 3), 'px';
-		css: 'background' put: 'url(', image, ') no-repeat 0 50%'
-	]
-!
-
-renderOn: html
-	root := html root.
-	self redraw.
-!
-
-size: aSize
-	size := aSize
-!
-
-text: aText
-	text := aText
-! !
-
-IconText subclass: #PlusMinusIcon
-	instanceVariableNames: 'image text size'
-	package: 'DyNagoya-Tools'!
-
-!PlusMinusIcon methodsFor: 'not yet classified'!
-
-close
-	image := '/images/Plus-icon.png'.
-	self redraw
-!
-
-none
-	image := '/images/None-icon.png'.
-	self redraw
-!
-
-open
-	image := '/images/Minus-icon.png'.
-	self redraw
-! !
-
-!PlusMinusIcon class methodsFor: 'not yet classified'!
-
-text: aString
-	^ self new 
-		size: 16;
-		text: aString
-! !
-
 Object subclass: #RemoteObject
 	instanceVariableNames: 'obj group key'
 	package: 'DyNagoya-Tools'!
