@@ -1295,7 +1295,7 @@ openOn: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView'
 	package: 'IDE'!
 
 !ClassBrowser methodsFor: 'accessing'!
@@ -1362,6 +1362,10 @@ leftBorder
      ]
 !
 
+listArea: area
+	^ (< this["@"+area]>)
+!
+
 offStyle
   ^ [ %1
 	css: 'margin-left' put: '10px';
@@ -1384,6 +1388,22 @@ onStyle
      ]
 !
 
+renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: area on: onStyle off: offStyle
+	| ret |
+	ret := html span.
+	^ ret
+		with: aTitle;
+		|> offStyle;
+		class: cssClass;
+		onClick: [ (self listArea: area) 
+					toggleContents: [ :html |
+						aClass methodDictionary values do: [  
+							html div with: (MethodBrowser new class: aClass method: %1) ] ]
+					withOn: [ ret |> onStyle ]
+					withOff: [ ret |> offStyle ] 
+			]
+!
+
 renderOn: html
 	root := html root name:  'class-', selectedClass name.
 	classView := html div with: [
@@ -1394,17 +1414,20 @@ renderOn: html
 					subclassView >>= [ %1 toggleContents: [ :html |
 						subclasses do: [ 
 							html div with: (ClassBrowser new class: %1 descendants: descendants) ] ] ] ].
-		methodTitle := html span with: 'methods';
-			|> self offStyle;
-			class: 'browser-method-button';
-			onClick: [ methodView 
-						toggleContents: [ :html |
-							self methods do: [  
-								html div with: (MethodBrowser new class: selectedClass method: %1) ] ]
-						withOn: [ methodTitle |> self onStyle ]
-						withOff: [ methodTitle |> self offStyle ] 
-			].
+		selectedClass class methodDictionary ifNotEmpty: [
+			classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' 
+							class: (selectedClass class) cssClass: 'browser-class-method-button'
+							area: 'classMethodView'
+							on: self onStyle off: self offStyle.
+		].
+		selectedClass methodDictionary ifNotEmpty: [
+			methodTitle :=  self renderMethodButtonOn: html title: 'methods' 
+							class: selectedClass cssClass: 'browser-method-button'
+							area: 'methodView'
+							on: self onStyle off: self offStyle.
+		]
 	].
+	classMethodView := html div |> self leftBorder.
 	methodView := html div |> self leftBorder.
 	subclasses 
 		ifEmpty: [ subclassView := nil ]; 
@@ -1431,7 +1454,9 @@ Browser subclass: #MethodBrowser
 class: aClass method: aCompiledMethod
 	selectedClass := aClass.
 	selectedMethod := aCompiledMethod.
-	selectedPackage := selectedClass package.
+	selectedClass isMetaclass
+		ifTrue: [ selectedPackage := selectedClass instanceClass package ]
+		ifFalse: [ selectedPackage := selectedClass package ].
 	selectedProtocol := selectedMethod category
 !
 
