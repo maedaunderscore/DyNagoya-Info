@@ -1396,12 +1396,12 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     self['@browser'] = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self['@selectedClass']]);
-    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [self['@browser']]);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "black"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["padding", "15px"]);return smalltalk.send($rec, "_with_", [self['@browser']]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09browser := (ClassBrowser hierarchy: selectedClass).\x0a\x09html div with: browser",
-messageSends: ["hierarchy:", "with:", "div"],
+source: "renderBody: html\x0a\x09browser := (ClassBrowser hierarchy: selectedClass).\x0a\x09html div \x0a\x09\x09css: 'background' put: 'black';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09\x09css: 'padding' put: '15px';\x0a\x09\x09with: browser",
+messageSends: ["hierarchy:", "css:put:", "with:", "div"],
 referencedClasses: ["ClassBrowser"]
 }),
 smalltalk.BrowsePage);
