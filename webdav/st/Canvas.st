@@ -708,6 +708,14 @@ width: aString
 
 asJQuery
     ^window jQuery: self element
+!
+
+find: aSelector
+	| jq |
+	jq := window jQuery: aSelector context: (self element parentElement).
+	jq length = 0 
+		ifTrue: [ ^ nil ]
+		ifFalse: [ ^ HTMLCanvas onJQuery:  jq ]
 ! !
 
 !TagBrush methodsFor: 'events'!
