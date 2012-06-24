@@ -298,6 +298,124 @@ fn: function () {
 smalltalk.DebugErrorHandler.klass);
 
 
+smalltalk.addClass('IconText', smalltalk.Widget, ['image', 'text', 'size', 'root'], 'IDE');
+smalltalk.addMethod(
+"_image_",
+smalltalk.method({
+selector: "image:",
+fn: function (url) {
+    var self = this;
+    self['@image'] = url;
+    return self;
+}
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@root'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@text']]);smalltalk.send($rec, "_css_put_", ["padding-left", smalltalk.send(smalltalk.send("", "__comma", [($receiver = self['@size']).klass === smalltalk.Number ? $receiver + 3 : smalltalk.send($receiver, "__plus", [3])]), "__comma", ["px"])]);return smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(smalltalk.send("url(", "__comma", [self['@image']]), "__comma", [") no-repeat 0 50%"])]);}(smalltalk.send(html, "_span", []));}]);
+    return self;
+}
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@root'] = smalltalk.send(html, "_root", []);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_size_",
+smalltalk.method({
+selector: "size:",
+fn: function (aSize) {
+    var self = this;
+    self['@size'] = aSize;
+    return self;
+}
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_text_",
+smalltalk.method({
+selector: "text:",
+fn: function (aText) {
+    var self = this;
+    self['@text'] = aText;
+    return self;
+}
+}),
+smalltalk.IconText);
+
+
+
+smalltalk.addClass('PlusMinusIcon', smalltalk.IconText, ['image', 'text', 'size'], 'IDE');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/Plus-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.PlusMinusIcon);
+
+smalltalk.addMethod(
+"_none",
+smalltalk.method({
+selector: "none",
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/None-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.PlusMinusIcon);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/Minus-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.PlusMinusIcon);
+
+
+smalltalk.addMethod(
+"_text_",
+smalltalk.method({
+selector: "text:",
+fn: function (aString) {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_size_", [16]);return smalltalk.send($rec, "_text_", [aString]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.PlusMinusIcon.klass);
+
+
 smalltalk.addClass('SourceArea', smalltalk.Widget, ['editor', 'div', 'receiver', 'onDoIt'], 'IDE');
 smalltalk.addMethod(
 "_clear",
@@ -2216,11 +2334,12 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
+    var title = nil;
     self['@root'] = smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {title = smalltalk.send(smalltalk.PlusMinusIcon || PlusMinusIcon, "_text_", [smalltalk.send(self['@selectedClass'], "_name", [])]);(function ($rec) {smalltalk.send($rec, "_with_", [title]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_withOn_withOff_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}, function () {return smalltalk.send(title, "_open", []);}, function () {return smalltalk.send(title, "_close", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
     self['@classMethodView'] = function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);smalltalk.send($rec, "_css_put_", ["border-left", smalltalk.send("3px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);return smalltalk.send($rec, "_css_put_", ["color", smalltalk.send(self, "_classColor", [])]);}(smalltalk.send(html, "_div", []));
     self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
-    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
+    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {smalltalk.send(title, "_none", []);return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {smalltalk.send(title, "_close", []);return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
     return self;
 }
 }),
