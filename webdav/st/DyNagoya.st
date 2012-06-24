@@ -198,10 +198,12 @@ messages
 	^{
 	 'Type one of below lines on workspace, then click "DoIt"'.
 	 ''.
-	 '    AboutDyNagoya show    "to see what DyNagoya is"'.
-	 '    Links show                      "to see Links about our interest"'.
-	 '    Browser open                 "to open class browser"'.
-	 '    EntryPoint start               "to restart this page"'
+	 '    AboutDyNagoya show         "to see what DyNagoya is"'.
+	 '    Links show                           "to see Links about our interest"'.
+	 '    Browser open                       "to open class browser"'.
+	 '    EntryPoint start                    "to restart this page"'.
+	'    BrowserDialog open: Page   "to open browser on Dialog"'.
+	 '    (BrowsePage show: Page) browser open: TopPage method: ''renderBody:'''
 	}
 !
 
