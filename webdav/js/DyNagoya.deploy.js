@@ -279,7 +279,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "707px";
+    return "686px";
     return self;
 }
 }),
@@ -291,7 +291,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "173px";
+    return "115px";
     return self;
 }
 }),
