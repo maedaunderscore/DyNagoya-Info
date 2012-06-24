@@ -325,5 +325,6 @@ h1 {
     height: auto; overflow: visible;
 }
 .tree-source .CodeMirror {
-    background: white
+    background: white;
+    color: black;
 }
