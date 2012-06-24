@@ -151,11 +151,11 @@ imageUrl
 !
 
 x
-  ^'639px'
+  ^'707px'
 !
 
 y
-  ^'88px'
+  ^'173px'
 ! !
 
 Object subclass: #EntryPoint
@@ -199,9 +199,9 @@ messages
 	 'Type one of below lines on workspace, then click "DoIt"'.
 	 '    AboutDyNagoya show         "to see what DyNagoya is"'.
 	 '    Links show                           "to see Links about our interest"'.
-	 '    Browser open                       "to open class browser"'.
+	 '    Browser open                       "to open default class browser"'.
 	'    BrowserDialog open: Page   "to open browser on Dialog"'.
-	 '    (BrowsePage show: Page) browser open: TopPage method: ''renderBody:'''
+	 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''
 	}
 !
 
