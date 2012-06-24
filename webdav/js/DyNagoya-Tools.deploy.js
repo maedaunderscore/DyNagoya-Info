@@ -133,7 +133,7 @@ smalltalk.method({
 selector: "defaultOption",
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send("sticky", "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}]), smalltalk.send("maxHeight", "__minus_gt", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.8 : smalltalk.send($receiver, "__star", [0.8])])]);
     return self;
 }
 }),

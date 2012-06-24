@@ -150,7 +150,12 @@ open
 !DialogBox methodsFor: 'initialization'!
 
 defaultOption
-	^ #{ 'modal' -> true . #sticky -> true. 'close' -> [ self close ]}
+	^ #{ 
+		'modal' -> true .
+		 'sticky' -> true. 
+		'close' -> [ self close ].
+		'maxHeight' -> (window innerHeight * 0.8)
+	}
 !
 
 initialize
