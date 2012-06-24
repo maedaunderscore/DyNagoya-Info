@@ -408,6 +408,169 @@ referencedClasses: []
 smalltalk.DebugErrorHandler.klass);
 
 
+smalltalk.addClass('IconText', smalltalk.Widget, ['image', 'text', 'size', 'root'], 'IDE');
+smalltalk.addMethod(
+"_image_",
+smalltalk.method({
+selector: "image:",
+category: 'accessing',
+fn: function (url) {
+    var self = this;
+    self['@image'] = url;
+    return self;
+},
+args: ["url"],
+source: "image: url\x0a\x09image := url",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@root'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@text']]);smalltalk.send($rec, "_css_put_", ["padding-left", smalltalk.send(smalltalk.send("", "__comma", [($receiver = self['@size']).klass === smalltalk.Number ? $receiver + 3 : smalltalk.send($receiver, "__plus", [3])]), "__comma", ["px"])]);return smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(smalltalk.send("url(", "__comma", [self['@image']]), "__comma", [") no-repeat 0 50%"])]);}(smalltalk.send(html, "_span", []));}]);
+    return self;
+},
+args: [],
+source: "redraw\x0a\x09root contents: [ :html |  html span\x0a\x09\x09with: text;\x0a\x09\x09css: 'padding-left' put: '', (size + 3), 'px';\x0a\x09\x09css: 'background' put: 'url(', image, ') no-repeat 0 50%'\x0a\x09]",
+messageSends: ["contents:", "with:", "css:put:", ",", "+", "span"],
+referencedClasses: []
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'accessing',
+fn: function (html) {
+    var self = this;
+    self['@root'] = smalltalk.send(html, "_root", []);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09root := html root.\x0a\x09self redraw.",
+messageSends: ["root", "redraw"],
+referencedClasses: []
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_size_",
+smalltalk.method({
+selector: "size:",
+category: 'accessing',
+fn: function (aSize) {
+    var self = this;
+    self['@size'] = aSize;
+    return self;
+},
+args: ["aSize"],
+source: "size: aSize\x0a\x09size := aSize",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IconText);
+
+smalltalk.addMethod(
+"_text_",
+smalltalk.method({
+selector: "text:",
+category: 'accessing',
+fn: function (aText) {
+    var self = this;
+    self['@text'] = aText;
+    return self;
+},
+args: ["aText"],
+source: "text: aText\x0a\x09text := aText",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IconText);
+
+
+
+smalltalk.addClass('PlusMinusIcon', smalltalk.IconText, ['image', 'text', 'size'], 'IDE');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/Plus-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: [],
+source: "close\x0a\x09image := '/images/Plus-icon.png'.\x0a\x09self redraw",
+messageSends: ["redraw"],
+referencedClasses: []
+}),
+smalltalk.PlusMinusIcon);
+
+smalltalk.addMethod(
+"_none",
+smalltalk.method({
+selector: "none",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/None-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: [],
+source: "none\x0a\x09image := '/images/None-icon.png'.\x0a\x09self redraw",
+messageSends: ["redraw"],
+referencedClasses: []
+}),
+smalltalk.PlusMinusIcon);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@image'] = "/images/Minus-icon.png";
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: [],
+source: "open\x0a\x09image := '/images/Minus-icon.png'.\x0a\x09self redraw",
+messageSends: ["redraw"],
+referencedClasses: []
+}),
+smalltalk.PlusMinusIcon);
+
+
+smalltalk.addMethod(
+"_text_",
+smalltalk.method({
+selector: "text:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_size_", [16]);return smalltalk.send($rec, "_text_", [aString]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: ["aString"],
+source: "text: aString\x0a\x09^ self new \x0a\x09\x09size: 16;\x0a\x09\x09text: aString",
+messageSends: ["size:", "text:", "new"],
+referencedClasses: []
+}),
+smalltalk.PlusMinusIcon.klass);
+
+
 smalltalk.addClass('SourceArea', smalltalk.Widget, ['editor', 'div', 'receiver', 'onDoIt'], 'IDE');
 smalltalk.addMethod(
 "_clear",
@@ -3032,17 +3195,18 @@ selector: "renderOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
+    var title = nil;
     self['@root'] = smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {title = smalltalk.send(smalltalk.PlusMinusIcon || PlusMinusIcon, "_text_", [smalltalk.send(self['@selectedClass'], "_name", [])]);(function ($rec) {smalltalk.send($rec, "_with_", [title]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_withOn_withOff_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}, function () {return smalltalk.send(title, "_open", []);}, function () {return smalltalk.send(title, "_close", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
     self['@classMethodView'] = function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);smalltalk.send($rec, "_css_put_", ["border-left", smalltalk.send("3px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);return smalltalk.send($rec, "_css_put_", ["color", smalltalk.send(self, "_classColor", [])]);}(smalltalk.send(html, "_div", []));
     self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
-    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
+    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {smalltalk.send(title, "_none", []);return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {smalltalk.send(title, "_close", []);return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09classView := html div with: [\x0a\x09\x09html span with: selectedClass name;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em';\x0a\x09\x09\x09\x09onClick: [ \x0a\x09\x09\x09\x09\x09subclassView >>= [ %1 toggleContents: [ :html |\x0a\x09\x09\x09\x09\x09\x09subclasses do: [ \x0a\x09\x09\x09\x09\x09\x09\x09html div with: (ClassBrowser new class: %1 descendants: descendants) ] ] ] ].\x0a\x09\x09selectedClass class methodDictionary ifNotEmpty: [\x0a\x09\x09\x09classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: (selectedClass class) cssClass: 'browser-class-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'classMethodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyleForClass off: self offStyle.\x0a\x09\x09].\x0a\x09\x09selectedClass methodDictionary ifNotEmpty: [\x0a\x09\x09\x09methodTitle :=  self renderMethodButtonOn: html title: 'methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: selectedClass cssClass: 'browser-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'methodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyle off: self offStyle.\x0a\x09\x09]\x0a\x09].\x0a\x09classMethodView := html div |> self leftBorder;  \x0a\x09\x09css: 'border-left' put: ('3px solid ', self classColor);\x0a\x09\x09css: 'color' put: self classColor.\x0a\x09methodView := html div |> self leftBorder.\x0a\x09subclasses \x0a\x09\x09ifEmpty: [ subclassView := nil ]; \x0a\x09\x09ifNotEmpty: [ \x0a\x09\x09\x09subclassView := html div css: 'margin-left' put: '10px'\x0a\x09\x09].",
-messageSends: ["name:", "root", ",", "name", "with:", "div", "class:", "css:put:", "onClick:", ">>=", "toggleContents:", "do:", "class:descendants:", "new", "span", "ifNotEmpty:", "methodDictionary", "class", "renderMethodButtonOn:title:class:cssClass:area:on:off:", "onStyleForClass", "offStyle", "onStyle", "|>", "leftBorder", "classColor", "ifEmpty:"],
-referencedClasses: ["ClassBrowser"]
+source: "renderOn: html\x0a\x09| title |\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09classView := html div with: [\x0a\x09\x09title := PlusMinusIcon text: selectedClass name.\x0a\x09\x09html span with: title;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em';\x0a\x09\x09\x09\x09onClick: [ \x0a\x09\x09\x09\x09\x09subclassView >>= [ %1 toggleContents: [ :html |\x0a\x09\x09\x09\x09\x09\x09subclasses do: [ \x0a\x09\x09\x09\x09\x09\x09\x09html div with: (ClassBrowser new class: %1 descendants: descendants) ] ]\x0a\x09\x09\x09\x09\x09\x09withOn: [ title open] withOff: [ title close ]\x0a\x09\x09\x09\x09\x09 ] ].\x0a\x09\x09selectedClass class methodDictionary ifNotEmpty: [\x0a\x09\x09\x09classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: (selectedClass class) cssClass: 'browser-class-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'classMethodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyleForClass off: self offStyle.\x0a\x09\x09].\x0a\x09\x09selectedClass methodDictionary ifNotEmpty: [\x0a\x09\x09\x09methodTitle :=  self renderMethodButtonOn: html title: 'methods' \x0a\x09\x09\x09\x09\x09\x09\x09class: selectedClass cssClass: 'browser-method-button'\x0a\x09\x09\x09\x09\x09\x09\x09area: 'methodView'\x0a\x09\x09\x09\x09\x09\x09\x09on: self onStyle off: self offStyle.\x0a\x09\x09]\x0a\x09].\x0a\x09classMethodView := html div |> self leftBorder;  \x0a\x09\x09css: 'border-left' put: ('3px solid ', self classColor);\x0a\x09\x09css: 'color' put: self classColor.\x0a\x09methodView := html div |> self leftBorder.\x0a\x09subclasses \x0a\x09\x09ifEmpty: [ \x0a\x09\x09\x09title none.\x0a\x09\x09\x09subclassView := nil ]; \x0a\x09\x09ifNotEmpty: [ \x0a\x09\x09\x09title close.\x0a\x09\x09\x09subclassView := html div css: 'margin-left' put: '10px'\x0a\x09\x09].",
+messageSends: ["name:", "root", ",", "name", "with:", "div", "text:", "class:", "css:put:", "onClick:", ">>=", "toggleContents:withOn:withOff:", "do:", "class:descendants:", "new", "open", "close", "span", "ifNotEmpty:", "methodDictionary", "class", "renderMethodButtonOn:title:class:cssClass:area:on:off:", "onStyleForClass", "offStyle", "onStyle", "|>", "leftBorder", "classColor", "ifEmpty:", "none"],
+referencedClasses: ["PlusMinusIcon", "ClassBrowser"]
 }),
 smalltalk.ClassBrowser);
 
