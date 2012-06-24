@@ -154,7 +154,7 @@ defaultOption
 		'modal' -> true .
 		 'sticky' -> true. 
 		'close' -> [ self close ].
-		'maxHeight' -> (window innerHeight * 0.8)
+		'maxHeight' -> (window innerHeight * 0.9)
 	}
 !
 
@@ -181,7 +181,7 @@ open: aClass
 	ret := self new 
 		widget: browser;
 		width: '600px';
-"		height: '400px';"
+		height: (window innerHeight * 0.9);
 		modal: false;
 		open.
 
