@@ -327,4 +327,6 @@ h1 {
 .tree-source .CodeMirror {
     background: white;
     color: black;
-}
+    font-family:  "DejaVu Sans", Helvetica, sans;
+    line-height: 1.3em;
+ }
