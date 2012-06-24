@@ -185,12 +185,12 @@ selector: "defaultOption",
 category: 'initialization',
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send(smalltalk.symbolFor("sticky"), "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [true]), smalltalk.send("sticky", "__minus_gt", [true]), smalltalk.send("close", "__minus_gt", [function () {return smalltalk.send(self, "_close", []);}]), smalltalk.send("maxHeight", "__minus_gt", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.8 : smalltalk.send($receiver, "__star", [0.8])])]);
     return self;
 },
 args: [],
-source: "defaultOption\x0a\x09^ #{ 'modal' -> true . #sticky -> true. 'close' -> [ self close ]}",
-messageSends: ["->", "close"],
+source: "defaultOption\x0a\x09^ #{ \x0a\x09\x09'modal' -> true .\x0a\x09\x09 'sticky' -> true. \x0a\x09\x09'close' -> [ self close ].\x0a\x09\x09'maxHeight' -> (window innerHeight * 0.8)\x0a\x09}",
+messageSends: ["->", "close", "*", "innerHeight"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
