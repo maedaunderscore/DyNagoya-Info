@@ -183,6 +183,7 @@ open: aClass
 		width: '600px';
 		height:  (window innerHeight * 0.5);
 		modal: false;
+		title: aClass name;
 		open.
 
 	browser open: aClass.
