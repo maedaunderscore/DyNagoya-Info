@@ -181,6 +181,7 @@ open: aClass
 	ret := self new 
 		widget: browser;
 		width: '600px';
+		height:  (window innerHeight * 0.5)
 		modal: false;
 		open.
 
@@ -368,14 +369,13 @@ image: url
 redraw
 	root contents: [ :html |  html span
 		with: text;
-		css: 'margin-left' put: '', (size + 3), 'px';
+		css: 'padding-left' put: '', (size + 3), 'px';
 		css: 'background' put: 'url(', image, ') no-repeat 0 50%'
 	]
 !
 
 renderOn: html
 	root := html root.
-	Transcript show: 'call';cr.
 	self redraw.
 !
 

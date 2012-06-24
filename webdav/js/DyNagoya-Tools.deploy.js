@@ -386,7 +386,7 @@ fn: function (aClass) {
     var browser = nil;
     var ret = nil;
     browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
-    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_modal_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5]), false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
     smalltalk.send(browser, "_open_", [aClass]);
     return ret;
     return self;
@@ -702,7 +702,7 @@ smalltalk.method({
 selector: "redraw",
 fn: function () {
     var self = this;
-    smalltalk.send(self['@root'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@text']]);smalltalk.send($rec, "_css_put_", ["margin-left", smalltalk.send(smalltalk.send("", "__comma", [($receiver = self['@size']).klass === smalltalk.Number ? $receiver + 3 : smalltalk.send($receiver, "__plus", [3])]), "__comma", ["px"])]);return smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(smalltalk.send("url(", "__comma", [self['@image']]), "__comma", [") no-repeat 0 50%"])]);}(smalltalk.send(html, "_span", []));}]);
+    smalltalk.send(self['@root'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@text']]);smalltalk.send($rec, "_css_put_", ["padding-left", smalltalk.send(smalltalk.send("", "__comma", [($receiver = self['@size']).klass === smalltalk.Number ? $receiver + 3 : smalltalk.send($receiver, "__plus", [3])]), "__comma", ["px"])]);return smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(smalltalk.send("url(", "__comma", [self['@image']]), "__comma", [") no-repeat 0 50%"])]);}(smalltalk.send(html, "_span", []));}]);
     return self;
 }
 }),
@@ -715,7 +715,6 @@ selector: "renderOn:",
 fn: function (html) {
     var self = this;
     self['@root'] = smalltalk.send(html, "_root", []);
-    (function ($rec) {smalltalk.send($rec, "_show_", ["call"]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     smalltalk.send(self, "_redraw", []);
     return self;
 }
