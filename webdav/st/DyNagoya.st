@@ -630,7 +630,11 @@ method: aString
 
 renderBody: html
 	browser := (ClassBrowser hierarchy: selectedClass).
-	html div with: browser
+	html div 
+		css: 'background' put: 'black';
+		css: 'color' put: 'white';
+		css: 'padding' put: '15px';
+		with: browser
 !
 
 selectedClass: aClass
