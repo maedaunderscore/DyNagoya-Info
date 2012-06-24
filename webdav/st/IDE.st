@@ -1549,6 +1549,7 @@ class: aClass method: aCompiledMethod
 renderOn: html
 	html span  
 		with: selectedMethod selector;
+		css: 'cursor' put: 'pointer';
 		name: 'method-', selectedMethod selector;
 		onClick: [ sourceView toggleContents: [ :html || sourceArea |
 			sourceArea := SourceArea new.
