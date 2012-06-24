@@ -1354,10 +1354,14 @@ selectorList: aClass method: aString
 
 !ClassBrowser methodsFor: 'rendering'!
 
+classColor
+	^'#AAAAFF'
+!
+
 leftBorder
   ^ [ %1
 	css: 'margin-left' put: '10px';
-	css: 'border-left' put: '1px solid white';
+	css: 'border-left' put: '3px solid white';
 	css: 'padding-left' put: '5px'
      ]
 !
@@ -1385,6 +1389,17 @@ onStyle
 	css: 'border' put: '1px solid white';
 	css: 'background' put: 'white';
 	css: 'color' put: 'black'
+     ]
+!
+
+onStyleForClass
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid ', self classColor;
+	css: 'background' put: self classColor;
+	css: 'color' put: 'white'
      ]
 !
 
@@ -1418,7 +1433,7 @@ renderOn: html
 			classMethodTitle :=  self renderMethodButtonOn: html title: 'class methods' 
 							class: (selectedClass class) cssClass: 'browser-class-method-button'
 							area: 'classMethodView'
-							on: self onStyle off: self offStyle.
+							on: self onStyleForClass off: self offStyle.
 		].
 		selectedClass methodDictionary ifNotEmpty: [
 			methodTitle :=  self renderMethodButtonOn: html title: 'methods' 
@@ -1427,7 +1442,9 @@ renderOn: html
 							on: self onStyle off: self offStyle.
 		]
 	].
-	classMethodView := html div |> self leftBorder.
+	classMethodView := html div |> self leftBorder;  
+		css: 'border-left' put: ('3px solid ', self classColor);
+		css: 'color' put: self classColor.
 	methodView := html div |> self leftBorder.
 	subclasses 
 		ifEmpty: [ subclassView := nil ]; 
