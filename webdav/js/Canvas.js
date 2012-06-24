@@ -2412,6 +2412,33 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_find_",
+smalltalk.method({
+selector: "find:",
+category: 'converting',
+fn: function (aSelector) {
+    var self = this;
+    var $early = {};
+    try {
+        var jq = nil;
+        jq = smalltalk.send(typeof window == "undefined" ? nil : window, "_jQuery_context_", [aSelector, smalltalk.send(smalltalk.send(self, "_element", []), "_parentElement", [])]);
+        ($receiver = smalltalk.send(smalltalk.send(jq, "_length", []), "__eq", [0])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [nil];}();}() : function () {return function () {throw $early = [smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [jq])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [nil];}();}, function () {return function () {throw $early = [smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [jq])];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: ["aSelector"],
+source: "find: aSelector\x0a\x09| jq |\x0a\x09jq := window jQuery: aSelector context: (self element parentElement).\x0a\x09jq length = 0 \x0a\x09\x09ifTrue: [ ^ nil ]\x0a\x09\x09ifFalse: [ ^ HTMLCanvas onJQuery:  jq ]",
+messageSends: ["jQuery:context:", "parentElement", "element", "ifTrue:ifFalse:", "=", "length", "onJQuery:"],
+referencedClasses: ["HTMLCanvas"]
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_for_",
 smalltalk.method({
 selector: "for:",
