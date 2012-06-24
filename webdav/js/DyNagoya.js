@@ -474,6 +474,39 @@ referencedClasses: []
 smalltalk.EntryPoint.klass);
 
 smalltalk.addMethod(
+"_position",
+smalltalk.method({
+selector: "position",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "position\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_positionY",
+smalltalk.method({
+selector: "positionY",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 200 : smalltalk.send($receiver, "__minus", [200])]), "__comma", ["px"]);
+    return self;
+},
+args: [],
+source: "positionY\x0a  ^ '', (window innerHeight * 0.9 - 200), 'px'",
+messageSends: [",", "-", "*", "innerHeight"],
+referencedClasses: []
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
 "_screenPreparation",
 smalltalk.method({
 selector: "screenPreparation",
@@ -518,16 +551,16 @@ fn: function () {
     var self = this;
     ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
     ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
-    smalltalk.send(self['@workspace'], "_open", []);
-    smalltalk.send(self['@transcript'], "_open", []);
+    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@workspace']));
+    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@transcript']));
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
     smalltalk.send(self, "_showMessage", []);
     return self;
 },
 args: [],
-source: "start\x0a  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].\x0a\x22  self makeWorkspaceBigTheme.\x22\x0a  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].\x0a\x0a  workspace open.\x0a  transcript open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
-messageSends: ["ifNil:", "widget:", "new", "x:", "width:", "title:", "modal:", "current", "open", "screenPreparation", "show", "showMessage"],
+source: "start\x0a  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].\x0a\x22  self makeWorkspaceBigTheme.\x22\x0a  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].\x0a\x0a  workspace  y: self positionY; open.\x0a  transcript y: self positionY; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
+messageSends: ["ifNil:", "widget:", "new", "x:", "width:", "title:", "modal:", "current", "y:", "positionY", "open", "screenPreparation", "show", "showMessage"],
 referencedClasses: ["Workspace", "DialogBox", "IDETranscript", "LoginPanel"]
 }),
 smalltalk.EntryPoint.klass);
