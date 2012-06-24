@@ -1346,7 +1346,7 @@ selectorList: aClass method: aString
 	aString ifNotNil: [ 
 		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-method-button').
 		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]').
-		Transcript show: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]')
+		xs add: 'dummy' "to click last one"
 	].
 
 	^ xs
