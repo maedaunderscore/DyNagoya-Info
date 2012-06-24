@@ -181,7 +181,7 @@ open: aClass
 	ret := self new 
 		widget: browser;
 		width: '600px';
-		height:  (window innerHeight * 0.5)
+		height:  (window innerHeight * 0.5);
 		modal: false;
 		open.
 
