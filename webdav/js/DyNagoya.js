@@ -385,11 +385,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "639px";
+    return "707px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'639px'",
+source: "x\x0a  ^'707px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -402,11 +402,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "88px";
+    return "173px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'88px'",
+source: "y\x0a  ^'173px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -463,11 +463,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Page) browser open: TopPage method: 'renderBody:'"];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'"];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Page) browser open: TopPage method: ''renderBody:'''\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
