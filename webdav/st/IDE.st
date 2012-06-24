@@ -1468,6 +1468,7 @@ renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: 
 	ret := html span.
 	^ ret
 		with: aTitle;
+		css: 'cursor' put: 'pointer';
 		|> offStyle;
 		class: cssClass;
 		onClick: [ (self listArea: area) 
@@ -1480,11 +1481,11 @@ renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: 
 !
 
 renderOn: html
-	| title |
+	| title titleBrush |
 	root := html root name:  'class-', selectedClass name.
 	classView := html div with: [
 		title := PlusMinusIcon text: selectedClass name.
-		html span with: title;
+		titleBrush := html span with: title;
 				class: 'browser-class-name';
 				css: 'font-size' put: '1.2em';
 				onClick: [ 
@@ -1516,6 +1517,7 @@ renderOn: html
 			subclassView := nil ]; 
 		ifNotEmpty: [ 
 			title close.
+			titleBrush css: 'cursor' put: 'pointer'.
 			subclassView := html div css: 'margin-left' put: '10px'
 		].
 ! !
