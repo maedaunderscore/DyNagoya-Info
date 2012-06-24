@@ -1295,7 +1295,7 @@ openOn: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root'
 	package: 'IDE'!
 
 !ClassBrowser methodsFor: 'accessing'!
@@ -1336,8 +1336,8 @@ open: aClass method: aMethodName
 !ClassBrowser methodsFor: 'private'!
 
 openIfClosed: selector  parent: parentSelector
-	selector asJQuery length = 0 ifTrue: [ parentSelector asJQuery click ].
-	^ selector asJQuery
+	(root find: selector) ifNil: [ (root find: parentSelector) >>= [ %1 root asJQuery click ]].
+	^ root find: selector
 !
 
 selectorList: aClass method: aString
@@ -1384,7 +1384,7 @@ onStyle
 !
 
 renderOn: html
-	html root name:  'class-', selectedClass name.
+	root := html root name:  'class-', selectedClass name.
 	classView := html div with: [
 		html span with: selectedClass name;
 				class: 'browser-class-name';
