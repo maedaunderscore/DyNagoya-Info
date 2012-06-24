@@ -30,7 +30,7 @@ allSubclasses
 !
 
 ancestors
-	^ self unfold: [ { %1 superclass. %1 superclass } ]
+	^ (self unfold: [ { %1 superclass. %1 superclass } ]) default: {}
 !
 
 comment

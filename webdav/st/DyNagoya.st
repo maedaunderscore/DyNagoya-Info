@@ -91,7 +91,7 @@ y
 
 renderBodyOn: html
 	html div 
-		class: 'alert-message block-message warning ui-draggable span9';
+		class: 'alert-message block-message warning ui-draggable';
 		style: 'margin: 10px';
 		with: Event latest
 ! !
@@ -468,7 +468,7 @@ meeting07
 		date: '2012/06/23';
 		start: '18:00:00';
 		end: '20:30:00';
-		place: AnyWhere;
+		place: AmiyakiTei;
 		detail: {
 'Smalltalk勉強会　未踏スペシャル フィードバック'.
 '合同Smalltalk勉強会の段取りを決める'.
@@ -612,6 +612,42 @@ renderBody: html
      'iPadやAndroid上で動作するSmalltalkも活発に開発されています。'
    }
 } do: [ :each | html h3 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2  ]]]
+! !
+
+Page subclass: #BrowsePage
+	instanceVariableNames: 'selectedClass methodName browser'
+	package: 'DyNagoya'!
+
+!BrowsePage methodsFor: 'not yet classified'!
+
+browser
+	^ browser
+!
+
+method: aString
+	methodName := aString
+!
+
+renderBody: html
+	browser := (ClassBrowser hierarchy: selectedClass).
+	html div with: browser
+!
+
+selectedClass: aClass
+	selectedClass := aClass
+! !
+
+!BrowsePage class methodsFor: 'not yet classified'!
+
+show: aClass
+	^ self show: aClass method: nil
+!
+
+show: aClass method: aString
+	^(self new selectedClass: aClass; method: aString; yourself)
+	|> [ Screen new flip: %1 ];
+	|> [ %1 browser open: aClass method: aString ];
+	yourself
 ! !
 
 Page subclass: #Links
@@ -843,6 +879,24 @@ name
 
 url
 	^ 'http://www.a-tm.co.jp/'
+! !
+
+Place subclass: #AmiyakiTei
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!AmiyakiTei methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市千種区今池2丁目1-34'
+!
+
+name
+	^ 'あみやき亭 千種店'
+!
+
+url
+	^ 'http://www.amiyakitei.co.jp/shop2.html#area_nagoya'
 ! !
 
 Place subclass: #AnyWhere

@@ -189,11 +189,11 @@ selector: "renderBodyOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["alert-message block-message warning ui-draggable span9"]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Event || Event, "_latest", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["alert-message block-message warning ui-draggable"]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Event || Event, "_latest", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09class: 'alert-message block-message warning ui-draggable span9';\x0a\x09\x09style: 'margin: 10px';\x0a\x09\x09with: Event latest",
+source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09class: 'alert-message block-message warning ui-draggable';\x0a\x09\x09style: 'margin: 10px';\x0a\x09\x09with: Event latest",
 messageSends: ["class:", "style:", "with:", "latest", "div"],
 referencedClasses: ["Event"]
 }),
@@ -1117,13 +1117,13 @@ selector: "meeting07",
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0307"]);smalltalk.send($rec, "_date_", ["2012/06/23"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.AnyWhere || AnyWhere]);return smalltalk.send($rec, "_detail_", [["Smalltalk\u52C9\u5F37\u4F1A\u3000\u672A\u8E0F\u30B9\u30DA\u30B7\u30E3\u30EB \u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF", "\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u6BB5\u53D6\u308A\u3092\u6C7A\u3081\u308B", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0307"]);smalltalk.send($rec, "_date_", ["2012/06/23"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.AmiyakiTei || AmiyakiTei]);return smalltalk.send($rec, "_detail_", [["Smalltalk\u52C9\u5F37\u4F1A\u3000\u672A\u8E0F\u30B9\u30DA\u30B7\u30E3\u30EB \u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF", "\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u6BB5\u53D6\u308A\u3092\u6C7A\u3081\u308B", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: "meeting07\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: 'DyNagoya MTG ＃07';\x0a\x09\x09date: '2012/06/23';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:30:00';\x0a\x09\x09place: AnyWhere;\x0a\x09\x09detail: {\x0a'Smalltalk勉強会　未踏スペシャル フィードバック'.\x0a'合同Smalltalk勉強会の段取りを決める'.\x0a'Smalltalk入門(希望者がいれば)'\x0a}",
+source: "meeting07\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: 'DyNagoya MTG ＃07';\x0a\x09\x09date: '2012/06/23';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:30:00';\x0a\x09\x09place: AmiyakiTei;\x0a\x09\x09detail: {\x0a'Smalltalk勉強会　未踏スペシャル フィードバック'.\x0a'合同Smalltalk勉強会の段取りを決める'.\x0a'Smalltalk入門(希望者がいれば)'\x0a}",
 messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
-referencedClasses: ["AnyWhere"]
+referencedClasses: ["AmiyakiTei"]
 }),
 smalltalk.Event.klass);
 
@@ -1351,6 +1351,112 @@ referencedClasses: []
 }),
 smalltalk.AboutSmalltalk);
 
+
+
+smalltalk.addClass('BrowsePage', smalltalk.Page, ['selectedClass', 'methodName', 'browser'], 'DyNagoya');
+smalltalk.addMethod(
+"_browser",
+smalltalk.method({
+selector: "browser",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@browser'];
+    return self;
+},
+args: [],
+source: "browser\x0a\x09^ browser",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BrowsePage);
+
+smalltalk.addMethod(
+"_method_",
+smalltalk.method({
+selector: "method:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@methodName'] = aString;
+    return self;
+},
+args: ["aString"],
+source: "method: aString\x0a\x09methodName := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BrowsePage);
+
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@browser'] = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self['@selectedClass']]);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [self['@browser']]);
+    return self;
+},
+args: ["html"],
+source: "renderBody: html\x0a\x09browser := (ClassBrowser hierarchy: selectedClass).\x0a\x09html div with: browser",
+messageSends: ["hierarchy:", "with:", "div"],
+referencedClasses: ["ClassBrowser"]
+}),
+smalltalk.BrowsePage);
+
+smalltalk.addMethod(
+"_selectedClass_",
+smalltalk.method({
+selector: "selectedClass:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    self['@selectedClass'] = aClass;
+    return self;
+},
+args: ["aClass"],
+source: "selectedClass: aClass\x0a\x09selectedClass := aClass",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BrowsePage);
+
+
+smalltalk.addMethod(
+"_show_",
+smalltalk.method({
+selector: "show:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    return smalltalk.send(self, "_show_method_", [aClass, nil]);
+    return self;
+},
+args: ["aClass"],
+source: "show: aClass\x0a\x09^ self show: aClass method: nil",
+messageSends: ["show:method:"],
+referencedClasses: []
+}),
+smalltalk.BrowsePage.klass);
+
+smalltalk.addMethod(
+"_show_method_",
+smalltalk.method({
+selector: "show:method:",
+category: 'not yet classified',
+fn: function (aClass, aString) {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(function ($rec) {smalltalk.send($rec, "_selectedClass_", [aClass]);smalltalk.send($rec, "_method_", [aString]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", [])));
+    return self;
+},
+args: ["aClass", "aString"],
+source: "show: aClass method: aString\x0a\x09^(self new selectedClass: aClass; method: aString; yourself)\x0a\x09|> [ Screen new flip: %1 ];\x0a\x09|> [ %1 browser open: aClass method: aString ];\x0a\x09yourself",
+messageSends: ["|>", "flip:", "new", "open:method:", "browser", "yourself", "selectedClass:", "method:"],
+referencedClasses: ["Screen"]
+}),
+smalltalk.BrowsePage.klass);
 
 
 smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
@@ -1751,6 +1857,60 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ATeam);
+
+
+
+smalltalk.addClass('AmiyakiTei', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u4ECA\u6C602\u4E01\u76EE1-34";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市千種区今池2丁目1-34'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u3042\u307F\u3084\u304D\u4EAD \u5343\u7A2E\u5E97";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'あみやき亭 千種店'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://www.amiyakitei.co.jp/shop2.html#area_nagoya";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.amiyakitei.co.jp/shop2.html#area_nagoya'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
 
 
 

@@ -109,6 +109,7 @@ selector: "close",
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_empty", []);
     return self;
 }
 }),
@@ -372,6 +373,26 @@ fn: function () {
 }
 }),
 smalltalk.DialogBox.klass);
+
+
+smalltalk.addClass('BrowserDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+"_open_",
+smalltalk.method({
+selector: "open:",
+fn: function (aClass) {
+    var self = this;
+    var browser = nil;
+    var ret = nil;
+    browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    smalltalk.send(browser, "_open_", [aClass]);
+    return ret;
+    return self;
+}
+}),
+smalltalk.BrowserDialog.klass);
 
 
 smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');

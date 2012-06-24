@@ -321,3 +321,9 @@ h1 {
     font-weight: bold
 }
 
+.tree-source .CodeMirror-scroll {
+    height: auto; overflow: visible;
+}
+.tree-source .CodeMirror {
+    background: white
+}

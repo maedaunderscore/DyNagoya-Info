@@ -1743,6 +1743,18 @@ fn: function () {
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_hide",
+smalltalk.method({
+selector: "hide",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_hide", []);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_href_",
 smalltalk.method({
 selector: "href:",
@@ -2141,6 +2153,18 @@ fn: function (aString) {
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_show",
+smalltalk.method({
+selector: "show",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_show", []);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_src_",
 smalltalk.method({
 selector: "src:",
@@ -2207,6 +2231,18 @@ selector: "toggleContents:",
 fn: function (aBlock) {
     var self = this;
     ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return smalltalk.send(self, "_empty", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return smalltalk.send(self, "_empty", []);}]);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
+"_toggleContents_withOn_withOff_",
+smalltalk.method({
+selector: "toggleContents:withOn:withOff:",
+fn: function (aBlock, on, off) {
+    var self = this;
+    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_contents_", [aBlock]);return smalltalk.send(on, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}() : function () {smalltalk.send(self, "_empty", []);return smalltalk.send(off, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_contents_", [aBlock]);return smalltalk.send(on, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}, function () {smalltalk.send(self, "_empty", []);return smalltalk.send(off, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}]);
     return self;
 }
 }),

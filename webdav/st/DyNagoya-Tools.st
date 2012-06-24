@@ -133,7 +133,8 @@ y: strPos
 !DialogBox methodsFor: 'action'!
 
 close
-	 body asJQuery dialog: 'destroy'
+	 body asJQuery dialog: 'destroy'.
+	 body asJQuery empty
 !
 
 open
@@ -161,6 +162,26 @@ initialize
 
 withCancel
 	^ self new closeButton: 'Cancel'
+! !
+
+DialogBox subclass: #BrowserDialog
+	instanceVariableNames: ''
+	package: 'DyNagoya-Tools'!
+
+!BrowserDialog class methodsFor: 'not yet classified'!
+
+open: aClass
+	| browser ret |
+	browser := ClassBrowser hierarchy: aClass.
+	ret := self new 
+		widget: browser;
+		width: '600px';
+"		height: '400px';"
+		modal: false;
+		open.
+
+	browser open: aClass.
+	^ ret
 ! !
 
 DialogBox subclass: #ImageEditor

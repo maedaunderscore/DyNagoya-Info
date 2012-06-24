@@ -66,12 +66,12 @@ selector: "ancestors",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_unfold_", [function (thisisplaceholder1) {return [smalltalk.send(thisisplaceholder1, "_superclass", []), smalltalk.send(thisisplaceholder1, "_superclass", [])];}]);
+    return smalltalk.send(smalltalk.send(self, "_unfold_", [function (thisisplaceholder1) {return [smalltalk.send(thisisplaceholder1, "_superclass", []), smalltalk.send(thisisplaceholder1, "_superclass", [])];}]), "_default_", [[]]);
     return self;
 },
 args: [],
-source: "ancestors\x0a\x09^ self unfold: [ { %1 superclass. %1 superclass } ]",
-messageSends: ["unfold:", "superclass"],
+source: "ancestors\x0a\x09^ (self unfold: [ { %1 superclass. %1 superclass } ]) default: {}",
+messageSends: ["default:", "unfold:", "superclass"],
 referencedClasses: []
 }),
 smalltalk.Behavior);

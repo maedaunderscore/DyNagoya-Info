@@ -2463,6 +2463,23 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_hide",
+smalltalk.method({
+selector: "hide",
+category: 'attributes',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_hide", []);
+    return self;
+},
+args: [],
+source: "hide\x0a    self asJQuery hide",
+messageSends: ["hide", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_href_",
 smalltalk.method({
 selector: "href:",
@@ -3026,6 +3043,23 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_show",
+smalltalk.method({
+selector: "show",
+category: 'attributes',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_show", []);
+    return self;
+},
+args: [],
+source: "show\x0a    self asJQuery show",
+messageSends: ["show", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_src_",
 smalltalk.method({
 selector: "src:",
@@ -3123,6 +3157,23 @@ fn: function (aBlock) {
 args: ["aBlock"],
 source: "toggleContents: aBlock\x0a\x09self isEmpty \x0a\x09\x09\x09ifTrue: [ self contents: aBlock ]\x0a\x09\x09\x09ifFalse: [ self empty ].",
 messageSends: ["ifTrue:ifFalse:", "isEmpty", "contents:", "empty"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
+"_toggleContents_withOn_withOff_",
+smalltalk.method({
+selector: "toggleContents:withOn:withOff:",
+category: 'adding',
+fn: function (aBlock, on, off) {
+    var self = this;
+    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_contents_", [aBlock]);return smalltalk.send(on, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}() : function () {smalltalk.send(self, "_empty", []);return smalltalk.send(off, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_contents_", [aBlock]);return smalltalk.send(on, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}, function () {smalltalk.send(self, "_empty", []);return smalltalk.send(off, "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value", []);}]);}]);
+    return self;
+},
+args: ["aBlock", "on", "off"],
+source: "toggleContents: aBlock withOn: on withOff: off\x0a\x09self isEmpty \x0a\x09\x09\x09ifTrue: [ self contents: aBlock. on >>= [ %1 value ] ]\x0a\x09\x09\x09ifFalse: [ self empty. off >>= [ %1 value ] ].",
+messageSends: ["ifTrue:ifFalse:", "isEmpty", "contents:", ">>=", "value", "empty"],
 referencedClasses: []
 }),
 smalltalk.TagBrush);

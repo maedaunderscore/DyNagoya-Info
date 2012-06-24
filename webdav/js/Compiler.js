@@ -3013,13 +3013,13 @@ selector: "visitDynamicDictionaryNode:",
 category: 'not yet classified',
 fn: function (aNode) {
     var self = this;
-    smalltalk.send(aNode, "_inspect", []);
+    (function ($rec) {smalltalk.send($rec, "_show_", [aNode]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     return self;
 },
 args: ["aNode"],
-source: "visitDynamicDictionaryNode: aNode\x0a\x09aNode inspect",
-messageSends: ["inspect"],
-referencedClasses: []
+source: "visitDynamicDictionaryNode: aNode\x0a\x09Transcript show: aNode; cr.",
+messageSends: ["show:", "cr"],
+referencedClasses: ["Transcript"]
 }),
 smalltalk.PlaceHolderExtractor);
 

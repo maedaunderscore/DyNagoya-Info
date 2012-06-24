@@ -552,6 +552,12 @@ toggleContents: aBlock
 			ifFalse: [ self empty ].
 !
 
+toggleContents: aBlock withOn: on withOff: off
+	self isEmpty 
+			ifTrue: [ self contents: aBlock. on >>= [ %1 value ] ]
+			ifFalse: [ self empty. off >>= [ %1 value ] ].
+!
+
 with: anObject
     self append: anObject
 ! !
@@ -614,6 +620,10 @@ hidden
 	self at: 'hidden' put: 'hidden'
 !
 
+hide
+    self asJQuery hide
+!
+
 href: aString
     self at: 'href' put: aString
 !
@@ -652,6 +662,10 @@ removeAt: aString
 
 rows: aString
 	self at: 'rows' put: aString
+!
+
+show
+    self asJQuery show
 !
 
 src: aString

@@ -1295,107 +1295,180 @@ openOn: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses subsubclasses'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants'
 	package: 'IDE'!
 
 !ClassBrowser methodsFor: 'accessing'!
 
 class: aClass
-	self class: aClass subclasses: aClass subclasses.
+	self class: aClass descendants: nil
 !
 
-class: aClass subclasses: someSubClasses
+class: aClass descendants: someSubClasses
 	selectedClass := aClass.
-	subclasses := someSubClasses.
+	descendants := someSubClasses.
+	descendants
+		ifNil: [  subclasses := aClass subclasses ]
+		ifNotNil: [  descendants 
+					ifEmpty: [ subclasses := aClass subclasses. descendants := nil ];
+					ifNotEmpty:[ subclasses := {descendants first}. descendants := descendants allButFirst  ]
+		]
+! !
+
+!ClassBrowser methodsFor: 'action'!
+
+open: aClass
+	self open: aClass method: nil
 !
 
-subclasses: someSubClasses
-	subclasses := someSubClasses.
+open: aClass method: aMethodName
+	| xs last |
+	xs := self  selectorList: aClass method: aMethodName.
+
+	last := xs first.
+	xs := xs allButFirst.
+	xs do: [ :current |
+		self openIfClosed: current parent: last.
+		last := current.
+	]
+! !
+
+!ClassBrowser methodsFor: 'private'!
+
+openIfClosed: selector  parent: parentSelector
+	selector asJQuery length = 0 ifTrue: [ parentSelector asJQuery click ].
+	^ selector asJQuery
 !
 
-subsubclasses: someSubClasses
-	subsubclasses := someSubClasses.
+selectorList: aClass method: aString
+	| xs |
+	xs := (aClass ancestors, aClass) collect: [ 'div[name="class-', (%1 name), '"] span.browser-class-name' ].
+	aString ifNotNil: [ 
+		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-method-button').
+		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]')
+	].
+
+	^ xs
 ! !
 
 !ClassBrowser methodsFor: 'rendering'!
 
+leftBorder
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'border-left' put: '1px solid white';
+	css: 'padding-left' put: '5px'
+     ]
+!
+
+offStyle
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid white';
+	css: 'background' put: '';
+	css: 'color' put: ''
+     ]
+!
+
+onStyle
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid white';
+	css: 'background' put: 'white';
+	css: 'color' put: 'black'
+     ]
+!
+
 renderOn: html
+	html root name:  'class-', selectedClass name.
 	classView := html div with: [
 		html span with: selectedClass name;
+				class: 'browser-class-name';
+				css: 'font-size' put: '1.2em';
 				onClick: [ 
 					subclassView >>= [ %1 toggleContents: [ :html |
-						subclasses do: [ html div with: (ClassBrowser new class: %1) ] ] ] ].
-		methodTitle := html span css: 'margin-left' put: '10px';  with: 'methods';
-			onClick: [ methodView toggleContents: [ :html |
-				self methods do: [  html div with: (MethodBrowser new class: selectedClass method: %1) ] ] ].
+						subclasses do: [ 
+							html div with: (ClassBrowser new class: %1 descendants: descendants) ] ] ] ].
+		methodTitle := html span with: 'methods';
+			|> self offStyle;
+			class: 'browser-method-button';
+			onClick: [ methodView 
+						toggleContents: [ :html |
+							self methods do: [  
+								html div with: (MethodBrowser new class: selectedClass method: %1) ] ]
+						withOn: [ methodTitle |> self onStyle ]
+						withOff: [ methodTitle |> self offStyle ] 
+			].
 	].
-	methodView := html div.	
-	subclasses ifEmpty: [ subclassView := nil ]; ifNotEmpty: [ subclassView := html div ]
+	methodView := html div |> self leftBorder.
+	subclasses 
+		ifEmpty: [ subclassView := nil ]; 
+		ifNotEmpty: [ 
+			subclassView := html div css: 'margin-left' put: '10px'
+		].
+! !
+
+!ClassBrowser class methodsFor: 'not yet classified'!
+
+hierarchy: aClass
+	^(aClass ancestors, aClass) |> [ 
+		ClassBrowser new 
+			class: %1 first descendants: %1 allButFirst
+		]
 ! !
 
 Browser subclass: #MethodBrowser
-	instanceVariableNames: 'method sourceView'
+	instanceVariableNames: 'sourceView'
 	package: 'IDE'!
 
 !MethodBrowser methodsFor: 'rendering'!
 
 class: aClass method: aCompiledMethod
 	selectedClass := aClass.
-	method := aCompiledMethod
+	selectedMethod := aCompiledMethod.
+	selectedPackage := selectedClass package.
+	selectedProtocol := selectedMethod category
 !
 
 renderOn: html
-	html div with: method selector;
+	html span  
+		with: selectedMethod selector;
+		name: 'method-', selectedMethod selector;
 		onClick: [ sourceView toggleContents: [ :html || sourceArea |
 			sourceArea := SourceArea new.
 			sourceView with: sourceArea.
-			sourceArea val: method source
+			sourceArea val: selectedMethod source.
+			sourceArea onKeyUp: [ self updateStatus ]
 		] ].
-	sourceView := html div
-! !
-
-Browser subclass: #TreeBrowser
-	instanceVariableNames: ''
-	package: 'IDE'!
-!TreeBrowser commentStamp!
-x := DialogBox new 
-  widget: TreeBrowser new; 
-  modal:false; 
-  width: 800;
-  height: 500;
-  open!
-
-!TreeBrowser methodsFor: 'not yet classified'!
-
-renderBoxOn: html
-  selectedClass := Page.
-
-  (selectedClass ancestors, selectedClass) do: [ :each |
-	selectedClass := each.
-	html li: [
-	  html div with: each asString.
-	  self methods do: [  :each || sourceBrush |
-		html div 
-			css: 'margin-left' put: '10px';
-			with:  [
-				html div with: each selector;
-					onClick: [  | sourceArea |
-						sourceArea := SourceArea new.
-						sourceBrush with: sourceArea.
-						sourceArea val: each source
-				].
-				sourceBrush := html div.
-			]
-	  ]
-	]
-]
+	saveButton := html span 
+		with: 'save'; 
+		css: 'margin-left' put: '10px';
+		hide;
+		onClick: [ saveButton hide. self compileMethodDefinition ].
+	sourceView := html div class: 'tree-source'
 !
 
-renderButtonsOn: html
+updateMethodsList
 !
 
-selectedClass: aClass
-	selectedClass := aClass
+updateProtocolsList
+!
+
+updateSourceAndButtons
+!
+
+updateStatus
+	sourceArea val = selectedMethod source
+		ifTrue: [
+			saveButton >>= [ %1 hide ].
+"			unsavedChanges := false"]
+		ifFalse: [
+			saveButton >>= [ %1 show ].
+"			unsavedChanges := true"]
 ! !
 
 TabWidget subclass: #Debugger

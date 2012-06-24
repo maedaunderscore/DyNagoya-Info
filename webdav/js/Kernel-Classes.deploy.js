@@ -49,7 +49,7 @@ smalltalk.method({
 selector: "ancestors",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_unfold_", [function (thisisplaceholder1) {return [smalltalk.send(thisisplaceholder1, "_superclass", []), smalltalk.send(thisisplaceholder1, "_superclass", [])];}]);
+    return smalltalk.send(smalltalk.send(self, "_unfold_", [function (thisisplaceholder1) {return [smalltalk.send(thisisplaceholder1, "_superclass", []), smalltalk.send(thisisplaceholder1, "_superclass", [])];}]), "_default_", [[]]);
     return self;
 }
 }),

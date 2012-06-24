@@ -2202,7 +2202,7 @@ smalltalk.method({
 selector: "visitDynamicDictionaryNode:",
 fn: function (aNode) {
     var self = this;
-    smalltalk.send(aNode, "_inspect", []);
+    (function ($rec) {smalltalk.send($rec, "_show_", [aNode]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     return self;
 }
 }),

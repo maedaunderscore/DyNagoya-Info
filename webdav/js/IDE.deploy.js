@@ -2054,27 +2054,106 @@ fn: function (aClass) {
 smalltalk.Browser.klass);
 
 
-smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'subsubclasses'], 'IDE');
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'descendants'], 'IDE');
 smalltalk.addMethod(
 "_class_",
 smalltalk.method({
 selector: "class:",
 fn: function (aClass) {
     var self = this;
-    smalltalk.send(self, "_class_subclasses_", [aClass, smalltalk.send(aClass, "_subclasses", [])]);
+    smalltalk.send(self, "_class_descendants_", [aClass, nil]);
     return self;
 }
 }),
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_class_subclasses_",
+"_class_descendants_",
 smalltalk.method({
-selector: "class:subclasses:",
+selector: "class:descendants:",
 fn: function (aClass, someSubClasses) {
     var self = this;
     self['@selectedClass'] = aClass;
-    self['@subclasses'] = someSubClasses;
+    self['@descendants'] = someSubClasses;
+    ($receiver = self['@descendants']) == nil || $receiver == undefined ? function () {return self['@subclasses'] = smalltalk.send(aClass, "_subclasses", []);}() : function () {return function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {self['@subclasses'] = smalltalk.send(aClass, "_subclasses", []);return self['@descendants'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {self['@subclasses'] = [smalltalk.send(self['@descendants'], "_first", [])];return self['@descendants'] = smalltalk.send(self['@descendants'], "_allButFirst", []);}]);}(self['@descendants']);}();
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_leftBorder",
+smalltalk.method({
+selector: "leftBorder",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["border-left", "1px solid white"]);return smalltalk.send($rec, "_css_put_", ["padding-left", "5px"]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_offStyle",
+smalltalk.method({
+selector: "offStyle",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", "1px solid white"]);smalltalk.send($rec, "_css_put_", ["background", ""]);return smalltalk.send($rec, "_css_put_", ["color", ""]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_onStyle",
+smalltalk.method({
+selector: "onStyle",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", "1px solid white"]);smalltalk.send($rec, "_css_put_", ["background", "white"]);return smalltalk.send($rec, "_css_put_", ["color", "black"]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_open_",
+smalltalk.method({
+selector: "open:",
+fn: function (aClass) {
+    var self = this;
+    smalltalk.send(self, "_open_method_", [aClass, nil]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_open_method_",
+smalltalk.method({
+selector: "open:method:",
+fn: function (aClass, aMethodName) {
+    var self = this;
+    var xs = nil;
+    var last = nil;
+    xs = smalltalk.send(self, "_selectorList_method_", [aClass, aMethodName]);
+    last = smalltalk.send(xs, "_first", []);
+    xs = smalltalk.send(xs, "_allButFirst", []);
+    smalltalk.send(xs, "_do_", [function (current) {smalltalk.send(self, "_openIfClosed_parent_", [current, last]);return last = current;}]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_openIfClosed_parent_",
+smalltalk.method({
+selector: "openIfClosed:parent:",
+fn: function (selector, parentSelector) {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(selector, "_asJQuery", []), "_length", []), "__eq", [0])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(smalltalk.send(parentSelector, "_asJQuery", []), "_click", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(smalltalk.send(parentSelector, "_asJQuery", []), "_click", []);}]);
+    return smalltalk.send(selector, "_asJQuery", []);
     return self;
 }
 }),
@@ -2086,41 +2165,45 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_", [thisisplaceholder1])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));return self['@methodTitle'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_with_", ["methods"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@methodView'], "_toggleContents_", [function (html) {return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.MethodBrowser || MethodBrowser, "_new", []), "_class_method_", [self['@selectedClass'], thisisplaceholder1])]);}]);}]);}]);}(smalltalk.send(html, "_span", []));}]);
-    self['@methodView'] = smalltalk.send(html, "_div", []);
-    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return self['@subclassView'] = smalltalk.send(html, "_div", []);}]);}(self['@subclasses']));
+    smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
+    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedClass'], "_name", [])]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}]);}]);}]);}(smalltalk.send(html, "_span", [])));return self['@methodTitle'] = function ($rec) {smalltalk.send($rec, "_with_", ["methods"]);smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_offStyle", [])]);smalltalk.send($rec, "_class_", ["browser-method-button"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@methodView'], "_toggleContents_withOn_withOff_", [function (html) {return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.MethodBrowser || MethodBrowser, "_new", []), "_class_method_", [self['@selectedClass'], thisisplaceholder1])]);}]);}, function () {return smalltalk.send(self['@methodTitle'], "_|_gt", [smalltalk.send(self, "_onStyle", [])]);}, function () {return smalltalk.send(self['@methodTitle'], "_|_gt", [smalltalk.send(self, "_offStyle", [])]);}]);}]);}(smalltalk.send(html, "_span", []));}]);
+    self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
+    (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return self['@subclassView'] = nil;}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return self['@subclassView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["margin-left", "10px"]);}]);}(self['@subclasses']));
     return self;
 }
 }),
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_subclasses_",
+"_selectorList_method_",
 smalltalk.method({
-selector: "subclasses:",
-fn: function (someSubClasses) {
+selector: "selectorList:method:",
+fn: function (aClass, aString) {
     var self = this;
-    self['@subclasses'] = someSubClasses;
+    var xs = nil;
+    xs = smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_collect_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(thisisplaceholder1, "_name", [])]), "__comma", ["\"] span.browser-class-name"]);}]);
+    ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-method-button"])]);return smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);}() : nil;
+    return xs;
     return self;
 }
 }),
 smalltalk.ClassBrowser);
+
 
 smalltalk.addMethod(
-"_subsubclasses_",
+"_hierarchy_",
 smalltalk.method({
-selector: "subsubclasses:",
-fn: function (someSubClasses) {
+selector: "hierarchy:",
+fn: function (aClass) {
     var self = this;
-    self['@subsubclasses'] = someSubClasses;
+    return smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_allButFirst", [])]);}]);
     return self;
 }
 }),
-smalltalk.ClassBrowser);
+smalltalk.ClassBrowser.klass);
 
 
-
-smalltalk.addClass('MethodBrowser', smalltalk.Browser, ['method', 'sourceView'], 'IDE');
+smalltalk.addClass('MethodBrowser', smalltalk.Browser, ['sourceView'], 'IDE');
 smalltalk.addMethod(
 "_class_method_",
 smalltalk.method({
@@ -2128,7 +2211,9 @@ selector: "class:method:",
 fn: function (aClass, aCompiledMethod) {
     var self = this;
     self['@selectedClass'] = aClass;
-    self['@method'] = aCompiledMethod;
+    self['@selectedMethod'] = aCompiledMethod;
+    self['@selectedPackage'] = smalltalk.send(self['@selectedClass'], "_package", []);
+    self['@selectedProtocol'] = smalltalk.send(self['@selectedMethod'], "_category", []);
     return self;
 }
 }),
@@ -2140,51 +2225,58 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@method'], "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@method'], "_source", [])]);}]);}]);}(smalltalk.send(html, "_div", [])));
-    self['@sourceView'] = smalltalk.send(html, "_div", []);
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedMethod'], "_selector", [])]);smalltalk.send($rec, "_name_", [smalltalk.send("method-", "__comma", [smalltalk.send(self['@selectedMethod'], "_selector", [])])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@selectedMethod'], "_source", [])]);return smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));
+    self['@saveButton'] = function ($rec) {smalltalk.send($rec, "_with_", ["save"]);smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(self['@saveButton'], "_hide", []);return smalltalk.send(self, "_compileMethodDefinition", []);}]);}(smalltalk.send(html, "_span", []));
+    self['@sourceView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_class_", ["tree-source"]);
     return self;
 }
 }),
 smalltalk.MethodBrowser);
 
-
-
-smalltalk.addClass('TreeBrowser', smalltalk.Browser, [], 'IDE');
 smalltalk.addMethod(
-"_renderBoxOn_",
+"_updateMethodsList",
 smalltalk.method({
-selector: "renderBoxOn:",
-fn: function (html) {
-    var self = this;
-    self['@selectedClass'] = smalltalk.Page || Page;
-    smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_ancestors", []), "__comma", [self['@selectedClass']]), "_do_", [function (each) {self['@selectedClass'] = each;return smalltalk.send(html, "_li_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(each, "_asString", [])]);return smalltalk.send(smalltalk.send(self, "_methods", []), "_do_", [function (each) {var sourceBrush = nil;return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(each, "_selector", [])]);return smalltalk.send($rec, "_onClick_", [function () {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(sourceBrush, "_with_", [self['@sourceArea']]);return smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(each, "_source", [])]);}]);}(smalltalk.send(html, "_div", [])));return sourceBrush = smalltalk.send(html, "_div", []);}]);}(smalltalk.send(html, "_div", []));}]);}]);}]);
-    return self;
-}
-}),
-smalltalk.TreeBrowser);
-
-smalltalk.addMethod(
-"_renderButtonsOn_",
-smalltalk.method({
-selector: "renderButtonsOn:",
-fn: function (html) {
+selector: "updateMethodsList",
+fn: function () {
     var self = this;
     return self;
 }
 }),
-smalltalk.TreeBrowser);
+smalltalk.MethodBrowser);
 
 smalltalk.addMethod(
-"_selectedClass_",
+"_updateProtocolsList",
 smalltalk.method({
-selector: "selectedClass:",
-fn: function (aClass) {
+selector: "updateProtocolsList",
+fn: function () {
     var self = this;
-    self['@selectedClass'] = aClass;
     return self;
 }
 }),
-smalltalk.TreeBrowser);
+smalltalk.MethodBrowser);
+
+smalltalk.addMethod(
+"_updateSourceAndButtons",
+smalltalk.method({
+selector: "updateSourceAndButtons",
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.MethodBrowser);
+
+smalltalk.addMethod(
+"_updateStatus",
+smalltalk.method({
+selector: "updateStatus",
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.send(self['@sourceArea'], "_val", []), "__eq", [smalltalk.send(self['@selectedMethod'], "_source", [])])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self['@saveButton'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_hide", []);}]);}() : function () {return smalltalk.send(self['@saveButton'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_show", []);}]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self['@saveButton'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_hide", []);}]);}, function () {return smalltalk.send(self['@saveButton'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_show", []);}]);}]);
+    return self;
+}
+}),
+smalltalk.MethodBrowser);
 
 
 

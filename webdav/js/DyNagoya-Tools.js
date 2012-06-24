@@ -151,11 +151,12 @@ category: 'action',
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_empty", []);
     return self;
 },
 args: [],
-source: "close\x0a\x09 body asJQuery dialog: 'destroy'\x0a",
-messageSends: ["dialog:", "asJQuery"],
+source: "close\x0a\x09 body asJQuery dialog: 'destroy'.\x0a\x09 body asJQuery empty\x0a",
+messageSends: ["dialog:", "asJQuery", "empty"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
@@ -523,6 +524,31 @@ messageSends: ["closeButton:", "new"],
 referencedClasses: []
 }),
 smalltalk.DialogBox.klass);
+
+
+smalltalk.addClass('BrowserDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+"_open_",
+smalltalk.method({
+selector: "open:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    var browser = nil;
+    var ret = nil;
+    browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    smalltalk.send(browser, "_open_", [aClass]);
+    return ret;
+    return self;
+},
+args: ["aClass"],
+source: "open: aClass\x0a\x09| browser ret |\x0a\x09browser := ClassBrowser hierarchy: aClass.\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x22\x09\x09height: '400px';\x22\x0a\x09\x09modal: false;\x0a\x09\x09open.\x0a\x0a\x09browser open: aClass.\x0a\x09^ ret",
+messageSends: ["hierarchy:", "widget:", "width:", "modal:", "open", "new", "open:"],
+referencedClasses: ["ClassBrowser"]
+}),
+smalltalk.BrowserDialog.klass);
 
 
 smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');

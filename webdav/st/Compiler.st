@@ -1518,7 +1518,7 @@ visitDynamicArrayNode: aNode
 !
 
 visitDynamicDictionaryNode: aNode
-	aNode inspect
+	Transcript show: aNode; cr.
 !
 
 visitReturnNode: aNode
