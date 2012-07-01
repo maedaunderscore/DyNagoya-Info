@@ -828,9 +828,9 @@ Widget subclass: #ParserEditor
 
 !ParserEditor methodsFor: 'not yet classified'!
 
-applyParser: aString
+applyParser
 	| parser |
-	parser := PEG buildParser: aString.
+	parser := PEG buildParser: source val.
 
 	< smalltalk.parser = parser >
 !
@@ -839,15 +839,11 @@ renderOn: html
 	source := html textarea 
 		css: 'position' put: 'absolute';
 		css: 'width' put: '95%';
-		css: 'height' put: '90%';
+		css: 'height' put: '98%';
 		css: 'left' put: '12px';
 		css: 'right' put: '12px';
 		css: 'top' put: '2px';
-		css: 'bottom' put: '20px'.
-	html button with: 'Apply';
-		css: 'position' put: 'absolute';
-		css: 'bottom' put: '0px';
-		onClick: [ self applyParser: source val ].
+		css: 'bottom' put: '2px'.
 	self updateParserFromServer
 !
 
@@ -864,7 +860,11 @@ updateParserFromServer
 !ParserEditor class methodsFor: 'not yet classified'!
 
 onDialog
-	DialogBox new widget: ParserEditor new; modal: false; width: '50%'; title: 'Parser Editor'; height: 400; open
+	| this |
+	this := self new.
+	DialogBox new widget: this; modal: false; width: '50%'; title: 'Parser Editor'; height: 400; 
+		button: 'apply' action: [ this applyParser ];
+	open
 ! !
 
 Object subclass: #ParticipantsList

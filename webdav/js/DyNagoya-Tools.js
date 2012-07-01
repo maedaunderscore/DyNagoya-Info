@@ -133,11 +133,11 @@ selector: "button:action:",
 category: 'accessing',
 fn: function (label, aBlock) {
     var self = this;
-    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();$(this).dialog("close");}}]);
+    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();}}]);
     return self;
 },
 args: ["label", "aBlock"],
-source: "button: label action: aBlock\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { aBlock(); $(this).dialog(\x22close\x22); }}>).\x0a",
+source: "button: label action: aBlock\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { aBlock(); }}>).\x0a",
 messageSends: ["add:", "at:ifAbsentPut:"],
 referencedClasses: []
 }),
@@ -173,6 +173,23 @@ fn: function (label) {
 },
 args: ["label"],
 source: "closeButton: label\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { $(this).dialog(\x22close\x22); }}>).\x0a\x0a",
+messageSends: ["add:", "at:ifAbsentPut:"],
+referencedClasses: []
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_closeButton_action_",
+smalltalk.method({
+selector: "closeButton:action:",
+category: 'accessing',
+fn: function (label, aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();$(this).dialog("close");}}]);
+    return self;
+},
+args: ["label", "aBlock"],
+source: "closeButton: label action: aBlock\x0a\x09(option at: 'buttons' ifAbsentPut:[ {} ])\x0a\x09\x09add: (<{text: label, click: function() { aBlock(); $(this).dialog(\x22close\x22); }}>).\x0a\x0a",
 messageSends: ["add:", "at:ifAbsentPut:"],
 referencedClasses: []
 }),
