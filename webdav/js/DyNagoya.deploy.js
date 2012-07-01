@@ -343,17 +343,6 @@ fn: function () {
 smalltalk.EntryPoint.klass);
 
 smalltalk.addMethod(
-"_position",
-smalltalk.method({
-selector: "position",
-fn: function () {
-    var self = this;
-    return self;
-}
-}),
-smalltalk.EntryPoint.klass);
-
-smalltalk.addMethod(
 "_positionY",
 smalltalk.method({
 selector: "positionY",
@@ -397,8 +386,8 @@ smalltalk.method({
 selector: "start",
 fn: function () {
     var self = this;
-    ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
-    ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["300px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_height_", [300]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
     (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@workspace']));
     (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@transcript']));
     smalltalk.send(self, "_screenPreparation", []);
