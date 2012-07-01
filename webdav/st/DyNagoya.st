@@ -201,7 +201,8 @@ messages
 	 '    Links show                           "to see Links about our interest"'.
 	 '    Browser open                       "to open default class browser"'.
 	'    BrowserDialog open: Page   "to open browser on Dialog"'.
-	 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''
+	 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.
+	'     JSViewer onDialog               "to showjs code will be emitted"'
 	}
 !
 
@@ -481,6 +482,66 @@ meeting07
 '合同Smalltalk勉強会の段取りを決める'.
 'Smalltalk入門(希望者がいれば)'
 }
+! !
+
+Widget subclass: #JSViewer
+	instanceVariableNames: 'sourceArea outView'
+	package: 'DyNagoya'!
+
+!JSViewer methodsFor: 'not yet classified'!
+
+compile: aString
+	| compiler parsed source result|
+	compiler := Compiler new.
+	source := 'doIt ^[', aString, '] value'.
+
+	self try: [
+		Smalltalk current basicParse: source.
+		result := (compiler eval: (compiler compile: source forClass: DoIt)) fn 
+	] catch: [:ex | ^ ex  ].
+	^ result compiledSource
+!
+
+emit: aString
+	^ (self compile: aString)
+!
+
+renderOn: html
+	sourceArea := SourceArea new.
+
+	html div css: 'width' put: '100%'; with: [
+		html div 
+			css: 'background' put: 'white'; 
+			css: 'color' put: 'black'; 
+			css: 'width' put: '45%';
+			css: 'position' put: 'absolute';
+			css: 'top' put: '5%';
+			css: 'bottom' put: '5%';
+			with: sourceArea.
+		outView := html div 
+			css: 'background' put: 'pink'; 
+			css: 'color' put: 'black';
+			css: 'width' put: '45%';
+			css: 'position' put: 'absolute';
+			css: 'left' put: '51%';
+			css: 'top' put: '5%';
+			css: 'bottom' put: '5%';
+			with: 'JS code'.
+		html span css: 'clear' put: 'both'
+	].
+	sourceArea onKeyUp: [ self updateStatus ]
+!
+
+updateStatus
+	outView contents: [ :html |
+		html span: (self emit: sourceArea val)
+	]
+! !
+
+!JSViewer class methodsFor: 'not yet classified'!
+
+onDialog
+	^ DialogBox new widget: JSViewer new; title: 'Javascript Viewer'; width: '50%'; modal: false; open
 ! !
 
 Widget subclass: #Login

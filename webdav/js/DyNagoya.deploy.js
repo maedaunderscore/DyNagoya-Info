@@ -336,7 +336,7 @@ smalltalk.method({
 selector: "messages",
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'"];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\""];
     return self;
 }
 }),
@@ -832,6 +832,86 @@ fn: function () {
 }
 }),
 smalltalk.Event.klass);
+
+
+smalltalk.addClass('JSViewer', smalltalk.Widget, ['sourceArea', 'outView'], 'DyNagoya');
+smalltalk.addMethod(
+"_compile_",
+smalltalk.method({
+selector: "compile:",
+fn: function (aString) {
+    var self = this;
+    var $early = {};
+    try {
+        var compiler = nil;
+        var parsed = nil;
+        var source = nil;
+        var result = nil;
+        compiler = smalltalk.send(smalltalk.Compiler || Compiler, "_new", []);
+        source = smalltalk.send(smalltalk.send("doIt ^[", "__comma", [aString]), "__comma", ["] value"]);
+        smalltalk.send(self, "_try_catch_", [function () {smalltalk.send(smalltalk.send(smalltalk.Smalltalk || Smalltalk, "_current", []), "_basicParse_", [source]);return result = smalltalk.send(smalltalk.send(compiler, "_eval_", [smalltalk.send(compiler, "_compile_forClass_", [source, smalltalk.DoIt || DoIt])]), "_fn", []);}, function (ex) {return function () {throw $early = [ex];}();}]);
+        return smalltalk.send(result, "_compiledSource", []);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+}
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_emit_",
+smalltalk.method({
+selector: "emit:",
+fn: function (aString) {
+    var self = this;
+    return smalltalk.send(self, "_compile_", [aString]);
+    return self;
+}
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "100%"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "white"]);smalltalk.send($rec, "_css_put_", ["color", "black"]);smalltalk.send($rec, "_css_put_", ["width", "45%"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["top", "5%"]);smalltalk.send($rec, "_css_put_", ["bottom", "5%"]);return smalltalk.send($rec, "_with_", [self['@sourceArea']]);}(smalltalk.send(html, "_div", [])));self['@outView'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["color", "black"]);smalltalk.send($rec, "_css_put_", ["width", "45%"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["left", "51%"]);smalltalk.send($rec, "_css_put_", ["top", "5%"]);smalltalk.send($rec, "_css_put_", ["bottom", "5%"]);return smalltalk.send($rec, "_with_", ["JS code"]);}(smalltalk.send(html, "_div", []));return smalltalk.send(smalltalk.send(html, "_span", []), "_css_put_", ["clear", "both"]);}]);}(smalltalk.send(html, "_div", [])));
+    smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);
+    return self;
+}
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_updateStatus",
+smalltalk.method({
+selector: "updateStatus",
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@outView'], "_contents_", [function (html) {return smalltalk.send(html, "_span_", [smalltalk.send(self, "_emit_", [smalltalk.send(self['@sourceArea'], "_val", [])])]);}]);
+    return self;
+}
+}),
+smalltalk.JSViewer);
+
+
+smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.JSViewer || JSViewer, "_new", [])]);smalltalk.send($rec, "_title_", ["Javascript Viewer"]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));
+    return self;
+}
+}),
+smalltalk.JSViewer.klass);
 
 
 smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');
