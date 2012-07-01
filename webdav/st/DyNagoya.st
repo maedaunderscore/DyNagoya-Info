@@ -178,6 +178,24 @@ workspace
 
 !EntryPoint class methodsFor: 'not yet classified'!
 
+bottomPosition
+  ^ [ %1
+	width: '600px';
+	height: 200;
+	x: '', (window innerWidth * 0.9 - 600), 'px';
+	y: '', (window innerHeight * 0.9 - 200), 'px'
+  ]
+!
+
+leftPosition
+  ^ [ %1
+	width: '300px';
+	height: '300px';
+	x: '', (window innerWidth * 0.9 - 300), 'px';
+	y: '', (window innerHeight * 0.1), 'px'
+  ]
+!
+
 makeWorkspaceBigTheme
 	| editor |
 	editor := (< smalltalk.EntryPoint["@workspace"]["@widget"]["@sourceArea"]["@editor"]>).
@@ -224,16 +242,25 @@ showMessage
 !
 
 start
-  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '300px'; title: 'Workspace'; modal: false].
+  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); title: 'Workspace'; modal: false].
 "  self makeWorkspaceBigTheme."
-  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  x: '600px'; height: 300; width: '500px'; title: 'Transcript'; modal: false ].
+  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current); title: 'Transcript'; modal: false ].
 
-  workspace  y: self positionY; open.
-  transcript y: self positionY ; open.
+  workspace  |> self bottomPosition; open.
+  transcript |> self topPosition ; open.
 
    self screenPreparation.
   LoginPanel show.
   self showMessage.
+!
+
+topPosition
+  ^ [ %1
+	width: '350px';
+	height: 300;
+	x: '', (window innerWidth * 0.9 - 350), 'px';
+	y: '', (window innerHeight * 0.1), 'px'
+  ]
 ! !
 
 Widget subclass: #Event
