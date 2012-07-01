@@ -202,7 +202,8 @@ messages
 	 '    Browser open                       "to open default class browser"'.
 	'    BrowserDialog open: Page   "to open browser on Dialog"'.
 	 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.
-	'     JSViewer onDialog               "to showjs code will be emitted"'
+	'     JSViewer onDialog               "to showjs code will be emitted"'.
+	'     ParserEditor onDialog          "to modify parser"'
 	}
 !
 
@@ -828,7 +829,10 @@ Widget subclass: #ParserEditor
 !ParserEditor methodsFor: 'not yet classified'!
 
 applyParser: aString
-	Transcript show: aString; cr.
+	| parser |
+	parser := PEG buildParser: aString.
+
+	< smalltalk.parser = parser >
 !
 
 renderOn: html
@@ -844,17 +848,23 @@ renderOn: html
 		css: 'position' put: 'absolute';
 		css: 'bottom' put: '0px';
 		onClick: [ self applyParser: source val ].
-"	self updateParserFromServer"
+	self updateParserFromServer
 !
 
 updateParserFromServer
 	^ jQuery
-		ajax: 'js/parser.pegjs'
+		ajax: 'js/parser2.pegjs'
 		option: #{
 			'type' -> 'GET'.
 			'dataType' -> 'text'.
 			'success' -> [ source val: %1 ]
 		}
+! !
+
+!ParserEditor class methodsFor: 'not yet classified'!
+
+onDialog
+	DialogBox new widget: ParserEditor new; modal: false; width: '50%'; height: 400; open
 ! !
 
 Object subclass: #ParticipantsList

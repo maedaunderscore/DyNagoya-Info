@@ -463,11 +463,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to showjs code will be emitted\x22'\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to showjs code will be emitted\x22'.\x0a\x09'     ParserEditor onDialog          \x22to modify parser\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1699,13 +1699,15 @@ selector: "applyParser:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show_", [aString]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    var parser = nil;
+    parser = smalltalk.send(smalltalk.PEG || PEG, "_buildParser_", [aString]);
+    smalltalk.parser = parser;
     return self;
 },
 args: ["aString"],
-source: "applyParser: aString\x0a\x09Transcript show: aString; cr.",
-messageSends: ["show:", "cr"],
-referencedClasses: ["Transcript"]
+source: "applyParser: aString\x0a\x09| parser |\x0a\x09parser := PEG buildParser: aString.\x0a\x0a\x09< smalltalk.parser = parser >",
+messageSends: ["buildParser:"],
+referencedClasses: ["PEG"]
 }),
 smalltalk.ParserEditor);
 
@@ -1718,11 +1720,12 @@ fn: function (html) {
     var self = this;
     self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "90%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);return smalltalk.send($rec, "_css_put_", ["bottom", "20px"]);}(smalltalk.send(html, "_textarea", []));
     (function ($rec) {smalltalk.send($rec, "_with_", ["Apply"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["bottom", "0px"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_applyParser_", [smalltalk.send(self['@source'], "_val", [])]);}]);}(smalltalk.send(html, "_button", [])));
+    smalltalk.send(self, "_updateParserFromServer", []);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09source := html textarea \x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'width' put: '95%';\x0a\x09\x09css: 'height' put: '90%';\x0a\x09\x09css: 'left' put: '12px';\x0a\x09\x09css: 'right' put: '12px';\x0a\x09\x09css: 'top' put: '2px';\x0a\x09\x09css: 'bottom' put: '20px'.\x0a\x09html button with: 'Apply';\x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'bottom' put: '0px';\x0a\x09\x09onClick: [ self applyParser: source val ].\x0a\x22\x09self updateParserFromServer\x22",
-messageSends: ["css:put:", "textarea", "with:", "onClick:", "applyParser:", "val", "button"],
+source: "renderOn: html\x0a\x09source := html textarea \x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'width' put: '95%';\x0a\x09\x09css: 'height' put: '90%';\x0a\x09\x09css: 'left' put: '12px';\x0a\x09\x09css: 'right' put: '12px';\x0a\x09\x09css: 'top' put: '2px';\x0a\x09\x09css: 'bottom' put: '20px'.\x0a\x09html button with: 'Apply';\x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'bottom' put: '0px';\x0a\x09\x09onClick: [ self applyParser: source val ].\x0a\x09self updateParserFromServer",
+messageSends: ["css:put:", "textarea", "with:", "onClick:", "applyParser:", "val", "button", "updateParserFromServer"],
 referencedClasses: []
 }),
 smalltalk.ParserEditor);
@@ -1734,16 +1737,33 @@ selector: "updateParserFromServer",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", ["js/parser.pegjs", smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["text"]), smalltalk.send("success", "__minus_gt", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_val_", [thisisplaceholder1]);}])])]);
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", ["js/parser2.pegjs", smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["text"]), smalltalk.send("success", "__minus_gt", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_val_", [thisisplaceholder1]);}])])]);
     return self;
 },
 args: [],
-source: "updateParserFromServer\x0a\x09^ jQuery\x0a\x09\x09ajax: 'js/parser.pegjs'\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'GET'.\x0a\x09\x09\x09'dataType' -> 'text'.\x0a\x09\x09\x09'success' -> [ source val: %1 ]\x0a\x09\x09}",
+source: "updateParserFromServer\x0a\x09^ jQuery\x0a\x09\x09ajax: 'js/parser2.pegjs'\x0a\x09\x09option: #{\x0a\x09\x09\x09'type' -> 'GET'.\x0a\x09\x09\x09'dataType' -> 'text'.\x0a\x09\x09\x09'success' -> [ source val: %1 ]\x0a\x09\x09}",
 messageSends: ["ajax:option:", "->", "val:"],
 referencedClasses: []
 }),
 smalltalk.ParserEditor);
 
+
+smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.ParserEditor || ParserEditor, "_new", [])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_height_", [400]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return self;
+},
+args: [],
+source: "onDialog\x0a\x09DialogBox new widget: ParserEditor new; modal: false; width: '50%'; height: 400; open",
+messageSends: ["widget:", "new", "modal:", "width:", "height:", "open"],
+referencedClasses: ["ParserEditor", "DialogBox"]
+}),
+smalltalk.ParserEditor.klass);
 
 
 smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');

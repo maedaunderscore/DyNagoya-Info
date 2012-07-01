@@ -169,6 +169,7 @@ amber = (function() {
 
   function loadIDEDependencies() {
     loadJS('lib/jQuery/jquery.textarea.js');
+    loadJS('lib/peg-0.6.2.min.js');
     loadJS('lib/CodeMirror/codemirror.js');
     loadJS('lib/CodeMirror/smalltalk.js');
     loadCSS('lib/CodeMirror/codemirror.css', 'js');
