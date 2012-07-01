@@ -2283,6 +2283,30 @@ fn: function (aString) {
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_val",
+smalltalk.method({
+selector: "val",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
+"_val_",
+smalltalk.method({
+selector: "val:",
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val_", [aString]);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_valign_",
 smalltalk.method({
 selector: "valign:",
