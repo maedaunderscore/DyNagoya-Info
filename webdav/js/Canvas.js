@@ -3229,11 +3229,11 @@ selector: "val",
 category: 'attributes',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
+    return smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
     return self;
 },
 args: [],
-source: "val\x0a    self  asJQuery val",
+source: "val\x0a    ^ self  asJQuery val",
 messageSends: ["val", "asJQuery"],
 referencedClasses: []
 }),
