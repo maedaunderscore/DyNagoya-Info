@@ -693,7 +693,7 @@ type: aString
 !
 
 val
-    self  asJQuery val
+    ^ self  asJQuery val
 !
 
 val: aString

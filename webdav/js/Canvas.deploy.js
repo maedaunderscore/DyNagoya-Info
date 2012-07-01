@@ -2288,7 +2288,7 @@ smalltalk.method({
 selector: "val",
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
+    return smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
     return self;
 }
 }),
