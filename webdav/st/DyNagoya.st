@@ -864,7 +864,7 @@ updateParserFromServer
 !ParserEditor class methodsFor: 'not yet classified'!
 
 onDialog
-	DialogBox new widget: ParserEditor new; modal: false; width: '50%'; height: 400; open
+	DialogBox new widget: ParserEditor new; modal: false; width: '50%'; title: 'Parser Editor'; height: 400; open
 ! !
 
 Object subclass: #ParticipantsList
