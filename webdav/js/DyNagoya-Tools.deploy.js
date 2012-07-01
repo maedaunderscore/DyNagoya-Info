@@ -96,7 +96,7 @@ smalltalk.method({
 selector: "button:action:",
 fn: function (label, aBlock) {
     var self = this;
-    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();$(this).dialog("close");}}]);
+    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();}}]);
     return self;
 }
 }),
@@ -122,6 +122,18 @@ selector: "closeButton:",
 fn: function (label) {
     var self = this;
     smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {$(this).dialog("close");}}]);
+    return self;
+}
+}),
+smalltalk.DialogBox);
+
+smalltalk.addMethod(
+"_closeButton_action_",
+smalltalk.method({
+selector: "closeButton:action:",
+fn: function (label, aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@option'], "_at_ifAbsentPut_", ["buttons", function () {return [];}]), "_add_", [{text: label, click: function () {aBlock();$(this).dialog("close");}}]);
     return self;
 }
 }),

@@ -54,12 +54,17 @@ body: aBody
 
 button: label action: aBlock
 	(option at: 'buttons' ifAbsentPut:[ {} ])
-		add: (<{text: label, click: function() { aBlock(); $(this).dialog("close"); }}>).
+		add: (<{text: label, click: function() { aBlock(); }}>).
 !
 
 closeButton: label
 	(option at: 'buttons' ifAbsentPut:[ {} ])
 		add: (<{text: label, click: function() { $(this).dialog("close"); }}>).
+!
+
+closeButton: label action: aBlock
+	(option at: 'buttons' ifAbsentPut:[ {} ])
+		add: (<{text: label, click: function() { aBlock(); $(this).dialog("close"); }}>).
 !
 
 fontSize
