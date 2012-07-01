@@ -3223,6 +3223,40 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_val",
+smalltalk.method({
+selector: "val",
+category: 'attributes',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val", []);
+    return self;
+},
+args: [],
+source: "val\x0a    self  asJQuery val",
+messageSends: ["val", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
+"_val_",
+smalltalk.method({
+selector: "val:",
+category: 'attributes',
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_val_", [aString]);
+    return self;
+},
+args: ["aString"],
+source: "val: aString\x0a    self  asJQuery val: aString",
+messageSends: ["val:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_valign_",
 smalltalk.method({
 selector: "valign:",
