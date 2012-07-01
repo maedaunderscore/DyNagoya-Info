@@ -207,9 +207,6 @@ messages
 	}
 !
 
-position
-!
-
 positionY
   ^ '', (window innerHeight * 0.9 - 200), 'px'
 !
@@ -227,12 +224,12 @@ showMessage
 !
 
 start
-  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '600px'; title: 'Workspace'; modal: false].
+  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); x: '600px'; width: '300px'; title: 'Workspace'; modal: false].
 "  self makeWorkspaceBigTheme."
-  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  width: '500px'; title: 'Transcript'; modal: false ].
+  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current);  x: '600px'; height: 300; width: '500px'; title: 'Transcript'; modal: false ].
 
   workspace  y: self positionY; open.
-  transcript y: self positionY; open.
+  transcript y: self positionY ; open.
 
    self screenPreparation.
   LoginPanel show.
