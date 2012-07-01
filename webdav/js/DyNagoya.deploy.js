@@ -1224,6 +1224,46 @@ smalltalk.TopPage);
 
 
 
+smalltalk.addClass('ParserEditor', smalltalk.Widget, ['source'], 'DyNagoya');
+smalltalk.addMethod(
+"_applyParser_",
+smalltalk.method({
+selector: "applyParser:",
+fn: function (aString) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_show_", [aString]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    return self;
+}
+}),
+smalltalk.ParserEditor);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "90%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);return smalltalk.send($rec, "_css_put_", ["bottom", "20px"]);}(smalltalk.send(html, "_textarea", []));
+    (function ($rec) {smalltalk.send($rec, "_with_", ["Apply"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["bottom", "0px"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_applyParser_", [smalltalk.send(self['@source'], "_val", [])]);}]);}(smalltalk.send(html, "_button", [])));
+    return self;
+}
+}),
+smalltalk.ParserEditor);
+
+smalltalk.addMethod(
+"_updateParserFromServer",
+smalltalk.method({
+selector: "updateParserFromServer",
+fn: function () {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", ["js/parser.pegjs", smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["text"]), smalltalk.send("success", "__minus_gt", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_val_", [thisisplaceholder1]);}])])]);
+    return self;
+}
+}),
+smalltalk.ParserEditor);
+
+
+
 smalltalk.addClass('ParticipantsList', smalltalk.Object, ['event'], 'DyNagoya');
 smalltalk.addMethod(
 "_event_",
