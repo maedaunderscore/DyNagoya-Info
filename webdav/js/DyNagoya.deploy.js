@@ -303,6 +303,30 @@ smalltalk.addClass('EntryPoint', smalltalk.Object, [], 'DyNagoya');
 
 smalltalk.EntryPoint.klass.iVarNames = ['workspace','transcript'];
 smalltalk.addMethod(
+"_bottomPosition",
+smalltalk.method({
+selector: "bottomPosition",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [200]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 600 : smalltalk.send($receiver, "__minus", [600])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 200 : smalltalk.send($receiver, "__minus", [200])]), "__comma", ["px"])]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_leftPosition",
+smalltalk.method({
+selector: "leftPosition",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["300px"]);smalltalk.send($rec, "_height_", ["300px"]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 300 : smalltalk.send($receiver, "__minus", [300])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.1 : smalltalk.send($receiver, "__star", [0.1])]), "__comma", ["px"])]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
 "_makeWorkspaceBigTheme",
 smalltalk.method({
 selector: "makeWorkspaceBigTheme",
@@ -386,13 +410,25 @@ smalltalk.method({
 selector: "start",
 fn: function () {
     var self = this;
-    ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_width_", ["300px"]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
-    ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_x_", ["600px"]);smalltalk.send($rec, "_height_", [300]);smalltalk.send($rec, "_width_", ["500px"]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
-    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@workspace']));
-    (function ($rec) {smalltalk.send($rec, "_y_", [smalltalk.send(self, "_positionY", [])]);return smalltalk.send($rec, "_open", []);}(self['@transcript']));
+    ($receiver = self['@workspace']) == nil || $receiver == undefined ? function () {return self['@workspace'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    ($receiver = self['@transcript']) == nil || $receiver == undefined ? function () {return self['@transcript'] = function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}() : $receiver;
+    (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_bottomPosition", [])]);return smalltalk.send($rec, "_open", []);}(self['@workspace']));
+    (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_topPosition", [])]);return smalltalk.send($rec, "_open", []);}(self['@transcript']));
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
     smalltalk.send(self, "_showMessage", []);
+    return self;
+}
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_topPosition",
+smalltalk.method({
+selector: "topPosition",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["350px"]);smalltalk.send($rec, "_height_", [300]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 350 : smalltalk.send($receiver, "__minus", [350])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.1 : smalltalk.send($receiver, "__star", [0.1])]), "__comma", ["px"])]);}(thisisplaceholder1);};
     return self;
 }
 }),
