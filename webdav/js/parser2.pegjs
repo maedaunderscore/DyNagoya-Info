@@ -5,7 +5,7 @@ comments       = (["][^"]*["])+
 ws             = (separator / comments)*
 identifier     = first:[a-zA-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
 varIdentifier  = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
-placeHolderIdentifier = '%' num:[0-9]+ { return 'thisisplaceholder' + num }
+	       / '%' num:[0-9]+ { return 'thisisplaceholder' + num }
 
 keyword        = first:identifier last:[:] {return first + last}
 className      = first:[A-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
@@ -48,10 +48,6 @@ literal        = pseudoVariable / number / literalArray / dynamicDictionary / dy
 
 
 variable       = identifier:varIdentifier {
-		  return smalltalk.VariableNode._new()
-			._value_(identifier)
-		  }
-		 / identifier:placeHolderIdentifier {
 		  return smalltalk.VariableNode._new()
 			._value_(identifier)
 		  }
