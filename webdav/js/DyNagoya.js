@@ -463,11 +463,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'"];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to showjs code will be emitted\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1159,6 +1159,111 @@ messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:
 referencedClasses: ["AmiyakiTei"]
 }),
 smalltalk.Event.klass);
+
+
+smalltalk.addClass('JSViewer', smalltalk.Widget, ['sourceArea', 'outView'], 'DyNagoya');
+smalltalk.addMethod(
+"_compile_",
+smalltalk.method({
+selector: "compile:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    var $early = {};
+    try {
+        var compiler = nil;
+        var parsed = nil;
+        var source = nil;
+        var result = nil;
+        compiler = smalltalk.send(smalltalk.Compiler || Compiler, "_new", []);
+        source = smalltalk.send(smalltalk.send("doIt ^[", "__comma", [aString]), "__comma", ["] value"]);
+        smalltalk.send(self, "_try_catch_", [function () {smalltalk.send(smalltalk.send(smalltalk.Smalltalk || Smalltalk, "_current", []), "_basicParse_", [source]);return result = smalltalk.send(smalltalk.send(compiler, "_eval_", [smalltalk.send(compiler, "_compile_forClass_", [source, smalltalk.DoIt || DoIt])]), "_fn", []);}, function (ex) {return function () {throw $early = [ex];}();}]);
+        return smalltalk.send(result, "_compiledSource", []);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: ["aString"],
+source: "compile: aString\x0a\x09| compiler parsed source result|\x0a\x09compiler := Compiler new.\x0a\x09source := 'doIt ^[', aString, '] value'.\x0a\x0a\x09self try: [\x0a\x09\x09Smalltalk current basicParse: source.\x0a\x09\x09result := (compiler eval: (compiler compile: source forClass: DoIt)) fn \x0a\x09] catch: [:ex | ^ ex  ].\x0a\x09^ result compiledSource\x0a",
+messageSends: ["new", ",", "try:catch:", "basicParse:", "current", "fn", "eval:", "compile:forClass:", "compiledSource"],
+referencedClasses: ["Compiler", "Smalltalk", "DoIt"]
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_emit_",
+smalltalk.method({
+selector: "emit:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    return smalltalk.send(self, "_compile_", [aString]);
+    return self;
+},
+args: ["aString"],
+source: "emit: aString\x0a\x09^ (self compile: aString) ",
+messageSends: ["compile:"],
+referencedClasses: []
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "100%"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "white"]);smalltalk.send($rec, "_css_put_", ["color", "black"]);smalltalk.send($rec, "_css_put_", ["width", "45%"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["top", "5%"]);smalltalk.send($rec, "_css_put_", ["bottom", "5%"]);return smalltalk.send($rec, "_with_", [self['@sourceArea']]);}(smalltalk.send(html, "_div", [])));self['@outView'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["color", "black"]);smalltalk.send($rec, "_css_put_", ["width", "45%"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["left", "51%"]);smalltalk.send($rec, "_css_put_", ["top", "5%"]);smalltalk.send($rec, "_css_put_", ["bottom", "5%"]);return smalltalk.send($rec, "_with_", ["JS code"]);}(smalltalk.send(html, "_div", []));return smalltalk.send(smalltalk.send(html, "_span", []), "_css_put_", ["clear", "both"]);}]);}(smalltalk.send(html, "_div", [])));
+    smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09sourceArea := SourceArea new.\x0a\x0a\x09html div css: 'width' put: '100%'; with: [\x0a\x09\x09html div \x0a\x09\x09\x09css: 'background' put: 'white'; \x0a\x09\x09\x09css: 'color' put: 'black'; \x0a\x09\x09\x09css: 'width' put: '45%';\x0a\x09\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09\x09css: 'top' put: '5%';\x0a\x09\x09\x09css: 'bottom' put: '5%';\x0a\x09\x09\x09with: sourceArea.\x0a\x09\x09outView := html div \x0a\x09\x09\x09css: 'background' put: 'pink'; \x0a\x09\x09\x09css: 'color' put: 'black';\x0a\x09\x09\x09css: 'width' put: '45%';\x0a\x09\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09\x09css: 'left' put: '51%';\x0a\x09\x09\x09css: 'top' put: '5%';\x0a\x09\x09\x09css: 'bottom' put: '5%';\x0a\x09\x09\x09with: 'JS code'.\x0a\x09\x09html span css: 'clear' put: 'both'\x0a\x09].\x0a\x09sourceArea onKeyUp: [ self updateStatus ]",
+messageSends: ["new", "css:put:", "with:", "div", "span", "onKeyUp:", "updateStatus"],
+referencedClasses: ["SourceArea"]
+}),
+smalltalk.JSViewer);
+
+smalltalk.addMethod(
+"_updateStatus",
+smalltalk.method({
+selector: "updateStatus",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@outView'], "_contents_", [function (html) {return smalltalk.send(html, "_span_", [smalltalk.send(self, "_emit_", [smalltalk.send(self['@sourceArea'], "_val", [])])]);}]);
+    return self;
+},
+args: [],
+source: "updateStatus\x0a\x09outView contents: [ :html |\x0a\x09\x09html span: (self emit: sourceArea val)\x0a\x09]",
+messageSends: ["contents:", "span:", "emit:", "val"],
+referencedClasses: []
+}),
+smalltalk.JSViewer);
+
+
+smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.JSViewer || JSViewer, "_new", [])]);smalltalk.send($rec, "_title_", ["Javascript Viewer"]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));
+    return self;
+},
+args: [],
+source: "onDialog\x0a\x09^ DialogBox new widget: JSViewer new; title: 'Javascript Viewer'; width: '50%'; modal: false; open ",
+messageSends: ["widget:", "new", "title:", "width:", "modal:", "open"],
+referencedClasses: ["JSViewer", "DialogBox"]
+}),
+smalltalk.JSViewer.klass);
 
 
 smalltalk.addClass('Login', smalltalk.Widget, [], 'DyNagoya');
