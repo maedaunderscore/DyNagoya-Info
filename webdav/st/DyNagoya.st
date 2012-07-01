@@ -821,6 +821,42 @@ renderBody: html
 		html div class: 'span7'; with: Board new
 ! !
 
+Widget subclass: #ParserEditor
+	instanceVariableNames: 'source'
+	package: 'DyNagoya'!
+
+!ParserEditor methodsFor: 'not yet classified'!
+
+applyParser: aString
+	Transcript show: aString; cr.
+!
+
+renderOn: html
+	source := html textarea 
+		css: 'position' put: 'absolute';
+		css: 'width' put: '95%';
+		css: 'height' put: '90%';
+		css: 'left' put: '12px';
+		css: 'right' put: '12px';
+		css: 'top' put: '2px';
+		css: 'bottom' put: '20px'.
+	html button with: 'Apply';
+		css: 'position' put: 'absolute';
+		css: 'bottom' put: '0px';
+		onClick: [ self applyParser: source val ].
+"	self updateParserFromServer"
+!
+
+updateParserFromServer
+	^ jQuery
+		ajax: 'js/parser.pegjs'
+		option: #{
+			'type' -> 'GET'.
+			'dataType' -> 'text'.
+			'success' -> [ source val: %1 ]
+		}
+! !
+
 Object subclass: #ParticipantsList
 	instanceVariableNames: 'event'
 	package: 'DyNagoya'!
