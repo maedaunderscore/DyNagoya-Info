@@ -1693,20 +1693,20 @@ smalltalk.TopPage);
 
 smalltalk.addClass('ParserEditor', smalltalk.Widget, ['source'], 'DyNagoya');
 smalltalk.addMethod(
-"_applyParser_",
+"_applyParser",
 smalltalk.method({
-selector: "applyParser:",
+selector: "applyParser",
 category: 'not yet classified',
-fn: function (aString) {
+fn: function () {
     var self = this;
     var parser = nil;
-    parser = smalltalk.send(smalltalk.PEG || PEG, "_buildParser_", [aString]);
+    parser = smalltalk.send(smalltalk.PEG || PEG, "_buildParser_", [smalltalk.send(self['@source'], "_val", [])]);
     smalltalk.parser = parser;
     return self;
 },
-args: ["aString"],
-source: "applyParser: aString\x0a\x09| parser |\x0a\x09parser := PEG buildParser: aString.\x0a\x0a\x09< smalltalk.parser = parser >",
-messageSends: ["buildParser:"],
+args: [],
+source: "applyParser\x0a\x09| parser |\x0a\x09parser := PEG buildParser: source val.\x0a\x0a\x09< smalltalk.parser = parser >",
+messageSends: ["buildParser:", "val"],
 referencedClasses: ["PEG"]
 }),
 smalltalk.ParserEditor);
@@ -1718,14 +1718,13 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "90%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);return smalltalk.send($rec, "_css_put_", ["bottom", "20px"]);}(smalltalk.send(html, "_textarea", []));
-    (function ($rec) {smalltalk.send($rec, "_with_", ["Apply"]);smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["bottom", "0px"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_applyParser_", [smalltalk.send(self['@source'], "_val", [])]);}]);}(smalltalk.send(html, "_button", [])));
+    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "98%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);return smalltalk.send($rec, "_css_put_", ["bottom", "2px"]);}(smalltalk.send(html, "_textarea", []));
     smalltalk.send(self, "_updateParserFromServer", []);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09source := html textarea \x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'width' put: '95%';\x0a\x09\x09css: 'height' put: '90%';\x0a\x09\x09css: 'left' put: '12px';\x0a\x09\x09css: 'right' put: '12px';\x0a\x09\x09css: 'top' put: '2px';\x0a\x09\x09css: 'bottom' put: '20px'.\x0a\x09html button with: 'Apply';\x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'bottom' put: '0px';\x0a\x09\x09onClick: [ self applyParser: source val ].\x0a\x09self updateParserFromServer",
-messageSends: ["css:put:", "textarea", "with:", "onClick:", "applyParser:", "val", "button", "updateParserFromServer"],
+source: "renderOn: html\x0a\x09source := html textarea \x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'width' put: '95%';\x0a\x09\x09css: 'height' put: '98%';\x0a\x09\x09css: 'left' put: '12px';\x0a\x09\x09css: 'right' put: '12px';\x0a\x09\x09css: 'top' put: '2px';\x0a\x09\x09css: 'bottom' put: '2px'.\x0a\x09self updateParserFromServer",
+messageSends: ["css:put:", "textarea", "updateParserFromServer"],
 referencedClasses: []
 }),
 smalltalk.ParserEditor);
@@ -1755,13 +1754,15 @@ selector: "onDialog",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.ParserEditor || ParserEditor, "_new", [])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_title_", ["Parser Editor"]);smalltalk.send($rec, "_height_", [400]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    var this_ = nil;
+    this_ = smalltalk.send(self, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [this_]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_title_", ["Parser Editor"]);smalltalk.send($rec, "_height_", [400]);smalltalk.send($rec, "_button_action_", ["apply", function () {return smalltalk.send(this_, "_applyParser", []);}]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
     return self;
 },
 args: [],
-source: "onDialog\x0a\x09DialogBox new widget: ParserEditor new; modal: false; width: '50%'; title: 'Parser Editor'; height: 400; open",
-messageSends: ["widget:", "new", "modal:", "width:", "title:", "height:", "open"],
-referencedClasses: ["ParserEditor", "DialogBox"]
+source: "onDialog\x0a\x09| this |\x0a\x09this := self new.\x0a\x09DialogBox new widget: this; modal: false; width: '50%'; title: 'Parser Editor'; height: 400; \x0a\x09\x09button: 'apply' action: [ this applyParser ];\x0a\x09open",
+messageSends: ["new", "widget:", "modal:", "width:", "title:", "height:", "button:action:", "applyParser", "open"],
+referencedClasses: ["DialogBox"]
 }),
 smalltalk.ParserEditor.klass);
 
