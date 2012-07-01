@@ -692,6 +692,14 @@ type: aString
     self at: 'type' put: aString
 !
 
+val
+    self  asJQuery val
+!
+
+val: aString
+    self  asJQuery val: aString
+!
+
 valign: aString
 	self at: 'valign' put: aString
 !
