@@ -181,6 +181,60 @@ smalltalk.DraggableWidget);
 
 
 
+smalltalk.addClass('Announcement', smalltalk.DraggableWidget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@ \u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.ATeam || ATeam, "_new", [])]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_span_", ["\u53C2\u52A0\u767B\u9332\u306F"]);return function ($rec) {smalltalk.send($rec, "_href_", ["http://atnd.org/events/30524"]);smalltalk.send($rec, "_target_", ["_blank"]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_h3", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'pink';\x0a\x09\x09css: 'padding' put: '10px';\x0a\x09with: [\x0a\x09\x09html h3 \x0a\x09\x09\x09with: '合同Smalltalk勉強会@ 名古屋';\x0a\x09\x09\x09with: ATeam new;\x0a\x09\x09\x09with: [\x0a\x09\x09\x09\x09html span: '参加登録は'.\x0a\x09\x09\x09\x09html a href: 'http://atnd.org/events/30524'; target: '_blank'; with: 'こちら']\x0a\x09]",
+messageSends: ["css:put:", "with:", "new", "span:", "href:", "target:", "a", "h3", "div"],
+referencedClasses: ["ATeam"]
+}),
+smalltalk.Announcement);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "51px";
+    return self;
+},
+args: [],
+source: "x\x0a  ^'51px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Announcement);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "-797px";
+    return self;
+},
+args: [],
+source: "y\x0a  ^'-797px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Announcement);
+
+
+
 smalltalk.addClass('Board', smalltalk.DraggableWidget, [], 'DyNagoya');
 smalltalk.addMethod(
 "_renderBodyOn_",
@@ -1713,14 +1767,13 @@ selector: "renderBody:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2010px")]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
-    (function ($rec) {smalltalk.send($rec, "_class_", ["span7"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Announcement || Announcement, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09\x09html div class: 'span7'; style: 'margin-top: 10px';\x0a\x09\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09\x09with: Logo new.\x0a\x09\x09html div class: 'span7'; with: Board new\x0a",
-messageSends: ["class:", "style:", "with:", "new", "div"],
-referencedClasses: ["Dolphin", "Logo", "Board"]
+source: "renderBody: html\x0a\x09\x09html div \x0a\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09with: Logo new;\x0a\x09\x09\x09with: Board new;\x0a\x09\x09\x09with: Announcement new\x0a",
+messageSends: ["with:", "new", "div"],
+referencedClasses: ["Dolphin", "Logo", "Board", "Announcement"]
 }),
 smalltalk.TopPage);
 
