@@ -80,11 +80,11 @@ DraggableWidget subclass: #Announcement
 !Announcement methodsFor: 'accessing'!
 
 x
-  ^'51px'
+  ^'-195px'
 !
 
 y
-  ^'-797px'
+  ^'-848px'
 ! !
 
 !Announcement methodsFor: 'rendering'!
@@ -93,6 +93,9 @@ renderBodyOn: html
 	html div 
 		css: 'background' put: 'pink';
 		css: 'padding' put: '10px';
+		css: 'width' put: '', window innerWidth , 'px';
+		css: 'opacity' put: '0.8';
+		css: 'color' put: 'white';
 	with: [
 		html h3 
 			with: '合同Smalltalk勉強会@ 名古屋';
@@ -1494,8 +1497,8 @@ new
 	^ single
 !
 
-put:  aPage
-	aPage appendToJQuery: ('#layer1' asJQuery)
+put:  aWidget
+	aWidget appendToJQuery: self new current
 ! !
 
 Widget subclass: #ToolBar
