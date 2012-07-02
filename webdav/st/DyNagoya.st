@@ -80,11 +80,11 @@ DraggableWidget subclass: #Announcement
 !Announcement methodsFor: 'accessing'!
 
 x
-  ^'-195px'
+  ^'-79px'
 !
 
 y
-  ^'-848px'
+  ^'-524px'
 ! !
 
 !Announcement methodsFor: 'rendering'!
@@ -98,11 +98,13 @@ renderBodyOn: html
 		css: 'color' put: 'white';
 	with: [
 		html h3 
-			with: '合同Smalltalk勉強会@ 名古屋';
-			with: ATeam new;
 			with: [
-				html span: '参加登録は'.
-				html a href: 'http://atnd.org/events/30524'; target: '_blank'; with: 'こちら']
+				html a href: 'http://atnd.org/events/30524'; target: '_blank'; 
+				with: '合同Smalltalk勉強会@ 名古屋'.
+				html span with: '2012.09.29(Sat)'; 
+					css: 'color' put: 'white';
+					css: 'margin-left' put: '20px'
+			]
 	]
 ! !
 
