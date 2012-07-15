@@ -890,9 +890,12 @@ Widget subclass: #ParserEditor
 
 applyParser
 	| parser |
-	parser := PEG buildParser: source val.
-
-	< smalltalk.parser = parser >
+	self try: [
+		parser := PEG buildParser: source val.
+		< smalltalk.parser = parser >
+	] catch: [ 
+		DialogBox new title: 'error'; message: %1; open
+	]
 !
 
 renderOn: html
