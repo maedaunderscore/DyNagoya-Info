@@ -6,7 +6,6 @@
     <meta name="author" content="Nicolas Petton" /> 
     <link rel="stylesheet" type="text/css" href='css/style.css' /> 
     <link rel="stylesheet" type="text/css" href='js/lib/jquery-ui/css/ui-darkness/jquery-ui-1.8.20.custom.css' /> 
-    <link rel="stylesheet" type="text/css" href='css/animate.css' /> 
     <link href="js/lib/tapmodo-Jcrop-5e58bc9/css/jquery.Jcrop.css" rel="stylesheet">
 
     <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico"/> 
@@ -18,10 +17,6 @@
       .ui-dialog { opacity: 0.8 }
       .ui-dialog-content > .amberTool { top: 0 }
       #layer1, #layer2 {
-         -moz-animation-delay: 0.2s;
-         -moz-animation-duration: 1s;
-         -moz-animation-fill-mode: both;
-         -moz-animation-timing-function: ease;
          position:absolute;
          width:100%;
       }
@@ -39,7 +34,7 @@
     </div>
     <button style="display:none" onClick="smalltalk.Browser._open()"> Class browser</button>    
     <script type='text/javascript'> loadAmber({
-          files: ['CodeModification.js', 'DyNagoya-Tools.js', 'DyNagoya.js'],
+          files: ['Ludus.js', 'CodeModification.js', 'DyNagoya-Tools.js', 'DyNagoya.js'],
           ready: function(){ smalltalk.EntryPoint._start(); }
       }) </script> 
   </body> 

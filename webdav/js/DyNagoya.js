@@ -3426,12 +3426,12 @@ selector: "rollIn:",
 category: 'private',
 fn: function (jq) {
     var self = this;
-    smalltalk.send(smalltalk.send(jq, "_removeClass", []), "_addClass_", ["animated rollIn"]);
+    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: - 100, rotate: "-15deg"}]);return smalltalk.send($rec, "_transition_", [{x: 0, rotate: "0", opacity: 1, duration: 2000}]);}(jq));
     return self;
 },
 args: ["jq"],
-source: "rollIn: jq\x0a\x09jq removeClass addClass: 'animated rollIn'",
-messageSends: ["addClass:", "removeClass"],
+source: "rollIn: jq\x0a\x22\x09jq removeClass addClass: 'animated rollIn'\x22\x0a  jq show; \x0a\x09css: (< { x: -100, rotate: '-15deg'} >);\x0a\x09transition: (< { x: 0, rotate: '0', opacity: 1, duration: 2000 } >)",
+messageSends: ["show", "css:", "transition:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
@@ -3443,12 +3443,12 @@ selector: "rollOut:",
 category: 'private',
 fn: function (jq) {
     var self = this;
-    smalltalk.send(smalltalk.send(jq, "_removeClass", []), "_addClass_", ["animated rollOut"]);
+    smalltalk.send(jq, "_transition_callback_", [{x: 300, rotate: "8deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
     return self;
 },
 args: ["jq"],
-source: "rollOut: jq\x0a\x09jq removeClass addClass: 'animated rollOut'",
-messageSends: ["addClass:", "removeClass"],
+source: "rollOut: jq\x0a\x22\x09jq removeClass addClass: 'animated rollOut'\x22\x0a  jq transition: (< { x: 300, rotate: '8deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]",
+messageSends: ["transition:callback:", "hide"],
 referencedClasses: []
 }),
 smalltalk.Screen);

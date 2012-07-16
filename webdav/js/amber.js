@@ -164,13 +164,14 @@ amber = (function() {
     if ((typeof jQuery == 'undefined') || (typeof jQuery.ui == 'undefined')) {
       loadJS('lib/jQuery/jquery-ui-1.8.16.custom.min.js');
     }
-      loadJS('lib/tapmodo-Jcrop-5e58bc9/js/jquery.Jcrop.min.js');
+    loadJS('lib/tapmodo-Jcrop-5e58bc9/js/jquery.Jcrop.min.js');
+    loadJS('lib/jquery.zoomooz.min.js');
+    loadJS('lib/jquery.transit.js');
   };
 
   function loadIDEDependencies() {
     loadJS('lib/jQuery/jquery.textarea.js');
     loadJS('lib/peg-0.6.2.min.js');
-    loadJS('lib/jquery.zoomooz.min.js');
     loadJS('lib/CodeMirror/codemirror.js');
     loadJS('lib/CodeMirror/smalltalk.js');
     loadCSS('lib/CodeMirror/codemirror.css', 'js');

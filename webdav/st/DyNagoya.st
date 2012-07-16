@@ -1483,11 +1483,15 @@ nextIndex
 !
 
 rollIn: jq
-	jq removeClass addClass: 'animated rollIn'
+"	jq removeClass addClass: 'animated rollIn'"
+  jq show; 
+	css: (< { x: -100, rotate: '-15deg'} >);
+	transition: (< { x: 0, rotate: '0', opacity: 1, duration: 2000 } >)
 !
 
 rollOut: jq
-	jq removeClass addClass: 'animated rollOut'
+"	jq removeClass addClass: 'animated rollOut'"
+  jq transition: (< { x: 300, rotate: '8deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]
 ! !
 
 Screen class instanceVariableNames: 'single'!

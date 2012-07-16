@@ -2476,7 +2476,7 @@ smalltalk.method({
 selector: "rollIn:",
 fn: function (jq) {
     var self = this;
-    smalltalk.send(smalltalk.send(jq, "_removeClass", []), "_addClass_", ["animated rollIn"]);
+    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: - 100, rotate: "-15deg"}]);return smalltalk.send($rec, "_transition_", [{x: 0, rotate: "0", opacity: 1, duration: 2000}]);}(jq));
     return self;
 }
 }),
@@ -2488,7 +2488,7 @@ smalltalk.method({
 selector: "rollOut:",
 fn: function (jq) {
     var self = this;
-    smalltalk.send(smalltalk.send(jq, "_removeClass", []), "_addClass_", ["animated rollOut"]);
+    smalltalk.send(jq, "_transition_callback_", [{x: 300, rotate: "8deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
     return self;
 }
 }),
