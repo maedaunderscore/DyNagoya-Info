@@ -448,7 +448,7 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 latest
-	^ self meeting07
+	^ self meeting08
 !
 
 meeting02
@@ -540,6 +540,21 @@ meeting07
 		detail: {
 'Smalltalk勉強会　未踏スペシャル フィードバック'.
 '合同Smalltalk勉強会の段取りを決める'.
+'Smalltalk入門(希望者がいれば)'
+}
+!
+
+meeting08
+	^ self new 
+		fixed: true;
+		title: 'DyNagoya MTG ＃08';
+		date: '2012/07/28';
+		start: '18:00:00';
+		end: '20:30:00';
+		place: Mattariya;
+		detail: {
+'合同Smalltalk勉強会の発表ネタを決める'.
+'Amber 魔改造の話'.
 'Smalltalk入門(希望者がいれば)'
 }
 ! !
@@ -1334,6 +1349,24 @@ name
 
 url
 	^ 'http://r.tabelog.com/aichi/A2301/A230103/23030942/'
+! !
+
+Place subclass: #Mattariya
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Mattariya methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市千種区内山３-20-19'
+!
+
+name
+	^ 'まったりや 千種'
+!
+
+url
+	^ 'http://www.hotpepper.jp/strJ000725580'
 ! !
 
 Place subclass: #Moyorino
