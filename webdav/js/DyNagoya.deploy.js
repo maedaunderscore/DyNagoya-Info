@@ -819,7 +819,7 @@ smalltalk.method({
 selector: "latest",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting07", []);
+    return smalltalk.send(self, "_meeting08", []);
     return self;
 }
 }),
@@ -892,6 +892,18 @@ selector: "meeting07",
 fn: function () {
     var self = this;
     return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0307"]);smalltalk.send($rec, "_date_", ["2012/06/23"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.AmiyakiTei || AmiyakiTei]);return smalltalk.send($rec, "_detail_", [["Smalltalk\u52C9\u5F37\u4F1A\u3000\u672A\u8E0F\u30B9\u30DA\u30B7\u30E3\u30EB \u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF", "\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u6BB5\u53D6\u308A\u3092\u6C7A\u3081\u308B", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting08",
+smalltalk.method({
+selector: "meeting08",
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0308"]);smalltalk.send($rec, "_date_", ["2012/07/28"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Mattariya || Mattariya]);return smalltalk.send($rec, "_detail_", [["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u767A\u8868\u30CD\u30BF\u3092\u6C7A\u3081\u308B", "Amber \u9B54\u6539\u9020\u306E\u8A71", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
@@ -2159,6 +2171,45 @@ smalltalk.Maruichi);
 
 
 
+smalltalk.addClass('Mattariya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u5185\u5C71\uFF13-20-19";
+    return self;
+}
+}),
+smalltalk.Mattariya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u307E\u3063\u305F\u308A\u3084 \u5343\u7A2E";
+    return self;
+}
+}),
+smalltalk.Mattariya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://www.hotpepper.jp/strJ000725580";
+    return self;
+}
+}),
+smalltalk.Mattariya);
+
+
+
 smalltalk.addClass('Moyorino', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 "_address",
@@ -2476,7 +2527,7 @@ smalltalk.method({
 selector: "rollIn:",
 fn: function (jq) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: - 100, rotate: "-15deg"}]);return smalltalk.send($rec, "_transition_", [{x: 0, rotate: "0", opacity: 1, duration: 2000}]);}(jq));
+    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: -100, rotate: "-15deg"}]);return smalltalk.send($rec, "_transition_", [{x: 0, rotate: "0", opacity: 1, duration: 2000}]);}(jq));
     return self;
 }
 }),
