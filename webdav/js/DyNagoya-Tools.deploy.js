@@ -764,6 +764,45 @@ fn: function () {
 smalltalk.WorkspaceDialog.klass);
 
 
+smalltalk.addClass('EventSource', smalltalk.Object, ['observers'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_fire_",
+smalltalk.method({
+selector: "fire:",
+fn: function (ev) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value_", [ev]);}]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@observers'] = smalltalk.send(smalltalk.Set || Set, "_new", []);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_subscribe_",
+smalltalk.method({
+selector: "subscribe:",
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_add_", [ob]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+
+
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(

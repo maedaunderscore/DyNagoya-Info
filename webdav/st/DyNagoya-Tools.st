@@ -403,6 +403,24 @@ new
 	^ s
 ! !
 
+Object subclass: #EventSource
+	instanceVariableNames: 'observers'
+	package: 'DyNagoya-Tools'!
+
+!EventSource methodsFor: 'not yet classified'!
+
+fire: ev
+	observers do: [ %1 value: ev ]
+!
+
+initialize
+	observers := Set new
+!
+
+subscribe: ob
+	observers add: ob
+! !
+
 Object subclass: #GoogleMap
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
