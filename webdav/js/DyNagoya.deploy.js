@@ -903,7 +903,7 @@ smalltalk.method({
 selector: "meeting08",
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0308"]);smalltalk.send($rec, "_date_", ["2012/07/28"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Mattariya || Mattariya]);return smalltalk.send($rec, "_detail_", [["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u767A\u8868\u30CD\u30BF\u3092\u6C7A\u3081\u308B", "Amber \u9B54\u6539\u9020\u306E\u8A71", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0308"]);smalltalk.send($rec, "_date_", ["2012/07/28"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u767A\u8868\u30CD\u30BF\u3092\u6C7A\u3081\u308B", "Amber \u9B54\u6539\u9020\u306E\u8A71", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
@@ -1788,7 +1788,7 @@ smalltalk.method({
 selector: "name",
 fn: function () {
     var self = this;
-    return unescape("Cafe%20%u3069%u3048%u308A%u3083%u3042");
+    return "\u30CF\u30F3\u30D0\u30FC\u30B0\u30CF\u30A6\u30B9\u6E90(\u65E7\u3069\u3048\u308A\u3083\u3042)";
     return self;
 }
 }),
@@ -1800,7 +1800,7 @@ smalltalk.method({
 selector: "url",
 fn: function () {
     var self = this;
-    return unescape("http%3A//doerya.gensg.jp/");
+    return "http://second.gensg.jp/gen/";
     return self;
 }
 }),
@@ -2402,6 +2402,45 @@ fn: function () {
 }
 }),
 smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('WindMonad', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u7DD1\u533A\u9CF4\u6D77\u753A\u5927\u6E05\u6C3469\u221247";
+    return self;
+}
+}),
+smalltalk.WindMonad);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u98A8\u306E\u30E2\u30CA\u30C9";
+    return self;
+}
+}),
+smalltalk.WindMonad);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://www.facebook.com/IhatovuCultureSchool";
+    return self;
+}
+}),
+smalltalk.WindMonad);
 
 
 

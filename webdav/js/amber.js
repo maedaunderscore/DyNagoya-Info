@@ -232,4 +232,4 @@ amber = (function() {
 })();
 
 window.loadAmber = amber.load;
-window.toggleAmberIDE = amber.toggleIDE;
+

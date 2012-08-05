@@ -551,7 +551,7 @@ meeting08
 		date: '2012/07/28';
 		start: '18:00:00';
 		end: '20:30:00';
-		place: Mattariya;
+		place: Doerya;
 		detail: {
 '合同Smalltalk勉強会の発表ネタを決める'.
 'Amber 魔改造の話'.
@@ -1178,11 +1178,11 @@ address
 !
 
 name
-	^ 'Cafe どえりゃあ'
+	^ 'ハンバーグハウス源(旧どえりゃあ)'
 !
 
 url
-	^ 'http://doerya.gensg.jp/'
+	^ 'http://second.gensg.jp/gen/'
 ! !
 
 Place subclass: #DyNagoyaBuilding
@@ -1457,6 +1457,24 @@ name
 
 url
 	^ 'http://www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi?category=5&page=1'
+! !
+
+Place subclass: #WindMonad
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!WindMonad methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市緑区鳴海町大清水69−47'
+!
+
+name
+	^ '風のモナド'
+!
+
+url
+	^ 'http://www.facebook.com/IhatovuCultureSchool'
 ! !
 
 Place subclass: #ZTres

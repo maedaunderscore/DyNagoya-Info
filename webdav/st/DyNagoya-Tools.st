@@ -147,6 +147,7 @@ open
 		css: 'font-size' at: (self fontSize); 
 		dialog: option.
          body asJQuery parent
+		addClass: 'workspace-effect';
 		css: 'position' at: 'fixed';
 		css: 'left' at: (self x);
 		css: 'top' at: (self y)

@@ -1,7 +1,7 @@
-.amberTool .CodeMirror .cm-s-amberbig{
+.workspace-effect .CodeMirror .cm-s-amberbig{
     font-size:24px;
 }
-.amberTool .CodeMirror .cm-s-amberbig pre{
+.workspace-effect .CodeMirror .cm-s-amberbig pre{
     line-height: 1.3em;
 }
 .cm-s-amberbig span.cm-keyword {color: #7F0000; font-weight: bold;}

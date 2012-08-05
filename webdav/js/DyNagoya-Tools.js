@@ -340,12 +340,12 @@ category: 'action',
 fn: function () {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_css_at_", ["font-size", smalltalk.send(self, "_fontSize", [])]);return smalltalk.send($rec, "_dialog_", [self['@option']]);}(smalltalk.send(self['@body'], "_asJQuery", [])));
-    (function ($rec) {smalltalk.send($rec, "_css_at_", ["position", "fixed"]);smalltalk.send($rec, "_css_at_", ["left", smalltalk.send(self, "_x", [])]);return smalltalk.send($rec, "_css_at_", ["top", smalltalk.send(self, "_y", [])]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
+    (function ($rec) {smalltalk.send($rec, "_addClass_", ["workspace-effect"]);smalltalk.send($rec, "_css_at_", ["position", "fixed"]);smalltalk.send($rec, "_css_at_", ["left", smalltalk.send(self, "_x", [])]);return smalltalk.send($rec, "_css_at_", ["top", smalltalk.send(self, "_y", [])]);}(smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_parent", [])));
     return self;
 },
 args: [],
-source: "open\x0a\x09 body asJQuery\x0a\x09\x09css: 'font-size' at: (self fontSize); \x0a\x09\x09dialog: option.\x0a         body asJQuery parent\x0a\x09\x09css: 'position' at: 'fixed';\x0a\x09\x09css: 'left' at: (self x);\x0a\x09\x09css: 'top' at: (self y)",
-messageSends: ["css:at:", "fontSize", "dialog:", "asJQuery", "x", "y", "parent"],
+source: "open\x0a\x09 body asJQuery\x0a\x09\x09css: 'font-size' at: (self fontSize); \x0a\x09\x09dialog: option.\x0a         body asJQuery parent\x0a\x09\x09addClass: 'workspace-effect';\x0a\x09\x09css: 'position' at: 'fixed';\x0a\x09\x09css: 'left' at: (self x);\x0a\x09\x09css: 'top' at: (self y)",
+messageSends: ["css:at:", "fontSize", "dialog:", "asJQuery", "addClass:", "x", "y", "parent"],
 referencedClasses: []
 }),
 smalltalk.DialogBox);
@@ -524,6 +524,23 @@ referencedClasses: []
 }),
 smalltalk.DialogBox);
 
+
+smalltalk.addMethod(
+"_toggleShow",
+smalltalk.method({
+selector: "toggleShow",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_length", []), "__eq", [0])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(smalltalk.send(".ui-dialog:visible", "_asJQuery", []), "_hide", []);}() : function () {return smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_show", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(smalltalk.send(".ui-dialog:visible", "_asJQuery", []), "_hide", []);}, function () {return smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_show", []);}]);
+    return self;
+},
+args: [],
+source: "toggleShow\x0a\x09'.ui-dialog:hidden' asJQuery length = 0 \x0a\x09\x09ifTrue: [ '.ui-dialog:visible' asJQuery hide ]\x0a\x09\x09ifFalse: [ '.ui-dialog:hidden' asJQuery show ]\x0a\x09",
+messageSends: ["ifTrue:ifFalse:", "=", "length", "asJQuery", "hide", "show"],
+referencedClasses: []
+}),
+smalltalk.DialogBox.klass);
 
 smalltalk.addMethod(
 "_withCancel",
