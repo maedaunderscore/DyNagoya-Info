@@ -471,7 +471,6 @@ smalltalk.Logo);
 smalltalk.addClass('EntryPoint', smalltalk.Object, [], 'DyNagoya');
 smalltalk.EntryPoint.comment="EntryPoint makeWorkspaceNormalTheme "
 
-smalltalk.EntryPoint.klass.iVarNames = ['workspace','transcript'];
 smalltalk.addMethod(
 "_bottomPosition",
 smalltalk.method({
@@ -648,40 +647,6 @@ fn: function () {
 args: [],
 source: "topPosition\x0a  ^ [ %1\x0a\x09width: '350px';\x0a\x09height: 300;\x0a\x09x: '', (window innerWidth * 0.9 - 350), 'px';\x0a\x09y: '', (window innerHeight * 0.1), 'px'\x0a  ]",
 messageSends: ["width:", "height:", "x:", ",", "-", "*", "innerWidth", "y:", "innerHeight"],
-referencedClasses: []
-}),
-smalltalk.EntryPoint.klass);
-
-smalltalk.addMethod(
-"_transcript",
-smalltalk.method({
-selector: "transcript",
-category: 'accessing',
-fn: function () {
-    var self = this;
-    return self['@transcript'];
-    return self;
-},
-args: [],
-source: "transcript\x0a\x09^ transcript",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.EntryPoint.klass);
-
-smalltalk.addMethod(
-"_workspace",
-smalltalk.method({
-selector: "workspace",
-category: 'accessing',
-fn: function () {
-    var self = this;
-    return self['@workspace'];
-    return self;
-},
-args: [],
-source: "workspace\x0a\x09^ workspace",
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.EntryPoint.klass);
