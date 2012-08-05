@@ -278,10 +278,9 @@ showMessage
 
 start
 "  self makeWorkspaceBigTheme."
-  transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current); title: 'Transcript'; modal: false ].
 
   WorkspaceDialog new  |> self bottomPosition; open.
-  transcript |> self topPosition ; open.
+  TranscriptDialog |> self topPosition ; open.
 
    self screenPreparation.
   LoginPanel show.
