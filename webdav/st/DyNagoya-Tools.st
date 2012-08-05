@@ -171,6 +171,12 @@ initialize
 
 !DialogBox class methodsFor: 'not yet classified'!
 
+toggleShow
+	'.ui-dialog:hidden' asJQuery length = 0 
+		ifTrue: [ '.ui-dialog:visible' asJQuery hide ]
+		ifFalse: [ '.ui-dialog:hidden' asJQuery show ]
+!
+
 withCancel
 	^ self new closeButton: 'Cancel'
 ! !

@@ -375,6 +375,18 @@ smalltalk.DialogBox);
 
 
 smalltalk.addMethod(
+"_toggleShow",
+smalltalk.method({
+selector: "toggleShow",
+fn: function () {
+    var self = this;
+    ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_length", []), "__eq", [0])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(smalltalk.send(".ui-dialog:visible", "_asJQuery", []), "_hide", []);}() : function () {return smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_show", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(smalltalk.send(".ui-dialog:visible", "_asJQuery", []), "_hide", []);}, function () {return smalltalk.send(smalltalk.send(".ui-dialog:hidden", "_asJQuery", []), "_show", []);}]);
+    return self;
+}
+}),
+smalltalk.DialogBox.klass);
+
+smalltalk.addMethod(
 "_withCancel",
 smalltalk.method({
 selector: "withCancel",
