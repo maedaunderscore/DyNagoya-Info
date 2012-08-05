@@ -943,7 +943,24 @@ referencedClasses: []
 smalltalk.ProxyImageEditor.klass);
 
 
-smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addClass('TranscriptDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    return self;
+},
+args: [],
+source: "close\x0a\x09 body asJQuery dialog: 'destroy'",
+messageSends: ["dialog:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TranscriptDialog);
+
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -951,12 +968,70 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function () {
     var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.TranscriptDialog.superclass || nil);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a\x09self \x0a\x09\x09widget: (IDETranscript current); \x0a\x09\x09title: 'Transcript'; \x0a\x09\x09modal: false",
+messageSends: ["initialize", "widget:", "current", "title:", "modal:"],
+referencedClasses: ["IDETranscript"]
+}),
+smalltalk.TranscriptDialog);
+
+
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
+        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", [], smalltalk.TranscriptDialog.klass.superclass || nil);}() : $receiver;
+    return typeof s == "undefined" ? nil : s;
+    return self;
+},
+args: [],
+source: "new\x0a\x09s ifNil: [ s := super new ].\x0a\x09^ s",
+messageSends: ["ifNil:", "new"],
+referencedClasses: []
+}),
+smalltalk.TranscriptDialog.klass);
+
+
+smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    return self;
+},
+args: [],
+source: "close\x0a\x09 body asJQuery dialog: 'destroy'",
+messageSends: ["dialog:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.WorkspaceDialog);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.WorkspaceDialog.superclass || nil);
     (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 },
 args: [],
-source: "initialize\x0a\x09self \x0a\x09\x09widget: (Workspace new); \x0a\x09\x09title: 'Workspace'; \x0a\x09\x09modal: false",
-messageSends: ["widget:", "new", "title:", "modal:"],
+source: "initialize\x0a\x09super initialize.\x0a\x09self \x0a\x09\x09widget: (Workspace new); \x0a\x09\x09title: 'Workspace'; \x0a\x09\x09modal: false",
+messageSends: ["initialize", "widget:", "new", "title:", "modal:"],
 referencedClasses: ["Workspace"]
 }),
 smalltalk.WorkspaceDialog);
