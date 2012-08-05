@@ -1109,6 +1109,23 @@ referencedClasses: []
 }),
 smalltalk.EventSource);
 
+smalltalk.addMethod(
+"_unsubscribe_",
+smalltalk.method({
+selector: "unsubscribe:",
+category: 'not yet classified',
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_remove_", [ob]);
+    return self;
+},
+args: ["ob"],
+source: "unsubscribe: ob\x0a\x09observers remove: ob",
+messageSends: ["remove:"],
+referencedClasses: []
+}),
+smalltalk.EventSource);
+
 
 
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
