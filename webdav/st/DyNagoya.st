@@ -199,18 +199,6 @@ Object subclass: #EntryPoint
 !EntryPoint commentStamp!
 EntryPoint makeWorkspaceNormalTheme!
 
-EntryPoint class instanceVariableNames: 'workspace transcript'!
-
-!EntryPoint class methodsFor: 'accessing'!
-
-transcript
-	^ transcript
-!
-
-workspace
-	^ workspace
-! !
-
 !EntryPoint class methodsFor: 'not yet classified'!
 
 bottomPosition
