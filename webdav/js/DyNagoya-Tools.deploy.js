@@ -680,13 +680,68 @@ fn: function (url) {
 smalltalk.ProxyImageEditor.klass);
 
 
-smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addClass('TranscriptDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    return self;
+}
+}),
+smalltalk.TranscriptDialog);
+
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function () {
     var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.TranscriptDialog.superclass || nil);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.IDETranscript || IDETranscript, "_current", [])]);smalltalk.send($rec, "_title_", ["Transcript"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    return self;
+}
+}),
+smalltalk.TranscriptDialog);
+
+
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+fn: function () {
+    var self = this;
+    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
+        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", [], smalltalk.TranscriptDialog.klass.superclass || nil);}() : $receiver;
+    return typeof s == "undefined" ? nil : s;
+    return self;
+}
+}),
+smalltalk.TranscriptDialog.klass);
+
+
+smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_dialog_", ["destroy"]);
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.WorkspaceDialog.superclass || nil);
     (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 }

@@ -351,13 +351,43 @@ open: url
 	^ self new openWithProxy: url
 ! !
 
+DialogBox subclass: #TranscriptDialog
+	instanceVariableNames: ''
+	package: 'DyNagoya-Tools'!
+
+!TranscriptDialog methodsFor: 'not yet classified'!
+
+close
+	 body asJQuery dialog: 'destroy'
+!
+
+initialize
+	super initialize.
+	self 
+		widget: (IDETranscript current); 
+		title: 'Transcript'; 
+		modal: false
+! !
+
+!TranscriptDialog class methodsFor: 'not yet classified'!
+
+new
+	s ifNil: [ s := super new ].
+	^ s
+! !
+
 DialogBox subclass: #WorkspaceDialog
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
 
 !WorkspaceDialog methodsFor: 'not yet classified'!
 
+close
+	 body asJQuery dialog: 'destroy'
+!
+
 initialize
+	super initialize.
 	self 
 		widget: (Workspace new); 
 		title: 'Workspace'; 
