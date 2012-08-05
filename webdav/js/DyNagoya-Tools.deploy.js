@@ -801,6 +801,18 @@ fn: function (ob) {
 }),
 smalltalk.EventSource);
 
+smalltalk.addMethod(
+"_unsubscribe_",
+smalltalk.method({
+selector: "unsubscribe:",
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_remove_", [ob]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
 
 
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');

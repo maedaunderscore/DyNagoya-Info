@@ -419,6 +419,10 @@ initialize
 
 subscribe: ob
 	observers add: ob
+!
+
+unsubscribe: ob
+	observers remove: ob
 ! !
 
 Object subclass: #GoogleMap
