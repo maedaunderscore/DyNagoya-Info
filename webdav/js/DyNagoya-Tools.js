@@ -1057,6 +1057,60 @@ referencedClasses: []
 smalltalk.WorkspaceDialog.klass);
 
 
+smalltalk.addClass('EventSource', smalltalk.Object, ['observers'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_fire_",
+smalltalk.method({
+selector: "fire:",
+category: 'not yet classified',
+fn: function (ev) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value_", [ev]);}]);
+    return self;
+},
+args: ["ev"],
+source: "fire: ev\x0a\x09observers do: [ %1 value: ev ]",
+messageSends: ["do:", "value:"],
+referencedClasses: []
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@observers'] = smalltalk.send(smalltalk.Set || Set, "_new", []);
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09observers := Set new",
+messageSends: ["new"],
+referencedClasses: ["Set"]
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_subscribe_",
+smalltalk.method({
+selector: "subscribe:",
+category: 'not yet classified',
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_add_", [ob]);
+    return self;
+},
+args: ["ob"],
+source: "subscribe: ob\x0a\x09observers add: ob",
+messageSends: ["add:"],
+referencedClasses: []
+}),
+smalltalk.EventSource);
+
+
+
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
