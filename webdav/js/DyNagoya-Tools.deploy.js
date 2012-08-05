@@ -680,6 +680,35 @@ fn: function (url) {
 smalltalk.ProxyImageEditor.klass);
 
 
+smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog);
+
+
+smalltalk.WorkspaceDialog.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.WorkspaceDialog.klass.superclass || nil);}() : $receiver;
+    return self['@s'];
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog.klass);
+
+
 smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(

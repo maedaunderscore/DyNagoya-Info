@@ -351,6 +351,28 @@ open: url
 	^ self new openWithProxy: url
 ! !
 
+DialogBox subclass: #WorkspaceDialog
+	instanceVariableNames: ''
+	package: 'DyNagoya-Tools'!
+
+!WorkspaceDialog methodsFor: 'not yet classified'!
+
+initialize
+	self 
+		widget: (Workspace new); 
+		title: 'Workspace'; 
+		modal: false
+! !
+
+WorkspaceDialog class instanceVariableNames: 's'!
+
+!WorkspaceDialog class methodsFor: 'not yet classified'!
+
+new
+	s ifNil: [ s := super new ].
+	^ s
+! !
+
 Object subclass: #GoogleMap
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
