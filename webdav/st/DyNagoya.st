@@ -277,11 +277,10 @@ showMessage
 !
 
 start
-  workspace ifNil: [ workspace := DialogBox new widget: (Workspace new); title: 'Workspace'; modal: false].
 "  self makeWorkspaceBigTheme."
   transcript ifNil: [ transcript :=DialogBox new widget: (IDETranscript current); title: 'Transcript'; modal: false ].
 
-  workspace  |> self bottomPosition; open.
+  WorkspaceDialog new  |> self bottomPosition; open.
   transcript |> self topPosition ; open.
 
    self screenPreparation.
