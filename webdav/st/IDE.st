@@ -1481,18 +1481,27 @@ renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: 
 !
 
 renderOn: html
-	| title titleBrush classMethodButton |
+	| title titleBrush classMethodButton methodButton protocolButton definitionButton commentButton |
+
 	root := html root name:  'class-', selectedClass name.
-	classView := html div with: [
-		title := PlusMinusIcon text: selectedClass name.
+	title := PlusMinusIcon text: selectedClass name.
+	classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.
+	methodButton :=  RectangleButton new label: 'method' frontColor: 'black' backColor: 'white'.
+	protocolButton :=   RectangleButton new label: 'protocol' frontColor: 'black' backColor: 'white'.
+	definitionButton := RectangleButton new label: 'definition' frontColor: 'black' backColor: 'white'.
+	commentButton := RectangleButton new label: 'comment' frontColor: 'black' backColor: 'white'.
+
+	html div with: [
 		titleBrush := html span with: title;
 				class: 'browser-class-name';
-				css: 'font-size' put: '1.2em'.
-		classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.
-		classMethodButton inspect.
-		html span with: classMethodButton.
-		classMethodButton toggle fire: false.
-	]
+				css: 'font-size' put: '1.2em'
+		];
+		with: classMethodButton;
+		with: methodButton;
+		with: protocolButton;
+		with: definitionButton;
+		with: commentButton.
+	classMethodButton toggle fire: false.
 ! !
 
 !BrowserForClass class methodsFor: 'not yet classified'!
