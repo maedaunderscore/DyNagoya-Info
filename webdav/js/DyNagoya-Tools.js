@@ -1529,7 +1529,7 @@ fn: function () {
     return self;
 },
 args: [],
-source: "initialize\x0a\x09source := EventSource new.\x0a\x09state := source >>> (EventSource toggle: false).\x0a\x09state \x0a\x09\x09>>>  [ %1\x0a\x09\x09\x09\x09ifTrue: [ renderWhenOn ]\x0a\x09\x09\x09\x09ifFalse: [ renderWhenOff] ] \x0a\x09\x09>>> [ self redraw: %1].\x0a\x09renderWhenOn := [ :html | ].\x0a\x09renderWhenOff := [ :html | ].",
+source: "initialize\x0a\x09source := EventSource new.\x0a\x09state := source >>> (EventSource toggle: false).\x0a\x09state >>>  [ %1\x0a\x09\x09\x09\x09ifTrue: [ renderWhenOn ]\x0a\x09\x09\x09\x09ifFalse: [ renderWhenOff] ] \x0a\x09\x09>>> [ self redraw: %1].\x0a\x09renderWhenOn := [ :html | ].\x0a\x09renderWhenOff := [ :html | ].",
 messageSends: ["new", ">>>", "toggle:", "ifTrue:ifFalse:", "redraw:"],
 referencedClasses: ["EventSource"]
 }),
@@ -1560,10 +1560,11 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);return smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);}(smalltalk.send(html, "_span", []));
+    smalltalk.send(self['@state'], "_fire_", [false]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09body := html span \x0a\x09\x09onClick: [ source fire: %1 ];  \x0a\x09\x09css: 'cursor' put: 'pointer'.\x0a\x0a",
+source: "renderOn: html\x0a\x09body := html span \x0a\x09\x09onClick: [ source fire: %1 ];  \x0a\x09\x09css: 'cursor' put: 'pointer'.\x0a\x09state fire: false\x0a",
 messageSends: ["onClick:", "fire:", "css:put:", "span"],
 referencedClasses: []
 }),
@@ -1619,6 +1620,62 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ToggleButton);
+
+
+
+smalltalk.addClass('RectangleButton', smalltalk.ToggleButton, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_label_frontColor_backColor_",
+smalltalk.method({
+selector: "label:frontColor:backColor:",
+category: 'not yet classified',
+fn: function (aString, front, back) {
+    var self = this;
+    self['@label'] = aString;
+    self['@renderWhenOn'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_onStyle_fontColor_", [back, front])]);}(smalltalk.send(html, "_span", []));};
+    self['@renderWhenOff'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_offStyle", [])]);}(smalltalk.send(html, "_span", []));};
+    return self;
+},
+args: ["aString", "front", "back"],
+source: "label: aString frontColor: front backColor: back\x0a\x09label := aString.\x0a\x09renderWhenOn := [ :html | \x0a\x09\x09html span with: label; |> ( self onStyle: back fontColor: front )\x0a\x09].\x0a\x09renderWhenOff := [ :html |\x0a\x09\x09html span with: label; |> self offStyle\x0a\x09]\x0a",
+messageSends: ["with:", "|>", "onStyle:fontColor:", "span", "offStyle"],
+referencedClasses: []
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_offStyle",
+smalltalk.method({
+selector: "offStyle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", "1px solid white"]);smalltalk.send($rec, "_css_put_", ["background", ""]);return smalltalk.send($rec, "_css_put_", ["color", ""]);}(thisisplaceholder1);};
+    return self;
+},
+args: [],
+source: "offStyle\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'padding' put: '2px';\x0a\x09css: 'font-size' put: '0.8em';\x0a\x09css: 'border' put: '1px solid white';\x0a\x09css: 'background' put: '';\x0a\x09css: 'color' put: ''\x0a     ]",
+messageSends: ["css:put:"],
+referencedClasses: []
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_onStyle_fontColor_",
+smalltalk.method({
+selector: "onStyle:fontColor:",
+category: 'not yet classified',
+fn: function (backColor, fontColor) {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", smalltalk.send("1px solid ", "__comma", [backColor])]);smalltalk.send($rec, "_css_put_", ["background", backColor]);return smalltalk.send($rec, "_css_put_", ["color", fontColor]);}(thisisplaceholder1);};
+    return self;
+},
+args: ["backColor", "fontColor"],
+source: "onStyle: backColor fontColor: fontColor\x0a  ^ [ %1\x0a\x09css: 'margin-left' put: '10px';\x0a\x09css: 'padding' put: '2px';\x0a\x09css: 'font-size' put: '0.8em';\x0a\x09css: 'border' put: '1px solid ', backColor;\x0a\x09css: 'background' put: backColor;\x0a\x09css: 'color' put: fontColor\x0a     ]",
+messageSends: ["css:put:", ","],
+referencedClasses: []
+}),
+smalltalk.RectangleButton);
 
 
 
