@@ -1084,15 +1084,14 @@ fn: function (aBlock) {
     var self = this;
     var second = nil;
     second = smalltalk.send(smalltalk.send(smalltalk.ConnectedEventSource || ConnectedEventSource, "_new", []), "_converter_", [aBlock]);
-    (function ($rec) {smalltalk.send($rec, "_show_", [second]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     smalltalk.send(self, "_subscribe_", [second]);
     return second;
     return self;
 },
 args: ["aBlock"],
-source: ">>> aBlock\x0a\x09| second |\x0a\x09second := ConnectedEventSource new converter: aBlock.\x0a\x09Transcript show: second; cr.\x0a\x09self subscribe: second.\x0a\x09^ second",
-messageSends: ["converter:", "new", "show:", "cr", "subscribe:"],
-referencedClasses: ["ConnectedEventSource", "Transcript"]
+source: ">>> aBlock\x0a\x09| second |\x0a\x09second := ConnectedEventSource new converter: aBlock.\x0a\x09self subscribe: second.\x0a\x09^ second",
+messageSends: ["converter:", "new", "subscribe:"],
+referencedClasses: ["ConnectedEventSource"]
 }),
 smalltalk.EventSource);
 
@@ -1523,18 +1522,16 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     self['@source'] = smalltalk.send(smalltalk.EventSource || EventSource, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_show_", [self['@source']]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
-    smalltalk.send(smalltalk.send(self['@state'], "__eq", [self['@source']]), "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
-    smalltalk.send(self['@state'], "_inspect", []);
+    self['@state'] = smalltalk.send(self['@source'], "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
     smalltalk.send(smalltalk.send(self['@state'], "__gt_gt_gt", [function (thisisplaceholder1) {return ($receiver = thisisplaceholder1).klass === smalltalk.Boolean ? $receiver ? function () {return self['@renderWhenOn'];}() : function () {return self['@renderWhenOff'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@renderWhenOn'];}, function () {return self['@renderWhenOff'];}]);}]), "__gt_gt_gt", [function (thisisplaceholder1) {return smalltalk.send(self, "_redraw_", [thisisplaceholder1]);}]);
     self['@renderWhenOn'] = function (html) {return nil;};
     self['@renderWhenOff'] = function (html) {return nil;};
     return self;
 },
 args: [],
-source: "initialize\x0a\x09source := EventSource new.\x0a\x09Transcript show: source; cr.\x0a\x09state = source >>> (EventSource toggle: false).\x0a\x09state inspect.\x0a\x09state \x0a\x09\x09>>>  [ %1\x0a\x09\x09\x09\x09ifTrue: [ renderWhenOn ]\x0a\x09\x09\x09\x09ifFalse: [ renderWhenOff] ] \x0a\x09\x09>>> [ self redraw: %1].\x0a\x09renderWhenOn := [ :html | ].\x0a\x09renderWhenOff := [ :html | ].",
-messageSends: ["new", "show:", "cr", ">>>", "=", "toggle:", "inspect", "ifTrue:ifFalse:", "redraw:"],
-referencedClasses: ["EventSource", "Transcript"]
+source: "initialize\x0a\x09source := EventSource new.\x0a\x09state := source >>> (EventSource toggle: false).\x0a\x09state \x0a\x09\x09>>>  [ %1\x0a\x09\x09\x09\x09ifTrue: [ renderWhenOn ]\x0a\x09\x09\x09\x09ifFalse: [ renderWhenOff] ] \x0a\x09\x09>>> [ self redraw: %1].\x0a\x09renderWhenOn := [ :html | ].\x0a\x09renderWhenOff := [ :html | ].",
+messageSends: ["new", ">>>", "toggle:", "ifTrue:ifFalse:", "redraw:"],
+referencedClasses: ["EventSource"]
 }),
 smalltalk.ToggleButton);
 
@@ -1562,13 +1559,12 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    self['@body'] = smalltalk.send(smalltalk.send(html, "_span", []), "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);
-    smalltalk.send(self, "_redraw", []);
+    self['@body'] = function ($rec) {smalltalk.send($rec, "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);return smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);}(smalltalk.send(html, "_span", []));
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09body := html span onClick: [ source fire: %1 ].\x0a\x09self redraw\x0a",
-messageSends: ["onClick:", "span", "fire:", "redraw"],
+source: "renderOn: html\x0a\x09body := html span \x0a\x09\x09onClick: [ source fire: %1 ];  \x0a\x09\x09css: 'cursor' put: 'pointer'.\x0a\x0a",
+messageSends: ["onClick:", "fire:", "css:put:", "span"],
 referencedClasses: []
 }),
 smalltalk.ToggleButton);
