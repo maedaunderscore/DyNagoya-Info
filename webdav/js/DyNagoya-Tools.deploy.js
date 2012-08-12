@@ -407,9 +407,21 @@ smalltalk.method({
 selector: "open:",
 fn: function (aClass) {
     var self = this;
+    return smalltalk.send(self, "_open_browser_", [aClass, smalltalk.ClassBrowser || ClassBrowser]);
+    return self;
+}
+}),
+smalltalk.BrowserDialog.klass);
+
+smalltalk.addMethod(
+"_open_browser_",
+smalltalk.method({
+selector: "open:browser:",
+fn: function (aClass, browserClass) {
+    var self = this;
     var browser = nil;
     var ret = nil;
-    browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
+    browser = smalltalk.send(browserClass, "_hierarchy_", [aClass]);
     ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_title_", [smalltalk.send(aClass, "_name", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
     smalltalk.send(browser, "_open_", [aClass]);
     return ret;

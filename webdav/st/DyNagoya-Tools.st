@@ -188,8 +188,12 @@ DialogBox subclass: #BrowserDialog
 !BrowserDialog class methodsFor: 'not yet classified'!
 
 open: aClass
+	^ self open: aClass browser:  ClassBrowser
+!
+
+open: aClass browser: browserClass
 	| browser ret |
-	browser := ClassBrowser hierarchy: aClass.
+	browser := browserClass hierarchy: aClass.
 	ret := self new 
 		widget: browser;
 		width: '600px';
