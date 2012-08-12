@@ -408,12 +408,21 @@ new
 ! !
 
 Object subclass: #EventSource
-	instanceVariableNames: 'observers'
+	instanceVariableNames: 'observers lastValue'
 	package: 'DyNagoya-Tools'!
 
 !EventSource methodsFor: 'not yet classified'!
 
+>>> aBlock
+	| second |
+	second := ConnectedEventSource new converter: aBlock.
+	Transcript show: second; cr.
+	self subscribe: second.
+	^ second
+!
+
 fire: ev
+	lastValue := ev.
 	observers do: [ %1 value: ev ]
 !
 
@@ -427,6 +436,34 @@ subscribe: ob
 
 unsubscribe: ob
 	observers remove: ob
+!
+
+value
+	^ lastValue
+! !
+
+!EventSource class methodsFor: 'not yet classified'!
+
+toggle: flag
+	^ [ flag := flag not. flag ]
+! !
+
+EventSource subclass: #ConnectedEventSource
+	instanceVariableNames: 'converter'
+	package: 'DyNagoya-Tools'!
+
+!ConnectedEventSource methodsFor: 'not yet classified'!
+
+converter
+	^ converter
+!
+
+converter: aConverter
+	converter := aConverter
+!
+
+value: aObj
+	self fire: ( converter value: aObj )
 ! !
 
 Object subclass: #GoogleMap
@@ -540,6 +577,47 @@ put: clazz group: group key: key body: body
 
 url: clazz group: group key: key
 	^ '/data/', clazz asString, '/', group, '/', key
+! !
+
+Widget subclass: #ToggleButton
+	instanceVariableNames: 'state source body renderWhenOn renderWhenOff'
+	package: 'DyNagoya-Tools'!
+
+!ToggleButton methodsFor: 'not yet classified'!
+
+initialize
+	source := EventSource new.
+	Transcript show: source; cr.
+	state = source >>> (EventSource toggle: false).
+	state inspect.
+	state 
+		>>>  [ %1
+				ifTrue: [ renderWhenOn ]
+				ifFalse: [ renderWhenOff] ] 
+		>>> [ self redraw: %1].
+	renderWhenOn := [ :html | ].
+	renderWhenOff := [ :html | ].
+!
+
+redraw: aBlock
+	body contents: aBlock
+!
+
+renderOn: html
+	body := html span onClick: [ source fire: %1 ].
+	self redraw
+!
+
+renderWhenOff: aBlock
+	renderWhenOff := aBlock
+!
+
+renderWhenOn: aBlock
+	renderWhenOn := aBlock
+!
+
+toggle
+	^ state
 ! !
 
 Object subclass: #Twitter

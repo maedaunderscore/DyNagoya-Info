@@ -776,13 +776,30 @@ fn: function () {
 smalltalk.WorkspaceDialog.klass);
 
 
-smalltalk.addClass('EventSource', smalltalk.Object, ['observers'], 'DyNagoya-Tools');
+smalltalk.addClass('EventSource', smalltalk.Object, ['observers', 'lastValue'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"__gt_gt_gt",
+smalltalk.method({
+selector: ">>>",
+fn: function (aBlock) {
+    var self = this;
+    var second = nil;
+    second = smalltalk.send(smalltalk.send(smalltalk.ConnectedEventSource || ConnectedEventSource, "_new", []), "_converter_", [aBlock]);
+    (function ($rec) {smalltalk.send($rec, "_show_", [second]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    smalltalk.send(self, "_subscribe_", [second]);
+    return second;
+    return self;
+}
+}),
+smalltalk.EventSource);
+
 smalltalk.addMethod(
 "_fire_",
 smalltalk.method({
 selector: "fire:",
 fn: function (ev) {
     var self = this;
+    self['@lastValue'] = ev;
     smalltalk.send(self['@observers'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value_", [ev]);}]);
     return self;
 }
@@ -824,6 +841,69 @@ fn: function (ob) {
 }
 }),
 smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_value",
+smalltalk.method({
+selector: "value",
+fn: function () {
+    var self = this;
+    return self['@lastValue'];
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+
+smalltalk.addMethod(
+"_toggle_",
+smalltalk.method({
+selector: "toggle:",
+fn: function (flag) {
+    var self = this;
+    return function () {flag = smalltalk.send(flag, "_not", []);return flag;};
+    return self;
+}
+}),
+smalltalk.EventSource.klass);
+
+
+smalltalk.addClass('ConnectedEventSource', smalltalk.EventSource, ['converter'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_converter",
+smalltalk.method({
+selector: "converter",
+fn: function () {
+    var self = this;
+    return self['@converter'];
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_converter_",
+smalltalk.method({
+selector: "converter:",
+fn: function (aConverter) {
+    var self = this;
+    self['@converter'] = aConverter;
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_value_",
+smalltalk.method({
+selector: "value:",
+fn: function (aObj) {
+    var self = this;
+    smalltalk.send(self, "_fire_", [smalltalk.send(self['@converter'], "_value_", [aObj])]);
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
 
 
 
@@ -1014,6 +1094,88 @@ fn: function (clazz, group, key) {
 }
 }),
 smalltalk.RemoteObject.klass);
+
+
+smalltalk.addClass('ToggleButton', smalltalk.Widget, ['state', 'source', 'body', 'renderWhenOn', 'renderWhenOff'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@source'] = smalltalk.send(smalltalk.EventSource || EventSource, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_show_", [self['@source']]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    smalltalk.send(smalltalk.send(self['@state'], "__eq", [self['@source']]), "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
+    smalltalk.send(self['@state'], "_inspect", []);
+    smalltalk.send(smalltalk.send(self['@state'], "__gt_gt_gt", [function (thisisplaceholder1) {return ($receiver = thisisplaceholder1).klass === smalltalk.Boolean ? $receiver ? function () {return self['@renderWhenOn'];}() : function () {return self['@renderWhenOff'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@renderWhenOn'];}, function () {return self['@renderWhenOff'];}]);}]), "__gt_gt_gt", [function (thisisplaceholder1) {return smalltalk.send(self, "_redraw_", [thisisplaceholder1]);}]);
+    self['@renderWhenOn'] = function (html) {return nil;};
+    self['@renderWhenOff'] = function (html) {return nil;};
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_redraw_",
+smalltalk.method({
+selector: "redraw:",
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self['@body'], "_contents_", [aBlock]);
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(smalltalk.send(html, "_span", []), "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOff_",
+smalltalk.method({
+selector: "renderWhenOff:",
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOff'] = aBlock;
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOn_",
+smalltalk.method({
+selector: "renderWhenOn:",
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOn'] = aBlock;
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_toggle",
+smalltalk.method({
+selector: "toggle",
+fn: function () {
+    var self = this;
+    return self['@state'];
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
 
 
 smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
