@@ -1074,7 +1074,28 @@ referencedClasses: []
 smalltalk.WorkspaceDialog.klass);
 
 
-smalltalk.addClass('EventSource', smalltalk.Object, ['observers'], 'DyNagoya-Tools');
+smalltalk.addClass('EventSource', smalltalk.Object, ['observers', 'lastValue'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"__gt_gt_gt",
+smalltalk.method({
+selector: ">>>",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    var second = nil;
+    second = smalltalk.send(smalltalk.send(smalltalk.ConnectedEventSource || ConnectedEventSource, "_new", []), "_converter_", [aBlock]);
+    (function ($rec) {smalltalk.send($rec, "_show_", [second]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    smalltalk.send(self, "_subscribe_", [second]);
+    return second;
+    return self;
+},
+args: ["aBlock"],
+source: ">>> aBlock\x0a\x09| second |\x0a\x09second := ConnectedEventSource new converter: aBlock.\x0a\x09Transcript show: second; cr.\x0a\x09self subscribe: second.\x0a\x09^ second",
+messageSends: ["converter:", "new", "show:", "cr", "subscribe:"],
+referencedClasses: ["ConnectedEventSource", "Transcript"]
+}),
+smalltalk.EventSource);
+
 smalltalk.addMethod(
 "_fire_",
 smalltalk.method({
@@ -1082,11 +1103,12 @@ selector: "fire:",
 category: 'not yet classified',
 fn: function (ev) {
     var self = this;
+    self['@lastValue'] = ev;
     smalltalk.send(self['@observers'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value_", [ev]);}]);
     return self;
 },
 args: ["ev"],
-source: "fire: ev\x0a\x09observers do: [ %1 value: ev ]",
+source: "fire: ev\x0a\x09lastValue := ev.\x0a\x09observers do: [ %1 value: ev ]",
 messageSends: ["do:", "value:"],
 referencedClasses: []
 }),
@@ -1142,6 +1164,94 @@ messageSends: ["remove:"],
 referencedClasses: []
 }),
 smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_value",
+smalltalk.method({
+selector: "value",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@lastValue'];
+    return self;
+},
+args: [],
+source: "value\x0a\x09^ lastValue",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.EventSource);
+
+
+smalltalk.addMethod(
+"_toggle_",
+smalltalk.method({
+selector: "toggle:",
+category: 'not yet classified',
+fn: function (flag) {
+    var self = this;
+    return function () {flag = smalltalk.send(flag, "_not", []);return flag;};
+    return self;
+},
+args: ["flag"],
+source: "toggle: flag\x0a\x09^ [ flag := flag not. flag ] ",
+messageSends: ["not"],
+referencedClasses: []
+}),
+smalltalk.EventSource.klass);
+
+
+smalltalk.addClass('ConnectedEventSource', smalltalk.EventSource, ['converter'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_converter",
+smalltalk.method({
+selector: "converter",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@converter'];
+    return self;
+},
+args: [],
+source: "converter\x0a\x09^ converter",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_converter_",
+smalltalk.method({
+selector: "converter:",
+category: 'not yet classified',
+fn: function (aConverter) {
+    var self = this;
+    self['@converter'] = aConverter;
+    return self;
+},
+args: ["aConverter"],
+source: "converter: aConverter\x0a\x09converter := aConverter",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_value_",
+smalltalk.method({
+selector: "value:",
+category: 'not yet classified',
+fn: function (aObj) {
+    var self = this;
+    smalltalk.send(self, "_fire_", [smalltalk.send(self['@converter'], "_value_", [aObj])]);
+    return self;
+},
+args: ["aObj"],
+source: "value: aObj\x0a\x09self fire: ( converter value: aObj )",
+messageSends: ["fire:", "value:"],
+referencedClasses: []
+}),
+smalltalk.ConnectedEventSource);
 
 
 
@@ -1402,6 +1512,118 @@ messageSends: [",", "asString"],
 referencedClasses: []
 }),
 smalltalk.RemoteObject.klass);
+
+
+smalltalk.addClass('ToggleButton', smalltalk.Widget, ['state', 'source', 'body', 'renderWhenOn', 'renderWhenOff'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@source'] = smalltalk.send(smalltalk.EventSource || EventSource, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_show_", [self['@source']]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    smalltalk.send(smalltalk.send(self['@state'], "__eq", [self['@source']]), "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
+    smalltalk.send(self['@state'], "_inspect", []);
+    smalltalk.send(smalltalk.send(self['@state'], "__gt_gt_gt", [function (thisisplaceholder1) {return ($receiver = thisisplaceholder1).klass === smalltalk.Boolean ? $receiver ? function () {return self['@renderWhenOn'];}() : function () {return self['@renderWhenOff'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@renderWhenOn'];}, function () {return self['@renderWhenOff'];}]);}]), "__gt_gt_gt", [function (thisisplaceholder1) {return smalltalk.send(self, "_redraw_", [thisisplaceholder1]);}]);
+    self['@renderWhenOn'] = function (html) {return nil;};
+    self['@renderWhenOff'] = function (html) {return nil;};
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09source := EventSource new.\x0a\x09Transcript show: source; cr.\x0a\x09state = source >>> (EventSource toggle: false).\x0a\x09state inspect.\x0a\x09state \x0a\x09\x09>>>  [ %1\x0a\x09\x09\x09\x09ifTrue: [ renderWhenOn ]\x0a\x09\x09\x09\x09ifFalse: [ renderWhenOff] ] \x0a\x09\x09>>> [ self redraw: %1].\x0a\x09renderWhenOn := [ :html | ].\x0a\x09renderWhenOff := [ :html | ].",
+messageSends: ["new", "show:", "cr", ">>>", "=", "toggle:", "inspect", "ifTrue:ifFalse:", "redraw:"],
+referencedClasses: ["EventSource", "Transcript"]
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_redraw_",
+smalltalk.method({
+selector: "redraw:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self['@body'], "_contents_", [aBlock]);
+    return self;
+},
+args: ["aBlock"],
+source: "redraw: aBlock\x0a\x09body contents: aBlock\x0a",
+messageSends: ["contents:"],
+referencedClasses: []
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(smalltalk.send(html, "_span", []), "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09body := html span onClick: [ source fire: %1 ].\x0a\x09self redraw\x0a",
+messageSends: ["onClick:", "span", "fire:", "redraw"],
+referencedClasses: []
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOff_",
+smalltalk.method({
+selector: "renderWhenOff:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOff'] = aBlock;
+    return self;
+},
+args: ["aBlock"],
+source: "renderWhenOff: aBlock\x0a\x09renderWhenOff := aBlock",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOn_",
+smalltalk.method({
+selector: "renderWhenOn:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOn'] = aBlock;
+    return self;
+},
+args: ["aBlock"],
+source: "renderWhenOn: aBlock\x0a\x09renderWhenOn := aBlock",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_toggle",
+smalltalk.method({
+selector: "toggle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@state'];
+    return self;
+},
+args: [],
+source: "toggle\x0a\x09^ state",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ToggleButton);
+
 
 
 smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
