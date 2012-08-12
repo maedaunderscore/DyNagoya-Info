@@ -1354,6 +1354,155 @@ openOn: aClass
 	selectClass: aClass
 ! !
 
+Browser subclass: #BrowserForClass
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView'
+	package: 'IDE'!
+
+!BrowserForClass methodsFor: 'accessing'!
+
+class: aClass
+	self class: aClass descendants: nil
+!
+
+class: aClass descendants: someSubClasses
+	selectedClass := aClass.
+	descendants := someSubClasses.
+	descendants
+		ifNil: [  subclasses := aClass subclasses ]
+		ifNotNil: [  descendants 
+					ifEmpty: [ subclasses := aClass subclasses. descendants := nil ];
+					ifNotEmpty:[ subclasses := {descendants first}. descendants := descendants allButFirst  ]
+		]
+! !
+
+!BrowserForClass methodsFor: 'action'!
+
+open: aClass
+	self open: aClass method: nil
+!
+
+open: aClass method: aMethodName
+	| xs last |
+	xs := self  selectorList: aClass method: aMethodName.
+
+	last := xs first.
+	xs := xs allButFirst.
+	xs do: [ :current |
+		self openIfClosed: current parent: last.
+		last := current.
+	]
+! !
+
+!BrowserForClass methodsFor: 'private'!
+
+openIfClosed: selector  parent: parentSelector
+	(root find: selector) ifNil: [ (root find: parentSelector) >>= [ %1 root asJQuery click ]].
+	^ root find: selector
+!
+
+selectorList: aClass method: aString
+	| xs |
+	xs := (aClass ancestors, aClass) collect: [ 'div[name="class-', (%1 name), '"] span.browser-class-name' ].
+	aString ifNotNil: [ 
+		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-method-button').
+		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]').
+		xs add: 'dummy' "to click last one"
+	].
+
+	^ xs
+! !
+
+!BrowserForClass methodsFor: 'rendering'!
+
+classColor
+	^'#AAAAFF'
+!
+
+leftBorder
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'border-left' put: '3px solid white';
+	css: 'padding-left' put: '5px'
+     ]
+!
+
+listArea: area
+	^ (< this["@"+area]>)
+!
+
+offStyle
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid white';
+	css: 'background' put: '';
+	css: 'color' put: ''
+     ]
+!
+
+onStyle
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid white';
+	css: 'background' put: 'white';
+	css: 'color' put: 'black'
+     ]
+!
+
+onStyleForClass
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid ', self classColor;
+	css: 'background' put: self classColor;
+	css: 'color' put: 'white'
+     ]
+!
+
+renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: area on: onStyle off: offStyle
+	| ret |
+	ret := html span.
+	^ ret
+		with: aTitle;
+		css: 'cursor' put: 'pointer';
+		|> offStyle;
+		class: cssClass;
+		onClick: [ (self listArea: area) 
+					toggleContents: [ :html |
+						aClass methodDictionary values do: [  
+							html div with: (MethodBrowser new class: aClass method: %1) ] ]
+					withOn: [ ret |> onStyle ]
+					withOff: [ ret |> offStyle ] 
+			]
+!
+
+renderOn: html
+	| title titleBrush classMethodButton |
+	root := html root name:  'class-', selectedClass name.
+	classView := html div with: [
+		title := PlusMinusIcon text: selectedClass name.
+		titleBrush := html span with: title;
+				class: 'browser-class-name';
+				css: 'font-size' put: '1.2em'.
+		classMethodButton := ToggleButton new
+			renderWhenOn: [ :html | html span with: 'hoge' ];
+			renderWhenOff: [ :html | html span with: 'fuga' ]
+	]
+! !
+
+!BrowserForClass class methodsFor: 'not yet classified'!
+
+hierarchy: aClass
+	^(aClass ancestors, aClass) |> [ 
+		self new 
+			class: %1 first descendants: %1 allButFirst
+		]
+! !
+
 Browser subclass: #ClassBrowser
 	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView'
 	package: 'IDE'!
