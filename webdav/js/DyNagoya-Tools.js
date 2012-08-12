@@ -569,18 +569,35 @@ selector: "open:",
 category: 'not yet classified',
 fn: function (aClass) {
     var self = this;
+    return smalltalk.send(self, "_open_browser_", [aClass, smalltalk.ClassBrowser || ClassBrowser]);
+    return self;
+},
+args: ["aClass"],
+source: "open: aClass\x0a\x09^ self open: aClass browser:  ClassBrowser ",
+messageSends: ["open:browser:"],
+referencedClasses: ["ClassBrowser"]
+}),
+smalltalk.BrowserDialog.klass);
+
+smalltalk.addMethod(
+"_open_browser_",
+smalltalk.method({
+selector: "open:browser:",
+category: 'not yet classified',
+fn: function (aClass, browserClass) {
+    var self = this;
     var browser = nil;
     var ret = nil;
-    browser = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [aClass]);
+    browser = smalltalk.send(browserClass, "_hierarchy_", [aClass]);
     ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_title_", [smalltalk.send(aClass, "_name", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
     smalltalk.send(browser, "_open_", [aClass]);
     return ret;
     return self;
 },
-args: ["aClass"],
-source: "open: aClass\x0a\x09| browser ret |\x0a\x09browser := ClassBrowser hierarchy: aClass.\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x09\x09height:  (window innerHeight * 0.5);\x0a\x09\x09modal: false;\x0a\x09\x09title: aClass name;\x0a\x09\x09open.\x0a\x0a\x09browser open: aClass.\x0a\x09^ ret",
+args: ["aClass", "browserClass"],
+source: "open: aClass browser: browserClass\x0a\x09| browser ret |\x0a\x09browser := browserClass hierarchy: aClass.\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x09\x09height:  (window innerHeight * 0.5);\x0a\x09\x09modal: false;\x0a\x09\x09title: aClass name;\x0a\x09\x09open.\x0a\x0a\x09browser open: aClass.\x0a\x09^ ret",
 messageSends: ["hierarchy:", "widget:", "width:", "height:", "*", "innerHeight", "modal:", "title:", "name", "open", "new", "open:"],
-referencedClasses: ["ClassBrowser"]
+referencedClasses: []
 }),
 smalltalk.BrowserDialog.klass);
 
