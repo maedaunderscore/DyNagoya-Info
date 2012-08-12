@@ -1491,7 +1491,7 @@ renderOn: html
 		classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.
 		classMethodButton inspect.
 		html span with: classMethodButton.
-		classMethodButton toggle fire: true.
+		classMethodButton toggle fire: false.
 	]
 ! !
 
