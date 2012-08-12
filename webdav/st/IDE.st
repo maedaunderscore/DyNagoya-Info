@@ -1488,9 +1488,10 @@ renderOn: html
 		titleBrush := html span with: title;
 				class: 'browser-class-name';
 				css: 'font-size' put: '1.2em'.
-		classMethodButton := ToggleButton new
-			renderWhenOn: [ :html | html span with: 'hoge' ];
-			renderWhenOff: [ :html | html span with: 'fuga' ]
+		classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.
+		classMethodButton inspect.
+		html span with: classMethodButton.
+		classMethodButton toggle fire: true.
 	]
 ! !
 
