@@ -785,7 +785,6 @@ fn: function (aBlock) {
     var self = this;
     var second = nil;
     second = smalltalk.send(smalltalk.send(smalltalk.ConnectedEventSource || ConnectedEventSource, "_new", []), "_converter_", [aBlock]);
-    (function ($rec) {smalltalk.send($rec, "_show_", [second]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     smalltalk.send(self, "_subscribe_", [second]);
     return second;
     return self;
@@ -1104,9 +1103,7 @@ selector: "initialize",
 fn: function () {
     var self = this;
     self['@source'] = smalltalk.send(smalltalk.EventSource || EventSource, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_show_", [self['@source']]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
-    smalltalk.send(smalltalk.send(self['@state'], "__eq", [self['@source']]), "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
-    smalltalk.send(self['@state'], "_inspect", []);
+    self['@state'] = smalltalk.send(self['@source'], "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
     smalltalk.send(smalltalk.send(self['@state'], "__gt_gt_gt", [function (thisisplaceholder1) {return ($receiver = thisisplaceholder1).klass === smalltalk.Boolean ? $receiver ? function () {return self['@renderWhenOn'];}() : function () {return self['@renderWhenOff'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@renderWhenOn'];}, function () {return self['@renderWhenOff'];}]);}]), "__gt_gt_gt", [function (thisisplaceholder1) {return smalltalk.send(self, "_redraw_", [thisisplaceholder1]);}]);
     self['@renderWhenOn'] = function (html) {return nil;};
     self['@renderWhenOff'] = function (html) {return nil;};
@@ -1133,8 +1130,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    self['@body'] = smalltalk.send(smalltalk.send(html, "_span", []), "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);
-    smalltalk.send(self, "_redraw", []);
+    self['@body'] = function ($rec) {smalltalk.send($rec, "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);return smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);}(smalltalk.send(html, "_span", []));
     return self;
 }
 }),

@@ -416,7 +416,6 @@ Object subclass: #EventSource
 >>> aBlock
 	| second |
 	second := ConnectedEventSource new converter: aBlock.
-	Transcript show: second; cr.
 	self subscribe: second.
 	^ second
 !
@@ -587,9 +586,7 @@ Widget subclass: #ToggleButton
 
 initialize
 	source := EventSource new.
-	Transcript show: source; cr.
-	state = source >>> (EventSource toggle: false).
-	state inspect.
+	state := source >>> (EventSource toggle: false).
 	state 
 		>>>  [ %1
 				ifTrue: [ renderWhenOn ]
@@ -604,8 +601,9 @@ redraw: aBlock
 !
 
 renderOn: html
-	body := html span onClick: [ source fire: %1 ].
-	self redraw
+	body := html span 
+		onClick: [ source fire: %1 ];  
+		css: 'cursor' put: 'pointer'.
 !
 
 renderWhenOff: aBlock
