@@ -1131,6 +1131,7 @@ selector: "renderOn:",
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);return smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);}(smalltalk.send(html, "_span", []));
+    smalltalk.send(self['@state'], "_fire_", [false]);
     return self;
 }
 }),
@@ -1171,6 +1172,47 @@ fn: function () {
 }
 }),
 smalltalk.ToggleButton);
+
+
+
+smalltalk.addClass('RectangleButton', smalltalk.ToggleButton, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_label_frontColor_backColor_",
+smalltalk.method({
+selector: "label:frontColor:backColor:",
+fn: function (aString, front, back) {
+    var self = this;
+    self['@label'] = aString;
+    self['@renderWhenOn'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_onStyle_fontColor_", [back, front])]);}(smalltalk.send(html, "_span", []));};
+    self['@renderWhenOff'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_offStyle", [])]);}(smalltalk.send(html, "_span", []));};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_offStyle",
+smalltalk.method({
+selector: "offStyle",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", "1px solid white"]);smalltalk.send($rec, "_css_put_", ["background", ""]);return smalltalk.send($rec, "_css_put_", ["color", ""]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_onStyle_fontColor_",
+smalltalk.method({
+selector: "onStyle:fontColor:",
+fn: function (backColor, fontColor) {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", smalltalk.send("1px solid ", "__comma", [backColor])]);smalltalk.send($rec, "_css_put_", ["background", backColor]);return smalltalk.send($rec, "_css_put_", ["color", fontColor]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
 
 
 

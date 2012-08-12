@@ -587,8 +587,7 @@ Widget subclass: #ToggleButton
 initialize
 	source := EventSource new.
 	state := source >>> (EventSource toggle: false).
-	state 
-		>>>  [ %1
+	state >>>  [ %1
 				ifTrue: [ renderWhenOn ]
 				ifFalse: [ renderWhenOff] ] 
 		>>> [ self redraw: %1].
@@ -604,6 +603,7 @@ renderOn: html
 	body := html span 
 		onClick: [ source fire: %1 ];  
 		css: 'cursor' put: 'pointer'.
+	state fire: false
 !
 
 renderWhenOff: aBlock
@@ -616,6 +616,44 @@ renderWhenOn: aBlock
 
 toggle
 	^ state
+! !
+
+ToggleButton subclass: #RectangleButton
+	instanceVariableNames: ''
+	package: 'DyNagoya-Tools'!
+
+!RectangleButton methodsFor: 'not yet classified'!
+
+label: aString frontColor: front backColor: back
+	label := aString.
+	renderWhenOn := [ :html | 
+		html span with: label; |> ( self onStyle: back fontColor: front )
+	].
+	renderWhenOff := [ :html |
+		html span with: label; |> self offStyle
+	]
+!
+
+offStyle
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid white';
+	css: 'background' put: '';
+	css: 'color' put: ''
+     ]
+!
+
+onStyle: backColor fontColor: fontColor
+  ^ [ %1
+	css: 'margin-left' put: '10px';
+	css: 'padding' put: '2px';
+	css: 'font-size' put: '0.8em';
+	css: 'border' put: '1px solid ', backColor;
+	css: 'background' put: backColor;
+	css: 'color' put: fontColor
+     ]
 ! !
 
 Object subclass: #Twitter
