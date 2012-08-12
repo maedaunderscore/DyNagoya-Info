@@ -3198,13 +3198,24 @@ fn: function (html) {
     var title = nil;
     var titleBrush = nil;
     var classMethodButton = nil;
+    var methodButton = nil;
+    var protocolButton = nil;
+    var definitionButton = nil;
+    var commentButton = nil;
     self['@root'] = smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
-    self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {title = smalltalk.send(smalltalk.PlusMinusIcon || PlusMinusIcon, "_text_", [smalltalk.send(self['@selectedClass'], "_name", [])]);titleBrush = function ($rec) {smalltalk.send($rec, "_with_", [title]);smalltalk.send($rec, "_class_", ["browser-class-name"]);return smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);}(smalltalk.send(html, "_span", []));classMethodButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["class method", "white", "#AAAAFF"]);smalltalk.send(classMethodButton, "_inspect", []);smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [classMethodButton]);return smalltalk.send(smalltalk.send(classMethodButton, "_toggle", []), "_fire_", [false]);}]);
+    title = smalltalk.send(smalltalk.PlusMinusIcon || PlusMinusIcon, "_text_", [smalltalk.send(self['@selectedClass'], "_name", [])]);
+    classMethodButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["class method", "white", "#AAAAFF"]);
+    methodButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["method", "black", "white"]);
+    protocolButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["protocol", "black", "white"]);
+    definitionButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["definition", "black", "white"]);
+    commentButton = smalltalk.send(smalltalk.send(smalltalk.RectangleButton || RectangleButton, "_new", []), "_label_frontColor_backColor_", ["comment", "black", "white"]);
+    (function ($rec) {smalltalk.send($rec, "_with_", [function () {return titleBrush = function ($rec) {smalltalk.send($rec, "_with_", [title]);smalltalk.send($rec, "_class_", ["browser-class-name"]);return smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);}(smalltalk.send(html, "_span", []));}]);smalltalk.send($rec, "_with_", [classMethodButton]);smalltalk.send($rec, "_with_", [methodButton]);smalltalk.send($rec, "_with_", [protocolButton]);smalltalk.send($rec, "_with_", [definitionButton]);return smalltalk.send($rec, "_with_", [commentButton]);}(smalltalk.send(html, "_div", [])));
+    smalltalk.send(smalltalk.send(classMethodButton, "_toggle", []), "_fire_", [false]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09| title titleBrush classMethodButton |\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09classView := html div with: [\x0a\x09\x09title := PlusMinusIcon text: selectedClass name.\x0a\x09\x09titleBrush := html span with: title;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em'.\x0a\x09\x09classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.\x0a\x09\x09classMethodButton inspect.\x0a\x09\x09html span with: classMethodButton.\x0a\x09\x09classMethodButton toggle fire: false.\x0a\x09]",
-messageSends: ["name:", "root", ",", "name", "with:", "div", "text:", "class:", "css:put:", "span", "label:frontColor:backColor:", "new", "inspect", "fire:", "toggle"],
+source: "renderOn: html\x0a\x09| title titleBrush classMethodButton methodButton protocolButton definitionButton commentButton |\x0a\x0a\x09root := html root name:  'class-', selectedClass name.\x0a\x09title := PlusMinusIcon text: selectedClass name.\x0a\x09classMethodButton := RectangleButton new label: 'class method' frontColor: 'white' backColor: '#AAAAFF'.\x0a\x09methodButton :=  RectangleButton new label: 'method' frontColor: 'black' backColor: 'white'.\x0a\x09protocolButton :=   RectangleButton new label: 'protocol' frontColor: 'black' backColor: 'white'.\x0a\x09definitionButton := RectangleButton new label: 'definition' frontColor: 'black' backColor: 'white'.\x0a\x09commentButton := RectangleButton new label: 'comment' frontColor: 'black' backColor: 'white'.\x0a\x0a\x09html div with: [\x0a\x09\x09titleBrush := html span with: title;\x0a\x09\x09\x09\x09class: 'browser-class-name';\x0a\x09\x09\x09\x09css: 'font-size' put: '1.2em'\x0a\x09\x09];\x0a\x09\x09with: classMethodButton;\x0a\x09\x09with: methodButton;\x0a\x09\x09with: protocolButton;\x0a\x09\x09with: definitionButton;\x0a\x09\x09with: commentButton.\x0a\x09classMethodButton toggle fire: false.\x0a",
+messageSends: ["name:", "root", ",", "name", "text:", "label:frontColor:backColor:", "new", "with:", "class:", "css:put:", "span", "div", "fire:", "toggle"],
 referencedClasses: ["PlusMinusIcon", "RectangleButton"]
 }),
 smalltalk.BrowserForClass);
