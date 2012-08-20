@@ -438,12 +438,13 @@ smalltalk.method({
 selector: "area",
 fn: function () {
     var self = this;
+    var $early = {};
     try {
-        ($receiver = smalltalk.send(self, "_isSelected", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.send(self['@jcrop'], "_tellSelect", []);}};}();}() : function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.HashedCollection._fromPairs_([smalltalk.send(smalltalk.symbolFor("x"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("y"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("x2"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("y2"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])]), smalltalk.send(smalltalk.symbolFor("w"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("h"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])])]);}};}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.send(self['@jcrop'], "_tellSelect", []);}};}();}, function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.HashedCollection._fromPairs_([smalltalk.send(smalltalk.symbolFor("x"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("y"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("x2"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("y2"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])]), smalltalk.send(smalltalk.symbolFor("w"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("h"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])])]);}};}();}]);
+        ($receiver = smalltalk.send(self, "_isSelected", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [smalltalk.send(self['@jcrop'], "_tellSelect", [])];}();}() : function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw $early = [function ($rec) {smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x2"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y2"), smalltalk.send(imgJQ, "_height", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("w"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("h"), smalltalk.send(imgJQ, "_height", [])]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []))];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [smalltalk.send(self['@jcrop'], "_tellSelect", [])];}();}, function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw $early = [function ($rec) {smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x2"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y2"), smalltalk.send(imgJQ, "_height", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("w"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("h"), smalltalk.send(imgJQ, "_height", [])]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []))];}();}]);
         return self;
     } catch (e) {
-        if (e.name === "stReturn" && e.selector === "_area") {
-            return e.fn();
+        if (e === $early) {
+            return e[0];
         }
         throw e;
     }
@@ -618,6 +619,20 @@ fn: function (w, h) {
     (function ($rec) {smalltalk.send($rec, "_width_", [w]);return smalltalk.send($rec, "_height_", [h]);}(smalltalk.send(self, "_canvas", [])));
     smalltalk.send(smalltalk.send(self, "_context", []), "_drawImage_sx_sy_sw_sh_dx_dy_dw_dh_", [smalltalk.send(self, "_img", []), smalltalk.send(area, "_at_", [smalltalk.symbolFor("x")]), smalltalk.send(area, "_at_", [smalltalk.symbolFor("y")]), smalltalk.send(area, "_at_", [smalltalk.symbolFor("w")]), smalltalk.send(area, "_at_", [smalltalk.symbolFor("h")]), 0, 0, w, h]);
     smalltalk.send(self, "_copyToImg", []);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_scale_",
+smalltalk.method({
+selector: "scale:",
+fn: function (s) {
+    var self = this;
+    var area = nil;
+    area = smalltalk.send(self, "_area", []);
+    smalltalk.send(self, "_resizeWidth_height_", [($receiver = smalltalk.send(area, "_at_", [smalltalk.symbolFor("w")])).klass === smalltalk.Number ? $receiver * s : smalltalk.send($receiver, "__star", [s]), ($receiver = smalltalk.send(area, "_at_", [smalltalk.symbolFor("h")])).klass === smalltalk.Number ? $receiver * s : smalltalk.send($receiver, "__star", [s])]);
     return self;
 }
 }),

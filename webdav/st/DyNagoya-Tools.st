@@ -223,7 +223,14 @@ area
 		ifTrue: [ ^ jcrop tellSelect ]
 		ifFalse: [ | imgJQ | 
                           imgJQ := img asJQuery.
-                          ^ #{ #x -> 0. #y -> 0. #x2 -> imgJQ width. #y2 -> imgJQ height. #w -> imgJQ width. #h -> imgJQ height } ]
+                          ^ Dictionary new 
+   at: #x put: 0;
+   at: #y put: 0;
+   at: #x2 put: (imgJQ width);
+   at: #y2 put: (imgJQ height);
+   at: #w put: (imgJQ width);
+   at: #h put: (imgJQ height);
+   yourself ]
 !
 
 canvas
@@ -280,6 +287,12 @@ resizeWidth: w height:h
 		dx: 0					dy: 0
 		dw: w		dh: h.
 	self copyToImg.
+!
+
+scale: s
+	| area|
+	area := self area.
+	self resizeWidth: (area at: #w) * s height: (area at: #h) * s.
 !
 
 selectWidth: width height: height
