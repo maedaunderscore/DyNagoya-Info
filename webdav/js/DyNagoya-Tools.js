@@ -611,20 +611,21 @@ selector: "area",
 category: 'accessing',
 fn: function () {
     var self = this;
+    var $early = {};
     try {
-        ($receiver = smalltalk.send(self, "_isSelected", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.send(self['@jcrop'], "_tellSelect", []);}};}();}() : function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.HashedCollection._fromPairs_([smalltalk.send(smalltalk.symbolFor("x"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("y"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("x2"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("y2"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])]), smalltalk.send(smalltalk.symbolFor("w"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("h"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])])]);}};}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.send(self['@jcrop'], "_tellSelect", []);}};}();}, function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw {name: "stReturn", selector: "_area", fn: function () {return smalltalk.HashedCollection._fromPairs_([smalltalk.send(smalltalk.symbolFor("x"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("y"), "__minus_gt", [0]), smalltalk.send(smalltalk.symbolFor("x2"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("y2"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])]), smalltalk.send(smalltalk.symbolFor("w"), "__minus_gt", [smalltalk.send(imgJQ, "_width", [])]), smalltalk.send(smalltalk.symbolFor("h"), "__minus_gt", [smalltalk.send(imgJQ, "_height", [])])]);}};}();}]);
+        ($receiver = smalltalk.send(self, "_isSelected", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [smalltalk.send(self['@jcrop'], "_tellSelect", [])];}();}() : function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw $early = [function ($rec) {smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x2"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y2"), smalltalk.send(imgJQ, "_height", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("w"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("h"), smalltalk.send(imgJQ, "_height", [])]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []))];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [smalltalk.send(self['@jcrop'], "_tellSelect", [])];}();}, function () {var imgJQ = nil;imgJQ = smalltalk.send(self['@img'], "_asJQuery", []);return function () {throw $early = [function ($rec) {smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y"), 0]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("x2"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("y2"), smalltalk.send(imgJQ, "_height", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("w"), smalltalk.send(imgJQ, "_width", [])]);smalltalk.send($rec, "_at_put_", [smalltalk.symbolFor("h"), smalltalk.send(imgJQ, "_height", [])]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []))];}();}]);
         return self;
     } catch (e) {
-        if (e.name === "stReturn" && e.selector === "_area") {
-            return e.fn();
+        if (e === $early) {
+            return e[0];
         }
         throw e;
     }
 },
 args: [],
-source: "area\x0a\x09self isSelected \x0a\x09\x09ifTrue: [ ^ jcrop tellSelect ]\x0a\x09\x09ifFalse: [ | imgJQ | \x0a                          imgJQ := img asJQuery.\x0a                          ^ #{ #x -> 0. #y -> 0. #x2 -> imgJQ width. #y2 -> imgJQ height. #w -> imgJQ width. #h -> imgJQ height } ]\x0a",
-messageSends: ["ifTrue:ifFalse:", "isSelected", "tellSelect", "asJQuery", "->", "width", "height"],
-referencedClasses: []
+source: "area\x0a\x09self isSelected \x0a\x09\x09ifTrue: [ ^ jcrop tellSelect ]\x0a\x09\x09ifFalse: [ | imgJQ | \x0a                          imgJQ := img asJQuery.\x0a                          ^ Dictionary new \x0a   at: #x put: 0;\x0a   at: #y put: 0;\x0a   at: #x2 put: (imgJQ width);\x0a   at: #y2 put: (imgJQ height);\x0a   at: #w put: (imgJQ width);\x0a   at: #h put: (imgJQ height);\x0a   yourself ]\x0a",
+messageSends: ["ifTrue:ifFalse:", "isSelected", "tellSelect", "asJQuery", "at:put:", "width", "height", "yourself", "new"],
+referencedClasses: ["Dictionary"]
 }),
 smalltalk.ImageEditor);
 
@@ -861,6 +862,25 @@ fn: function (w, h) {
 args: ["w", "h"],
 source: "resizeWidth: w height:h\x0a\x09| area |\x0a\x09area := self area.\x0a\x09self canvas width: w; height: h.\x0a\x09self context drawImage: (self img) \x0a\x09\x09sx: (area at: #x)\x09\x09sy: (area at: #y)\x0a\x09\x09sw: (area at: #w)\x09\x09sh: (area at: #h)\x0a\x09\x09dx: 0\x09\x09\x09\x09\x09dy: 0\x0a\x09\x09dw: w\x09\x09dh: h.\x0a\x09self copyToImg.\x0a",
 messageSends: ["area", "width:", "height:", "canvas", "drawImage:sx:sy:sw:sh:dx:dy:dw:dh:", "context", "img", "at:", "copyToImg"],
+referencedClasses: []
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_scale_",
+smalltalk.method({
+selector: "scale:",
+category: 'action',
+fn: function (s) {
+    var self = this;
+    var area = nil;
+    area = smalltalk.send(self, "_area", []);
+    smalltalk.send(self, "_resizeWidth_height_", [($receiver = smalltalk.send(area, "_at_", [smalltalk.symbolFor("w")])).klass === smalltalk.Number ? $receiver * s : smalltalk.send($receiver, "__star", [s]), ($receiver = smalltalk.send(area, "_at_", [smalltalk.symbolFor("h")])).klass === smalltalk.Number ? $receiver * s : smalltalk.send($receiver, "__star", [s])]);
+    return self;
+},
+args: ["s"],
+source: "scale: s\x0a\x09| area|\x0a\x09area := self area.\x0a\x09self resizeWidth: (area at: #w) * s height: (area at: #h) * s.\x0a",
+messageSends: ["area", "resizeWidth:height:", "*", "at:"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
