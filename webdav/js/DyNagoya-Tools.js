@@ -940,7 +940,7 @@ smalltalk.ImageEditor);
 
 
 smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
-smalltalk.ProxyImageEditor.comment="x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open"
+smalltalk.ProxyImageEditor.comment="x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'"
 
 smalltalk.addMethod(
 "_open_",
