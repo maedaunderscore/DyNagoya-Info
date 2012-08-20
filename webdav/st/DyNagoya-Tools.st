@@ -347,7 +347,7 @@ ImageEditor subclass: #ProxyImageEditor
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
 !ProxyImageEditor commentStamp!
-x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'; open!
+x := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'!
 
 !ProxyImageEditor class methodsFor: 'not yet classified'!
 
