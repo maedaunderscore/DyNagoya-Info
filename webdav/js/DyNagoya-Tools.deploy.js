@@ -751,6 +751,18 @@ smalltalk.TranscriptDialog.klass);
 
 smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, ['workspace'], 'DyNagoya-Tools');
 smalltalk.addMethod(
+"_big",
+smalltalk.method({
+selector: "big",
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(self['@widget']['@sourceArea']['@editor']));
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog);
+
+smalltalk.addMethod(
 "_close",
 smalltalk.method({
 selector: "close",
@@ -774,4 +786,595 @@ fn: function () {
     return self;
 }
 }),
-sm
+smalltalk.WorkspaceDialog);
+
+smalltalk.addMethod(
+"_normal",
+smalltalk.method({
+selector: "normal",
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(self['@widget']['@sourceArea']['@editor']));
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog);
+
+
+smalltalk.WorkspaceDialog.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.WorkspaceDialog.klass.superclass || nil);}() : $receiver;
+    return self['@s'];
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog.klass);
+
+
+smalltalk.addClass('EventSource', smalltalk.Object, ['observers', 'lastValue'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"__gt_gt_gt",
+smalltalk.method({
+selector: ">>>",
+fn: function (aBlock) {
+    var self = this;
+    var second = nil;
+    second = smalltalk.send(smalltalk.send(smalltalk.ConnectedEventSource || ConnectedEventSource, "_new", []), "_converter_", [aBlock]);
+    smalltalk.send(self, "_subscribe_", [second]);
+    return second;
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_fire_",
+smalltalk.method({
+selector: "fire:",
+fn: function (ev) {
+    var self = this;
+    self['@lastValue'] = ev;
+    smalltalk.send(self['@observers'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_value_", [ev]);}]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@observers'] = smalltalk.send(smalltalk.Set || Set, "_new", []);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_subscribe_",
+smalltalk.method({
+selector: "subscribe:",
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_add_", [ob]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_unsubscribe_",
+smalltalk.method({
+selector: "unsubscribe:",
+fn: function (ob) {
+    var self = this;
+    smalltalk.send(self['@observers'], "_remove_", [ob]);
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+smalltalk.addMethod(
+"_value",
+smalltalk.method({
+selector: "value",
+fn: function () {
+    var self = this;
+    return self['@lastValue'];
+    return self;
+}
+}),
+smalltalk.EventSource);
+
+
+smalltalk.addMethod(
+"_toggle_",
+smalltalk.method({
+selector: "toggle:",
+fn: function (flag) {
+    var self = this;
+    return function () {flag = smalltalk.send(flag, "_not", []);return flag;};
+    return self;
+}
+}),
+smalltalk.EventSource.klass);
+
+
+smalltalk.addClass('ConnectedEventSource', smalltalk.EventSource, ['converter'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_converter",
+smalltalk.method({
+selector: "converter",
+fn: function () {
+    var self = this;
+    return self['@converter'];
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_converter_",
+smalltalk.method({
+selector: "converter:",
+fn: function (aConverter) {
+    var self = this;
+    self['@converter'] = aConverter;
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
+
+smalltalk.addMethod(
+"_value_",
+smalltalk.method({
+selector: "value:",
+fn: function (aObj) {
+    var self = this;
+    smalltalk.send(self, "_fire_", [smalltalk.send(self['@converter'], "_value_", [aObj])]);
+    return self;
+}
+}),
+smalltalk.ConnectedEventSource);
+
+
+
+smalltalk.addClass('GoogleMap', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+"_link_address_",
+smalltalk.method({
+selector: "link:address:",
+fn: function (html, aStr) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url_", [aStr])]);smalltalk.send($rec, "_title_", [aStr]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [unescape("%28map%29")]);}(smalltalk.send(html, "_a", [])));
+    return self;
+}
+}),
+smalltalk.GoogleMap.klass);
+
+smalltalk.addMethod(
+"_url_",
+smalltalk.method({
+selector: "url:",
+fn: function (address) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//maps.google.co.jp/maps%3Fq%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [address])]);
+    return self;
+}
+}),
+smalltalk.GoogleMap.klass);
+
+
+smalltalk.addClass('RemoteObject', smalltalk.Object, ['obj', 'group', 'key'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_delete",
+smalltalk.method({
+selector: "delete",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.RemoteObject || RemoteObject, "_delete_group_key_", [smalltalk.send(self, "_class", []), self['@group'], self['@key']]);
+    return self;
+}
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
+fn: function (aMessage) {
+    var self = this;
+    try {
+        (function ($rec) {smalltalk.send($rec, "_ifEmpty_", [function () {return function () {throw {name: "stReturn", selector: "_doesNotUnderstand_", fn: function () {return smalltalk.send(self['@obj'], "_at_", [smalltalk.send(aMessage, "_selector", [])]);}};}();}]);return smalltalk.send($rec, "_ifNotEmpty_", [function () {return function () {throw {name: "stReturn", selector: "_doesNotUnderstand_", fn: function () {return smalltalk.send(self, "_doesNotUnderStand_", [aMessage], smalltalk.Object);}};}();}]);}(smalltalk.send(aMessage, "_arguments", [])));
+        return self;
+    } catch (e) {
+        if (e.name === "stReturn" && e.selector === "_doesNotUnderstand_") {
+            return e.fn();
+        }
+        throw e;
+    }
+}
+}),
+smalltalk.RemoteObject);
+
+smalltalk.addMethod(
+"_initialize_group_key_",
+smalltalk.method({
+selector: "initialize:group:key:",
+fn: function (aObj, aGroup, aKey) {
+    var self = this;
+    self['@obj'] = aObj;
+    self['@group'] = aGroup;
+    self['@key'] = aKey;
+    return self;
+}
+}),
+smalltalk.RemoteObject);
+
+
+smalltalk.addMethod(
+"_afterDelete",
+smalltalk.method({
+selector: "afterDelete",
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_afterGet_",
+smalltalk.method({
+selector: "afterGet:",
+fn: function (aBlock) {
+    var self = this;
+    return function (all) {return smalltalk.send(aBlock, "_value_", [smalltalk.send(all, "_collect_", [function (each) {return smalltalk.send(smalltalk.send(self, "_new", []), "_initialize_group_key_", [smalltalk.send(each, "_body", []), smalltalk.send(each, "_group", []), smalltalk.send(each, "_key", [])]);}])]);};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_afterPut",
+smalltalk.method({
+selector: "afterPut",
+fn: function () {
+    var self = this;
+    return function (num) {return nil;};
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_delete_group_key_",
+smalltalk.method({
+selector: "delete:group:key:",
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["DELETE"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterDelete", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
+fn: function (aMessage) {
+    var self = this;
+    var map = nil;
+    var group = nil;
+    var key = nil;
+    map = smalltalk.send(smalltalk.Util || Util, "_messageMap_", [aMessage]);
+    group = smalltalk.send(smalltalk.send(map, "_first", []), "_value", []);
+    key = smalltalk.send(smalltalk.send(map, "_second", []), "_value", []);
+    ($receiver = smalltalk.send(smalltalk.send(smalltalk.send(map, "_last", []), "_key", []), "__eq", ["delete"])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_delete_group_key_", [self, group, key]);}() : function () {return smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_delete_group_key_", [self, group, key]);}, function () {return smalltalk.send(self, "_put_group_key_body_", [self, group, key, smalltalk.send(smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_fromPairs_", [map]), "_asJSONString", [])]);}]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_list_",
+smalltalk.method({
+selector: "list:",
+fn: function (group) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_onSuccess", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_list_callback_",
+smalltalk.method({
+selector: "list:callback:",
+fn: function (group, aBlock) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(self, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterGet_", [aBlock])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_put_group_key_body_",
+smalltalk.method({
+selector: "put:group:key:body:",
+fn: function (clazz, group, key, body) {
+    var self = this;
+    return smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", [smalltalk.send(self, "_url_group_key_", [smalltalk.send(clazz, "_asString", []), group, key]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["PUT"]), smalltalk.send("data", "__minus_gt", [smalltalk.send(smalltalk.HashedCollection._fromPairs_([smalltalk.send("body", "__minus_gt", [body])]), "_asJSON", [])]), smalltalk.send("success", "__minus_gt", [smalltalk.send(self, "_afterPut", [])])])]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+smalltalk.addMethod(
+"_url_group_key_",
+smalltalk.method({
+selector: "url:group:key:",
+fn: function (clazz, group, key) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(unescape("/data/"), "__comma", [smalltalk.send(clazz, "_asString", [])]), "__comma", [unescape("/")]), "__comma", [group]), "__comma", [unescape("/")]), "__comma", [key]);
+    return self;
+}
+}),
+smalltalk.RemoteObject.klass);
+
+
+smalltalk.addClass('ToggleButton', smalltalk.Widget, ['state', 'source', 'body', 'renderWhenOn', 'renderWhenOff'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@source'] = smalltalk.send(smalltalk.EventSource || EventSource, "_new", []);
+    self['@state'] = smalltalk.send(self['@source'], "__gt_gt_gt", [smalltalk.send(smalltalk.EventSource || EventSource, "_toggle_", [false])]);
+    smalltalk.send(smalltalk.send(self['@state'], "__gt_gt_gt", [function (thisisplaceholder1) {return ($receiver = thisisplaceholder1).klass === smalltalk.Boolean ? $receiver ? function () {return self['@renderWhenOn'];}() : function () {return self['@renderWhenOff'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@renderWhenOn'];}, function () {return self['@renderWhenOff'];}]);}]), "__gt_gt_gt", [function (thisisplaceholder1) {return smalltalk.send(self, "_redraw_", [thisisplaceholder1]);}]);
+    self['@renderWhenOn'] = function (html) {return nil;};
+    self['@renderWhenOff'] = function (html) {return nil;};
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_redraw_",
+smalltalk.method({
+selector: "redraw:",
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(self['@body'], "_contents_", [aBlock]);
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@body'] = function ($rec) {smalltalk.send($rec, "_onClick_", [function (thisisplaceholder1) {return smalltalk.send(self['@source'], "_fire_", [thisisplaceholder1]);}]);return smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);}(smalltalk.send(html, "_span", []));
+    smalltalk.send(self['@state'], "_fire_", [false]);
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOff_",
+smalltalk.method({
+selector: "renderWhenOff:",
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOff'] = aBlock;
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_renderWhenOn_",
+smalltalk.method({
+selector: "renderWhenOn:",
+fn: function (aBlock) {
+    var self = this;
+    self['@renderWhenOn'] = aBlock;
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+smalltalk.addMethod(
+"_toggle",
+smalltalk.method({
+selector: "toggle",
+fn: function () {
+    var self = this;
+    return self['@state'];
+    return self;
+}
+}),
+smalltalk.ToggleButton);
+
+
+
+smalltalk.addClass('RectangleButton', smalltalk.ToggleButton, [], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_label_frontColor_backColor_",
+smalltalk.method({
+selector: "label:frontColor:backColor:",
+fn: function (aString, front, back) {
+    var self = this;
+    self['@label'] = aString;
+    self['@renderWhenOn'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_onStyle_fontColor_", [back, front])]);}(smalltalk.send(html, "_span", []));};
+    self['@renderWhenOff'] = function (html) {return function ($rec) {smalltalk.send($rec, "_with_", [self['@label']]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_offStyle", [])]);}(smalltalk.send(html, "_span", []));};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_offStyle",
+smalltalk.method({
+selector: "offStyle",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", "1px solid white"]);smalltalk.send($rec, "_css_put_", ["background", ""]);return smalltalk.send($rec, "_css_put_", ["color", ""]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
+
+smalltalk.addMethod(
+"_onStyle_fontColor_",
+smalltalk.method({
+selector: "onStyle:fontColor:",
+fn: function (backColor, fontColor) {
+    var self = this;
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", smalltalk.send("1px solid ", "__comma", [backColor])]);smalltalk.send($rec, "_css_put_", ["background", backColor]);return smalltalk.send($rec, "_css_put_", ["color", fontColor]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.RectangleButton);
+
+
+
+smalltalk.addClass('Twitter', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+"_iconUrl_",
+smalltalk.method({
+selector: "iconUrl:",
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(unescape("http%3A//img.tweetimag.es/i/"), "__comma", [user]), "__comma", ["_m"]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+"_link_user_",
+smalltalk.method({
+selector: "link:user:",
+fn: function (html, user) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_linkUrl_", [user])]);smalltalk.send($rec, "_at_put_", ["title", user]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_img", []), "_src_", [smalltalk.send(self, "_iconUrl_", [user])]);}]);}(smalltalk.send(html, "_a", [])));
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+"_linkUrl_",
+smalltalk.method({
+selector: "linkUrl:",
+fn: function (user) {
+    var self = this;
+    return smalltalk.send(unescape("http%3A//twitter.com/"), "__comma", [user]);
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+smalltalk.addMethod(
+"_tweet_",
+smalltalk.method({
+selector: "tweet:",
+fn: function (msg) {
+    var self = this;
+    smalltalk.send(typeof jQuery == "undefined" ? nil : jQuery, "_ajax_option_", ["/tweet", smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["POST"]), smalltalk.send("dataType", "__minus_gt", ["json"]), smalltalk.send("data", "__minus_gt", [{tweet: msg}])])]);
+    return msg;
+    return self;
+}
+}),
+smalltalk.Twitter.klass);
+
+
+smalltalk.addClass('Util', smalltalk.Object, [], 'DyNagoya-Tools');
+
+smalltalk.addMethod(
+"_encode_",
+smalltalk.method({
+selector: "encode:",
+fn: function (str) {
+    var self = this;
+    return encodeURIComponent(str);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_encodeURI_",
+smalltalk.method({
+selector: "encodeURI:",
+fn: function (str) {
+    var self = this;
+    return encodeURI(str);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_escape_",
+smalltalk.method({
+selector: "escape:",
+fn: function (str) {
+    var self = this;
+    return escape(str);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_messageMap_",
+smalltalk.method({
+selector: "messageMap:",
+fn: function (aMessage) {
+    var self = this;
+    var selectors = nil;
+    var arguments = nil;
+    var ret = nil;
+    selectors = smalltalk.send(smalltalk.Util || Util, "_split_with_", [smalltalk.send(aMessage, "_selector", []), ":"]);
+    arguments = smalltalk.send(aMessage, "_arguments", []);
+    ret = smalltalk.send(smalltalk.Array || Array, "_new", []);
+    smalltalk.send(arguments, "_withIndexDo_", [function (each, i) {return smalltalk.send(ret, "_add_", [smalltalk.send(smalltalk.send(selectors, "_at_", [i]), "__minus_gt", [each])]);}]);
+    return ret;
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+smalltalk.addMethod(
+"_split_with_",
+smalltalk.method({
+selector: "split:with:",
+fn: function (str, delimiter) {
+    var self = this;
+    return str.split(delimiter);
+    return self;
+}
+}),
+smalltalk.Util.klass);
+
+
