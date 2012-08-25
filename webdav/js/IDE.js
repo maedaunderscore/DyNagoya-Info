@@ -5808,4 +5808,360 @@ category: 'updating',
 fn: function () {
     var self = this;
     smalltalk.send(self['@statusDiv'], "_class_", [smalltalk.send("sunit status ", "__comma", [smalltalk.send(self['@result'], "_status", [])])]);
-    smalltalk.send(self['@statusDiv'], "_contents_", [function (html) {return smalltalk.send(smalltalk.
+    smalltalk.send(self['@statusDiv'], "_contents_", [function (html) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(self, "_statusInfo", [])]);}]);
+    return self;
+},
+args: [],
+source: "updateStatusDiv\x0a\x09statusDiv class: 'sunit status ', result status.\x0a\x09statusDiv contents: [:html |\x0a\x09\x09html span with: self statusInfo]",
+messageSends: ["class:", ",", "status", "contents:", "with:", "span", "statusInfo"],
+referencedClasses: []
+}),
+smalltalk.TestRunner);
+
+
+
+smalltalk.addClass('Workspace', smalltalk.TabWidget, ['sourceArea'], 'IDE');
+smalltalk.addMethod(
+"_clearWorkspace",
+smalltalk.method({
+selector: "clearWorkspace",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sourceArea'], "_clear", []);
+    return self;
+},
+args: [],
+source: "clearWorkspace\x0a    sourceArea clear",
+messageSends: ["clear"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_doIt",
+smalltalk.method({
+selector: "doIt",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sourceArea'], "_doIt", []);
+    return self;
+},
+args: [],
+source: "doIt\x0a   sourceArea doIt",
+messageSends: ["doIt"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_fileIn",
+smalltalk.method({
+selector: "fileIn",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sourceArea'], "_fileIn", []);
+    return self;
+},
+args: [],
+source: "fileIn\x0a    sourceArea fileIn",
+messageSends: ["fileIn"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_inspectIt",
+smalltalk.method({
+selector: "inspectIt",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sourceArea'], "_inspectIt", []);
+    return self;
+},
+args: [],
+source: "inspectIt\x0a    sourceArea inspectIt",
+messageSends: ["inspectIt"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_label",
+smalltalk.method({
+selector: "label",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "Workspace";
+    return self;
+},
+args: [],
+source: "label\x0a    ^'Workspace'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_printIt",
+smalltalk.method({
+selector: "printIt",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sourceArea'], "_printIt", []);
+    return self;
+},
+args: [],
+source: "printIt\x0a\x09sourceArea printIt",
+messageSends: ["printIt"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_renderBoxOn_",
+smalltalk.method({
+selector: "renderBoxOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);
+    smalltalk.send(self['@sourceArea'], "_renderOn_", [html]);
+    return self;
+},
+args: ["html"],
+source: "renderBoxOn: html\x0a    sourceArea := SourceArea new.\x0a    sourceArea renderOn: html",
+messageSends: ["new", "renderOn:"],
+referencedClasses: ["SourceArea"]
+}),
+smalltalk.Workspace);
+
+smalltalk.addMethod(
+"_renderButtonsOn_",
+smalltalk.method({
+selector: "renderButtonsOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_with_", ["DoIt"]);smalltalk.send($rec, "_title_", ["ctrl+d"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_doIt", []);}]);}(smalltalk.send(html, "_button", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", ["PrintIt"]);smalltalk.send($rec, "_title_", ["ctrl+p"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_printIt", []);}]);}(smalltalk.send(html, "_button", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", ["InspectIt"]);smalltalk.send($rec, "_title_", ["ctrl+i"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_inspectIt", []);}]);}(smalltalk.send(html, "_button", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", ["FileIn"]);smalltalk.send($rec, "_title_", ["ctrl+f"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_fileIn", []);}]);}(smalltalk.send(html, "_button", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", ["Clear workspace"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_clearWorkspace", []);}]);}(smalltalk.send(html, "_button", [])));
+    return self;
+},
+args: ["html"],
+source: "renderButtonsOn: html\x0a    html button\x0a\x09with: 'DoIt';\x0a\x09title: 'ctrl+d';\x0a\x09onClick: [self doIt].\x0a    html button\x0a\x09with: 'PrintIt';\x0a\x09title: 'ctrl+p';\x0a\x09onClick: [self printIt].\x0a    html button\x0a\x09with: 'InspectIt';\x0a\x09title: 'ctrl+i';\x0a\x09onClick: [self inspectIt].\x0a    html button\x0a\x09with: 'FileIn';\x0a\x09title: 'ctrl+f';\x0a\x09onClick: [self fileIn].\x0a    html button\x0a\x09with: 'Clear workspace';\x0a\x09onClick: [self clearWorkspace]",
+messageSends: ["with:", "title:", "onClick:", "doIt", "button", "printIt", "inspectIt", "fileIn", "clearWorkspace"],
+referencedClasses: []
+}),
+smalltalk.Workspace);
+
+
+
+smalltalk.addMethod(
+"_inspect",
+smalltalk.method({
+selector: "inspect",
+category: '*IDE',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_inspect_", [self]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.Inspector || Inspector, "_new", [])));
+    return self;
+},
+args: [],
+source: "inspect\x0a\x09Inspector new \x0a\x09\x09inspect: self;\x0a\x09\x09open",
+messageSends: ["inspect:", "open", "new"],
+referencedClasses: ["Inspector"]
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_allInstanceVariableNames", []), "_do_", [function (each) {return smalltalk.send(variables, "_at_put_", [each, smalltalk.send(self, "_instVarAt_", [each])]);}]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09self class allInstanceVariableNames do: [:each |\x0a\x09\x09variables at: each put: (self instVarAt: each)].\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "do:", "allInstanceVariableNames", "class", "instVarAt:", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.Object);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(self, "_withIndexDo_", [function (each, i) {return smalltalk.send(variables, "_at_put_", [i, each]);}]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09self withIndexDo: [:each :i |\x0a\x09\x09variables at: i put: each].\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "withIndexDo:", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.Collection);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(variables, "_at_put_", ["#keys", smalltalk.send(self, "_keys", [])]);
+    smalltalk.send(self, "_keysAndValuesDo_", [function (key, value) {return smalltalk.send(variables, "_at_put_", [key, value]);}]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09variables at: '#keys' put: self keys.\x0a\x09self keysAndValuesDo: [:key :value |\x0a\x09\x09variables at: key put: value].\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "keys", "keysAndValuesDo:", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.HashedCollection);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var label = nil;
+    smalltalk.send(self, "_inspectOn_", [anInspector], smalltalk.String.superclass || nil);
+    ($receiver = ($receiver = smalltalk.send(smalltalk.send(self, "_printString", []), "_size", [])).klass === smalltalk.Number ? $receiver > 30 : smalltalk.send($receiver, "__gt", [30])).klass === smalltalk.Boolean ? $receiver ? function () {return label = smalltalk.send(smalltalk.send(smalltalk.send(self, "_printString", []), "_copyFrom_to_", [1, 30]), "__comma", ["...'"]);}() : function () {return label = smalltalk.send(self, "_printString", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return label = smalltalk.send(smalltalk.send(smalltalk.send(self, "_printString", []), "_copyFrom_to_", [1, 30]), "__comma", ["...'"]);}, function () {return label = smalltalk.send(self, "_printString", []);}]);
+    smalltalk.send(anInspector, "_setLabel_", [label]);
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| label |\x0a\x09super inspectOn: anInspector.\x0a\x09self printString size > 30 \x0a\x09\x09ifTrue: [label := (self printString copyFrom: 1 to: 30), '...''']\x0a\x09\x09ifFalse: [label := self printString]. \x0a\x09anInspector setLabel: label",
+messageSends: ["inspectOn:", "ifTrue:ifFalse:", ">", "size", "printString", ",", "copyFrom:to:", "setLabel:"],
+referencedClasses: []
+}),
+smalltalk.String);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(self['@elements'], "_withIndexDo_", [function (each, i) {return smalltalk.send(variables, "_at_put_", [i, each]);}]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09elements withIndexDo: [:each :i |\x0a\x09\x09variables at: i put: each].\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "withIndexDo:", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.Set);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(variables, "_at_put_", ["#year", smalltalk.send(self, "_year", [])]);
+    smalltalk.send(variables, "_at_put_", ["#month", smalltalk.send(self, "_month", [])]);
+    smalltalk.send(variables, "_at_put_", ["#day", smalltalk.send(self, "_day", [])]);
+    smalltalk.send(variables, "_at_put_", ["#hours", smalltalk.send(self, "_hours", [])]);
+    smalltalk.send(variables, "_at_put_", ["#minutes", smalltalk.send(self, "_minutes", [])]);
+    smalltalk.send(variables, "_at_put_", ["#seconds", smalltalk.send(self, "_seconds", [])]);
+    smalltalk.send(variables, "_at_put_", ["#milliseconds", smalltalk.send(self, "_milliseconds", [])]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09variables at: '#year' put: self year.\x0a\x09variables at: '#month' put: self month.\x0a\x09variables at: '#day' put: self day.\x0a\x09variables at: '#hours' put: self hours.\x0a\x09variables at: '#minutes' put: self minutes.\x0a\x09variables at: '#seconds' put: self seconds.\x0a\x09variables at: '#milliseconds' put: self milliseconds.\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "year", "month", "day", "hours", "minutes", "seconds", "milliseconds", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.Date);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(variables, "_at_put_", ["#year", smalltalk.send(self, "_year", [])]);
+    smalltalk.send(variables, "_at_put_", ["#month", smalltalk.send(self, "_month", [])]);
+    smalltalk.send(variables, "_at_put_", ["#day", smalltalk.send(self, "_day", [])]);
+    smalltalk.send(variables, "_at_put_", ["#hours", smalltalk.send(self, "_hours", [])]);
+    smalltalk.send(variables, "_at_put_", ["#minutes", smalltalk.send(self, "_minutes", [])]);
+    smalltalk.send(variables, "_at_put_", ["#seconds", smalltalk.send(self, "_seconds", [])]);
+    smalltalk.send(variables, "_at_put_", ["#milliseconds", smalltalk.send(self, "_milliseconds", [])]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09variables at: '#year' put: self year.\x0a\x09variables at: '#month' put: self month.\x0a\x09variables at: '#day' put: self day.\x0a\x09variables at: '#hours' put: self hours.\x0a\x09variables at: '#minutes' put: self minutes.\x0a\x09variables at: '#seconds' put: self seconds.\x0a\x09variables at: '#milliseconds' put: self milliseconds.\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "year", "month", "day", "hours", "minutes", "seconds", "milliseconds", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.Date);
+
+smalltalk.addMethod(
+"_inspectOn_",
+smalltalk.method({
+selector: "inspectOn:",
+category: '*IDE',
+fn: function (anInspector) {
+    var self = this;
+    var variables = nil;
+    variables = smalltalk.send(smalltalk.Dictionary || Dictionary, "_new", []);
+    smalltalk.send(variables, "_at_put_", ["#self", self]);
+    smalltalk.send(variables, "_at_put_", ["#home", smalltalk.send(self, "_home", [])]);
+    smalltalk.send(variables, "_at_put_", ["#receiver", smalltalk.send(self, "_receiver", [])]);
+    smalltalk.send(variables, "_at_put_", ["#selector", smalltalk.send(self, "_selector", [])]);
+    smalltalk.send(variables, "_at_put_", ["#temps", smalltalk.send(self, "_temps", [])]);
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_instanceVariableNames", []), "_do_", [function (each) {return smalltalk.send(variables, "_at_put_", [each, smalltalk.send(self, "_instVarAt_", [each])]);}]);
+    (function ($rec) {smalltalk.send($rec, "_setLabel_", [smalltalk.send(self, "_printString", [])]);return smalltalk.send($rec, "_setVariables_", [variables]);}(anInspector));
+    return self;
+},
+args: ["anInspector"],
+source: "inspectOn: anInspector\x0a\x09| variables |\x0a\x09variables := Dictionary new.\x0a\x09variables at: '#self' put: self.\x0a\x09variables at: '#home' put: self home.\x0a\x09variables at: '#receiver' put: self receiver.\x0a\x09variables at: '#selector' put: self selector.\x0a\x09variables at: '#temps' put: self temps.\x0a\x09self class instanceVariableNames do: [:each |\x0a\x09\x09variables at: each put: (self instVarAt: each)].\x0a\x09anInspector \x0a\x09\x09setLabel: self printString;\x0a\x09\x09setVariables: variables",
+messageSends: ["new", "at:put:", "home", "receiver", "selector", "temps", "do:", "instanceVariableNames", "class", "instVarAt:", "setLabel:", "printString", "setVariables:"],
+referencedClasses: ["Dictionary"]
+}),
+smalltalk.MethodContext);
+
