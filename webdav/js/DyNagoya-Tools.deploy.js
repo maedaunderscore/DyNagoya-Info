@@ -526,7 +526,7 @@ smalltalk.method({
 selector: "defaultOption",
 fn: function () {
     var self = this;
-    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false])]);
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("modal", "__minus_gt", [false]), smalltalk.send("close", "__minus_gt", [smalltalk.send(self, "_close", [])])]);
     return self;
 }
 }),
