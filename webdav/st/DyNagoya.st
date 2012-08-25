@@ -219,22 +219,6 @@ leftPosition
   ]
 !
 
-makeWorkspaceBigTheme
-	| editor |
-	editor := (< smalltalk.EntryPoint["@workspace"]["@widget"]["@sourceArea"]["@editor"]>).
-	editor 
-		setOption: 'lineNumbers' value: false;
-		setOption: 'theme' value: 'amberbig'.
-!
-
-makeWorkspaceNormalTheme
-	| editor |
-	editor := (< smalltalk.EntryPoint["@workspace"]["@widget"]["@sourceArea"]["@editor"]>).
-	editor 
-		setOption: 'lineNumbers' value: true;
-		setOption: 'theme' value: 'amber'.
-!
-
 messages
 	^{
 	 'Type one of below lines on workspace, then click "DoIt"'.
