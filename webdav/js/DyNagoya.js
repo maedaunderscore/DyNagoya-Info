@@ -1452,12 +1452,12 @@ selector: "title:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.TempPage || TempPage, "_new", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]), "_show", []);
+    smalltalk.send(function ($rec) {smalltalk.send($rec, "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.TempPage || TempPage, "_new", [])), "_show", []);
     return self;
 },
 args: ["aString"],
-source: "title: aString\x0a   (TempPage new do: [ %1 h1: aString]) show",
-messageSends: ["show", "do:", "new", "h1:"],
+source: "title: aString\x0a   (TempPage new do: [ %1 h1: aString]; yourself ) show",
+messageSends: ["show", "do:", "h1:", "yourself", "new"],
 referencedClasses: ["TempPage"]
 }),
 smalltalk.Page.klass);
@@ -1760,12 +1760,13 @@ selector: "renderBody:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    self['@body'] = smalltalk.send(smalltalk.send(html, "_todo", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(self, "_do_", [thisisplaceholder1]);}]);
+    self['@body'] = html;
+    smalltalk.send(self['@todo'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self, "_do_", [thisisplaceholder1]);}]);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a  body := html\x0a\x0a  todo do: [ self do: %1 ]",
-messageSends: ["do:", "todo"],
+source: "renderBody: html\x0a  body := html.\x0a\x0a  todo do: [ self do: %1 ]",
+messageSends: ["do:"],
 referencedClasses: []
 }),
 smalltalk.TempPage);
