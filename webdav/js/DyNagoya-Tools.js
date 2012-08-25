@@ -1037,7 +1037,7 @@ referencedClasses: []
 smalltalk.TranscriptDialog.klass);
 
 
-smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, ['workspace'], 'DyNagoya-Tools');
 smalltalk.addMethod(
 "_close",
 smalltalk.method({
@@ -1063,12 +1063,13 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.WorkspaceDialog.superclass || nil);
-    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    self['@workspace'] = smalltalk.send(smalltalk.Workspace || Workspace, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self['@workspace']]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 },
 args: [],
-source: "initialize\x0a\x09super initialize.\x0a\x09self \x0a\x09\x09widget: (Workspace new); \x0a\x09\x09title: 'Workspace'; \x0a\x09\x09modal: false",
-messageSends: ["initialize", "widget:", "new", "title:", "modal:"],
+source: "initialize\x0a\x09super initialize.\x0a\x09workspace := Workspace new.\x0a\x09self \x0a\x09\x09widget: workspace;\x0a\x09\x09title: 'Workspace'; \x0a\x09\x09modal: false",
+messageSends: ["initialize", "new", "widget:", "title:", "modal:"],
 referencedClasses: ["Workspace"]
 }),
 smalltalk.WorkspaceDialog);
