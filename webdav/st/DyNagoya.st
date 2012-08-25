@@ -660,7 +660,7 @@ show
 !
 
 title: aString
-   (TempPage new do: [ %1 h1: aString]) show
+   (TempPage new do: [ %1 h1: aString]; yourself ) show
 ! !
 
 Page subclass: #AboutDyNagoya
@@ -876,7 +876,7 @@ initialize
 !
 
 renderBody: html
-  body := html
+  body := html.
 
   todo do: [ self do: %1 ]
 ! !
