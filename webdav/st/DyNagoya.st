@@ -657,6 +657,10 @@ renderOn: html
 
 show
   Screen new flip: self new
+!
+
+title: aString
+   (TempPage new do: [ %1 h1: aString]) show
 ! !
 
 Page subclass: #AboutDyNagoya
@@ -851,6 +855,30 @@ renderBody: html
 			(html tag: 'dd') with: (link at: 3)
 		]
 	]
+! !
+
+Page subclass: #TempPage
+	instanceVariableNames: 'body todo'
+	package: 'DyNagoya'!
+
+!TempPage methodsFor: 'not yet classified'!
+
+do: aBlock
+    body ifNil: [
+	todo add: aBlock
+    ] ifNotNil: [
+    	aBlock value: body
+    ]
+!
+
+initialize
+	todo := {}.
+!
+
+renderBody: html
+  body := html
+
+  todo do: [ self do: %1 ]
 ! !
 
 Page subclass: #TopPage
