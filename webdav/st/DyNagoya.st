@@ -875,34 +875,6 @@ renderBody: html
 	]
 ! !
 
-Page subclass: #TempPage
-	instanceVariableNames: 'body todo'
-	package: 'DyNagoya'!
-
-!TempPage methodsFor: 'not yet classified'!
-
-do: aBlock
-    body ifNil: [
-	todo add: aBlock
-    ] ifNotNil: [
-    	aBlock value: body
-    ]
-!
-
-initialize
-	todo := {}.
-!
-
-renderBody: html
-  body := html.
-
-  todo do: [ self do: %1 ]
-!
-
-title: aString
-	self do: [ %1 h1: aString]
-! !
-
 Page subclass: #TopPage
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
