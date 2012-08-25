@@ -399,6 +399,12 @@ DialogBox subclass: #WorkspaceDialog
 
 !WorkspaceDialog methodsFor: 'not yet classified'!
 
+big
+	(< self["@widget"]["@sourceArea"]["@editor"] >)
+		setOption: 'lineNumbers' value: false;
+		setOption: 'theme' value: 'amberbig'
+!
+
 close
 	 body asJQuery dialog: 'destroy'
 !
@@ -410,6 +416,12 @@ initialize
 		widget: workspace;
 		title: 'Workspace'; 
 		modal: false
+!
+
+normal
+	(< self["@widget"]["@sourceArea"]["@editor"] >)
+		setOption: 'lineNumbers' value: true;
+		setOption: 'theme' value: 'amber'
 ! !
 
 WorkspaceDialog class instanceVariableNames: 's'!
