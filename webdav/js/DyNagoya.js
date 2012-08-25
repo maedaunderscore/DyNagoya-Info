@@ -1445,6 +1445,23 @@ referencedClasses: ["Screen"]
 }),
 smalltalk.Page.klass);
 
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.TempPage || TempPage, "_new", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]), "_show", []);
+    return self;
+},
+args: ["aString"],
+source: "title: aString\x0a   (TempPage new do: [ %1 h1: aString]) show",
+messageSends: ["show", "do:", "new", "h1:"],
+referencedClasses: ["TempPage"]
+}),
+smalltalk.Page.klass);
+
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
@@ -1698,6 +1715,60 @@ messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:",
 referencedClasses: []
 }),
 smalltalk.Links);
+
+
+
+smalltalk.addClass('TempPage', smalltalk.Page, ['body', 'todo'], 'DyNagoya');
+smalltalk.addMethod(
+"_do_",
+smalltalk.method({
+selector: "do:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    ($receiver = self['@body']) == nil || $receiver == undefined ? function () {return smalltalk.send(self['@todo'], "_add_", [aBlock]);}() : function () {return smalltalk.send(aBlock, "_value_", [self['@body']]);}();
+    return self;
+},
+args: ["aBlock"],
+source: "do: aBlock\x0a    body ifNil: [\x0a\x09todo add: aBlock\x0a    ] ifNotNil: [\x0a    \x09aBlock value: body\x0a    ]",
+messageSends: ["ifNil:ifNotNil:", "add:", "value:"],
+referencedClasses: []
+}),
+smalltalk.TempPage);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@todo'] = [];
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09todo := {}.",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TempPage);
+
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(smalltalk.send(html, "_todo", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(self, "_do_", [thisisplaceholder1]);}]);
+    return self;
+},
+args: ["html"],
+source: "renderBody: html\x0a  body := html\x0a\x0a  todo do: [ self do: %1 ]",
+messageSends: ["do:", "todo"],
+referencedClasses: []
+}),
+smalltalk.TempPage);
 
 
 
