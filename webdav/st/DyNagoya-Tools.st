@@ -318,7 +318,7 @@ selectX: x y: y
 !ImageEditor methodsFor: 'initalization'!
 
 defaultOption
-	^ #{ 'modal' -> false. 'close' -> self close }
+	^ #{ 'modal' -> false. 'close' -> [self close] }
 ! !
 
 !ImageEditor methodsFor: 'opening'!
