@@ -1043,18 +1043,6 @@ fn: function () {
 }),
 smalltalk.Page.klass);
 
-smalltalk.addMethod(
-"_title_",
-smalltalk.method({
-selector: "title:",
-fn: function (aString) {
-    var self = this;
-    smalltalk.send(function ($rec) {smalltalk.send($rec, "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.TempPage || TempPage, "_new", [])), "_show", []);
-    return self;
-}
-}),
-smalltalk.Page.klass);
-
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
@@ -1274,6 +1262,18 @@ fn: function (html) {
     var self = this;
     self['@body'] = html;
     smalltalk.send(self['@todo'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self, "_do_", [thisisplaceholder1]);}]);
+    return self;
+}
+}),
+smalltalk.TempPage);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(self, "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]);
     return self;
 }
 }),
@@ -2480,7 +2480,7 @@ smalltalk.ZTres);
 
 
 
-smalltalk.addClass('Screen', smalltalk.Widget, ['index'], 'DyNagoya');
+smalltalk.addClass('Screen', smalltalk.Widget, ['index', 'page'], 'DyNagoya');
 smalltalk.addMethod(
 "_current",
 smalltalk.method({
@@ -2501,6 +2501,7 @@ fn: function (aPage) {
     var self = this;
     smalltalk.send(self, "_rollOut_", [smalltalk.send(self, "_current", [])]);
     smalltalk.send(self, "_nextIndex", []);
+    self['@page'] = aPage;
     smalltalk.send(aPage, "_updateToJQuery_", [smalltalk.send(self, "_current", [])]);
     smalltalk.send(self, "_rollIn_", [smalltalk.send(self, "_current", [])]);
     return self;
@@ -2546,6 +2547,18 @@ fn: function () {
 smalltalk.Screen);
 
 smalltalk.addMethod(
+"_page",
+smalltalk.method({
+selector: "page",
+fn: function () {
+    var self = this;
+    return self['@page'];
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
 "_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
@@ -2584,6 +2597,18 @@ smalltalk.Screen);
 
 smalltalk.Screen.klass.iVarNames = ['single'];
 smalltalk.addMethod(
+"_add_",
+smalltalk.method({
+selector: "add:",
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_page", []), "_do_", [aBlock]);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
 "_new",
 smalltalk.method({
 selector: "new",
@@ -2603,6 +2628,18 @@ selector: "put:",
 fn: function (aWidget) {
     var self = this;
     smalltalk.send(aWidget, "_appendToJQuery_", [smalltalk.send(smalltalk.send(self, "_new", []), "_current", [])]);
+    return self;
+}
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.TempPage || TempPage, "_new", []), "_title_", [aString])]);
     return self;
 }
 }),
