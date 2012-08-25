@@ -177,8 +177,16 @@ Class creation is done throught a `ClassBuilder`!
 
 !Class methodsFor: 'accessing'!
 
+browse
+	Browser openOn: self
+!
+
 category
 	^self package ifNil: ['Unclassified'] ifNotNil: [self package name]
+!
+
+onDialog
+	BrowserDialog open: self
 !
 
 package

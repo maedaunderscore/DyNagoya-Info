@@ -351,6 +351,18 @@ smalltalk.Behavior);
 
 smalltalk.addClass('Class', smalltalk.Behavior, [], 'Kernel-Classes');
 smalltalk.addMethod(
+"_browse",
+smalltalk.method({
+selector: "browse",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.Browser || Browser, "_openOn_", [self]);
+    return self;
+}
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
 "_category",
 smalltalk.method({
 selector: "category",
@@ -370,6 +382,18 @@ selector: "isClass",
 fn: function () {
     var self = this;
     return true;
+    return self;
+}
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.BrowserDialog || BrowserDialog, "_open_", [self]);
     return self;
 }
 }),
