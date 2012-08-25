@@ -330,8 +330,8 @@ fileIn
 handleKeyDown: anEvent
     <
 	if(anEvent.ctrlKey) {
-//		if(anEvent.keyCode === 80) { //alt+p
-		if(anEvent.keyCode === 0) { //alt+@
+//		if(anEvent.keyCode === 80) { //ctrl+p
+		if(anEvent.keyCode === 0) { //ctrl+@
 			self._printIt();
 			anEvent.preventDefault();
 			return false;
