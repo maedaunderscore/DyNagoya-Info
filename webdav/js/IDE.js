@@ -713,6 +713,13 @@ selector: "handleKeyDown:",
 category: 'actions',
 fn: function (anEvent) {
     var self = this;
+    if (anEvent.metaKey) {
+        if (anEvent.keyCode === 80) {
+            self._printIt();
+            anEvent.preventDefault();
+            return false;
+        }
+    }
     if (anEvent.ctrlKey) {
         if (anEvent.keyCode === 68) {
             self._doIt();
@@ -728,7 +735,7 @@ fn: function (anEvent) {
     return self;
 },
 args: ["anEvent"],
-source: "handleKeyDown: anEvent\x0a    <if(anEvent.ctrlKey) {\x0a/*\x09\x09if(anEvent.keyCode === 80) { //ctrl+p\x0a\x09\x09\x09self._printIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a*/\x09\x09if(anEvent.keyCode === 68) { //ctrl+d\x0a\x09\x09\x09self._doIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 73) { //ctrl+i\x0a\x09\x09\x09self._inspectIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}>",
+source: "handleKeyDown: anEvent\x0a    <\x0a\x09if(anEvent.metaKey){\x0a\x09\x09if(anEvent.keyCode === 80) { //alt+p\x0a\x09\x09\x09self._printIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}\x0a\x09if(anEvent.ctrlKey) {\x0a\x09\x09if(anEvent.keyCode === 68) { //ctrl+d\x0a\x09\x09\x09self._doIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 73) { //ctrl+i\x0a\x09\x09\x09self._inspectIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}>",
 messageSends: [],
 referencedClasses: []
 }),
