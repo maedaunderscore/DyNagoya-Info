@@ -394,7 +394,7 @@ new
 ! !
 
 DialogBox subclass: #WorkspaceDialog
-	instanceVariableNames: ''
+	instanceVariableNames: 'workspace'
 	package: 'DyNagoya-Tools'!
 
 !WorkspaceDialog methodsFor: 'not yet classified'!
@@ -405,8 +405,9 @@ close
 
 initialize
 	super initialize.
+	workspace := Workspace new.
 	self 
-		widget: (Workspace new); 
+		widget: workspace;
 		title: 'Workspace'; 
 		modal: false
 ! !
