@@ -1409,7 +1409,57 @@ referencedClasses: []
 smalltalk.LoginPanel.klass);
 
 
-smalltalk.addClass('Page', smalltalk.Widget, ['body'], 'DyNagoya');
+smalltalk.addClass('Page', smalltalk.Widget, ['body', 'todo'], 'DyNagoya');
+smalltalk.addMethod(
+"_do_",
+smalltalk.method({
+selector: "do:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    ($receiver = self['@body']) == nil || $receiver == undefined ? function () {return smalltalk.send(self['@todo'], "_add_", [aBlock]);}() : function () {return smalltalk.send(aBlock, "_value_", [self['@body']]);}();
+    return self;
+},
+args: ["aBlock"],
+source: "do: aBlock\x0a  body ifNil: [\x0a\x09todo add: aBlock\x0a  ] ifNotNil: [ \x0a\x09aBlock value: body\x0a  ]",
+messageSends: ["ifNil:ifNotNil:", "add:", "value:"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@todo'] = [];
+    return self;
+},
+args: [],
+source: "initialize\x0a  todo := {}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    return self;
+},
+args: ["html"],
+source: "renderBody: html\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Page);
+
 smalltalk.addMethod(
 "_renderOn_",
 smalltalk.method({
@@ -1417,12 +1467,31 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
+    self['@body'] = html;
     smalltalk.send(self, "_renderBody_", [html]);
+    smalltalk.send(self['@todo'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self, "_do_", [thisisplaceholder1]);}]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09self renderBody: html \x0a",
-messageSends: ["renderBody:"],
+source: "renderOn: html\x0a\x09body := html.\x0a\x09self renderBody: html.\x0a\x09\x0a\x09todo do: [ self do: %1 ]\x0a",
+messageSends: ["renderBody:", "do:"],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(self, "_do_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_h1_", [aString]);}]);
+    return self;
+},
+args: ["aString"],
+source: "title: aString\x0a  self do: [ %1 h1: aString]",
+messageSends: ["do:", "h1:"],
 referencedClasses: []
 }),
 smalltalk.Page);
@@ -3654,13 +3723,13 @@ selector: "title:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.TempPage || TempPage, "_new", []), "_title_", [aString])]);
+    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [aString])]);
     return self;
 },
 args: ["aString"],
-source: "title: aString\x0a\x09Screen new flip:  (TempPage new title: aString)",
+source: "title: aString\x0a\x09Screen new flip:  (Page new title: aString)",
 messageSends: ["flip:", "new", "title:"],
-referencedClasses: ["Screen", "TempPage"]
+referencedClasses: ["Screen", "Page"]
 }),
 smalltalk.Screen.klass);
 
