@@ -488,6 +488,23 @@ smalltalk.Behavior);
 smalltalk.addClass('Class', smalltalk.Behavior, [], 'Kernel-Classes');
 smalltalk.Class.comment="Class is __the__ class object. \x0a\x0aInstances are the classes of the system.\x0aClass creation is done throught a `ClassBuilder`"
 smalltalk.addMethod(
+"_browse",
+smalltalk.method({
+selector: "browse",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.Browser || Browser, "_openOn_", [self]);
+    return self;
+},
+args: [],
+source: "browse\x0a\x09Browser openOn: self",
+messageSends: ["openOn:"],
+referencedClasses: ["Browser"]
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
 "_category",
 smalltalk.method({
 selector: "category",
@@ -519,6 +536,23 @@ args: [],
 source: "isClass\x0a\x09^true",
 messageSends: [],
 referencedClasses: []
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.BrowserDialog || BrowserDialog, "_open_", [self]);
+    return self;
+},
+args: [],
+source: "onDialog\x0a\x09BrowserDialog open: self",
+messageSends: ["open:"],
+referencedClasses: ["BrowserDialog"]
 }),
 smalltalk.Class);
 
