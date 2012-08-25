@@ -328,13 +328,16 @@ fileIn
 !
 
 handleKeyDown: anEvent
-    <if(anEvent.ctrlKey) {
-/*		if(anEvent.keyCode === 80) { //ctrl+p
+    <
+	if(anEvent.metaKey){
+		if(anEvent.keyCode === 80) { //alt+p
 			self._printIt();
 			anEvent.preventDefault();
 			return false;
 		}
-*/		if(anEvent.keyCode === 68) { //ctrl+d
+	}
+	if(anEvent.ctrlKey) {
+		if(anEvent.keyCode === 68) { //ctrl+d
 			self._doIt();
 			anEvent.preventDefault();
 			return false;
