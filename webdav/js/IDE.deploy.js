@@ -523,11 +523,6 @@ selector: "handleKeyDown:",
 fn: function (anEvent) {
     var self = this;
     if (anEvent.ctrlKey) {
-        if (anEvent.keyCode === 80) {
-            self._printIt();
-            anEvent.preventDefault();
-            return false;
-        }
         if (anEvent.keyCode === 68) {
             self._doIt();
             anEvent.preventDefault();
