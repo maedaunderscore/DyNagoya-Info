@@ -506,44 +506,6 @@ referencedClasses: []
 smalltalk.EntryPoint.klass);
 
 smalltalk.addMethod(
-"_makeWorkspaceBigTheme",
-smalltalk.method({
-selector: "makeWorkspaceBigTheme",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    var editor = nil;
-    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
-    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(editor));
-    return self;
-},
-args: [],
-source: "makeWorkspaceBigTheme\x0a\x09| editor |\x0a\x09editor := (< smalltalk.EntryPoint[\x22@workspace\x22][\x22@widget\x22][\x22@sourceArea\x22][\x22@editor\x22]>).\x0a\x09editor \x0a\x09\x09setOption: 'lineNumbers' value: false;\x0a\x09\x09setOption: 'theme' value: 'amberbig'.\x0a\x0a\x0a",
-messageSends: ["setOption:value:"],
-referencedClasses: []
-}),
-smalltalk.EntryPoint.klass);
-
-smalltalk.addMethod(
-"_makeWorkspaceNormalTheme",
-smalltalk.method({
-selector: "makeWorkspaceNormalTheme",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    var editor = nil;
-    editor = smalltalk.EntryPoint['@workspace']['@widget']['@sourceArea']['@editor'];
-    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(editor));
-    return self;
-},
-args: [],
-source: "makeWorkspaceNormalTheme\x0a\x09| editor |\x0a\x09editor := (< smalltalk.EntryPoint[\x22@workspace\x22][\x22@widget\x22][\x22@sourceArea\x22][\x22@editor\x22]>).\x0a\x09editor \x0a\x09\x09setOption: 'lineNumbers' value: true;\x0a\x09\x09setOption: 'theme' value: 'amber'.\x0a\x0a\x0a",
-messageSends: ["setOption:value:"],
-referencedClasses: []
-}),
-smalltalk.EntryPoint.klass);
-
-smalltalk.addMethod(
 "_messages",
 smalltalk.method({
 selector: "messages",
