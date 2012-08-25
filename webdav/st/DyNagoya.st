@@ -657,10 +657,6 @@ renderOn: html
 
 show
   Screen new flip: self new
-!
-
-title: aString
-   (TempPage new do: [ %1 h1: aString]; yourself ) show
 ! !
 
 Page subclass: #AboutDyNagoya
@@ -879,6 +875,10 @@ renderBody: html
   body := html.
 
   todo do: [ self do: %1 ]
+!
+
+title: aString
+	self do: [ %1 h1: aString]
 ! !
 
 Page subclass: #TopPage
@@ -1494,36 +1494,37 @@ url
 ! !
 
 Widget subclass: #Screen
-	instanceVariableNames: 'index'
+	instanceVariableNames: 'index page'
 	package: 'DyNagoya'!
 
-!Screen methodsFor: 'not yet classified'!
+!Screen methodsFor: 'action'!
 
 flip: aPage
 	self rollOut: (self current).
 	self nextIndex.
+	page := aPage.
 	aPage updateToJQuery: (self current).
 	self rollIn: (self current)
 !
 
+page
+  ^ page
+! !
+
+!Screen methodsFor: 'initialization'!
+
 initialize
 	index := 1
-!
-
-layers
-	^ { '#layer1'. '#layer2' }
-!
-
-renderOn: html
-	html div id: 'screen'; with: [
-		(1 to: 2 ) do: [ html div id: 'layer', %1 ]
-	]
 ! !
 
 !Screen methodsFor: 'private'!
 
 current
 	^ ('#layer', index) asJQuery
+!
+
+layers
+	^ { '#layer1'. '#layer2' }
 !
 
 nextIndex
@@ -1543,9 +1544,21 @@ rollOut: jq
   jq transition: (< { x: 300, rotate: '8deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]
 ! !
 
+!Screen methodsFor: 'rendering'!
+
+renderOn: html
+	html div id: 'screen'; with: [
+		(1 to: 2 ) do: [ html div id: 'layer', %1 ]
+	]
+! !
+
 Screen class instanceVariableNames: 'single'!
 
 !Screen class methodsFor: 'not yet classified'!
+
+add: aBlock
+	Screen new page do: aBlock
+!
 
 new
 	single ifNil: [ 
@@ -1557,6 +1570,10 @@ new
 
 put:  aWidget
 	aWidget appendToJQuery: self new current
+!
+
+title: aString
+	Screen new flip:  (TempPage new title: aString)
 ! !
 
 Widget subclass: #ToolBar
