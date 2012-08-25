@@ -749,7 +749,7 @@ fn: function () {
 smalltalk.TranscriptDialog.klass);
 
 
-smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
+smalltalk.addClass('WorkspaceDialog', smalltalk.DialogBox, ['workspace'], 'DyNagoya-Tools');
 smalltalk.addMethod(
 "_close",
 smalltalk.method({
@@ -769,7 +769,8 @@ selector: "initialize",
 fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.WorkspaceDialog.superclass || nil);
-    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.Workspace || Workspace, "_new", [])]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    self['@workspace'] = smalltalk.send(smalltalk.Workspace || Workspace, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self['@workspace']]);smalltalk.send($rec, "_title_", ["Workspace"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 }
 }),
