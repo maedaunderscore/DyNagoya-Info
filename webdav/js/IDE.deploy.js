@@ -522,14 +522,12 @@ smalltalk.method({
 selector: "handleKeyDown:",
 fn: function (anEvent) {
     var self = this;
-    if (anEvent.metaKey) {
-        if (anEvent.keyCode === 80) {
+    if (anEvent.ctrlKey) {
+        if (anEvent.keyCode === 0) {
             self._printIt();
             anEvent.preventDefault();
             return false;
         }
-    }
-    if (anEvent.ctrlKey) {
         if (anEvent.keyCode === 68) {
             self._doIt();
             anEvent.preventDefault();
