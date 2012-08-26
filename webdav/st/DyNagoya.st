@@ -27,6 +27,26 @@ prev
   (self all at: idx) className: 'strong'.
 ! !
 
+Object subclass: #Amber
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Amber class methodsFor: 'not yet classified'!
+
+goodPoint
+	^ [ %1
+            h2: 'コンパクト！';
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Smalltalk初心者も把握しやすい'];
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Squeak 4.3: Smalltalk allClasses size → 2105'];
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Amber (2012/8/26時点): Smalltalk current classes size → 103'];
+
+            h2: 'JSとの親和性が高い！';
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: ' JSのライブラリを活用できる'];
+            h2: '動作環境が多い！';
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: ' Windows 8 Appもできた']
+	]
+! !
+
 Widget subclass: #DraggableWidget
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -901,6 +921,10 @@ renderBody: html
 Widget subclass: #ParserEditor
 	instanceVariableNames: 'source'
 	package: 'DyNagoya'!
+!ParserEditor commentStamp!
+editor := ParserEditor onDialog
+
+editor source css: 'font-size' put: '2em'!
 
 !ParserEditor methodsFor: 'not yet classified'!
 
