@@ -34,17 +34,19 @@ Object subclass: #Amber
 !Amber class methodsFor: 'not yet classified'!
 
 goodPoint
-	^ [ %1
+	^ {
+	[ %1
             h2: 'コンパクト！';
             |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Smalltalk初心者も把握しやすい'];
             |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Squeak 4.3: Smalltalk allClasses size → 2105'];
-            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Amber (2012/8/26時点): Smalltalk current classes size → 103'];
-
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: 'Amber (2012/8/26時点): Smalltalk current classes size → 103']
+	]. [ %1
             h2: 'JSとの親和性が高い！';
-            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: ' JSのライブラリを活用できる'];
+            |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: ' JSのライブラリを活用できる']
+	]. [ %1
             h2: '動作環境が多い！';
             |> [ %1 div css: 'font-size' put: '30px'; css: 'margin-left' put: '30px'; with: ' Windows 8 Appもできた']
-	]
+	] }
 ! !
 
 Widget subclass: #DraggableWidget
