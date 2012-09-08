@@ -1754,7 +1754,7 @@ renderOn: html
 		name: 'method-', selectedMethod selector;
 		onClick: [ sourceView toggleContents: [ :html || sourceArea |
 			sourceArea := SourceArea new.
-			sourceView with: sourceArea.
+			sourceView with: sourceArea; css: 'border' put: 'solid 1px'.
 			sourceArea big.
 			sourceArea val: selectedMethod source.
 			sourceArea onKeyUp: [ self updateStatus ]
