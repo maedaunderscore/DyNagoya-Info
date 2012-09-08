@@ -1076,6 +1076,23 @@ smalltalk.Event);
 
 
 smalltalk.addMethod(
+"_joinedStStudy02",
+smalltalk.method({
+selector: "joinedStStudy02",
+category: 'events',
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["\u53C2\u7167(http://atnd.org/events/30524)"]]);}(smalltalk.send(self, "_new", []));
+    return self;
+},
+args: [],
+source: "joinedStStudy02\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: '合同Smalltalk勉強会@名古屋';\x0a\x09\x09date: '2012/09/29';\x0a\x09\x09start: '13:30:00';\x0a\x09\x09end: '18:00:00';\x0a\x09\x09place: ATeam;\x0a\x09\x09detail: {\x0a'参照(http://atnd.org/events/30524)'\x0a}",
+messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+referencedClasses: ["ATeam"]
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
 "_latest",
 smalltalk.method({
 selector: "latest",
