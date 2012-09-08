@@ -182,7 +182,7 @@ browse
 !
 
 browser
-	^  ClassBrowser hierarchy: self
+	^  (ClassBrowser hierarchy: self) targetClass: self; yourself
 !
 
 category
