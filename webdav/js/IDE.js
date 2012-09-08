@@ -3587,6 +3587,23 @@ referencedClasses: []
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_target",
+smalltalk.method({
+selector: "target",
+category: 'action',
+fn: function () {
+    var self = this;
+    return self['@target'];
+    return self;
+},
+args: [],
+source: "target\x0a  ^ target \x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_target_",
 smalltalk.method({
 selector: "target:",
