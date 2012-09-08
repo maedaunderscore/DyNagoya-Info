@@ -505,6 +505,23 @@ referencedClasses: ["Browser"]
 smalltalk.Class);
 
 smalltalk.addMethod(
+"_browser",
+smalltalk.method({
+selector: "browser",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]);
+    return self;
+},
+args: [],
+source: "browser\x0a\x09^  ClassBrowser hierarchy: self",
+messageSends: ["hierarchy:"],
+referencedClasses: ["ClassBrowser"]
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
 "_category",
 smalltalk.method({
 selector: "category",
