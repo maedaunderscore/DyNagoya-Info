@@ -602,7 +602,7 @@ selector: "start",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_bottomPosition", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.WorkspaceDialog || WorkspaceDialog, "_new", [])));
+    (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_bottomPosition", [])]);smalltalk.send($rec, "_open", []);return smalltalk.send($rec, "_big", []);}(smalltalk.send(smalltalk.WorkspaceDialog || WorkspaceDialog, "_new", [])));
     (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_topPosition", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.TranscriptDialog || TranscriptDialog, "_new", [])));
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
@@ -610,8 +610,8 @@ fn: function () {
     return self;
 },
 args: [],
-source: "start\x0a\x22  self makeWorkspaceBigTheme.\x22\x0a\x0a  WorkspaceDialog new  |> self bottomPosition; open.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
-messageSends: ["|>", "bottomPosition", "open", "new", "topPosition", "screenPreparation", "show", "showMessage"],
+source: "start\x0a\x22  self makeWorkspaceBigTheme.\x22\x0a\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
+messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage"],
 referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel"]
 }),
 smalltalk.EntryPoint.klass);
