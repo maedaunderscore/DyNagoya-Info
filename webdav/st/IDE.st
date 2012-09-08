@@ -1672,7 +1672,7 @@ renderMethodButtonOn: html title: aTitle class: aClass cssClass: cssClass area: 
 
 renderOn: html
 	| title titleBrush |
-	root := html root name:  'class-', selectedClass name.
+	root := html root |> self style; name:  'class-', selectedClass name.
 	classView := html div with: [
 		title := PlusMinusIcon text: selectedClass name.
 		titleBrush := html span with: title;
@@ -1710,6 +1710,12 @@ renderOn: html
 			titleBrush css: 'cursor' put: 'pointer'.
 			subclassView := html div css: 'margin-left' put: '10px'
 		].
+!
+
+style
+  ^ [ %1
+	css: 'font-size' put: '18px'
+     ]
 ! !
 
 !ClassBrowser class methodsFor: 'not yet classified'!

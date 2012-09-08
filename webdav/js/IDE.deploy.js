@@ -2596,7 +2596,7 @@ fn: function (html) {
     var self = this;
     var title = nil;
     var titleBrush = nil;
-    self['@root'] = smalltalk.send(smalltalk.send(html, "_root", []), "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);
+    self['@root'] = function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_name_", [smalltalk.send("class-", "__comma", [smalltalk.send(self['@selectedClass'], "_name", [])])]);}(smalltalk.send(html, "_root", []));
     self['@classView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {title = smalltalk.send(smalltalk.PlusMinusIcon || PlusMinusIcon, "_text_", [smalltalk.send(self['@selectedClass'], "_name", [])]);titleBrush = function ($rec) {smalltalk.send($rec, "_with_", [title]);smalltalk.send($rec, "_class_", ["browser-class-name"]);smalltalk.send($rec, "_css_put_", ["font-size", "1.2em"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@subclassView'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_toggleContents_withOn_withOff_", [function (html) {return smalltalk.send(self['@subclasses'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [thisisplaceholder1, self['@descendants']])]);}]);}, function () {return smalltalk.send(title, "_open", []);}, function () {return smalltalk.send(title, "_close", []);}]);}]);}]);}(smalltalk.send(html, "_span", []));smalltalk.send(smalltalk.send(smalltalk.send(self['@selectedClass'], "_class", []), "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@classMethodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "class methods", smalltalk.send(self['@selectedClass'], "_class", []), "browser-class-method-button", "classMethodView", smalltalk.send(self, "_onStyleForClass", []), smalltalk.send(self, "_offStyle", [])]);}]);return smalltalk.send(smalltalk.send(self['@selectedClass'], "_methodDictionary", []), "_ifNotEmpty_", [function () {return self['@methodTitle'] = smalltalk.send(self, "_renderMethodButtonOn_title_class_cssClass_area_on_off_", [html, "methods", self['@selectedClass'], "browser-method-button", "methodView", smalltalk.send(self, "_onStyle", []), smalltalk.send(self, "_offStyle", [])]);}]);}]);
     self['@classMethodView'] = function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);smalltalk.send($rec, "_css_put_", ["border-left", smalltalk.send("3px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);return smalltalk.send($rec, "_css_put_", ["color", smalltalk.send(self, "_classColor", [])]);}(smalltalk.send(html, "_div", []));
     self['@methodView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [smalltalk.send(self, "_leftBorder", [])]);
@@ -2616,6 +2616,18 @@ fn: function (aClass, aString) {
     xs = smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_collect_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(thisisplaceholder1, "_name", [])]), "__comma", ["\"] span.browser-class-name"]);}]);
     ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-method-button"])]);smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);return smalltalk.send(xs, "_add_", ["dummy"]);}() : nil;
     return xs;
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_style",
+smalltalk.method({
+selector: "style",
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_css_put_", ["font-size", "18px"]);};
     return self;
 }
 }),
