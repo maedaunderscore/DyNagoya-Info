@@ -573,6 +573,23 @@ smalltalk.PlusMinusIcon.klass);
 
 smalltalk.addClass('SourceArea', smalltalk.Widget, ['editor', 'div', 'receiver', 'onDoIt'], 'IDE');
 smalltalk.addMethod(
+"_big",
+smalltalk.method({
+selector: "big",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(smalltalk.send(self, "_editor", [])));
+    return self;
+},
+args: [],
+source: "big\x0a\x09(self editor)\x0a\x09\x09setOption: 'lineNumbers' value: false;\x0a\x09\x09setOption: 'theme' value: 'amberbig'\x09",
+messageSends: ["setOption:value:", "editor"],
+referencedClasses: []
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
 "_clear",
 smalltalk.method({
 selector: "clear",
@@ -752,6 +769,23 @@ fn: function () {
 args: [],
 source: "inspectIt\x0a    self doIt inspect",
 messageSends: ["inspect", "doIt"],
+referencedClasses: []
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
+"_normal",
+smalltalk.method({
+selector: "normal",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(smalltalk.send(self, "_editor", [])));
+    return self;
+},
+args: [],
+source: "normal\x0a\x09(self editor)\x0a\x09\x09setOption: 'lineNumbers' value: true;\x0a\x09\x09setOption: 'theme' value: 'amber'\x09",
+messageSends: ["setOption:value:", "editor"],
 referencedClasses: []
 }),
 smalltalk.SourceArea);
@@ -3617,14 +3651,14 @@ selector: "renderOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedMethod'], "_selector", [])]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_name_", [smalltalk.send("method-", "__comma", [smalltalk.send(self['@selectedMethod'], "_selector", [])])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@selectedMethod'], "_source", [])]);return smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedMethod'], "_selector", [])]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_name_", [smalltalk.send("method-", "__comma", [smalltalk.send(self['@selectedMethod'], "_selector", [])])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);smalltalk.send(self['@sourceArea'], "_big", []);smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@selectedMethod'], "_source", [])]);return smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));
     self['@saveButton'] = function ($rec) {smalltalk.send($rec, "_with_", ["save"]);smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(self['@saveButton'], "_hide", []);return smalltalk.send(self, "_compileMethodDefinition", []);}]);}(smalltalk.send(html, "_span", []));
     self['@sourceView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_class_", ["tree-source"]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09html span  \x0a\x09\x09with: selectedMethod selector;\x0a\x09\x09css: 'cursor' put: 'pointer';\x0a\x09\x09name: 'method-', selectedMethod selector;\x0a\x09\x09onClick: [ sourceView toggleContents: [ :html || sourceArea |\x0a\x09\x09\x09sourceArea := SourceArea new.\x0a\x09\x09\x09sourceView with: sourceArea.\x0a\x09\x09\x09sourceArea val: selectedMethod source.\x0a\x09\x09\x09sourceArea onKeyUp: [ self updateStatus ]\x0a\x09\x09] ].\x0a\x09saveButton := html span \x0a\x09\x09with: 'save'; \x0a\x09\x09css: 'margin-left' put: '10px';\x0a\x09\x09hide;\x0a\x09\x09onClick: [ saveButton hide. self compileMethodDefinition ].\x0a\x09sourceView := html div class: 'tree-source'",
-messageSends: ["with:", "selector", "css:put:", "name:", ",", "onClick:", "toggleContents:", "new", "val:", "source", "onKeyUp:", "updateStatus", "span", "hide", "compileMethodDefinition", "class:", "div"],
+source: "renderOn: html\x0a\x09html span  \x0a\x09\x09with: selectedMethod selector;\x0a\x09\x09css: 'cursor' put: 'pointer';\x0a\x09\x09name: 'method-', selectedMethod selector;\x0a\x09\x09onClick: [ sourceView toggleContents: [ :html || sourceArea |\x0a\x09\x09\x09sourceArea := SourceArea new.\x0a\x09\x09\x09sourceView with: sourceArea.\x0a\x09\x09\x09sourceArea big.\x0a\x09\x09\x09sourceArea val: selectedMethod source.\x0a\x09\x09\x09sourceArea onKeyUp: [ self updateStatus ]\x0a\x09\x09] ].\x0a\x09saveButton := html span \x0a\x09\x09with: 'save'; \x0a\x09\x09css: 'margin-left' put: '10px';\x0a\x09\x09hide;\x0a\x09\x09onClick: [ saveButton hide. self compileMethodDefinition ].\x0a\x09sourceView := html div class: 'tree-source'",
+messageSends: ["with:", "selector", "css:put:", "name:", ",", "onClick:", "toggleContents:", "new", "big", "val:", "source", "onKeyUp:", "updateStatus", "span", "hide", "compileMethodDefinition", "class:", "div"],
 referencedClasses: ["SourceArea"]
 }),
 smalltalk.MethodBrowser);
