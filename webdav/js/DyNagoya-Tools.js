@@ -601,6 +601,25 @@ referencedClasses: []
 }),
 smalltalk.BrowserDialog.klass);
 
+smalltalk.addMethod(
+"_openWithBrowser_",
+smalltalk.method({
+selector: "openWithBrowser:",
+category: 'not yet classified',
+fn: function (browser) {
+    var self = this;
+    var ret = nil;
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_title_", [smalltalk.send(smalltalk.send(browser, "_selectedClass", []), "_name", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    smalltalk.send(browser, "_open", []);
+    return self;
+},
+args: ["browser"],
+source: "openWithBrowser: browser\x0a\x09| ret |\x0a\x09ret := self new \x0a\x09\x09widget: browser;\x0a\x09\x09width: '600px';\x0a\x09\x09height:  (window innerHeight * 0.5);\x0a\x09\x09modal: false;\x0a\x09\x09title: browser selectedClass name;\x0a\x09\x09open.\x0a\x0a\x09browser open.\x0a",
+messageSends: ["widget:", "width:", "height:", "*", "innerHeight", "modal:", "title:", "name", "selectedClass", "open", "new"],
+referencedClasses: []
+}),
+smalltalk.BrowserDialog.klass);
+
 
 smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');
 smalltalk.ImageEditor.comment="x := ImageEditor openWithProxy: 'http://xxxx.com/abc.png'; open\x0a(* select area by drag the image *)\x0a\x0ax crop\x0ax src"
