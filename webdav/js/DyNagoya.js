@@ -1670,14 +1670,13 @@ selector: "renderBody:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    self['@browser'] = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self['@selectedClass']]);
     (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "black"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["padding", "15px"]);return smalltalk.send($rec, "_with_", [self['@browser']]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09browser := (ClassBrowser hierarchy: selectedClass).\x0a\x09html div \x0a\x09\x09css: 'background' put: 'black';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09\x09css: 'padding' put: '15px';\x0a\x09\x09with: browser",
-messageSends: ["hierarchy:", "css:put:", "with:", "div"],
-referencedClasses: ["ClassBrowser"]
+source: "renderBody: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'black';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09\x09css: 'padding' put: '15px';\x0a\x09\x09with: browser",
+messageSends: ["css:put:", "with:", "div"],
+referencedClasses: []
 }),
 smalltalk.BrowsePage);
 
@@ -1730,6 +1729,25 @@ args: ["aClass", "aString"],
 source: "show: aClass method: aString\x0a\x09^(self new selectedClass: aClass; method: aString; yourself)\x0a\x09|> [ Screen new flip: %1 ];\x0a\x09|> [ %1 browser open: aClass method: aString ];\x0a\x09yourself",
 messageSends: ["|>", "flip:", "new", "open:method:", "browser", "yourself", "selectedClass:", "method:"],
 referencedClasses: ["Screen"]
+}),
+smalltalk.BrowsePage.klass);
+
+smalltalk.addMethod(
+"_showWithBrowser_",
+smalltalk.method({
+selector: "showWithBrowser:",
+category: 'not yet classified',
+fn: function (aBrowser) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [smalltalk.send(smalltalk.send(aBrowser, "_target", []), "_name", [])])]);
+    smalltalk.send(smalltalk.Screen || Screen, "_add_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_class_", ["tree-source workspace-effect"]);return smalltalk.send($rec, "_with_", [aBrowser]);}(smalltalk.send(thisisplaceholder1, "_div", []));}]);
+    smalltalk.send(aBrowser, "_open", []);
+    return self;
+},
+args: ["aBrowser"],
+source: "showWithBrowser: aBrowser\x0a\x09Screen new flip: (Page new title: (aBrowser target name)).\x0a\x09Screen add: [ %1 div class: 'tree-source workspace-effect'; with: aBrowser ].\x0a\x09aBrowser open",
+messageSends: ["flip:", "new", "title:", "name", "target", "add:", "class:", "with:", "div", "open"],
+referencedClasses: ["Screen", "Page"]
 }),
 smalltalk.BrowsePage.klass);
 
