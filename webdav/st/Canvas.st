@@ -549,7 +549,7 @@ empty
 toggleContents: aBlock
 	self isEmpty 
 			ifTrue: [ self contents: aBlock ]
-			ifFalse: [ self empty ].
+			ifFalse: [ self empty; style: '' ].
 !
 
 toggleContents: aBlock withOn: on withOff: off

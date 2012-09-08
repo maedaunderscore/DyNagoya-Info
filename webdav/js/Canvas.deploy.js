@@ -2252,7 +2252,7 @@ smalltalk.method({
 selector: "toggleContents:",
 fn: function (aBlock) {
     var self = this;
-    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return smalltalk.send(self, "_empty", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return smalltalk.send(self, "_empty", []);}]);
+    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return function ($rec) {smalltalk.send($rec, "_empty", []);return smalltalk.send($rec, "_style_", [""]);}(self);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return function ($rec) {smalltalk.send($rec, "_empty", []);return smalltalk.send($rec, "_style_", [""]);}(self);}]);
     return self;
 }
 }),
