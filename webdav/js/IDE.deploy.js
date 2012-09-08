@@ -2496,6 +2496,18 @@ fn: function () {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_onPage",
+smalltalk.method({
+selector: "onPage",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.BrowsePage || BrowsePage, "_showWithBrowser_", [self]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_onStyle",
 smalltalk.method({
 selector: "onStyle",
@@ -2551,6 +2563,7 @@ fn: function (aClass, aMethodName) {
     var self = this;
     var xs = nil;
     var last = nil;
+    self['@target'] = aClass;
     xs = smalltalk.send(self, "_selectorList_method_", [aClass, aMethodName]);
     last = smalltalk.send(xs, "_first", []);
     xs = smalltalk.send(xs, "_allButFirst", []);

@@ -3416,6 +3416,23 @@ referencedClasses: ["BrowserDialog"]
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_onPage",
+smalltalk.method({
+selector: "onPage",
+category: 'action',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.BrowsePage || BrowsePage, "_showWithBrowser_", [self]);
+    return self;
+},
+args: [],
+source: "onPage\x0a    BrowsePage showWithBrowser: self",
+messageSends: ["showWithBrowser:"],
+referencedClasses: ["BrowsePage"]
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_onStyle",
 smalltalk.method({
 selector: "onStyle",
@@ -3492,6 +3509,7 @@ fn: function (aClass, aMethodName) {
     var self = this;
     var xs = nil;
     var last = nil;
+    self['@target'] = aClass;
     xs = smalltalk.send(self, "_selectorList_method_", [aClass, aMethodName]);
     last = smalltalk.send(xs, "_first", []);
     xs = smalltalk.send(xs, "_allButFirst", []);
@@ -3499,7 +3517,7 @@ fn: function (aClass, aMethodName) {
     return self;
 },
 args: ["aClass", "aMethodName"],
-source: "open: aClass method: aMethodName\x0a\x09| xs last |\x0a\x09xs := self  selectorList: aClass method: aMethodName.\x0a\x0a\x09last := xs first.\x0a\x09xs := xs allButFirst.\x0a\x09xs do: [ :current |\x0a\x09\x09self openIfClosed: current parent: last.\x0a\x09\x09last := current.\x0a\x09]\x0a\x0a\x09\x09\x09",
+source: "open: aClass method: aMethodName\x0a\x09| xs last |\x0a\x09target := aClass.\x0a\x09xs := self  selectorList: aClass method: aMethodName.\x0a\x0a\x09last := xs first.\x0a\x09xs := xs allButFirst.\x0a\x09xs do: [ :current |\x0a\x09\x09self openIfClosed: current parent: last.\x0a\x09\x09last := current.\x0a\x09]\x0a\x0a\x09\x09\x09",
 messageSends: ["selectorList:method:", "first", "allButFirst", "do:", "openIfClosed:parent:"],
 referencedClasses: []
 }),
