@@ -1207,7 +1207,6 @@ smalltalk.method({
 selector: "renderBody:",
 fn: function (html) {
     var self = this;
-    self['@browser'] = smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self['@selectedClass']]);
     (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "black"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["padding", "15px"]);return smalltalk.send($rec, "_with_", [self['@browser']]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
@@ -1246,6 +1245,20 @@ selector: "show:method:",
 fn: function (aClass, aString) {
     var self = this;
     return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(function ($rec) {smalltalk.send($rec, "_selectedClass_", [aClass]);smalltalk.send($rec, "_method_", [aString]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", [])));
+    return self;
+}
+}),
+smalltalk.BrowsePage.klass);
+
+smalltalk.addMethod(
+"_showWithBrowser_",
+smalltalk.method({
+selector: "showWithBrowser:",
+fn: function (aBrowser) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [smalltalk.send(smalltalk.send(aBrowser, "_target", []), "_name", [])])]);
+    smalltalk.send(smalltalk.Screen || Screen, "_add_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_class_", ["tree-source workspace-effect"]);return smalltalk.send($rec, "_with_", [aBrowser]);}(smalltalk.send(thisisplaceholder1, "_div", []));}]);
+    smalltalk.send(aBrowser, "_open", []);
     return self;
 }
 }),

@@ -800,7 +800,6 @@ method: aString
 !
 
 renderBody: html
-	browser := (ClassBrowser hierarchy: selectedClass).
 	html div 
 		css: 'background' put: 'black';
 		css: 'color' put: 'white';
@@ -823,6 +822,12 @@ show: aClass method: aString
 	|> [ Screen new flip: %1 ];
 	|> [ %1 browser open: aClass method: aString ];
 	yourself
+!
+
+showWithBrowser: aBrowser
+	Screen new flip: (Page new title: (aBrowser target name)).
+	Screen add: [ %1 div class: 'tree-source workspace-effect'; with: aBrowser ].
+	aBrowser open
 ! !
 
 Page subclass: #Links
