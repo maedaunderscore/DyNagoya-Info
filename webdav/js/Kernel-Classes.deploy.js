@@ -388,18 +388,6 @@ fn: function () {
 smalltalk.Class);
 
 smalltalk.addMethod(
-"_onDialog",
-smalltalk.method({
-selector: "onDialog",
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.BrowserDialog || BrowserDialog, "_open_", [self]);
-    return self;
-}
-}),
-smalltalk.Class);
-
-smalltalk.addMethod(
 "_package",
 smalltalk.method({
 selector: "package",

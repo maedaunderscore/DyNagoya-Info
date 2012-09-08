@@ -540,23 +540,6 @@ referencedClasses: []
 smalltalk.Class);
 
 smalltalk.addMethod(
-"_onDialog",
-smalltalk.method({
-selector: "onDialog",
-category: 'accessing',
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.BrowserDialog || BrowserDialog, "_open_", [self]);
-    return self;
-},
-args: [],
-source: "onDialog\x0a\x09BrowserDialog open: self",
-messageSends: ["open:"],
-referencedClasses: ["BrowserDialog"]
-}),
-smalltalk.Class);
-
-smalltalk.addMethod(
 "_package",
 smalltalk.method({
 selector: "package",
