@@ -204,6 +204,19 @@ open: aClass browser: browserClass
 
 	browser open: aClass.
 	^ ret
+!
+
+openWithBrowser: browser
+	| ret |
+	ret := self new 
+		widget: browser;
+		width: '600px';
+		height:  (window innerHeight * 0.5);
+		modal: false;
+		title: browser selectedClass name;
+		open.
+
+	browser open.
 ! !
 
 DialogBox subclass: #ImageEditor
