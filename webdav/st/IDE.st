@@ -1516,7 +1516,7 @@ hierarchy: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView targetClass'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView target'
 	package: 'IDE'!
 
 !ClassBrowser methodsFor: 'accessing'!
@@ -1543,7 +1543,7 @@ onDialog
 !
 
 open
-	self open: targetClass method: nil
+	self open: target method: nil
 !
 
 open: aClass
@@ -1562,8 +1562,8 @@ open: aClass method: aMethodName
 	]
 !
 
-targetClass: aClass
-  targetClass := aClass.
+target: aClass
+  target := aClass.
   ^ self
 ! !
 
