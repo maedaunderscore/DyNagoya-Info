@@ -437,7 +437,7 @@ selector: "openWithBrowser:",
 fn: function (browser) {
     var self = this;
     var ret = nil;
-    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_title_", [smalltalk.send(smalltalk.send(browser, "_selectedClass", []), "_name", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
+    ret = function ($rec) {smalltalk.send($rec, "_widget_", [browser]);smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.5 : smalltalk.send($receiver, "__star", [0.5])]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_title_", [smalltalk.send(smalltalk.send(browser, "_target", []), "_name", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(self, "_new", []));
     smalltalk.send(browser, "_open", []);
     return self;
 }

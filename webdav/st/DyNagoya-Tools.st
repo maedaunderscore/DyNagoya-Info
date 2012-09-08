@@ -213,7 +213,7 @@ openWithBrowser: browser
 		width: '600px';
 		height:  (window innerHeight * 0.5);
 		modal: false;
-		title: browser selectedClass name;
+		title: browser target name;
 		open.
 
 	browser open.
