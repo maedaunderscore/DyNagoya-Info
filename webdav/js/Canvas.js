@@ -3178,12 +3178,12 @@ selector: "toggleContents:",
 category: 'adding',
 fn: function (aBlock) {
     var self = this;
-    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return smalltalk.send(self, "_empty", []);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return smalltalk.send(self, "_empty", []);}]);
+    ($receiver = smalltalk.send(self, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(self, "_contents_", [aBlock]);}() : function () {return function ($rec) {smalltalk.send($rec, "_empty", []);return smalltalk.send($rec, "_style_", [""]);}(self);}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return smalltalk.send(self, "_contents_", [aBlock]);}, function () {return function ($rec) {smalltalk.send($rec, "_empty", []);return smalltalk.send($rec, "_style_", [""]);}(self);}]);
     return self;
 },
 args: ["aBlock"],
-source: "toggleContents: aBlock\x0a\x09self isEmpty \x0a\x09\x09\x09ifTrue: [ self contents: aBlock ]\x0a\x09\x09\x09ifFalse: [ self empty ].",
-messageSends: ["ifTrue:ifFalse:", "isEmpty", "contents:", "empty"],
+source: "toggleContents: aBlock\x0a\x09self isEmpty \x0a\x09\x09\x09ifTrue: [ self contents: aBlock ]\x0a\x09\x09\x09ifFalse: [ self empty; style: '' ].",
+messageSends: ["ifTrue:ifFalse:", "isEmpty", "contents:", "empty", "style:"],
 referencedClasses: []
 }),
 smalltalk.TagBrush);
