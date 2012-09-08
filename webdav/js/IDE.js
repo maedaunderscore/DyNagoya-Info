@@ -3259,7 +3259,7 @@ referencedClasses: []
 smalltalk.BrowserForClass.klass);
 
 
-smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'descendants', 'root', 'classMethodTitle', 'classMethodView', 'targetClass'], 'IDE');
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'descendants', 'root', 'classMethodTitle', 'classMethodView', 'target'], 'IDE');
 smalltalk.addMethod(
 "_class_",
 smalltalk.method({
@@ -3422,11 +3422,11 @@ selector: "open",
 category: 'action',
 fn: function () {
     var self = this;
-    smalltalk.send(self, "_open_method_", [self['@targetClass'], nil]);
+    smalltalk.send(self, "_open_method_", [self['@target'], nil]);
     return self;
 },
 args: [],
-source: "open\x0a\x09self open: targetClass method: nil",
+source: "open\x0a\x09self open: target method: nil",
 messageSends: ["open:method:"],
 referencedClasses: []
 }),
@@ -3553,18 +3553,18 @@ referencedClasses: []
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_targetClass_",
+"_target_",
 smalltalk.method({
-selector: "targetClass:",
+selector: "target:",
 category: 'action',
 fn: function (aClass) {
     var self = this;
-    self['@targetClass'] = self['@aClass'];
+    self['@target'] = aClass;
     return self;
     return self;
 },
 args: ["aClass"],
-source: "targetClass: aClass\x0a  targetClass := aClass.\x0a  ^ self",
+source: "target: aClass\x0a  target := aClass.\x0a  ^ self",
 messageSends: [],
 referencedClasses: []
 }),
