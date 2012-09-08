@@ -440,6 +440,19 @@ renderOn: html
 
 !Event class methodsFor: 'events'!
 
+joinedStStudy02
+	^ self new 
+		fixed: true;
+		title: '合同Smalltalk勉強会@名古屋';
+		date: '2012/09/29';
+		start: '13:30:00';
+		end: '18:00:00';
+		place: ATeam;
+		detail: {
+'参照(http://atnd.org/events/30524)'
+}
+!
+
 latest
 	^ self meeting08
 !

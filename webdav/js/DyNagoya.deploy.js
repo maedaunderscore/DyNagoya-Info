@@ -774,6 +774,18 @@ smalltalk.Event);
 
 
 smalltalk.addMethod(
+"_joinedStStudy02",
+smalltalk.method({
+selector: "joinedStStudy02",
+fn: function () {
+    var self = this;
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["\u53C2\u7167(http://atnd.org/events/30524)"]]);}(smalltalk.send(self, "_new", []));
+    return self;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
 "_latest",
 smalltalk.method({
 selector: "latest",
