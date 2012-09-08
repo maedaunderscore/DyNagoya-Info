@@ -181,6 +181,10 @@ browse
 	Browser openOn: self
 !
 
+browser
+	^  ClassBrowser hierarchy: self
+!
+
 category
 	^self package ifNil: ['Unclassified'] ifNotNil: [self package name]
 !

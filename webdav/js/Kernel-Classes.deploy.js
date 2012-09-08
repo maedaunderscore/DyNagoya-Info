@@ -363,6 +363,18 @@ fn: function () {
 smalltalk.Class);
 
 smalltalk.addMethod(
+"_browser",
+smalltalk.method({
+selector: "browser",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]);
+    return self;
+}
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
 "_category",
 smalltalk.method({
 selector: "category",
