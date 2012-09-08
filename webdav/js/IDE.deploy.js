@@ -418,6 +418,18 @@ smalltalk.PlusMinusIcon.klass);
 
 smalltalk.addClass('SourceArea', smalltalk.Widget, ['editor', 'div', 'receiver', 'onDoIt'], 'IDE');
 smalltalk.addMethod(
+"_big",
+smalltalk.method({
+selector: "big",
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", false]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amberbig"]);}(smalltalk.send(self, "_editor", [])));
+    return self;
+}
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
 "_clear",
 smalltalk.method({
 selector: "clear",
@@ -551,6 +563,18 @@ selector: "inspectIt",
 fn: function () {
     var self = this;
     smalltalk.send(smalltalk.send(self, "_doIt", []), "_inspect", []);
+    return self;
+}
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
+"_normal",
+smalltalk.method({
+selector: "normal",
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_setOption_value_", ["lineNumbers", true]);return smalltalk.send($rec, "_setOption_value_", ["theme", "amber"]);}(smalltalk.send(self, "_editor", [])));
     return self;
 }
 }),
@@ -2646,7 +2670,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedMethod'], "_selector", [])]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_name_", [smalltalk.send("method-", "__comma", [smalltalk.send(self['@selectedMethod'], "_selector", [])])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@selectedMethod'], "_source", [])]);return smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self['@selectedMethod'], "_selector", [])]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_name_", [smalltalk.send("method-", "__comma", [smalltalk.send(self['@selectedMethod'], "_selector", [])])]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self['@sourceView'], "_toggleContents_", [function (html) {var sourceArea = nil;self['@sourceArea'] = smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", []);smalltalk.send(self['@sourceView'], "_with_", [self['@sourceArea']]);smalltalk.send(self['@sourceArea'], "_big", []);smalltalk.send(self['@sourceArea'], "_val_", [smalltalk.send(self['@selectedMethod'], "_source", [])]);return smalltalk.send(self['@sourceArea'], "_onKeyUp_", [function () {return smalltalk.send(self, "_updateStatus", []);}]);}]);}]);}(smalltalk.send(html, "_span", [])));
     self['@saveButton'] = function ($rec) {smalltalk.send($rec, "_with_", ["save"]);smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(self['@saveButton'], "_hide", []);return smalltalk.send(self, "_compileMethodDefinition", []);}]);}(smalltalk.send(html, "_span", []));
     self['@sourceView'] = smalltalk.send(smalltalk.send(html, "_div", []), "_class_", ["tree-source"]);
     return self;

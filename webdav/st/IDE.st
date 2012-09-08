@@ -234,6 +234,12 @@ Widget subclass: #SourceArea
 
 !SourceArea methodsFor: 'accessing'!
 
+big
+	(self editor)
+		setOption: 'lineNumbers' value: false;
+		setOption: 'theme' value: 'amberbig'
+!
+
 currentLine
     ^editor getLine: (editor getCursor line)
 !
@@ -246,6 +252,12 @@ currentLineOrSelection
 
 editor
 	^editor
+!
+
+normal
+	(self editor)
+		setOption: 'lineNumbers' value: true;
+		setOption: 'theme' value: 'amber'
 !
 
 onDoIt
@@ -1728,6 +1740,7 @@ renderOn: html
 		onClick: [ sourceView toggleContents: [ :html || sourceArea |
 			sourceArea := SourceArea new.
 			sourceView with: sourceArea.
+			sourceArea big.
 			sourceArea val: selectedMethod source.
 			sourceArea onKeyUp: [ self updateStatus ]
 		] ].
