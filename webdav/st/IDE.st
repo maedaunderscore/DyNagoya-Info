@@ -1574,6 +1574,10 @@ open: aClass method: aMethodName
 	]
 !
 
+target
+  ^ target
+!
+
 target: aClass
   target := aClass.
   ^ self

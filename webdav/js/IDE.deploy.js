@@ -2622,6 +2622,18 @@ fn: function (aClass, aString) {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_target",
+smalltalk.method({
+selector: "target",
+fn: function () {
+    var self = this;
+    return self['@target'];
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_target_",
 smalltalk.method({
 selector: "target:",
