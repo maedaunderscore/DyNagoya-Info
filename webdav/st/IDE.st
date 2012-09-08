@@ -1516,7 +1516,7 @@ hierarchy: aClass
 ! !
 
 Browser subclass: #ClassBrowser
-	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView'
+	instanceVariableNames: 'classView methodView subclassView methodTitle subclassTitle subclasses descendants root classMethodTitle classMethodView targetClass'
 	package: 'IDE'!
 
 !ClassBrowser methodsFor: 'accessing'!
@@ -1538,6 +1538,14 @@ class: aClass descendants: someSubClasses
 
 !ClassBrowser methodsFor: 'action'!
 
+onDialog
+    BrowserDialog openWithBrowser: self
+!
+
+open
+	self open: targetClass method: nil
+!
+
 open: aClass
 	self open: aClass method: nil
 !
@@ -1552,6 +1560,11 @@ open: aClass method: aMethodName
 		self openIfClosed: current parent: last.
 		last := current.
 	]
+!
+
+targetClass: aClass
+  targetClass := aClass.
+  ^ self
 ! !
 
 !ClassBrowser methodsFor: 'private'!
@@ -1687,7 +1700,7 @@ renderOn: html
 
 hierarchy: aClass
 	^(aClass ancestors, aClass) |> [ 
-		ClassBrowser new 
+		self new 
 			class: %1 first descendants: %1 allButFirst
 		]
 ! !

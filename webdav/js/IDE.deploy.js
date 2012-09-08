@@ -2384,7 +2384,7 @@ fn: function (aClass) {
 smalltalk.BrowserForClass.klass);
 
 
-smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'descendants', 'root', 'classMethodTitle', 'classMethodView'], 'IDE');
+smalltalk.addClass('ClassBrowser', smalltalk.Browser, ['classView', 'methodView', 'subclassView', 'methodTitle', 'subclassTitle', 'subclasses', 'descendants', 'root', 'classMethodTitle', 'classMethodView', 'targetClass'], 'IDE');
 smalltalk.addMethod(
 "_class_",
 smalltalk.method({
@@ -2460,6 +2460,18 @@ fn: function () {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_onDialog",
+smalltalk.method({
+selector: "onDialog",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.BrowserDialog || BrowserDialog, "_openWithBrowser_", [self]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_onStyle",
 smalltalk.method({
 selector: "onStyle",
@@ -2478,6 +2490,18 @@ selector: "onStyleForClass",
 fn: function () {
     var self = this;
     return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "10px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);smalltalk.send($rec, "_css_put_", ["font-size", "0.8em"]);smalltalk.send($rec, "_css_put_", ["border", smalltalk.send("1px solid ", "__comma", [smalltalk.send(self, "_classColor", [])])]);smalltalk.send($rec, "_css_put_", ["background", smalltalk.send(self, "_classColor", [])]);return smalltalk.send($rec, "_css_put_", ["color", "white"]);}(thisisplaceholder1);};
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_open_method_", [self['@targetClass'], nil]);
     return self;
 }
 }),
@@ -2573,6 +2597,19 @@ fn: function (aClass, aString) {
 }),
 smalltalk.ClassBrowser);
 
+smalltalk.addMethod(
+"_targetClass_",
+smalltalk.method({
+selector: "targetClass:",
+fn: function (aClass) {
+    var self = this;
+    self['@targetClass'] = self['@aClass'];
+    return self;
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
 
 smalltalk.addMethod(
 "_hierarchy_",
@@ -2580,7 +2617,7 @@ smalltalk.method({
 selector: "hierarchy:",
 fn: function (aClass) {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_new", []), "_class_descendants_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_allButFirst", [])]);}]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(self, "_new", []), "_class_descendants_", [smalltalk.send(thisisplaceholder1, "_first", []), smalltalk.send(thisisplaceholder1, "_allButFirst", [])]);}]);
     return self;
 }
 }),
