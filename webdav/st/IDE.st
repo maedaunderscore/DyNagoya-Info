@@ -1554,6 +1554,10 @@ onDialog
     BrowserDialog openWithBrowser: self
 !
 
+onPage
+    BrowsePage showWithBrowser: self
+!
+
 open
 	self open: target method: nil
 !
@@ -1564,6 +1568,7 @@ open: aClass
 
 open: aClass method: aMethodName
 	| xs last |
+	target := aClass.
 	xs := self  selectorList: aClass method: aMethodName.
 
 	last := xs first.
