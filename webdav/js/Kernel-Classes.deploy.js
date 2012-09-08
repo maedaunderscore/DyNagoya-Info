@@ -368,7 +368,7 @@ smalltalk.method({
 selector: "browser",
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_targetClass_", [self]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]));
+    return function ($rec) {smalltalk.send($rec, "_target_", [self]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]));
     return self;
 }
 }),
