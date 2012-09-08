@@ -274,7 +274,7 @@ showMessage
 start
 "  self makeWorkspaceBigTheme."
 
-  WorkspaceDialog new  |> self bottomPosition; open.
+  WorkspaceDialog new  |> self bottomPosition; open; big.
   TranscriptDialog new |> self topPosition ; open.
 
    self screenPreparation.
