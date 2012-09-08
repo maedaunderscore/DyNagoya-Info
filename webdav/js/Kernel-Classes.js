@@ -511,12 +511,12 @@ selector: "browser",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]);
+    return function ($rec) {smalltalk.send($rec, "_targetClass_", [self]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(smalltalk.ClassBrowser || ClassBrowser, "_hierarchy_", [self]));
     return self;
 },
 args: [],
-source: "browser\x0a\x09^  ClassBrowser hierarchy: self",
-messageSends: ["hierarchy:"],
+source: "browser\x0a\x09^  (ClassBrowser hierarchy: self) targetClass: self; yourself",
+messageSends: ["targetClass:", "yourself", "hierarchy:"],
 referencedClasses: ["ClassBrowser"]
 }),
 smalltalk.Class);
