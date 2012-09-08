@@ -185,10 +185,6 @@ category
 	^self package ifNil: ['Unclassified'] ifNotNil: [self package name]
 !
 
-onDialog
-	BrowserDialog open: self
-!
-
 package
 	<return self.pkg>
 !
