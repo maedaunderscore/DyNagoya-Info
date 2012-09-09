@@ -138,11 +138,11 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'-100px'
+  ^'-50px'
 !
 
 y
-  ^'-510px'
+  ^'-506px'
 ! !
 
 !Board methodsFor: 'rendering'!
@@ -209,11 +209,11 @@ imageUrl
 !
 
 x
-  ^'315px'
+  ^'590px'
 !
 
 y
-  ^'-347px'
+  ^'84px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
