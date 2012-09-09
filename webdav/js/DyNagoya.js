@@ -1763,7 +1763,7 @@ fn: function (aClass) {
     return self;
 },
 args: ["aClass"],
-source: "show: aClass\x0a\x09^ self show: aClass method: nil \x22test\x22",
+source: "show: aClass\x0a\x09^ self show: aClass method: nil",
 messageSends: ["show:method:"],
 referencedClasses: []
 }),
@@ -1776,12 +1776,12 @@ selector: "show:method:",
 category: 'not yet classified',
 fn: function (aClass, aString) {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(function ($rec) {smalltalk.send($rec, "_selectedClass_", [aClass]);smalltalk.send($rec, "_method_", [aString]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", [])));
+    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: ["aClass", "aString"],
-source: "show: aClass method: aString\x0a\x09^(self new selectedClass: aClass; method: aString; yourself)\x0a\x09|> [ Screen new flip: %1 ];\x0a\x09|> [ %1 browser open: aClass method: aString ];\x0a\x09yourself",
-messageSends: ["|>", "flip:", "new", "open:method:", "browser", "yourself", "selectedClass:", "method:"],
+source: "show: aClass method: aString\x0a\x09^ self new\x0a\x09|> [ Screen new flip: %1 ];\x0a\x09|> [ %1 browser open: aClass method: aString ];\x0a\x09yourself",
+messageSends: ["|>", "flip:", "new", "open:method:", "browser", "yourself"],
 referencedClasses: ["Screen"]
 }),
 smalltalk.BrowsePage.klass);
