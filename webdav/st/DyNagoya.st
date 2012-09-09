@@ -209,11 +209,34 @@ imageUrl
 !
 
 x
-  ^'686px'
+  ^'315px'
 !
 
 y
-  ^'115px'
+  ^'-347px'
+! !
+
+DraggableWidget subclass: #PipelineDesc
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!PipelineDesc methodsFor: 'accessing'!
+
+x
+  ^'108px'
+!
+
+y
+  ^'0px'
+! !
+
+!PipelineDesc methodsFor: 'rendering'!
+
+renderBodyOn: html
+	html div css: 'width' put: '450px'; css: 'background-color' put: 'pink'; with: [
+		html h2:'パイプライン演算子(|>)はF#でよく使われる演算子'.
+		html h3: 'Smalltalkでも意外に便利'
+	]
 ! !
 
 Object subclass: #EntryPoint
