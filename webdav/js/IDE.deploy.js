@@ -2537,7 +2537,7 @@ smalltalk.method({
 selector: "open",
 fn: function () {
     var self = this;
-    smalltalk.send(self, "_open_method_", [self['@target'], nil]);
+    smalltalk.send(self, "_open_method_type_", [self['@target'], nil, nil]);
     return self;
 }
 }),
@@ -2549,25 +2549,37 @@ smalltalk.method({
 selector: "open:",
 fn: function (aClass) {
     var self = this;
-    smalltalk.send(self, "_open_method_", [aClass, nil]);
+    smalltalk.send(self, "_open_method_type_", [aClass, nil, nil]);
     return self;
 }
 }),
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_open_method_",
+"_open_method_type_",
 smalltalk.method({
-selector: "open:method:",
-fn: function (aClass, aMethodName) {
+selector: "open:method:type:",
+fn: function (aClass, aMethodName, which) {
     var self = this;
     var xs = nil;
     var last = nil;
     self['@target'] = aClass;
-    xs = smalltalk.send(self, "_selectorList_method_", [aClass, aMethodName]);
+    xs = smalltalk.send(self, "_selectorList_method_type_", [aClass, aMethodName, which]);
     last = smalltalk.send(xs, "_first", []);
     xs = smalltalk.send(xs, "_allButFirst", []);
     smalltalk.send(xs, "_do_", [function (current) {smalltalk.send(self, "_openIfClosed_parent_", [current, last]);return last = current;}]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
+"_openClassMethod_",
+smalltalk.method({
+selector: "openClassMethod:",
+fn: function (aMethodName) {
+    var self = this;
+    smalltalk.send(self, "_open_method_type_", [self['@target'], aMethodName, "class-method"]);
     return self;
 }
 }),
@@ -2593,7 +2605,7 @@ smalltalk.method({
 selector: "openMethod:",
 fn: function (aMethodName) {
     var self = this;
-    smalltalk.send(self, "_open_method_", [self['@target'], aMethodName]);
+    smalltalk.send(self, "_open_method_type_", [self['@target'], aMethodName, "method"]);
     return self;
 }
 }),
@@ -2632,14 +2644,14 @@ fn: function (html) {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
-"_selectorList_method_",
+"_selectorList_method_type_",
 smalltalk.method({
-selector: "selectorList:method:",
-fn: function (aClass, aString) {
+selector: "selectorList:method:type:",
+fn: function (aClass, aString, which) {
     var self = this;
     var xs = nil;
     xs = smalltalk.send(smalltalk.send(smalltalk.send(aClass, "_ancestors", []), "__comma", [aClass]), "_collect_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(thisisplaceholder1, "_name", [])]), "__comma", ["\"] span.browser-class-name"]);}]);
-    ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-method-button"])]);smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);return smalltalk.send(xs, "_add_", ["dummy"]);}() : nil;
+    ($receiver = aString) != nil && $receiver != undefined ? function () {smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] > div > span.browser-"]), "__comma", [which]), "__comma", ["-button"])]);smalltalk.send(xs, "_add_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("div[name=\"class-", "__comma", [smalltalk.send(aClass, "_name", [])]), "__comma", ["\"] span[name=\"method-"]), "__comma", [aString]), "__comma", ["\"]"])]);return smalltalk.send(xs, "_add_", ["dummy"]);}() : nil;
     return xs;
     return self;
 }
