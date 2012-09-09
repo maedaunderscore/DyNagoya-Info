@@ -280,11 +280,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-100px";
+    return "-50px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'-100px'",
+source: "x\x0a  ^'-50px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -297,11 +297,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-510px";
+    return "-506px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-510px'",
+source: "y\x0a  ^'-506px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -459,11 +459,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "315px";
+    return "590px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'315px'",
+source: "x\x0a  ^'590px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -476,11 +476,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-347px";
+    return "84px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-347px'",
+source: "y\x0a  ^'84px'",
 messageSends: [],
 referencedClasses: []
 }),
