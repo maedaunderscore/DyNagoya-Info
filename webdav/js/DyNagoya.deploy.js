@@ -1283,7 +1283,7 @@ smalltalk.method({
 selector: "show:method:",
 fn: function (aClass, aString) {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(function ($rec) {smalltalk.send($rec, "_selectedClass_", [aClass]);smalltalk.send($rec, "_method_", [aString]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", [])));
+    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
