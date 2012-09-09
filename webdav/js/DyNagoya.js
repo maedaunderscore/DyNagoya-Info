@@ -586,11 +586,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    Page browser onDialog          \"to open browser on Dialog\"", "    Icon browser onPage open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    BrowserDialog open: Page   \x22to open browser on Dialog\x22'.\x0a\x09 '    (BrowsePage show: Icon) browser open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to showjs code will be emitted\x22'.\x0a\x09'     ParserEditor onDialog          \x22to modify parser\x22'\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    Page browser onDialog          \x22to open browser on Dialog\x22'.\x0a\x09 '    Icon browser onPage open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to showjs code will be emitted\x22'.\x0a\x09'     ParserEditor onDialog          \x22to modify parser\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
