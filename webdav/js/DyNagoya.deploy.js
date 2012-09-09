@@ -424,7 +424,7 @@ smalltalk.method({
 selector: "messages",
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    BrowserDialog open: Page   \"to open browser on Dialog\"", "    (BrowsePage show: Icon) browser open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    Page browser onDialog          \"to open browser on Dialog\"", "    Icon browser onPage open: Logo method: 'x'", "     JSViewer onDialog               \"to showjs code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
     return self;
 }
 }),
