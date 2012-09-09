@@ -1559,17 +1559,17 @@ onPage
 !
 
 open
-	self open: target method: nil
+	self open: target method: nil type: nil
 !
 
 open: aClass
-	self open: aClass method: nil
+	self open: aClass method: nil type: nil
 !
 
-open: aClass method: aMethodName
+open: aClass method: aMethodName type: which
 	| xs last |
 	target := aClass.
-	xs := self  selectorList: aClass method: aMethodName.
+	xs := self  selectorList: aClass method: aMethodName type: which.
 
 	last := xs first.
 	xs := xs allButFirst.
@@ -1579,8 +1579,12 @@ open: aClass method: aMethodName
 	]
 !
 
+openClassMethod: aMethodName
+	self open: target method: aMethodName type: 'class-method'
+!
+
 openMethod: aMethodName
-	self open: target method: aMethodName
+	self open: target method: aMethodName type: 'method'
 !
 
 target
@@ -1599,11 +1603,11 @@ openIfClosed: selector  parent: parentSelector
 	^ root find: selector
 !
 
-selectorList: aClass method: aString
+selectorList: aClass method: aString type: which "method or class-method"
 	| xs |
 	xs := (aClass ancestors, aClass) collect: [ 'div[name="class-', (%1 name), '"] span.browser-class-name' ].
 	aString ifNotNil: [ 
-		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-method-button').
+		xs add: ('div[name="class-', aClass name, '"] > div > span.browser-',which,'-button').
 		xs add: ('div[name="class-', aClass name, '"] span[name="method-', aString, '"]').
 		xs add: 'dummy' "to click last one"
 	].
