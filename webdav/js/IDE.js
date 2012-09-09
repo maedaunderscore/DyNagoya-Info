@@ -3501,6 +3501,23 @@ referencedClasses: []
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_open_classMethod_",
+smalltalk.method({
+selector: "open:classMethod:",
+category: 'action',
+fn: function (aClass, methodName) {
+    var self = this;
+    smalltalk.send(self, "_open_method_type_", [aClass, methodName, "class-method"]);
+    return self;
+},
+args: ["aClass", "methodName"],
+source: "open: aClass classMethod: methodName\x0a\x09self open: aClass method: methodName type: 'class-method'",
+messageSends: ["open:method:type:"],
+referencedClasses: []
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_open_method_",
 smalltalk.method({
 selector: "open:method:",
