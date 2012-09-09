@@ -459,11 +459,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "686px";
+    return "315px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'686px'",
+source: "x\x0a  ^'315px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -476,15 +476,69 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "115px";
+    return "-347px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'115px'",
+source: "y\x0a  ^'-347px'",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Logo);
+
+
+
+smalltalk.addClass('PipelineDesc', smalltalk.DraggableWidget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "450px"]);smalltalk.send($rec, "_css_put_", ["background-color", "pink"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_h2_", ["\u30D1\u30A4\u30D7\u30E9\u30A4\u30F3\u6F14\u7B97\u5B50(|>)\u306FF#\u3067\u3088\u304F\u4F7F\u308F\u308C\u308B\u6F14\u7B97\u5B50"]);return smalltalk.send(html, "_h3_", ["Smalltalk\u3067\u3082\u610F\u5916\u306B\u4FBF\u5229"]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a\x09html div css: 'width' put: '450px'; css: 'background-color' put: 'pink'; with: [\x0a\x09\x09html h2:'パイプライン演算子(|>)はF#でよく使われる演算子'.\x0a\x09\x09html h3: 'Smalltalkでも意外に便利'\x0a\x09]\x0a\x0a",
+messageSends: ["css:put:", "with:", "h2:", "h3:", "div"],
+referencedClasses: []
+}),
+smalltalk.PipelineDesc);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "108px";
+    return self;
+},
+args: [],
+source: "x\x0a  ^'108px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.PipelineDesc);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "0px";
+    return self;
+},
+args: [],
+source: "y\x0a  ^'0px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.PipelineDesc);
 
 
 
