@@ -2588,6 +2588,18 @@ fn: function (selector, parentSelector) {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_openMethod_",
+smalltalk.method({
+selector: "openMethod:",
+fn: function (aMethodName) {
+    var self = this;
+    smalltalk.send(self, "_open_method_", [self['@target'], aMethodName]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_renderMethodButtonOn_title_class_cssClass_area_on_off_",
 smalltalk.method({
 selector: "renderMethodButtonOn:title:class:cssClass:area:on:off:",
