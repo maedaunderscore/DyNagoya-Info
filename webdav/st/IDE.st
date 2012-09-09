@@ -1566,6 +1566,10 @@ open: aClass
 	self open: aClass method: nil type: nil
 !
 
+open: aClass method: methodName
+	self open: aClass method: methodName type: 'method'
+!
+
 open: aClass method: aMethodName type: which
 	| xs last |
 	target := aClass.
