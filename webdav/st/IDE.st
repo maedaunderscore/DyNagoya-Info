@@ -1579,6 +1579,10 @@ open: aClass method: aMethodName
 	]
 !
 
+openMethod: aMethodName
+	self open: target method: aMethodName
+!
+
 target
   ^ target
 !
