@@ -836,17 +836,6 @@ selectedClass: aClass
 
 !BrowsePage class methodsFor: 'not yet classified'!
 
-show: aClass
-	^ self show: aClass method: nil
-!
-
-show: aClass method: aString
-	^ self new
-	|> [ Screen new flip: %1 ];
-	|> [ %1 browser open: aClass method: aString ];
-	yourself
-!
-
 showWithBrowser: aBrowser
 	Screen new flip: (Page new title: (aBrowser target name)).
 	Screen add: [ %1 div class: 'tree-source workspace-effect'; with: aBrowser ].
