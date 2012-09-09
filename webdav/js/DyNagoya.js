@@ -1753,40 +1753,6 @@ smalltalk.BrowsePage);
 
 
 smalltalk.addMethod(
-"_show_",
-smalltalk.method({
-selector: "show:",
-category: 'not yet classified',
-fn: function (aClass) {
-    var self = this;
-    return smalltalk.send(self, "_show_method_", [aClass, nil]);
-    return self;
-},
-args: ["aClass"],
-source: "show: aClass\x0a\x09^ self show: aClass method: nil",
-messageSends: ["show:method:"],
-referencedClasses: []
-}),
-smalltalk.BrowsePage.klass);
-
-smalltalk.addMethod(
-"_show_method_",
-smalltalk.method({
-selector: "show:method:",
-category: 'not yet classified',
-fn: function (aClass, aString) {
-    var self = this;
-    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [thisisplaceholder1]);}]);smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_browser", []), "_open_method_", [aClass, aString]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", []));
-    return self;
-},
-args: ["aClass", "aString"],
-source: "show: aClass method: aString\x0a\x09^ self new\x0a\x09|> [ Screen new flip: %1 ];\x0a\x09|> [ %1 browser open: aClass method: aString ];\x0a\x09yourself",
-messageSends: ["|>", "flip:", "new", "open:method:", "browser", "yourself"],
-referencedClasses: ["Screen"]
-}),
-smalltalk.BrowsePage.klass);
-
-smalltalk.addMethod(
 "_showWithBrowser_",
 smalltalk.method({
 selector: "showWithBrowser:",
