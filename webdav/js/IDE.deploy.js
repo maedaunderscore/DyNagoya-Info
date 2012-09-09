@@ -2556,6 +2556,18 @@ fn: function (aClass) {
 smalltalk.ClassBrowser);
 
 smalltalk.addMethod(
+"_open_method_",
+smalltalk.method({
+selector: "open:method:",
+fn: function (aClass, methodName) {
+    var self = this;
+    smalltalk.send(self, "_open_method_type_", [aClass, methodName, "method"]);
+    return self;
+}
+}),
+smalltalk.ClassBrowser);
+
+smalltalk.addMethod(
 "_open_method_type_",
 smalltalk.method({
 selector: "open:method:type:",
