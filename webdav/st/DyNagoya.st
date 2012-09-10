@@ -699,7 +699,11 @@ Screen put: PipelineDesc new.
 PipelineDesc new |> [ Screen put: %1].
 DraggableWidget browser onPage openMethod: ''renderOn:''.
 DraggableWidget browser onPage openMethod: ''style''.
-EntryPoint browser onPage openClassMethod: ''start''
+EntryPoint browser onPage openClassMethod: ''start''.
+
+Screen title: ''まとめ''.
+Screen add: [ %1 h2: ''Amber Smalltalkをいじるの楽しい''].
+Screen add: [ %1 h2: ''興味持った方はDyNagoyaにも是非'' ]
 '
 ! !
 
