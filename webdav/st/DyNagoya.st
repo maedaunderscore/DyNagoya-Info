@@ -660,6 +660,45 @@ onDialog
 	^ DialogBox new widget: JSViewer new; title: 'Javascript Viewer'; width: '50%'; modal: false; open
 ! !
 
+Object subclass: #JointStStudy
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!JointStStudy class methodsFor: 'not yet classified'!
+
+agenda02
+	^ '
+Links show.
+AboutDyNagoya show.
+Browser open.
+Event browser onDialog
+Event browser onPage
+TopPage show
+editor := ProxyImageEditor open: ''http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg''
+editor scale: 2.0.
+Logo browser onPage openMethod: ''imageUrl''.
+TopPage show.
+Logo browser onPage openMethod: ''x''.
+Screen title: ''About Amber Smalltalk''.
+Screen add: (Amber goodPoint at:1).
+Screen title: ''About Place Holder''.
+Screen add: [ :html | html h2: ''Smalltalk はブロック（無名関数）をよく使います'']
+Screen add: [ :html | html h2: ''引数を書くのが億劫'' ].
+Screen add: [ %1 h2: ''Clojure風に書きたい'' ].
+(1 to: 10) inject: 0 into: [ %1 + %2 ]. 
+Screen add: [ it h2: ''Groovy風ならこんなかんじ''].
+ParserEditor  onDialog 
+Screen add: [ _ h2: ''Scala風ならこんなかんじ''].
+(1 to: 10) inject: 0 into: [ _ + _ ]. 
+Object browser onPage openMethod: ''|>''.
+Screen put: PipelineDesc new.
+PipelineDesc new |> [ Screen put: %1].
+DraggableWidget browser onPage openMethod: ''renderOn:''.
+DraggableWidget browser onPage openMethod: ''style''.
+EntryPoint browser onPage openClassMethod: ''start''
+'
+! !
+
 Widget subclass: #Login
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
