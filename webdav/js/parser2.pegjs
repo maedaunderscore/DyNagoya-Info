@@ -4,7 +4,8 @@ separator      = [ \t\v\f\u00A0\uFEFF\n\r\u2028\u2029]+
 comments       = (["][^"]*["])+
 ws             = (separator / comments)*
 identifier     = first:[a-zA-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
-varIdentifier  = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
+varIdentifier  = 
+                 first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
 	       / '%' num:[0-9]+ { return 'thisisplaceholder' + num }
 
 keyword        = first:identifier last:[:] {return first + last}
