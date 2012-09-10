@@ -75,8 +75,8 @@ renderBodyOn: html
 renderOn: html
 	html div 
 		style: (self style);
-		with: [ self renderBodyOn: html ];
-		|> [ %1 asJQuery draggable: (self dragOption)]
+		|> [ %1 asJQuery draggable: (self dragOption)];
+		with: [ self renderBodyOn: html ]
 !
 
 style
@@ -679,6 +679,7 @@ editor scale: 2.0.
 Logo browser onPage openMethod: ''imageUrl''.
 TopPage show.
 Logo browser onPage openMethod: ''x''.
+
 Screen title: ''About Amber Smalltalk''.
 Screen add: (Amber goodPoint at:1).
 Screen title: ''About Place Holder''.
@@ -687,9 +688,12 @@ Screen add: [ :html | html h2: ''引数を書くのが億劫'' ].
 Screen add: [ %1 h2: ''Clojure風に書きたい'' ].
 (1 to: 10) inject: 0 into: [ %1 + %2 ]. 
 Screen add: [ it h2: ''Groovy風ならこんなかんじ''].
+
 ParserEditor  onDialog 
+
 Screen add: [ _ h2: ''Scala風ならこんなかんじ''].
 (1 to: 10) inject: 0 into: [ _ + _ ]. 
+
 Object browser onPage openMethod: ''|>''.
 Screen put: PipelineDesc new.
 PipelineDesc new |> [ Screen put: %1].
