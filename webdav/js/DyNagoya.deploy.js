@@ -813,9 +813,9 @@ smalltalk.Event);
 
 
 smalltalk.addMethod(
-"_joinedStStudy02",
+"_jointStStudy02",
 smalltalk.method({
-selector: "joinedStStudy02",
+selector: "jointStStudy02",
 fn: function () {
     var self = this;
     return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["\u53C2\u7167(http://atnd.org/events/30524)"]]);}(smalltalk.send(self, "_new", []));
@@ -915,18 +915,6 @@ selector: "meeting08",
 fn: function () {
     var self = this;
     return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0308"]);smalltalk.send($rec, "_date_", ["2012/07/28"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:30:00"]);smalltalk.send($rec, "_place_", [smalltalk.Doerya || Doerya]);return smalltalk.send($rec, "_detail_", [["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A\u306E\u767A\u8868\u30CD\u30BF\u3092\u6C7A\u3081\u308B", "Amber \u9B54\u6539\u9020\u306E\u8A71", "Smalltalk\u5165\u9580(\u5E0C\u671B\u8005\u304C\u3044\u308C\u3070)"]]);}(smalltalk.send(self, "_new", []));
-    return self;
-}
-}),
-smalltalk.Event.klass);
-
-smalltalk.addMethod(
-"_stStudyGodo02",
-smalltalk.method({
-selector: "stStudyGodo02",
-fn: function () {
-    var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["\u53C2\u7167(http://atnd.org/events/30524)"]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
