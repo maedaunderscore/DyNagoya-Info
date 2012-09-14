@@ -139,11 +139,11 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'35px'
+  ^'-10px'
 !
 
 y
-  ^'-462px'
+  ^'-478px'
 ! !
 
 !Board methodsFor: 'rendering'!
@@ -186,11 +186,11 @@ style
 !
 
 x
-  ^'-33px'
+  ^'470px'
 !
 
 y
-  ^'176px'
+  ^'84px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
@@ -210,11 +210,11 @@ imageUrl
 !
 
 x
-  ^'669px'
+  ^'616px'
 !
 
 y
-  ^'-256px'
+  ^'24px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -663,25 +663,24 @@ Object subclass: #JointStStudy
 
 agenda02
 	^ '
-Links show.
-AboutDyNagoya show.
 Browser open.
 Event browser onDialog
 Event browser onPage
 TopPage show
 editor := ProxyImageEditor open: ''http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg''
 editor scale: 2.0.
-Logo browser onPage openMethod: ''imageUrl''.
+Logo browser onDialog openMethod: ''imageUrl''.
 TopPage show.
 Logo browser onPage openMethod: ''x''.
 
 Screen title: ''About Amber Smalltalk''.
 Screen add: (Amber goodPoint at:1).
-Screen title: ''About Place Holder''.
+Screen title: ''Smalltalkの思うところ''.
 Screen add: [ :html | html h2: ''Smalltalk はブロック（無名関数）をよく使います'']
 Screen add: [ :html | html h2: ''引数を書くのが億劫'' ].
 Screen add: [ %1 h2: ''Clojure風に書きたい'' ].
 (1 to: 10) inject: 0 into: [ %1 + %2 ]. 
+
 Screen add: [ it h2: ''Groovy風ならこんなかんじ''].
 
 ParserEditor  onDialog 
