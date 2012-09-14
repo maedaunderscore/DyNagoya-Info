@@ -139,11 +139,11 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'-50px'
+  ^'-6px'
 !
 
 y
-  ^'-506px'
+  ^'-486px'
 ! !
 
 !Board methodsFor: 'rendering'!
@@ -186,11 +186,11 @@ style
 !
 
 x
-  ^'-63px'
+  ^'561px'
 !
 
 y
-  ^'189px'
+  ^'107px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
@@ -210,11 +210,11 @@ imageUrl
 !
 
 x
-  ^'610px'
+  ^'707px'
 !
 
 y
-  ^'90px'
+  ^'17px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -471,12 +471,16 @@ jointStStudy02
 		end: '18:00:00';
 		place: ATeam;
 		detail: {
-'参照(http://atnd.org/events/30524)'
+'Amber SmalltalkによるWeb開発(@maeda_)'.
+'Object Calculusの話(@t6s)'.
+'OpenQwaqの話(@umejava)'.
+'SqueakからHaskellを使ってみた(@tomooda)'.
+'Seasideを使ったラピッドプロトタイピング(@kuritar)'
 }
 !
 
 latest
-	^ self meeting08
+	^ self jointStStudy02
 !
 
 meeting02
