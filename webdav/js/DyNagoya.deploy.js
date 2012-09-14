@@ -204,7 +204,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "-50px";
+    return "-6px";
     return self;
 }
 }),
@@ -216,7 +216,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "-506px";
+    return "-486px";
     return self;
 }
 }),
@@ -282,7 +282,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "-63px";
+    return "561px";
     return self;
 }
 }),
@@ -294,7 +294,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "189px";
+    return "107px";
     return self;
 }
 }),
@@ -333,7 +333,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "610px";
+    return "707px";
     return self;
 }
 }),
@@ -345,7 +345,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "90px";
+    return "17px";
     return self;
 }
 }),
@@ -818,7 +818,7 @@ smalltalk.method({
 selector: "jointStStudy02",
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["\u53C2\u7167(http://atnd.org/events/30524)"]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@\u540D\u53E4\u5C4B"]);smalltalk.send($rec, "_date_", ["2012/09/29"]);smalltalk.send($rec, "_start_", ["13:30:00"]);smalltalk.send($rec, "_end_", ["18:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.ATeam || ATeam]);return smalltalk.send($rec, "_detail_", [["Amber Smalltalk\u306B\u3088\u308BWeb\u958B\u767A(@maeda_)", "Object Calculus\u306E\u8A71(@t6s)", "OpenQwaq\u306E\u8A71(@umejava)", "Squeak\u304B\u3089Haskell\u3092\u4F7F\u3063\u3066\u307F\u305F(@tomooda)", "Seaside\u3092\u4F7F\u3063\u305F\u30E9\u30D4\u30C3\u30C9\u30D7\u30ED\u30C8\u30BF\u30A4\u30D4\u30F3\u30B0(@kuritar)"]]);}(smalltalk.send(self, "_new", []));
     return self;
 }
 }),
@@ -830,7 +830,7 @@ smalltalk.method({
 selector: "latest",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting08", []);
+    return smalltalk.send(self, "_jointStStudy02", []);
     return self;
 }
 }),
