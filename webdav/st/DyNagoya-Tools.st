@@ -384,6 +384,17 @@ open: url
 DialogBox subclass: #InspectorDialog
 	instanceVariableNames: 'inspector'
 	package: 'DyNagoya-Tools'!
+!InspectorDialog commentStamp!
+element.style {
+    background: url("../images/sprite.amber.png") repeat scroll 0 -27px #DBD9C9;
+    font-weight: bold;
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 150px;
+    width: 100%;
+}!
 
 !InspectorDialog methodsFor: 'not yet classified'!
 
