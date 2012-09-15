@@ -392,6 +392,7 @@ initialize
 	inspector := Inspector new.
 	self 
 		title: 'Inspector'; 
+		height: 500;
 		modal: false
 !
 
@@ -401,6 +402,11 @@ inspector
 
 inspector: aInspector
 	inspector := aInspector
+!
+
+open
+	self widget: inspector.
+	super open
 ! !
 
 DialogBox subclass: #TranscriptDialog
