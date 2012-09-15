@@ -210,11 +210,11 @@ imageUrl
 !
 
 x
-  ^'616px'
+  ^'641px'
 !
 
 y
-  ^'24px'
+  ^'-16px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
