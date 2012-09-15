@@ -1000,6 +1000,7 @@ smalltalk.ProxyImageEditor.klass);
 
 
 smalltalk.addClass('InspectorDialog', smalltalk.DialogBox, ['inspector'], 'DyNagoya-Tools');
+smalltalk.InspectorDialog.comment="element.style {\x0a    background: url(\x22../images/sprite.amber.png\x22) repeat scroll 0 -27px #DBD9C9;\x0a    font-weight: bold;\x0a    height: 22px;\x0a    margin: 0;\x0a    padding: 0;\x0a    position: absolute;\x0a    top: 150px;\x0a    width: 100%;\x0a}"
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
