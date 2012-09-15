@@ -721,6 +721,35 @@ fn: function (url) {
 smalltalk.ProxyImageEditor.klass);
 
 
+smalltalk.addClass('InspectorDialog', smalltalk.DialogBox, ['inspector'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.InspectorDialog.superclass || nil);
+    self['@inspector'] = smalltalk.send(smalltalk.Inspector || Inspector, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self['@inspector']]);smalltalk.send($rec, "_title_", ["Inspector"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    return self;
+}
+}),
+smalltalk.InspectorDialog);
+
+smalltalk.addMethod(
+"_inspector",
+smalltalk.method({
+selector: "inspector",
+fn: function () {
+    var self = this;
+    return self['@inspector'];
+    return self;
+}
+}),
+smalltalk.InspectorDialog);
+
+
+
 smalltalk.addClass('TranscriptDialog', smalltalk.DialogBox, [], 'DyNagoya-Tools');
 smalltalk.addMethod(
 "_close",

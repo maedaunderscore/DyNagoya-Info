@@ -381,6 +381,25 @@ open: url
 	^ self new openWithProxy: url
 ! !
 
+DialogBox subclass: #InspectorDialog
+	instanceVariableNames: 'inspector'
+	package: 'DyNagoya-Tools'!
+
+!InspectorDialog methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+	inspector := Inspector new.
+	self 
+		widget: inspector;
+		title: 'Inspector'; 
+		modal: false
+!
+
+inspector
+	^ inspector
+! !
+
 DialogBox subclass: #TranscriptDialog
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
