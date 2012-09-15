@@ -730,7 +730,7 @@ fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.InspectorDialog.superclass || nil);
     self['@inspector'] = smalltalk.send(smalltalk.Inspector || Inspector, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_title_", ["Inspector"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    (function ($rec) {smalltalk.send($rec, "_title_", ["Inspector"]);smalltalk.send($rec, "_height_", [500]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 }
 }),
@@ -755,6 +755,19 @@ selector: "inspector:",
 fn: function (aInspector) {
     var self = this;
     self['@inspector'] = aInspector;
+    return self;
+}
+}),
+smalltalk.InspectorDialog);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_widget_", [self['@inspector']]);
+    smalltalk.send(self, "_open", [], smalltalk.InspectorDialog.superclass || nil);
     return self;
 }
 }),
