@@ -459,11 +459,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "616px";
+    return "641px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'616px'",
+source: "x\x0a  ^'641px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -476,11 +476,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "24px";
+    return "-16px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'24px'",
+source: "y\x0a  ^'-16px'",
 messageSends: [],
 referencedClasses: []
 }),
