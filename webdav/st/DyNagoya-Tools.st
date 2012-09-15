@@ -391,13 +391,16 @@ initialize
 	super initialize.
 	inspector := Inspector new.
 	self 
-		widget: inspector;
 		title: 'Inspector'; 
 		modal: false
 !
 
 inspector
 	^ inspector
+!
+
+inspector: aInspector
+	inspector := aInspector
 ! !
 
 DialogBox subclass: #TranscriptDialog
