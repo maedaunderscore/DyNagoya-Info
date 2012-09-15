@@ -1009,12 +1009,12 @@ fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.InspectorDialog.superclass || nil);
     self['@inspector'] = smalltalk.send(smalltalk.Inspector || Inspector, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_title_", ["Inspector"]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    (function ($rec) {smalltalk.send($rec, "_title_", ["Inspector"]);smalltalk.send($rec, "_height_", [500]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 },
 args: [],
-source: "initialize\x0a\x09super initialize.\x0a\x09inspector := Inspector new.\x0a\x09self \x0a\x09\x09title: 'Inspector'; \x0a\x09\x09modal: false",
-messageSends: ["initialize", "new", "title:", "modal:"],
+source: "initialize\x0a\x09super initialize.\x0a\x09inspector := Inspector new.\x0a\x09self \x0a\x09\x09title: 'Inspector'; \x0a\x09\x09height: 500;\x0a\x09\x09modal: false",
+messageSends: ["initialize", "new", "title:", "height:", "modal:"],
 referencedClasses: ["Inspector"]
 }),
 smalltalk.InspectorDialog);
@@ -1049,6 +1049,24 @@ fn: function (aInspector) {
 args: ["aInspector"],
 source: "inspector: aInspector\x0a\x09inspector := aInspector",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.InspectorDialog);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_widget_", [self['@inspector']]);
+    smalltalk.send(self, "_open", [], smalltalk.InspectorDialog.superclass || nil);
+    return self;
+},
+args: [],
+source: "open\x0a\x09self widget: inspector.\x0a\x09super open",
+messageSends: ["widget:", "open"],
 referencedClasses: []
 }),
 smalltalk.InspectorDialog);
