@@ -209,12 +209,12 @@ selector: "renderBodyOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);smalltalk.send($rec, "_css_put_", ["width", smalltalk.send(smalltalk.send("", "__comma", [smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])]), "__comma", ["px"])]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_href_", ["http://atnd.org/events/30524"]);smalltalk.send($rec, "_target_", ["_blank"]);return smalltalk.send($rec, "_with_", ["\u5408\u540CSmalltalk\u52C9\u5F37\u4F1A@ \u540D\u53E4\u5C4B"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_with_", ["2012.09.29(Sat)"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_css_put_", ["margin-left", "20px"]);}(smalltalk.send(html, "_span", []));}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);smalltalk.send($rec, "_css_put_", ["width", "300px"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", ["\u8A73\u7D30\u306F"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_css_put_", ["margin-left", "20px"]);}(smalltalk.send(html, "_span", [])));return function ($rec) {smalltalk.send($rec, "_href_", ["http://atnd.org/events/30524"]);smalltalk.send($rec, "_target_", ["_blank"]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'pink';\x0a\x09\x09css: 'padding' put: '10px';\x0a\x09\x09css: 'width' put: '', window innerWidth , 'px';\x0a\x09\x09css: 'opacity' put: '0.8';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09with: [\x0a\x09\x09html h3 \x0a\x09\x09\x09with: [\x0a\x09\x09\x09\x09html a href: 'http://atnd.org/events/30524'; target: '_blank'; \x0a\x09\x09\x09\x09with: '合同Smalltalk勉強会@ 名古屋'.\x0a\x09\x09\x09\x09html span with: '2012.09.29(Sat)'; \x0a\x09\x09\x09\x09\x09css: 'color' put: 'white';\x0a\x09\x09\x09\x09\x09css: 'margin-left' put: '20px'\x0a\x09\x09\x09]\x0a\x09]",
-messageSends: ["css:put:", ",", "innerWidth", "with:", "h3", "href:", "target:", "a", "span", "div"],
+source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'pink';\x0a\x09\x09css: 'padding' put: '10px';\x0a\x22\x09\x09css: 'width' put: '', window innerWidth , 'px';\x22\x0a\x09\x09css: 'width' put: '300px';\x0a\x09\x09css: 'opacity' put: '0.8';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09with: [\x0a\x09\x09html h3 \x0a\x09\x09\x09with: [\x0a\x09\x09\x09\x09html span with: '詳細は'; \x0a\x09\x09\x09\x09\x09css: 'color' put: 'white';\x0a\x09\x09\x09\x09\x09css: 'margin-left' put: '20px'.\x0a\x09\x09\x09\x09html a href: 'http://atnd.org/events/30524'; target: '_blank'; \x0a\x09\x09\x09\x09with: 'こちら'.\x0a\x09\x09\x09]\x0a\x09]",
+messageSends: ["css:put:", "with:", "h3", "span", "href:", "target:", "a", "div"],
 referencedClasses: []
 }),
 smalltalk.Announcement);
@@ -226,11 +226,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-79px";
+    return "61px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'-79px'",
+source: "x\x0a  ^'61px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -243,11 +243,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-524px";
+    return "-442px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-524px'",
+source: "y\x0a  ^'-442px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -280,11 +280,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-10px";
+    return "20px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'-10px'",
+source: "x\x0a  ^'20px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -297,11 +297,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-478px";
+    return "-444px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-478px'",
+source: "y\x0a  ^'-444px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -388,11 +388,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "470px";
+    return "505px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'470px'",
+source: "x\x0a  ^'505px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -405,11 +405,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "84px";
+    return "156px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'84px'",
+source: "y\x0a  ^'156px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -459,11 +459,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "641px";
+    return "530px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'641px'",
+source: "x\x0a  ^'530px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -476,11 +476,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-16px";
+    return "188px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-16px'",
+source: "y\x0a  ^'188px'",
 messageSends: [],
 referencedClasses: []
 }),
