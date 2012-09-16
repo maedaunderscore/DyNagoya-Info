@@ -209,12 +209,12 @@ selector: "renderBodyOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);smalltalk.send($rec, "_css_put_", ["width", "300px"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_h3", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", ["\u8A73\u7D30\u306F"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);return smalltalk.send($rec, "_css_put_", ["margin-left", "20px"]);}(smalltalk.send(html, "_span", [])));return function ($rec) {smalltalk.send($rec, "_href_", ["http://atnd.org/events/30524"]);smalltalk.send($rec, "_target_", ["_blank"]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "0"]);smalltalk.send($rec, "_css_put_", ["width", "230px"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["text-align", "center"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_css_put_", ["padding", "10px 0"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", ["\u8A73\u7D30\u306F"]);return smalltalk.send($rec, "_css_put_", ["color", "white"]);}(smalltalk.send(html, "_span", [])));return function ($rec) {smalltalk.send($rec, "_href_", ["http://atnd.org/events/30524"]);smalltalk.send($rec, "_target_", ["_blank"]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_h3", []));}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'pink';\x0a\x09\x09css: 'padding' put: '10px';\x0a\x22\x09\x09css: 'width' put: '', window innerWidth , 'px';\x22\x0a\x09\x09css: 'width' put: '300px';\x0a\x09\x09css: 'opacity' put: '0.8';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09with: [\x0a\x09\x09html h3 \x0a\x09\x09\x09with: [\x0a\x09\x09\x09\x09html span with: '詳細は'; \x0a\x09\x09\x09\x09\x09css: 'color' put: 'white';\x0a\x09\x09\x09\x09\x09css: 'margin-left' put: '20px'.\x0a\x09\x09\x09\x09html a href: 'http://atnd.org/events/30524'; target: '_blank'; \x0a\x09\x09\x09\x09with: 'こちら'.\x0a\x09\x09\x09]\x0a\x09]",
-messageSends: ["css:put:", "with:", "h3", "span", "href:", "target:", "a", "div"],
+source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09css: 'background' put: 'pink';\x0a\x09\x09css: 'padding' put: '0';\x0a\x22\x09\x09css: 'width' put: '', window innerWidth , 'px';\x22\x0a\x09\x09css: 'width' put: '230px';\x0a\x09\x09css: 'opacity' put: '0.8';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09\x09css: 'text-align' put: 'center';\x0a\x09with: [\x0a\x09\x09html h3 \x0a\x09\x09\x09css: 'padding' put: '10px 0';\x0a\x09\x09\x09with: [\x0a\x09\x09\x09\x09html span with: '詳細は'; \x0a\x09\x09\x09\x09\x09css: 'color' put: 'white'.\x0a\x09\x09\x09\x09html a href: 'http://atnd.org/events/30524'; target: '_blank'; \x0a\x09\x09\x09\x09with: 'こちら'.\x0a\x09\x09\x09]\x0a\x09]",
+messageSends: ["css:put:", "with:", "span", "href:", "target:", "a", "h3", "div"],
 referencedClasses: []
 }),
 smalltalk.Announcement);
@@ -661,12 +661,13 @@ fn: function () {
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
     smalltalk.send(self, "_showMessage", []);
+    smalltalk.send(smalltalk.Screen || Screen, "_put_", [smalltalk.send(smalltalk.Announcement || Announcement, "_new", [])]);
     return self;
 },
 args: [],
-source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
-messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage"],
-referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel"]
+source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.\x0a  Screen put: Announcement new",
+messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage", "put:"],
+referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel", "Screen", "Announcement"]
 }),
 smalltalk.EntryPoint.klass);
 
