@@ -107,21 +107,22 @@ imageUrl
 !
 
 x
-  ^'54px'
+  ^'57px'
 !
 
 y
-  ^'-446px'
+  ^'-459px'
 ! !
 
 !Announcement methodsFor: 'rendering'!
 
 renderBodyOn: html
+	html root css:'width' put: '270px'.
 	html div 
 		css: 'background' put: 'pink';
 		css: 'padding' put: '0';
 "		css: 'width' put: '', window innerWidth , 'px';"
-		css: 'width' put: '270px';
+		css: 'width' put: '100%';
 		css: 'opacity' put: '0.8';
 		css: 'color' put: 'white';
 		css: 'text-align' put: 'center';
