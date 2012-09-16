@@ -115,17 +115,18 @@ y
 renderBodyOn: html
 	html div 
 		css: 'background' put: 'pink';
-		css: 'padding' put: '10px';
+		css: 'padding' put: '0';
 "		css: 'width' put: '', window innerWidth , 'px';"
-		css: 'width' put: '300px';
+		css: 'width' put: '230px';
 		css: 'opacity' put: '0.8';
 		css: 'color' put: 'white';
+		css: 'text-align' put: 'center';
 	with: [
 		html h3 
+			css: 'padding' put: '10px 0';
 			with: [
 				html span with: '詳細は'; 
-					css: 'color' put: 'white';
-					css: 'margin-left' put: '20px'.
+					css: 'color' put: 'white'.
 				html a href: 'http://atnd.org/events/30524'; target: '_blank'; 
 				with: 'こちら'.
 			]
@@ -302,6 +303,7 @@ start
    self screenPreparation.
   LoginPanel show.
   self showMessage.
+  Screen put: Announcement new
 !
 
 topPosition
