@@ -155,11 +155,11 @@ selector: "style",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send("left:", "__comma", [thisisplaceholder1]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send("top:", "__comma", [thisisplaceholder1]);}])], "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", [";"]), "__comma", [thisisplaceholder2]);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "__comma", [";"]);}]);
+    return smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("left:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("top:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}])], "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative;", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "__comma", [thisisplaceholder2]);}]);}]);
     return self;
 },
 args: [],
-source: "style\x0a\x09^ {\x0a\x09\x09(self x) >>= [ 'left:', %1 ].\x0a\x09\x09(self y) >>= [ 'top:', %1 ]\x0a\x09   } \x0a\x09   |> [ %1 select: [ %1 notNil ] ]\x0a\x09   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]\x0a\x09   |> [ %1, ';' ]",
+source: "style\x0a\x09^ {\x0a\x09\x09(self x) >>= [ 'left:', %1, ';' ].\x0a\x09\x09(self y) >>= [ 'top:', %1, ';' ]\x0a\x09   } \x0a\x09   |> [ %1 select: [ %1 notNil ] ]\x0a\x09   |> [ %1 inject: 'position:relative;' into: [ %1, %2] ]",
 messageSends: ["|>", ">>=", "x", ",", "y", "select:", "notNil", "inject:into:"],
 referencedClasses: []
 }),
@@ -513,11 +513,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "320px";
+    return "551px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'320px'",
+source: "x\x0a  ^'551px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -530,11 +530,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-380px";
+    return "-230px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-380px'",
+source: "y\x0a  ^'-230px'",
 messageSends: [],
 referencedClasses: []
 }),
