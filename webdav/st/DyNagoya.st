@@ -81,12 +81,11 @@ renderOn: html
 
 style
 	^ {
-		(self x) >>= [ 'left:', %1 ].
-		(self y) >>= [ 'top:', %1 ]
+		(self x) >>= [ 'left:', %1, ';' ].
+		(self y) >>= [ 'top:', %1, ';' ]
 	   } 
 	   |> [ %1 select: [ %1 notNil ] ]
-	   |> [ %1 inject: 'position:relative' into: [ %1, ';', %2] ]
-	   |> [ %1, ';' ]
+	   |> [ %1 inject: 'position:relative;' into: [ %1, %2] ]
 !
 
 x
@@ -224,11 +223,11 @@ DraggableWidget subclass: #PipelineDesc
 !PipelineDesc methodsFor: 'accessing'!
 
 x
-  ^'365px'
+  ^'551px'
 !
 
 y
-  ^'-437px'
+  ^'-230px'
 ! !
 
 !PipelineDesc methodsFor: 'rendering'!
@@ -689,10 +688,12 @@ Screen add: [ _ h2: ''Scala風ならこんなかんじ''].
 (1 to: 10) inject: 0 into: [ _ + _ ]. 
 
 Object browser onPage openMethod: ''|>''.
-Screen put: PipelineDesc new.
-PipelineDesc new |> [ Screen put: %1].
-DraggableWidget browser onPage openMethod: ''renderOn:''.
-DraggableWidget browser onPage openMethod: ''style''.
+desc := PipelineDesc new.
+Screen put: desc
+desc |> [ Screen put: %1].
+browser := DraggableWidget browser onPage openMethod: ''renderOn:''.
+browser openMethod: ''style''.
+desc style.
 EntryPoint browser onPage openClassMethod: ''start''.
 
 Screen title: ''まとめ''.
