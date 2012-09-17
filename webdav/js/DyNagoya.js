@@ -1892,11 +1892,11 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);}(smalltalk.send(html, "_div", [])));
-    smalltalk.send(function () {return smalltalk.send(smalltalk.Screen || Screen, "_put_", [smalltalk.send(smalltalk.Announcement || Announcement, "_new", [])]);}, "_valueWithTimeout_", [500]);
+    smalltalk.send(function () {return smalltalk.send(smalltalk.Screen || Screen, "_put_", [smalltalk.send(smalltalk.Announcement || Announcement, "_new", [])]);}, "_valueWithTimeout_", [1000]);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09\x09html div \x0a\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09with: Logo new;\x0a\x09\x09\x09with: Board new.\x0a\x09\x09[ Screen put: Announcement new] valueWithTimeout:500\x0a\x09\x09\x0a",
+source: "renderBody: html\x0a\x09\x09html div \x0a\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09with: Logo new;\x0a\x09\x09\x09with: Board new.\x0a\x09\x09[ Screen put: Announcement new] valueWithTimeout:1000\x0a\x09\x09\x0a",
 messageSends: ["with:", "new", "div", "valueWithTimeout:", "put:"],
 referencedClasses: ["Dolphin", "Logo", "Board", "Screen", "Announcement"]
 }),
