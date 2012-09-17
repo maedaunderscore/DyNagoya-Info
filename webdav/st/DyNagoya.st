@@ -1010,7 +1010,7 @@ renderBody: html
 			with: Dolphin new;
 			with: Logo new;
 			with: Board new.
-		[ Screen put: Announcement new] valueWithTimeout:500
+		[ Screen put: Announcement new] valueWithTimeout:1000
 ! !
 
 Widget subclass: #ParserEditor
