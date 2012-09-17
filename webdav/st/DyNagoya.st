@@ -27,6 +27,54 @@ prev
   (self all at: idx) className: 'strong'.
 ! !
 
+Object subclass: #Agenda
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Agenda class methodsFor: 'not yet classified'!
+
+joint02
+	^ '
+Browser open.
+Event browser onDialog
+Event browser onPage
+TopPage show
+editor := ProxyImageEditor open: ''http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg''
+editor scale: 2.0.
+Logo browser onDialog openMethod: ''imageUrl''.
+TopPage show.
+Logo browser onPage openMethod: ''x''.
+
+Screen title: ''About Amber Smalltalk''.
+Screen add: (Amber goodPoint at:1).
+Screen title: ''Smalltalkの思うところ''.
+Screen add: [ :html | html h2: ''Smalltalk はブロック（無名関数）をよく使います'']
+Screen add: [ :html | html h2: ''引数を書くのが億劫'' ].
+Screen add: [ %1 h2: ''Clojure風に書きたい'' ].
+(1 to: 10) inject: 0 into: [ %1 + %2 ]. 
+
+Screen add: [ it h2: ''Groovy風ならこんなかんじ''].
+
+ParserEditor  onDialog 
+
+Screen add: [ _ h2: ''Scala風ならこんなかんじ''].
+(1 to: 10) inject: 0 into: [ _ + _ ]. 
+
+Object browser onPage openMethod: ''|>''.
+desc := PipelineDesc new.
+Screen put: desc
+desc |> [ Screen put: %1].
+browser := DraggableWidget browser onPage openMethod: ''renderOn:''.
+browser openMethod: ''style''.
+desc style.
+EntryPoint browser onPage openClassMethod: ''start''.
+
+Screen title: ''まとめ''.
+Screen add: [ %1 h2: ''Amber Smalltalkをいじるの楽しい''].
+Screen add: [ %1 h2: ''興味持った方はDyNagoyaにも是非'' ]
+'
+! !
+
 Object subclass: #Amber
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -309,7 +357,6 @@ start
    self screenPreparation.
   LoginPanel show.
   self showMessage.
-  Screen put: Announcement new
 !
 
 topPosition
@@ -663,54 +710,6 @@ onDialog
 	^ DialogBox new widget: JSViewer new; title: 'Javascript Viewer'; width: '50%'; modal: false; open
 ! !
 
-Object subclass: #JointStStudy
-	instanceVariableNames: ''
-	package: 'DyNagoya'!
-
-!JointStStudy class methodsFor: 'not yet classified'!
-
-agenda02
-	^ '
-Browser open.
-Event browser onDialog
-Event browser onPage
-TopPage show
-editor := ProxyImageEditor open: ''http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg''
-editor scale: 2.0.
-Logo browser onDialog openMethod: ''imageUrl''.
-TopPage show.
-Logo browser onPage openMethod: ''x''.
-
-Screen title: ''About Amber Smalltalk''.
-Screen add: (Amber goodPoint at:1).
-Screen title: ''Smalltalkの思うところ''.
-Screen add: [ :html | html h2: ''Smalltalk はブロック（無名関数）をよく使います'']
-Screen add: [ :html | html h2: ''引数を書くのが億劫'' ].
-Screen add: [ %1 h2: ''Clojure風に書きたい'' ].
-(1 to: 10) inject: 0 into: [ %1 + %2 ]. 
-
-Screen add: [ it h2: ''Groovy風ならこんなかんじ''].
-
-ParserEditor  onDialog 
-
-Screen add: [ _ h2: ''Scala風ならこんなかんじ''].
-(1 to: 10) inject: 0 into: [ _ + _ ]. 
-
-Object browser onPage openMethod: ''|>''.
-desc := PipelineDesc new.
-Screen put: desc
-desc |> [ Screen put: %1].
-browser := DraggableWidget browser onPage openMethod: ''renderOn:''.
-browser openMethod: ''style''.
-desc style.
-EntryPoint browser onPage openClassMethod: ''start''.
-
-Screen title: ''まとめ''.
-Screen add: [ %1 h2: ''Amber Smalltalkをいじるの楽しい''].
-Screen add: [ %1 h2: ''興味持った方はDyNagoyaにも是非'' ]
-'
-! !
-
 Widget subclass: #Login
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -1010,8 +1009,8 @@ renderBody: html
 		html div 
 			with: Dolphin new;
 			with: Logo new;
-			with: Board new";
-			with: Announcement new"
+			with: Board new.
+		[ Screen put: Announcement new] valueWithTimeout:500
 ! !
 
 Widget subclass: #ParserEditor
