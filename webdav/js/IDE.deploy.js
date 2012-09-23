@@ -535,7 +535,7 @@ selector: "handleKeyDown:",
 fn: function (anEvent) {
     var self = this;
     if (anEvent.ctrlKey) {
-        if (anEvent.keyCode === 0) {
+        if (anEvent.keyCode === 64) {
             self._printIt();
             anEvent.preventDefault();
             return false;
