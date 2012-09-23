@@ -343,7 +343,7 @@ handleKeyDown: anEvent
     <
 	if(anEvent.ctrlKey) {
 //		if(anEvent.keyCode === 80) { //ctrl+p
-		if(anEvent.keyCode === 0) { //ctrl+@
+		if(anEvent.keyCode === 64) { //ctrl+@
 			self._printIt();
 			anEvent.preventDefault();
 			return false;
