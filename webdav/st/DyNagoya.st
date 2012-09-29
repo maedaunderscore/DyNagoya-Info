@@ -35,11 +35,14 @@ Object subclass: #Agenda
 
 joint02
 	^ '
+Links show.
+AboutDyNagoya show.
 Browser open.
+
 Event browser onDialog
 Event browser onPage
 TopPage show
-editor := ProxyImageEditor open: ''http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg''
+editor := ImageEditor new open: ''/images/20080512162247.jpg''
 editor scale: 2.0.
 Logo browser onDialog openMethod: ''imageUrl''.
 TopPage show.
@@ -71,7 +74,8 @@ EntryPoint browser onPage openClassMethod: ''start''.
 
 Screen title: ''まとめ''.
 Screen add: [ %1 h2: ''Amber Smalltalkをいじるの楽しい''].
-Screen add: [ %1 h2: ''興味持った方はDyNagoyaにも是非'' ]
+Screen add: [ %1 h2: ''興味持った方はDyNagoyaにも是非'' ].
+Screen title:''ありがとうございました''; put: Building new; put: FinDesc new.
 '
 ! !
 
