@@ -452,7 +452,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "396px";
+    return "241px";
     return self;
 }
 }),
@@ -464,7 +464,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "258px";
+    return "-431px";
     return self;
 }
 }),
@@ -1551,7 +1551,7 @@ selector: "renderBody:",
 fn: function (html) {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);}(smalltalk.send(html, "_div", [])));
-    smalltalk.send(function () {return smalltalk.send(smalltalk.Screen || Screen, "_put_", [smalltalk.send(smalltalk.HowToJoin || HowToJoin, "_new", [])]);}, "_valueWithTimeout_", [1000]);
+    smalltalk.send(function () {return smalltalk.send(smalltalk.Screen || Screen, "_put_", [smalltalk.send(smalltalk.HowToJoin || HowToJoin, "_new", [])]);}, "_valueWithTimeout_", [4000]);
     return self;
 }
 }),
@@ -2865,6 +2865,30 @@ selector: "rollOut:",
 fn: function (jq) {
     var self = this;
     smalltalk.send(jq, "_transition_callback_", [{x: 300, rotate: "8deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_zoomIn_",
+smalltalk.method({
+selector: "zoomIn:",
+fn: function (jq) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_transition_", [{scale: 1, opacity: 1, duration: 2000}]);}(jq));
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_zoomOut_",
+smalltalk.method({
+selector: "zoomOut:",
+fn: function (jq) {
+    var self = this;
+    smalltalk.send(jq, "_transition_callback_", [{scale: 3, opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
     return self;
 }
 }),
