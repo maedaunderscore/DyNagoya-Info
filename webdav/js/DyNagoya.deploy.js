@@ -2727,7 +2727,7 @@ smalltalk.method({
 selector: "flip:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_skew_", [aPage]);
+    smalltalk.send(self, "_zoom_", [aPage]);
     return self;
 }
 }),
@@ -2792,7 +2792,7 @@ smalltalk.method({
 selector: "normalize",
 fn: function () {
     var self = this;
-    return {skewX: "0deg", scale: 1, x: 0, rotate: "0", opacity: 1, duration: 2000};
+    return {skewX: "0deg", scale: 1, x: 0, rotate: "0", opacity: 1, perspective: "0px", rotateX: "0deg", duration: 2000};
     return self;
 }
 }),
@@ -2840,7 +2840,7 @@ smalltalk.method({
 selector: "rollIn:",
 fn: function (jq) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: -100, rotate: "-15deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
+    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: -100, scale: 0.3, rotate: "-15deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
     return self;
 }
 }),
@@ -2924,7 +2924,7 @@ smalltalk.method({
 selector: "zoomOut:",
 fn: function (jq) {
     var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{scale: 3, opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
+    smalltalk.send(jq, "_transition_callback_", [{scale: 3, opacity: 0, perspective: "100px", rotateX: "180deg", duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
     return self;
 }
 }),
