@@ -1759,7 +1759,7 @@ Widget subclass: #Screen
 !Screen methodsFor: 'action'!
 
 flip: aPage
-	self roll: aPage
+	self skew: aPage
 !
 
 flip: aPage before: beforeBlock after: afterBlock
