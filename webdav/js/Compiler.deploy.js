@@ -1057,6 +1057,69 @@ smalltalk.MethodNode);
 
 
 
+smalltalk.addClass('OMetaDefineNode', smalltalk.MethodNode, ['grammerName', 'grammerBody'], 'Compiler');
+smalltalk.addMethod(
+"_accept_",
+smalltalk.method({
+selector: "accept:",
+fn: function (aVisitor) {
+    var self = this;
+    smalltalk.send(aVisitor, "_visitOMetaDefineNode_", [self]);
+    return self;
+}
+}),
+smalltalk.OMetaDefineNode);
+
+smalltalk.addMethod(
+"_body",
+smalltalk.method({
+selector: "body",
+fn: function () {
+    var self = this;
+    return self['@grammerBody'];
+    return self;
+}
+}),
+smalltalk.OMetaDefineNode);
+
+smalltalk.addMethod(
+"_body_",
+smalltalk.method({
+selector: "body:",
+fn: function (aString) {
+    var self = this;
+    self['@grammerBody'] = aString;
+    return self;
+}
+}),
+smalltalk.OMetaDefineNode);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return self['@grammerName'];
+    return self;
+}
+}),
+smalltalk.OMetaDefineNode);
+
+smalltalk.addMethod(
+"_name_",
+smalltalk.method({
+selector: "name:",
+fn: function (aString) {
+    var self = this;
+    self['@grammerName'] = aString;
+    return self;
+}
+}),
+smalltalk.OMetaDefineNode);
+
+
+
 smalltalk.addClass('OMetaNode', smalltalk.MethodNode, ['grammerName', 'grammerBody'], 'Compiler');
 smalltalk.addMethod(
 "_accept_",
@@ -2098,6 +2161,27 @@ fn: function (aNode) {
     smalltalk.send(self['@referencedClasses'], "_do_separatedBy_", [function (each) {return smalltalk.send(self['@stream'], "_nextPutAll_", [smalltalk.send(each, "_printString", [])]);}, function () {return smalltalk.send(self['@stream'], "_nextPutAll_", [","]);}]);
     smalltalk.send(self['@stream'], "_nextPutAll_", ["]"]);
     smalltalk.send(self['@stream'], "_nextPutAll_", ["})"]);
+    return self;
+}
+}),
+smalltalk.FunCodeGenerator);
+
+smalltalk.addMethod(
+"_visitOMetaDefineNode_",
+smalltalk.method({
+selector: "visitOMetaDefineNode:",
+fn: function (aNode) {
+    var self = this;
+    var str = nil;
+    var currentSelector = nil;
+    self['@nestedBlocks'] = 0;
+    self['@earlyReturn'] = false;
+    smalltalk.send(smalltalk.Transcript || Transcript, "_show_", ["DEFINE"]);
+    (function ($rec) {smalltalk.send($rec, "_show_", ["Name: "]);smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_name", [])]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    (function ($rec) {smalltalk.send($rec, "_show_", ["Body:"]);smalltalk.send($rec, "_cr", []);return smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_body", [])]);}(smalltalk.Transcript || Transcript));
+    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["smalltalk.method({"]);smalltalk.send($rec, "_lf", []);smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("selector: \"", "__comma", [smalltalk.send(aNode, "_name", [])]), "__comma", ["\","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
+    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("source: ", "__comma", [smalltalk.send(smalltalk.send(self, "_source", []), "_asJavascript", [])]), "__comma", [","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
+    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["fn: function(){ return \"DyNagoya\"; },"]);return smalltalk.send($rec, "_nextPutAll_", ["\nargs: [],\nmessageSends: [],\nreferencedClasses: []\n})"]);}(self['@stream']));
     return self;
 }
 }),
