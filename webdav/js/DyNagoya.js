@@ -784,14 +784,12 @@ selector: "screenPreparation",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.TopPage || TopPage, "_new", [])]);
+    smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.TopPage || TopPage, "_new", [])]);}, "_valueWithTimeout_", [3000]);
     return self;
 },
 args: [],
-source: "screenPreparation\x0a\x09'#screen' asJQuery remove.\x0a\x09Screen new appendToJQuery: ('body' asJQuery).\x0a\x09Screen new flip: (TopPage new).\x0a",
-messageSends: ["remove", "asJQuery", "appendToJQuery:", "new", "flip:"],
+source: "screenPreparation\x0a\x09[\x0a\x09  '#screen' asJQuery remove.\x0a\x09  Screen new appendToJQuery: ('body' asJQuery).\x0a\x09  Screen new flip: (TopPage new)\x0a\x09] valueWithTimeout: 3000\x0a",
+messageSends: ["valueWithTimeout:", "remove", "asJQuery", "appendToJQuery:", "new", "flip:"],
 referencedClasses: ["Screen", "TopPage"]
 }),
 smalltalk.EntryPoint.klass);
@@ -1793,6 +1791,38 @@ smalltalk.Page.klass);
 
 smalltalk.addClass('AboutDyNagoya', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
+"_dynagoya",
+smalltalk.method({
+selector: "dynagoya",
+category: 'not yet classified',
+fn: function () {
+    return "DyNagoya";
+},
+args: [],
+source: "grammer dynagoya \x0a^ 'DyNagoya とは ...' \x0ahoge  \x0afuga\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+"_grammedynagoya",
+smalltalk.method({
+selector: "grammedynagoya",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("DyNagoya \u3068\u306F ...", "_hoge", []), "_fuga", []);
+    return self;
+},
+args: [],
+source: "grammedynagoya \x0a^ 'DyNagoya とは ...' \x0ahoge  \x0afuga\x0a",
+messageSends: ["fuga", "hoge"],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
 "_height",
 smalltalk.method({
 selector: "height",
@@ -1803,7 +1833,7 @@ fn: function () {
     return self;
 },
 args: [],
-source: "height\x0a  ^ '800'\x0a",
+source: "grammer height\x0a  ^ '800'\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1816,13 +1846,28 @@ selector: "renderBody:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_style_", [unescape("margin-top%3A%2030px")]);return smalltalk.send($rec, "_with_", [unescape("DyNagoya%20%u3068%u306F%20...")]);}(smalltalk.send(html, "_h1", [])));
-    smalltalk.send([[unescape("%u540D%u53E4%u5C4B%u3067%u52D5%u7684%u8A00%u8A9E%28Dynamic%20Language%29%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3046%u30D7%u30ED%u30B0%u30E9%u30DE%u96C6%u56E3%u304CDyNagoya%28Dynamic%20language%20+%20Nagoya%20%3D%20DyNagoya%29%u3067%u3059%u3002"), unescape("%u52D5%u7684%u8A00%u8A9E%u5168%u822C%u3092%u6271%u3063%u3066%u307E%u3059%u304C%u3001%u4E2D%u5FC3%u3068%u306A%u308B%u306E%u306FSmalltalk%u3067%u3059%u3002"), unescape("Smalltalk%u306F%u30A2%u30E9%u30F3%u30B1%u30A4%28Alan%20Kay%201940%20-%20%29%u306E%u7406%u60F3%u306E%u30D1%u30FC%u30BD%u30CA%u30EB%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3067%u3042%u308B%u300EDynabook%u300F%u306E%u66AB%u5B9A%u5B9F%u88C5%u304B%u3089%u8A95%u751F%u3057%u307E%u3057%u305F%u3002"), unescape("DyNagoya%u306E%u300CDy%u300D%u306FDynabook%u306E%u300CDy%u300D%u3082%u517C%u306D%u3066%u3044%u307E%u3059%u3002"), unescape("%u30B3%u30F3%u30D4%u30E5%u30FC%u30BF%u3068%u79C1%u305F%u3061%u306E%u7406%u60F3%u306E%u95A2%u4FC2%u3092%u6A21%u7D22%u3059%u308B%u3053%u3068%u304CDyNagoya%u306E%u76EE%u7684%u3067%u3059%u3002")], [unescape("DyNagoya%u3067%u306F%u3001%u6708%u306B%uFF11%u56DE%u306E%u4F1A%u5408%u3092%u958B%u3044%u3066%u3044%u307E%u3059%u3002"), unescape("%u3053%u306E%u4F1A%u3067%u306F%u3001%u304A%u3044%u3057%u3044%u3054%u98EF%u3092%u98DF%u3079%u306A%u304C%u3089%u3001%u52D5%u7684%u8A00%u8A9E%u306B%u3064%u3044%u3066%u8A9E%u308A%u5408%u3063%u3066%u3044%u307E%u3059%u3002"), unescape("%u4F55%u306E%u6E96%u5099%u3082%u5FC3%u69CB%u3048%u3082%u5FC5%u8981%u3042%u308A%u307E%u305B%u3093%u3002%u304A%u6C17%u8EFD%u306B%u3054%u53C2%u52A0%u304F%u3060%u3055%u3044%u3002")]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", [unescape("margin-left"), "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h2", []));}]);
+    (function ($rec) {smalltalk.send($rec, "_style_", ["margin-top: 30px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_dynagoya", [])]);}(smalltalk.send(html, "_h1", [])));
+    smalltalk.send([["\u540D\u53E4\u5C4B\u3067\u52D5\u7684\u8A00\u8A9E(Dynamic Language)\u306B\u3064\u3044\u3066\u8A9E\u308A\u5408\u3046\u30D7\u30ED\u30B0\u30E9\u30DE\u96C6\u56E3\u304CDyNagoya(Dynamic language + Nagoya = DyNagoya)\u3067\u3059\u3002", "\u52D5\u7684\u8A00\u8A9E\u5168\u822C\u3092\u6271\u3063\u3066\u307E\u3059\u304C\u3001\u4E2D\u5FC3\u3068\u306A\u308B\u306E\u306FSmalltalk\u3067\u3059\u3002", "Smalltalk\u306F\u30A2\u30E9\u30F3\u30B1\u30A4(Alan Kay 1940 - )\u306E\u7406\u60F3\u306E\u30D1\u30FC\u30BD\u30CA\u30EB\u30B3\u30F3\u30D4\u30E5\u30FC\u30BF\u3067\u3042\u308B\u300EDynabook\u300F\u306E\u66AB\u5B9A\u5B9F\u88C5\u304B\u3089\u8A95\u751F\u3057\u307E\u3057\u305F\u3002", "DyNagoya\u306E\u300CDy\u300D\u306FDynabook\u306E\u300CDy\u300D\u3082\u517C\u306D\u3066\u3044\u307E\u3059\u3002", "\u30B3\u30F3\u30D4\u30E5\u30FC\u30BF\u3068\u79C1\u305F\u3061\u306E\u7406\u60F3\u306E\u95A2\u4FC2\u3092\u6A21\u7D22\u3059\u308B\u3053\u3068\u304CDyNagoya\u306E\u76EE\u7684\u3067\u3059\u3002"], ["DyNagoya\u3067\u306F\u3001\u6708\u306B\uFF11\u56DE\u306E\u4F1A\u5408\u3092\u958B\u3044\u3066\u3044\u307E\u3059\u3002", "\u3053\u306E\u4F1A\u3067\u306F\u3001\u304A\u3044\u3057\u3044\u3054\u98EF\u3092\u98DF\u3079\u306A\u304C\u3089\u3001\u52D5\u7684\u8A00\u8A9E\u306B\u3064\u3044\u3066\u8A9E\u308A\u5408\u3063\u3066\u3044\u307E\u3059\u3002", "\u4F55\u306E\u6E96\u5099\u3082\u5FC3\u69CB\u3048\u3082\u5FC5\u8981\u3042\u308A\u307E\u305B\u3093\u3002\u304A\u6C17\u8EFD\u306B\u3054\u53C2\u52A0\u304F\u3060\u3055\u3044\u3002"]], "_do_", [function (each) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "20px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(each, "_do_", [function (each2) {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [each2]);}]);}]);}(smalltalk.send(html, "_h2", []));}]);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'. \x0a{\x0a  { \x0a     '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .\x0a     '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .\x0a     'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .\x0a     'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。'. \x0a     'コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' \x0a   }  .\x0a   {\x0a     'DyNagoyaでは、月に１回の会合を開いています。'.\x0a     'この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.\x0a     '何の準備も心構えも必要ありません。お気軽にご参加ください。' \x0a   }\x0a}\x0ado: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].\x0a\x0a",
-messageSends: ["style:", "with:", "h1", "do:", "css:put:", "span", "h2"],
+source: "grammer renderBody: html\x0a\x09html h1 style: 'margin-top: 30px'; with: self dynagoya.\x0a{\x0a  { \x0a     '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .\x0a     '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .\x0a     'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .\x0a     'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。'. \x0a     'コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' \x0a   }  .\x0a   {\x0a     'DyNagoyaでは、月に１回の会合を開いています。'.\x0a     'この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.\x0a     '何の準備も心構えも必要ありません。お気軽にご参加ください。' \x0a   }\x0a}\x0ado: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].\x0a\x0a",
+messageSends: ["style:", "with:", "dynagoya", "h1", "do:", "css:put:", "span", "h2"],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+"_undefined",
+smalltalk.method({
+selector: "undefined",
+category: 'not yet classified',
+fn: function () {
+    return "DyNagoya";
+},
+args: [],
+source: "grammer dynagoya \x0a^ 'DyNagoya とは ...' \x0a",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.AboutDyNagoya);
