@@ -1540,7 +1540,7 @@ smalltalk.OMetaDefineNode);
 
 
 
-smalltalk.addClass('OMetaNode', smalltalk.MethodNode, ['grammerName', 'grammerBody'], 'Compiler');
+smalltalk.addClass('OMetaNode', smalltalk.MethodNode, ['grammerName', 'grammerBody', 'rule'], 'Compiler');
 smalltalk.addMethod(
 "_accept_",
 smalltalk.method({
@@ -1621,6 +1621,40 @@ fn: function (aString) {
 },
 args: ["aString"],
 source: "name: aString\x0a   grammerName := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.OMetaNode);
+
+smalltalk.addMethod(
+"_rule",
+smalltalk.method({
+selector: "rule",
+category: 'visiting',
+fn: function () {
+    var self = this;
+    return self['@rule'];
+    return self;
+},
+args: [],
+source: "rule\x0a   ^ rule",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.OMetaNode);
+
+smalltalk.addMethod(
+"_rule_",
+smalltalk.method({
+selector: "rule:",
+category: 'visiting',
+fn: function (aString) {
+    var self = this;
+    self['@rule'] = aString;
+    return self;
+},
+args: ["aString"],
+source: "rule: aString\x0a   rule := aString",
 messageSends: [],
 referencedClasses: []
 }),
@@ -3008,16 +3042,17 @@ fn: function (aNode) {
     var currentSelector = nil;
     self['@nestedBlocks'] = 0;
     self['@earlyReturn'] = false;
-    (function ($rec) {smalltalk.send($rec, "_show_", ["Name: "]);smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_name", [])]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    (function ($rec) {smalltalk.send($rec, "_show_", ["Name: "]);smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_name", [])]);smalltalk.send($rec, "_show_", [" of "]);smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_selector", [])]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
+    (function ($rec) {smalltalk.send($rec, "_show_", ["Rule"]);smalltalk.send($rec, "_cr", []);return smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_rule", [])]);}(smalltalk.Transcript || Transcript));
     (function ($rec) {smalltalk.send($rec, "_show_", ["Body:"]);smalltalk.send($rec, "_cr", []);return smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_body", [])]);}(smalltalk.Transcript || Transcript));
-    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["smalltalk.method({"]);smalltalk.send($rec, "_lf", []);smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("selector: \"", "__comma", [smalltalk.send(aNode, "_name", [])]), "__comma", ["\","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
+    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["smalltalk.method({"]);smalltalk.send($rec, "_lf", []);smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("selector: \"", "__comma", [smalltalk.send(aNode, "_selector", [])]), "__comma", ["\","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
     (function ($rec) {smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("source: ", "__comma", [smalltalk.send(smalltalk.send(self, "_source", []), "_asJavascript", [])]), "__comma", [","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
     (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["fn: function(){ return \"DyNagoya\"; },"]);return smalltalk.send($rec, "_nextPutAll_", ["\nargs: [],\nmessageSends: [],\nreferencedClasses: []\n})"]);}(self['@stream']));
     return self;
 },
 args: ["aNode"],
-source: "visitOMetaNode: aNode\x0a\x09| str currentSelector | \x0a\x09nestedBlocks := 0.\x0a\x09earlyReturn := false.\x0aTranscript  show: 'Name: '; show: aNode name; cr.\x0aTranscript show:'Body:'; cr; show: aNode body.\x0a\x0a\x09stream \x0a\x09    nextPutAll: 'smalltalk.method({'; lf;\x0a\x09    nextPutAll: 'selector: \x22', aNode name, '\x22,'; lf.\x0a\x09stream nextPutAll: 'source: ', self source asJavascript, ',';lf.\x0a\x09stream \x0a\x09\x09nextPutAll: 'fn: function(){ return \x22DyNagoya\x22; },';\x0a\x09\x09nextPutAll: '\x0aargs: [],\x0amessageSends: [],\x0areferencedClasses: []\x0a})'.\x0a",
-messageSends: ["show:", "name", "cr", "body", "nextPutAll:", "lf", ",", "asJavascript", "source"],
+source: "visitOMetaNode: aNode\x0a\x09| str currentSelector | \x0a\x09nestedBlocks := 0.\x0a\x09earlyReturn := false.\x0aTranscript  show: 'Name: '; show: aNode name; show: ' of '; show: aNode selector; cr.\x0aTranscript show:'Rule'; cr; show: aNode rule.\x0aTranscript show:'Body:'; cr; show: aNode body.\x0a\x0a\x09stream \x0a\x09    nextPutAll: 'smalltalk.method({'; lf;\x0a\x09    nextPutAll: 'selector: \x22', aNode selector, '\x22,'; lf.\x0a\x09stream nextPutAll: 'source: ', self source asJavascript, ',';lf.\x0a\x09stream \x0a\x09\x09nextPutAll: 'fn: function(){ return \x22DyNagoya\x22; },';\x0a\x09\x09nextPutAll: '\x0aargs: [],\x0amessageSends: [],\x0areferencedClasses: []\x0a})'.\x0a",
+messageSends: ["show:", "name", "selector", "cr", "rule", "body", "nextPutAll:", "lf", ",", "asJavascript", "source"],
 referencedClasses: ["Transcript"]
 }),
 smalltalk.FunCodeGenerator);
