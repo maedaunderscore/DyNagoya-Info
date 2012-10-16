@@ -218,11 +218,14 @@ jsStatement   = "<" val:((">>" {return ">"} / [^>])*) ">"
 			._source_(val.join(""))
   	      }
 
-
-method        = ws pattern:(keywordPattern / binaryPattern / unaryPattern) ws sequence:sequence? ws {
-	      	return smalltalk.MethodNode._new()
-		       ._selector_(pattern[0])
+method        = ws 
+    "grammer" ws  name:identifier ws body:(.+) {
+              return smalltalk.OMetaNode._new()
+  	       ._name_(name)
+	       ._body_(body.join(""))
+    }
+    / pattern:(keywordPattern / binaryPattern / unaryPattern) ws sequence:sequence? ws {
+              return smalltalk.MethodNode._new()
+                       ._selector_(pattern[0])
 		       ._arguments_(pattern[1])
 		       ._nodes_([sequence])
-	      }
-
