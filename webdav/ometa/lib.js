@@ -125,7 +125,7 @@ escapeChar = function(c) {
   else
     return "\\u" + charCode.toString(16).pad("0", 4)
 }
-
+/*
 function unescape(s) {
   if (s.charAt(0) == '\\')
     switch (s.charAt(1)) {
@@ -145,7 +145,7 @@ function unescape(s) {
   else
     return s
 }
-
+*/
 String.prototype.toProgramString = function() {
   var ws = '"'.writeStream()
   for (var idx = 0; idx < this.length; idx++)
