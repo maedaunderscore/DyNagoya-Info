@@ -219,14 +219,18 @@ jsStatement   = "<" val:((">>" {return ">"} / [^>])*) ">"
   	      }
 
 method        = ws 
-    type:"define "? "grammer" ws  name:identifier ws body:(.+) {
-                var node = type ? smalltalk.OMetaDefineNode._new() : smalltalk.OMetaNode._new();
-                return node._name_(name)._body_(body.join(""));
-	      }
+    "grammer" ws  name:identifier ws ">" ws selector:identifier ws body:(.+) ws {
+                return smalltalk.OMetaNode._new()
+                               ._name_(name)._selector_(selector)._body_(body.join(""));
+     }
+    / "ometa" ws  name:identifier ws body:(.+) ws {
+                return smalltalk.OMetaDefineNode._new()
+                               ._name_(name)
+                               ._body_(["ometa ", name, " ", body.join("")].join(""));
+     }
     / pattern:(keywordPattern / binaryPattern / unaryPattern) ws sequence:sequence? ws {
 	      	return smalltalk.MethodNode._new()
 		       ._selector_(pattern[0])
 		       ._arguments_(pattern[1])
 		       ._nodes_([sequence])
     }
-
