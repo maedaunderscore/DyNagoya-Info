@@ -412,9 +412,11 @@ positionY
 !
 
 screenPreparation
-	'#screen' asJQuery remove.
-	Screen new appendToJQuery: ('body' asJQuery).
-	Screen new flip: (TopPage new).
+	[
+	  '#screen' asJQuery remove.
+	  Screen new appendToJQuery: ('body' asJQuery).
+	  Screen new flip: (TopPage new)
+	] valueWithTimeout: 3000
 !
 
 showMessage
@@ -909,12 +911,24 @@ Page subclass: #AboutDyNagoya
 
 !AboutDyNagoya methodsFor: 'not yet classified'!
 
-height
+grammer dynagoya 
+^ 'DyNagoya とは ...' 
+hoge  
+fuga
+!
+
+grammedynagoya 
+^ 'DyNagoya とは ...' 
+hoge  
+fuga
+!
+
+grammer height
   ^ '800'
 !
 
-renderBody: html
-	html h1 style: 'margin-top: 30px'; with: 'DyNagoya とは ...'. 
+grammer renderBody: html
+	html h1 style: 'margin-top: 30px'; with: self dynagoya.
 {
   { 
      '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .
@@ -930,6 +944,10 @@ renderBody: html
    }
 }
 do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
+!
+
+grammer dynagoya 
+^ 'DyNagoya とは ...'
 ! !
 
 Page subclass: #AboutSmalltalk
