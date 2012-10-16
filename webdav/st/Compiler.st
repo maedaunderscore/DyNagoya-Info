@@ -664,6 +664,16 @@ accept: aVisitor
 	aVisitor visitMethodNode: self
 ! !
 
+MethodNode subclass: #OMetaNode
+	instanceVariableNames: ''
+	package: 'Compiler'!
+
+!OMetaNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitOMetaNode: self
+! !
+
 Node subclass: #ReturnNode
 	instanceVariableNames: ''
 	package: 'Compiler'!
@@ -1366,6 +1376,56 @@ visitJSStatementNode: aNode
 
 visitMethodNode: aNode
 	| str currentSelector | 
+	currentSelector := aNode selector asSelector.
+	nestedBlocks := 0.
+	earlyReturn := false.
+	messageSends := #().
+	referencedClasses := #().
+	unknownVariables := #().
+	tempVariables := #().
+	argVariables := #().
+	stream 
+	    nextPutAll: 'smalltalk.method({'; lf;
+	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
+	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
+	stream nextPutAll: 'fn: function('.
+	aNode arguments 
+	    do: [:each | 
+		argVariables add: each.
+		stream nextPutAll: each]
+	    separatedBy: [stream nextPutAll: ', '].
+	stream 
+	    nextPutAll: '){'; lf;
+	    nextPutAll: 'var self=this;'; lf.
+	str := stream.
+	stream := '' writeStream.
+	aNode nodes do: [:each |
+	    self visit: each].
+	earlyReturn ifTrue: [
+	    str nextPutAll: 'var $early={};'; lf; nextPutAll: 'try{'].
+	str nextPutAll: stream contents.
+	stream := str.
+	stream 
+	    lf; 
+	    nextPutAll: 'return self;'.
+	earlyReturn ifTrue: [
+	    stream lf; nextPutAll: '} catch(e) {if(e===$early)return e[0]; throw e}'].
+	stream nextPutAll: '}'.
+	stream 
+		nextPutAll: ',', String lf, 'messageSends: ';
+		nextPutAll: messageSends asJavascript, ','; lf;
+          	nextPutAll: 'args: ', argVariables asJavascript, ','; lf;
+		nextPutAll: 'referencedClasses: ['.
+	referencedClasses 
+		do: [:each | stream nextPutAll: each printString]
+		separatedBy: [stream nextPutAll: ','].
+	stream nextPutAll: ']'.
+	stream nextPutAll: '})'
+!
+
+visitOMetaNode: aNode
+	| str currentSelector | 
+	Transcript show: aNode.
 	currentSelector := aNode selector asSelector.
 	nestedBlocks := 0.
 	earlyReturn := false.
