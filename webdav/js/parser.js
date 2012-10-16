@@ -4139,50 +4139,65 @@ smalltalk.parser = (function(){
         var savedPos3 = pos;
         var result15 = parse_ws();
         if (result15 !== null) {
-          if (input.substr(pos, 7) === "grammer") {
-            var result16 = "grammer";
+          if (input.substr(pos, 7) === "define ") {
+            var result23 = "define ";
             pos += 7;
           } else {
-            var result16 = null;
+            var result23 = null;
             if (reportMatchFailures) {
-              matchFailed("\"grammer\"");
+              matchFailed("\"define \"");
             }
           }
+          var result16 = result23 !== null ? result23 : '';
           if (result16 !== null) {
-            var result17 = parse_ws();
+            if (input.substr(pos, 7) === "grammer") {
+              var result17 = "grammer";
+              pos += 7;
+            } else {
+              var result17 = null;
+              if (reportMatchFailures) {
+                matchFailed("\"grammer\"");
+              }
+            }
             if (result17 !== null) {
-              var result18 = parse_identifier();
+              var result18 = parse_ws();
               if (result18 !== null) {
-                var result19 = parse_ws();
+                var result19 = parse_identifier();
                 if (result19 !== null) {
-                  if (input.length > pos) {
-                    var result21 = input.charAt(pos);
-                    pos++;
-                  } else {
-                    var result21 = null;
-                    if (reportMatchFailures) {
-                      matchFailed('any character');
-                    }
-                  }
-                  if (result21 !== null) {
-                    var result20 = [];
-                    while (result21 !== null) {
-                      result20.push(result21);
-                      if (input.length > pos) {
-                        var result21 = input.charAt(pos);
-                        pos++;
-                      } else {
-                        var result21 = null;
-                        if (reportMatchFailures) {
-                          matchFailed('any character');
-                        }
+                  var result20 = parse_ws();
+                  if (result20 !== null) {
+                    if (input.length > pos) {
+                      var result22 = input.charAt(pos);
+                      pos++;
+                    } else {
+                      var result22 = null;
+                      if (reportMatchFailures) {
+                        matchFailed('any character');
                       }
                     }
-                  } else {
-                    var result20 = null;
-                  }
-                  if (result20 !== null) {
-                    var result13 = [result15, result16, result17, result18, result19, result20];
+                    if (result22 !== null) {
+                      var result21 = [];
+                      while (result22 !== null) {
+                        result21.push(result22);
+                        if (input.length > pos) {
+                          var result22 = input.charAt(pos);
+                          pos++;
+                        } else {
+                          var result22 = null;
+                          if (reportMatchFailures) {
+                            matchFailed('any character');
+                          }
+                        }
+                      }
+                    } else {
+                      var result21 = null;
+                    }
+                    if (result21 !== null) {
+                      var result13 = [result15, result16, result17, result18, result19, result20, result21];
+                    } else {
+                      var result13 = null;
+                      pos = savedPos3;
+                    }
                   } else {
                     var result13 = null;
                     pos = savedPos3;
@@ -4208,11 +4223,10 @@ smalltalk.parser = (function(){
           pos = savedPos3;
         }
         var result14 = result13 !== null
-          ? (function(name, body) {
-          	      	return smalltalk.OMetaNode._new()
-          		       ._name_(name)
-          		       ._body_(body.join(""))
-              })(result13[3], result13[5])
+          ? (function(type, name, body) {
+                          var node = type ? smalltalk.OMetaDefineNode._new() : smalltalk.OMetaNode._new();
+                          return node._name_(name)._body_(body.join(""));
+          	      })(result13[1], result13[4], result13[6])
           : null;
         if (result14 !== null) {
           var result12 = result14;
