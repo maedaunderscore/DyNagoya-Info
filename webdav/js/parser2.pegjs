@@ -219,9 +219,9 @@ jsStatement   = "<" val:((">>" {return ">"} / [^>])*) ">"
   	      }
 
 method        = ws 
-    "grammer" ws  name:identifier ws ">" ws selector:identifier ws body:(.+) ws {
+    "grammer" ws  name:identifier ws ":" ws rule:identifier ws ">" ws selector:identifier ws body:(.+) ws {
                 return smalltalk.OMetaNode._new()
-                               ._name_(name)._selector_(selector)._body_(body.join(""));
+                               ._name_(name)._rule_(rule)._selector_(selector)._body_(body.join(""));
      }
     / "ometa" ws  name:identifier ws body:(.+) ws {
                 return smalltalk.OMetaDefineNode._new()
