@@ -911,20 +911,13 @@ Page subclass: #AboutDyNagoya
 
 !AboutDyNagoya methodsFor: 'not yet classified'!
 
-grammer dynagoya 
-^ 'DyNagoya とは ...' 
-hoge  
+ometa dynagoya  {^ 'D yNag oya とは ...' 
+hoge 
 fuga
 !
 
-grammedynagoya 
-^ 'DyNagoya とは ...' 
-hoge  
-fuga
-!
-
-grammer height
-  ^ '800'
+height
+  ^ '8000'
 !
 
 grammer renderBody: html
@@ -944,10 +937,6 @@ grammer renderBody: html
    }
 }
 do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
-!
-
-grammer dynagoya 
-^ 'DyNagoya とは ...'
 ! !
 
 Page subclass: #AboutSmalltalk
