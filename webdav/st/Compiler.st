@@ -665,13 +665,29 @@ accept: aVisitor
 ! !
 
 MethodNode subclass: #OMetaNode
-	instanceVariableNames: ''
+	instanceVariableNames: 'grammerName grammerBody'
 	package: 'Compiler'!
 
 !OMetaNode methodsFor: 'visiting'!
 
 accept: aVisitor
 	aVisitor visitOMetaNode: self
+!
+
+body
+   ^ grammerBody
+!
+
+body: aString
+   grammerBody := aString
+!
+
+name
+   ^ grammerName
+!
+
+name: aString
+   grammerName := aString
 ! !
 
 Node subclass: #ReturnNode
@@ -1425,52 +1441,22 @@ visitMethodNode: aNode
 
 visitOMetaNode: aNode
 	| str currentSelector | 
-	Transcript show: aNode.
-	currentSelector := aNode selector asSelector.
 	nestedBlocks := 0.
 	earlyReturn := false.
-	messageSends := #().
-	referencedClasses := #().
-	unknownVariables := #().
-	tempVariables := #().
-	argVariables := #().
+Transcript  show: 'Name: '; show: aNode name; cr.
+Transcript show:'Body:'; cr; show: aNode body.
+
 	stream 
 	    nextPutAll: 'smalltalk.method({'; lf;
-	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
+	    nextPutAll: 'selector: "', aNode name, '",'; lf.
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
-	stream nextPutAll: 'fn: function('.
-	aNode arguments 
-	    do: [:each | 
-		argVariables add: each.
-		stream nextPutAll: each]
-	    separatedBy: [stream nextPutAll: ', '].
 	stream 
-	    nextPutAll: '){'; lf;
-	    nextPutAll: 'var self=this;'; lf.
-	str := stream.
-	stream := '' writeStream.
-	aNode nodes do: [:each |
-	    self visit: each].
-	earlyReturn ifTrue: [
-	    str nextPutAll: 'var $early={};'; lf; nextPutAll: 'try{'].
-	str nextPutAll: stream contents.
-	stream := str.
-	stream 
-	    lf; 
-	    nextPutAll: 'return self;'.
-	earlyReturn ifTrue: [
-	    stream lf; nextPutAll: '} catch(e) {if(e===$early)return e[0]; throw e}'].
-	stream nextPutAll: '}'.
-	stream 
-		nextPutAll: ',', String lf, 'messageSends: ';
-		nextPutAll: messageSends asJavascript, ','; lf;
-          	nextPutAll: 'args: ', argVariables asJavascript, ','; lf;
-		nextPutAll: 'referencedClasses: ['.
-	referencedClasses 
-		do: [:each | stream nextPutAll: each printString]
-		separatedBy: [stream nextPutAll: ','].
-	stream nextPutAll: ']'.
-	stream nextPutAll: '})'
+		nextPutAll: 'fn: function(){ return "DyNagoya"; },';
+		nextPutAll: '
+args: [],
+messageSends: [],
+referencedClasses: []
+})'.
 !
 
 visitReturnNode: aNode
