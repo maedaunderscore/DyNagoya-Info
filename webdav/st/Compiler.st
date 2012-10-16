@@ -664,6 +664,32 @@ accept: aVisitor
 	aVisitor visitMethodNode: self
 ! !
 
+MethodNode subclass: #OMetaDefineNode
+	instanceVariableNames: 'grammerName grammerBody'
+	package: 'Compiler'!
+
+!OMetaDefineNode methodsFor: 'visiting'!
+
+accept: aVisitor
+	aVisitor visitOMetaDefineNode: self
+!
+
+body
+   ^ grammerBody
+!
+
+body: aString
+   grammerBody := aString
+!
+
+name
+   ^ grammerName
+!
+
+name: aString
+   grammerName := aString
+! !
+
 MethodNode subclass: #OMetaNode
 	instanceVariableNames: 'grammerName grammerBody'
 	package: 'Compiler'!
@@ -1437,6 +1463,27 @@ visitMethodNode: aNode
 		separatedBy: [stream nextPutAll: ','].
 	stream nextPutAll: ']'.
 	stream nextPutAll: '})'
+!
+
+visitOMetaDefineNode: aNode
+	| str currentSelector | 
+	nestedBlocks := 0.
+	earlyReturn := false.
+Transcript show: 'DEFINE'.
+Transcript  show: 'Name: '; show: aNode name; cr.
+Transcript show:'Body:'; cr; show: aNode body.
+
+	stream 
+	    nextPutAll: 'smalltalk.method({'; lf;
+	    nextPutAll: 'selector: "', aNode name, '",'; lf.
+	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
+	stream 
+		nextPutAll: 'fn: function(){ return "DyNagoya"; },';
+		nextPutAll: '
+args: [],
+messageSends: [],
+referencedClasses: []
+})'.
 !
 
 visitOMetaNode: aNode
