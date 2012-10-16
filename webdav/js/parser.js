@@ -4155,13 +4155,13 @@ smalltalk.parser = (function(){
               if (result28 !== null) {
                 var result29 = parse_ws();
                 if (result29 !== null) {
-                  if (input.substr(pos, 1) === ">") {
-                    var result30 = ">";
+                  if (input.substr(pos, 1) === ":") {
+                    var result30 = ":";
                     pos += 1;
                   } else {
                     var result30 = null;
                     if (reportMatchFailures) {
-                      matchFailed("\">\"");
+                      matchFailed("\":\"");
                     }
                   }
                   if (result30 !== null) {
@@ -4171,36 +4171,68 @@ smalltalk.parser = (function(){
                       if (result32 !== null) {
                         var result33 = parse_ws();
                         if (result33 !== null) {
-                          if (input.length > pos) {
-                            var result36 = input.charAt(pos);
-                            pos++;
-                          } else {
-                            var result36 = null;
-                            if (reportMatchFailures) {
-                              matchFailed('any character');
-                            }
-                          }
-                          if (result36 !== null) {
-                            var result34 = [];
-                            while (result36 !== null) {
-                              result34.push(result36);
-                              if (input.length > pos) {
-                                var result36 = input.charAt(pos);
-                                pos++;
-                              } else {
-                                var result36 = null;
-                                if (reportMatchFailures) {
-                                  matchFailed('any character');
-                                }
-                              }
-                            }
+                          if (input.substr(pos, 1) === ">") {
+                            var result34 = ">";
+                            pos += 1;
                           } else {
                             var result34 = null;
+                            if (reportMatchFailures) {
+                              matchFailed("\">\"");
+                            }
                           }
                           if (result34 !== null) {
                             var result35 = parse_ws();
                             if (result35 !== null) {
-                              var result23 = [result25, result26, result27, result28, result29, result30, result31, result32, result33, result34, result35];
+                              var result36 = parse_identifier();
+                              if (result36 !== null) {
+                                var result37 = parse_ws();
+                                if (result37 !== null) {
+                                  if (input.length > pos) {
+                                    var result40 = input.charAt(pos);
+                                    pos++;
+                                  } else {
+                                    var result40 = null;
+                                    if (reportMatchFailures) {
+                                      matchFailed('any character');
+                                    }
+                                  }
+                                  if (result40 !== null) {
+                                    var result38 = [];
+                                    while (result40 !== null) {
+                                      result38.push(result40);
+                                      if (input.length > pos) {
+                                        var result40 = input.charAt(pos);
+                                        pos++;
+                                      } else {
+                                        var result40 = null;
+                                        if (reportMatchFailures) {
+                                          matchFailed('any character');
+                                        }
+                                      }
+                                    }
+                                  } else {
+                                    var result38 = null;
+                                  }
+                                  if (result38 !== null) {
+                                    var result39 = parse_ws();
+                                    if (result39 !== null) {
+                                      var result23 = [result25, result26, result27, result28, result29, result30, result31, result32, result33, result34, result35, result36, result37, result38, result39];
+                                    } else {
+                                      var result23 = null;
+                                      pos = savedPos5;
+                                    }
+                                  } else {
+                                    var result23 = null;
+                                    pos = savedPos5;
+                                  }
+                                } else {
+                                  var result23 = null;
+                                  pos = savedPos5;
+                                }
+                              } else {
+                                var result23 = null;
+                                pos = savedPos5;
+                              }
                             } else {
                               var result23 = null;
                               pos = savedPos5;
@@ -4246,10 +4278,10 @@ smalltalk.parser = (function(){
           pos = savedPos5;
         }
         var result24 = result23 !== null
-          ? (function(name, selector, body) {
+          ? (function(name, rule, selector, body) {
                           return smalltalk.OMetaNode._new()
-                                         ._name_(name)._selector_(selector)._body_(body.join(""));
-               })(result23[3], result23[7], result23[9])
+                                         ._name_(name)._rule_(rule)._selector_(selector)._body_(body.join(""));
+               })(result23[3], result23[7], result23[11], result23[13])
           : null;
         if (result24 !== null) {
           var result22 = result24;
