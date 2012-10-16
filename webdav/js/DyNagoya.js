@@ -1799,25 +1799,8 @@ fn: function () {
     return "DyNagoya";
 },
 args: [],
-source: "grammer dynagoya \x0a^ 'DyNagoya とは ...' \x0ahoge  \x0afuga\x0a",
+source: "ometa dynagoya  {^ 'D yNag oya とは ...' \x0ahoge \x0afuga\x0a",
 messageSends: [],
-referencedClasses: []
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
-"_grammedynagoya",
-smalltalk.method({
-selector: "grammedynagoya",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return smalltalk.send(smalltalk.send("DyNagoya \u3068\u306F ...", "_hoge", []), "_fuga", []);
-    return self;
-},
-args: [],
-source: "grammedynagoya \x0a^ 'DyNagoya とは ...' \x0ahoge  \x0afuga\x0a",
-messageSends: ["fuga", "hoge"],
 referencedClasses: []
 }),
 smalltalk.AboutDyNagoya);
@@ -1829,11 +1812,11 @@ selector: "height",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return "800";
+    return "8000";
     return self;
 },
 args: [],
-source: "grammer height\x0a  ^ '800'\x0a",
+source: "height\x0a  ^ '8000'\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1853,21 +1836,6 @@ fn: function (html) {
 args: ["html"],
 source: "grammer renderBody: html\x0a\x09html h1 style: 'margin-top: 30px'; with: self dynagoya.\x0a{\x0a  { \x0a     '名古屋で動的言語(Dynamic Language)について語り合うプログラマ集団がDyNagoya(Dynamic language + Nagoya = DyNagoya)です。' .\x0a     '動的言語全般を扱ってますが、中心となるのはSmalltalkです。' .\x0a     'Smalltalkはアランケイ(Alan Kay 1940 - )の理想のパーソナルコンピュータである『Dynabook』の暫定実装から誕生しました。' .\x0a     'DyNagoyaの「Dy」はDynabookの「Dy」も兼ねています。'. \x0a     'コンピュータと私たちの理想の関係を模索することがDyNagoyaの目的です。' \x0a   }  .\x0a   {\x0a     'DyNagoyaでは、月に１回の会合を開いています。'.\x0a     'この会では、おいしいご飯を食べながら、動的言語について語り合っています。'.\x0a     '何の準備も心構えも必要ありません。お気軽にご参加ください。' \x0a   }\x0a}\x0ado: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].\x0a\x0a",
 messageSends: ["style:", "with:", "dynagoya", "h1", "do:", "css:put:", "span", "h2"],
-referencedClasses: []
-}),
-smalltalk.AboutDyNagoya);
-
-smalltalk.addMethod(
-"_undefined",
-smalltalk.method({
-selector: "undefined",
-category: 'not yet classified',
-fn: function () {
-    return "DyNagoya";
-},
-args: [],
-source: "grammer dynagoya \x0a^ 'DyNagoya とは ...' \x0a",
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.AboutDyNagoya);
