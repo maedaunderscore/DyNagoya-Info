@@ -1474,24 +1474,27 @@ visitMethodNode: aNode
 !
 
 visitOMetaDefineNode: aNode
-	| str currentSelector | 
+	| jsMethod | 
 	nestedBlocks := 0.
 	earlyReturn := false.
+
 Transcript show: 'DEFINE'.
 Transcript  show: 'Name: '; show: aNode name; cr.
 Transcript show:'Body:'; cr; show: aNode body.
-
+Transcript show:'Class:'; show: currentClass.
+	jsMethod := 'smalltalk.', currentClass asString, '.', aNode name.
+	< eval(jsMethod + " = null ") >.
 	stream 
 	    nextPutAll: 'smalltalk.method({'; lf;
 	    nextPutAll: 'selector: "', aNode name, '",'; lf.
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
 	stream 
-		nextPutAll: 'fn: function(){ return "DyNagoya"; },';
+		nextPutAll: 'fn:function(){ 
+			if(', jsMethod , ' == null){', jsMethod , ' = function(){ return ', aNode body asJavascript, ';}}
+			return ', jsMethod , ';
+			},';lf;
 		nextPutAll: '
-args: [],
-messageSends: [],
-referencedClasses: []
-})'.
+			args: [],messageSends: [],referencedClasses: []})'.
 !
 
 visitOMetaNode: aNode
