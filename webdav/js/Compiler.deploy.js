@@ -2196,16 +2196,18 @@ smalltalk.method({
 selector: "visitOMetaDefineNode:",
 fn: function (aNode) {
     var self = this;
-    var str = nil;
-    var currentSelector = nil;
+    var jsMethod = nil;
     self['@nestedBlocks'] = 0;
     self['@earlyReturn'] = false;
     smalltalk.send(smalltalk.Transcript || Transcript, "_show_", ["DEFINE"]);
     (function ($rec) {smalltalk.send($rec, "_show_", ["Name: "]);smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_name", [])]);return smalltalk.send($rec, "_cr", []);}(smalltalk.Transcript || Transcript));
     (function ($rec) {smalltalk.send($rec, "_show_", ["Body:"]);smalltalk.send($rec, "_cr", []);return smalltalk.send($rec, "_show_", [smalltalk.send(aNode, "_body", [])]);}(smalltalk.Transcript || Transcript));
+    (function ($rec) {smalltalk.send($rec, "_show_", ["Class:"]);return smalltalk.send($rec, "_show_", [self['@currentClass']]);}(smalltalk.Transcript || Transcript));
+    jsMethod = smalltalk.send(smalltalk.send(smalltalk.send("smalltalk.", "__comma", [smalltalk.send(self['@currentClass'], "_asString", [])]), "__comma", ["."]), "__comma", [smalltalk.send(aNode, "_name", [])]);
+    eval(jsMethod + " = null ");
     (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["smalltalk.method({"]);smalltalk.send($rec, "_lf", []);smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("selector: \"", "__comma", [smalltalk.send(aNode, "_name", [])]), "__comma", ["\","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
     (function ($rec) {smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send("source: ", "__comma", [smalltalk.send(smalltalk.send(self, "_source", []), "_asJavascript", [])]), "__comma", [","])]);return smalltalk.send($rec, "_lf", []);}(self['@stream']));
-    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", ["fn: function(){ return \"DyNagoya\"; },"]);return smalltalk.send($rec, "_nextPutAll_", ["\nargs: [],\nmessageSends: [],\nreferencedClasses: []\n})"]);}(self['@stream']));
+    (function ($rec) {smalltalk.send($rec, "_nextPutAll_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("fn:function(){ \n\t\t\tif(", "__comma", [jsMethod]), "__comma", [" == null){"]), "__comma", [jsMethod]), "__comma", [" = function(){ return "]), "__comma", [smalltalk.send(smalltalk.send(aNode, "_body", []), "_asJavascript", [])]), "__comma", [";}}\n\t\t\treturn "]), "__comma", [jsMethod]), "__comma", [";\n\t\t\t},"])]);smalltalk.send($rec, "_lf", []);return smalltalk.send($rec, "_nextPutAll_", ["\n\t\t\targs: [],messageSends: [],referencedClasses: []})"]);}(self['@stream']));
     return self;
 }
 }),
