@@ -1796,10 +1796,13 @@ smalltalk.method({
 selector: "dynagoya",
 category: 'not yet classified',
 fn: function () {
-    return "DyNagoya";
+    if (smalltalk.AboutDyNagoya.dynagoya == null) {
+        smalltalk.AboutDyNagoya.dynagoya = objectThatDelegatesTo(OMeta, {fact: function () {var $elf = this, _fromIdx = this.input.idx, n, m;return this._or(function () {return function () {this._applyWithArgs("exactly", 0);return 1;}.call(this);}, function () {return function () {n = this._apply("anything");m = this._applyWithArgs("fact", n - 1);return n * m;}.call(this);});}});
+    }
+    return smalltalk.AboutDyNagoya.dynagoya;
 },
 args: [],
-source: "ometa dynagoya  {^ 'D yNag oya とは ...' \x0ahoge \x0afuga\x0a",
+source: "ometa dynagoya {\x0a  fact 0 -> 1,  \x0a  fact :n = fact(n-1):m -> (n*m)\x0a}",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1817,6 +1820,21 @@ fn: function () {
 },
 args: [],
 source: "height\x0a  ^ '8000'\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+"_hoge",
+smalltalk.method({
+selector: "hoge",
+category: 'not yet classified',
+fn: function () {
+    return smalltalk.AboutDyNagoya.dynagoya.matchAll("8", "fact");
+},
+args: [],
+source: "grammer dynagoya:fact > hoge\x0a8",
 messageSends: [],
 referencedClasses: []
 }),

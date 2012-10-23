@@ -1297,7 +1297,10 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "dynagoya",
 fn: function () {
-    return "DyNagoya";
+    if (smalltalk.AboutDyNagoya.dynagoya == null) {
+        smalltalk.AboutDyNagoya.dynagoya = objectThatDelegatesTo(OMeta, {fact: function () {var $elf = this, _fromIdx = this.input.idx, n, m;return this._or(function () {return function () {this._applyWithArgs("exactly", 0);return 1;}.call(this);}, function () {return function () {n = this._apply("anything");m = this._applyWithArgs("fact", n - 1);return n * m;}.call(this);});}});
+    }
+    return smalltalk.AboutDyNagoya.dynagoya;
 }
 }),
 smalltalk.AboutDyNagoya);
@@ -1310,6 +1313,16 @@ fn: function () {
     var self = this;
     return "8000";
     return self;
+}
+}),
+smalltalk.AboutDyNagoya);
+
+smalltalk.addMethod(
+"_hoge",
+smalltalk.method({
+selector: "hoge",
+fn: function () {
+    return smalltalk.AboutDyNagoya.dynagoya.matchAll("8", "fact");
 }
 }),
 smalltalk.AboutDyNagoya);
