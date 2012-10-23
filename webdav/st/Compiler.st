@@ -1474,15 +1474,14 @@ visitMethodNode: aNode
 !
 
 visitOMetaDefineNode: aNode
-	| jsMethod | 
+	| jsMethod jsParser tree | 
 	nestedBlocks := 0.
 	earlyReturn := false.
 
-Transcript show: 'DEFINE'.
-Transcript  show: 'Name: '; show: aNode name; cr.
-Transcript show:'Body:'; cr; show: aNode body.
-Transcript show:'Class:'; show: currentClass.
 	jsMethod := 'smalltalk.', currentClass asString, '.', aNode name.
+	tree := BSOMetaJSParser matchAll: aNode body rule: 'topLevel'.
+	jsParser := BSOMetaJSTranslator match:tree rule:'trans'.
+
 	< eval(jsMethod + " = null ") >.
 	stream 
 	    nextPutAll: 'smalltalk.method({'; lf;
@@ -1490,7 +1489,7 @@ Transcript show:'Class:'; show: currentClass.
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
 	stream 
 		nextPutAll: 'fn:function(){ 
-			if(', jsMethod , ' == null){', jsMethod , ' = function(){ return ', aNode body asJavascript, ';}}
+			if(', jsMethod , ' == null){ smalltalk.', currentClass asString, '.', jsParser, '}
 			return ', jsMethod , ';
 			},';lf;
 		nextPutAll: '
@@ -1498,19 +1497,18 @@ Transcript show:'Class:'; show: currentClass.
 !
 
 visitOMetaNode: aNode
-	| str currentSelector | 
+	| jsGrammer | 
 	nestedBlocks := 0.
 	earlyReturn := false.
-Transcript  show: 'Name: '; show: aNode name; show: ' of '; show: aNode selector; cr.
-Transcript show:'Rule'; cr; show: aNode rule.
-Transcript show:'Body:'; cr; show: aNode body.
-
+	jsGrammer := 'smalltalk.', currentClass asString, '.', aNode name.
 	stream 
 	    nextPutAll: 'smalltalk.method({'; lf;
 	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
 	stream 
-		nextPutAll: 'fn: function(){ return "DyNagoya"; },';
+		nextPutAll: 'fn: function(){ return ', jsGrammer, 
+					'.matchAll(', aNode body asJavascript,
+					',"', aNode rule, '"); },';
 		nextPutAll: '
 args: [],
 messageSends: [],
