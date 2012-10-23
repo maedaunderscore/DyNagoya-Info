@@ -1831,10 +1831,10 @@ smalltalk.method({
 selector: "hoge",
 category: 'not yet classified',
 fn: function () {
-    return smalltalk.AboutDyNagoya.dynagoya.matchAll("8", "fact");
+    return this._dynagoya().matchAll("8 ", "fact");
 },
 args: [],
-source: "grammer dynagoya:fact > hoge\x0a8",
+source: "grammer dynagoya:fact > hoge\x0a8 ",
 messageSends: [],
 referencedClasses: []
 }),
