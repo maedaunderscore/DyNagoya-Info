@@ -1505,9 +1505,10 @@ visitOMetaNode: aNode
 	    nextPutAll: 'smalltalk.method({'; lf;
 	    nextPutAll: 'selector: "', aNode selector, '",'; lf.
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
+
 	stream 
-		nextPutAll: 'fn: function(){ return ', jsGrammer, 
-					'.matchAll(', aNode body asJavascript,
+		nextPutAll: 'fn: function(){ return this._', aNode name, 
+					'().matchAll(', aNode body asJavascript,
 					',"', aNode rule, '"); },';
 		nextPutAll: '
 args: [],
