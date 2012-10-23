@@ -911,13 +911,18 @@ Page subclass: #AboutDyNagoya
 
 !AboutDyNagoya methodsFor: 'not yet classified'!
 
-ometa dynagoya  {^ 'D yNag oya とは ...' 
-hoge 
-fuga
+ometa dynagoya {
+  fact 0 -> 1,  
+  fact :n = fact(n-1):m -> (n*m)
+}
 !
 
 height
   ^ '8000'
+!
+
+grammer dynagoya:fact > hoge
+8
 !
 
 grammer renderBody: html
