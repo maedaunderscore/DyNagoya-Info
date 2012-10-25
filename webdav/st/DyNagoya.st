@@ -596,6 +596,21 @@ renderOn: html
 
 !Event class methodsFor: 'events'!
 
+ometa event {
+  date = digit: a digit:b digit:c digit:d '/' digit: e digit:f '/' digit:g digit:h -> (a+b+c+d+'/'+e+f+'/'+g+h),
+  time = digit:c digit:d ':' digit: e digit:f ':' digit:g digit:h -> (c+d+':'+e+f+':'+g+h),
+  meeting = 
+	fromTo('', 'は'): title spaces 
+	date:date 'の' time:from '〜' time:to 'に' spaces
+	letter+:place  spaces 'で' spaces
+	( '-' spaces fromTo('', ' '))+:todo -> (
+		smalltalk.Event._new()._title_(title)
+		._start_(from)._end_(to)
+		._place_(smalltalk[place.join("")])
+		._detail_(todo) )
+}
+!
+
 jointStStudy02
 	^ self new 
 		fixed: true;
@@ -738,6 +753,15 @@ meeting09
 'Mistをいじたい'.
 'CPS変換祭り?'
 }
+!
+
+grammer event:meeting > meeting10
+DyNagoya MTG #10 は
+2012/10/20の18:00:00〜20:00:00に
+Mattariya で
+ - OMetaをいじる
+ - Mistをいじたい
+ - CPS変換祭り？
 ! !
 
 Widget subclass: #JSViewer
