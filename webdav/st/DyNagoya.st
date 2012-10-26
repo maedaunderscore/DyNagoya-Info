@@ -597,14 +597,17 @@ renderOn: html
 !Event class methodsFor: 'events'!
 
 ometa event {
-  date = digit: a digit:b digit:c digit:d '/' digit: e digit:f '/' digit:g digit:h -> (a+b+c+d+'/'+e+f+'/'+g+h),
-  time = digit:c digit:d ':' digit: e digit:f ':' digit:g digit:h -> (c+d+':'+e+f+':'+g+h),
+  date = < digit digit digit digit '/' digit digit '/' digit digit > ,
+  time = < digit digit ':' digit digit ':' digit digit >,
+  fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
+  cr = char:r ?(r.charCodeAt(0) == 13),
   meeting = 
-	fromTo('', 'は'): title spaces 
+	fromTo2('', 'は'): title spaces 
 	date:date 'の' time:from '〜' time:to 'に' spaces
 	letter+:place  spaces 'で' spaces
-	( '-' spaces fromTo('', ' '))+:todo -> (
+	( spaces '-' spaces fromTo('', ' '))+:todo -> (
 		smalltalk.Event._new()._title_(title)
+		._date_(date)
 		._start_(from)._end_(to)
 		._place_(smalltalk[place.join("")])
 		._detail_(todo) )
@@ -629,7 +632,7 @@ jointStStudy02
 !
 
 latest
-	^ self meeting09
+	^ self meeting10
 !
 
 meeting02
@@ -755,13 +758,13 @@ meeting09
 }
 !
 
-grammer event:meeting > meeting10
-DyNagoya MTG #10 は
+grammer event:meeting > meeting10 
+DyNagoya MTG #10 は 
 2012/10/20の18:00:00〜20:00:00に
 Mattariya で
  - OMetaをいじる
  - Mistをいじたい
- - CPS変換祭り？
+ - CPS変換祭り
 ! !
 
 Widget subclass: #JSViewer
