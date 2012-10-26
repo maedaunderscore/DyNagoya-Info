@@ -316,6 +316,10 @@ val: aString
 
 !SourceArea methodsFor: 'actions'!
 
+browseIt
+    self doIt browser onDialog
+!
+
 clear
       self val: ''
 !
@@ -345,6 +349,11 @@ handleKeyDown: anEvent
 //		if(anEvent.keyCode === 80) { //ctrl+p
 		if(anEvent.keyCode === 64) { //ctrl+@
 			self._printIt();
+			anEvent.preventDefault();
+			return false;
+		}
+		if(anEvent.keyCode === 190) { // ctrl + greater
+			self._browseIt();
 			anEvent.preventDefault();
 			return false;
 		}
