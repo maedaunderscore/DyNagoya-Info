@@ -1482,7 +1482,8 @@ visitOMetaDefineNode: aNode
 	nestedBlocks := 0.
 	earlyReturn := false.
 
-	jsMethod := 'smalltalk.', (self methodName: currentClass), '.', aNode name.
+"	jsMethod := 'smalltalk.', (self methodName: currentClass), '.', aNode name."
+	jsMethod := aNode name.
 	tree := BSOMetaJSParser matchAll: aNode body rule: 'topLevel'.
 	jsParser := BSOMetaJSTranslator match:tree rule:'trans'.
 
@@ -1493,7 +1494,7 @@ visitOMetaDefineNode: aNode
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
 	stream 
 		nextPutAll: 'fn:function(){ 
-			if(', jsMethod , ' == null){ smalltalk.', (self methodName: currentClass), '.', jsParser, '}
+			if(', jsMethod , ' == null){ ', jsParser, '}
 			return ', jsMethod , ';
 			},';lf;
 		nextPutAll: '
