@@ -615,6 +615,25 @@ ometa Event {
 }
 !
 
+ometa Events {
+  date = < digit digit digit digit '/' digit digit '/' digit digit > ,
+  time = < digit digit ':' digit digit ':' digit digit >,
+  fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
+  eol = <( ~cr char )*>:body (cr | empty) -> body,
+  cr = char:r ?{r.charCodeAt(0) == 10},
+  meeting = 
+	fromTo2('', 'は'): title spaces 
+	date:date 'の' time:from '〜' time:to 'に' spaces
+	<letter+>:place  spaces 'で' spaces
+	( spaces '-' spaces eol)+:todo -> (
+		smalltalk.Event._new()._title_(title)
+		._date_(date)
+		._start_(from)._end_(to)
+		._place_(smalltalk[place])
+		._detail_(todo) )
+}
+!
+
 jointStStudy02
 	^ self new 
 		fixed: true;
@@ -759,7 +778,7 @@ meeting09
 }
 !
 
-grammer Event:meeting > meeting10 
+grammer Events:meeting > meeting10 
 DyNagoya MTG #10 は 
 2012/10/20の18:00:00〜20:00:00に
 Mattariya で
