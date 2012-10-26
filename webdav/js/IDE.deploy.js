@@ -430,6 +430,18 @@ fn: function () {
 smalltalk.SourceArea);
 
 smalltalk.addMethod(
+"_browseIt",
+smalltalk.method({
+selector: "browseIt",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_doIt", []), "_browser", []), "_onDialog", []);
+    return self;
+}
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
 "_clear",
 smalltalk.method({
 selector: "clear",
@@ -537,6 +549,11 @@ fn: function (anEvent) {
     if (anEvent.ctrlKey) {
         if (anEvent.keyCode === 64) {
             self._printIt();
+            anEvent.preventDefault();
+            return false;
+        }
+        if (anEvent.keyCode === 190) {
+            self._browseIt();
             anEvent.preventDefault();
             return false;
         }
