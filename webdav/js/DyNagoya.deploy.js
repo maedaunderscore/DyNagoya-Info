@@ -943,6 +943,19 @@ fn: function () {
 smalltalk.Event.klass);
 
 smalltalk.addMethod(
+"_Events",
+smalltalk.method({
+selector: "Events",
+fn: function () {
+    if (Events == null) {
+        Events = objectThatDelegatesTo(OMeta, {date: function () {var $elf = this, _fromIdx = this.input.idx;return this._consumedBy(function () {return function () {this._apply("digit");this._apply("digit");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", "/");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", "/");this._apply("digit");return this._apply("digit");}.call(this);});}, time: function () {var $elf = this, _fromIdx = this.input.idx;return this._consumedBy(function () {return function () {this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", ":");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", ":");this._apply("digit");return this._apply("digit");}.call(this);});}, fromTo2: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, meeting: function () {var $elf = this, _fromIdx = this.input.idx, title, date, from, to, place, todo;return function () {title = this._applyWithArgs("fromTo2", "", "\u306F");this._apply("spaces");date = this._apply("date");this._applyWithArgs("exactly", "\u306E");from = this._apply("time");this._applyWithArgs("exactly", "\u301C");to = this._apply("time");this._applyWithArgs("exactly", "\u306B");this._apply("spaces");place = this._consumedBy(function () {return this._many1(function () {return this._apply("letter");});});this._apply("spaces");this._applyWithArgs("exactly", "\u3067");this._apply("spaces");todo = this._many1(function () {return function () {this._apply("spaces");this._applyWithArgs("exactly", "-");this._apply("spaces");return this._apply("eol");}.call(this);});return smalltalk.Event._new()._title_(title)._date_(date)._start_(from)._end_(to)._place_(smalltalk[place])._detail_(todo);}.call(this);}});
+    }
+    return Events;
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
 "_jointStStudy02",
 smalltalk.method({
 selector: "jointStStudy02",
@@ -1067,7 +1080,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "meeting10",
 fn: function () {
-    return this._Event().matchAll("DyNagoya MTG #10 \u306F \n2012/10/20\u306E18:00:00\u301C20:00:00\u306B\nMattariya \u3067\n - OMeta\u3092\u3044\u3058\u308B\n - Mist\u3092\u3044\u3058\u305F\u3044\n - CPS\u5909\u63DB\u796D\u308A", "meeting");
+    return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/10/20\u306E18:00:00\u301C20:00:00\u306B\nMattariya \u3067\n - OMeta\u3092\u3044\u3058\u308B\n - Mist\u3092\u3044\u3058\u305F\u3044\n - CPS\u5909\u63DB\u796D\u308A", "meeting");
 }
 }),
 smalltalk.Event.klass);
