@@ -596,26 +596,7 @@ renderOn: html
 
 !Event class methodsFor: 'events'!
 
-ometa Event { 
-  date = < digit digit digit digit '/' digit digit '/' digit digit > ,
-  time = < digit digit ':' digit digit ':' digit digit >,
-  fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
-  eol = <( ~cr char )*>:body (cr | empty) -> body,
-  cr = char:r ?{r.charCodeAt(0) == 10},
-  meeting = 
-	fromTo2('', 'は'): title spaces 
-	date:date 'の' time:from '〜' time:to 'に' spaces
-	<letter+>:place  spaces 'で' spaces
-	( spaces '-' spaces eol)+:todo -> (
-		smalltalk.Event._new()._title_(title)
-		._date_(date)
-		._start_(from)._end_(to)
-		._place_(smalltalk[place])
-		._detail_(todo) )
-}
-!
-
-ometa Events {
+ometa Events  {
   date = < digit digit digit digit '/' digit digit '/' digit digit > ,
   time = < digit digit ':' digit digit ':' digit digit >,
   fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
