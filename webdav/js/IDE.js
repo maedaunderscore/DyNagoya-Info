@@ -590,6 +590,23 @@ referencedClasses: []
 smalltalk.SourceArea);
 
 smalltalk.addMethod(
+"_browseIt",
+smalltalk.method({
+selector: "browseIt",
+category: 'actions',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(self, "_doIt", []), "_browser", []), "_onDialog", []);
+    return self;
+},
+args: [],
+source: "browseIt\x0a    self doIt browser onDialog",
+messageSends: ["onDialog", "browser", "doIt"],
+referencedClasses: []
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
 "_clear",
 smalltalk.method({
 selector: "clear",
@@ -736,6 +753,11 @@ fn: function (anEvent) {
             anEvent.preventDefault();
             return false;
         }
+        if (anEvent.keyCode === 190) {
+            self._browseIt();
+            anEvent.preventDefault();
+            return false;
+        }
         if (anEvent.keyCode === 68) {
             self._doIt();
             anEvent.preventDefault();
@@ -750,7 +772,7 @@ fn: function (anEvent) {
     return self;
 },
 args: ["anEvent"],
-source: "handleKeyDown: anEvent\x0a    <\x0a\x09if(anEvent.ctrlKey) {\x0a//\x09\x09if(anEvent.keyCode === 80) { //ctrl+p\x0a\x09\x09if(anEvent.keyCode === 64) { //ctrl+@\x0a\x09\x09\x09self._printIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 68) { //ctrl+d\x0a\x09\x09\x09self._doIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 73) { //ctrl+i\x0a\x09\x09\x09self._inspectIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}>",
+source: "handleKeyDown: anEvent\x0a    <\x0a\x09if(anEvent.ctrlKey) {\x0a//\x09\x09if(anEvent.keyCode === 80) { //ctrl+p\x0a\x09\x09if(anEvent.keyCode === 64) { //ctrl+@\x0a\x09\x09\x09self._printIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 190) { // ctrl + greater\x0a\x09\x09\x09self._browseIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 68) { //ctrl+d\x0a\x09\x09\x09self._doIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09\x09if(anEvent.keyCode === 73) { //ctrl+i\x0a\x09\x09\x09self._inspectIt();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}>",
 messageSends: [],
 referencedClasses: []
 }),
