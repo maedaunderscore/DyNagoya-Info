@@ -1494,7 +1494,7 @@ visitOMetaDefineNode: aNode
 	stream nextPutAll: 'source: ', self source asJavascript, ',';lf.
 	stream 
 		nextPutAll: 'fn:function(){ 
-			if(', jsMethod , ' == null){ ', jsParser, '}
+			if( typeof ', jsMethod, ' === "undefined" || ', jsMethod , ' == null){ ', jsParser, '}
 			return ', jsMethod , ';
 			},';lf;
 		nextPutAll: '
