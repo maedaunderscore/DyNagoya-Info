@@ -1298,12 +1298,12 @@ selector: "event",
 category: 'events',
 fn: function () {
     if (smalltalk.Event.event == null) {
-        smalltalk.Event.event = objectThatDelegatesTo(OMeta, {date: function () {var $elf = this, _fromIdx = this.input.idx, a, b, c, d, e, f, g, h;return function () {a = this._apply("digit");b = this._apply("digit");c = this._apply("digit");d = this._apply("digit");this._applyWithArgs("exactly", "/");e = this._apply("digit");f = this._apply("digit");this._applyWithArgs("exactly", "/");g = this._apply("digit");h = this._apply("digit");return a + b + c + d + "/" + e + f + "/" + g + h;}.call(this);}, time: function () {var $elf = this, _fromIdx = this.input.idx, c, d, e, f, g, h;return function () {c = this._apply("digit");d = this._apply("digit");this._applyWithArgs("exactly", ":");e = this._apply("digit");f = this._apply("digit");this._applyWithArgs("exactly", ":");g = this._apply("digit");h = this._apply("digit");return c + d + ":" + e + f + ":" + g + h;}.call(this);}, meeting: function () {var $elf = this, _fromIdx = this.input.idx, title, date, from, to, place, todo;return function () {title = this._applyWithArgs("fromTo", "", "\u306F");this._apply("spaces");date = this._apply("date");this._applyWithArgs("exactly", "\u306E");from = this._apply("time");this._applyWithArgs("exactly", "\u301C");to = this._apply("time");this._applyWithArgs("exactly", "\u306B");this._apply("spaces");place = this._many1(function () {return this._apply("letter");});this._apply("spaces");this._applyWithArgs("exactly", "\u3067");this._apply("spaces");todo = this._many1(function () {return function () {this._applyWithArgs("exactly", "-");this._apply("spaces");return this._applyWithArgs("fromTo", "", " ");}.call(this);});return smalltalk.Event._new()._title_(title)._start_(from)._end_(to)._place_(smalltalk[place.join("")])._detail_(todo);}.call(this);}});
+        smalltalk.Event.event = objectThatDelegatesTo(OMeta, {date: function () {var $elf = this, _fromIdx = this.input.idx;return this._consumedBy(function () {return function () {this._apply("digit");this._apply("digit");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", "/");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", "/");this._apply("digit");return this._apply("digit");}.call(this);});}, time: function () {var $elf = this, _fromIdx = this.input.idx;return this._consumedBy(function () {return function () {this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", ":");this._apply("digit");this._apply("digit");this._applyWithArgs("exactly", ":");this._apply("digit");return this._apply("digit");}.call(this);});}, fromTo2: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 13);}.call(this);}, meeting: function () {var $elf = this, _fromIdx = this.input.idx, title, date, from, to, place, todo;return function () {title = this._applyWithArgs("fromTo2", "", "\u306F");this._apply("spaces");date = this._apply("date");this._applyWithArgs("exactly", "\u306E");from = this._apply("time");this._applyWithArgs("exactly", "\u301C");to = this._apply("time");this._applyWithArgs("exactly", "\u306B");this._apply("spaces");place = this._many1(function () {return this._apply("letter");});this._apply("spaces");this._applyWithArgs("exactly", "\u3067");this._apply("spaces");todo = this._many1(function () {return function () {this._apply("spaces");this._applyWithArgs("exactly", "-");this._apply("spaces");return this._applyWithArgs("fromTo", "", " ");}.call(this);});return smalltalk.Event._new()._title_(title)._date_(date)._start_(from)._end_(to)._place_(smalltalk[place.join("")])._detail_(todo);}.call(this);}});
     }
     return smalltalk.Event.event;
 },
 args: [],
-source: "ometa event {\x0a  date = digit: a digit:b digit:c digit:d '/' digit: e digit:f '/' digit:g digit:h -> (a+b+c+d+'/'+e+f+'/'+g+h),\x0a  time = digit:c digit:d ':' digit: e digit:f ':' digit:g digit:h -> (c+d+':'+e+f+':'+g+h),\x0a  meeting = \x0a\x09fromTo('', 'は'): title spaces \x0a\x09date:date 'の' time:from '〜' time:to 'に' spaces\x0a\x09letter+:place  spaces 'で' spaces\x0a\x09( '-' spaces fromTo('', ' '))+:todo -> (\x0a\x09\x09smalltalk.Event._new()._title_(title)\x0a\x09\x09._start_(from)._end_(to)\x0a\x09\x09._place_(smalltalk[place.join(\x22\x22)])\x0a\x09\x09._detail_(todo) )\x0a}",
+source: "ometa event {\x0a  date = < digit digit digit digit '/' digit digit '/' digit digit > ,\x0a  time = < digit digit ':' digit digit ':' digit digit >,\x0a  fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,\x0a  cr = char:r ?(r.charCodeAt(0) == 13),\x0a  meeting = \x0a\x09fromTo2('', 'は'): title spaces \x0a\x09date:date 'の' time:from '〜' time:to 'に' spaces\x0a\x09letter+:place  spaces 'で' spaces\x0a\x09( spaces '-' spaces fromTo('', ' '))+:todo -> (\x0a\x09\x09smalltalk.Event._new()._title_(title)\x0a\x09\x09._date_(date)\x0a\x09\x09._start_(from)._end_(to)\x0a\x09\x09._place_(smalltalk[place.join(\x22\x22)])\x0a\x09\x09._detail_(todo) )\x0a}",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1333,12 +1333,12 @@ selector: "latest",
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting09", []);
+    return smalltalk.send(self, "_meeting10", []);
     return self;
 },
 args: [],
-source: "latest\x0a\x09^ self meeting09",
-messageSends: ["meeting09"],
+source: "latest\x0a\x09^ self meeting10",
+messageSends: ["meeting10"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -1485,10 +1485,10 @@ smalltalk.method({
 selector: "meeting10",
 category: 'events',
 fn: function () {
-    return this._event().matchAll("DyNagoya MTG #10 \u306F\n2012/10/20\u306E18:00:00\u301C20:00:00\u306B\nMattariya \u3067\n - OMeta\u3092\u3044\u3058\u308B\n - Mist\u3092\u3044\u3058\u305F\u3044\n - CPS\u5909\u63DB\u796D\u308A\uFF1F", "meeting");
+    return this._event().matchAll("DyNagoya MTG #10 \u306F \n2012/10/20\u306E18:00:00\u301C20:00:00\u306B\nMattariya \u3067\n - OMeta\u3092\u3044\u3058\u308B\n - Mist\u3092\u3044\u3058\u305F\u3044\n - CPS\u5909\u63DB\u796D\u308A", "meeting");
 },
 args: [],
-source: "grammer event:meeting > meeting10\x0aDyNagoya MTG #10 は\x0a2012/10/20の18:00:00〜20:00:00に\x0aMattariya で\x0a - OMetaをいじる\x0a - Mistをいじたい\x0a - CPS変換祭り？",
+source: "grammer event:meeting > meeting10 \x0aDyNagoya MTG #10 は \x0a2012/10/20の18:00:00〜20:00:00に\x0aMattariya で\x0a - OMetaをいじる\x0a - Mistをいじたい\x0a - CPS変換祭り",
 messageSends: [],
 referencedClasses: []
 }),
