@@ -851,7 +851,7 @@ smalltalk.EntryPoint.klass);
 
 
 smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail', 'fixed'], 'DyNagoya');
-smalltalk.Event.comment="Event latest addToDSTokai\x0aEvent latest tweet"
+smalltalk.Event.comment="\x0aEvent latest addToDSTokai\x0aEvent latest tweet"
 smalltalk.addMethod(
 "_addToCalendar",
 smalltalk.method({
