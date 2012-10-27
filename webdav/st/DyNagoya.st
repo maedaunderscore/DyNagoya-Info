@@ -599,11 +599,11 @@ renderOn: html
 ometa Events  {
   date = < digit digit digit digit '/' digit digit '/' digit digit > ,
   time = < digit digit ':' digit digit ':' digit digit >,
-  fromTo2 :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
+  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
   eol = <( ~cr char )*>:body (cr | empty) -> body,
   cr = char:r ?{r.charCodeAt(0) == 10},
   meeting = 
-	fromTo2('', 'は'): title spaces 
+	fromTo('', 'は'): title spaces 
 	date:date 'の' time:from '〜' time:to 'に' spaces
 	<letter+>:place  spaces 'で' spaces
 	( spaces '-' spaces eol)+:todo -> (
@@ -763,9 +763,9 @@ grammer Events:meeting > meeting10
 DyNagoya MTG #10 は 
 2012/10/20の18:00:00〜20:00:00に
 Mattariya で
- - OMetaをいじる
- - Mistをいじたい
- - CPS変換祭り
+ - OMetaパフォーマンスチューニング
+ - OMeta名前空間をちゃんとする
+ - NGKのネタを考える
 ! !
 
 Widget subclass: #JSViewer
