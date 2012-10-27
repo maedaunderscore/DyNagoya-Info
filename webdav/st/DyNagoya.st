@@ -761,8 +761,8 @@ meeting09
 
 grammer Events:meeting > meeting10 
 DyNagoya MTG #10 は 
-2012/10/20の18:00:00〜20:00:00に
-Mattariya で
+2012/11/10の18:00:00〜20:00:00に
+Takoichi で
  - OMetaパフォーマンスチューニング
  - OMeta名前空間をちゃんとする
  - NGKのネタを考える
@@ -1572,6 +1572,24 @@ url
 	^ 'http://www.coffeekako.com/index.html'
 ! !
 
+Place subclass: #Kakureya
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Kakureya methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市千種区四谷通1-8 ラフォーレ四ツ谷B1'
+!
+
+name
+	^ '洞食空間 隠れ家'
+!
+
+url
+	^ 'http://gourmet.walkerplus.com/157158314001/index.html'
+! !
+
 Place subclass: #Katatumuri
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -1736,6 +1754,28 @@ name
 
 url
 	^ 'http://www.math.nagoya-u.ac.jp/ja/direction/campus.html'
+! !
+
+Place subclass: #Takoichi
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Takoichi methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区大須3-10-11'
+!
+
+name
+	^ 'たこいち 大須店'
+!
+
+tel
+  ^ '０５２－２５１－３０３３'
+!
+
+url
+	^ 'http://tako1.net/'
 ! !
 
 Place subclass: #Vinceness
