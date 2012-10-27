@@ -1067,7 +1067,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "meeting10",
 fn: function () {
-    return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/10/20\u306E18:00:00\u301C20:00:00\u306B\nMattariya \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
+    return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E18:00:00\u301C20:00:00\u306B\nTakoichi \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
 }
 }),
 smalltalk.Event.klass);
@@ -2272,6 +2272,45 @@ smalltalk.Kako);
 
 
 
+smalltalk.addClass('Kakureya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u56DB\u8C37\u901A1-8 \u30E9\u30D5\u30A9\u30FC\u30EC\u56DB\u30C4\u8C37B1";
+    return self;
+}
+}),
+smalltalk.Kakureya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u6D1E\u98DF\u7A7A\u9593 \u96A0\u308C\u5BB6";
+    return self;
+}
+}),
+smalltalk.Kakureya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://gourmet.walkerplus.com/157158314001/index.html";
+    return self;
+}
+}),
+smalltalk.Kakureya);
+
+
+
 smalltalk.addClass('Katatumuri', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 "_address",
@@ -2632,6 +2671,57 @@ fn: function () {
 }
 }),
 smalltalk.Tagen);
+
+
+
+smalltalk.addClass('Takoichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u5927\u98083-10-11";
+    return self;
+}
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u305F\u3053\u3044\u3061 \u5927\u9808\u5E97";
+    return self;
+}
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_tel",
+smalltalk.method({
+selector: "tel",
+fn: function () {
+    var self = this;
+    return "\uFF10\uFF15\uFF12\uFF0D\uFF12\uFF15\uFF11\uFF0D\uFF13\uFF10\uFF13\uFF13";
+    return self;
+}
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://tako1.net/";
+    return self;
+}
+}),
+smalltalk.Takoichi);
 
 
 
