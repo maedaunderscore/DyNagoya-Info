@@ -1133,6 +1133,23 @@ referencedClasses: []
 smalltalk.Event);
 
 smalltalk.addMethod(
+"_ifJS",
+smalltalk.method({
+selector: "ifJS",
+category: 'google calendar',
+fn: function () {
+    var self = this;
+    return "\n\tvar ret = new this();\n\tret.title(\"DyNagoya MTG \uFF0309\");\n\tret.date(\"2012/10/20\");\n\tret.start(\"18:00:00\");\n\tret.end(\"20:00:00\");\n\tret.place(Mattariya);\n\tret.detail( [\n\t\t\t\"OMeta\u3092\u3044\u3058\u308B\",\n\t\t\t\"Mist\u3092\u3044\u3058\u305F\u3044\",\n\t\t\t\"CPS\u5909\u63DB\u796D\u308A?\"\n\t\t]);\n\treturn ret;\n";
+    return self;
+},
+args: [],
+source: "ifJS\x0a  ^ '\x0a\x09var ret = new this();\x0a\x09ret.title(\x22DyNagoya MTG ＃09\x22);\x0a\x09ret.date(\x222012/10/20\x22);\x0a\x09ret.start(\x2218:00:00\x22);\x0a\x09ret.end(\x2220:00:00\x22);\x0a\x09ret.place(Mattariya);\x0a\x09ret.detail( [\x0a\x09\x09\x09\x22OMetaをいじる\x22,\x0a\x09\x09\x09\x22Mistをいじたい\x22,\x0a\x09\x09\x09\x22CPS変換祭り?\x22\x0a\x09\x09]);\x0a\x09return ret;\x0a'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event);
+
+smalltalk.addMethod(
 "_join",
 smalltalk.method({
 selector: "join",
@@ -1469,12 +1486,12 @@ selector: "meeting09",
 category: 'events',
 fn: function () {
     var self = this;
-    return function ($rec) {smalltalk.send($rec, "_fixed_", [true]);smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0309"]);smalltalk.send($rec, "_date_", ["2012/10/20"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Mattariya || Mattariya]);return smalltalk.send($rec, "_detail_", [["OMeta\u3092\u3044\u3058\u308B", "Mist\u3092\u3044\u3058\u305F\u3044", "CPS\u5909\u63DB\u796D\u308A?"]]);}(smalltalk.send(self, "_new", []));
+    return function ($rec) {smalltalk.send($rec, "_title_", ["DyNagoya MTG \uFF0309"]);smalltalk.send($rec, "_date_", ["2012/10/20"]);smalltalk.send($rec, "_start_", ["18:00:00"]);smalltalk.send($rec, "_end_", ["20:00:00"]);smalltalk.send($rec, "_place_", [smalltalk.Mattariya || Mattariya]);return smalltalk.send($rec, "_detail_", [["OMeta\u3092\u3044\u3058\u308B", "Mist\u3092\u3044\u3058\u305F\u3044", "CPS\u5909\u63DB\u796D\u308A?"]]);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: "meeting09\x0a\x09^ self new \x0a\x09\x09fixed: true;\x0a\x09\x09title: 'DyNagoya MTG ＃09';\x0a\x09\x09date: '2012/10/20';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:00:00';\x0a\x09\x09place: Mattariya;\x0a\x09\x09detail: {\x0a'OMetaをいじる'.\x0a'Mistをいじたい'.\x0a'CPS変換祭り?'\x0a}",
-messageSends: ["fixed:", "title:", "date:", "start:", "end:", "place:", "detail:", "new"],
+source: "meeting09\x0a\x09^ self new \x0a\x09\x09title: 'DyNagoya MTG ＃09';\x0a\x09\x09date: '2012/10/20';\x0a\x09\x09start: '18:00:00';\x0a\x09\x09end: '20:00:00';\x0a\x09\x09place: Mattariya;\x0a\x09\x09detail: {\x0a\x09\x09\x09'OMetaをいじる'.\x0a\x09\x09\x09'Mistをいじたい'.\x0a\x09\x09\x09'CPS変換祭り?'\x0a\x09\x09}",
+messageSends: ["title:", "date:", "start:", "end:", "place:", "detail:", "new"],
 referencedClasses: ["Mattariya"]
 }),
 smalltalk.Event.klass);
@@ -1488,7 +1505,7 @@ fn: function () {
     return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E18:00:00\u301C20:00:00\u306B\nTakoichi \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
 },
 args: [],
-source: "grammer Events:meeting > meeting10 \x0aDyNagoya MTG #10 は \x0a2012/11/10の18:00:00〜20:00:00に\x0aTakoichi で\x0a - OMetaパフォーマンスチューニング\x0a - OMeta名前空間をちゃんとする\x0a - NGKのネタを考える",
+source: "grammer Events:meeting > meeting10 \x0a\x0aDyNagoya MTG #10 は \x0a2012/11/10の18:00:00〜20:00:00に\x0aTakoichi で\x0a - OMetaパフォーマンスチューニング\x0a - OMeta名前空間をちゃんとする\x0a - NGKのネタを考える",
 messageSends: [],
 referencedClasses: []
 }),
@@ -3930,12 +3947,12 @@ selector: "flip:",
 category: 'action',
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_skew_", [aPage]);
+    smalltalk.send(self, "_roll_", [aPage]);
     return self;
 },
 args: ["aPage"],
-source: "flip: aPage\x0a\x09self skew: aPage",
-messageSends: ["skew:"],
+source: "flip: aPage\x0a\x09self roll: aPage",
+messageSends: ["roll:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
