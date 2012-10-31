@@ -6,7 +6,7 @@ ws             = (separator / comments)*
 identifier     = first:[a-zA-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
 varIdentifier  = 
                  first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
-	       / '%' num:[0-9]+ { return 'thisisplaceholder' + num }
+	       / '%' num:[0-9]+ { return 'thisisplaceholder' + num[0] }
 
 keyword        = first:identifier last:[:] {return first + last}
 className      = first:[A-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
