@@ -574,7 +574,7 @@ smalltalk.parser = (function(){
             pos = savedPos1;
           }
           var result3 = result2 !== null
-            ? (function(num) { return 'thisisplaceholder' + num })(result2[1])
+            ? (function(num) { return 'thisisplaceholder' + num[0] })(result2[1])
             : null;
           if (result3 !== null) {
             var result1 = result3;
