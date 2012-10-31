@@ -972,7 +972,7 @@ smalltalk.method({
 selector: "latest",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting10", []);
+    return smalltalk.send(self, "_meeting09", []);
     return self;
 }
 }),
@@ -2850,7 +2850,7 @@ smalltalk.method({
 selector: "flip:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_roll_", [aPage]);
+    smalltalk.send(self, "_skew_", [aPage]);
     return self;
 }
 }),
