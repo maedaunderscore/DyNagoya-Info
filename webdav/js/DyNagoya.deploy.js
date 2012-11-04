@@ -2222,6 +2222,45 @@ smalltalk.Hina);
 
 
 
+smalltalk.addClass('Imoni', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u7DD1\u533A\u5927\u9AD8\u753A\u5B57\u9AD8\u5C71\uFF11\uFF0D\uFF11";
+    return self;
+}
+}),
+smalltalk.Imoni);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u828B\u716E\u4F1A#2";
+    return self;
+}
+}),
+smalltalk.Imoni);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://partake.in/events/5e2b77db-4d10-4f7d-bba9-50d1890b104d";
+    return self;
+}
+}),
+smalltalk.Imoni);
+
+
+
 smalltalk.addClass('Kako', smalltalk.Place, [], 'DyNagoya');
 smalltalk.addMethod(
 "_address",
