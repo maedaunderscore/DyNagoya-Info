@@ -1561,6 +1561,24 @@ url
 	^ 'http://r.tabelog.com/aichi/A2301/A230103/23040495/'
 ! !
 
+Place subclass: #Imoni
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Imoni methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市緑区大高町字高山１－１'
+!
+
+name
+	^ '名古屋芋煮会#2'
+!
+
+url
+	^ 'http://partake.in/events/5e2b77db-4d10-4f7d-bba9-50d1890b104d'
+! !
+
 Place subclass: #Kako
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
