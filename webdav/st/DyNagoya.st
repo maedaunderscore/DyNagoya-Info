@@ -780,7 +780,7 @@ grammer Events:meeting > meeting10
 
 DyNagoya MTG #10 は 
 2012/11/10の18:00:00〜20:00:00に
-Takoichi で
+Imoni で
  - OMetaパフォーマンスチューニング
  - OMeta名前空間をちゃんとする
  - NGKのネタを考える
