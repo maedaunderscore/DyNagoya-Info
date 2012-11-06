@@ -126,6 +126,7 @@ renderBodyOn: html
 
 renderOn: html
 	html div 
+		class: self class asString, ' animated';
 		style: (self style);
 		|> [ %1 asJQuery draggable: (self dragOption)];
 		with: [ self renderBodyOn: html ]
