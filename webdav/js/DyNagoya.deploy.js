@@ -972,7 +972,7 @@ smalltalk.method({
 selector: "latest",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting09", []);
+    return smalltalk.send(self, "_meeting10", []);
     return self;
 }
 }),
