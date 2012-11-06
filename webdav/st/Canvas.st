@@ -688,6 +688,10 @@ title: aString
     self at: 'title' put: aString
 !
 
+toggleClass: name
+    self asJQuery toggleClass: name
+!
+
 type: aString
     self at: 'type' put: aString
 !
