@@ -1079,7 +1079,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "meeting10",
 fn: function () {
-    return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E18:00:00\u301C20:00:00\u306B\nTakoichi \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
+    return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E18:00:00\u301C20:00:00\u306B\nImoni \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
 }
 }),
 smalltalk.Event.klass);
