@@ -1350,12 +1350,12 @@ selector: "latest",
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting09", []);
+    return smalltalk.send(self, "_meeting10", []);
     return self;
 },
 args: [],
-source: "latest\x0a\x09^ self meeting09",
-messageSends: ["meeting09"],
+source: "latest\x0a\x09^ self meeting10",
+messageSends: ["meeting10"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
