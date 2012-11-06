@@ -3172,6 +3172,23 @@ referencedClasses: []
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_toggleClass_",
+smalltalk.method({
+selector: "toggleClass:",
+category: 'attributes',
+fn: function (name) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_toggleClass_", [name]);
+    return self;
+},
+args: ["name"],
+source: "toggleClass: name\x0a    self asJQuery toggleClass: name",
+messageSends: ["toggleClass:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_toggleContents_",
 smalltalk.method({
 selector: "toggleContents:",
