@@ -2247,6 +2247,18 @@ fn: function (aString) {
 smalltalk.TagBrush);
 
 smalltalk.addMethod(
+"_toggleClass_",
+smalltalk.method({
+selector: "toggleClass:",
+fn: function (name) {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_asJQuery", []), "_toggleClass_", [name]);
+    return self;
+}
+}),
+smalltalk.TagBrush);
+
+smalltalk.addMethod(
 "_toggleContents_",
 smalltalk.method({
 selector: "toggleContents:",
