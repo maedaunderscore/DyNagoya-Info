@@ -651,7 +651,7 @@ jointStStudy02
 !
 
 latest
-	^ self meeting09
+	^ self meeting10
 !
 
 meeting02
