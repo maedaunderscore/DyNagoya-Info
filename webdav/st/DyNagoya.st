@@ -1870,32 +1870,28 @@ Widget subclass: #Screen
 
 !Screen methodsFor: 'action'!
 
-flip: aPage
-	self skew: aPage
+fade: aPage
+	self flip: aPage before: 'fadeOutDown' after: 'fadeInUp'
 !
 
-flip: aPage before: beforeBlock after: afterBlock
-	beforeBlock value: self value: self current.
+flip: aPage
+	self fade: aPage
+!
+
+flip: aPage before: beforeMethod after: afterMethod
+	self animateOut: (self current) method: beforeMethod.
 	self nextIndex.
 	page := aPage.
 	aPage updateToJQuery: (self current).
-	afterBlock value: self value: self current.
-!
-
-page
-  ^ page
+	self animateIn: (self current) method: afterMethod
 !
 
 roll: aPage
-	self flip: aPage before: [ %1 rollOut: %2] after: [%1 rollIn: %2]
+	self flip: aPage before: 'rollOut' after: 'rollIn'
 !
 
 skew: aPage
-	self flip: aPage before: [ %1 skewOut: %2] after: [%1 skewIn: %2]
-!
-
-zoom: aPage
-	self flip: aPage before: [ %1 zoomOut: %2] after: [%1 zoomIn: %2]
+	self flip: aPage before: 'lightSpeedOut' after: 'lightSpeedIn'
 ! !
 
 !Screen methodsFor: 'initialization'!
@@ -1905,6 +1901,16 @@ initialize
 ! !
 
 !Screen methodsFor: 'private'!
+
+animateIn: jq method: aString
+  jq show; toggleClass: aString.
+  [jq toggleClass: aString]  valueWithTimeout:1000
+!
+
+animateOut: jq method: aString
+  jq toggleClass: aString.
+  [jq hide; toggleClass: aString]  valueWithTimeout:1000
+!
 
 current
 	^ ('#layer', index) asJQuery
@@ -1919,49 +1925,15 @@ nextIndex
 	^ index
 !
 
-normalize
-  ^ (< { skewX: '0deg', 
-    scale: 1.0, x: 0, 
-    rotate: '0', opacity: 1, 
-    duration: 2000 } >)
-!
-
-rollIn: jq
-  jq show; 
-	css: (< { x: -100, scale:0.3, rotate: '-15deg'} >);
-	|> [ %1 transition: self normalize ]
-!
-
-rollOut: jq
-"	jq removeClass addClass: 'animated rollOut'"
-  jq transition: (< { x: 300, rotate: '8deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]
-!
-
-skewIn: jq
-  jq show;
-  css: (< { skewX: '40deg' } >);
-  |> [ %1 transition: self normalize]
-!
-
-skewOut: jq
-  jq transition: (< { skewX: '-40deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]
-!
-
-zoomIn: jq
-  jq show;
-  |> [ %1 transition: self normalize]
-!
-
-zoomOut: jq
-  jq transition: (< { scale:3.0, opacity: 0, 
-    duration: 2000 } >) callback: [ jq hide ]
+page
+  ^ page
 ! !
 
 !Screen methodsFor: 'rendering'!
 
 renderOn: html
 	html div id: 'screen'; with: [
-		(1 to: 2 ) do: [ html div id: 'layer', %1 ]
+		(1 to: 2 ) do: [ html div id: 'layer', %1; class: 'animated' ]
 	]
 ! !
 

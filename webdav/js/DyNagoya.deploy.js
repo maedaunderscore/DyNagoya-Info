@@ -2884,6 +2884,32 @@ smalltalk.ZTres);
 
 smalltalk.addClass('Screen', smalltalk.Widget, ['index', 'page'], 'DyNagoya');
 smalltalk.addMethod(
+"_animateIn_method_",
+smalltalk.method({
+selector: "animateIn:method:",
+fn: function (jq, aString) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq));
+    smalltalk.send(function () {return smalltalk.send(jq, "_toggleClass_", [aString]);}, "_valueWithTimeout_", [1000]);
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_animateOut_method_",
+smalltalk.method({
+selector: "animateOut:method:",
+fn: function (jq, aString) {
+    var self = this;
+    smalltalk.send(jq, "_toggleClass_", [aString]);
+    smalltalk.send(function () {return function ($rec) {smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq);}, "_valueWithTimeout_", [1000]);
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
 "_current",
 smalltalk.method({
 selector: "current",
@@ -2896,12 +2922,24 @@ fn: function () {
 smalltalk.Screen);
 
 smalltalk.addMethod(
+"_fade_",
+smalltalk.method({
+selector: "fade:",
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_flip_before_after_", [aPage, "fadeOutDown", "fadeInUp"]);
+    return self;
+}
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
 "_flip_",
 smalltalk.method({
 selector: "flip:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_skew_", [aPage]);
+    smalltalk.send(self, "_fade_", [aPage]);
     return self;
 }
 }),
@@ -2911,13 +2949,13 @@ smalltalk.addMethod(
 "_flip_before_after_",
 smalltalk.method({
 selector: "flip:before:after:",
-fn: function (aPage, beforeBlock, afterBlock) {
+fn: function (aPage, beforeMethod, afterMethod) {
     var self = this;
-    smalltalk.send(beforeBlock, "_value_value_", [self, smalltalk.send(self, "_current", [])]);
+    smalltalk.send(self, "_animateOut_method_", [smalltalk.send(self, "_current", []), beforeMethod]);
     smalltalk.send(self, "_nextIndex", []);
     self['@page'] = aPage;
     smalltalk.send(aPage, "_updateToJQuery_", [smalltalk.send(self, "_current", [])]);
-    smalltalk.send(afterBlock, "_value_value_", [self, smalltalk.send(self, "_current", [])]);
+    smalltalk.send(self, "_animateIn_method_", [smalltalk.send(self, "_current", []), afterMethod]);
     return self;
 }
 }),
@@ -2961,18 +2999,6 @@ fn: function () {
 smalltalk.Screen);
 
 smalltalk.addMethod(
-"_normalize",
-smalltalk.method({
-selector: "normalize",
-fn: function () {
-    var self = this;
-    return {skewX: "0deg", scale: 1, x: 0, rotate: "0", opacity: 1, duration: 2000};
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
 "_page",
 smalltalk.method({
 selector: "page",
@@ -2990,7 +3016,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);return smalltalk.send($rec, "_class_", ["animated"]);}(smalltalk.send(html, "_div", []));}]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 }
 }),
@@ -3002,31 +3028,7 @@ smalltalk.method({
 selector: "roll:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_rollOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_rollIn_", [thisisplaceholder2]);}]);
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_rollIn_",
-smalltalk.method({
-selector: "rollIn:",
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: -100, scale: 0.3, rotate: "-15deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_rollOut_",
-smalltalk.method({
-selector: "rollOut:",
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{x: 300, rotate: "8deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
+    smalltalk.send(self, "_flip_before_after_", [aPage, "rollOut", "rollIn"]);
     return self;
 }
 }),
@@ -3038,67 +3040,7 @@ smalltalk.method({
 selector: "skew:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_skewOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_skewIn_", [thisisplaceholder2]);}]);
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_skewIn_",
-smalltalk.method({
-selector: "skewIn:",
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{skewX: "40deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_skewOut_",
-smalltalk.method({
-selector: "skewOut:",
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{skewX: "-40deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoom_",
-smalltalk.method({
-selector: "zoom:",
-fn: function (aPage) {
-    var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_zoomOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_zoomIn_", [thisisplaceholder2]);}]);
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoomIn_",
-smalltalk.method({
-selector: "zoomIn:",
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-}
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoomOut_",
-smalltalk.method({
-selector: "zoomOut:",
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{scale: 3, opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
+    smalltalk.send(self, "_flip_before_after_", [aPage, "lightSpeedOut", "lightSpeedIn"]);
     return self;
 }
 }),

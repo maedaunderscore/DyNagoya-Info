@@ -3995,6 +3995,42 @@ smalltalk.ZTres);
 
 smalltalk.addClass('Screen', smalltalk.Widget, ['index', 'page'], 'DyNagoya');
 smalltalk.addMethod(
+"_animateIn_method_",
+smalltalk.method({
+selector: "animateIn:method:",
+category: 'private',
+fn: function (jq, aString) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq));
+    smalltalk.send(function () {return smalltalk.send(jq, "_toggleClass_", [aString]);}, "_valueWithTimeout_", [1000]);
+    return self;
+},
+args: ["jq", "aString"],
+source: "animateIn: jq method: aString\x0a  jq show; toggleClass: aString.\x0a  [jq toggleClass: aString]  valueWithTimeout:1000\x0a",
+messageSends: ["show", "toggleClass:", "valueWithTimeout:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_animateOut_method_",
+smalltalk.method({
+selector: "animateOut:method:",
+category: 'private',
+fn: function (jq, aString) {
+    var self = this;
+    smalltalk.send(jq, "_toggleClass_", [aString]);
+    smalltalk.send(function () {return function ($rec) {smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq);}, "_valueWithTimeout_", [1000]);
+    return self;
+},
+args: ["jq", "aString"],
+source: "animateOut: jq method: aString\x0a  jq toggleClass: aString.\x0a  [jq hide; toggleClass: aString]  valueWithTimeout:1000",
+messageSends: ["toggleClass:", "valueWithTimeout:", "hide"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
 "_current",
 smalltalk.method({
 selector: "current",
@@ -4012,18 +4048,35 @@ referencedClasses: []
 smalltalk.Screen);
 
 smalltalk.addMethod(
+"_fade_",
+smalltalk.method({
+selector: "fade:",
+category: 'action',
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_flip_before_after_", [aPage, "fadeOutDown", "fadeInUp"]);
+    return self;
+},
+args: ["aPage"],
+source: "fade: aPage\x0a\x09self flip: aPage before: 'fadeOutDown' after: 'fadeInUp'",
+messageSends: ["flip:before:after:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
 "_flip_",
 smalltalk.method({
 selector: "flip:",
 category: 'action',
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_skew_", [aPage]);
+    smalltalk.send(self, "_fade_", [aPage]);
     return self;
 },
 args: ["aPage"],
-source: "flip: aPage\x0a\x09self skew: aPage",
-messageSends: ["skew:"],
+source: "flip: aPage\x0a\x09self fade: aPage",
+messageSends: ["fade:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
@@ -4033,18 +4086,18 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "flip:before:after:",
 category: 'action',
-fn: function (aPage, beforeBlock, afterBlock) {
+fn: function (aPage, beforeMethod, afterMethod) {
     var self = this;
-    smalltalk.send(beforeBlock, "_value_value_", [self, smalltalk.send(self, "_current", [])]);
+    smalltalk.send(self, "_animateOut_method_", [smalltalk.send(self, "_current", []), beforeMethod]);
     smalltalk.send(self, "_nextIndex", []);
     self['@page'] = aPage;
     smalltalk.send(aPage, "_updateToJQuery_", [smalltalk.send(self, "_current", [])]);
-    smalltalk.send(afterBlock, "_value_value_", [self, smalltalk.send(self, "_current", [])]);
+    smalltalk.send(self, "_animateIn_method_", [smalltalk.send(self, "_current", []), afterMethod]);
     return self;
 },
-args: ["aPage", "beforeBlock", "afterBlock"],
-source: "flip: aPage before: beforeBlock after: afterBlock\x0a\x09beforeBlock value: self value: self current.\x0a\x09self nextIndex.\x0a\x09page := aPage.\x0a\x09aPage updateToJQuery: (self current).\x0a\x09afterBlock value: self value: self current.",
-messageSends: ["value:value:", "current", "nextIndex", "updateToJQuery:"],
+args: ["aPage", "beforeMethod", "afterMethod"],
+source: "flip: aPage before: beforeMethod after: afterMethod\x0a\x09self animateOut: (self current) method: beforeMethod.\x0a\x09self nextIndex.\x0a\x09page := aPage.\x0a\x09aPage updateToJQuery: (self current).\x0a\x09self animateIn: (self current) method: afterMethod",
+messageSends: ["animateOut:method:", "current", "nextIndex", "updateToJQuery:", "animateIn:method:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
@@ -4102,27 +4155,10 @@ referencedClasses: []
 smalltalk.Screen);
 
 smalltalk.addMethod(
-"_normalize",
-smalltalk.method({
-selector: "normalize",
-category: 'private',
-fn: function () {
-    var self = this;
-    return {skewX: "0deg", scale: 1, x: 0, rotate: "0", opacity: 1, duration: 2000};
-    return self;
-},
-args: [],
-source: "normalize\x0a  ^ (< { skewX: '0deg', \x0a    scale: 1.0, x: 0, \x0a    rotate: '0', opacity: 1, \x0a    duration: 2000 } >)",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
 "_page",
 smalltalk.method({
 selector: "page",
-category: 'action',
+category: 'private',
 fn: function () {
     var self = this;
     return self['@page'];
@@ -4142,12 +4178,12 @@ selector: "renderOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(html, "_div", []), "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);return smalltalk.send($rec, "_class_", ["animated"]);}(smalltalk.send(html, "_div", []));}]);}]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09html div id: 'screen'; with: [\x0a\x09\x09(1 to: 2 ) do: [ html div id: 'layer', %1 ]\x0a\x09]",
-messageSends: ["id:", "with:", "do:", "to:", "div", ","],
+source: "renderOn: html\x0a\x09html div id: 'screen'; with: [\x0a\x09\x09(1 to: 2 ) do: [ html div id: 'layer', %1; class: 'animated' ]\x0a\x09]",
+messageSends: ["id:", "with:", "do:", "to:", ",", "class:", "div"],
 referencedClasses: []
 }),
 smalltalk.Screen);
@@ -4159,46 +4195,12 @@ selector: "roll:",
 category: 'action',
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_rollOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_rollIn_", [thisisplaceholder2]);}]);
+    smalltalk.send(self, "_flip_before_after_", [aPage, "rollOut", "rollIn"]);
     return self;
 },
 args: ["aPage"],
-source: "roll: aPage\x0a\x09self flip: aPage before: [ %1 rollOut: %2] after: [%1 rollIn: %2]",
-messageSends: ["flip:before:after:", "rollOut:", "rollIn:"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_rollIn_",
-smalltalk.method({
-selector: "rollIn:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{x: -100, scale: 0.3, rotate: "-15deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-},
-args: ["jq"],
-source: "rollIn: jq\x0a  jq show; \x0a\x09css: (< { x: -100, scale:0.3, rotate: '-15deg'} >);\x0a\x09|> [ %1 transition: self normalize ]",
-messageSends: ["show", "css:", "|>", "transition:", "normalize"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_rollOut_",
-smalltalk.method({
-selector: "rollOut:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{x: 300, rotate: "8deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
-    return self;
-},
-args: ["jq"],
-source: "rollOut: jq\x0a\x22\x09jq removeClass addClass: 'animated rollOut'\x22\x0a  jq transition: (< { x: 300, rotate: '8deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]",
-messageSends: ["transition:callback:", "hide"],
+source: "roll: aPage\x0a\x09self flip: aPage before: 'rollOut' after: 'rollIn'",
+messageSends: ["flip:before:after:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
@@ -4210,97 +4212,12 @@ selector: "skew:",
 category: 'action',
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_skewOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_skewIn_", [thisisplaceholder2]);}]);
+    smalltalk.send(self, "_flip_before_after_", [aPage, "lightSpeedOut", "lightSpeedIn"]);
     return self;
 },
 args: ["aPage"],
-source: "skew: aPage\x0a\x09self flip: aPage before: [ %1 skewOut: %2] after: [%1 skewIn: %2]",
-messageSends: ["flip:before:after:", "skewOut:", "skewIn:"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_skewIn_",
-smalltalk.method({
-selector: "skewIn:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);smalltalk.send($rec, "_css_", [{skewX: "40deg"}]);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-},
-args: ["jq"],
-source: "skewIn: jq\x0a  jq show;\x0a  css: (< { skewX: '40deg' } >);\x0a  |> [ %1 transition: self normalize]",
-messageSends: ["show", "css:", "|>", "transition:", "normalize"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_skewOut_",
-smalltalk.method({
-selector: "skewOut:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{skewX: "-40deg", opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
-    return self;
-},
-args: ["jq"],
-source: "skewOut: jq\x0a  jq transition: (< { skewX: '-40deg', opacity: 0, duration: 2000 } >) callback: [ jq hide ]",
-messageSends: ["transition:callback:", "hide"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoom_",
-smalltalk.method({
-selector: "zoom:",
-category: 'action',
-fn: function (aPage) {
-    var self = this;
-    smalltalk.send(self, "_flip_before_after_", [aPage, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_zoomOut_", [thisisplaceholder2]);}, function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "_zoomIn_", [thisisplaceholder2]);}]);
-    return self;
-},
-args: ["aPage"],
-source: "zoom: aPage\x0a\x09self flip: aPage before: [ %1 zoomOut: %2] after: [%1 zoomIn: %2]",
-messageSends: ["flip:before:after:", "zoomOut:", "zoomIn:"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoomIn_",
-smalltalk.method({
-selector: "zoomIn:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_transition_", [smalltalk.send(self, "_normalize", [])]);}]);}(jq));
-    return self;
-},
-args: ["jq"],
-source: "zoomIn: jq\x0a  jq show;\x0a  |> [ %1 transition: self normalize]",
-messageSends: ["show", "|>", "transition:", "normalize"],
-referencedClasses: []
-}),
-smalltalk.Screen);
-
-smalltalk.addMethod(
-"_zoomOut_",
-smalltalk.method({
-selector: "zoomOut:",
-category: 'private',
-fn: function (jq) {
-    var self = this;
-    smalltalk.send(jq, "_transition_callback_", [{scale: 3, opacity: 0, duration: 2000}, function () {return smalltalk.send(jq, "_hide", []);}]);
-    return self;
-},
-args: ["jq"],
-source: "zoomOut: jq\x0a  jq transition: (< { scale:3.0, opacity: 0, \x0a    duration: 2000 } >) callback: [ jq hide ]",
-messageSends: ["transition:callback:", "hide"],
+source: "skew: aPage\x0a\x09self flip: aPage before: 'lightSpeedOut' after: 'lightSpeedIn'",
+messageSends: ["flip:before:after:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
