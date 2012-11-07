@@ -2939,7 +2939,7 @@ smalltalk.method({
 selector: "flip:",
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_fade_", [aPage]);
+    smalltalk.send(self, "_skew_", [aPage]);
     return self;
 }
 }),

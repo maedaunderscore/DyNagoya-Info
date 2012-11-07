@@ -1875,7 +1875,7 @@ fade: aPage
 !
 
 flip: aPage
-	self fade: aPage
+	self skew: aPage
 !
 
 flip: aPage before: beforeMethod after: afterMethod
