@@ -149,6 +149,12 @@ y
 	^ nil
 ! !
 
+!DraggableWidget class methodsFor: 'not yet classified'!
+
+asJQuery
+	^ ('.', self asString) asJQuery
+! !
+
 DraggableWidget subclass: #Announcement
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
