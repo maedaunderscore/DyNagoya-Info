@@ -4072,12 +4072,12 @@ selector: "flip:",
 category: 'action',
 fn: function (aPage) {
     var self = this;
-    smalltalk.send(self, "_roll_", [aPage]);
+    smalltalk.send(self, "_skew_", [aPage]);
     return self;
 },
 args: ["aPage"],
-source: "flip: aPage\x0a\x09self roll: aPage",
-messageSends: ["roll:"],
+source: "flip: aPage\x0a\x09self skew: aPage",
+messageSends: ["skew:"],
 referencedClasses: []
 }),
 smalltalk.Screen);
