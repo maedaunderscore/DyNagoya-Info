@@ -268,8 +268,12 @@ y
 !HowToJoin methodsFor: 'rendering'!
 
 renderBodyOn: html
+	| div |
 	html root css:'width' put: '350px'.
-	html div 
+	div := html div.
+[
+	div 
+		class: 'animated bounceInDown';
 		css: 'background' put: 'pink';
 		css: 'padding' put: '0';
 		css: 'width' put: '100%';
@@ -288,6 +292,7 @@ renderBodyOn: html
 					with: 'こちら'.
 			]
 	]
+] valueWithTimeout: 1000
 ! !
 
 DraggableWidget subclass: #Icon
@@ -1195,8 +1200,8 @@ renderBody: html
 		html div 
 			with: Dolphin new;
 			with: Board new;
-			with: Logo new.
-		[ Screen put: HowToJoin new] valueWithTimeout:2000
+			with: Logo new;
+			with: HowToJoin new
 ! !
 
 Widget subclass: #ParserEditor
