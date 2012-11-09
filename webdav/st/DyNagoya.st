@@ -790,7 +790,7 @@ meeting09
 grammer Events:meeting > meeting10 
 
 DyNagoya MTG #10 は 
-2012/11/10の18:00:00〜20:00:00に
+2012/11/10の12:00:00〜15:00:00に
 Imoni で
  - OMetaパフォーマンスチューニング
  - OMeta名前空間をちゃんとする
