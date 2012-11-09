@@ -803,11 +803,11 @@ selector: "screenPreparation",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.TopPage || TopPage, "_new", [])]);}, "_valueWithTimeout_", [1000]);
+    smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.TopPage || TopPage, "_new", [])]);}, "_valueWithTimeout_", [2000]);
     return self;
 },
 args: [],
-source: "screenPreparation\x0a\x09[\x0a\x09  '#screen' asJQuery remove.\x0a\x09  Screen new appendToJQuery: ('body' asJQuery).\x0a\x09  Screen new flip: (TopPage new)\x0a\x09] valueWithTimeout: 1000\x0a",
+source: "screenPreparation\x0a\x09[\x0a\x09  '#screen' asJQuery remove.\x0a\x09  Screen new appendToJQuery: ('body' asJQuery).\x0a\x09  Screen new flip: (TopPage new)\x0a\x09] valueWithTimeout: 2000\x0a",
 messageSends: ["valueWithTimeout:", "remove", "asJQuery", "appendToJQuery:", "new", "flip:"],
 referencedClasses: ["Screen", "TopPage"]
 }),
