@@ -428,7 +428,7 @@ screenPreparation
 	  '#screen' asJQuery remove.
 	  Screen new appendToJQuery: ('body' asJQuery).
 	  Screen new flip: (TopPage new)
-	] valueWithTimeout: 1000
+	] valueWithTimeout: 2000
 !
 
 showMessage
