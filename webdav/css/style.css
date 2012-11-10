@@ -310,7 +310,9 @@ h1 {
 #footer a:hover {
 	text-decoration: underline;
 }
-
+#screen {
+    position:absolute;
+}
 
 #screen h1{
     font-size: 60px;
