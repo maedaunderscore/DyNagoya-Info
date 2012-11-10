@@ -333,3 +333,12 @@ h1 {
     font-family:  "DejaVu Sans", Helvetica, sans;
     line-height: 1.3em;
  }
+
+.ui-dialog { opacity: 0.8 }
+.ui-dialog-content > .amberTool { top: 0 }
+#layer1, #layer2 {
+    position:absolute;
+    width:980px;
+}
+body { overflow-x: hidden }
+
