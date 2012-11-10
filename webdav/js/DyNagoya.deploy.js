@@ -403,7 +403,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "829px";
+    return "796px";
     return self;
 }
 }),
@@ -415,7 +415,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "514px";
+    return "533px";
     return self;
 }
 }),
@@ -520,7 +520,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "579px";
+    return "567px";
     return self;
 }
 }),
@@ -532,7 +532,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "57px";
+    return "32px";
     return self;
 }
 }),
