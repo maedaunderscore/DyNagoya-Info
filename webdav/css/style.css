@@ -339,7 +339,7 @@ h1 {
 #layer1, #layer2 {
     position:absolute;
     width:980px;
-    margin: 20px 70px;
+    padding: 20px 70px;
 }
 body { overflow-x: hidden }
 
