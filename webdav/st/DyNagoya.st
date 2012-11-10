@@ -322,11 +322,11 @@ imageUrl
 !
 
 x
-  ^'829px'
+  ^'796px'
 !
 
 y
-  ^'514px'
+  ^'533px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -478,11 +478,11 @@ style
 !
 
 x
-  ^'579px'
+  ^'567px'
 !
 
 y
-  ^'57px'
+  ^'32px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
