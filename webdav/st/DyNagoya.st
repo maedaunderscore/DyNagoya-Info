@@ -138,7 +138,7 @@ style
 		(self y) >>= [ 'top:', %1, ';' ]
 	   } 
 	   |> [ %1 select: [ %1 notNil ] ]
-	   |> [ %1 inject: 'position:relative;' into: [ %1, %2] ]
+	   |> [ %1 inject: 'position:fixed;' into: [ %1, %2] ]
 !
 
 x
@@ -170,7 +170,7 @@ x
 !
 
 y
-  ^'-527px'
+  ^'527px'
 ! !
 
 !Announcement methodsFor: 'rendering'!
@@ -205,11 +205,11 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'59px'
+  ^'170px'
 !
 
 y
-  ^'-395px'
+  ^'7px'
 ! !
 
 !Board methodsFor: 'rendering'!
@@ -258,11 +258,11 @@ imageUrl
 !
 
 x
-  ^'70px'
+  ^'193px'
 !
 
 y
-  ^'-527px'
+  ^'454px'
 ! !
 
 !HowToJoin methodsFor: 'rendering'!
@@ -322,11 +322,11 @@ imageUrl
 !
 
 x
-  ^'583px'
+  ^'750px'
 !
 
 y
-  ^'-407px'
+  ^'474px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -478,11 +478,11 @@ style
 !
 
 x
-  ^'493px'
+  ^'797px'
 !
 
 y
-  ^'75px'
+  ^'68px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
