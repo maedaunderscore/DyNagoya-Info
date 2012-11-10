@@ -312,6 +312,7 @@ h1 {
 }
 #screen {
     position:absolute;
+    margin: 40px;
 }
 
 #screen h1{
