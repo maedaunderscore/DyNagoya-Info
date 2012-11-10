@@ -205,11 +205,11 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'170px'
+  ^'31px'
 !
 
 y
-  ^'7px'
+  ^'23px'
 ! !
 
 !Board methodsFor: 'rendering'!
@@ -258,11 +258,11 @@ imageUrl
 !
 
 x
-  ^'193px'
+  ^'55px'
 !
 
 y
-  ^'454px'
+  ^'475px'
 ! !
 
 !HowToJoin methodsFor: 'rendering'!
@@ -322,11 +322,11 @@ imageUrl
 !
 
 x
-  ^'750px'
+  ^'829px'
 !
 
 y
-  ^'474px'
+  ^'514px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -377,9 +377,9 @@ RawWidget subclass: #Dolphin
 rawHtml
   ^ '
 <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" width="367.5px" height="300.5px" viewBox="0 0 367.5 300.5" enable-background="new 0 0 367.5 300.5"
+	 y="0px" width="800.5px" height="800.5px" viewBox="0 0 800 800.5" enable-background="new 0 0 367.5 300.5"
 	 xml:space="preserve">
-<g>
+<g transform="scale(1.8)">
 	<g>
 		<g>
 			<g>
@@ -478,11 +478,11 @@ style
 !
 
 x
-  ^'797px'
+  ^'579px'
 !
 
 y
-  ^'68px'
+  ^'57px'
 ! !
 
 !Dolphin class methodsFor: 'not yet classified'!
