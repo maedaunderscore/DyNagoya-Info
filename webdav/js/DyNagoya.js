@@ -175,11 +175,11 @@ selector: "style",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("left:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("top:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}])], "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:relative;", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "__comma", [thisisplaceholder2]);}]);}]);
+    return smalltalk.send(smalltalk.send([smalltalk.send(smalltalk.send(self, "_x", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("left:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}]), smalltalk.send(smalltalk.send(self, "_y", []), "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send("top:", "__comma", [thisisplaceholder1]), "__comma", [";"]);}])], "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_select_", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_notNil", []);}]);}]), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_inject_into_", ["position:fixed;", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "__comma", [thisisplaceholder2]);}]);}]);
     return self;
 },
 args: [],
-source: "style\x0a\x09^ {\x0a\x09\x09(self x) >>= [ 'left:', %1, ';' ].\x0a\x09\x09(self y) >>= [ 'top:', %1, ';' ]\x0a\x09   } \x0a\x09   |> [ %1 select: [ %1 notNil ] ]\x0a\x09   |> [ %1 inject: 'position:relative;' into: [ %1, %2] ]",
+source: "style\x0a\x09^ {\x0a\x09\x09(self x) >>= [ 'left:', %1, ';' ].\x0a\x09\x09(self y) >>= [ 'top:', %1, ';' ]\x0a\x09   } \x0a\x09   |> [ %1 select: [ %1 notNil ] ]\x0a\x09   |> [ %1 inject: 'position:fixed;' into: [ %1, %2] ]",
 messageSends: ["|>", ">>=", "x", ",", "y", "select:", "notNil", "inject:into:"],
 referencedClasses: []
 }),
@@ -298,11 +298,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-527px";
+    return "527px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-527px'",
+source: "y\x0a  ^'527px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -335,11 +335,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "59px";
+    return "170px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'59px'",
+source: "x\x0a  ^'170px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -352,11 +352,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-395px";
+    return "7px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-395px'",
+source: "y\x0a  ^'7px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -463,11 +463,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "70px";
+    return "193px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'70px'",
+source: "x\x0a  ^'193px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -480,11 +480,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-527px";
+    return "454px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-527px'",
+source: "y\x0a  ^'454px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -554,11 +554,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "583px";
+    return "750px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'583px'",
+source: "x\x0a  ^'750px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -571,11 +571,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "-407px";
+    return "474px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'-407px'",
+source: "y\x0a  ^'474px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -716,11 +716,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "493px";
+    return "797px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'493px'",
+source: "x\x0a  ^'797px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -733,11 +733,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "75px";
+    return "68px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'75px'",
+source: "y\x0a  ^'68px'",
 messageSends: [],
 referencedClasses: []
 }),
