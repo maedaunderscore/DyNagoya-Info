@@ -244,7 +244,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "31px";
+    return "32px";
     return self;
 }
 }),
@@ -256,7 +256,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "23px";
+    return "18px";
     return self;
 }
 }),
@@ -325,7 +325,7 @@ fn: function (html) {
     var div = nil;
     smalltalk.send(smalltalk.send(html, "_root", []), "_css_put_", ["width", "350px"]);
     div = smalltalk.send(html, "_div", []);
-    smalltalk.send(function () {return function ($rec) {smalltalk.send($rec, "_class_", ["animated bounceInDown"]);smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "0"]);smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["text-align", "center"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_css_put_", ["padding", "10px 0"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["vertical-align", "top"]);smalltalk.send($rec, "_css_put_", ["margin-right", "10px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(self, "_imageUrl", [])]);}(smalltalk.send(html, "_img", [])));(function ($rec) {smalltalk.send($rec, "_with_", ["\u53C2\u52A0\u65B9\u6CD5\u306F"]);return smalltalk.send($rec, "_css_put_", ["color", "black"]);}(smalltalk.send(html, "_span", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", ["color", "#FF3322"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.HowToJoinPage || HowToJoinPage, "_show", []);}]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_h3", []));}]);}(div);}, "_valueWithTimeout_", [1000]);
+    smalltalk.send(function () {return function ($rec) {smalltalk.send($rec, "_class_", ["animated bounceInDown"]);smalltalk.send($rec, "_css_put_", ["background", "pink"]);smalltalk.send($rec, "_css_put_", ["padding", "0"]);smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.8"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["text-align", "center"]);smalltalk.send($rec, "_css_put_", ["animation-duration", "1.5s"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_css_put_", ["padding", "10px 0"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["vertical-align", "top"]);smalltalk.send($rec, "_css_put_", ["margin-right", "10px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(self, "_imageUrl", [])]);}(smalltalk.send(html, "_img", [])));(function ($rec) {smalltalk.send($rec, "_with_", ["\u53C2\u52A0\u65B9\u6CD5\u306F"]);return smalltalk.send($rec, "_css_put_", ["color", "black"]);}(smalltalk.send(html, "_span", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", ["color", "#FF3322"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.HowToJoinPage || HowToJoinPage, "_show", []);}]);return smalltalk.send($rec, "_with_", ["\u3053\u3061\u3089"]);}(smalltalk.send(html, "_a", []));}]);}(smalltalk.send(html, "_h3", []));}]);}(div);}, "_valueWithTimeout_", [1500]);
     return self;
 }
 }),
@@ -337,7 +337,7 @@ smalltalk.method({
 selector: "x",
 fn: function () {
     var self = this;
-    return "55px";
+    return "60px";
     return self;
 }
 }),
@@ -349,7 +349,7 @@ smalltalk.method({
 selector: "y",
 fn: function () {
     var self = this;
-    return "475px";
+    return "505px";
     return self;
 }
 }),
@@ -462,6 +462,239 @@ smalltalk.PipelineDesc);
 
 
 
+smalltalk.addClass('RaphaelWidget', smalltalk.DraggableWidget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_height",
+smalltalk.method({
+selector: "height",
+fn: function () {
+    var self = this;
+    return 300;
+    return self;
+}
+}),
+smalltalk.RaphaelWidget);
+
+smalltalk.addMethod(
+"_rawHtml",
+smalltalk.method({
+selector: "rawHtml",
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+}
+}),
+smalltalk.RaphaelWidget);
+
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+fn: function (html) {
+    var self = this;
+    smalltalk.send(self, "_renderRaphael_", [smalltalk.send(smalltalk.send(html, "_div", []), "_asJQuery", [])]);
+    return self;
+}
+}),
+smalltalk.RaphaelWidget);
+
+smalltalk.addMethod(
+"_renderRaphael_",
+smalltalk.method({
+selector: "renderRaphael:",
+fn: function (jq) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.RaphaelWidget);
+
+smalltalk.addMethod(
+"_width",
+smalltalk.method({
+selector: "width",
+fn: function () {
+    var self = this;
+    return 300;
+    return self;
+}
+}),
+smalltalk.RaphaelWidget);
+
+
+
+smalltalk.addClass('Dolphin', smalltalk.RaphaelWidget, ['body', 'left', 'right', 'eye', 'group'], 'DyNagoya');
+smalltalk.addMethod(
+"_attribute",
+smalltalk.method({
+selector: "attribute",
+fn: function () {
+    var self = this;
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("stroke-linejoin", "__minus_gt", ["round"]), smalltalk.send("stroke", "__minus_gt", ["#18A8E7"]), smalltalk.send("stroke-linecap", "__minus_gt", ["round"]), smalltalk.send("stroke-miterlimit", "__minus_gt", [10]), smalltalk.send("stroke-width", "__minus_gt", [6]), smalltalk.send("fill", "__minus_gt", ["none"])]);
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_attributeFill",
+smalltalk.method({
+selector: "attributeFill",
+fn: function () {
+    var self = this;
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("stroke", "__minus_gt", ["none"]), smalltalk.send("fill", "__minus_gt", ["#18A8E7"])]);
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_attributeLine",
+smalltalk.method({
+selector: "attributeLine",
+fn: function () {
+    var self = this;
+    return smalltalk.HashedCollection._fromPairs_([smalltalk.send("stroke-linejoin", "__minus_gt", ["round"]), smalltalk.send("stroke", "__minus_gt", ["#18A8E7"]), smalltalk.send("stroke-linecap", "__minus_gt", ["round"]), smalltalk.send("stroke-miterlimit", "__minus_gt", [10]), smalltalk.send("stroke-width", "__minus_gt", [6]), smalltalk.send("fill", "__minus_gt", ["none"])]);
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_height",
+smalltalk.method({
+selector: "height",
+fn: function () {
+    var self = this;
+    return 800;
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_renderRaphael_",
+smalltalk.method({
+selector: "renderRaphael:",
+fn: function (jq) {
+    var self = this;
+    var paper = nil;
+    paper = Raphael(jq[0], this._width() + "px", this._height() + "px");
+    self['@body'] = smalltalk.send(paper, "_path_", ["M265.875,60.562c4.945,0.915,9.002-1.543,13.111-3.589c6.877-3.423,13.809-7.102,21.409-8.062  c10.532-1.332,21.151-2.386,31.862-1.365c6.072,0.578,12.039-0.5,17.229-4.067c3.952-2.717,4.489-5.77,1.88-9.724  c-1.647-2.495-3.755-4.458-6.741-5.254c-7.648-2.042-15.043-4.982-22.873-6.39c-4.138-0.744-8.256-0.19-12.376,0.033  c-5.095,0.275-10.132,0.946-15.015,2.566c-0.852,0.283-1.789,0.044-2.639,0.757c-1.956,1.641-4.591,1.285-6.268,0.274  c-3.649-2.199-7.585-3.846-11.037-6.51c-5.219-4.027-11.682-5.616-17.898-7.666c-12.604-4.154-25.36-3.856-38.274-2.229  c-6.683,0.842-13.335,1.689-19.877,3.386c-13.55,3.514-26.072,9.438-38.214,16.204c-4.805,2.678-9.539,5.449-14.031,8.777  c-6.013,4.456-10.667,10.13-15.96,15.211c-7.019,6.735-12.078,15.186-18.617,22.271c-3.551,3.847-4.94,8.25-6.853,12.594  c-2.727,6.194-6.057,12.029-9.876,17.555c-3.282,4.747-5.514,9.999-8.243,15.012c-8.694,15.969-15.794,32.657-22.352,49.566  c-2.622,6.762-4.411,13.857-6.199,20.937c-3.108,12.306-4.779,24.914-8.157,37.148c-1.171,4.241-3.487,5.847-7.861,6.42  c-8.2,1.074-15.603,4.232-22.119,9.347c-2.858,2.242-5.862,4.321-8.268,7.104c-2.543,2.939-2.993,7.798-1.132,11.264  c3.708,6.907,9.411,10.221,17.264,10.151c5.749-0.05,11.5,0.178,17.249,0.354c4.16,0.127,7.261,3.152,9,8.611  c2.842,8.918,11.742,13.288,20.624,10.122c0.633-0.227,1.259-0.479,1.875-0.75c7.933-3.475,8.872-5.381,5.95-13.479  c-1.287-3.567-1.874-7.12-1.888-10.894c-0.01-2.719,0.505-5.205,2.35-7.09c4.48-4.577,6.834-10.464,10.026-15.822  c1.497-2.514,3.774-4.385,5.219-6.77c4.353-7.185,10.89-12.281,17.098-17.412c12.106-10.005,22.708-21.711,35.491-30.913  c8.67-6.24,17.112-12.817,26.288-18.313c2.6-1.557,4.93-3.611,6.55-5.803c3.22-4.353,6.796-5.028,11.417-3.252 M339.75,48c1.834,5.033-0.693,8.815-3.322,12.785c-4.779,7.216-12.437,8.928-19.948,10.756c-4.881,1.188-9.417,3.264-14.194,4.701  c-3.246,0.976-5.095,4.537-8.63,5.607c-2.407,0.729-4.481,2.499-6.789,3.632c-7.341,3.604-12.549,9.449-16.832,16.166  c-4.147,6.504-8.603,12.71-13.829,18.426c-2.882,3.151-5.65,5.812-9.732,7.644c-4.16,1.867-8.32,4.111-12.189,6.774  c-1.703,1.171-4.408,0.884-6.658,1.259"]);
+    back = smalltalk.send(paper, "_path_", ["M133.125,38.625c-4.107-0.772-8.007,0.396-12.03,0.87c-6.17,0.728-12.092,2.66-18.338,3.004c-4.782,0.264-9.43,1.931-14.241,2.613  c-7.69,1.09-15.257,2.901-22.548,5.807c-2.819,1.123-5.457,2.479-7.809,4.251c-6.609,4.98-3.16,10.782,1.836,13.09  c3.7,1.71,7.493,2.532,11.626,2.707c8.816,0.374,17.598,1.063,25.926,4.674c3.07,1.33,6.395,2.127,9.328,3.858"]);
+    self['@left'] = smalltalk.send(paper, "_path_", ["M268.875,118.125c7.638,6.705,15.657,13.134,16.703,24.373c0.261,2.799,0.424,5.576-0.593,8.246  c-1.228,3.224-3.181,3.883-6.357,2.25c-0.646-0.333-1.366-0.633-1.861-1.136c-8.311-8.448-17.668-15.913-24.392-25.858"]);
+    self['@right'] = smalltalk.send(paper, "_path_", [smalltalk.send(smalltalk.send(self, "_rightHand", []), "_at_", [1])]);
+    self['@eye'] = smalltalk.send(paper, "_path_", ["M232.625,38.239c-4.994-0.119-9.137-4.363-8.896-9.112c0.332-6.519,4.703-11.984,9.547-11.936  c4.507,0.044,8.937,5.938,8.812,11.724C241.979,34.055,237.609,38.358,232.625,38.239z"]);
+    self['@group'] = smalltalk.send(paper, "_group", []);
+    smalltalk.send(self['@group'], "_scale_", [1.8]);
+    smalltalk.send([self['@body'], typeof back == "undefined" ? nil : back, self['@left'], self['@right']], "_do_", [function (thisisplaceholder1) {smalltalk.send(thisisplaceholder1, "_attr_", [smalltalk.send(self, "_attributeLine", [])]);return smalltalk.send(self['@group'], "_push_", [thisisplaceholder1]);}]);
+    smalltalk.send([self['@eye']], "_do_", [function (thisisplaceholder1) {smalltalk.send(thisisplaceholder1, "_attr_", [smalltalk.send(self, "_attributeFill", [])]);return smalltalk.send(self['@group'], "_push_", [thisisplaceholder1]);}]);
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_rightHand",
+smalltalk.method({
+selector: "rightHand",
+fn: function () {
+    var self = this;
+    return ["M223.125,118.125c0.417,5.931,2.029,11.581,3.531,17.307c0.658,2.505-0.927,5.636-1.144,8.564c-0.339,4.568-1.907,8.836-3.37,13.177 c-1.373,4.073-2.501,8.14-4.513,12.02c-1.344,2.593-2.869,4.886-5.043,6.636c-3.392,2.73-6.612,5.621-9.742,8.641 c-1.66,1.604-3.57,2.8-5.945,3.49c-4.725,1.371-5.946,0.653-6.434-4.205c-0.455-4.533,1.97-8.28,3.162-12.342 c0.366-1.247,0.838-2.443,1.034-3.781c0.474-3.223,1.014-6.338,2.457-9.441c2.855-6.14,4.861-12.554,6.037-19.391 c0.927-5.396,2.169-10.666,1.969-16.174", "M219.027,108.788c2.75,5.272,6.485,9.807,10.15,14.457c1.604,2.033,1.399,5.537,2.371,8.308c1.516,4.324,1.781,8.861,2.175,13.426 c0.368,4.283,0.958,8.463,0.664,12.822c-0.196,2.914-0.679,5.623-1.972,8.098c-2.021,3.857-3.817,7.795-5.481,11.812 c-0.881,2.133-2.154,3.992-4.056,5.574c-3.784,3.145-5.191,2.973-7.578-1.285c-2.229-3.975-1.502-8.377-2.03-12.576 c-0.163-1.291-0.208-2.576-0.563-3.881c-0.853-3.145-1.602-6.215-1.518-9.637c0.166-6.77-0.559-13.451-2.212-20.188 c-1.306-5.317-2.271-10.644-4.656-15.614"];
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_rightHand2",
+smalltalk.method({
+selector: "rightHand2",
+fn: function () {
+    var self = this;
+    return "M219.027,108.788c2.75,5.272,6.485,9.807,10.15,14.457c1.604,2.033,1.399,5.537,2.371,8.308c1.516,4.324,1.781,8.861,2.175,13.426 c0.368,4.283,0.958,8.463,0.664,12.822c-0.196,2.914-0.679,5.623-1.972,8.098c-2.021,3.857-3.817,7.795-5.481,11.812 c-0.881,2.133-2.154,3.992-4.056,5.574c-3.784,3.145-5.191,2.973-7.578-1.285c-2.229-3.975-1.502-8.377-2.03-12.576 c-0.163-1.291-0.208-2.576-0.563-3.881c-0.853-3.145-1.602-6.215-1.518-9.637c0.166-6.77-0.559-13.451-2.212-20.188 c-1.306-5.317-2.271-10.644-4.656-15.614";
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_style",
+smalltalk.method({
+selector: "style",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_style", [], smalltalk.Dolphin.superclass || nil), "__comma", ["width: 376px;"]);
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_width",
+smalltalk.method({
+selector: "width",
+fn: function () {
+    var self = this;
+    return 800;
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+fn: function () {
+    var self = this;
+    return "514px";
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+fn: function () {
+    var self = this;
+    return "59px";
+    return self;
+}
+}),
+smalltalk.Dolphin);
+
+
+smalltalk.Dolphin.klass.iVarNames = ['s'];
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+fn: function () {
+    var self = this;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.Dolphin.klass.superclass || nil);}() : $receiver;
+    return self['@s'];
+    return self;
+}
+}),
+smalltalk.Dolphin.klass);
+
+smalltalk.addMethod(
+"_tweet_",
+smalltalk.method({
+selector: "tweet:",
+fn: function (msg) {
+    var self = this;
+    return smalltalk.send(smalltalk.Twitter || Twitter, "_tweet_", [msg]);
+    return self;
+}
+}),
+smalltalk.Dolphin.klass);
+
+
 smalltalk.addClass('RawWidget', smalltalk.DraggableWidget, [], 'DyNagoya');
 smalltalk.addMethod(
 "_rawHtml",
@@ -489,69 +722,6 @@ smalltalk.RawWidget);
 
 
 
-smalltalk.addClass('Dolphin', smalltalk.RawWidget, [], 'DyNagoya');
-smalltalk.addMethod(
-"_rawHtml",
-smalltalk.method({
-selector: "rawHtml",
-fn: function () {
-    var self = this;
-    return "\n<svg version=\"1.1\" id=\"layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\"\n\t y=\"0px\" width=\"800.5px\" height=\"800.5px\" viewBox=\"0 0 800 800.5\" enable-background=\"new 0 0 367.5 300.5\"\n\t xml:space=\"preserve\">\n<g transform=\"scale(1.8)\">\n\t<g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M269.252,63.991c6.833,0.676,12.729-2.77,18.701-5.61c7.079-3.367,14.002-5.835,21.829-6.676\n\t\t\t\t\tc7.572-0.814,15.194-1.071,22.806-0.965c3.854,0.053,7.704,0.288,11.547,0.583c2.579,0.198,6.452-2.521,8.804-3.554\n\t\t\t\t\tc4.959-2.183,8.42-6.964,8.358-12.397c-0.064-5.72-5.688-10.646-10.499-12.758c-6.315-2.772-13.617-4.06-20.209-6.152\n\t\t\t\t\tc-7.537-2.393-15.592-0.97-23.275-0.282c-3.285,0.294-6.534,0.92-9.73,1.713c-3.831,0.95-5.777,2.66-9.342,0.295\n\t\t\t\t\tc-6.425-4.263-12.954-8.171-20.157-10.959c-14.81-5.733-30.096-6.436-45.693-4.599c-15.469,1.821-29.583,5.427-43.817,11.789\n\t\t\t\t\tc-13.257,5.925-26.099,12.48-37.043,22.131c-11.065,9.758-20.058,21.192-29.206,32.68c-1.777,2.232-4.581,4.114-6.007,6.549\n\t\t\t\t\tc-0.798,1.363-0.686,3.052-1.054,4.545c-0.46,1.867-1.578,3.73-2.421,5.449c-3.45,7.038-7.79,13.515-12.056,20.066\n\t\t\t\t\tc-3.985,6.121-6.874,13.195-10.067,19.751c-3.619,7.429-7.049,14.949-10.319,22.539c-6.118,14.196-11.164,28.466-14.714,43.522\n\t\t\t\t\tc-1.746,7.403-3.04,14.91-4.6,22.354c-0.781,3.724-1.676,7.42-2.664,11.094c-0.783,2.911-3.396,2.782-5.999,3.17\n\t\t\t\t\tc-12.032,1.792-25.298,9.743-32.516,19.553c-7.103,9.654,2.594,23.014,11.955,26.354c6.021,2.148,12.564,1.497,18.848,1.656\n\t\t\t\t\tc2.787,0.07,6.754-0.567,9.246,0.82c2.398,1.335,3.133,5.903,4.195,8.213c6.476,14.09,28.035,13.904,36.743,2.328\n\t\t\t\t\tc4.414-5.869-1.675-15.221-1.945-21.388c-0.21-4.793,4.439-8.756,6.769-12.668c2.633-4.422,4.961-8.945,7.901-13.185\n\t\t\t\t\tc5.597-8.068,13.787-15.732,21.898-21.215c3.895-2.632,6.661-6.179,9.955-9.502c3.692-3.725,7.713-7.119,11.762-10.444\n\t\t\t\t\tc8.279-6.8,16.654-13.708,25.583-19.63c4.193-2.781,8.847-5.204,12.685-8.475c3.181-2.711,6.434-7.32,11.169-6.561\n\t\t\t\t\tc6.307,1.013,9.013-8.622,2.658-9.643c-5.828-0.936-11.066,0.38-15.593,4.307c-5.544,4.812-11.332,8.663-17.458,12.726\n\t\t\t\t\tc-11.93,7.912-23.452,17.449-34.074,27.032c-5.033,4.541-9.139,9.601-14.622,13.576c-5.944,4.311-11.341,9.626-16.359,14.967\n\t\t\t\t\tc-4.633,4.932-8.393,10.692-11.673,16.582c-1.645,2.952-3.271,5.883-5.178,8.677c-2.123,3.112-4.192,5.337-5.046,9.135\n\t\t\t\t\tc-1.367,6.075,0.711,12.183,2.503,17.898c1.331,4.243-2.978,4.915-6.56,6.034c-5.703,1.781-11.132-1.734-13.072-7.066\n\t\t\t\t\tc-1.991-5.475-4.762-9.591-10.33-11.75c-10.284-3.986-29.787,5.175-34.084-9.849c-1.508-5.271,8.539-10.796,12.018-13.073\n\t\t\t\t\tc6.065-3.972,12.454-4.823,19.294-6.491c4.757-1.159,7.54-5.016,8.968-9.431c2.326-7.187,3.456-14.884,4.916-22.28\n\t\t\t\t\tc3.027-15.341,7.076-30.173,12.896-44.694c5.958-14.867,13.044-29.199,20.102-43.563c6.146-12.509,18.5-24.479,19.656-38.917\n\t\t\t\t\tc-0.488,1.179-0.977,2.357-1.464,3.536c4.852-4.72,8.806-10.117,12.992-15.424c4.745-6.015,9.917-11.574,15.325-16.993\n\t\t\t\t\tc10.688-10.709,22.682-17.539,36.208-24.072c27.577-13.319,63.342-20.322,91.977-6.158c6.081,3.008,11.37,8.229,17.856,10.272\n\t\t\t\t\tc2.771,0.873,5.812-0.014,8.419-0.939c3.88-1.378,7.973-2.13,12.062-2.496c7.976-0.714,14.679-1.255,22.428,1.185\n\t\t\t\t\tc6.195,1.951,15.838,2.562,19.754,8.304c1.445,2.118-4.881,4.282-5.999,4.742c-3.03,1.245-5.428,0.746-8.771,0.595\n\t\t\t\t\tc-8.252-0.373-16.523-0.056-24.747,0.667c-6.937,0.609-13.441,1.791-19.947,4.325c-6.503,2.533-13.64,7.967-20.677,8.325\n\t\t\t\t\tc-0.6-0.06-1.199-0.119-1.799-0.178C262.835,53.355,262.897,63.362,269.252,63.991L269.252,63.991z\"/>\n\t\t\t</g>\n\t\t</g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M339.252,46.803c0.488,4.908-2.687,8.97-6.03,12.221c-4.72,4.589-11.889,5.176-17.911,7.06\n\t\t\t\t\tc-6.447,2.017-12.095,4.421-17.566,8.371c-4.803,3.466-10.548,5.107-15.351,8.69c-4.129,3.08-7.638,6.793-10.738,10.893\n\t\t\t\t\tc-3.678,4.862-6.247,10.582-10.215,15.184c-2.144,2.486-4.504,4.761-6.599,7.293c-0.499,0.603-1.734,2.876-2.521,3.085\n\t\t\t\t\tc-1.388,0.369-2.818,0.99-4.112,1.611c-5.28,2.533-11.272,8.657-17.206,9.093c-6.392,0.47-6.437,10.473,0,10\n\t\t\t\t\tc6.947-0.511,12.345-4.738,18.11-8.261c2.72-1.662,5.93-2.154,8.585-3.709c2.941-1.723,5.151-5.952,7.473-8.458\n\t\t\t\t\tc8.812-9.514,13.693-22.208,24.598-29.769c2.465-1.709,5.163-2.884,7.893-4.086c3.207-1.411,5.887-3.525,8.749-5.508\n\t\t\t\t\tc6.22-4.308,15.074-6.006,22.323-7.778c10.573-2.585,21.652-14.544,20.52-25.931C348.62,40.449,338.614,40.387,339.252,46.803\n\t\t\t\t\tL339.252,46.803z\"/>\n\t\t\t</g>\n\t\t</g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M138.913,33.893c-5.063-4.363-9.859-1.314-15.734-0.527c-7.588,1.017-15.152,2.184-22.693,3.504\n\t\t\t\t\tc-7.43,1.301-14.894,2.62-22.215,4.445c-6.802,1.696-14.991,4.281-20.319,9.058c-3.847,3.449-6.074,8.219-4.279,13.332\n\t\t\t\t\tc1.932,5.502,7.804,7.932,13.001,9.271c6.564,1.691,13.59,1.309,20.276,2.217c6.946,0.943,14.661,3.604,20.779,7.053\n\t\t\t\t\tc5.625,3.171,10.663-5.469,5.047-8.635c-8.479-4.78-18.365-7.576-27.974-8.675c-5.156-0.59-10.372-0.567-15.47-1.604\n\t\t\t\t\tc-1.952-0.397-5.619-1.156-6.378-3.318c-0.582-1.656,4.403-3.977,5.41-4.518c9.893-5.318,21.955-6.637,32.847-8.636\n\t\t\t\t\tc5.8-1.064,11.626-1.987,17.459-2.851c3.446-0.51,6.899-0.967,10.355-1.407c0.801-0.045,1.581-0.199,2.336-0.461\n\t\t\t\t\tc0.398-0.168,0.796-0.336,1.195-0.504c1.446-0.414,1.208-0.638-0.714-0.673C136.7,45.15,143.806,38.109,138.913,33.893\n\t\t\t\t\tL138.913,33.893z\"/>\n\t\t\t</g>\n\t\t</g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M222.056,113.724c-1.205,4.787,0.993,7.979,1.392,12.57c0.427,4.92,0.599,8.526,3.922,12.457\n\t\t\t\t\tc-0.261-2.02-0.521-4.04-0.782-6.059c-2.251,4.56-2.517,9.586-3.637,14.5c-1.247,5.47-3.039,10.859-5.234,16.02\n\t\t\t\t\tc-2.171,5.104-5.695,7.854-9.834,11.395c-3.812,3.263-6.697,7.851-12.13,7.447c-6.437-0.479-6.391,9.525,0,10\n\t\t\t\t\tc5.766,0.429,10.093-1.721,14.08-5.743c4.282-4.321,9.763-7.647,13.502-12.469c3.631-4.683,5.531-11.411,7.334-16.987\n\t\t\t\t\tc0.932-2.883,1.656-5.827,2.329-8.778c0.762-3.339,0.695-7.239,2.225-10.337c1.071-2.17,0.767-4.228-0.782-6.059\n\t\t\t\t\tc-1.429-1.691-0.93-4.663-1.108-6.718c-0.238-2.747-2.312-5.883-1.633-8.58C233.274,110.126,223.629,107.473,222.056,113.724\n\t\t\t\t\tL222.056,113.724z\"/>\n\t\t\t</g>\n\t\t</g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M251.06,126.952c5.756,7.866,12.657,14.537,19.733,21.196c5.266,4.954,13.783,14.599,20.451,5.924\n\t\t\t\t\tc4.77-6.204,3.037-15.467,0.334-22.205c-3.166-7.889-9.267-13.654-16.053-18.505c-5.258-3.759-10.243,4.92-5.047,8.635\n\t\t\t\t\tc4.312,3.083,8.046,6.63,10.735,11.229c2.352,4.02,5.005,12.117,1.115,15.792c1.178-0.488,2.356-0.976,3.535-1.464\n\t\t\t\t\tc-2.663-0.22-4.907-3.544-6.74-5.287c-2.094-1.989-4.206-3.957-6.298-5.947c-4.713-4.484-9.283-9.154-13.132-14.413\n\t\t\t\t\tC255.928,116.758,247.245,121.739,251.06,126.952L251.06,126.952z\"/>\n\t\t\t</g>\n\t\t</g>\n\t\t<g>\n\t\t\t<g>\n\t\t\t\t<path fill=\"#18A8E7\" d=\"M203.502,119.553c0.032,12.208-2.452,24.716-8.046,35.63c-2.483,4.846-1.77,10.164-3.873,15.125\n\t\t\t\t\tc-2.309,5.446-3.144,10.344-2.069,16.199c1.607-2.109,3.214-4.22,4.821-6.329c-0.402,0-0.806,0-1.208,0c-6.448,0-6.448,10,0,10\n\t\t\t\t\tc0.402,0,0.806,0,1.208,0c3.464,0,5.4-3.174,4.821-6.329c-1.044-5.688,2.273-10.305,3.687-15.588\n\t\t\t\t\tc0.716-2.674,0.116-5.451,1.247-8.03c1.11-2.53,2.512-4.904,3.508-7.496c4.018-10.452,5.934-22.025,5.904-33.182\n\t\t\t\t\tC213.486,113.105,203.486,113.104,203.502,119.553L203.502,119.553z\"/>\n\t\t\t</g>\n\t\t</g>\n\t</g>\n\t<path fill=\"#18A8E7\" d=\"M232.625,38.239c-4.994-0.119-9.137-4.363-8.896-9.112c0.332-6.519,4.703-11.984,9.547-11.936\n\t\tc4.506,0.044,8.936,5.938,8.812,11.724C241.979,34.055,237.61,38.358,232.625,38.239z\"/>\n</g>\n</svg>\n";
-    return self;
-}
-}),
-smalltalk.Dolphin);
-
-smalltalk.addMethod(
-"_style",
-smalltalk.method({
-selector: "style",
-fn: function () {
-    var self = this;
-    return smalltalk.send(smalltalk.send(self, "_style", [], smalltalk.Dolphin.superclass || nil), "__comma", ["width: 376px;"]);
-    return self;
-}
-}),
-smalltalk.Dolphin);
-
-smalltalk.addMethod(
-"_x",
-smalltalk.method({
-selector: "x",
-fn: function () {
-    var self = this;
-    return "567px";
-    return self;
-}
-}),
-smalltalk.Dolphin);
-
-smalltalk.addMethod(
-"_y",
-smalltalk.method({
-selector: "y",
-fn: function () {
-    var self = this;
-    return "32px";
-    return self;
-}
-}),
-smalltalk.Dolphin);
-
-
-smalltalk.addMethod(
-"_tweet_",
-smalltalk.method({
-selector: "tweet:",
-fn: function (msg) {
-    var self = this;
-    return smalltalk.send(smalltalk.Twitter || Twitter, "_tweet_", [msg]);
-    return self;
-}
-}),
-smalltalk.Dolphin.klass);
-
-
 smalltalk.addClass('EntryPoint', smalltalk.Object, [], 'DyNagoya');
 
 smalltalk.addMethod(
@@ -560,7 +730,7 @@ smalltalk.method({
 selector: "bottomPosition",
 fn: function () {
     var self = this;
-    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [200]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 600 : smalltalk.send($receiver, "__minus", [600])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 200 : smalltalk.send($receiver, "__minus", [200])]), "__comma", ["px"])]);}(thisisplaceholder1);};
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["600px"]);smalltalk.send($rec, "_height_", [200]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.98 : smalltalk.send($receiver, "__star", [0.98])).klass === smalltalk.Number ? $receiver - 600 : smalltalk.send($receiver, "__minus", [600])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.95 : smalltalk.send($receiver, "__star", [0.95])).klass === smalltalk.Number ? $receiver - 200 : smalltalk.send($receiver, "__minus", [200])]), "__comma", ["px"])]);}(thisisplaceholder1);};
     return self;
 }
 }),
@@ -608,7 +778,9 @@ smalltalk.method({
 selector: "screenPreparation",
 fn: function () {
     var self = this;
-    smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.TopPage || TopPage, "_new", [])]);}, "_valueWithTimeout_", [3000]);
+    var page = nil;
+    page = smalltalk.send(smalltalk.TopPage || TopPage, "_new", []);
+    smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [page]);}, "_valueWithTimeout_", [2000]);
     return self;
 }
 }),
@@ -648,7 +820,7 @@ smalltalk.method({
 selector: "topPosition",
 fn: function () {
     var self = this;
-    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["350px"]);smalltalk.send($rec, "_height_", [300]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.9 : smalltalk.send($receiver, "__star", [0.9])).klass === smalltalk.Number ? $receiver - 350 : smalltalk.send($receiver, "__minus", [350])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.1 : smalltalk.send($receiver, "__star", [0.1])]), "__comma", ["px"])]);}(thisisplaceholder1);};
+    return function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_width_", ["350px"]);smalltalk.send($rec, "_height_", [200]);smalltalk.send($rec, "_x_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = ($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerWidth", [])).klass === smalltalk.Number ? $receiver * 0.98 : smalltalk.send($receiver, "__star", [0.98])).klass === smalltalk.Number ? $receiver - 350 : smalltalk.send($receiver, "__minus", [350])]), "__comma", ["px"])]);return smalltalk.send($rec, "_y_", [smalltalk.send(smalltalk.send("", "__comma", [($receiver = smalltalk.send(typeof window == "undefined" ? nil : window, "_innerHeight", [])).klass === smalltalk.Number ? $receiver * 0.25 : smalltalk.send($receiver, "__star", [0.25])]), "__comma", ["px"])]);}(thisisplaceholder1);};
     return self;
 }
 }),

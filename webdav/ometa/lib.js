@@ -7,6 +7,7 @@ function StringBuffer() {
 }
 StringBuffer.prototype.nextPutAll = function(s) { this.strings.push(s) }
 StringBuffer.prototype.contents   = function()  { return this.strings.join("") }
+
 String.prototype.writeStream      = function() { return new StringBuffer(this) }
 
 // make Arrays print themselves sensibly
@@ -27,8 +28,9 @@ printOn = function(x, ws) {
     ws.nextPutAll(x.toString())
 }
 
+/*
 Array.prototype.toString = function() { var ws = "".writeStream(); printOn(this, ws); return ws.contents() }
-
+*/
 // delegation
 
 objectThatDelegatesTo = function(x, props) {
