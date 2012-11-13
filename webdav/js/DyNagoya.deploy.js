@@ -1898,7 +1898,7 @@ smalltalk.method({
 selector: "sessions",
 fn: function () {
     var self = this;
-    return [function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C"]);smalltalk.send($rec, "_start_", ["13:00"]);return smalltalk.send($rec, "_end_", ["13:30"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580"]);smalltalk.send($rec, "_speaker_", ["@hiratara"]);smalltalk.send($rec, "_start_", ["13:30"]);return smalltalk.send($rec, "_end_", ["14:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)"]);smalltalk.send($rec, "_speaker_", ["@mzp"]);smalltalk.send($rec, "_start_", ["14:30"]);return smalltalk.send($rec, "_end_", ["15:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["15:30"]);return smalltalk.send($rec, "_end_", ["16:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["16:30"]);return smalltalk.send($rec, "_end_", ["17:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u4F59\u30E2\u30CA\u30C9"]);smalltalk.send($rec, "_speaker_", ["@uskz"]);smalltalk.send($rec, "_start_", ["17:30"]);return smalltalk.send($rec, "_end_", ["18:00"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", []))];
+    return [function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C"]);smalltalk.send($rec, "_start_", ["13:00"]);return smalltalk.send($rec, "_end_", ["13:30"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580"]);smalltalk.send($rec, "_speaker_", ["@hiratara"]);smalltalk.send($rec, "_start_", ["13:30"]);return smalltalk.send($rec, "_end_", ["14:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)"]);smalltalk.send($rec, "_speaker_", ["@mzp"]);smalltalk.send($rec, "_start_", ["14:30"]);return smalltalk.send($rec, "_end_", ["15:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["15:30"]);return smalltalk.send($rec, "_end_", ["16:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["16:30"]);return smalltalk.send($rec, "_end_", ["17:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["\u4F59\u30E2\u30CA\u30C9"]);smalltalk.send($rec, "_speaker_", ["@uskz"]);smalltalk.send($rec, "_start_", ["17:30"]);return smalltalk.send($rec, "_end_", ["18:00"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C"]);smalltalk.send($rec, "_start_", ["18:00"]);return smalltalk.send($rec, "_end_", ["20:00"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", []))];
     return self;
 }
 }),
@@ -3496,8 +3496,32 @@ selector: "done",
 fn: function () {
     var self = this;
     self['@isDone'] = true;
-    smalltalk.send(self['@body'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_css_put_", ["background", "gray"]);}]);
+    smalltalk.send(self['@body'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(self, "_drawBackground_", [thisisplaceholder1]);}]);
     return smalltalk.send(self['@body'], "_notNil", []);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_drawBackGround_",
+smalltalk.method({
+selector: "drawBackGround:",
+fn: function (html) {
+    var self = this;
+    ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}]);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_drawBackground_",
+smalltalk.method({
+selector: "drawBackground:",
+fn: function (html) {
+    var self = this;
+    ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}]);
     return self;
 }
 }),
@@ -3599,6 +3623,7 @@ selector: "renderOn:",
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
+    smalltalk.send(self, "_drawBackground", []);
     smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
     return self;
 }
