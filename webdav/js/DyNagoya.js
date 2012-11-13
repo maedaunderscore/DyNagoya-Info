@@ -2122,11 +2122,11 @@ selector: "show",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(self, "_new", [])]);
+    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(self, "_new", [])]);
     return self;
 },
 args: [],
-source: "show\x0a  Screen new flip: self new",
+source: "show\x0a  ^ Screen new flip: self new",
 messageSends: ["flip:", "new"],
 referencedClasses: ["Screen"]
 }),
@@ -2531,22 +2531,23 @@ referencedClasses: []
 smalltalk.TimeSchedulePage);
 
 
+smalltalk.TimeSchedulePage.klass.iVarNames = ['s'];
 smalltalk.addMethod(
-"_showWithBrowser_",
+"_show",
 smalltalk.method({
-selector: "showWithBrowser:",
+selector: "show",
 category: 'not yet classified',
-fn: function (aBrowser) {
+fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [smalltalk.send(smalltalk.send(aBrowser, "_target", []), "_name", [])])]);
-    smalltalk.send(smalltalk.Screen || Screen, "_add_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_class_", ["tree-source workspace-effect"]);return smalltalk.send($rec, "_with_", [aBrowser]);}(smalltalk.send(thisisplaceholder1, "_div", []));}]);
-    smalltalk.send(aBrowser, "_open", []);
+    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
+        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", []);}() : $receiver;
+    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [typeof s == "undefined" ? nil : s]);
     return self;
 },
-args: ["aBrowser"],
-source: "showWithBrowser: aBrowser\x0a\x09Screen new flip: (Page new title: (aBrowser target name)).\x0a\x09Screen add: [ %1 div class: 'tree-source workspace-effect'; with: aBrowser ].\x0a\x09aBrowser open",
-messageSends: ["flip:", "new", "title:", "name", "target", "add:", "class:", "with:", "div", "open"],
-referencedClasses: ["Screen", "Page"]
+args: [],
+source: "show\x0a\x09s ifNil: [ s := self new ].\x0a\x09^ Screen new flip: s.",
+messageSends: ["ifNil:", "new", "flip:"],
+referencedClasses: ["Screen"]
 }),
 smalltalk.TimeSchedulePage.klass);
 
@@ -4560,10 +4561,11 @@ category: 'action',
 fn: function (aPage) {
     var self = this;
     smalltalk.send(self, "_skew_", [aPage]);
+    return aPage;
     return self;
 },
 args: ["aPage"],
-source: "flip: aPage\x0a\x09self skew: aPage",
+source: "flip: aPage\x0a\x09self skew: aPage.\x0a\x09^ aPage",
 messageSends: ["skew:"],
 referencedClasses: []
 }),
@@ -4791,11 +4793,12 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     self['@isDone'] = true;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_animate_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("background", "__minus_gt", ["gray"])])]);
     return self;
 },
 args: [],
-source: "done\x0a\x09isDone := true.",
-messageSends: [],
+source: "done\x0a\x09isDone := true.\x0a\x09body asJQuery animate: #{ 'background' -> 'gray' }",
+messageSends: ["animate:", "asJQuery", "->"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
