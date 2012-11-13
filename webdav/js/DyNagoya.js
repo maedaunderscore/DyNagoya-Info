@@ -5016,13 +5016,13 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
-    smalltalk.send(self, "_drawBackground", []);
+    smalltalk.send(self, "_drawBackground_", [self['@body']]);
     smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: '「', title, '」'.\x0a\x09]",
-messageSends: ["css:put:", "div", "drawBackground", "with:", ",", "format:", "span"],
+source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: '「', title, '」'.\x0a\x09]",
+messageSends: ["css:put:", "div", "drawBackground:", "with:", ",", "format:", "span"],
 referencedClasses: []
 }),
 smalltalk.TalkSession);
@@ -5055,12 +5055,13 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
+    smalltalk.send(self, "_drawBackground_", [self['@body']]);
     smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [""]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [self['@title']]);}]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: ''; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: title.\x0a\x09]",
-messageSends: ["css:put:", "div", "with:", ",", "format:", "span"],
+source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.\x0a\x09self drawBackground: body.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: ''; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: title.\x0a\x09]",
+messageSends: ["css:put:", "div", "drawBackground:", "with:", ",", "format:", "span"],
 referencedClasses: []
 }),
 smalltalk.OtherSession);
