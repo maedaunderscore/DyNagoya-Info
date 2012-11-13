@@ -2410,7 +2410,45 @@ smalltalk.Links);
 
 
 
-smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions'], 'DyNagoya');
+smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions', 'index'], 'DyNagoya');
+smalltalk.addMethod(
+"_current",
+smalltalk.method({
+selector: "current",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = self['@index']) == nil || $receiver == undefined ? function () {return self['@index'] = 1;}() : $receiver;
+    return smalltalk.send(self['@sessions'], "_at_", [self['@index']]);
+    return self;
+},
+args: [],
+source: "current\x0a\x09index ifNil: [ index := 1].\x0a\x09^ sessions at: index",
+messageSends: ["ifNil:", "at:"],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_done",
+smalltalk.method({
+selector: "done",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var prev = nil;
+    prev = smalltalk.send(smalltalk.send(self, "_current", []), "_done", []);
+    self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+    return prev;
+    return self;
+},
+args: [],
+source: "done\x0a\x09| prev |\x0a\x09prev := self current done.\x0a\x09index := index + 1.\x0a\x09^ prev",
+messageSends: ["done", "current", "+"],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
 smalltalk.addMethod(
 "_end",
 smalltalk.method({
@@ -2533,21 +2571,20 @@ smalltalk.TimeSchedulePage);
 
 smalltalk.TimeSchedulePage.klass.iVarNames = ['s'];
 smalltalk.addMethod(
-"_show",
+"_new",
 smalltalk.method({
-selector: "show",
+selector: "new",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
-        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", []);}() : $receiver;
-    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [typeof s == "undefined" ? nil : s]);
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", []);}() : $receiver;
+    return self['@s'];
     return self;
 },
 args: [],
-source: "show\x0a\x09s ifNil: [ s := self new ].\x0a\x09^ Screen new flip: s.",
-messageSends: ["ifNil:", "new", "flip:"],
-referencedClasses: ["Screen"]
+source: "new\x0a\x09s ifNil: [ s := self new ].\x0a\x09^ s",
+messageSends: ["ifNil:", "new"],
+referencedClasses: []
 }),
 smalltalk.TimeSchedulePage.klass);
 
@@ -4793,12 +4830,12 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     self['@isDone'] = true;
-    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_animate_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("background", "__minus_gt", ["gray"])])]);
+    smalltalk.send(self['@body'], "_css_put_", ["background", "gray"]);
     return self;
 },
 args: [],
-source: "done\x0a\x09isDone := true.\x0a\x09body asJQuery animate: #{ 'background' -> 'gray' }",
-messageSends: ["animate:", "asJQuery", "->"],
+source: "done\x0a\x09isDone := true.\x0a\x09body css: 'background' put: 'gray'",
+messageSends: ["css:put:"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
