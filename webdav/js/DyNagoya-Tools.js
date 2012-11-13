@@ -1119,9 +1119,8 @@ selector: "new",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
-        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", [], smalltalk.TranscriptDialog.klass.superclass || nil);}() : $receiver;
-    return typeof s == "undefined" ? nil : s;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.TranscriptDialog.klass.superclass || nil);}() : $receiver;
+    return self['@s'];
     return self;
 },
 args: [],
