@@ -2412,6 +2412,22 @@ smalltalk.Links);
 
 smalltalk.addClass('TimeSchedulePage', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
+"_end",
+smalltalk.method({
+selector: "end",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "end",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
 "_renderBody_",
 smalltalk.method({
 selector: "renderBody:",
@@ -2441,6 +2457,22 @@ fn: function () {
 },
 args: [],
 source: "sessions\x0a\x09^ {}\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_start",
+smalltalk.method({
+selector: "start",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "start",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2486,6 +2518,23 @@ smalltalk.TimeSchedulePage.klass);
 
 smalltalk.addClass('Wakame', smalltalk.TimeSchedulePage, ['selectedClass', 'methodName', 'browser', 'title'], 'DyNagoya');
 smalltalk.addMethod(
+"_end",
+smalltalk.method({
+selector: "end",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "18:00";
+    return self;
+},
+args: [],
+source: "end\x0a\x09^ '18:00'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Wakame);
+
+smalltalk.addMethod(
 "_sessions",
 smalltalk.method({
 selector: "sessions",
@@ -2503,17 +2552,34 @@ referencedClasses: ["TalkSession"]
 smalltalk.Wakame);
 
 smalltalk.addMethod(
+"_start",
+smalltalk.method({
+selector: "start",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "13:30";
+    return self;
+},
+args: [],
+source: "start\x0a\x09^ '13:30'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Wakame);
+
+smalltalk.addMethod(
 "_title",
 smalltalk.method({
 selector: "title",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return "\u308F\u304B\u3081\u306E\u30E2\u30CA\u30C9\u6D78\u3057";
+    return "\u308F\u304B\u3081\u306E\u30E2\u30CA\u30C9\u6D78\u3057 - \u57FA\u790E\u30BB\u30C3\u30B7\u30E7\u30F3 -";
     return self;
 },
 args: [],
-source: "title\x0a\x09^ 'わかめのモナド浸し'",
+source: "title\x0a\x09^ 'わかめのモナド浸し - 基礎セッション -'",
 messageSends: [],
 referencedClasses: []
 }),
