@@ -1073,7 +1073,7 @@ title: aString
 !Page class methodsFor: 'not yet classified'!
 
 show
-  Screen new flip: self new
+  ^ Screen new flip: self new
 ! !
 
 Page subclass: #AboutDyNagoya
@@ -1338,12 +1338,13 @@ title: html
 	^ ''
 ! !
 
+TimeSchedulePage class instanceVariableNames: 's'!
+
 !TimeSchedulePage class methodsFor: 'not yet classified'!
 
-showWithBrowser: aBrowser
-	Screen new flip: (Page new title: (aBrowser target name)).
-	Screen add: [ %1 div class: 'tree-source workspace-effect'; with: aBrowser ].
-	aBrowser open
+show
+	s ifNil: [ s := self new ].
+	^ Screen new flip: s.
 ! !
 
 TimeSchedulePage subclass: #Wakame
@@ -2069,7 +2070,8 @@ fade: aPage
 !
 
 flip: aPage
-	self skew: aPage
+	self skew: aPage.
+	^ aPage
 !
 
 flip: aPage before: beforeMethod after: afterMethod
@@ -2163,6 +2165,7 @@ Widget subclass: #SeminarSession
 
 done
 	isDone := true.
+	body asJQuery animate: #{ 'background' -> 'gray' }
 !
 
 end: aString

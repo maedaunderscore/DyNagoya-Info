@@ -1532,7 +1532,7 @@ smalltalk.method({
 selector: "show",
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(self, "_new", [])]);
+    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(self, "_new", [])]);
     return self;
 }
 }),
@@ -1827,15 +1827,16 @@ fn: function (html) {
 smalltalk.TimeSchedulePage);
 
 
+smalltalk.TimeSchedulePage.klass.iVarNames = ['s'];
 smalltalk.addMethod(
-"_showWithBrowser_",
+"_show",
 smalltalk.method({
-selector: "showWithBrowser:",
-fn: function (aBrowser) {
+selector: "show",
+fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [smalltalk.send(smalltalk.send(aBrowser, "_target", []), "_name", [])])]);
-    smalltalk.send(smalltalk.Screen || Screen, "_add_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_class_", ["tree-source workspace-effect"]);return smalltalk.send($rec, "_with_", [aBrowser]);}(smalltalk.send(thisisplaceholder1, "_div", []));}]);
-    smalltalk.send(aBrowser, "_open", []);
+    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
+        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", []);}() : $receiver;
+    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [typeof s == "undefined" ? nil : s]);
     return self;
 }
 }),
@@ -3292,6 +3293,7 @@ selector: "flip:",
 fn: function (aPage) {
     var self = this;
     smalltalk.send(self, "_skew_", [aPage]);
+    return aPage;
     return self;
 }
 }),
@@ -3458,6 +3460,7 @@ selector: "done",
 fn: function () {
     var self = this;
     self['@isDone'] = true;
+    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_animate_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("background", "__minus_gt", ["gray"])])]);
     return self;
 }
 }),
