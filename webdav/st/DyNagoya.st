@@ -1310,6 +1310,9 @@ Page subclass: #TimeSchedulePage
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
 
+end
+!
+
 renderBody: html
 	html h1: self title.
 	self sessions do: [ html put: %1 ]
@@ -1317,6 +1320,9 @@ renderBody: html
 
 sessions
 	^ {}
+!
+
+start
 !
 
 title
@@ -1337,6 +1343,10 @@ TimeSchedulePage subclass: #Wakame
 
 !Wakame methodsFor: 'not yet classified'!
 
+end
+	^ '18:00'
+!
+
 sessions
 	^ {
 		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
@@ -1347,8 +1357,12 @@ sessions
 	}
 !
 
+start
+	^ '13:30'
+!
+
 title
-	^ 'わかめのモナド浸し'
+	^ 'わかめのモナド浸し - 基礎セッション -'
 ! !
 
 Page subclass: #TopPage
