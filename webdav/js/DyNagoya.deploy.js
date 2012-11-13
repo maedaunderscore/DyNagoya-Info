@@ -1741,7 +1741,7 @@ smalltalk.Links);
 
 
 
-smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace'], 'DyNagoya');
+smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions'], 'DyNagoya');
 smalltalk.addMethod(
 "_end",
 smalltalk.method({
@@ -1785,7 +1785,7 @@ smalltalk.method({
 selector: "sessions",
 fn: function () {
     var self = this;
-    return [];
+    return self['@sessions'];
     return self;
 }
 }),
@@ -1842,7 +1842,7 @@ fn: function (aBrowser) {
 smalltalk.TimeSchedulePage.klass);
 
 
-smalltalk.addClass('Wakame', smalltalk.TimeSchedulePage, ['selectedClass', 'methodName', 'browser', 'title', 'sessions'], 'DyNagoya');
+smalltalk.addClass('Wakame', smalltalk.TimeSchedulePage, [], 'DyNagoya');
 smalltalk.addMethod(
 "_end",
 smalltalk.method({
@@ -1861,19 +1861,7 @@ smalltalk.method({
 selector: "initialize",
 fn: function () {
     var self = this;
-    self['@sessions'] = [function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C"]);smalltalk.send($rec, "_start_", ["13:00"]);return smalltalk.send($rec, "_end_", ["13:30"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580"]);smalltalk.send($rec, "_speaker_", ["@hiratara"]);smalltalk.send($rec, "_start_", ["13:30"]);return smalltalk.send($rec, "_end_", ["14:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)"]);smalltalk.send($rec, "_speaker_", ["@mzp"]);smalltalk.send($rec, "_start_", ["14:30"]);return smalltalk.send($rec, "_end_", ["15:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["15:30"]);return smalltalk.send($rec, "_end_", ["16:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["16:30"]);return smalltalk.send($rec, "_end_", ["17:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u4F59\u30E2\u30CA\u30C9"]);smalltalk.send($rec, "_speaker_", ["@uskz"]);smalltalk.send($rec, "_start_", ["17:30"]);return smalltalk.send($rec, "_end_", ["18:00"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", []))];
-    return self;
-}
-}),
-smalltalk.Wakame);
-
-smalltalk.addMethod(
-"_sessions",
-smalltalk.method({
-selector: "sessions",
-fn: function () {
-    var self = this;
-    return self['@sessions'];
+    self['@sessions'] = [function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C"]);smalltalk.send($rec, "_start_", ["13:00"]);return smalltalk.send($rec, "_end_", ["13:30"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580"]);smalltalk.send($rec, "_speaker_", ["@hiratara"]);smalltalk.send($rec, "_start_", ["13:30"]);return smalltalk.send($rec, "_end_", ["14:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)"]);smalltalk.send($rec, "_speaker_", ["@mzp"]);smalltalk.send($rec, "_start_", ["14:30"]);return smalltalk.send($rec, "_end_", ["15:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["15:30"]);return smalltalk.send($rec, "_end_", ["16:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["16:30"]);return smalltalk.send($rec, "_end_", ["17:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u4F59\u30E2\u30CA\u30C9"]);smalltalk.send($rec, "_speaker_", ["@uskz"]);smalltalk.send($rec, "_start_", ["17:30"]);return smalltalk.send($rec, "_end_", ["18:00"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", []))];
     return self;
 }
 }),
@@ -1886,18 +1874,6 @@ selector: "start",
 fn: function () {
     var self = this;
     return "13:30";
-    return self;
-}
-}),
-smalltalk.Wakame);
-
-smalltalk.addMethod(
-"_title",
-smalltalk.method({
-selector: "title",
-fn: function () {
-    var self = this;
-    return "\u308F\u304B\u3081\u306E\u30E2\u30CA\u30C9\u6D78\u3057 - \u57FA\u790E\u30BB\u30C3\u30B7\u30E7\u30F3 -";
     return self;
 }
 }),
@@ -3474,7 +3450,19 @@ fn: function (aString) {
 smalltalk.Screen.klass);
 
 
-smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body'], 'DyNagoya');
+smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body', 'long', 'isDone'], 'DyNagoya');
+smalltalk.addMethod(
+"_done",
+smalltalk.method({
+selector: "done",
+fn: function () {
+    var self = this;
+    self['@isDone'] = true;
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
 smalltalk.addMethod(
 "_end_",
 smalltalk.method({
@@ -3482,6 +3470,30 @@ selector: "end:",
 fn: function (aString) {
     var self = this;
     self['@end'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "hh:mm"]);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@isDone'] = false;
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_long_",
+smalltalk.method({
+selector: "long:",
+fn: function (aMinutes) {
+    var self = this;
+    self['@long'] = aMinutes;
     return self;
 }
 }),
@@ -3514,6 +3526,18 @@ smalltalk.SeminarSession);
 
 
 smalltalk.addClass('RestSession', smalltalk.SeminarSession, [], 'DyNagoya');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@title'] = "\u4F11\u61A9";
+    return self;
+}
+}),
+smalltalk.RestSession);
+
 smalltalk.addMethod(
 "_renderOn_",
 smalltalk.method({
