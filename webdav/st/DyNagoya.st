@@ -2227,7 +2227,8 @@ SeminarSession subclass: #TalkSession
 
 renderOn: html
 	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
-			css: 'font-size' put: '20px'.
+			css: 'font-size' put: '20px'.  
+body inspect.
 	body with: [
 		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
 		html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
