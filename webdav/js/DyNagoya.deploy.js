@@ -1741,7 +1741,35 @@ smalltalk.Links);
 
 
 
-smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions'], 'DyNagoya');
+smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions', 'index'], 'DyNagoya');
+smalltalk.addMethod(
+"_current",
+smalltalk.method({
+selector: "current",
+fn: function () {
+    var self = this;
+    ($receiver = self['@index']) == nil || $receiver == undefined ? function () {return self['@index'] = 1;}() : $receiver;
+    return smalltalk.send(self['@sessions'], "_at_", [self['@index']]);
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_done",
+smalltalk.method({
+selector: "done",
+fn: function () {
+    var self = this;
+    var prev = nil;
+    prev = smalltalk.send(smalltalk.send(self, "_current", []), "_done", []);
+    self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+    return prev;
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
 smalltalk.addMethod(
 "_end",
 smalltalk.method({
@@ -1829,14 +1857,13 @@ smalltalk.TimeSchedulePage);
 
 smalltalk.TimeSchedulePage.klass.iVarNames = ['s'];
 smalltalk.addMethod(
-"_show",
+"_new",
 smalltalk.method({
-selector: "show",
+selector: "new",
 fn: function () {
     var self = this;
-    ($receiver = typeof s == "undefined" ? nil : s) == nil ||
-        $receiver == undefined ? function () {return s = smalltalk.send(self, "_new", []);}() : $receiver;
-    return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [typeof s == "undefined" ? nil : s]);
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", []);}() : $receiver;
+    return self['@s'];
     return self;
 }
 }),
@@ -3460,7 +3487,7 @@ selector: "done",
 fn: function () {
     var self = this;
     self['@isDone'] = true;
-    smalltalk.send(smalltalk.send(self['@body'], "_asJQuery", []), "_animate_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("background", "__minus_gt", ["gray"])])]);
+    smalltalk.send(self['@body'], "_css_put_", ["background", "gray"]);
     return self;
 }
 }),
