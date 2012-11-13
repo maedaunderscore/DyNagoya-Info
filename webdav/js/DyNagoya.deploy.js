@@ -1822,7 +1822,7 @@ smalltalk.method({
 selector: "renderSession",
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(self, "_sessions", []), "_do_", [function (thisisplaceholder1) {return smalltalk.send(self['@sessionPlace'], "_with_", [thisisplaceholder1]);}]);
+    smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self['@sessionPlace'], "_with_", [thisisplaceholder1]);}]);
     return self;
 }
 }),
@@ -3599,7 +3599,6 @@ selector: "renderOn:",
 fn: function (html) {
     var self = this;
     self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
-    smalltalk.send(self['@body'], "_inspect", []);
     smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
     return self;
 }
