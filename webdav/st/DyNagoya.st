@@ -1329,6 +1329,11 @@ done
 end
 !
 
+initialize
+	sessions := self sessions.
+	index := 1
+!
+
 renderBody: html
 	self title: html.
 	sessionPlace := html div.
@@ -1340,14 +1345,10 @@ renderSession
 !
 
 sessions
-	^ sessions
+	^ {}
 !
 
 start
-!
-
-title
-	^ ''
 !
 
 title: html
@@ -1373,8 +1374,8 @@ end
 	^ '18:00'
 !
 
-initialize
-	sessions := {
+sessions
+	^ {
 		OtherSession new title: '〜 オープニング 〜'; start: '13:00'; end: '13:30'.
 		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
 		RestSession new long: 15.
