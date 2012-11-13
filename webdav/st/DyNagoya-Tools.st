@@ -438,6 +438,8 @@ initialize
 		modal: false
 ! !
 
+TranscriptDialog class instanceVariableNames: 's'!
+
 !TranscriptDialog class methodsFor: 'not yet classified'!
 
 new
