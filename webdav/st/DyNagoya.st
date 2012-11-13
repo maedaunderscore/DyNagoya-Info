@@ -1305,10 +1305,22 @@ renderBody: html
 ! !
 
 Page subclass: #TimeSchedulePage
-	instanceVariableNames: 'sessionPlace sessions'
+	instanceVariableNames: 'sessionPlace sessions index'
 	package: 'DyNagoya'!
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
+
+current
+	index ifNil: [ index := 1].
+	^ sessions at: index
+!
+
+done
+	| prev |
+	prev := self current done.
+	index := index + 1.
+	^ prev
+!
 
 end
 !
@@ -1342,9 +1354,9 @@ TimeSchedulePage class instanceVariableNames: 's'!
 
 !TimeSchedulePage class methodsFor: 'not yet classified'!
 
-show
+new
 	s ifNil: [ s := self new ].
-	^ Screen new flip: s.
+	^ s
 ! !
 
 TimeSchedulePage subclass: #Wakame
@@ -2165,7 +2177,7 @@ Widget subclass: #SeminarSession
 
 done
 	isDone := true.
-	body asJQuery animate: #{ 'background' -> 'gray' }
+	body css: 'background' put: 'gray'
 !
 
 end: aString
