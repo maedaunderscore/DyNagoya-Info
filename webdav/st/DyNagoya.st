@@ -1305,7 +1305,7 @@ renderBody: html
 ! !
 
 Page subclass: #TimeSchedulePage
-	instanceVariableNames: ''
+	instanceVariableNames: 'sessionPlace'
 	package: 'DyNagoya'!
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
@@ -1314,8 +1314,13 @@ end
 !
 
 renderBody: html
-	html h1: self title.
-	self sessions do: [ html put: %1 ]
+	self title: html.
+	sessionPlace := html div.
+	self renderSession
+!
+
+renderSession
+	self sessions do: [ sessionPlace with: %1 ]
 !
 
 sessions
@@ -1326,6 +1331,10 @@ start
 !
 
 title
+	^ ''
+!
+
+title: html
 	^ ''
 ! !
 
@@ -1338,7 +1347,7 @@ showWithBrowser: aBrowser
 ! !
 
 TimeSchedulePage subclass: #Wakame
-	instanceVariableNames: 'selectedClass methodName browser title'
+	instanceVariableNames: 'selectedClass methodName browser title sessions'
 	package: 'DyNagoya'!
 
 !Wakame methodsFor: 'not yet classified'!
@@ -1347,8 +1356,9 @@ end
 	^ '18:00'
 !
 
-sessions
-	^ {
+initialize
+	sessions := {
+		OtherSession new title: '〜 オープニング 〜'; start: '13:00'; end: '13:30'.
 		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
 		TalkSession new title: 'CoqによるMaybeモナドを証明(+ Coq入門)'; speaker: '@mzp'; start: '14:30'; end: '15:15'.
 		TalkSession new title: 'CoqによるKleisli構成の説明'; speaker: '@t6s'; start: '15:30'; end: '16:15'.
@@ -1357,12 +1367,23 @@ sessions
 	}
 !
 
+sessions
+	^ sessions
+!
+
 start
 	^ '13:30'
 !
 
 title
 	^ 'わかめのモナド浸し - 基礎セッション -'
+!
+
+title: html
+	html h1 with:[
+		html span with: 'わかめのモナド浸し'.
+		html span with: ' - 基礎セッション -'; css: 'font-size' put: '36px'
+	]
 ! !
 
 Page subclass: #TopPage
@@ -2141,15 +2162,38 @@ title: aString
 	Screen new flip:  (Page new title: aString)
 ! !
 
-Widget subclass: #TalkSession
-	instanceVariableNames: 'title start end body speaker'
+Widget subclass: #SeminarSession
+	instanceVariableNames: 'title start end body'
 	package: 'DyNagoya'!
 
-!TalkSession methodsFor: 'not yet classified'!
+!SeminarSession methodsFor: 'not yet classified'!
 
 end: aString
 	end := moment value: aString value: 'hh:mm'
 !
+
+start: aString
+	start := moment value: aString value: 'hh:mm'
+!
+
+title: aString
+	title := aString
+! !
+
+SeminarSession subclass: #RestSession
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!RestSession methodsFor: 'not yet classified'!
+
+renderOn: html
+! !
+
+SeminarSession subclass: #TalkSession
+	instanceVariableNames: 'speaker'
+	package: 'DyNagoya'!
+
+!TalkSession methodsFor: 'not yet classified'!
 
 renderOn: html
 	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
@@ -2163,14 +2207,22 @@ renderOn: html
 
 speaker: aString
 	speaker := aString
-!
+! !
 
-start: aString
-	start := moment value: aString value: 'hh:mm'
-!
+TalkSession subclass: #OtherSession
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
 
-title: aString
-	title := aString
+!OtherSession methodsFor: 'not yet classified'!
+
+renderOn: html
+	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
+			css: 'font-size' put: '20px'.
+	body with: [
+		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
+		html span with: ''; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
+		html span with: title.
+	]
 ! !
 
 Widget subclass: #ToolBar
