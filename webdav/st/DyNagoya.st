@@ -1380,9 +1380,13 @@ sessions
 		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
 		RestSession new long: 15.
 		TalkSession new title: 'CoqによるMaybeモナドを証明(+ Coq入門)'; speaker: '@mzp'; start: '14:30'; end: '15:15'.
+		RestSession new long: 15.
 		TalkSession new title: 'CoqによるKleisli構成の説明'; speaker: '@t6s'; start: '15:30'; end: '16:15'.
+		RestSession new long: 15.
 		TalkSession new title: 'モッジとワドラー'; speaker: '@t6s'; start: '16:30'; end: '17:15'.
-		TalkSession new title: '余モナド'; speaker: '@uskz'; start: '17:30'; end: '18:00'
+		RestSession new long: 15.
+		TalkSession new title: '余モナド'; speaker: '@uskz'; start: '17:30'; end: '18:00'.
+		OtherSession new title: '〜 懇親会（ビアバッシュ） 〜'; start: '18:00'; end: '20:00'
 	}
 !
 
@@ -2182,8 +2186,20 @@ Widget subclass: #SeminarSession
 
 done
 	isDone := true.
-	body >>= [ %1 css: 'background' put: 'gray'].
+	body >>= [ self drawBackground: %1].
 	^ body notNil
+!
+
+drawBackGround: html
+	isDone ifTrue: [
+		html css: 'background' put: 'gray'
+	]
+!
+
+drawBackground: html
+	isDone ifTrue: [
+		html css: 'background' put: 'gray'
+	]
 !
 
 end: aString
@@ -2228,6 +2244,7 @@ SeminarSession subclass: #TalkSession
 renderOn: html
 	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
 			css: 'font-size' put: '20px'.  
+	self drawBackground.
 	body with: [
 		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
 		html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
