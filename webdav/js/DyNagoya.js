@@ -2436,15 +2436,23 @@ selector: "done",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    var prev = nil;
-    prev = smalltalk.send(smalltalk.send(self, "_current", []), "_done", []);
-    self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
-    return prev;
-    return self;
+    var $early = {};
+    try {
+        var prev = nil;
+        prev = smalltalk.send(self, "_current", []);
+        self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
 },
 args: [],
-source: "done\x0a\x09| prev |\x0a\x09prev := self current done.\x0a\x09index := index + 1.\x0a\x09^ prev",
-messageSends: ["done", "current", "+"],
+source: "done\x0a\x09| prev |\x0a\x09prev := self current.\x0a\x09index := index + 1.\x0a\x09prev done ifTrue: [\x0a\x09\x09^ prev\x0a\x09] ifFalse: [\x0a\x09\x09^ self done\x0a\x09]",
+messageSends: ["current", "+", "ifTrue:ifFalse:", "done"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2577,12 +2585,12 @@ selector: "new",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", []);}() : $receiver;
+    ($receiver = self['@s']) == nil || $receiver == undefined ? function () {return self['@s'] = smalltalk.send(self, "_new", [], smalltalk.TimeSchedulePage.klass.superclass || nil);}() : $receiver;
     return self['@s'];
     return self;
 },
 args: [],
-source: "new\x0a\x09s ifNil: [ s := self new ].\x0a\x09^ s",
+source: "new\x0a\x09s ifNil: [ s := super new ].\x0a\x09^ s",
 messageSends: ["ifNil:", "new"],
 referencedClasses: []
 }),
@@ -4830,12 +4838,13 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     self['@isDone'] = true;
-    smalltalk.send(self['@body'], "_css_put_", ["background", "gray"]);
+    smalltalk.send(self['@body'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_css_put_", ["background", "gray"]);}]);
+    return smalltalk.send(self['@body'], "_notNil", []);
     return self;
 },
 args: [],
-source: "done\x0a\x09isDone := true.\x0a\x09body css: 'background' put: 'gray'",
-messageSends: ["css:put:"],
+source: "done\x0a\x09isDone := true.\x0a\x09body >>= [ %1 css: 'background' put: 'gray'].\x0a\x09^ body notNil",
+messageSends: [">>=", "css:put:", "notNil"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
