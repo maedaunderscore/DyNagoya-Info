@@ -1111,6 +1111,7 @@ referencedClasses: ["IDETranscript"]
 smalltalk.TranscriptDialog);
 
 
+smalltalk.TranscriptDialog.klass.iVarNames = ['s'];
 smalltalk.addMethod(
 "_new",
 smalltalk.method({
