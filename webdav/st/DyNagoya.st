@@ -1305,7 +1305,7 @@ renderBody: html
 ! !
 
 Page subclass: #TimeSchedulePage
-	instanceVariableNames: 'sessionPlace'
+	instanceVariableNames: 'sessionPlace sessions'
 	package: 'DyNagoya'!
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
@@ -1324,7 +1324,7 @@ renderSession
 !
 
 sessions
-	^ {}
+	^ sessions
 !
 
 start
@@ -1347,7 +1347,7 @@ showWithBrowser: aBrowser
 ! !
 
 TimeSchedulePage subclass: #Wakame
-	instanceVariableNames: 'selectedClass methodName browser title sessions'
+	instanceVariableNames: ''
 	package: 'DyNagoya'!
 
 !Wakame methodsFor: 'not yet classified'!
@@ -1360,6 +1360,7 @@ initialize
 	sessions := {
 		OtherSession new title: '〜 オープニング 〜'; start: '13:00'; end: '13:30'.
 		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
+		RestSession new long: 15.
 		TalkSession new title: 'CoqによるMaybeモナドを証明(+ Coq入門)'; speaker: '@mzp'; start: '14:30'; end: '15:15'.
 		TalkSession new title: 'CoqによるKleisli構成の説明'; speaker: '@t6s'; start: '15:30'; end: '16:15'.
 		TalkSession new title: 'モッジとワドラー'; speaker: '@t6s'; start: '16:30'; end: '17:15'.
@@ -1367,16 +1368,8 @@ initialize
 	}
 !
 
-sessions
-	^ sessions
-!
-
 start
 	^ '13:30'
-!
-
-title
-	^ 'わかめのモナド浸し - 基礎セッション -'
 !
 
 title: html
@@ -2163,13 +2156,25 @@ title: aString
 ! !
 
 Widget subclass: #SeminarSession
-	instanceVariableNames: 'title start end body'
+	instanceVariableNames: 'title start end body long isDone'
 	package: 'DyNagoya'!
 
 !SeminarSession methodsFor: 'not yet classified'!
 
+done
+	isDone := true.
+!
+
 end: aString
 	end := moment value: aString value: 'hh:mm'
+!
+
+initialize
+	isDone := false
+!
+
+long: aMinutes
+	long := aMinutes
 !
 
 start: aString
@@ -2185,6 +2190,10 @@ SeminarSession subclass: #RestSession
 	package: 'DyNagoya'!
 
 !RestSession methodsFor: 'not yet classified'!
+
+initialize
+	title := '休憩'
+!
 
 renderOn: html
 ! !
