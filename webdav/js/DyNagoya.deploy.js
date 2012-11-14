@@ -1893,7 +1893,7 @@ fn: function (aTime) {
     min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
     h = Math.floor(min / 60);
     m = Math.floor(min % 60);
-    return moment(0).hours(h).minutes(m);
+    return moment([0]).hours(h).minutes(m);
     return self;
 }
 }),
@@ -1920,7 +1920,7 @@ fn: function () {
     var self = this;
     var c = nil;
     c = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value", []);
-    return moment(0).hours(c.hours()).minutes(c.minutes());
+    return moment([0]).hours(c.hours()).minutes(c.minutes());
     return self;
 }
 }),
