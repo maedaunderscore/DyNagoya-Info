@@ -2613,11 +2613,11 @@ fn: function (aTime) {
     min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
     h = Math.floor(min / 60);
     m = Math.floor(min % 60);
-    return moment(0).hours(h).minutes(m);
+    return moment([0]).hours(h).minutes(m);
     return self;
 },
 args: ["aTime"],
-source: "adjust: aTime\x0a\x09| c min h m |\x0a\x09min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).\x0a\x09h := (<Math.floor(min / 60)>).\x0a\x09m := (<Math.floor(min % 60)>).\x0a\x09^ (< moment(0).hours(h).minutes(m) >)",
+source: "adjust: aTime\x0a\x09| c min h m |\x0a\x09min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).\x0a\x09h := (<Math.floor(min / 60)>).\x0a\x09m := (<Math.floor(min % 60)>).\x0a\x09^ (< moment([0]).hours(h).minutes(m) >)",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2650,11 +2650,11 @@ fn: function () {
     var self = this;
     var c = nil;
     c = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value", []);
-    return moment(0).hours(c.hours()).minutes(c.minutes());
+    return moment([0]).hours(c.hours()).minutes(c.minutes());
     return self;
 },
 args: [],
-source: "now\x0a\x09| c |\x0a\x09c := moment value.\x0a\x09^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)",
+source: "now\x0a\x09| c |\x0a\x09c := moment value.\x0a\x09^ (< moment([0]).hours(c.hours()).minutes(c.minutes()) >)",
 messageSends: ["value"],
 referencedClasses: []
 }),
