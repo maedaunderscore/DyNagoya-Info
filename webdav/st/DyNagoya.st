@@ -1316,7 +1316,8 @@ calcTime
 	sessions do: [ :session |
 		session start: current clone.
 		current add: 'm' min: session long.
-		session end: current clone
+		session end: current clone.
+		current := session adjust
 	]
 !
 
@@ -1369,6 +1370,14 @@ TimeSchedulePage class instanceVariableNames: 's'!
 
 !TimeSchedulePage class methodsFor: 'not yet classified'!
 
+adjust: aTime
+	| c min h m |
+	min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).
+	h := (<Math.floor(min / 60)>).
+	m := (<Math.floor(min % 60)>).
+	^ (< moment().hours(h).minutes(m).seconds(0) >)
+!
+
 new
 	s ifNil: [ s := super new ].
 	^ s
@@ -1398,7 +1407,7 @@ end
 !
 
 grammer Sessions:list > sessions
-〜オープニング〜 : 30min
+〜オープニング〜 : 31min
 モナモナいうモナド入門[@hiratara] : 45min
 休憩 : 15min
 CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
@@ -2205,6 +2214,10 @@ Widget subclass: #SeminarSession
 
 !SeminarSession methodsFor: 'not yet classified'!
 
+adjust
+	^ end
+!
+
 done
 	isDone := true.
 	body >>= [ self drawBackground: %1].
@@ -2252,6 +2265,13 @@ SeminarSession subclass: #RestSession
 	package: 'DyNagoya'!
 
 !RestSession methodsFor: 'not yet classified'!
+
+adjust
+	isDone ifTrue: [ ^ super adjust ].
+	end := TimeSchedulePage adjust: end.
+	long := end diff: start unit: 'minutes'.
+	^ end
+!
 
 initialize
 	title := '休憩'
