@@ -2420,12 +2420,12 @@ fn: function () {
     var self = this;
     var current = nil;
     current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
-    smalltalk.send(self['@sessions'], "_do_", [function (session) {smalltalk.send(session, "_start_", [smalltalk.send(current, "_clone", [])]);smalltalk.send(current, "_add_min_", ["m", smalltalk.send(session, "_long", [])]);return smalltalk.send(session, "_end_", [smalltalk.send(current, "_clone", [])]);}]);
+    smalltalk.send(self['@sessions'], "_do_", [function (session) {smalltalk.send(session, "_start_", [smalltalk.send(current, "_clone", [])]);smalltalk.send(current, "_add_min_", ["m", smalltalk.send(session, "_long", [])]);smalltalk.send(session, "_end_", [smalltalk.send(current, "_clone", [])]);return current = smalltalk.send(session, "_adjust", []);}]);
     return self;
 },
 args: [],
-source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'hh:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09session start: current clone.\x0a\x09\x09current add: 'm' min: session long.\x0a\x09\x09session end: current clone\x0a\x09]",
-messageSends: ["value:value:", "start", "do:", "start:", "clone", "add:min:", "long", "end:"],
+source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'hh:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09session start: current clone.\x0a\x09\x09current add: 'm' min: session long.\x0a\x09\x09session end: current clone.\x0a\x09\x09current := session adjust\x0a\x09]",
+messageSends: ["value:value:", "start", "do:", "start:", "clone", "add:min:", "long", "end:", "adjust"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2599,6 +2599,30 @@ smalltalk.TimeSchedulePage);
 
 smalltalk.TimeSchedulePage.klass.iVarNames = ['s'];
 smalltalk.addMethod(
+"_adjust_",
+smalltalk.method({
+selector: "adjust:",
+category: 'not yet classified',
+fn: function (aTime) {
+    var self = this;
+    var c = nil;
+    var min = nil;
+    var h = nil;
+    var m = nil;
+    min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
+    h = Math.floor(min / 60);
+    m = Math.floor(min % 60);
+    return moment().hours(h).minutes(m).seconds(0);
+    return self;
+},
+args: ["aTime"],
+source: "adjust: aTime\x0a\x09| c min h m |\x0a\x09min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).\x0a\x09h := (<Math.floor(min / 60)>).\x0a\x09m := (<Math.floor(min % 60)>).\x0a\x09^ (< moment().hours(h).minutes(m).seconds(0) >)",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage.klass);
+
+smalltalk.addMethod(
 "_new",
 smalltalk.method({
 selector: "new",
@@ -2659,10 +2683,10 @@ smalltalk.method({
 selector: "sessions",
 category: 'not yet classified',
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30AA\u30FC\u30D7\u30CB\u30F3\u30B0\u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min", "list");
+    return this._Sessions().matchAll("\u301C\u30AA\u30FC\u30D7\u30CB\u30F3\u30B0\u301C : 31min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜オープニング〜 : 30min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min\x0a休憩 : 15min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a〜 懇親会（ビアバッシュ） 〜 : 120min",
+source: "grammer Sessions:list > sessions\x0a〜オープニング〜 : 31min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min\x0a休憩 : 15min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a〜 懇親会（ビアバッシュ） 〜 : 120min",
 messageSends: [],
 referencedClasses: []
 }),
@@ -4867,6 +4891,23 @@ smalltalk.Screen.klass);
 
 smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body', 'long', 'isDone'], 'DyNagoya');
 smalltalk.addMethod(
+"_adjust",
+smalltalk.method({
+selector: "adjust",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@end'];
+    return self;
+},
+args: [],
+source: "adjust\x0a\x09^ end",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
 "_done",
 smalltalk.method({
 selector: "done",
@@ -5024,6 +5065,34 @@ smalltalk.SeminarSession);
 
 
 smalltalk.addClass('RestSession', smalltalk.SeminarSession, [], 'DyNagoya');
+smalltalk.addMethod(
+"_adjust",
+smalltalk.method({
+selector: "adjust",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var $early = {};
+    try {
+        ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [smalltalk.send(self, "_adjust", [], smalltalk.RestSession.superclass || nil)];}();}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function () {throw $early = [smalltalk.send(self, "_adjust", [], smalltalk.RestSession.superclass || nil)];}();}]);
+        self['@end'] = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_adjust_", [self['@end']]);
+        self['@long'] = smalltalk.send(self['@end'], "_diff_unit_", [self['@start'], "minutes"]);
+        return self['@end'];
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: [],
+source: "adjust\x0a\x09isDone ifTrue: [ ^ super adjust ].\x0a\x09end := TimeSchedulePage adjust: end.\x0a\x09long := end diff: start unit: 'minutes'.\x0a\x09^ end",
+messageSends: ["ifTrue:", "adjust", "adjust:", "diff:unit:"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.RestSession);
+
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
