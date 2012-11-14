@@ -1376,7 +1376,7 @@ adjust: aTime
 	min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).
 	h := (<Math.floor(min / 60)>).
 	m := (<Math.floor(min % 60)>).
-	^ (< moment(0).hours(h).minutes(m) >)
+	^ (< moment([0]).hours(h).minutes(m) >)
 !
 
 new
@@ -1387,7 +1387,7 @@ new
 now
 	| c |
 	c := moment value.
-	^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)
+	^ (< moment([0]).hours(c.hours()).minutes(c.minutes()) >)
 ! !
 
 TimeSchedulePage subclass: #Wakame
