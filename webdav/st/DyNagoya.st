@@ -1328,6 +1328,7 @@ current
 
 done
 	| prev |
+	self current setEnd: TimeSchedulePage now.
 	prev := self current.
 	index := index + 1.
 	prev done ifTrue: [
@@ -1375,12 +1376,18 @@ adjust: aTime
 	min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).
 	h := (<Math.floor(min / 60)>).
 	m := (<Math.floor(min % 60)>).
-	^ (< moment().hours(h).minutes(m).seconds(0) >)
+	^ (< moment(0).hours(h).minutes(m) >)
 !
 
 new
 	s ifNil: [ s := super new ].
 	^ s
+!
+
+now
+	| c |
+	c := moment value.
+	^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)
 ! !
 
 TimeSchedulePage subclass: #Wakame
@@ -1407,11 +1414,11 @@ end
 !
 
 grammer Sessions:list > sessions
-〜オープニング〜 : 31min
+〜オープニング〜 : 30min
 モナモナいうモナド入門[@hiratara] : 45min
 休憩 : 15min
-CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
-休憩 : 15min
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 48min
+休憩 : 10min
 CoqによるKleisli構成の説明[@t6s] : 45min
 休憩 : 15min
 モッジとワドラー[@t6s] : 30min
@@ -2215,7 +2222,7 @@ Widget subclass: #SeminarSession
 !SeminarSession methodsFor: 'not yet classified'!
 
 adjust
-	^ end
+	^ end clone
 !
 
 done
@@ -2252,6 +2259,13 @@ long: aMinutes
 	long := aMinutes
 !
 
+setEnd: aTime
+	end := aTime.
+	start ifNotNil: [
+		long := end diff: start unit: 'minutes'
+	]
+!
+
 start: aString
 	start := moment value: aString value: 'hh:mm'
 !
@@ -2267,10 +2281,8 @@ SeminarSession subclass: #RestSession
 !RestSession methodsFor: 'not yet classified'!
 
 adjust
-	isDone ifTrue: [ ^ super adjust ].
-	end := TimeSchedulePage adjust: end.
-	long := end diff: start unit: 'minutes'.
-	^ end
+	self setEnd: (TimeSchedulePage adjust: end).
+	^ end clone
 !
 
 initialize
