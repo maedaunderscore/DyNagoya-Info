@@ -1310,6 +1310,16 @@ Page subclass: #TimeSchedulePage
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
 
+calcTime
+	| current |
+	current := moment value: self start value: 'hh:mm'.
+	sessions do: [ :session |
+		session start: current clone.
+		current add: 'm' min: session long.
+		session end: current clone
+	]
+!
+
 current
 	index ifNil: [ index := 1].
 	^ sessions at: index
@@ -1370,28 +1380,39 @@ TimeSchedulePage subclass: #Wakame
 
 !Wakame methodsFor: 'not yet classified'!
 
+ometa Sessions {
+  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
+  eol = <( ~cr char )*>:body (cr | empty) -> body,
+  cr = char:r ?{r.charCodeAt(0) == 10},
+  number = <digit+>:x -> parseInt(x),
+  list = (session:s eol -> s)*,
+  session = ( other | rest | talk ):session spaces ':' spaces number: long "min" -> session._long_(long),
+  other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),
+  talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),
+  rest = "休憩" -> smalltalk.RestSession._new()
+}
+!
+
 end
 	^ '18:00'
 !
 
-sessions
-	^ {
-		OtherSession new title: '〜 オープニング 〜'; start: '13:00'; end: '13:30'.
-		TalkSession new title: 'モナモナいうモナド入門'; speaker: '@hiratara'; start: '13:30'; end: '14:15'.
-		RestSession new long: 15.
-		TalkSession new title: 'CoqによるMaybeモナドを証明(+ Coq入門)'; speaker: '@mzp'; start: '14:30'; end: '15:15'.
-		RestSession new long: 15.
-		TalkSession new title: 'CoqによるKleisli構成の説明'; speaker: '@t6s'; start: '15:30'; end: '16:15'.
-		RestSession new long: 15.
-		TalkSession new title: 'モッジとワドラー'; speaker: '@t6s'; start: '16:30'; end: '17:15'.
-		RestSession new long: 15.
-		TalkSession new title: '余モナド'; speaker: '@uskz'; start: '17:30'; end: '18:00'.
-		OtherSession new title: '〜 懇親会（ビアバッシュ） 〜'; start: '18:00'; end: '20:00'
-	}
+grammer Sessions:list > sessions
+〜オープニング〜 : 30min
+モナモナいうモナド入門[@hiratara] : 45min
+休憩 : 15min
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
+休憩 : 15min
+CoqによるKleisli構成の説明[@t6s] : 45min
+休憩 : 15min
+モッジとワドラー[@t6s] : 30min
+休憩 : 15min
+余モナド[@uskz] : 45min
+〜 懇親会（ビアバッシュ） 〜 : 120min
 !
 
 start
-	^ '13:30'
+	^ '13:00'
 !
 
 title: html
@@ -2208,6 +2229,10 @@ end: aString
 
 initialize
 	isDone := false
+!
+
+long
+	^long
 !
 
 long: aMinutes
