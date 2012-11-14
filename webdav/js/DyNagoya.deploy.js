@@ -1743,6 +1743,20 @@ smalltalk.Links);
 
 smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions', 'index'], 'DyNagoya');
 smalltalk.addMethod(
+"_calcTime",
+smalltalk.method({
+selector: "calcTime",
+fn: function () {
+    var self = this;
+    var current = nil;
+    current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
+    smalltalk.send(self['@sessions'], "_do_", [function (session) {smalltalk.send(session, "_start_", [smalltalk.send(current, "_clone", [])]);smalltalk.send(current, "_add_min_", ["m", smalltalk.send(session, "_long", [])]);return smalltalk.send(session, "_end_", [smalltalk.send(current, "_clone", [])]);}]);
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
 "_current",
 smalltalk.method({
 selector: "current",
@@ -1881,6 +1895,19 @@ smalltalk.TimeSchedulePage.klass);
 
 smalltalk.addClass('Wakame', smalltalk.TimeSchedulePage, [], 'DyNagoya');
 smalltalk.addMethod(
+"_Sessions",
+smalltalk.method({
+selector: "Sessions",
+fn: function () {
+    if (typeof Sessions === "undefined" || Sessions == null) {
+        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");return session._long_(long);}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
+    }
+    return Sessions;
+}
+}),
+smalltalk.Wakame);
+
+smalltalk.addMethod(
 "_end",
 smalltalk.method({
 selector: "end",
@@ -1897,9 +1924,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "sessions",
 fn: function () {
-    var self = this;
-    return [function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C"]);smalltalk.send($rec, "_start_", ["13:00"]);return smalltalk.send($rec, "_end_", ["13:30"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580"]);smalltalk.send($rec, "_speaker_", ["@hiratara"]);smalltalk.send($rec, "_start_", ["13:30"]);return smalltalk.send($rec, "_end_", ["14:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)"]);smalltalk.send($rec, "_speaker_", ["@mzp"]);smalltalk.send($rec, "_start_", ["14:30"]);return smalltalk.send($rec, "_end_", ["15:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["Coq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["15:30"]);return smalltalk.send($rec, "_end_", ["16:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC"]);smalltalk.send($rec, "_speaker_", ["@t6s"]);smalltalk.send($rec, "_start_", ["16:30"]);return smalltalk.send($rec, "_end_", ["17:15"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), smalltalk.send(smalltalk.send(smalltalk.RestSession || RestSession, "_new", []), "_long_", [15]), function ($rec) {smalltalk.send($rec, "_title_", ["\u4F59\u30E2\u30CA\u30C9"]);smalltalk.send($rec, "_speaker_", ["@uskz"]);smalltalk.send($rec, "_start_", ["17:30"]);return smalltalk.send($rec, "_end_", ["18:00"]);}(smalltalk.send(smalltalk.TalkSession || TalkSession, "_new", [])), function ($rec) {smalltalk.send($rec, "_title_", ["\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C"]);smalltalk.send($rec, "_start_", ["18:00"]);return smalltalk.send($rec, "_end_", ["20:00"]);}(smalltalk.send(smalltalk.OtherSession || OtherSession, "_new", []))];
-    return self;
+    return this._Sessions().matchAll("\u301C\u30AA\u30FC\u30D7\u30CB\u30F3\u30B0\u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min", "list");
 }
 }),
 smalltalk.Wakame);
@@ -1910,7 +1935,7 @@ smalltalk.method({
 selector: "start",
 fn: function () {
     var self = this;
-    return "13:30";
+    return "13:00";
     return self;
 }
 }),
@@ -3546,6 +3571,18 @@ selector: "initialize",
 fn: function () {
     var self = this;
     self['@isDone'] = false;
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_long",
+smalltalk.method({
+selector: "long",
+fn: function () {
+    var self = this;
+    return self['@long'];
     return self;
 }
 }),
