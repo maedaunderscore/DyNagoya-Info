@@ -1750,7 +1750,7 @@ fn: function () {
     var self = this;
     var current = nil;
     current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
-    smalltalk.send(self['@sessions'], "_do_", [function (session) {smalltalk.send(session, "_start_", [smalltalk.send(current, "_clone", [])]);smalltalk.send(current, "_add_min_", ["m", smalltalk.send(session, "_long", [])]);smalltalk.send(session, "_end_", [smalltalk.send(current, "_clone", [])]);return current = smalltalk.send(session, "_adjust", []);}]);
+    smalltalk.send(self['@sessions'], "_do_", [function (session) {return current = smalltalk.send(session, "_update_", [current]);}]);
     return self;
 }
 }),
@@ -1893,7 +1893,7 @@ fn: function (aTime) {
     min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
     h = Math.floor(min / 60);
     m = Math.floor(min % 60);
-    return moment([0]).hours(h).minutes(m);
+    return moment(0).hours(h).minutes(m);
     return self;
 }
 }),
@@ -1920,7 +1920,7 @@ fn: function () {
     var self = this;
     var c = nil;
     c = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value", []);
-    return moment([0]).hours(c.hours()).minutes(c.minutes());
+    return moment(0).hours(c.hours()).minutes(c.minutes());
     return self;
 }
 }),
@@ -3549,18 +3549,6 @@ smalltalk.Screen.klass);
 
 smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body', 'long', 'isDone'], 'DyNagoya');
 smalltalk.addMethod(
-"_adjust",
-smalltalk.method({
-selector: "adjust",
-fn: function () {
-    var self = this;
-    return smalltalk.send(self['@end'], "_clone", []);
-    return self;
-}
-}),
-smalltalk.SeminarSession);
-
-smalltalk.addMethod(
 "_done",
 smalltalk.method({
 selector: "done",
@@ -3569,18 +3557,6 @@ fn: function () {
     self['@isDone'] = true;
     smalltalk.send(self['@body'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(self, "_drawBackground_", [thisisplaceholder1]);}]);
     return smalltalk.send(self['@body'], "_notNil", []);
-    return self;
-}
-}),
-smalltalk.SeminarSession);
-
-smalltalk.addMethod(
-"_drawBackGround_",
-smalltalk.method({
-selector: "drawBackGround:",
-fn: function (html) {
-    var self = this;
-    ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}]);
     return self;
 }
 }),
@@ -3647,6 +3623,30 @@ fn: function (aMinutes) {
 smalltalk.SeminarSession);
 
 smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+fn: function () {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(html, "_div", []);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
 "_setEnd_",
 smalltalk.method({
 selector: "setEnd:",
@@ -3683,6 +3683,34 @@ fn: function (aString) {
 }),
 smalltalk.SeminarSession);
 
+smalltalk.addMethod(
+"_update_",
+smalltalk.method({
+selector: "update:",
+fn: function (from) {
+    var self = this;
+    smalltalk.send(self, "_updateTime_", [from]);
+    smalltalk.send(self, "_redraw", []);
+    return self['@end'];
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+fn: function (from) {
+    var self = this;
+    var end = nil;
+    self['@start'] = smalltalk.send(from, "_clone", []);
+    self['@end'] = smalltalk.send(smalltalk.send(from, "_clone", []), "_add_min_", ["m", self['@long']]);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
 
 
 smalltalk.addClass('RestSession', smalltalk.SeminarSession, [], 'DyNagoya');
@@ -3712,11 +3740,14 @@ fn: function () {
 smalltalk.RestSession);
 
 smalltalk.addMethod(
-"_renderOn_",
+"_updateTime_",
 smalltalk.method({
-selector: "renderOn:",
-fn: function (html) {
+selector: "updateTime:",
+fn: function (from) {
     var self = this;
+    smalltalk.send(self, "_updateTime_", [from], smalltalk.RestSession.superclass || nil);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_adjust_", [self['@end']])]);
+    return self['@end'];
     return self;
 }
 }),
@@ -3726,14 +3757,14 @@ smalltalk.RestSession);
 
 smalltalk.addClass('TalkSession', smalltalk.SeminarSession, ['speaker'], 'DyNagoya');
 smalltalk.addMethod(
-"_renderOn_",
+"_redraw",
 smalltalk.method({
-selector: "renderOn:",
-fn: function (html) {
+selector: "redraw",
+fn: function () {
     var self = this;
-    self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(self['@body']));
     smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
+    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
     return self;
 }
 }),
@@ -3755,14 +3786,13 @@ smalltalk.TalkSession);
 
 smalltalk.addClass('OtherSession', smalltalk.TalkSession, [], 'DyNagoya');
 smalltalk.addMethod(
-"_renderOn_",
+"_initialize",
 smalltalk.method({
-selector: "renderOn:",
-fn: function (html) {
+selector: "initialize",
+fn: function () {
     var self = this;
-    self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
-    smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [""]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [self['@title']]);}]);
+    smalltalk.send(self, "_initialize", [], smalltalk.OtherSession.superclass || nil);
+    self['@speaker'] = "";
     return self;
 }
 }),
