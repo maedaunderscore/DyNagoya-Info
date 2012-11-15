@@ -2461,7 +2461,7 @@ fn: function () {
         smalltalk.send(smalltalk.send(self, "_current", []), "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
         prev = smalltalk.send(self, "_current", []);
         self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
-        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
+        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
         return self;
     } catch (e) {
         if (e === $early) {
@@ -2471,8 +2471,8 @@ fn: function () {
     }
 },
 args: [],
-source: "done\x0a\x09| prev |\x0a\x09self current setEnd: TimeSchedulePage now.\x0a\x09prev := self current.\x0a\x09index := index + 1.\x0a\x09prev done ifTrue: [\x0a\x09\x09^ prev\x0a\x09] ifFalse: [\x0a\x09\x09^ self done\x0a\x09]",
-messageSends: ["setEnd:", "current", "now", "+", "ifTrue:ifFalse:", "done"],
+source: "done\x0a\x09| prev |\x0a\x09self current setEnd: TimeSchedulePage now.\x0a\x09prev := self current.\x0a\x09index := index + 1.\x0a\x09prev done ifTrue: [\x0a\x09\x09self  calcTime.\x0a\x09\x09^ prev\x0a\x09] ifFalse: [\x0a\x09\x09^ self done\x0a\x09]",
+messageSends: ["setEnd:", "current", "now", "+", "ifTrue:ifFalse:", "done", "calcTime"],
 referencedClasses: ["TimeSchedulePage"]
 }),
 smalltalk.TimeSchedulePage);
@@ -2519,30 +2519,13 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     smalltalk.send(self, "_title_", [html]);
-    self['@sessionPlace'] = smalltalk.send(html, "_div", []);
-    smalltalk.send(self, "_renderSession", []);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [function (div) {return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    smalltalk.send(self, "_calcTime", []);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09self title: html.\x0a\x09sessionPlace := html div.\x0a\x09self renderSession",
-messageSends: ["title:", "div", "renderSession"],
-referencedClasses: []
-}),
-smalltalk.TimeSchedulePage);
-
-smalltalk.addMethod(
-"_renderSession",
-smalltalk.method({
-selector: "renderSession",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self['@sessionPlace'], "_with_", [thisisplaceholder1]);}]);
-    return self;
-},
-args: [],
-source: "renderSession\x0a\x09sessions do: [ sessionPlace with: %1 ]",
-messageSends: ["do:", "with:"],
+source: "renderBody: html\x0a\x09self title: html.\x0a\x09html div |> [ :div |\x0a\x09\x09sessions do: [ div with: %1 ]].\x0a\x09self calcTime",
+messageSends: ["title:", "|>", "div", "do:", "with:", "calcTime"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -5038,12 +5021,11 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     self['@body'] = smalltalk.send(html, "_div", []);
-    smalltalk.send(self, "_redraw", []);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09body := html div.\x0a\x09self redraw",
-messageSends: ["div", "redraw"],
+source: "renderOn: html\x0a\x09body := html div",
+messageSends: ["div"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
