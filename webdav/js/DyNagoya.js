@@ -2478,6 +2478,23 @@ referencedClasses: ["TimeSchedulePage"]
 smalltalk.TimeSchedulePage);
 
 smalltalk.addMethod(
+"_drawSessions",
+smalltalk.method({
+selector: "drawSessions",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sessionPlace'], "_contents_", [function (html) {var div = nil;div = smalltalk.send(html, "_div", []);return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    return self;
+},
+args: [],
+source: "drawSessions\x0a\x09sessionPlace contents: [ :html || div |\x0a\x09\x09div := html div.\x0a\x09\x09sessions do: [ div with: %1 ]\x0a\x09]",
+messageSends: ["contents:", "div", "do:", "with:"],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
 "_end",
 smalltalk.method({
 selector: "end",
@@ -2489,6 +2506,25 @@ fn: function () {
 args: [],
 source: "end",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_evaluate_",
+smalltalk.method({
+selector: "evaluate:",
+category: 'not yet classified',
+fn: function (code) {
+    var self = this;
+    self['@sessions'] = smalltalk.Wakame.fn.prototype._Sessions().matchAll(code, "list");
+    smalltalk.send(self, "_drawSessions", []);
+    smalltalk.send(self, "_calcTime", []);
+    return self;
+},
+args: ["code"],
+source: "evaluate: code\x0a\x09sessions :=(< smalltalk.Wakame.fn.prototype._Sessions().matchAll(code, \x22list\x22)>).\x0a\x09self drawSessions.\x0a\x09self calcTime\x0a",
+messageSends: ["drawSessions", "calcTime"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2519,13 +2555,15 @@ category: 'not yet classified',
 fn: function (html) {
     var self = this;
     smalltalk.send(self, "_title_", [html]);
-    smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [function (div) {return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    self['@sessionPlace'] = smalltalk.send(html, "_div", []);
+    smalltalk.send(self, "_drawSessions", []);
     smalltalk.send(self, "_calcTime", []);
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self, "_source", [])]);smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["height", "250px"]);return smalltalk.send($rec, "_onKeyDown_", [function (thisisplaceholder1) {return smalltalk.send(self, "_evaluate_", [smalltalk.send(smalltalk.send(thisisplaceholder1, "_currentTarget", []), "_value", [])]);}]);}(smalltalk.send(html, "_textarea", [])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09self title: html.\x0a\x09html div |> [ :div |\x0a\x09\x09sessions do: [ div with: %1 ]].\x0a\x09self calcTime",
-messageSends: ["title:", "|>", "div", "do:", "with:", "calcTime"],
+source: "renderBody: html\x0a\x09self title: html.\x0a\x09sessionPlace := html div.\x0a\x09self drawSessions.\x0a\x09self calcTime.\x0a\x09html textarea with: self source; \x0a\x09\x09css: 'width' put: '100%';\x0a\x09\x09css: 'height' put: '250px';\x0a\x09\x09onKeyDown: [ self evaluate: %1 currentTarget value]",
+messageSends: ["title:", "div", "drawSessions", "calcTime", "with:", "source", "css:put:", "onKeyDown:", "evaluate:", "value", "currentTarget", "textarea"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2543,6 +2581,23 @@ fn: function () {
 args: [],
 source: "sessions\x0a\x09^ {}\x0a",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_source",
+smalltalk.method({
+selector: "source",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_methodDictionary", []), "_at_", ["sessions"]), "_source", []);
+    return self;
+},
+args: [],
+source: "source\x0a\x09^ (self class \x0a\x09\x09methodDictionary at: 'sessions') source",
+messageSends: ["source", "at:", "methodDictionary", "class"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
