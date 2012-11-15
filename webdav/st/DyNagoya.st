@@ -1336,7 +1336,20 @@ done
 	]
 !
 
+drawSessions
+	sessionPlace contents: [ :html || div |
+		div := html div.
+		sessions do: [ div with: %1 ]
+	]
+!
+
 end
+!
+
+evaluate: code
+	sessions :=(< smalltalk.Wakame.fn.prototype._Sessions().matchAll(code, "list")>).
+	self drawSessions.
+	self calcTime
 !
 
 initialize
@@ -1346,13 +1359,22 @@ initialize
 
 renderBody: html
 	self title: html.
-	html div |> [ :div |
-		sessions do: [ div with: %1 ]].
-	self calcTime
+	sessionPlace := html div.
+	self drawSessions.
+	self calcTime.
+	html textarea with: self source; 
+		css: 'width' put: '100%';
+		css: 'height' put: '250px';
+		onKeyDown: [ self evaluate: %1 currentTarget value]
 !
 
 sessions
 	^ {}
+!
+
+source
+	^ (self class 
+		methodDictionary at: 'sessions') source
 !
 
 start
