@@ -1314,10 +1314,7 @@ calcTime
 	| current |
 	current := moment value: self start value: 'hh:mm'.
 	sessions do: [ :session |
-		session start: current clone.
-		current add: 'm' min: session long.
-		session end: current clone.
-		current := session adjust
+		current := session update: current
 	]
 !
 
@@ -1376,7 +1373,7 @@ adjust: aTime
 	min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).
 	h := (<Math.floor(min / 60)>).
 	m := (<Math.floor(min % 60)>).
-	^ (< moment([0]).hours(h).minutes(m) >)
+	^ (< moment(0).hours(h).minutes(m) >)
 !
 
 new
@@ -1387,7 +1384,7 @@ new
 now
 	| c |
 	c := moment value.
-	^ (< moment([0]).hours(c.hours()).minutes(c.minutes()) >)
+	^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)
 ! !
 
 TimeSchedulePage subclass: #Wakame
@@ -2221,20 +2218,10 @@ Widget subclass: #SeminarSession
 
 !SeminarSession methodsFor: 'not yet classified'!
 
-adjust
-	^ end clone
-!
-
 done
 	isDone := true.
 	body >>= [ self drawBackground: %1].
 	^ body notNil
-!
-
-drawBackGround: html
-	isDone ifTrue: [
-		html css: 'background' put: 'gray'
-	]
 !
 
 drawBackground: html
@@ -2259,6 +2246,14 @@ long: aMinutes
 	long := aMinutes
 !
 
+redraw
+!
+
+renderOn: html
+	body := html div.
+	self redraw
+!
+
 setEnd: aTime
 	end := aTime.
 	start ifNotNil: [
@@ -2272,6 +2267,18 @@ start: aString
 
 title: aString
 	title := aString
+!
+
+update: from
+	self updateTime: from.
+	self redraw.
+	^ end
+!
+
+updateTime: from
+	| end |
+	start := from clone.
+	end := from clone add: 'm' min: long.
 ! !
 
 SeminarSession subclass: #RestSession
@@ -2289,7 +2296,10 @@ initialize
 	title := '休憩'
 !
 
-renderOn: html
+updateTime: from
+	super updateTime: from.
+	self setEnd: (TimeSchedulePage adjust: end).
+	^ end
 ! !
 
 SeminarSession subclass: #TalkSession
@@ -2298,11 +2308,11 @@ SeminarSession subclass: #TalkSession
 
 !TalkSession methodsFor: 'not yet classified'!
 
-renderOn: html
-	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
-			css: 'font-size' put: '20px'.  
+redraw
+	body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
+		css: 'font-size' put: '20px'.  
 	self drawBackground: body.
-	body with: [
+	body contents: [ :html |
 		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
 		html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
 		html span with: '「', title, '」'.
@@ -2319,15 +2329,9 @@ TalkSession subclass: #OtherSession
 
 !OtherSession methodsFor: 'not yet classified'!
 
-renderOn: html
-	body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
-			css: 'font-size' put: '20px'.
-	self drawBackground: body.
-	body with: [
-		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
-		html span with: ''; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
-		html span with: title.
-	]
+initialize
+	super initialize.
+	speaker := ''
 ! !
 
 Widget subclass: #ToolBar
