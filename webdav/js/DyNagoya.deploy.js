@@ -1794,11 +1794,37 @@ fn: function () {
 smalltalk.TimeSchedulePage);
 
 smalltalk.addMethod(
+"_drawSessions",
+smalltalk.method({
+selector: "drawSessions",
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sessionPlace'], "_contents_", [function (html) {var div = nil;div = smalltalk.send(html, "_div", []);return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
 "_end",
 smalltalk.method({
 selector: "end",
 fn: function () {
     var self = this;
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_evaluate_",
+smalltalk.method({
+selector: "evaluate:",
+fn: function (code) {
+    var self = this;
+    self['@sessions'] = smalltalk.Wakame.fn.prototype._Sessions().matchAll(code, "list");
+    smalltalk.send(self, "_drawSessions", []);
+    smalltalk.send(self, "_calcTime", []);
     return self;
 }
 }),
@@ -1824,8 +1850,10 @@ selector: "renderBody:",
 fn: function (html) {
     var self = this;
     smalltalk.send(self, "_title_", [html]);
-    smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [function (div) {return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    self['@sessionPlace'] = smalltalk.send(html, "_div", []);
+    smalltalk.send(self, "_drawSessions", []);
     smalltalk.send(self, "_calcTime", []);
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self, "_source", [])]);smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["height", "250px"]);return smalltalk.send($rec, "_onKeyDown_", [function (thisisplaceholder1) {return smalltalk.send(self, "_evaluate_", [smalltalk.send(smalltalk.send(thisisplaceholder1, "_currentTarget", []), "_value", [])]);}]);}(smalltalk.send(html, "_textarea", [])));
     return self;
 }
 }),
@@ -1838,6 +1866,18 @@ selector: "sessions",
 fn: function () {
     var self = this;
     return [];
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
+"_source",
+smalltalk.method({
+selector: "source",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_methodDictionary", []), "_at_", ["sessions"]), "_source", []);
     return self;
 }
 }),
