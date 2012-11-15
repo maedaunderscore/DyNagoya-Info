@@ -2420,12 +2420,12 @@ fn: function () {
     var self = this;
     var current = nil;
     current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
-    smalltalk.send(self['@sessions'], "_do_", [function (session) {smalltalk.send(session, "_start_", [smalltalk.send(current, "_clone", [])]);smalltalk.send(current, "_add_min_", ["m", smalltalk.send(session, "_long", [])]);smalltalk.send(session, "_end_", [smalltalk.send(current, "_clone", [])]);return current = smalltalk.send(session, "_adjust", []);}]);
+    smalltalk.send(self['@sessions'], "_do_", [function (session) {return current = smalltalk.send(session, "_update_", [current]);}]);
     return self;
 },
 args: [],
-source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'hh:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09session start: current clone.\x0a\x09\x09current add: 'm' min: session long.\x0a\x09\x09session end: current clone.\x0a\x09\x09current := session adjust\x0a\x09]",
-messageSends: ["value:value:", "start", "do:", "start:", "clone", "add:min:", "long", "end:", "adjust"],
+source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'hh:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09current := session update: current\x0a\x09]",
+messageSends: ["value:value:", "start", "do:", "update:"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2613,11 +2613,11 @@ fn: function (aTime) {
     min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
     h = Math.floor(min / 60);
     m = Math.floor(min % 60);
-    return moment([0]).hours(h).minutes(m);
+    return moment(0).hours(h).minutes(m);
     return self;
 },
 args: ["aTime"],
-source: "adjust: aTime\x0a\x09| c min h m |\x0a\x09min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).\x0a\x09h := (<Math.floor(min / 60)>).\x0a\x09m := (<Math.floor(min % 60)>).\x0a\x09^ (< moment([0]).hours(h).minutes(m) >)",
+source: "adjust: aTime\x0a\x09| c min h m |\x0a\x09min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).\x0a\x09h := (<Math.floor(min / 60)>).\x0a\x09m := (<Math.floor(min % 60)>).\x0a\x09^ (< moment(0).hours(h).minutes(m) >)",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2650,11 +2650,11 @@ fn: function () {
     var self = this;
     var c = nil;
     c = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value", []);
-    return moment([0]).hours(c.hours()).minutes(c.minutes());
+    return moment(0).hours(c.hours()).minutes(c.minutes());
     return self;
 },
 args: [],
-source: "now\x0a\x09| c |\x0a\x09c := moment value.\x0a\x09^ (< moment([0]).hours(c.hours()).minutes(c.minutes()) >)",
+source: "now\x0a\x09| c |\x0a\x09c := moment value.\x0a\x09^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)",
 messageSends: ["value"],
 referencedClasses: []
 }),
@@ -4911,23 +4911,6 @@ smalltalk.Screen.klass);
 
 smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body', 'long', 'isDone'], 'DyNagoya');
 smalltalk.addMethod(
-"_adjust",
-smalltalk.method({
-selector: "adjust",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return smalltalk.send(self['@end'], "_clone", []);
-    return self;
-},
-args: [],
-source: "adjust\x0a\x09^ end clone",
-messageSends: ["clone"],
-referencedClasses: []
-}),
-smalltalk.SeminarSession);
-
-smalltalk.addMethod(
 "_done",
 smalltalk.method({
 selector: "done",
@@ -4942,23 +4925,6 @@ fn: function () {
 args: [],
 source: "done\x0a\x09isDone := true.\x0a\x09body >>= [ self drawBackground: %1].\x0a\x09^ body notNil",
 messageSends: [">>=", "drawBackground:", "notNil"],
-referencedClasses: []
-}),
-smalltalk.SeminarSession);
-
-smalltalk.addMethod(
-"_drawBackGround_",
-smalltalk.method({
-selector: "drawBackGround:",
-category: 'not yet classified',
-fn: function (html) {
-    var self = this;
-    ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}]);
-    return self;
-},
-args: ["html"],
-source: "drawBackGround: html\x0a\x09isDone ifTrue: [\x0a\x09\x09html css: 'background' put: 'gray'\x0a\x09]",
-messageSends: ["ifTrue:", "css:put:"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
@@ -5049,6 +5015,40 @@ referencedClasses: []
 smalltalk.SeminarSession);
 
 smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "redraw\x0a\x09",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(html, "_div", []);
+    smalltalk.send(self, "_redraw", []);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09body := html div.\x0a\x09self redraw",
+messageSends: ["div", "redraw"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
 "_setEnd_",
 smalltalk.method({
 selector: "setEnd:",
@@ -5100,6 +5100,44 @@ referencedClasses: []
 }),
 smalltalk.SeminarSession);
 
+smalltalk.addMethod(
+"_update_",
+smalltalk.method({
+selector: "update:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    smalltalk.send(self, "_updateTime_", [from]);
+    smalltalk.send(self, "_redraw", []);
+    return self['@end'];
+    return self;
+},
+args: ["from"],
+source: "update: from\x0a\x09self updateTime: from.\x0a\x09self redraw.\x0a\x09^ end",
+messageSends: ["updateTime:", "redraw"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    var end = nil;
+    self['@start'] = smalltalk.send(from, "_clone", []);
+    self['@end'] = smalltalk.send(smalltalk.send(from, "_clone", []), "_add_min_", ["m", self['@long']]);
+    return self;
+},
+args: ["from"],
+source: "updateTime: from\x0a\x09| end |\x0a\x09start := from clone.\x0a\x09end := from clone add: 'm' min: long.",
+messageSends: ["clone", "add:min:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
 
 
 smalltalk.addClass('RestSession', smalltalk.SeminarSession, [], 'DyNagoya');
@@ -5139,18 +5177,21 @@ referencedClasses: []
 smalltalk.RestSession);
 
 smalltalk.addMethod(
-"_renderOn_",
+"_updateTime_",
 smalltalk.method({
-selector: "renderOn:",
+selector: "updateTime:",
 category: 'not yet classified',
-fn: function (html) {
+fn: function (from) {
     var self = this;
+    smalltalk.send(self, "_updateTime_", [from], smalltalk.RestSession.superclass || nil);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_adjust_", [self['@end']])]);
+    return self['@end'];
     return self;
 },
-args: ["html"],
-source: "renderOn: html",
-messageSends: [],
-referencedClasses: []
+args: ["from"],
+source: "updateTime: from\x0a\x09super updateTime: from.\x0a\x09self setEnd: (TimeSchedulePage adjust: end).\x0a\x09^ end",
+messageSends: ["updateTime:", "setEnd:", "adjust:"],
+referencedClasses: ["TimeSchedulePage"]
 }),
 smalltalk.RestSession);
 
@@ -5158,20 +5199,20 @@ smalltalk.RestSession);
 
 smalltalk.addClass('TalkSession', smalltalk.SeminarSession, ['speaker'], 'DyNagoya');
 smalltalk.addMethod(
-"_renderOn_",
+"_redraw",
 smalltalk.method({
-selector: "renderOn:",
+selector: "redraw",
 category: 'not yet classified',
-fn: function (html) {
+fn: function () {
     var self = this;
-    self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(self['@body']));
     smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
+    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
     return self;
 },
-args: ["html"],
-source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: '「', title, '」'.\x0a\x09]",
-messageSends: ["css:put:", "div", "drawBackground:", "with:", ",", "format:", "span"],
+args: [],
+source: "redraw\x0a\x09body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body contents: [ :html |\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: '「', title, '」'.\x0a\x09]",
+messageSends: ["css:put:", "drawBackground:", "contents:", "with:", ",", "format:", "span"],
 referencedClasses: []
 }),
 smalltalk.TalkSession);
@@ -5197,20 +5238,19 @@ smalltalk.TalkSession);
 
 smalltalk.addClass('OtherSession', smalltalk.TalkSession, [], 'DyNagoya');
 smalltalk.addMethod(
-"_renderOn_",
+"_initialize",
 smalltalk.method({
-selector: "renderOn:",
+selector: "initialize",
 category: 'not yet classified',
-fn: function (html) {
+fn: function () {
     var self = this;
-    self['@body'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(smalltalk.send(html, "_div", []));
-    smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [""]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [self['@title']]);}]);
+    smalltalk.send(self, "_initialize", [], smalltalk.OtherSession.superclass || nil);
+    self['@speaker'] = "";
     return self;
 },
-args: ["html"],
-source: "renderOn: html\x0a\x09body := html div css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09\x09css: 'font-size' put: '20px'.\x0a\x09self drawBackground: body.\x0a\x09body with: [\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: ''; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: title.\x0a\x09]",
-messageSends: ["css:put:", "div", "drawBackground:", "with:", ",", "format:", "span"],
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a\x09speaker := ''",
+messageSends: ["initialize"],
 referencedClasses: []
 }),
 smalltalk.OtherSession);
