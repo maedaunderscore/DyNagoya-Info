@@ -1329,6 +1329,7 @@ done
 	prev := self current.
 	index := index + 1.
 	prev done ifTrue: [
+		self  calcTime.
 		^ prev
 	] ifFalse: [
 		^ self done
@@ -1345,12 +1346,9 @@ initialize
 
 renderBody: html
 	self title: html.
-	sessionPlace := html div.
-	self renderSession
-!
-
-renderSession
-	sessions do: [ sessionPlace with: %1 ]
+	html div |> [ :div |
+		sessions do: [ div with: %1 ]].
+	self calcTime
 !
 
 sessions
@@ -2250,8 +2248,7 @@ redraw
 !
 
 renderOn: html
-	body := html div.
-	self redraw
+	body := html div
 !
 
 setEnd: aTime
