@@ -1781,7 +1781,7 @@ fn: function () {
         smalltalk.send(smalltalk.send(self, "_current", []), "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
         prev = smalltalk.send(self, "_current", []);
         self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
-        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
+        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
         return self;
     } catch (e) {
         if (e === $early) {
@@ -1824,20 +1824,8 @@ selector: "renderBody:",
 fn: function (html) {
     var self = this;
     smalltalk.send(self, "_title_", [html]);
-    self['@sessionPlace'] = smalltalk.send(html, "_div", []);
-    smalltalk.send(self, "_renderSession", []);
-    return self;
-}
-}),
-smalltalk.TimeSchedulePage);
-
-smalltalk.addMethod(
-"_renderSession",
-smalltalk.method({
-selector: "renderSession",
-fn: function () {
-    var self = this;
-    smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(self['@sessionPlace'], "_with_", [thisisplaceholder1]);}]);
+    smalltalk.send(smalltalk.send(html, "_div", []), "_|_gt", [function (div) {return smalltalk.send(self['@sessions'], "_do_", [function (thisisplaceholder1) {return smalltalk.send(div, "_with_", [thisisplaceholder1]);}]);}]);
+    smalltalk.send(self, "_calcTime", []);
     return self;
 }
 }),
@@ -3640,7 +3628,6 @@ selector: "renderOn:",
 fn: function (html) {
     var self = this;
     self['@body'] = smalltalk.send(html, "_div", []);
-    smalltalk.send(self, "_redraw", []);
     return self;
 }
 }),
