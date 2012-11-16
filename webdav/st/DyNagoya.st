@@ -1419,17 +1419,17 @@ TimeSchedulePage subclass: #Wakame
 !Wakame methodsFor: 'accessing'!
 
 grammer Sessions:list > sessions
-〜 オープニング 〜 : 30min
+〜オープニング〜 : 30min
 モナモナいうモナド入門[@hiratara] : 45min
 休憩 : 36816495min
-CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 48min
-休憩 : 12min
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
+休憩 : 10min
 CoqによるKleisli構成の説明[@t6s] : 45min
 休憩 : 15min
 モッジとワドラー[@t6s] : 30min
 休憩 : 15min
 余モナド[@uskz] : 45min
-〜 懇親会（ビアバッシュ）〜 : 120min
+〜 懇親会（ビアバッシュ） 〜 : 120min
 ! !
 
 !Wakame methodsFor: 'not yet classified'!
@@ -1441,7 +1441,7 @@ ometa Sessions {
   number = <digit+>:x -> parseInt(x),
   list = (session:s eol -> s)*,
   session = ( other | rest | talk ):session spaces ':' spaces number: long "min" "!!"?:done 
-	-> session._long_(long)._isDone_(done),
+	-> session._long_(long)._isDone_(done == "!!"),
   other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),
   talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),
   rest = "休憩" -> smalltalk.RestSession._new()
@@ -2308,8 +2308,8 @@ initialize
 	isDone := false
 !
 
-isDone
-	^isDone
+isDone: aBool
+	isDone := aBool
 !
 
 long
@@ -2366,7 +2366,10 @@ adjust
 !
 
 asCode
-  ^ '休憩 : ' , long, 'min
+  | d |
+  d := isDone.
+  ^ '休憩 : ' , long, 'min', 
+  (d ifTrue: [ '!!' ] ifFalse: [ '' ]), '
 '
 !
 
