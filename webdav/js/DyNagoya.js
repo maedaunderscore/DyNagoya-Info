@@ -5402,12 +5402,12 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
     return self;
 },
 args: [],
-source: "asCode\x0a  ^ title, '[', speaker, '] : ', long, 'min\x0a'",
-messageSends: [","],
+source: "asCode\x0a  ^ title, '[', speaker, '] : ', long, self minCode",
+messageSends: [",", "minCode"],
 referencedClasses: []
 }),
 smalltalk.TalkSession);
@@ -5458,12 +5458,12 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
     return self;
 },
 args: [],
-source: "asCode\x0a  ^ '〜', title, '〜 : ', long, 'min\x0a'",
-messageSends: [","],
+source: "asCode\x0a  ^ '〜', title, '〜 : ', long, self minCode",
+messageSends: [",", "minCode"],
 referencedClasses: []
 }),
 smalltalk.OtherSession);
