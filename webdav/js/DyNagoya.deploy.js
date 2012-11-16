@@ -1743,6 +1743,18 @@ smalltalk.Links);
 
 smalltalk.addClass('TimeSchedulePage', smalltalk.Page, ['sessionPlace', 'sessions', 'index'], 'DyNagoya');
 smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+fn: function () {
+    var self = this;
+    return smalltalk.send("grammer Sessions:list > sessions\n", "__comma", [smalltalk.send(self['@sessions'], "_inject_into_", ["", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}])]);
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage);
+
+smalltalk.addMethod(
 "_calcTime",
 smalltalk.method({
 selector: "calcTime",
@@ -1751,6 +1763,7 @@ fn: function () {
     var current = nil;
     current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
     smalltalk.send(self['@sessions'], "_do_", [function (session) {return current = smalltalk.send(session, "_update_", [current]);}]);
+    smalltalk.send(smalltalk.Mod || Mod, "_class_source_", [smalltalk.send(self, "_class", []), smalltalk.send(self, "_asCode", [])]);
     return self;
 }
 }),
@@ -1853,7 +1866,6 @@ fn: function (html) {
     self['@sessionPlace'] = smalltalk.send(html, "_div", []);
     smalltalk.send(self, "_drawSessions", []);
     smalltalk.send(self, "_calcTime", []);
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self, "_source", [])]);smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["height", "250px"]);return smalltalk.send($rec, "_onKeyDown_", [function (thisisplaceholder1) {return smalltalk.send(self, "_evaluate_", [smalltalk.send(smalltalk.send(thisisplaceholder1, "_currentTarget", []), "_value", [])]);}]);}(smalltalk.send(html, "_textarea", [])));
     return self;
 }
 }),
@@ -1877,7 +1889,7 @@ smalltalk.method({
 selector: "source",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_methodDictionary", []), "_at_", ["sessions"]), "_source", []);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "_methodDictionary", []), "_at_", ["sessions"]), "_source", []), "_lines", []), "_allButFirst", []), "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "_allButFirst", []), "_inject_into_", [smalltalk.send(thisisplaceholder1, "_first", []), function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [thisisplaceholder2]);}]);}]);
     return self;
 }
 }),
@@ -1962,7 +1974,7 @@ smalltalk.method({
 selector: "Sessions",
 fn: function () {
     if (typeof Sessions === "undefined" || Sessions == null) {
-        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");return session._long_(long);}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
+        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long, done;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._long_(long)._isDone_(done);}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
     }
     return Sessions;
 }
@@ -1986,7 +1998,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "sessions",
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30AA\u30FC\u30D7\u30CB\u30F3\u30B0\u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 48min\n\u4F11\u61A9 : 10min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min", "list");
+    return this._Sessions().matchAll("\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 48min\n\u4F11\u61A9 : 12min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09\u301C : 120min\n", "list");
 }
 }),
 smalltalk.Wakame);
@@ -3358,6 +3370,73 @@ smalltalk.ZTres);
 
 
 
+smalltalk.addClass('ScheduleEditor', smalltalk.Widget, ['source', 'klazz'], 'DyNagoya');
+smalltalk.addMethod(
+"_apply",
+smalltalk.method({
+selector: "apply",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_evaluate_", [smalltalk.send(self['@source'], "_val", [])]);
+    return self;
+}
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_klazz_",
+smalltalk.method({
+selector: "klazz:",
+fn: function (aClass) {
+    var self = this;
+    self['@klazz'] = aClass;
+    return self;
+}
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "98%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);smalltalk.send($rec, "_css_put_", ["bottom", "2px"]);return smalltalk.send($rec, "_val_", [smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_source", [])]);}(smalltalk.send(html, "_textarea", []));
+    return self;
+}
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_source",
+smalltalk.method({
+selector: "source",
+fn: function () {
+    var self = this;
+    return self['@source'];
+    return self;
+}
+}),
+smalltalk.ScheduleEditor);
+
+
+smalltalk.addMethod(
+"_open_",
+smalltalk.method({
+selector: "open:",
+fn: function (aClass) {
+    var self = this;
+    var this_ = nil;
+    this_ = smalltalk.send(self, "_new", []);
+    smalltalk.send(this_, "_klazz_", [aClass]);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [this_]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_width_", ["80%"]);smalltalk.send($rec, "_title_", ["Schedule Editor"]);smalltalk.send($rec, "_height_", [400]);smalltalk.send($rec, "_button_action_", ["apply", function () {return smalltalk.send(this_, "_apply", []);}]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return smalltalk.send(smalltalk.send(this_, "_source", []), "_css_put_", ["font-size", "2em"]);
+    return self;
+}
+}),
+smalltalk.ScheduleEditor.klass);
+
+
 smalltalk.addClass('Screen', smalltalk.Widget, ['index', 'page'], 'DyNagoya');
 smalltalk.addMethod(
 "_animateIn_method_",
@@ -3627,6 +3706,18 @@ fn: function () {
 smalltalk.SeminarSession);
 
 smalltalk.addMethod(
+"_isDone",
+smalltalk.method({
+selector: "isDone",
+fn: function () {
+    var self = this;
+    return self['@isDone'];
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
 "_long",
 smalltalk.method({
 selector: "long",
@@ -3755,6 +3846,18 @@ fn: function () {
 smalltalk.RestSession);
 
 smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return self;
+}
+}),
+smalltalk.RestSession);
+
+smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
@@ -3784,6 +3887,18 @@ smalltalk.RestSession);
 
 smalltalk.addClass('TalkSession', smalltalk.SeminarSession, ['speaker'], 'DyNagoya');
 smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return self;
+}
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
 "_redraw",
 smalltalk.method({
 selector: "redraw",
@@ -3812,6 +3927,18 @@ smalltalk.TalkSession);
 
 
 smalltalk.addClass('OtherSession', smalltalk.TalkSession, [], 'DyNagoya');
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return self;
+}
+}),
+smalltalk.OtherSession);
+
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
