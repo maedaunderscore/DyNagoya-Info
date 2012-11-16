@@ -2724,12 +2724,12 @@ selector: "Sessions",
 category: 'not yet classified',
 fn: function () {
     if (typeof Sessions === "undefined" || Sessions == null) {
-        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long, done;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._long_(long)._isDone_(done);}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
+        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long, done;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._long_(long)._isDone_(done == "!");}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
     }
     return Sessions;
 },
 args: [],
-source: "ometa Sessions {\x0a  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,\x0a  eol = <( ~cr char )*>:body (cr | empty) -> body,\x0a  cr = char:r ?{r.charCodeAt(0) == 10},\x0a  number = <digit+>:x -> parseInt(x),\x0a  list = (session:s eol -> s)*,\x0a  session = ( other | rest | talk ):session spaces ':' spaces number: long \x22min\x22 \x22!\x22?:done \x0a\x09-> session._long_(long)._isDone_(done),\x0a  other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),\x0a  talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),\x0a  rest = \x22休憩\x22 -> smalltalk.RestSession._new()\x0a}",
+source: "ometa Sessions {\x0a  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,\x0a  eol = <( ~cr char )*>:body (cr | empty) -> body,\x0a  cr = char:r ?{r.charCodeAt(0) == 10},\x0a  number = <digit+>:x -> parseInt(x),\x0a  list = (session:s eol -> s)*,\x0a  session = ( other | rest | talk ):session spaces ':' spaces number: long \x22min\x22 \x22!\x22?:done \x0a\x09-> session._long_(long)._isDone_(done == \x22!\x22),\x0a  other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),\x0a  talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),\x0a  rest = \x22休憩\x22 -> smalltalk.RestSession._new()\x0a}",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2758,10 +2758,10 @@ smalltalk.method({
 selector: "sessions",
 category: 'accessing',
 fn: function () {
-    return this._Sessions().matchAll("\u301C \u30AA\u30FC\u30D7\u30CB\u30F3\u30B0 \u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 48min\n\u4F11\u61A9 : 12min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09\u301C : 120min\n", "list");
+    return this._Sessions().matchAll("\u301C\u30AA\u30FC\u30D7\u30CB\u30F3\u30B0\u301C : 30min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 10min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min\n", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜 オープニング 〜 : 30min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 36816495min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 48min\x0a休憩 : 12min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a〜 懇親会（ビアバッシュ）〜 : 120min\x0a",
+source: "grammer Sessions:list > sessions\x0a〜オープニング〜 : 30min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 36816495min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min\x0a休憩 : 10min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a〜 懇親会（ビアバッシュ） 〜 : 120min\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -5128,17 +5128,17 @@ referencedClasses: []
 smalltalk.SeminarSession);
 
 smalltalk.addMethod(
-"_isDone",
+"_isDone_",
 smalltalk.method({
-selector: "isDone",
+selector: "isDone:",
 category: 'not yet classified',
-fn: function () {
+fn: function (aBool) {
     var self = this;
-    return self['@isDone'];
+    self['@isDone'] = aBool;
     return self;
 },
-args: [],
-source: "isDone\x0a\x09^isDone",
+args: ["aBool"],
+source: "isDone: aBool\x0a\x09isDone := aBool",
 messageSends: [],
 referencedClasses: []
 }),
@@ -5329,12 +5329,14 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", ["min\n"]);
+    var d = nil;
+    d = self['@isDone'];
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", ["min"]), "__comma", [($receiver = d).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]), "__comma", ["\n"]);
     return self;
 },
 args: [],
-source: "asCode\x0a  ^ '休憩 : ' , long, 'min\x0a'",
-messageSends: [","],
+source: "asCode\x0a  | d |\x0a  d := isDone.\x0a  ^ '休憩 : ' , long, 'min', \x0a  (d ifTrue: [ '!' ] ifFalse: [ '' ]), '\x0a'",
+messageSends: [",", "ifTrue:ifFalse:"],
 referencedClasses: []
 }),
 smalltalk.RestSession);
