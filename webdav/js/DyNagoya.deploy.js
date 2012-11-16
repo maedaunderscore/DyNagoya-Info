@@ -3904,7 +3904,7 @@ smalltalk.method({
 selector: "asCode",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
     return self;
 }
 }),
@@ -3945,7 +3945,7 @@ smalltalk.method({
 selector: "asCode",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", ["min\n"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
     return self;
 }
 }),
