@@ -2157,6 +2157,18 @@ apply
   klazz new evaluate: source val
 !
 
+handleKeys: anEvent
+    <
+	if(anEvent.ctrlKey) {
+		if(anEvent.keyCode === 190) { // ctrl + greater
+			self._apply();
+			anEvent.preventDefault();
+			return false;
+		}
+	}
+    >
+!
+
 klazz: aClass
 	klazz := aClass
 !
@@ -2170,7 +2182,8 @@ renderOn: html
 		css: 'right' put: '12px';
 		css: 'top' put: '2px';
 		css: 'bottom' put: '2px';
-		val: (klazz new source)
+		val: (klazz new source);
+		onKeyDown: [ self handleKeys: %1 ]
 !
 
 source
