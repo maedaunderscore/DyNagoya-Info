@@ -2392,8 +2392,7 @@ SeminarSession subclass: #TalkSession
 !TalkSession methodsFor: 'not yet classified'!
 
 asCode
-  ^ title, '[', speaker, '] : ', long, 'min
-'
+  ^ title, '[', speaker, '] : ', long, self minCode
 !
 
 redraw
@@ -2418,8 +2417,7 @@ TalkSession subclass: #OtherSession
 !OtherSession methodsFor: 'not yet classified'!
 
 asCode
-  ^ '〜', title, '〜 : ', long, 'min
-'
+  ^ '〜', title, '〜 : ', long, self minCode
 !
 
 initialize
