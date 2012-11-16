@@ -1419,16 +1419,17 @@ TimeSchedulePage subclass: #Wakame
 !Wakame methodsFor: 'accessing'!
 
 grammer Sessions:list > sessions
-〜オープニング〜 : 30min
+〜タイムスケジュール決定〜 : 15min
 モナモナいうモナド入門[@hiratara] : 45min
 休憩 : 36816495min
 CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
-休憩 : 10min
+休憩 : 15min
 CoqによるKleisli構成の説明[@t6s] : 45min
 休憩 : 15min
 モッジとワドラー[@t6s] : 30min
 休憩 : 15min
 余モナド[@uskz] : 45min
+休憩 : 15min
 〜 懇親会（ビアバッシュ） 〜 : 120min
 ! !
 
@@ -2291,7 +2292,7 @@ Widget subclass: #SeminarSession
 done
 	isDone := true.
 	body >>= [ self drawBackground: %1].
-	^ body notNil
+	^ ((self class) = RestSession) not
 !
 
 drawBackground: html
