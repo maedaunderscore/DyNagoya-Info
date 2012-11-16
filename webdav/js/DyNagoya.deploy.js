@@ -1933,7 +1933,7 @@ fn: function (aTime) {
     min = Math.ceil((aTime.hours() * 60 + aTime.minutes() - 2) / 5) * 5;
     h = Math.floor(min / 60);
     m = Math.floor(min % 60);
-    return moment(0).hours(h).minutes(m);
+    return moment([0]).hours(h).minutes(m);
     return self;
 }
 }),
@@ -1972,7 +1972,7 @@ fn: function () {
     var self = this;
     var c = nil;
     c = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value", []);
-    return moment(0).hours(c.hours()).minutes(c.minutes());
+    return moment([0]).hours(c.hours()).minutes(c.minutes());
     return self;
 }
 }),
@@ -2010,7 +2010,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "sessions",
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u4F11\u61A9 : 15min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min\n", "list");
+    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u4F11\u61A9 : 15min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min\n", "list");
 }
 }),
 smalltalk.Wakame);
