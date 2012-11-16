@@ -3396,6 +3396,24 @@ fn: function () {
 smalltalk.ScheduleEditor);
 
 smalltalk.addMethod(
+"_handleKeys_",
+smalltalk.method({
+selector: "handleKeys:",
+fn: function (anEvent) {
+    var self = this;
+    if (anEvent.ctrlKey) {
+        if (anEvent.keyCode === 190) {
+            self._apply();
+            anEvent.preventDefault();
+            return false;
+        }
+    }
+    return self;
+}
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
 "_klazz_",
 smalltalk.method({
 selector: "klazz:",
@@ -3413,7 +3431,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
-    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "98%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);smalltalk.send($rec, "_css_put_", ["bottom", "2px"]);return smalltalk.send($rec, "_val_", [smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_source", [])]);}(smalltalk.send(html, "_textarea", []));
+    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "98%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);smalltalk.send($rec, "_css_put_", ["bottom", "2px"]);smalltalk.send($rec, "_val_", [smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_source", [])]);return smalltalk.send($rec, "_onKeyDown_", [function (thisisplaceholder1) {return smalltalk.send(self, "_handleKeys_", [thisisplaceholder1]);}]);}(smalltalk.send(html, "_textarea", []));
     return self;
 }
 }),
