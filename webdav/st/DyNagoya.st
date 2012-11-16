@@ -2320,6 +2320,12 @@ long: aMinutes
 	long := aMinutes
 !
 
+minCode
+  ^'min', 
+    (isDone ifTrue: [ '!!' ] ifFalse: [ '' ]), '
+'
+!
+
 redraw
 !
 
@@ -2366,11 +2372,7 @@ adjust
 !
 
 asCode
-  | d |
-  d := isDone.
-  ^ '休憩 : ' , long, 'min', 
-  (d ifTrue: [ '!!' ] ifFalse: [ '' ]), '
-'
+  ^ '休憩 : ' , long, self minCode
 !
 
 initialize
