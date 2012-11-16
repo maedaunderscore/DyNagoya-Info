@@ -1398,7 +1398,7 @@ adjust: aTime
 	min := (<Math.ceil((aTime.hours()*60 + aTime.minutes() - 2) / 5) * 5>).
 	h := (<Math.floor(min / 60)>).
 	m := (<Math.floor(min % 60)>).
-	^ (< moment(0).hours(h).minutes(m) >)
+	^ (< moment([0]).hours(h).minutes(m) >)
 !
 
 done
@@ -1413,7 +1413,7 @@ new
 now
 	| c |
 	c := moment value.
-	^ (< moment(0).hours(c.hours()).minutes(c.minutes()) >)
+	^ (< moment([0]).hours(c.hours()).minutes(c.minutes()) >)
 ! !
 
 TimeSchedulePage subclass: #Wakame
@@ -1425,7 +1425,7 @@ TimeSchedulePage subclass: #Wakame
 grammer Sessions:list > sessions
 〜タイムスケジュールを決める〜 : 15min
 モナモナいうモナド入門[@hiratara] : 45min
-休憩 : 36816495min
+休憩 : 15min
 CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
 休憩 : 15min
 CoqによるKleisli構成の説明[@t6s] : 45min
