@@ -1310,12 +1310,18 @@ Page subclass: #TimeSchedulePage
 
 !TimeSchedulePage methodsFor: 'not yet classified'!
 
+asCode
+	^ 'grammer Sessions:list > sessions
+', (sessions inject: '' into: [ %1, %2 asCode])
+!
+
 calcTime
 	| current |
 	current := moment value: self start value: 'hh:mm'.
 	sessions do: [ :session |
 		current := session update: current
-	]
+	].
+	Mod class: self class source: (self asCode)
 !
 
 current
@@ -1361,11 +1367,7 @@ renderBody: html
 	self title: html.
 	sessionPlace := html div.
 	self drawSessions.
-	self calcTime.
-	html textarea with: self source; 
-		css: 'width' put: '100%';
-		css: 'height' put: '250px';
-		onKeyDown: [ self evaluate: %1 currentTarget value]
+	self calcTime
 !
 
 sessions
@@ -1374,7 +1376,10 @@ sessions
 
 source
 	^ (self class 
-		methodDictionary at: 'sessions') source
+		methodDictionary at: 'sessions') 
+	source lines allButFirst
+	|> [ (%1 allButFirst) inject: %1 first into: [ %1, '
+', %2]]
 !
 
 start
@@ -1411,6 +1416,22 @@ TimeSchedulePage subclass: #Wakame
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
 
+!Wakame methodsFor: 'accessing'!
+
+grammer Sessions:list > sessions
+〜 オープニング 〜 : 30min
+モナモナいうモナド入門[@hiratara] : 45min
+休憩 : 36816495min
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 48min
+休憩 : 12min
+CoqによるKleisli構成の説明[@t6s] : 45min
+休憩 : 15min
+モッジとワドラー[@t6s] : 30min
+休憩 : 15min
+余モナド[@uskz] : 45min
+〜 懇親会（ビアバッシュ）〜 : 120min
+! !
+
 !Wakame methodsFor: 'not yet classified'!
 
 ometa Sessions {
@@ -1419,7 +1440,8 @@ ometa Sessions {
   cr = char:r ?{r.charCodeAt(0) == 10},
   number = <digit+>:x -> parseInt(x),
   list = (session:s eol -> s)*,
-  session = ( other | rest | talk ):session spaces ':' spaces number: long "min" -> session._long_(long),
+  session = ( other | rest | talk ):session spaces ':' spaces number: long "min" "!!"?:done 
+	-> session._long_(long)._isDone_(done),
   other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),
   talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),
   rest = "休憩" -> smalltalk.RestSession._new()
@@ -1428,20 +1450,6 @@ ometa Sessions {
 
 end
 	^ '18:00'
-!
-
-grammer Sessions:list > sessions
-〜オープニング〜 : 30min
-モナモナいうモナド入門[@hiratara] : 45min
-休憩 : 15min
-CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 48min
-休憩 : 10min
-CoqによるKleisli構成の説明[@t6s] : 45min
-休憩 : 15min
-モッジとワドラー[@t6s] : 30min
-休憩 : 15min
-余モナド[@uskz] : 45min
-〜 懇親会（ビアバッシュ） 〜 : 120min
 !
 
 start
@@ -2134,6 +2142,48 @@ url
 	^ 'http://www.forvex.co.jp/ztres/'
 ! !
 
+Widget subclass: #ScheduleEditor
+	instanceVariableNames: 'source klazz'
+	package: 'DyNagoya'!
+
+!ScheduleEditor methodsFor: 'not yet classified'!
+
+apply
+  klazz new evaluate: source val
+!
+
+klazz: aClass
+	klazz := aClass
+!
+
+renderOn: html
+	source := html textarea 
+		css: 'position' put: 'absolute';
+		css: 'width' put: '95%';
+		css: 'height' put: '98%';
+		css: 'left' put: '12px';
+		css: 'right' put: '12px';
+		css: 'top' put: '2px';
+		css: 'bottom' put: '2px';
+		val: (klazz new source)
+!
+
+source
+  ^ source
+! !
+
+!ScheduleEditor class methodsFor: 'not yet classified'!
+
+open: aClass
+	| this |
+	this := self new.
+	this klazz: aClass.
+	DialogBox new widget: this; modal: false; width: '80%'; title: 'Schedule Editor'; height: 400; 
+		button: 'apply' action: [ this apply ];
+	open.
+	^ this source css: 'font-size' put: '2em'
+! !
+
 Widget subclass: #Screen
 	instanceVariableNames: 'index page'
 	package: 'DyNagoya'!
@@ -2258,6 +2308,10 @@ initialize
 	isDone := false
 !
 
+isDone
+	^isDone
+!
+
 long
 	^long
 !
@@ -2311,6 +2365,11 @@ adjust
 	^ end clone
 !
 
+asCode
+  ^ '休憩 : ' , long, 'min
+'
+!
+
 initialize
 	title := '休憩'
 !
@@ -2326,6 +2385,11 @@ SeminarSession subclass: #TalkSession
 	package: 'DyNagoya'!
 
 !TalkSession methodsFor: 'not yet classified'!
+
+asCode
+  ^ title, '[', speaker, '] : ', long, 'min
+'
+!
 
 redraw
 	body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
@@ -2347,6 +2411,11 @@ TalkSession subclass: #OtherSession
 	package: 'DyNagoya'!
 
 !OtherSession methodsFor: 'not yet classified'!
+
+asCode
+  ^ '〜', title, '〜 : ', long, 'min
+'
+!
 
 initialize
 	super initialize.
