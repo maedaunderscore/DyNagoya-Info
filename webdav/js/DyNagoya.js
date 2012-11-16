@@ -2679,6 +2679,23 @@ referencedClasses: []
 smalltalk.TimeSchedulePage.klass);
 
 smalltalk.addMethod(
+"_done",
+smalltalk.method({
+selector: "done",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_done", []);
+    return self;
+},
+args: [],
+source: "done\x0a\x09^ self new done",
+messageSends: ["done", "new"],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage.klass);
+
+smalltalk.addMethod(
 "_new",
 smalltalk.method({
 selector: "new",
@@ -2758,10 +2775,10 @@ smalltalk.method({
 selector: "sessions",
 category: 'accessing',
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u6C7A\u5B9A\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u4F11\u61A9 : 15min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min\n", "list");
+    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 45min\n\u4F11\u61A9 : 36816495min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 45min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 45min\n\u4F11\u61A9 : 15min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC[@t6s] : 30min\n\u4F11\u61A9 : 15min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 45min\n\u4F11\u61A9 : 15min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 120min\n", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜タイムスケジュール決定〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 36816495min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min\x0a休憩 : 15min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a休憩 : 15min\x0a〜 懇親会（ビアバッシュ） 〜 : 120min\x0a",
+source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 45min\x0a休憩 : 36816495min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min\x0a休憩 : 15min\x0aCoqによるKleisli構成の説明[@t6s] : 45min\x0a休憩 : 15min\x0aモッジとワドラー[@t6s] : 30min\x0a休憩 : 15min\x0a余モナド[@uskz] : 45min\x0a休憩 : 15min\x0a〜 懇親会（ビアバッシュ） 〜 : 120min\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -5413,6 +5430,23 @@ referencedClasses: []
 smalltalk.TalkSession);
 
 smalltalk.addMethod(
+"_drawTitle",
+smalltalk.method({
+selector: "drawTitle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"]);
+    return self;
+},
+args: [],
+source: "drawTitle\x0a\x09^ '「', title, '」'",
+messageSends: [","],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
 "_redraw",
 smalltalk.method({
 selector: "redraw",
@@ -5421,12 +5455,12 @@ fn: function () {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(self['@body']));
     smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"])]);}]);
+    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(self, "_drawTitle", [])]);}]);
     return self;
 },
 args: [],
-source: "redraw\x0a\x09body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body contents: [ :html |\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: '「', title, '」'.\x0a\x09]",
-messageSends: ["css:put:", "drawBackground:", "contents:", "with:", ",", "format:", "span"],
+source: "redraw\x0a\x09body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body contents: [ :html |\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: self drawTitle\x0a\x09]",
+messageSends: ["css:put:", "drawBackground:", "contents:", "with:", ",", "format:", "span", "drawTitle"],
 referencedClasses: []
 }),
 smalltalk.TalkSession);
@@ -5464,6 +5498,23 @@ fn: function () {
 args: [],
 source: "asCode\x0a  ^ '〜', title, '〜 : ', long, self minCode",
 messageSends: [",", "minCode"],
+referencedClasses: []
+}),
+smalltalk.OtherSession);
+
+smalltalk.addMethod(
+"_drawTitle",
+smalltalk.method({
+selector: "drawTitle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@title'];
+    return self;
+},
+args: [],
+source: "drawTitle\x0a\x09^ title",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.OtherSession);
