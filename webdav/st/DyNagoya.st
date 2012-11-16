@@ -2178,10 +2178,10 @@ open: aClass
 	| this |
 	this := self new.
 	this klazz: aClass.
-	DialogBox new widget: this; modal: false; width: '80%'; title: 'Schedule Editor'; height: 400; 
+	DialogBox new widget: this; modal: false; width: '50%'; title: 'Schedule Editor'; height: 400; 
 		button: 'apply' action: [ this apply ];
 	open.
-	^ this source css: 'font-size' put: '2em'
+	^ this source css: 'font-size' put: '1.5em'
 ! !
 
 Widget subclass: #Screen
