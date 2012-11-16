@@ -1401,6 +1401,10 @@ adjust: aTime
 	^ (< moment(0).hours(h).minutes(m) >)
 !
 
+done
+	^ self new done
+!
+
 new
 	s ifNil: [ s := super new ].
 	^ s
@@ -1419,7 +1423,7 @@ TimeSchedulePage subclass: #Wakame
 !Wakame methodsFor: 'accessing'!
 
 grammer Sessions:list > sessions
-〜タイムスケジュール決定〜 : 15min
+〜タイムスケジュールを決める〜 : 15min
 モナモナいうモナド入門[@hiratara] : 45min
 休憩 : 36816495min
 CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
@@ -2396,6 +2400,10 @@ asCode
   ^ title, '[', speaker, '] : ', long, self minCode
 !
 
+drawTitle
+	^ '「', title, '」'
+!
+
 redraw
 	body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';
 		css: 'font-size' put: '20px'.  
@@ -2403,7 +2411,7 @@ redraw
 	body contents: [ :html |
 		html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
 		html span with: speaker; css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.
-		html span with: '「', title, '」'.
+		html span with: self drawTitle
 	]
 !
 
@@ -2419,6 +2427,10 @@ TalkSession subclass: #OtherSession
 
 asCode
   ^ '〜', title, '〜 : ', long, self minCode
+!
+
+drawTitle
+	^ title
 !
 
 initialize
