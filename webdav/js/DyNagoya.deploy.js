@@ -3742,6 +3742,18 @@ fn: function (aMinutes) {
 smalltalk.SeminarSession);
 
 smalltalk.addMethod(
+"_minCode",
+smalltalk.method({
+selector: "minCode",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("min", "__comma", [($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]), "__comma", ["\n"]);
+    return self;
+}
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
 "_redraw",
 smalltalk.method({
 selector: "redraw",
@@ -3851,9 +3863,7 @@ smalltalk.method({
 selector: "asCode",
 fn: function () {
     var self = this;
-    var d = nil;
-    d = self['@isDone'];
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", ["min"]), "__comma", [($receiver = d).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]), "__comma", ["\n"]);
+    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
     return self;
 }
 }),
