@@ -1423,16 +1423,16 @@ TimeSchedulePage subclass: #Wakame
 !Wakame methodsFor: 'accessing'!
 
 grammer Sessions:list > sessions
-〜タイムスケジュールを決める〜 : 15min
-モナモナいうモナド入門[@hiratara] : 90min
-休憩 : 15min
-CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 45min
-休憩 : 15min
-CoqによるKleisli構成の説明[@t6s] : 45min
-休憩 : 10min
+〜タイムスケジュールを決める〜 : 15min!!
+モナモナいうモナド入門[@hiratara] : 105min!!
+休憩 : 15min!!
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min!!
+休憩 : 5min!!
+CoqによるKleisli構成の説明[@t6s] : 44min
+休憩 : 6min
 モッジとワドラー[@t6s] : 30min
 休憩 : 10min
-余モナド[@uskz] : 45min
+余モナド[@uskz] : 50min
 〜 懇親会（ビアバッシュ） 〜 : 130min
 ! !
 
