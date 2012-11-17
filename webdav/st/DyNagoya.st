@@ -1431,8 +1431,8 @@ CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min!!
 CoqによるKleisli構成の説明[@t6s] : 39min!!
 休憩 : 6min!!
 モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min!!
-休憩 : 3min
-余モナド[@uskz] : 50min
+休憩 : 3min!!
+余モナド[@uskz] : 50min!!
 〜 懇親会（ビアバッシュ） 〜 : 130min
 ! !
 
