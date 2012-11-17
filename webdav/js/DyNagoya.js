@@ -2696,6 +2696,23 @@ referencedClasses: []
 smalltalk.TimeSchedulePage.klass);
 
 smalltalk.addMethod(
+"_isOrdered_and_",
+smalltalk.method({
+selector: "isOrdered:and:",
+category: 'not yet classified',
+fn: function (a, b) {
+    var self = this;
+    return ($receiver = smalltalk.send(a, "_diff_", [b])).klass === smalltalk.Number ? $receiver < 0 : smalltalk.send($receiver, "__lt", [0]);
+    return self;
+},
+args: ["a", "b"],
+source: "isOrdered: a and: b\x0a\x09^ (a diff: b) < 0",
+messageSends: ["<", "diff:"],
+referencedClasses: []
+}),
+smalltalk.TimeSchedulePage.klass);
+
+smalltalk.addMethod(
 "_new",
 smalltalk.method({
 selector: "new",
@@ -2741,12 +2758,12 @@ selector: "Sessions",
 category: 'not yet classified',
 fn: function () {
     if (typeof Sessions === "undefined" || Sessions == null) {
-        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx, session, long, done;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._long_(long)._isDone_(done == "!");}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}});
+        Sessions = objectThatDelegatesTo(OMeta, {fromTo: function () {var $elf = this, _fromIdx = this.input.idx, from, to, body;return function () {from = this._apply("anything");to = this._apply("anything");this._applyWithArgs("seq", from);body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._applyWithArgs("seq", to);});return this._apply("char");}.call(this);});});this._applyWithArgs("seq", to);return body;}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}, number: function () {var $elf = this, _fromIdx = this.input.idx, x;return function () {x = this._consumedBy(function () {return this._many1(function () {return this._apply("digit");});});return parseInt(x);}.call(this);}, list: function () {var $elf = this, _fromIdx = this.input.idx, s;return this._many(function () {return function () {s = this._apply("session");this._apply("eol");return s;}.call(this);});}, session: function () {var $elf = this, _fromIdx = this.input.idx;return this._or(function () {return this._apply("withMinutes");}, function () {return this._apply("withoutMinutes");});}, withMinutes: function () {var $elf = this, _fromIdx = this.input.idx, session, long, done;return function () {session = this._or(function () {return this._apply("other");}, function () {return this._apply("rest");}, function () {return this._apply("talk");});this._apply("spaces");this._applyWithArgs("exactly", ":");this._apply("spaces");long = this._apply("number");this._applyWithArgs("token", "min");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._long_(long)._isDone_(done == "!");}.call(this);}, withoutMinutes: function () {var $elf = this, _fromIdx = this.input.idx, session, done;return function () {session = this._apply("buffer");done = this._opt(function () {return this._applyWithArgs("token", "!");});return session._isDone_(done == "!");}.call(this);}, other: function () {var $elf = this, _fromIdx = this.input.idx, title;return function () {title = this._applyWithArgs("fromTo", "\u301C", "\u301C");return smalltalk.OtherSession._new()._title_(title);}.call(this);}, talk: function () {var $elf = this, _fromIdx = this.input.idx, title, speaker;return function () {title = this._applyWithArgs("fromTo", "", "[");speaker = this._applyWithArgs("fromTo", "", "]");return smalltalk.TalkSession._new()._title_(title)._speaker_(speaker);}.call(this);}, rest: function () {var $elf = this, _fromIdx = this.input.idx;return function () {this._applyWithArgs("token", "\u4F11\u61A9");return smalltalk.RestSession._new();}.call(this);}, buffer: function () {var $elf = this, _fromIdx = this.input.idx, deadline;return function () {deadline = this._applyWithArgs("fromTo", "\u30D0\u30C3\u30D5\u30A1(", "\u307E\u3067)");return smalltalk.BufferSession._new()._deadline_(deadline);}.call(this);}});
     }
     return Sessions;
 },
 args: [],
-source: "ometa Sessions {\x0a  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,\x0a  eol = <( ~cr char )*>:body (cr | empty) -> body,\x0a  cr = char:r ?{r.charCodeAt(0) == 10},\x0a  number = <digit+>:x -> parseInt(x),\x0a  list = (session:s eol -> s)*,\x0a  session = ( other | rest | talk ):session spaces ':' spaces number: long \x22min\x22 \x22!\x22?:done \x0a\x09-> session._long_(long)._isDone_(done == \x22!\x22),\x0a  other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),\x0a  talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),\x0a  rest = \x22休憩\x22 -> smalltalk.RestSession._new()\x0a}",
+source: "ometa Sessions {\x0a  fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,\x0a  eol = <( ~cr char )*>:body (cr | empty) -> body,\x0a  cr = char:r ?{r.charCodeAt(0) == 10},\x0a  number = <digit+>:x -> parseInt(x),\x0a  list = (session:s eol -> s)*,\x0a  session = withMinutes | withoutMinutes,\x0a  withMinutes = ( other | rest | talk ):session spaces ':' spaces number: long \x22min\x22 \x22!\x22?:done \x0a\x09-> session._long_(long)._isDone_(done == \x22!\x22),\x0a  withoutMinutes = buffer:session \x22!\x22?:done -> session._isDone_(done == \x22!\x22),\x0a  other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),\x0a  talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),\x0a  rest = \x22休憩\x22 -> smalltalk.RestSession._new(),\x0a  buffer = fromTo(\x22バッファ(\x22, \x22まで)\x22):deadline -> smalltalk.BufferSession._new()._deadline_(deadline)\x0a}",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2775,10 +2792,10 @@ smalltalk.method({
 selector: "sessions",
 category: 'accessing',
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min!\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 105min!\n\u4F11\u61A9 : 15min!\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 30min!\n\u4F11\u61A9 : 5min!\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 39min!\n\u4F11\u61A9 : 6min!\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC\u3068Strong Monad\u3068Free\u30E2\u30CA\u30C9[@t6s] : 32min!\n\u4F11\u61A9 : 3min!\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 50min!\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 130min\n", "list");
+    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 105min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 30min\n\u4F11\u61A9 : 5min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 39min\n\u4F11\u61A9 : 6min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC\u3068Strong Monad\u3068Free\u30E2\u30CA\u30C9[@t6s] : 32min\n\u4F11\u61A9 : 3min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 50min\n\u4F11\u61A9 : 20min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 130min\n", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min!\x0aモナモナいうモナド入門[@hiratara] : 105min!\x0a休憩 : 15min!\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min!\x0a休憩 : 5min!\x0aCoqによるKleisli構成の説明[@t6s] : 39min!\x0a休憩 : 6min!\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min!\x0a休憩 : 3min!\x0a余モナド[@uskz] : 50min!\x0a〜 懇親会（ビアバッシュ） 〜 : 130min\x0a",
+source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 105min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min\x0a休憩 : 5min\x0aCoqによるKleisli構成の説明[@t6s] : 39min\x0a休憩 : 6min\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min\x0a休憩 : 3min\x0a余モナド[@uskz] : 50min\x0a休憩 : 20min\x0a〜 懇親会（ビアバッシュ） 〜 : 130min\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -5357,6 +5374,101 @@ messageSends: ["clone", "add:min:"],
 referencedClasses: []
 }),
 smalltalk.SeminarSession);
+
+
+
+smalltalk.addClass('BufferSession', smalltalk.SeminarSession, ['deadline'], 'DyNagoya');
+smalltalk.addMethod(
+"_adjust",
+smalltalk.method({
+selector: "adjust",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var t = nil;
+    t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@end'], self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@end'];}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@end'];}, function () {return self['@deadline'];}]);
+    t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@start'], t])).klass === smalltalk.Boolean ? $receiver ? function () {return t;}() : function () {return self['@start'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return t;}, function () {return self['@start'];}]);
+    smalltalk.send(self, "_setEnd_", [t]);
+    return smalltalk.send(self['@end'], "_clone", []);
+    return self;
+},
+args: [],
+source: "adjust\x0a\x09| t |\x0a\x09t := (TimeSchedulePage isOrdered: end and: deadline)\x0a\x09\x09ifTrue: [ end ] ifFalse: [ deadline ].\x0a\x09t := (TimeSchedulePage isOrdered: start and: t)\x0a\x09\x09ifTrue: [ t ] ifFalse: [ start ].\x0a\x09self setEnd: t.\x0a\x09^ end clone",
+messageSends: ["ifTrue:ifFalse:", "isOrdered:and:", "setEnd:", "clone"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
+    return self;
+},
+args: [],
+source: "asCode\x0a  ^ '休憩 : ' , long, self minCode",
+messageSends: [",", "minCode"],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_deadline_",
+smalltalk.method({
+selector: "deadline:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@deadline'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "hh:mm"]);
+    return self;
+},
+args: ["aString"],
+source: "deadline: aString\x0a\x09deadline := moment value: aString value: 'hh:mm'",
+messageSends: ["value:value:"],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@title'] = "\u4F11\u61A9";
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09title := '休憩'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    var t = nil;
+    self['@start'] = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [from, self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return from;}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return from;}, function () {return self['@deadline'];}]);
+    smalltalk.send(self, "_setEnd_", [($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [from, self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@deadline'];}() : function () {return from;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@deadline'];}, function () {return from;}])]);
+    return self['@end'];
+    return self;
+},
+args: ["from"],
+source: "updateTime: from\x0a\x09| t |\x0a\x09start := (TimeSchedulePage isOrdered: from and: deadline)\x0a\x09\x09ifTrue: [ from ] ifFalse: [ deadline ].\x0a\x09self setEnd:( (TimeSchedulePage isOrdered: from and: deadline)\x0a\x09\x09ifTrue: [ deadline ] ifFalse: [ from ]).\x0a\x09^ end",
+messageSends: ["ifTrue:ifFalse:", "isOrdered:and:", "setEnd:"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.BufferSession);
 
 
 
