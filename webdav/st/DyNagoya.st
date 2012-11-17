@@ -1405,6 +1405,10 @@ done
 	^ self new done
 !
 
+isOrdered: a and: b
+	^ (a diff: b) < 0
+!
+
 new
 	s ifNil: [ s := super new ].
 	^ s
@@ -1423,16 +1427,17 @@ TimeSchedulePage subclass: #Wakame
 !Wakame methodsFor: 'accessing'!
 
 grammer Sessions:list > sessions
-〜タイムスケジュールを決める〜 : 15min!!
-モナモナいうモナド入門[@hiratara] : 105min!!
-休憩 : 15min!!
-CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min!!
-休憩 : 5min!!
-CoqによるKleisli構成の説明[@t6s] : 39min!!
-休憩 : 6min!!
-モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min!!
-休憩 : 3min!!
-余モナド[@uskz] : 50min!!
+〜タイムスケジュールを決める〜 : 15min
+モナモナいうモナド入門[@hiratara] : 105min
+休憩 : 15min
+CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min
+休憩 : 5min
+CoqによるKleisli構成の説明[@t6s] : 39min
+休憩 : 6min
+モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min
+休憩 : 3min
+余モナド[@uskz] : 50min
+休憩 : 20min
 〜 懇親会（ビアバッシュ） 〜 : 130min
 ! !
 
@@ -1444,11 +1449,14 @@ ometa Sessions {
   cr = char:r ?{r.charCodeAt(0) == 10},
   number = <digit+>:x -> parseInt(x),
   list = (session:s eol -> s)*,
-  session = ( other | rest | talk ):session spaces ':' spaces number: long "min" "!!"?:done 
+  session = withMinutes | withoutMinutes,
+  withMinutes = ( other | rest | talk ):session spaces ':' spaces number: long "min" "!!"?:done 
 	-> session._long_(long)._isDone_(done == "!!"),
+  withoutMinutes = buffer:session "!!"?:done -> session._isDone_(done == "!!"),
   other = fromTo('〜',  '〜'): title -> smalltalk.OtherSession._new()._title_(title),
   talk = fromTo('', '['): title fromTo('', ']'): speaker -> smalltalk.TalkSession._new()._title_(title)._speaker_(speaker),
-  rest = "休憩" -> smalltalk.RestSession._new()
+  rest = "休憩" -> smalltalk.RestSession._new(),
+  buffer = fromTo("バッファ(", "まで)"):deadline -> smalltalk.BufferSession._new()._deadline_(deadline)
 }
 !
 
@@ -2375,6 +2383,43 @@ updateTime: from
 	| end |
 	start := from clone.
 	end := from clone add: 'm' min: long.
+! !
+
+SeminarSession subclass: #BufferSession
+	instanceVariableNames: 'deadline'
+	package: 'DyNagoya'!
+
+!BufferSession methodsFor: 'not yet classified'!
+
+adjust
+	| t |
+	t := (TimeSchedulePage isOrdered: end and: deadline)
+		ifTrue: [ end ] ifFalse: [ deadline ].
+	t := (TimeSchedulePage isOrdered: start and: t)
+		ifTrue: [ t ] ifFalse: [ start ].
+	self setEnd: t.
+	^ end clone
+!
+
+asCode
+  ^ '休憩 : ' , long, self minCode
+!
+
+deadline: aString
+	deadline := moment value: aString value: 'hh:mm'
+!
+
+initialize
+	title := '休憩'
+!
+
+updateTime: from
+	| t |
+	start := (TimeSchedulePage isOrdered: from and: deadline)
+		ifTrue: [ from ] ifFalse: [ deadline ].
+	self setEnd:( (TimeSchedulePage isOrdered: from and: deadline)
+		ifTrue: [ deadline ] ifFalse: [ from ]).
+	^ end
 ! !
 
 SeminarSession subclass: #RestSession
