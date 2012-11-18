@@ -1761,7 +1761,7 @@ selector: "calcTime",
 fn: function () {
     var self = this;
     var current = nil;
-    current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
+    current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "HH:mm"]);
     smalltalk.send(self['@sessions'], "_do_", [function (session) {return current = smalltalk.send(session, "_update_", [current]);}]);
     smalltalk.send(smalltalk.Mod || Mod, "_class_source_", [smalltalk.send(self, "_class", []), smalltalk.send(self, "_asCode", [])]);
     return self;
@@ -1783,18 +1783,17 @@ fn: function () {
 smalltalk.TimeSchedulePage);
 
 smalltalk.addMethod(
-"_done",
+"_done_",
 smalltalk.method({
-selector: "done",
-fn: function () {
+selector: "done:",
+fn: function (now) {
     var self = this;
     var $early = {};
     try {
         var prev = nil;
-        smalltalk.send(smalltalk.send(self, "_current", []), "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
         prev = smalltalk.send(self, "_current", []);
         self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
-        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
+        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(prev, "_setEnd_", [now]);smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(prev, "_setEnd_", [now]);smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
         return self;
     } catch (e) {
         if (e === $early) {
@@ -1946,7 +1945,19 @@ smalltalk.method({
 selector: "done",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(self, "_new", []), "_done", []);
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_done_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
+    return self;
+}
+}),
+smalltalk.TimeSchedulePage.klass);
+
+smalltalk.addMethod(
+"_done_",
+smalltalk.method({
+selector: "done:",
+fn: function (aTimeString) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_done_", [smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aTimeString, "HH:mm"])]);
     return self;
 }
 }),
@@ -3896,7 +3907,7 @@ fn: function () {
     var t = nil;
     t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@end'], self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@end'];}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@end'];}, function () {return self['@deadline'];}]);
     t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@start'], t])).klass === smalltalk.Boolean ? $receiver ? function () {return t;}() : function () {return self['@start'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return t;}, function () {return self['@start'];}]);
-    smalltalk.send(self, "_setEnd_", [t]);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(t, "_clone", [])]);
     return smalltalk.send(self['@end'], "_clone", []);
     return self;
 }
@@ -3909,7 +3920,7 @@ smalltalk.method({
 selector: "asCode",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["hh:mm"])]), "__comma", ["\u307E\u3067)"]);
+    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["HH:mm"])]), "__comma", ["\u307E\u3067)"]);
     return self;
 }
 }),
