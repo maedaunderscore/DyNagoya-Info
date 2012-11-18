@@ -2575,13 +2575,14 @@ fn: function (html) {
     smalltalk.send(self, "_title_", [html]);
     self['@sessionPlace'] = smalltalk.send(html, "_div", []);
     smalltalk.send(self, "_drawSessions", []);
+    (function ($rec) {smalltalk.send($rec, "_with_", ["[Edit]"]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.ScheduleEditor || ScheduleEditor, "_open_", [smalltalk.send(self, "_class", [])]);}]);}(smalltalk.send(html, "_a", [])));
     smalltalk.send(self, "_calcTime", []);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09self title: html.\x0a\x09sessionPlace := html div.\x0a\x09self drawSessions.\x0a\x09self calcTime",
-messageSends: ["title:", "div", "drawSessions", "calcTime"],
-referencedClasses: []
+source: "renderBody: html\x0a\x09self title: html.\x0a\x09sessionPlace := html div.\x0a\x09self drawSessions.\x0a\x09html a with: '[Edit]'; css: 'cursor' put:'pointer';\x0a\x09\x09onClick: [ ScheduleEditor open: self class].\x0a\x09self calcTime",
+messageSends: ["title:", "div", "drawSessions", "with:", "css:put:", "onClick:", "open:", "class", "a", "calcTime"],
+referencedClasses: ["ScheduleEditor"]
 }),
 smalltalk.TimeSchedulePage);
 
