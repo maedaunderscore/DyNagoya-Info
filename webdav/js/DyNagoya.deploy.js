@@ -4054,7 +4054,7 @@ fn: function () {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(self['@body']));
     smalltalk.send(self, "_drawBackground_", [self['@body']]);
-    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [self['@speaker']]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(self, "_drawTitle", [])]);}]);
+    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self, "_speakerLink_with_", [html, self['@speaker']])]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(self, "_drawTitle", [])]);}]);
     return self;
 }
 }),
@@ -4068,6 +4068,46 @@ fn: function (aString) {
     var self = this;
     self['@speaker'] = aString;
     return self;
+}
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_speakerLink_",
+smalltalk.method({
+selector: "speakerLink:",
+fn: function (name) {
+    var self = this;
+    var $early = {};
+    try {
+        ($receiver = smalltalk.send(name, "_match_", ["^@"])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [smalltalk.send("@", "__comma", [name])]);}(smalltalk.send(typeof html == "undefined" ? nil : html, "_a", []));}];}();}() : function () {return function () {throw $early = [""];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [smalltalk.send("@", "__comma", [name])]);}(smalltalk.send(typeof html == "undefined" ? nil : html, "_a", []));}];}();}, function () {return function () {throw $early = [""];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+}
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_speakerLink_with_",
+smalltalk.method({
+selector: "speakerLink:with:",
+fn: function (html, name) {
+    var self = this;
+    var $early = {};
+    try {
+        ($receiver = smalltalk.send(name, "_match_", ["^@"])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [name]);}(smalltalk.send(html, "_a", []));}];}();}() : function () {return function () {throw $early = [name];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [name]);}(smalltalk.send(html, "_a", []));}];}();}, function () {return function () {throw $early = [name];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
 }
 }),
 smalltalk.TalkSession);
