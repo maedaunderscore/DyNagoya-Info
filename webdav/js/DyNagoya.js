@@ -2436,13 +2436,13 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     var current = nil;
-    current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "hh:mm"]);
+    current = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [smalltalk.send(self, "_start", []), "HH:mm"]);
     smalltalk.send(self['@sessions'], "_do_", [function (session) {return current = smalltalk.send(session, "_update_", [current]);}]);
     smalltalk.send(smalltalk.Mod || Mod, "_class_source_", [smalltalk.send(self, "_class", []), smalltalk.send(self, "_asCode", [])]);
     return self;
 },
 args: [],
-source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'hh:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09current := session update: current\x0a\x09].\x0a\x09Mod class: self class source: (self asCode)",
+source: "calcTime\x0a\x09| current |\x0a\x09current := moment value: self start value: 'HH:mm'.\x0a\x09sessions do: [ :session |\x0a\x09\x09current := session update: current\x0a\x09].\x0a\x09Mod class: self class source: (self asCode)",
 messageSends: ["value:value:", "start", "do:", "update:", "class:source:", "class", "asCode"],
 referencedClasses: ["Mod"]
 }),
@@ -2467,19 +2467,18 @@ referencedClasses: []
 smalltalk.TimeSchedulePage);
 
 smalltalk.addMethod(
-"_done",
+"_done_",
 smalltalk.method({
-selector: "done",
+selector: "done:",
 category: 'not yet classified',
-fn: function () {
+fn: function (now) {
     var self = this;
     var $early = {};
     try {
         var prev = nil;
-        smalltalk.send(smalltalk.send(self, "_current", []), "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
         prev = smalltalk.send(self, "_current", []);
         self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
-        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
+        ($receiver = smalltalk.send(prev, "_done", [])).klass === smalltalk.Boolean ? $receiver ? function () {smalltalk.send(prev, "_setEnd_", [now]);smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}() : function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {smalltalk.send(prev, "_setEnd_", [now]);smalltalk.send(self, "_calcTime", []);return function () {throw $early = [prev];}();}, function () {return function () {throw $early = [smalltalk.send(self, "_done", [])];}();}]);
         return self;
     } catch (e) {
         if (e === $early) {
@@ -2488,10 +2487,10 @@ fn: function () {
         throw e;
     }
 },
-args: [],
-source: "done\x0a\x09| prev |\x0a\x09self current setEnd: TimeSchedulePage now.\x0a\x09prev := self current.\x0a\x09index := index + 1.\x0a\x09prev done ifTrue: [\x0a\x09\x09self  calcTime.\x0a\x09\x09^ prev\x0a\x09] ifFalse: [\x0a\x09\x09^ self done\x0a\x09]",
-messageSends: ["setEnd:", "current", "now", "+", "ifTrue:ifFalse:", "done", "calcTime"],
-referencedClasses: ["TimeSchedulePage"]
+args: ["now"],
+source: "done: now\x0a\x09| prev |\x0a\x09prev := self current.\x0a\x09index := index + 1.\x0a\x09prev done ifTrue: [\x0a\x09\x09prev setEnd: now.\x0a\x09\x09self  calcTime.\x0a\x09\x09^ prev\x0a\x09] ifFalse: [\x0a\x09\x09^ self done\x0a\x09]",
+messageSends: ["current", "+", "ifTrue:ifFalse:", "done", "setEnd:", "calcTime"],
+referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
 
@@ -2686,12 +2685,29 @@ selector: "done",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(self, "_new", []), "_done", []);
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_done_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_now", [])]);
     return self;
 },
 args: [],
-source: "done\x0a\x09^ self new done",
-messageSends: ["done", "new"],
+source: "done\x0a\x09^ self new done: TimeSchedulePage now",
+messageSends: ["done:", "new", "now"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.TimeSchedulePage.klass);
+
+smalltalk.addMethod(
+"_done_",
+smalltalk.method({
+selector: "done:",
+category: 'not yet classified',
+fn: function (aTimeString) {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self, "_new", []), "_done_", [smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aTimeString, "HH:mm"])]);
+    return self;
+},
+args: ["aTimeString"],
+source: "done: aTimeString\x0a\x09^ self new done: (moment value: aTimeString value: 'HH:mm')",
+messageSends: ["done:", "new", "value:value:"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage.klass);
@@ -5389,12 +5405,12 @@ fn: function () {
     var t = nil;
     t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@end'], self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@end'];}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@end'];}, function () {return self['@deadline'];}]);
     t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@start'], t])).klass === smalltalk.Boolean ? $receiver ? function () {return t;}() : function () {return self['@start'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return t;}, function () {return self['@start'];}]);
-    smalltalk.send(self, "_setEnd_", [t]);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(t, "_clone", [])]);
     return smalltalk.send(self['@end'], "_clone", []);
     return self;
 },
 args: [],
-source: "adjust\x0a\x09| t |\x0a\x09t := (TimeSchedulePage isOrdered: end and: deadline)\x0a\x09\x09ifTrue: [ end ] ifFalse: [ deadline ].\x0a\x09t := (TimeSchedulePage isOrdered: start and: t)\x0a\x09\x09ifTrue: [ t ] ifFalse: [ start ].\x0a\x09self setEnd: t.\x0a\x09^ end clone",
+source: "adjust\x0a\x09| t |\x0a\x09t := (TimeSchedulePage isOrdered: end and: deadline)\x0a\x09\x09ifTrue: [ end ] ifFalse: [ deadline ].\x0a\x09t := (TimeSchedulePage isOrdered: start and: t)\x0a\x09\x09ifTrue: [ t ] ifFalse: [ start ].\x0a\x09self setEnd: t clone.\x0a\x09^ end clone",
 messageSends: ["ifTrue:ifFalse:", "isOrdered:and:", "setEnd:", "clone"],
 referencedClasses: ["TimeSchedulePage"]
 }),
@@ -5407,11 +5423,11 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["hh:mm"])]), "__comma", ["\u307E\u3067)"]);
+    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["HH:mm"])]), "__comma", ["\u307E\u3067)"]);
     return self;
 },
 args: [],
-source: "asCode\x0a  ^ 'バッファ(', \x0a\x09(deadline format: 'hh:mm'),\x0a\x09'まで)'",
+source: "asCode\x0a  ^ 'バッファ(', \x0a\x09(deadline format: 'HH:mm'),\x0a\x09'まで)'",
 messageSends: [",", "format:"],
 referencedClasses: []
 }),
