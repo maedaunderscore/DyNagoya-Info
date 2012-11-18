@@ -1439,12 +1439,12 @@ grammer Sessions:list > sessions
 休憩 : 15min
 CoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min
 休憩 : 5min
-CoqによるKleisli構成の説明[@t6s] : 39min
-休憩 : 6min
-モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min
-休憩 : 3min
+CoqによるKleisli構成の説明[@t6s] : 40min
+休憩 : 5min
+モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 30min
+休憩 : 5min
 余モナド[@uskz] : 50min
-バッファ(06:20まで)
+バッファ(18:20まで)
 〜 懇親会（ビアバッシュ） 〜 : 130min
 ! !
 
