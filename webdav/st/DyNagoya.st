@@ -1367,6 +1367,8 @@ renderBody: html
 	self title: html.
 	sessionPlace := html div.
 	self drawSessions.
+	html a with: '[Edit]'; css: 'cursor' put:'pointer';
+		onClick: [ ScheduleEditor open: self class].
 	self calcTime
 !
 
