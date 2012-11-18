@@ -1339,7 +1339,7 @@ done: now
 		self  calcTime.
 		^ prev
 	] ifFalse: [
-		^ self done
+		^ self done: now
 	]
 !
 
