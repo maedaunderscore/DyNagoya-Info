@@ -1865,6 +1865,7 @@ fn: function (html) {
     smalltalk.send(self, "_title_", [html]);
     self['@sessionPlace'] = smalltalk.send(html, "_div", []);
     smalltalk.send(self, "_drawSessions", []);
+    (function ($rec) {smalltalk.send($rec, "_with_", ["[Edit]"]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);return smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.ScheduleEditor || ScheduleEditor, "_open_", [smalltalk.send(self, "_class", [])]);}]);}(smalltalk.send(html, "_a", [])));
     smalltalk.send(self, "_calcTime", []);
     return self;
 }
