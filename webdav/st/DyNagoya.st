@@ -1311,8 +1311,9 @@ Page subclass: #TimeSchedulePage
 !TimeSchedulePage methodsFor: 'not yet classified'!
 
 asCode
-	^ 'grammer Sessions:list > sessions
-', (sessions inject: '' into: [ %1, %2 asCode])
+	^ sessions inject: 'grammer Sessions:list > sessions'
+		into: [ %1, '
+', %2 asCode]
 !
 
 calcTime
@@ -1439,7 +1440,7 @@ CoqによるKleisli構成の説明[@t6s] : 39min
 モッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min
 休憩 : 3min
 余モナド[@uskz] : 50min
-休憩 : 20min
+バッファ(06:20まで)
 〜 懇親会（ビアバッシュ） 〜 : 130min
 ! !
 
@@ -2328,7 +2329,7 @@ drawBackground: html
 !
 
 end: aString
-	end := moment value: aString value: 'hh:mm'
+	end := moment value: aString value: 'HH:mm'
 !
 
 initialize
@@ -2349,8 +2350,7 @@ long: aMinutes
 
 minCode
   ^'min', 
-    (isDone ifTrue: [ '!!' ] ifFalse: [ '' ]), '
-'
+    (isDone ifTrue: [ '!!' ] ifFalse: [ '' ])
 !
 
 redraw
@@ -2368,7 +2368,7 @@ setEnd: aTime
 !
 
 start: aString
-	start := moment value: aString value: 'hh:mm'
+	start := moment value: aString value: 'HH:mm'
 !
 
 title: aString
@@ -2404,11 +2404,13 @@ adjust
 !
 
 asCode
-  ^ '休憩 : ' , long, self minCode
+  ^ 'バッファ(', 
+	(deadline format: 'hh:mm'),
+	'まで)'
 !
 
 deadline: aString
-	deadline := moment value: aString value: 'hh:mm'
+	deadline := moment value: aString value: 'HH:mm'
 !
 
 initialize
