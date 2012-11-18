@@ -2418,12 +2418,12 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send("grammer Sessions:list > sessions\n", "__comma", [smalltalk.send(self['@sessions'], "_inject_into_", ["", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(thisisplaceholder1, "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}])]);
+    return smalltalk.send(self['@sessions'], "_inject_into_", ["grammer Sessions:list > sessions", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}]);
     return self;
 },
 args: [],
-source: "asCode\x0a\x09^ 'grammer Sessions:list > sessions\x0a', (sessions inject: '' into: [ %1, %2 asCode])",
-messageSends: [",", "inject:into:", "asCode"],
+source: "asCode\x0a\x09^ sessions inject: 'grammer Sessions:list > sessions'\x0a\x09\x09into: [ %1, '\x0a', %2 asCode]",
+messageSends: ["inject:into:", ",", "asCode"],
 referencedClasses: []
 }),
 smalltalk.TimeSchedulePage);
@@ -2793,10 +2793,10 @@ smalltalk.method({
 selector: "sessions",
 category: 'accessing',
 fn: function () {
-    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 105min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 30min\n\u4F11\u61A9 : 5min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 39min\n\u4F11\u61A9 : 6min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC\u3068Strong Monad\u3068Free\u30E2\u30CA\u30C9[@t6s] : 32min\n\u4F11\u61A9 : 3min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 50min\n\u4F11\u61A9 : 20min\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 130min\n", "list");
+    return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 105min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 30min\n\u4F11\u61A9 : 5min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 39min\n\u4F11\u61A9 : 6min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC\u3068Strong Monad\u3068Free\u30E2\u30CA\u30C9[@t6s] : 32min\n\u4F11\u61A9 : 3min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 50min\n\u30D0\u30C3\u30D5\u30A1(06:20\u307E\u3067)\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 130min", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 105min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min\x0a休憩 : 5min\x0aCoqによるKleisli構成の説明[@t6s] : 39min\x0a休憩 : 6min\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min\x0a休憩 : 3min\x0a余モナド[@uskz] : 50min\x0a休憩 : 20min\x0a〜 懇親会（ビアバッシュ） 〜 : 130min\x0a",
+source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 105min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min\x0a休憩 : 5min\x0aCoqによるKleisli構成の説明[@t6s] : 39min\x0a休憩 : 6min\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 32min\x0a休憩 : 3min\x0a余モナド[@uskz] : 50min\x0aバッファ(06:20まで)\x0a〜 懇親会（ビアバッシュ） 〜 : 130min",
 messageSends: [],
 referencedClasses: []
 }),
@@ -5158,11 +5158,11 @@ selector: "end:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    self['@end'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "hh:mm"]);
+    self['@end'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
     return self;
 },
 args: ["aString"],
-source: "end: aString\x0a\x09end := moment value: aString value: 'hh:mm'",
+source: "end: aString\x0a\x09end := moment value: aString value: 'HH:mm'",
 messageSends: ["value:value:"],
 referencedClasses: []
 }),
@@ -5243,11 +5243,11 @@ selector: "minCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send("min", "__comma", [($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]), "__comma", ["\n"]);
+    return smalltalk.send("min", "__comma", [($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]);
     return self;
 },
 args: [],
-source: "minCode\x0a  ^'min', \x0a    (isDone ifTrue: [ '!' ] ifFalse: [ '' ]), '\x0a'",
+source: "minCode\x0a  ^'min', \x0a    (isDone ifTrue: [ '!' ] ifFalse: [ '' ])",
 messageSends: [",", "ifTrue:ifFalse:"],
 referencedClasses: []
 }),
@@ -5311,11 +5311,11 @@ selector: "start:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    self['@start'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "hh:mm"]);
+    self['@start'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
     return self;
 },
 args: ["aString"],
-source: "start: aString\x0a\x09start := moment value: aString value: 'hh:mm'",
+source: "start: aString\x0a\x09start := moment value: aString value: 'HH:mm'",
 messageSends: ["value:value:"],
 referencedClasses: []
 }),
@@ -5407,12 +5407,12 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
+    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["hh:mm"])]), "__comma", ["\u307E\u3067)"]);
     return self;
 },
 args: [],
-source: "asCode\x0a  ^ '休憩 : ' , long, self minCode",
-messageSends: [",", "minCode"],
+source: "asCode\x0a  ^ 'バッファ(', \x0a\x09(deadline format: 'hh:mm'),\x0a\x09'まで)'",
+messageSends: [",", "format:"],
 referencedClasses: []
 }),
 smalltalk.BufferSession);
@@ -5424,11 +5424,11 @@ selector: "deadline:",
 category: 'not yet classified',
 fn: function (aString) {
     var self = this;
-    self['@deadline'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "hh:mm"]);
+    self['@deadline'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
     return self;
 },
 args: ["aString"],
-source: "deadline: aString\x0a\x09deadline := moment value: aString value: 'hh:mm'",
+source: "deadline: aString\x0a\x09deadline := moment value: aString value: 'HH:mm'",
 messageSends: ["value:value:"],
 referencedClasses: []
 }),
