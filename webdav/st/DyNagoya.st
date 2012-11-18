@@ -1318,7 +1318,7 @@ asCode
 
 calcTime
 	| current |
-	current := moment value: self start value: 'hh:mm'.
+	current := moment value: self start value: 'HH:mm'.
 	sessions do: [ :session |
 		current := session update: current
 	].
@@ -1330,12 +1330,12 @@ current
 	^ sessions at: index
 !
 
-done
+done: now
 	| prev |
-	self current setEnd: TimeSchedulePage now.
 	prev := self current.
 	index := index + 1.
 	prev done ifTrue: [
+		prev setEnd: now.
 		self  calcTime.
 		^ prev
 	] ifFalse: [
@@ -1405,7 +1405,11 @@ adjust: aTime
 !
 
 done
-	^ self new done
+	^ self new done: TimeSchedulePage now
+!
+
+done: aTimeString
+	^ self new done: (moment value: aTimeString value: 'HH:mm')
 !
 
 isOrdered: a and: b
@@ -2399,13 +2403,13 @@ adjust
 		ifTrue: [ end ] ifFalse: [ deadline ].
 	t := (TimeSchedulePage isOrdered: start and: t)
 		ifTrue: [ t ] ifFalse: [ start ].
-	self setEnd: t.
+	self setEnd: t clone.
 	^ end clone
 !
 
 asCode
   ^ 'バッファ(', 
-	(deadline format: 'hh:mm'),
+	(deadline format: 'HH:mm'),
 	'まで)'
 !
 
