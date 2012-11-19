@@ -1209,6 +1209,29 @@ renderBody: html
 do: [ :each | html h2 css: 'margin-left' put: '20px'; with: [ each do: [ :each2 | html span with: each2 ] ] ].
 ! !
 
+Page subclass: #Introduction
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Introduction methodsFor: 'not yet classified'!
+
+renderBody: html
+! !
+
+!Introduction class methodsFor: 'not yet classified'!
+
+maeda
+	Screen title: '前田康行'.
+	Screen add: [ :html | 
+		html h1: 'twitter: @maeda_)'.
+		html h1 with: [ 
+			html div with: 'Favarite Language '.
+			html div css: 'margin-left' put: '80px'; with: '- Scala'.
+			html div css: 'margin-left' put: '80px'; with: '- Smalltalk'
+		]
+	]
+! !
+
 Page subclass: #Links
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
