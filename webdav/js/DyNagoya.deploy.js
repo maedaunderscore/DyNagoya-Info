@@ -1688,6 +1688,33 @@ smalltalk.HowToJoinPage);
 
 
 
+smalltalk.addClass('Introduction', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+fn: function (html) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Introduction);
+
+
+smalltalk.addMethod(
+"_maeda",
+smalltalk.method({
+selector: "maeda",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.Screen || Screen, "_title_", ["\u524D\u7530\u5EB7\u884C"]);
+    smalltalk.send(smalltalk.Screen || Screen, "_add_", [function (html) {smalltalk.send(html, "_h1_", ["twitter: @maeda_)"]);return smalltalk.send(smalltalk.send(html, "_h1", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["Favarite Language "]);(function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "80px"]);return smalltalk.send($rec, "_with_", ["- Scala"]);}(smalltalk.send(html, "_div", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin-left", "80px"]);return smalltalk.send($rec, "_with_", ["- Smalltalk"]);}(smalltalk.send(html, "_div", []));}]);}]);
+    return self;
+}
+}),
+smalltalk.Introduction.klass);
+
+
 smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
 "_link_url_description_",
