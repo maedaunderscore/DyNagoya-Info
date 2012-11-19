@@ -1221,13 +1221,20 @@ renderBody: html
 !Introduction class methodsFor: 'not yet classified'!
 
 maeda
-	Screen title: '前田康行'.
+	Screen title: '前田康行 (twitter: @maeda_)'.
 	Screen add: [ :html | 
-		html h1: 'twitter: @maeda_)'.
 		html h1 with: [ 
 			html div with: 'Favarite Language '.
 			html div css: 'margin-left' put: '80px'; with: '- Scala'.
 			html div css: 'margin-left' put: '80px'; with: '- Smalltalk'
+		].
+		html h1 with: [ 
+			html div with: 'DyNagoya '.
+			html div css: 'margin-left' put: '80px'; with: [
+				html span css: 'color' put: 'red'; with: 'Dy'.
+				html span with: 'namic Language + '.
+				html span css: 'color' put: 'red'; with: 'Nagoya'
+			]
 		]
 	]
 ! !
