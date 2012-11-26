@@ -537,7 +537,7 @@ positionY
 
 screenPreparation
 	| page |
-	page := TopPage new.
+	page := (self startPage) new.
 	[
 	  '#screen' asJQuery remove.
 	  Screen new appendToJQuery: ('body' asJQuery).
@@ -558,6 +558,14 @@ start
    self screenPreparation.
   LoginPanel show.
   self showMessage.
+!
+
+startPage
+	| name |
+	name := window location hash allButFirst.
+	name isEmpty 
+		ifTrue: [ ^ TopPage ]
+		ifFalse: [ ^ smalltalk at: name ]
 !
 
 topPosition
