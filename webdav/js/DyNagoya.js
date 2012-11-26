@@ -1077,14 +1077,14 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     var page = nil;
-    page = smalltalk.send(smalltalk.TopPage || TopPage, "_new", []);
+    page = smalltalk.send(smalltalk.send(self, "_startPage", []), "_new", []);
     smalltalk.send(function () {smalltalk.send(smalltalk.send("#screen", "_asJQuery", []), "_remove", []);smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_appendToJQuery_", [smalltalk.send("body", "_asJQuery", [])]);return smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [page]);}, "_valueWithTimeout_", [2000]);
     return self;
 },
 args: [],
-source: "screenPreparation\x0a\x09| page |\x0a\x09page := TopPage new.\x0a\x09[\x0a\x09  '#screen' asJQuery remove.\x0a\x09  Screen new appendToJQuery: ('body' asJQuery).\x0a\x09  Screen new flip: page\x0a\x09] valueWithTimeout: 2000\x0a",
-messageSends: ["new", "valueWithTimeout:", "remove", "asJQuery", "appendToJQuery:", "flip:"],
-referencedClasses: ["TopPage", "Screen"]
+source: "screenPreparation\x0a\x09| page |\x0a\x09page := (self startPage) new.\x0a\x09[\x0a\x09  '#screen' asJQuery remove.\x0a\x09  Screen new appendToJQuery: ('body' asJQuery).\x0a\x09  Screen new flip: page\x0a\x09] valueWithTimeout: 2000\x0a",
+messageSends: ["new", "startPage", "valueWithTimeout:", "remove", "asJQuery", "appendToJQuery:", "flip:"],
+referencedClasses: ["Screen"]
 }),
 smalltalk.EntryPoint.klass);
 
@@ -1123,6 +1123,33 @@ args: [],
 source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
 messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage"],
 referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel"]
+}),
+smalltalk.EntryPoint.klass);
+
+smalltalk.addMethod(
+"_startPage",
+smalltalk.method({
+selector: "startPage",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var $early = {};
+    try {
+        var name = nil;
+        name = smalltalk.send(smalltalk.send(smalltalk.send(typeof window == "undefined" ? nil : window, "_location", []), "_hash", []), "_allButFirst", []);
+        ($receiver = smalltalk.send(name, "_isEmpty", [])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [smalltalk.TopPage || TopPage];}();}() : function () {return function () {throw $early = [smalltalk.send(typeof smalltalk == "undefined" ? nil : smalltalk, "_at_", [name])];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [smalltalk.TopPage || TopPage];}();}, function () {return function () {throw $early = [smalltalk.send(typeof smalltalk == "undefined" ? nil : smalltalk, "_at_", [name])];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: [],
+source: "startPage\x0a\x09| name |\x0a\x09name := window location hash allButFirst.\x0a\x09name isEmpty \x0a\x09\x09ifTrue: [ ^ TopPage ]\x0a\x09\x09ifFalse: [ ^ smalltalk at: name ]",
+messageSends: ["allButFirst", "hash", "location", "ifTrue:ifFalse:", "isEmpty", "at:"],
+referencedClasses: ["TopPage"]
 }),
 smalltalk.EntryPoint.klass);
 
