@@ -1526,7 +1526,76 @@ renderOn: html
 !Panel class methodsFor: 'not yet classified'!
 
 show
-	self new updateToJQuery: '#panel' asJQuery
+	^ self new 
+	|> [ %1 updateToJQuery: '#panel' asJQuery]; 
+	yourself
+! !
+
+Panel subclass: #GuidePanel
+	instanceVariableNames: 'index body navi'
+	package: 'DyNagoya'!
+
+!GuidePanel methodsFor: 'not yet classified'!
+
+draw
+	body contents: (self pages at: index).
+	navi contents: [:html |
+		html div css: 'position' put: 'relative'; with: [
+			index > 1 ifTrue: [
+				html span with: 'prev'; onClick: [self prev]; 
+					css: 'left' put: '0'; css: 'position' put: 'absolute'.
+			].
+			index < (self pages size) ifTrue: [
+				html span with: 'next'; onClick: [self next]; 
+					css: 'right' put: '0'; css: 'position' put: 'absolute'
+			]
+		]
+	]
+!
+
+initialize
+	index := 1
+!
+
+next
+	index < (self pages size) ifTrue:[
+		index := index + 1.
+		self draw.
+	]
+!
+
+pages
+	^ {}
+!
+
+prev
+	index > 1 ifTrue:[
+		index := index - 1.
+		self draw.
+	]
+!
+
+renderBodyOn: html
+	html div css: 'background' put: '#AADDAA';
+		css: 'width' put: '400px'; css: 'padding' put: '5px'; with:[
+		body := html div. 
+		navi := html div css: 'height' put: '40px'.
+	].
+	self draw
+! !
+
+GuidePanel subclass: #LLorMLAdventPanel
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!LLorMLAdventPanel methodsFor: 'not yet classified'!
+
+pages
+	^ {
+		[ :html | html div with: 'hello'].
+		[ :html | html div with: 'world'].
+		[ :html | html div with: 'bye']
+	}
 ! !
 
 Panel subclass: #LoginPanel

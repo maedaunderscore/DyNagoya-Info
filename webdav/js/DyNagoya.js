@@ -2924,15 +2924,142 @@ selector: "show",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    smalltalk.send(smalltalk.send(self, "_new", []), "_updateToJQuery_", [smalltalk.send("#panel", "_asJQuery", [])]);
+    return function ($rec) {smalltalk.send($rec, "_|_gt", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_updateToJQuery_", [smalltalk.send("#panel", "_asJQuery", [])]);}]);return smalltalk.send($rec, "_yourself", []);}(smalltalk.send(self, "_new", []));
     return self;
 },
 args: [],
-source: "show\x0a\x09self new updateToJQuery: '#panel' asJQuery",
-messageSends: ["updateToJQuery:", "new", "asJQuery"],
+source: "show\x0a\x09^ self new \x0a\x09|> [ %1 updateToJQuery: '#panel' asJQuery]; \x0a\x09yourself",
+messageSends: ["|>", "updateToJQuery:", "asJQuery", "yourself", "new"],
 referencedClasses: []
 }),
 smalltalk.Panel.klass);
+
+
+smalltalk.addClass('GuidePanel', smalltalk.Panel, ['index', 'body', 'navi'], 'DyNagoya');
+smalltalk.addMethod(
+"_draw",
+smalltalk.method({
+selector: "draw",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@body'], "_contents_", [smalltalk.send(smalltalk.send(self, "_pages", []), "_at_", [self['@index']])]);
+    smalltalk.send(self['@navi'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "relative"]);return smalltalk.send($rec, "_with_", [function () {($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver > 1 : smalltalk.send($receiver, "__gt", [1])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);return ($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver < smalltalk.send(smalltalk.send(self, "_pages", []), "_size", []) : smalltalk.send($receiver, "__lt", [smalltalk.send(smalltalk.send(self, "_pages", []), "_size", [])])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);}]);}(smalltalk.send(html, "_div", []));}]);
+    return self;
+},
+args: [],
+source: "draw\x0a\x09body contents: (self pages at: index).\x0a\x09navi contents: [:html |\x0a\x09\x09html div css: 'position' put: 'relative'; with: [\x0a\x09\x09\x09index > 1 ifTrue: [\x0a\x09\x09\x09\x09html span with: 'prev'; onClick: [self prev]; \x0a\x09\x09\x09\x09\x09css: 'left' put: '0'; css: 'position' put: 'absolute'.\x0a\x09\x09\x09].\x0a\x09\x09\x09index < (self pages size) ifTrue: [\x0a\x09\x09\x09\x09html span with: 'next'; onClick: [self next]; \x0a\x09\x09\x09\x09\x09css: 'right' put: '0'; css: 'position' put: 'absolute'\x0a\x09\x09\x09]\x0a\x09\x09]\x0a\x09]",
+messageSends: ["contents:", "at:", "pages", "css:put:", "with:", "ifTrue:", ">", "onClick:", "prev", "span", "<", "size", "next", "div"],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@index'] = 1;
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09index := 1",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver < smalltalk.send(smalltalk.send(self, "_pages", []), "_size", []) : smalltalk.send($receiver, "__lt", [smalltalk.send(smalltalk.send(self, "_pages", []), "_size", [])])).klass === smalltalk.Boolean ? $receiver ? function () {self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);return smalltalk.send(self, "_draw", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);return smalltalk.send(self, "_draw", []);}]);
+    return self;
+},
+args: [],
+source: "next\x0a\x09index < (self pages size) ifTrue:[\x0a\x09\x09index := index + 1.\x0a\x09\x09self draw.\x0a\x09]",
+messageSends: ["ifTrue:", "<", "size", "pages", "+", "draw"],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_pages",
+smalltalk.method({
+selector: "pages",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return [];
+    return self;
+},
+args: [],
+source: "pages\x0a\x09^ {}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_prev",
+smalltalk.method({
+selector: "prev",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver > 1 : smalltalk.send($receiver, "__gt", [1])).klass === smalltalk.Boolean ? $receiver ? function () {self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver - 1 : smalltalk.send($receiver, "__minus", [1]);return smalltalk.send(self, "_draw", []);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {self['@index'] = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver - 1 : smalltalk.send($receiver, "__minus", [1]);return smalltalk.send(self, "_draw", []);}]);
+    return self;
+},
+args: [],
+source: "prev\x0a\x09index > 1 ifTrue:[\x0a\x09\x09index := index - 1.\x0a\x09\x09self draw.\x0a\x09]",
+messageSends: ["ifTrue:", ">", "-", "draw"],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "#AADDAA"]);smalltalk.send($rec, "_css_put_", ["width", "400px"]);smalltalk.send($rec, "_css_put_", ["padding", "5px"]);return smalltalk.send($rec, "_with_", [function () {self['@body'] = smalltalk.send(html, "_div", []);return self['@navi'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["height", "40px"]);}]);}(smalltalk.send(html, "_div", [])));
+    smalltalk.send(self, "_draw", []);
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a\x09html div css: 'background' put: '#AADDAA';\x0a\x09\x09css: 'width' put: '400px'; css: 'padding' put: '5px'; with:[\x0a\x09\x09body := html div. \x0a\x09\x09navi := html div css: 'height' put: '40px'.\x0a\x09].\x0a\x09self draw",
+messageSends: ["css:put:", "with:", "div", "draw"],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+
+
+smalltalk.addClass('LLorMLAdventPanel', smalltalk.GuidePanel, [], 'DyNagoya');
+smalltalk.addMethod(
+"_pages",
+smalltalk.method({
+selector: "pages",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return [function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["hello"]);}, function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["world"]);}, function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["bye"]);}];
+    return self;
+},
+args: [],
+source: "pages\x0a\x09^ {\x0a\x09\x09[ :html | html div with: 'hello'].\x0a\x09\x09[ :html | html div with: 'world'].\x0a\x09\x09[ :html | html div with: 'bye']\x0a\x09}",
+messageSends: ["with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
 
 
 smalltalk.addClass('LoginPanel', smalltalk.Panel, [], 'DyNagoya');
