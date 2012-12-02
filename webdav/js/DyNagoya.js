@@ -554,11 +554,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "796px";
+    return "822px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'796px'",
+source: "x\x0a  ^'822px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -571,11 +571,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "533px";
+    return "518px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'533px'",
+source: "y\x0a  ^'518px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -6002,5 +6002,44 @@ referencedClasses: ["Login", "Browser", "EntryPoint", "SourceArea", "DialogBox"]
 }),
 smalltalk.ToolBar);
 
+
+
+smalltalk.addClass('Tooltip', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    $.powerTip.close();
+    return self;
+},
+args: [],
+source: "close\x0a  (< $.powerTip.close() >)",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tooltip.klass);
+
+smalltalk.addMethod(
+"_on_with_",
+smalltalk.method({
+selector: "on:with:",
+category: 'not yet classified',
+fn: function (selector, str) {
+    var self = this;
+    smalltalk.send(smalltalk.send(selector, "_asJQuery", []), "_powerTip_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("placement", "__minus_gt", ["ne"])])]);
+    $(selector).data("powertip", str);
+    return $.powerTip.showTip($(selector));
+    return self;
+},
+args: ["selector", "str"],
+source: "on: selector with: str\x0a  selector asJQuery  powerTip: #{ 'placement' -> 'ne'}.\x0a\x22  selector asJQuery data: 'powertip' with: 'abc'.\x22\x0a  (< $(selector).data('powertip', str) >).\x0a  ^ (< $.powerTip.showTip($(selector)) >)",
+messageSends: ["powerTip:", "asJQuery", "->"],
+referencedClasses: []
+}),
+smalltalk.Tooltip.klass);
 
 

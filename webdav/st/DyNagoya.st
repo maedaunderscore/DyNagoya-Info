@@ -323,11 +323,11 @@ imageUrl
 !
 
 x
-  ^'796px'
+  ^'822px'
 !
 
 y
-  ^'533px'
+  ^'518px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -2666,5 +2666,22 @@ renderOn: html
 			]
 		]
 	]
+! !
+
+Object subclass: #Tooltip
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Tooltip class methodsFor: 'not yet classified'!
+
+close
+  (< $.powerTip.close() >)
+!
+
+on: selector with: str
+  selector asJQuery  powerTip: #{ 'placement' -> 'ne'}.
+"  selector asJQuery data: 'powertip' with: 'abc'."
+  (< $(selector).data('powertip', str) >).
+  ^ (< $.powerTip.showTip($(selector)) >)
 ! !
 
