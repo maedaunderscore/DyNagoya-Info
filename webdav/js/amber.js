@@ -158,7 +158,8 @@ amber = (function() {
 
   function loadDependencies() {
     if (typeof jQuery == 'undefined') {
-      loadJS('lib/jQuery/jquery-1.6.4.min.js');
+//      loadJS('lib/jQuery/jquery-1.6.4.min.js');
+        loadJS('lib/jQuery/jquery-1.7.2.min.js');
     }
 
     if ((typeof jQuery == 'undefined') || (typeof jQuery.ui == 'undefined')) {
@@ -168,6 +169,8 @@ amber = (function() {
     loadJS('lib/jquery.zoomooz.min.js');
     loadJS('lib/jquery.transit.js');
     loadJS('lib/sketch.min.js');
+    loadJS('lib/jquery.powertip-1.1.0.min.js');
+      loadCSS('lib/jquery.powertip.css', 'js');
   };
 
   function loadIDEDependencies() {
