@@ -1008,31 +1008,6 @@ user: aStr
 	user := aStr
 ! !
 
-Widget subclass: #LoginPanel
-	instanceVariableNames: ''
-	package: 'DyNagoya'!
-
-!LoginPanel methodsFor: 'not yet classified'!
-
-renderOn: html
-	html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.
-	html div with: Login new.
-! !
-
-LoginPanel class instanceVariableNames: 'single'!
-
-!LoginPanel class methodsFor: 'not yet classified'!
-
-new
-	single ifNil: [ single := super new ].
-
-	^ single
-!
-
-show
-	self new updateToJQuery: '#login' asJQuery
-! !
-
 Object subclass: #OMeta
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -1532,6 +1507,36 @@ renderBody: html
 			with: Board new;
 			with: Logo new;
 			with: HowToJoin new
+! !
+
+Widget subclass: #Panel
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Panel methodsFor: 'not yet classified'!
+
+renderBodyOn: html
+!
+
+renderOn: html
+	html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.
+	self renderBodyOn: html
+! !
+
+!Panel class methodsFor: 'not yet classified'!
+
+show
+	self new updateToJQuery: '#panel' asJQuery
+! !
+
+Panel subclass: #LoginPanel
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!LoginPanel methodsFor: 'not yet classified'!
+
+renderBodyOn: html
+	html div with: Login new.
 ! !
 
 Widget subclass: #ParserEditor

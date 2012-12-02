@@ -1993,63 +1993,6 @@ referencedClasses: []
 smalltalk.Login.klass);
 
 
-smalltalk.addClass('LoginPanel', smalltalk.Widget, [], 'DyNagoya');
-smalltalk.addMethod(
-"_renderOn_",
-smalltalk.method({
-selector: "renderOn:",
-category: 'not yet classified',
-fn: function (html) {
-    var self = this;
-    smalltalk.send(smalltalk.send(html, "_root", []), "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px"]);
-    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.Login || Login, "_new", [])]);
-    return self;
-},
-args: ["html"],
-source: "renderOn: html\x0a\x09html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.\x0a\x09html div with: Login new.",
-messageSends: ["style:", "root", "with:", "div", "new"],
-referencedClasses: ["Login"]
-}),
-smalltalk.LoginPanel);
-
-
-smalltalk.LoginPanel.klass.iVarNames = ['single'];
-smalltalk.addMethod(
-"_new",
-smalltalk.method({
-selector: "new",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    ($receiver = self['@single']) == nil || $receiver == undefined ? function () {return self['@single'] = smalltalk.send(self, "_new", [], smalltalk.LoginPanel.klass.superclass || nil);}() : $receiver;
-    return self['@single'];
-    return self;
-},
-args: [],
-source: "new\x0a\x09single ifNil: [ single := super new ].\x0a\x0a\x09^ single",
-messageSends: ["ifNil:", "new"],
-referencedClasses: []
-}),
-smalltalk.LoginPanel.klass);
-
-smalltalk.addMethod(
-"_show",
-smalltalk.method({
-selector: "show",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.send(self, "_new", []), "_updateToJQuery_", [smalltalk.send("#login", "_asJQuery", [])]);
-    return self;
-},
-args: [],
-source: "show\x0a\x09self new updateToJQuery: '#login' asJQuery",
-messageSends: ["updateToJQuery:", "new", "asJQuery"],
-referencedClasses: []
-}),
-smalltalk.LoginPanel.klass);
-
-
 smalltalk.addClass('OMeta', smalltalk.Object, [], 'DyNagoya');
 smalltalk.OMeta.comment="code := 'ometa Factorial {\x0a  fact 0 -> 1,\x0a  fact :n = fact(n-1):m -> (n*m)\x0a}'.\x0atree := BSOMetaJSParser matchAll: code rule: 'topLevel'.\x0ajs := BSOMetaJSTranslator match:tree rule:'trans'.\x0a< eval(js) >.\x0aFactorial matchAll: '3' rule: 'fact'"
 
@@ -2935,6 +2878,80 @@ messageSends: ["with:", "new", "div"],
 referencedClasses: ["Dolphin", "Board", "Logo", "HowToJoin"]
 }),
 smalltalk.TopPage);
+
+
+
+smalltalk.addClass('Panel', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Panel);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_root", []), "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px"]);
+    smalltalk.send(self, "_renderBodyOn_", [html]);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.\x0a\x09self renderBodyOn: html",
+messageSends: ["style:", "root", "renderBodyOn:"],
+referencedClasses: []
+}),
+smalltalk.Panel);
+
+
+smalltalk.addMethod(
+"_show",
+smalltalk.method({
+selector: "show",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_new", []), "_updateToJQuery_", [smalltalk.send("#panel", "_asJQuery", [])]);
+    return self;
+},
+args: [],
+source: "show\x0a\x09self new updateToJQuery: '#panel' asJQuery",
+messageSends: ["updateToJQuery:", "new", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.Panel.klass);
+
+
+smalltalk.addClass('LoginPanel', smalltalk.Panel, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.Login || Login, "_new", [])]);
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a\x09html div with: Login new.",
+messageSends: ["with:", "div", "new"],
+referencedClasses: ["Login"]
+}),
+smalltalk.LoginPanel);
 
 
 

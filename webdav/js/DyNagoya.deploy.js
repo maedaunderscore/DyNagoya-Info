@@ -1440,48 +1440,6 @@ fn: function (aStr) {
 smalltalk.Login.klass);
 
 
-smalltalk.addClass('LoginPanel', smalltalk.Widget, [], 'DyNagoya');
-smalltalk.addMethod(
-"_renderOn_",
-smalltalk.method({
-selector: "renderOn:",
-fn: function (html) {
-    var self = this;
-    smalltalk.send(smalltalk.send(html, "_root", []), "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px"]);
-    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.Login || Login, "_new", [])]);
-    return self;
-}
-}),
-smalltalk.LoginPanel);
-
-
-smalltalk.LoginPanel.klass.iVarNames = ['single'];
-smalltalk.addMethod(
-"_new",
-smalltalk.method({
-selector: "new",
-fn: function () {
-    var self = this;
-    ($receiver = self['@single']) == nil || $receiver == undefined ? function () {return self['@single'] = smalltalk.send(self, "_new", [], smalltalk.LoginPanel.klass.superclass || nil);}() : $receiver;
-    return self['@single'];
-    return self;
-}
-}),
-smalltalk.LoginPanel.klass);
-
-smalltalk.addMethod(
-"_show",
-smalltalk.method({
-selector: "show",
-fn: function () {
-    var self = this;
-    smalltalk.send(smalltalk.send(self, "_new", []), "_updateToJQuery_", [smalltalk.send("#login", "_asJQuery", [])]);
-    return self;
-}
-}),
-smalltalk.LoginPanel.klass);
-
-
 smalltalk.addClass('OMeta', smalltalk.Object, [], 'DyNagoya');
 
 
@@ -2126,6 +2084,60 @@ fn: function (html) {
 }
 }),
 smalltalk.TopPage);
+
+
+
+smalltalk.addClass('Panel', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+fn: function (html) {
+    var self = this;
+    return self;
+}
+}),
+smalltalk.Panel);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_root", []), "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px"]);
+    smalltalk.send(self, "_renderBodyOn_", [html]);
+    return self;
+}
+}),
+smalltalk.Panel);
+
+
+smalltalk.addMethod(
+"_show",
+smalltalk.method({
+selector: "show",
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self, "_new", []), "_updateToJQuery_", [smalltalk.send("#panel", "_asJQuery", [])]);
+    return self;
+}
+}),
+smalltalk.Panel.klass);
+
+
+smalltalk.addClass('LoginPanel', smalltalk.Panel, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [smalltalk.send(smalltalk.Login || Login, "_new", [])]);
+    return self;
+}
+}),
+smalltalk.LoginPanel);
 
 
 
