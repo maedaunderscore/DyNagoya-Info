@@ -388,7 +388,7 @@ DialogBox subclass: #ImageEditor
 !ImageEditor methodsFor: 'not yet classified'!
 
 doesNotUnderstand: aMessage
-	aMessage sendTo: sk
+	aMessage sendTo: widget
 !
 
 height: aInt
@@ -403,12 +403,16 @@ initialize
 		widget: sk; 
 		title: 'Image Editor';
 		width: 330;
-		modal: false
+		modal: false.
 !
 
 open
 	super open.
 	self sketch
+!
+
+src
+	^ widget src
 !
 
 width: aInt

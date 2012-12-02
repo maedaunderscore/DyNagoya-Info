@@ -728,7 +728,7 @@ smalltalk.method({
 selector: "doesNotUnderstand:",
 fn: function (aMessage) {
     var self = this;
-    smalltalk.send(aMessage, "_sendTo_", [typeof sk == "undefined" ? nil : sk]);
+    smalltalk.send(aMessage, "_sendTo_", [self['@widget']]);
     return self;
 }
 }),
@@ -754,8 +754,8 @@ selector: "initialize",
 fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.ImageEditor.superclass || nil);
-    sk = smalltalk.send(smalltalk.Sketch || Sketch, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_widget_", [typeof sk == "undefined" ? nil : sk]);smalltalk.send($rec, "_title_", ["Image Editor"]);smalltalk.send($rec, "_width_", [330]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    self['@sk'] = smalltalk.send(smalltalk.Sketch || Sketch, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self['@sk']]);smalltalk.send($rec, "_title_", ["Image Editor"]);smalltalk.send($rec, "_width_", [330]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 }
 }),
@@ -769,6 +769,18 @@ fn: function () {
     var self = this;
     smalltalk.send(self, "_open", [], smalltalk.ImageEditor.superclass || nil);
     smalltalk.send(self, "_sketch", []);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_src",
+smalltalk.method({
+selector: "src",
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@widget'], "_src", []);
     return self;
 }
 }),
