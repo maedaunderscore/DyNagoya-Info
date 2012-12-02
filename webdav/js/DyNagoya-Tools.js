@@ -1007,11 +1007,11 @@ selector: "doesNotUnderstand:",
 category: 'not yet classified',
 fn: function (aMessage) {
     var self = this;
-    smalltalk.send(aMessage, "_sendTo_", [typeof sk == "undefined" ? nil : sk]);
+    smalltalk.send(aMessage, "_sendTo_", [self['@widget']]);
     return self;
 },
 args: ["aMessage"],
-source: "doesNotUnderstand: aMessage\x0a\x09aMessage sendTo: sk",
+source: "doesNotUnderstand: aMessage\x0a\x09aMessage sendTo: widget",
 messageSends: ["sendTo:"],
 referencedClasses: []
 }),
@@ -1043,12 +1043,12 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     smalltalk.send(self, "_initialize", [], smalltalk.ImageEditor.superclass || nil);
-    sk = smalltalk.send(smalltalk.Sketch || Sketch, "_new", []);
-    (function ($rec) {smalltalk.send($rec, "_widget_", [typeof sk == "undefined" ? nil : sk]);smalltalk.send($rec, "_title_", ["Image Editor"]);smalltalk.send($rec, "_width_", [330]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    self['@sk'] = smalltalk.send(smalltalk.Sketch || Sketch, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [self['@sk']]);smalltalk.send($rec, "_title_", ["Image Editor"]);smalltalk.send($rec, "_width_", [330]);return smalltalk.send($rec, "_modal_", [false]);}(self));
     return self;
 },
 args: [],
-source: "initialize\x0a\x09super initialize.\x0a\x09sk := Sketch new.\x0a\x09self \x0a\x09\x09widget: sk; \x0a\x09\x09title: 'Image Editor';\x0a\x09\x09width: 330;\x0a\x09\x09modal: false",
+source: "initialize\x0a\x09super initialize.\x0a\x09sk := Sketch new.\x0a\x09self \x0a\x09\x09widget: sk; \x0a\x09\x09title: 'Image Editor';\x0a\x09\x09width: 330;\x0a\x09\x09modal: false.",
 messageSends: ["initialize", "new", "widget:", "title:", "width:", "modal:"],
 referencedClasses: ["Sketch"]
 }),
@@ -1068,6 +1068,23 @@ fn: function () {
 args: [],
 source: "open\x0a\x09super open.\x0a\x09self sketch",
 messageSends: ["open", "sketch"],
+referencedClasses: []
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_src",
+smalltalk.method({
+selector: "src",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self['@widget'], "_src", []);
+    return self;
+},
+args: [],
+source: "src\x0a\x09^ widget src",
+messageSends: ["src"],
 referencedClasses: []
 }),
 smalltalk.ImageEditor);
