@@ -4355,7 +4355,7 @@ smalltalk.method({
 selector: "close",
 fn: function () {
     var self = this;
-    $.powerTip.close();
+    $.powerTip.closeTip();
     return self;
 }
 }),

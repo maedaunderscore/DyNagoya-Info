@@ -2675,7 +2675,7 @@ Object subclass: #Tooltip
 !Tooltip class methodsFor: 'not yet classified'!
 
 close
-  (< $.powerTip.close() >)
+  (< $.powerTip.closeTip() >)
 !
 
 on: selector with: str

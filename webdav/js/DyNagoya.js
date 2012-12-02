@@ -6013,11 +6013,11 @@ selector: "close",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    $.powerTip.close();
+    $.powerTip.closeTip();
     return self;
 },
 args: [],
-source: "close\x0a  (< $.powerTip.close() >)",
+source: "close\x0a  (< $.powerTip.closeTip() >)",
 messageSends: [],
 referencedClasses: []
 }),

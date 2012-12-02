@@ -219,17 +219,17 @@ openWithBrowser: browser
 	browser open.
 ! !
 
-DialogBox subclass: #ImageEditor
+DialogBox subclass: #ImageClipper
 	instanceVariableNames: 'img canvas jcrop'
 	package: 'DyNagoya-Tools'!
-!ImageEditor commentStamp!
+!ImageClipper commentStamp!
 x := ImageEditor openWithProxy: 'http://xxxx.com/abc.png'; open
 (* select area by drag the image *)
 
 x crop
 x src!
 
-!ImageEditor methodsFor: 'accessing'!
+!ImageClipper methodsFor: 'accessing'!
 
 area
 	self isSelected 
@@ -272,7 +272,7 @@ src: url
 	img src: url.
 ! !
 
-!ImageEditor methodsFor: 'action'!
+!ImageClipper methodsFor: 'action'!
 
 crop
 	| area|
@@ -328,13 +328,13 @@ selectX: x y: y
 		y + (area at: #h) }
 ! !
 
-!ImageEditor methodsFor: 'initalization'!
+!ImageClipper methodsFor: 'initalization'!
 
 defaultOption
 	^ #{ 'modal' -> false. 'close' -> [self close] }
 ! !
 
-!ImageEditor methodsFor: 'opening'!
+!ImageClipper methodsFor: 'opening'!
 
 open: url
 	self with:[ :html | 
@@ -351,7 +351,7 @@ openWithProxy: url
 	self open: (self proxy: url)
 ! !
 
-!ImageEditor methodsFor: 'private'!
+!ImageClipper methodsFor: 'private'!
 
 copyToImg
 	self src: (self canvas toDataURL).
@@ -369,16 +369,51 @@ proxy:url
 	^ '/proxy?remote=', url
 ! !
 
-ImageEditor subclass: #ProxyImageEditor
+ImageClipper subclass: #ProxyImageClipper
 	instanceVariableNames: ''
 	package: 'DyNagoya-Tools'!
-!ProxyImageEditor commentStamp!
-editor := ProxyImageEditor open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'!
+!ProxyImageClipper commentStamp!
+editor := ProxyImageClipper open: 'http://cdn-ak.f.st-hatena.com/images/fotolife/c/chun_it/20080512/20080512162247.jpg'!
 
-!ProxyImageEditor class methodsFor: 'not yet classified'!
+!ProxyImageClipper class methodsFor: 'not yet classified'!
 
 open: url
 	^ self new openWithProxy: url
+! !
+
+DialogBox subclass: #ImageEditor
+	instanceVariableNames: 'sk'
+	package: 'DyNagoya-Tools'!
+
+!ImageEditor methodsFor: 'not yet classified'!
+
+doesNotUnderstand: aMessage
+	aMessage sendTo: sk
+!
+
+height: aInt
+	widget height: aInt.
+	super height: aInt + 50
+!
+
+initialize
+	super initialize.
+	sk := Sketch new.
+	self 
+		widget: sk; 
+		title: 'Image Editor';
+		width: 330;
+		modal: false
+!
+
+open
+	super open.
+	self sketch
+!
+
+width: aInt
+	widget width: aInt.
+	super width: (aInt + 30)
 ! !
 
 DialogBox subclass: #InspectorDialog
@@ -656,6 +691,53 @@ put: clazz group: group key: key body: body
 
 url: clazz group: group key: key
 	^ '/data/', clazz asString, '/', group, '/', key
+! !
+
+Widget subclass: #Sketch
+	instanceVariableNames: 'canvas sketch width height'
+	package: 'DyNagoya-Tools'!
+
+!Sketch methodsFor: 'not yet classified'!
+
+color: aStr
+	sketch sketch: 'color' color: aStr
+!
+
+height: aInt
+	height := aInt.
+	canvas >>= [ %1 height: '', aInt, 'px' ]
+!
+
+initialize
+	width := 100.
+	height := 100.
+!
+
+renderOn: html
+	canvas := html canvas 
+		css: 'border' put: 'solid 1px black';
+		css: 'background' put: 'white'.
+	self width: width.
+	self height: height.
+	sketch := canvas asJQuery
+!
+
+size: aInt
+	sketch sketch: 'size' size: aInt
+!
+
+sketch
+"after sketch, you can't change width or height"
+	sketch sketch
+!
+
+src
+	^ canvas element toDataURL: 'image/png'
+!
+
+width: aInt
+	width := aInt.
+	canvas >>= [ %1 width: '', aInt, 'px' ]
 ! !
 
 Widget subclass: #ToggleButton

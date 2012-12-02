@@ -445,7 +445,7 @@ fn: function (browser) {
 smalltalk.BrowserDialog.klass);
 
 
-smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');
+smalltalk.addClass('ImageClipper', smalltalk.DialogBox, ['img', 'canvas', 'jcrop'], 'DyNagoya-Tools');
 smalltalk.addMethod(
 "_area",
 smalltalk.method({
@@ -464,7 +464,7 @@ fn: function () {
     }
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_canvas",
@@ -476,7 +476,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_context",
@@ -488,7 +488,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_copyToImg",
@@ -501,7 +501,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_crop",
@@ -517,7 +517,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_croppable",
@@ -532,7 +532,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_defaultOption",
@@ -544,7 +544,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_img",
@@ -556,7 +556,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_isSelected",
@@ -570,7 +570,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_open_",
@@ -584,7 +584,7 @@ fn: function (url) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_openWithProxy_",
@@ -596,7 +596,7 @@ fn: function (url) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_proxy_",
@@ -608,7 +608,7 @@ fn: function (url) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_redraw",
@@ -620,7 +620,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_resizeWidth_height_",
@@ -636,7 +636,7 @@ fn: function (w, h) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_scale_",
@@ -650,7 +650,7 @@ fn: function (s) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_selectWidth_height_",
@@ -664,7 +664,7 @@ fn: function (width, height) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_selectX_y_",
@@ -678,7 +678,7 @@ fn: function (x, y) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_src",
@@ -690,7 +690,7 @@ fn: function () {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 smalltalk.addMethod(
 "_src_",
@@ -702,11 +702,11 @@ fn: function (url) {
     return self;
 }
 }),
-smalltalk.ImageEditor);
+smalltalk.ImageClipper);
 
 
 
-smalltalk.addClass('ProxyImageEditor', smalltalk.ImageEditor, [], 'DyNagoya-Tools');
+smalltalk.addClass('ProxyImageClipper', smalltalk.ImageClipper, [], 'DyNagoya-Tools');
 
 smalltalk.addMethod(
 "_open_",
@@ -718,7 +718,75 @@ fn: function (url) {
     return self;
 }
 }),
-smalltalk.ProxyImageEditor.klass);
+smalltalk.ProxyImageClipper.klass);
+
+
+smalltalk.addClass('ImageEditor', smalltalk.DialogBox, ['sk'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_doesNotUnderstand_",
+smalltalk.method({
+selector: "doesNotUnderstand:",
+fn: function (aMessage) {
+    var self = this;
+    smalltalk.send(aMessage, "_sendTo_", [typeof sk == "undefined" ? nil : sk]);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_height_",
+smalltalk.method({
+selector: "height:",
+fn: function (aInt) {
+    var self = this;
+    smalltalk.send(self['@widget'], "_height_", [aInt]);
+    smalltalk.send(self, "_height_", [($receiver = aInt).klass === smalltalk.Number ? $receiver + 50 : smalltalk.send($receiver, "__plus", [50])], smalltalk.ImageEditor.superclass || nil);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.ImageEditor.superclass || nil);
+    sk = smalltalk.send(smalltalk.Sketch || Sketch, "_new", []);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [typeof sk == "undefined" ? nil : sk]);smalltalk.send($rec, "_title_", ["Image Editor"]);smalltalk.send($rec, "_width_", [330]);return smalltalk.send($rec, "_modal_", [false]);}(self));
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_open", [], smalltalk.ImageEditor.superclass || nil);
+    smalltalk.send(self, "_sketch", []);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
+smalltalk.addMethod(
+"_width_",
+smalltalk.method({
+selector: "width:",
+fn: function (aInt) {
+    var self = this;
+    smalltalk.send(self['@widget'], "_width_", [aInt]);
+    smalltalk.send(self, "_width_", [($receiver = aInt).klass === smalltalk.Number ? $receiver + 30 : smalltalk.send($receiver, "__plus", [30])], smalltalk.ImageEditor.superclass || nil);
+    return self;
+}
+}),
+smalltalk.ImageEditor);
+
 
 
 smalltalk.addClass('InspectorDialog', smalltalk.DialogBox, ['inspector'], 'DyNagoya-Tools');
@@ -1201,6 +1269,111 @@ fn: function (clazz, group, key) {
 }
 }),
 smalltalk.RemoteObject.klass);
+
+
+smalltalk.addClass('Sketch', smalltalk.Widget, ['canvas', 'sketch', 'width', 'height'], 'DyNagoya-Tools');
+smalltalk.addMethod(
+"_color_",
+smalltalk.method({
+selector: "color:",
+fn: function (aStr) {
+    var self = this;
+    smalltalk.send(self['@sketch'], "_sketch_color_", ["color", aStr]);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_height_",
+smalltalk.method({
+selector: "height:",
+fn: function (aInt) {
+    var self = this;
+    self['@height'] = aInt;
+    smalltalk.send(self['@canvas'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_height_", [smalltalk.send(smalltalk.send("", "__comma", [aInt]), "__comma", ["px"])]);}]);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function () {
+    var self = this;
+    self['@width'] = 100;
+    self['@height'] = 100;
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html) {
+    var self = this;
+    self['@canvas'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "solid 1px black"]);return smalltalk.send($rec, "_css_put_", ["background", "white"]);}(smalltalk.send(html, "_canvas", []));
+    smalltalk.send(self, "_width_", [self['@width']]);
+    smalltalk.send(self, "_height_", [self['@height']]);
+    self['@sketch'] = smalltalk.send(self['@canvas'], "_asJQuery", []);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_size_",
+smalltalk.method({
+selector: "size:",
+fn: function (aInt) {
+    var self = this;
+    smalltalk.send(self['@sketch'], "_sketch_size_", ["size", aInt]);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_sketch",
+smalltalk.method({
+selector: "sketch",
+fn: function () {
+    var self = this;
+    smalltalk.send(self['@sketch'], "_sketch", []);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_src",
+smalltalk.method({
+selector: "src",
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(self['@canvas'], "_element", []), "_toDataURL_", ["image/png"]);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
+smalltalk.addMethod(
+"_width_",
+smalltalk.method({
+selector: "width:",
+fn: function (aInt) {
+    var self = this;
+    self['@width'] = aInt;
+    smalltalk.send(self['@canvas'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_width_", [smalltalk.send(smalltalk.send("", "__comma", [aInt]), "__comma", ["px"])]);}]);
+    return self;
+}
+}),
+smalltalk.Sketch);
+
 
 
 smalltalk.addClass('ToggleButton', smalltalk.Widget, ['state', 'source', 'body', 'renderWhenOn', 'renderWhenOff'], 'DyNagoya-Tools');
