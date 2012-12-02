@@ -167,6 +167,7 @@ amber = (function() {
     loadJS('lib/tapmodo-Jcrop-5e58bc9/js/jquery.Jcrop.min.js');
     loadJS('lib/jquery.zoomooz.min.js');
     loadJS('lib/jquery.transit.js');
+    loadJS('lib/sketch.min.js');
   };
 
   function loadIDEDependencies() {
