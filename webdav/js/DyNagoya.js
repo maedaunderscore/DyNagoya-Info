@@ -364,6 +364,60 @@ smalltalk.Board);
 
 
 
+smalltalk.addClass('DSLforHtml', smalltalk.DraggableWidget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "350px"]);smalltalk.send($rec, "_css_put_", ["background-color", "yellow"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.9"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin", "0"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["HTML\u3082\u30B9\u30BF\u30A4\u30EB\u3082Smalltalk\u3067\u8A18\u8FF0"]);}]);}(smalltalk.send(html, "_h2", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderBodyOn: html\x0a\x09html div css: 'width' put: '350px'; css: 'background-color' put: 'yellow'; css: 'opacity' put: '0.9'; css: 'padding' put: '10px'; with: [\x0a\x09\x09html h2 css: 'margin' put: '0'; with: [\x0a\x09\x09\x09html div with:'HTMLもスタイルもSmalltalkで記述'.\x0a\x09\x09]\x0a\x09]\x0a\x0a",
+messageSends: ["css:put:", "with:", "div", "h2"],
+referencedClasses: []
+}),
+smalltalk.DSLforHtml);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "729px";
+    return self;
+},
+args: [],
+source: "x\x0a  ^'729px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DSLforHtml);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "249px";
+    return self;
+},
+args: [],
+source: "y\x0a  ^'249px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DSLforHtml);
+
+
+
 smalltalk.addClass('FinDesc', smalltalk.DraggableWidget, [], 'DyNagoya');
 smalltalk.addMethod(
 "_renderBodyOn_",
@@ -1671,12 +1725,12 @@ selector: "latest",
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting10", []);
+    return smalltalk.send(self, "_meeting11", []);
     return self;
 },
 args: [],
-source: "latest\x0a\x09^ self meeting10",
-messageSends: ["meeting10"],
+source: "latest\x0a\x09^ self meeting11",
+messageSends: ["meeting11"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -1827,6 +1881,21 @@ fn: function () {
 },
 args: [],
 source: "grammer Events:meeting > meeting10 \x0a\x0aDyNagoya MTG #10 は \x0a2012/11/10の12:00:00〜15:00:00に\x0aImoni で\x0a - OMetaパフォーマンスチューニング\x0a - OMeta名前空間をちゃんとする\x0a - NGKのネタを考える",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting11",
+smalltalk.method({
+selector: "meeting11",
+category: 'events',
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #11 \u306F \n2012/12/16\u306E18:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - \u3044\u308B\u304B\u306E\u3057\u3063\u307D\u3092\u52D5\u304B\u3059\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
+},
+args: [],
+source: "grammer Events:meeting > meeting11\x0a\x0aDyNagoya MTG #11 は \x0a2012/12/16の18:00:00〜20:00:00に\x0aAnyWhere で\x0a - いるかのしっぽを動かす\x0a - Maker Faire のネタを考える",
 messageSends: [],
 referencedClasses: []
 }),

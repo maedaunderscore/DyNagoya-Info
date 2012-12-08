@@ -264,6 +264,45 @@ smalltalk.Board);
 
 
 
+smalltalk.addClass('DSLforHtml', smalltalk.DraggableWidget, [], 'DyNagoya');
+smalltalk.addMethod(
+"_renderBodyOn_",
+smalltalk.method({
+selector: "renderBodyOn:",
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "350px"]);smalltalk.send($rec, "_css_put_", ["background-color", "yellow"]);smalltalk.send($rec, "_css_put_", ["opacity", "0.9"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_css_put_", ["margin", "0"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["HTML\u3082\u30B9\u30BF\u30A4\u30EB\u3082Smalltalk\u3067\u8A18\u8FF0"]);}]);}(smalltalk.send(html, "_h2", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+}
+}),
+smalltalk.DSLforHtml);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+fn: function () {
+    var self = this;
+    return "729px";
+    return self;
+}
+}),
+smalltalk.DSLforHtml);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+fn: function () {
+    var self = this;
+    return "249px";
+    return self;
+}
+}),
+smalltalk.DSLforHtml);
+
+
+
 smalltalk.addClass('FinDesc', smalltalk.DraggableWidget, [], 'DyNagoya');
 smalltalk.addMethod(
 "_renderBodyOn_",
@@ -1207,7 +1246,7 @@ smalltalk.method({
 selector: "latest",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting10", []);
+    return smalltalk.send(self, "_meeting11", []);
     return self;
 }
 }),
@@ -1315,6 +1354,16 @@ smalltalk.method({
 selector: "meeting10",
 fn: function () {
     return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E12:00:00\u301C15:00:00\u306B\nImoni \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting11",
+smalltalk.method({
+selector: "meeting11",
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #11 \u306F \n2012/12/16\u306E18:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - \u3044\u308B\u304B\u306E\u3057\u3063\u307D\u3092\u52D5\u304B\u3059\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
 }
 }),
 smalltalk.Event.klass);

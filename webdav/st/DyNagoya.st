@@ -221,6 +221,30 @@ renderBodyOn: html
 		with: Event latest
 ! !
 
+DraggableWidget subclass: #DSLforHtml
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!DSLforHtml methodsFor: 'accessing'!
+
+x
+  ^'729px'
+!
+
+y
+  ^'249px'
+! !
+
+!DSLforHtml methodsFor: 'rendering'!
+
+renderBodyOn: html
+	html div css: 'width' put: '350px'; css: 'background-color' put: 'yellow'; css: 'opacity' put: '0.9'; css: 'padding' put: '10px'; with: [
+		html h2 css: 'margin' put: '0'; with: [
+			html div with:'HTMLもスタイルもSmalltalkで記述'.
+		]
+	]
+! !
+
 DraggableWidget subclass: #FinDesc
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -784,7 +808,7 @@ jointStStudy02
 !
 
 latest
-	^ self meeting10
+	^ self meeting11
 !
 
 meeting02
@@ -917,6 +941,15 @@ Imoni で
  - OMetaパフォーマンスチューニング
  - OMeta名前空間をちゃんとする
  - NGKのネタを考える
+!
+
+grammer Events:meeting > meeting11
+
+DyNagoya MTG #11 は 
+2012/12/16の18:00:00〜20:00:00に
+AnyWhere で
+ - いるかのしっぽを動かす
+ - Maker Faire のネタを考える
 ! !
 
 Widget subclass: #JSViewer
