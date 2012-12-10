@@ -1312,6 +1312,23 @@ referencedClasses: []
 }),
 smalltalk.WorkspaceDialog);
 
+smalltalk.addMethod(
+"_print_",
+smalltalk.method({
+selector: "print:",
+category: 'not yet classified',
+fn: function (aStr) {
+    var self = this;
+    smalltalk.send(self['@widget']['@sourceArea'], "_printOnly_", [aStr]);
+    return self;
+},
+args: ["aStr"],
+source: "print: aStr\x0a\x09(< self[\x22@widget\x22][\x22@sourceArea\x22]>)\x0a\x09\x09printOnly: aStr",
+messageSends: ["printOnly:"],
+referencedClasses: []
+}),
+smalltalk.WorkspaceDialog);
+
 
 smalltalk.WorkspaceDialog.klass.iVarNames = ['s'];
 smalltalk.addMethod(

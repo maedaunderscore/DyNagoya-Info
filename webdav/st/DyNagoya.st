@@ -480,11 +480,11 @@ width
 !
 
 x
-  ^'514px'
+  ^'502px'
 !
 
 y
-  ^'59px'
+  ^'83px'
 ! !
 
 Dolphin class instanceVariableNames: 's'!
@@ -577,11 +577,11 @@ showMessage
 
 start
   WorkspaceDialog new  |> self bottomPosition; open; big.
-  TranscriptDialog new |> self topPosition ; open.
+"  TranscriptDialog new |> self topPosition ; open."
 
    self screenPreparation.
   LoginPanel show.
-  self showMessage.
+"  self showMessage."
 !
 
 startPage
@@ -1060,6 +1060,10 @@ Widget subclass: #Page
 
 !Page methodsFor: 'not yet classified'!
 
+body
+  ^ body
+!
+
 do: aBlock
   body ifNil: [
 	todo add: aBlock
@@ -1255,6 +1259,64 @@ maeda
 	]
 ! !
 
+Page subclass: #LLorMLAdventPage
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!LLorMLAdventPage methodsFor: 'not yet classified'!
+
+height
+  ^ '8000'
+!
+
+renderBody: html
+	self renderTitle: html.
+
+	html div style: 'font-size: 30px'; with:[
+		html span with: 'この記事は、LL/ML Advent Calendarの12日目の記事です。'.
+	].
+	html div style: 'font-size: 30px'; with:[
+		html span with: 'なお、私はこのカレンダーに関連するつぶやきをしていないのに捕捉され、'.
+		html span with: '参加登録してないのに参加になっていました。'.
+	].
+
+	html div style: 'font-size: 30px; padding-top: 15px;'; with:[
+		html div with: [
+			html span css: 'font-weight' put: 'bold'; with: '『参加します』'.
+			html span with: 'なんて言わないんだぜ、俺たちの世界じゃ・・・'.
+		].
+		html div with: [
+			html span css: 'font-weight' put: 'bold'; with: '『参加することになっていた！』'.
+			html span with: 'なら言ってもいいッ！！'
+		].
+	].
+
+	html div css: 'padding-top' put: '10px'; 
+		css: 'font-size' put: '16px';
+		with: '※ このページはMBA 13inch + Firefox で確認しています。'.
+	[ LLorMLAdventPanel show ] valueWithTimeout: 10000
+!
+
+renderTitle: html
+	html h1: [
+		html div with: [
+			html span |> self strong; with: 'M'.
+			html span with: 'ake your page'
+		].
+		html div with: [
+			html span with: 'with Amber Sma'.
+			html span |> self strong; with: 'LL'.
+			html span with: 'ta'.
+			html span |> self strong; with: 'L'.
+			html span with: 'k'
+		]
+	]
+!
+
+strong
+	^ [ %1 style: 'color:red; font-size: 1.3em' ]
+! !
+
 Page subclass: #Links
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -1339,6 +1401,56 @@ open
 ! !
 
 !Links methodsFor: 'rendering'!
+
+renderBody: html
+	html h1: 'Links'.
+	(html tag: 'dl') with: [
+		self list do: [ :link |
+			(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].
+			(html tag: 'dd') with: (link at: 3)
+		]
+	]
+! !
+
+Page subclass: #RecommendedLinks
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!RecommendedLinks methodsFor: 'link'!
+
+list
+	^ {
+		self 
+			link: 'Amber Smalltalk'
+			url: 'http://amber-lang.net/'
+			description: '「Learn」からSmalltalkの文法の勉強が始めれる。'.
+		self
+			link: '自由自在Squeakプログラミング PDF版'
+			url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'
+			description: '梅澤さんの本が梅澤さんによりPDF化！！！ '.
+		self			
+			link: 'A Smalltalk by the Seaside'
+			url: 'http://www.asmalltalkbytheseaside.com/'
+			description: 'Amberで作られたゲームライブラリとゲームのサンプル'.
+		self
+			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
+			url: 'http://squab.no-ip.com:8080/mosaren/'
+			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'
+	}
+! !
+
+!RecommendedLinks methodsFor: 'private'!
+
+link: title url: aUrl description: aDescription
+	^ { title. aUrl. aDescription }
+!
+
+open
+	self title: 'Links'; with: [:html | self renderOn: html ]; width: 600.
+	super open.
+! !
+
+!RecommendedLinks methodsFor: 'rendering'!
 
 renderBody: html
 	html h1: 'Links'.
@@ -1552,8 +1664,14 @@ renderBodyOn: html
 !
 
 renderOn: html
-	html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.
-	self renderBodyOn: html
+	html root 
+		style: 'position:fixed; font-size: 24px; right:0; padding: 3px;z-index:1;';
+		|> self style.
+	self renderBodyOn: html.
+!
+
+style
+	^ [ :tag |	]
 ! !
 
 !Panel class methodsFor: 'not yet classified'!
@@ -1573,13 +1691,20 @@ Panel subclass: #GuidePanel
 draw
 	body contents: (self pages at: index).
 	navi contents: [:html |
+		html div css: 'width' put: '100%';
+			css: 'margin' put: '3px';
+			css: 'border-bottom' put: '1px solid rgba(0,0,0,.2)';
+			css: 'box-shadow' put: 'rgba(255,255,255,.3) 0 1px 0'.
+
 		html div css: 'position' put: 'relative'; with: [
 			index > 1 ifTrue: [
 				html span with: 'prev'; onClick: [self prev]; 
+					css: 'cursor' put: 'pointer';
 					css: 'left' put: '0'; css: 'position' put: 'absolute'.
 			].
 			index < (self pages size) ifTrue: [
 				html span with: 'next'; onClick: [self next]; 
+					css: 'cursor' put: 'pointer';
 					css: 'right' put: '0'; css: 'position' put: 'absolute'
 			]
 		]
@@ -1609,12 +1734,26 @@ prev
 !
 
 renderBodyOn: html
-	html div css: 'background' put: '#AADDAA';
-		css: 'width' put: '400px'; css: 'padding' put: '5px'; with:[
+	| div |
+	div := html div.
+	div css: 'background' put: '#b0430b';
+		class: 'animated';
+		css: 'color' put: 'white';
+		css: 'width' put: '500px'; 
+		css: 'z-index' put: '1';
+		css: 'padding' put: '10px'; with:[
 		body := html div. 
-		navi := html div css: 'height' put: '40px'.
+		navi := html div css: 'height' put: '20px'.
 	].
-	self draw
+	self draw.
+
+	[ div toggleClass: 'fadeInUp'] valueWithTimeout: 0
+!
+
+style
+	^ [ :tag |
+		tag css: 'font-size' put: '18px'
+	]
 ! !
 
 GuidePanel subclass: #LLorMLAdventPanel
@@ -1623,12 +1762,199 @@ GuidePanel subclass: #LLorMLAdventPanel
 
 !LLorMLAdventPanel methodsFor: 'not yet classified'!
 
+ometa Page {
+  html = (sentence: body -> console.log("a"+body))* ,
+  sentence = eol:body -> { console.log("b"+body);return body},
+  eol = <( ~cr char )*>:body (cr | empty) -> body,
+  cr = char:r ?{r.charCodeAt(0) == 10}
+}
+!
+
+code: block
+  html div style: self codeStyle; with: block.
+!
+
+codeOn: html with:str
+"  WorkspaceDialog new print: (str, '
+')."
+  html div with: str
+!
+
+codeStyle
+  ^ 'background: #341029; padding-left: 5px; opacity:0.9; font-size: 16px;'
+!
+
+codes: block on: html
+  html div style: self codeStyle; with: block.
+!
+
+l: html with: aString
+  html div with: aString
+!
+
+p: html with: block
+  html div with: block
+!
+
+page1
+	^ [ :html |
+self p: html with: [
+  self s: html with: 'このページはAmber SmalltalkというJavascriptで実装されたSmalltalk処理系上で動作しています。'.
+  self s: html with: '右下の「Workspace」というウィンドウでSmalltalkを実行することができます。'.
+].
+self p: html with: [
+  self s: html with: 'ここでは、Smalltalk自体の説明はしません。'.
+  self s: html with: 'WorkspaceからSmalltalkを実行することで、SmalltalkによるWebページの作成を体験してもらうことを目的としています。'.
+]
+]
+!
+
+page10
+	^ [ :html |
+self s: html with: 'Smalltalkのちゃんとした説明は次のリンクが参考になります。'.
+self codes: [
+  self codeOn: html with: 'RecommendedLinks show'.
+] on: html
+]
+!
+
+page2
+	^ [ :html |
+self p: html with: [
+  self s: html with: 'Workspace上で「DoIt」をクリックすると、選択された範囲のコードを実行します。'.
+  self s: html with: 'コードが選択されていない場合は、カーソルがある行のコードが実行されます。'
+].
+self p: html with: [
+  self s: html with: 'Workspace上で下記のコードをひとつずつ実行してください。'.
+  self s: html with: '画面が切り替わると思います。'.
+].
+
+html div style: self codeStyle; with: [
+  self codeOn: html with: 'Links show.'.
+  self codeOn: html with: 'AboutSmalltalk show.'.
+  self codeOn: html with: 'Screen title: ''ここにタイトルをいれてね''.'.
+]
+
+]
+!
+
+page3
+	^ [ :html |
+self p: html with: [
+  self s: html with: 'SmalltalkでHTMLを作るために、AmberではHTMLCanvasクラスを用意しています。'.
+  self s: html with: 'HTMLCanvasのオブジェクトに「h1タグを作って」とか「aタグ作って」とお願いします。'.
+  self s: html with: 'オブジェクトにお願いすることを「メッセージを送る」といいます。'.
+].
+
+self p: html with: [
+  self s: html with: '下記のコードでHTMLCanvasキャンバスを取り出せます。ここではhtmlという変数に格納します。'.
+  self s: html with: 'HTMLCanvasにタグを作ってもらうようにお願いしてみます。'.
+].
+self codes: [ 
+  self codeOn: html with: 'html := Screen htmlCanvas.'.
+  self codeOn: html with: 'html h2: ''見出し１''.'.
+  self codeOn: html with: 'html div with: ''some''.'.
+] on: html.
+
+]
+!
+
+page4
+	^ [ :html |
+self s: html with:'HtmlCanvasクラスに「タグを作って」とお願いするとTagBrushのオブジェクトを返します。'.
+self s: html with:'TagBrushのオブジェクトに「styleはこれで」とかお願いできます。'.
+self s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.
+self codes: [
+  self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.
+] on: html
+
+]
+!
+
+page5
+	^ [ :html |
+self p: html with:[
+  self s: html with: '文字だけではさみしいですね。絵を描きましょう。'.
+  self s: html with: '色やペンの太さを変えることもできます。'.
+  self s: html with: '絵を描いたら、それを表示するimgタグを追加してみます。'.
+].
+
+self codes: [
+  self codeOn: html with: 'editor := ImageEditor new width: 400; height: 300; open.'.
+  self codeOn: html with: 'editor color: ''#FF0000''.'.
+  self codeOn: html with: 'editor size: 10.'.
+  self codeOn: html with: 'html img src: '', editor src,'''.
+] on: html.
+
+]
+!
+
+page6
+	^ [ :html |
+self s: html with: '画像を描画するためのIconクラスを用意しておきました。'.
+self s: html with: 'Iconクラスの子クラスを作って、imageUrlメソッドに画像データを返すようにします。'.
+self codes: [
+  self codeOn: html with: 'Icon subclass: #YourImage'.
+  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, '''''''''.
+  self codeOn: html with: 'image := YourImage new.'.
+  self codeOn: html with: 'Screen put: image.'.
+] on: html.
+
+]
+!
+
+page7
+	^ [ :html |
+self s: html with: '生成したクラスをamberのIDEで見てみましょう。'.
+self codes: [
+  self codeOn: html with: 'YourImage browse'.
+] on: html.
+self s: html with: 'Iconの子クラスが作られていることが確認できます。'.
+self s: html with: 'また、ドラッグアンドドロップで好きな場所に移動できます。'.
+self s: html with: '画像を移動すると場所を返すメソッドも書き変わるようになっています。'.
+
+]
+!
+
+page8
+	^ [ :html |
+self s: html with: 'アニメーションも用意しておきました。'.
+self codes: [
+  self codeOn: html with: 'image araburi'.
+  self codeOn: html with: '[ image araburi ] valueWithInterval: 1000'.
+] on: html.
+
+]
+!
+
+page9
+	^ [ :html |
+self l: html with: '今回は、Workspaceを使って対話的にページを作成しました。'.
+self s: html with: 'コードに落とす場合、Amber SmalltalkではWidgetクラスを継承して、部品を作成します。'.
+self s: html with: 'Widgetクラスの子クラスはrenderOn:メソッドに部品の見た目を実装します。'.
+self s: html with: 'renderOn:の引数からHTMLCanvasが渡されるので、それを使ってHTMLを作るコードを記述します。'.
+self s: html with: 'WebDAVサーバーを使えば、ブラウザからコードのコミットも可能です。'.
+
+]
+!
+
 pages
 	^ {
-		[ :html | html div with: 'hello'].
-		[ :html | html div with: 'world'].
-		[ :html | html div with: 'bye']
+		self page1.
+		self page2.
+		self page3.
+		self page4.
+		self page5.
+		self page6.
+		self page7.
+		self page8.
+		self page9.
+		self page10
 	}
+!
+
+s: html with: aString
+  html span with: aString
 ! !
 
 Panel subclass: #LoginPanel
@@ -2441,6 +2767,10 @@ Screen class instanceVariableNames: 'single'!
 
 add: aBlock
 	Screen new page do: aBlock
+!
+
+htmlCanvas
+	^ Screen new page body
 !
 
 new

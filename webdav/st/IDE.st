@@ -389,6 +389,18 @@ print: aString
 
 printIt
     self print: self doIt printString
+!
+
+printOnly: aString
+	| start stop |
+	start := HashedCollection new.
+	stop := HashedCollection new.
+	start at: 'line' put: (editor getCursor: false) line.
+	start at: 'ch' put: (editor getCursor: false) ch.
+	stop at: 'line' put: (start at: 'line').
+	stop at: 'ch' put: ((start at: 'ch') + aString size + 2).
+	editor replaceSelection: (editor getSelection, ' ', aString, ' ').
+	editor setCursor: (editor getCursor: true).
 ! !
 
 !SourceArea methodsFor: 'events'!

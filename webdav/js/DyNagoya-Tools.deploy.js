@@ -948,6 +948,18 @@ fn: function () {
 }),
 smalltalk.WorkspaceDialog);
 
+smalltalk.addMethod(
+"_print_",
+smalltalk.method({
+selector: "print:",
+fn: function (aStr) {
+    var self = this;
+    smalltalk.send(self['@widget']['@sourceArea'], "_printOnly_", [aStr]);
+    return self;
+}
+}),
+smalltalk.WorkspaceDialog);
+
 
 smalltalk.WorkspaceDialog.klass.iVarNames = ['s'];
 smalltalk.addMethod(

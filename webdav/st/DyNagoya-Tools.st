@@ -515,6 +515,11 @@ normal
 	(< self["@widget"]["@sourceArea"]["@editor"] >)
 		setOption: 'lineNumbers' value: true;
 		setOption: 'theme' value: 'amber'
+!
+
+print: aStr
+	(< self["@widget"]["@sourceArea"]>)
+		printOnly: aStr
 ! !
 
 WorkspaceDialog class instanceVariableNames: 's'!

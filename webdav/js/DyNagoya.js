@@ -950,11 +950,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "514px";
+    return "502px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'514px'",
+source: "x\x0a  ^'502px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -967,11 +967,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "59px";
+    return "83px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'59px'",
+source: "y\x0a  ^'83px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1167,16 +1167,14 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_bottomPosition", [])]);smalltalk.send($rec, "_open", []);return smalltalk.send($rec, "_big", []);}(smalltalk.send(smalltalk.WorkspaceDialog || WorkspaceDialog, "_new", [])));
-    (function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_topPosition", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.TranscriptDialog || TranscriptDialog, "_new", [])));
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
-    smalltalk.send(self, "_showMessage", []);
     return self;
 },
 args: [],
-source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition ; open.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
-messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage"],
-referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel"]
+source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a\x22  TranscriptDialog new |> self topPosition ; open.\x22\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a\x22  self showMessage.\x22",
+messageSends: ["|>", "bottomPosition", "open", "big", "new", "screenPreparation", "show"],
+referencedClasses: ["WorkspaceDialog", "LoginPanel"]
 }),
 smalltalk.EntryPoint.klass);
 
@@ -2068,6 +2066,23 @@ smalltalk.OMeta.comment="code := 'ometa Factorial {\x0a  fact 0 -> 1,\x0a  fact 
 
 smalltalk.addClass('Page', smalltalk.Widget, ['body', 'todo'], 'DyNagoya');
 smalltalk.addMethod(
+"_body",
+smalltalk.method({
+selector: "body",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@body'];
+    return self;
+},
+args: [],
+source: "body\x0a  ^ body",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Page);
+
+smalltalk.addMethod(
 "_do_",
 smalltalk.method({
 selector: "do:",
@@ -2413,6 +2428,82 @@ referencedClasses: ["Screen"]
 smalltalk.Introduction.klass);
 
 
+smalltalk.addClass('LLorMLAdventPage', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+"_height",
+smalltalk.method({
+selector: "height",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "8000";
+    return self;
+},
+args: [],
+source: "height\x0a  ^ '8000'\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPage);
+
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(self, "_renderTitle_", [html]);
+    (function ($rec) {smalltalk.send($rec, "_style_", ["font-size: 30px"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u3053\u306E\u8A18\u4E8B\u306F\u3001LL/ML Advent Calendar\u306E12\u65E5\u76EE\u306E\u8A18\u4E8B\u3067\u3059\u3002"]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_style_", ["font-size: 30px"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u306A\u304A\u3001\u79C1\u306F\u3053\u306E\u30AB\u30EC\u30F3\u30C0\u30FC\u306B\u95A2\u9023\u3059\u308B\u3064\u3076\u3084\u304D\u3092\u3057\u3066\u3044\u306A\u3044\u306E\u306B\u6355\u6349\u3055\u308C\u3001"]);return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u53C2\u52A0\u767B\u9332\u3057\u3066\u306A\u3044\u306E\u306B\u53C2\u52A0\u306B\u306A\u3063\u3066\u3044\u307E\u3057\u305F\u3002"]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_style_", ["font-size: 30px; padding-top: 15px;"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["font-weight", "bold"]);return smalltalk.send($rec, "_with_", ["\u300E\u53C2\u52A0\u3057\u307E\u3059\u300F"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u306A\u3093\u3066\u8A00\u308F\u306A\u3044\u3093\u3060\u305C\u3001\u4FFA\u305F\u3061\u306E\u4E16\u754C\u3058\u3083\u30FB\u30FB\u30FB"]);}]);return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["font-weight", "bold"]);return smalltalk.send($rec, "_with_", ["\u300E\u53C2\u52A0\u3059\u308B\u3053\u3068\u306B\u306A\u3063\u3066\u3044\u305F\uFF01\u300F"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u306A\u3089\u8A00\u3063\u3066\u3082\u3044\u3044\u30C3\uFF01\uFF01"]);}]);}]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["padding-top", "10px"]);smalltalk.send($rec, "_css_put_", ["font-size", "16px"]);return smalltalk.send($rec, "_with_", ["\u203B \u3053\u306E\u30DA\u30FC\u30B8\u306FMBA 13inch + Firefox \u3067\u78BA\u8A8D\u3057\u3066\u3044\u307E\u3059\u3002"]);}(smalltalk.send(html, "_div", [])));
+    smalltalk.send(function () {return smalltalk.send(smalltalk.LLorMLAdventPanel || LLorMLAdventPanel, "_show", []);}, "_valueWithTimeout_", [10000]);
+    return self;
+},
+args: ["html"],
+source: "renderBody: html\x0a\x09self renderTitle: html.\x0a\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'この記事は、LL/ML Advent Calendarの12日目の記事です。'.\x0a\x09].\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'なお、私はこのカレンダーに関連するつぶやきをしていないのに捕捉され、'.\x0a\x09\x09html span with: '参加登録してないのに参加になっていました。'.\x0a\x09].\x0a\x0a\x09html div style: 'font-size: 30px; padding-top: 15px;'; with:[\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加します』'.\x0a\x09\x09\x09html span with: 'なんて言わないんだぜ、俺たちの世界じゃ・・・'.\x0a\x09\x09].\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加することになっていた！』'.\x0a\x09\x09\x09html span with: 'なら言ってもいいッ！！'\x0a\x09\x09].\x0a\x09].\x0a\x0a\x09html div css: 'padding-top' put: '10px'; \x0a\x09\x09css: 'font-size' put: '16px';\x0a\x09\x09with: '※ このページはMBA 13inch + Firefox で確認しています。'.\x0a\x09[ LLorMLAdventPanel show ] valueWithTimeout: 10000",
+messageSends: ["renderTitle:", "style:", "with:", "span", "div", "css:put:", "valueWithTimeout:", "show"],
+referencedClasses: ["LLorMLAdventPanel"]
+}),
+smalltalk.LLorMLAdventPage);
+
+smalltalk.addMethod(
+"_renderTitle_",
+smalltalk.method({
+selector: "renderTitle:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_strong", [])]);return smalltalk.send($rec, "_with_", ["M"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["ake your page"]);}]);return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["with Amber Sma"]);(function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_strong", [])]);return smalltalk.send($rec, "_with_", ["LL"]);}(smalltalk.send(html, "_span", [])));smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["ta"]);(function ($rec) {smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_strong", [])]);return smalltalk.send($rec, "_with_", ["L"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["k"]);}]);}]);
+    return self;
+},
+args: ["html"],
+source: "renderTitle: html\x0a\x09html h1: [\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span |> self strong; with: 'M'.\x0a\x09\x09\x09html span with: 'ake your page'\x0a\x09\x09].\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span with: 'with Amber Sma'.\x0a\x09\x09\x09html span |> self strong; with: 'LL'.\x0a\x09\x09\x09html span with: 'ta'.\x0a\x09\x09\x09html span |> self strong; with: 'L'.\x0a\x09\x09\x09html span with: 'k'\x0a\x09\x09]\x0a\x09]\x0a\x0a",
+messageSends: ["h1:", "with:", "div", "|>", "strong", "span"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPage);
+
+smalltalk.addMethod(
+"_strong",
+smalltalk.method({
+selector: "strong",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (thisisplaceholder1) {return smalltalk.send(thisisplaceholder1, "_style_", ["color:red; font-size: 1.3em"]);};
+    return self;
+},
+args: [],
+source: "strong\x0a\x09^ [ %1 style: 'color:red; font-size: 1.3em' ]\x0a",
+messageSends: ["style:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPage);
+
+
+
 smalltalk.addClass('Links', smalltalk.Page, [], 'DyNagoya');
 smalltalk.addMethod(
 "_link_url_description_",
@@ -2483,6 +2574,79 @@ messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:",
 referencedClasses: []
 }),
 smalltalk.Links);
+
+
+
+smalltalk.addClass('RecommendedLinks', smalltalk.Page, [], 'DyNagoya');
+smalltalk.addMethod(
+"_link_url_description_",
+smalltalk.method({
+selector: "link:url:description:",
+category: 'private',
+fn: function (title, aUrl, aDescription) {
+    var self = this;
+    return [title, aUrl, aDescription];
+    return self;
+},
+args: ["title", "aUrl", "aDescription"],
+source: "link: title url: aUrl description: aDescription\x0a\x09^ { title. aUrl. aDescription }\x0a\x09\x09",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.RecommendedLinks);
+
+smalltalk.addMethod(
+"_list",
+smalltalk.method({
+selector: "list",
+category: 'link',
+fn: function () {
+    var self = this;
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u6587\u6CD5\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6FA4\u3055\u3093\u306E\u672C\u304C\u6885\u6FA4\u3055\u3093\u306B\u3088\u308APDF\u5316\uFF01\uFF01\uFF01 "]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"])];
+    return self;
+},
+args: [],
+source: "list\x0a\x09^ {\x0a\x09\x09self \x0a\x09\x09\x09link: 'Amber Smalltalk'\x0a\x09\x09\x09url: 'http://amber-lang.net/'\x0a\x09\x09\x09description: '「Learn」からSmalltalkの文法の勉強が始めれる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: '自由自在Squeakプログラミング PDF版'\x0a\x09\x09\x09url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'\x0a\x09\x09\x09description: '梅澤さんの本が梅澤さんによりPDF化！！！ '.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'A Smalltalk by the Seaside'\x0a\x09\x09\x09url: 'http://www.asmalltalkbytheseaside.com/'\x0a\x09\x09\x09description: 'Amberで作られたゲームライブラリとゲームのサンプル'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SqueakではじめるSmalltalk入門・アーカイブ'\x0a\x09\x09\x09url: 'http://squab.no-ip.com:8080/mosaren/'\x0a\x09\x09\x09description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'\x0a\x09}\x0a\x09\x09",
+messageSends: ["link:url:description:"],
+referencedClasses: []
+}),
+smalltalk.RecommendedLinks);
+
+smalltalk.addMethod(
+"_open",
+smalltalk.method({
+selector: "open",
+category: 'private',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_title_", ["Links"]);smalltalk.send($rec, "_with_", [function (html) {return smalltalk.send(self, "_renderOn_", [html]);}]);return smalltalk.send($rec, "_width_", [600]);}(self));
+    smalltalk.send(self, "_open", [], smalltalk.RecomendedLinks.superclass || nil);
+    return self;
+},
+args: [],
+source: "open\x0a\x09self title: 'Links'; with: [:html | self renderOn: html ]; width: 600.\x0a\x09super open.",
+messageSends: ["title:", "with:", "renderOn:", "width:", "open"],
+referencedClasses: []
+}),
+smalltalk.RecommendedLinks);
+
+smalltalk.addMethod(
+"_renderBody_",
+smalltalk.method({
+selector: "renderBody:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_h1_", ["Links"]);
+    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
+    return self;
+},
+args: ["html"],
+source: "renderBody: html\x0a\x09html h1: 'Links'.\x0a\x09(html tag: 'dl') with: [\x0a\x09\x09self list do: [ :link |\x0a\x09\x09\x09(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].\x0a\x09\x09\x09(html tag: 'dd') with: (link at: 3)\x0a\x09\x09]\x0a\x09]\x0a",
+messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:", "a"],
+referencedClasses: []
+}),
+smalltalk.RecommendedLinks);
 
 
 
@@ -2974,13 +3138,30 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    smalltalk.send(smalltalk.send(html, "_root", []), "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px"]);
+    (function ($rec) {smalltalk.send($rec, "_style_", ["position:fixed; font-size: 24px; right:0; padding: 3px;z-index:1;"]);return smalltalk.send($rec, "_|_gt", [smalltalk.send(self, "_style", [])]);}(smalltalk.send(html, "_root", [])));
     smalltalk.send(self, "_renderBodyOn_", [html]);
     return self;
 },
 args: ["html"],
-source: "renderOn: html\x0a\x09html root style: 'position:fixed; font-size: 24px; right:0; padding: 3px'.\x0a\x09self renderBodyOn: html",
-messageSends: ["style:", "root", "renderBodyOn:"],
+source: "renderOn: html\x0a\x09html root \x0a\x09\x09style: 'position:fixed; font-size: 24px; right:0; padding: 3px;z-index:1;';\x0a\x09\x09|> self style.\x0a\x09self renderBodyOn: html.\x0a\x0a\x09",
+messageSends: ["style:", "|>", "style", "root", "renderBodyOn:"],
+referencedClasses: []
+}),
+smalltalk.Panel);
+
+smalltalk.addMethod(
+"_style",
+smalltalk.method({
+selector: "style",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (tag) {return nil;};
+    return self;
+},
+args: [],
+source: "style\x0a\x09^ [ :tag |\x09]",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Panel);
@@ -3013,12 +3194,12 @@ category: 'not yet classified',
 fn: function () {
     var self = this;
     smalltalk.send(self['@body'], "_contents_", [smalltalk.send(smalltalk.send(self, "_pages", []), "_at_", [self['@index']])]);
-    smalltalk.send(self['@navi'], "_contents_", [function (html) {return function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "relative"]);return smalltalk.send($rec, "_with_", [function () {($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver > 1 : smalltalk.send($receiver, "__gt", [1])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);return ($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver < smalltalk.send(smalltalk.send(self, "_pages", []), "_size", []) : smalltalk.send($receiver, "__lt", [smalltalk.send(smalltalk.send(self, "_pages", []), "_size", [])])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);}]);}(smalltalk.send(html, "_div", []));}]);
+    smalltalk.send(self['@navi'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_css_put_", ["width", "100%"]);smalltalk.send($rec, "_css_put_", ["margin", "3px"]);smalltalk.send($rec, "_css_put_", ["border-bottom", "1px solid rgba(0,0,0,.2)"]);return smalltalk.send($rec, "_css_put_", ["box-shadow", "rgba(255,255,255,.3) 0 1px 0"]);}(smalltalk.send(html, "_div", [])));return function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "relative"]);return smalltalk.send($rec, "_with_", [function () {($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver > 1 : smalltalk.send($receiver, "__gt", [1])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["prev"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_prev", []);}]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_css_put_", ["left", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);return ($receiver = ($receiver = self['@index']).klass === smalltalk.Number ? $receiver < smalltalk.send(smalltalk.send(self, "_pages", []), "_size", []) : smalltalk.send($receiver, "__lt", [smalltalk.send(smalltalk.send(self, "_pages", []), "_size", [])])).klass === smalltalk.Boolean ? $receiver ? function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return function ($rec) {smalltalk.send($rec, "_with_", ["next"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(self, "_next", []);}]);smalltalk.send($rec, "_css_put_", ["cursor", "pointer"]);smalltalk.send($rec, "_css_put_", ["right", "0"]);return smalltalk.send($rec, "_css_put_", ["position", "absolute"]);}(smalltalk.send(html, "_span", []));}]);}]);}(smalltalk.send(html, "_div", []));}]);
     return self;
 },
 args: [],
-source: "draw\x0a\x09body contents: (self pages at: index).\x0a\x09navi contents: [:html |\x0a\x09\x09html div css: 'position' put: 'relative'; with: [\x0a\x09\x09\x09index > 1 ifTrue: [\x0a\x09\x09\x09\x09html span with: 'prev'; onClick: [self prev]; \x0a\x09\x09\x09\x09\x09css: 'left' put: '0'; css: 'position' put: 'absolute'.\x0a\x09\x09\x09].\x0a\x09\x09\x09index < (self pages size) ifTrue: [\x0a\x09\x09\x09\x09html span with: 'next'; onClick: [self next]; \x0a\x09\x09\x09\x09\x09css: 'right' put: '0'; css: 'position' put: 'absolute'\x0a\x09\x09\x09]\x0a\x09\x09]\x0a\x09]",
-messageSends: ["contents:", "at:", "pages", "css:put:", "with:", "ifTrue:", ">", "onClick:", "prev", "span", "<", "size", "next", "div"],
+source: "draw\x0a\x09body contents: (self pages at: index).\x0a\x09navi contents: [:html |\x0a\x09\x09html div css: 'width' put: '100%';\x0a\x09\x09\x09css: 'margin' put: '3px';\x0a\x09\x09\x09css: 'border-bottom' put: '1px solid rgba(0,0,0,.2)';\x0a\x09\x09\x09css: 'box-shadow' put: 'rgba(255,255,255,.3) 0 1px 0'.\x0a\x0a\x09\x09html div css: 'position' put: 'relative'; with: [\x0a\x09\x09\x09index > 1 ifTrue: [\x0a\x09\x09\x09\x09html span with: 'prev'; onClick: [self prev]; \x0a\x09\x09\x09\x09\x09css: 'cursor' put: 'pointer';\x0a\x09\x09\x09\x09\x09css: 'left' put: '0'; css: 'position' put: 'absolute'.\x0a\x09\x09\x09].\x0a\x09\x09\x09index < (self pages size) ifTrue: [\x0a\x09\x09\x09\x09html span with: 'next'; onClick: [self next]; \x0a\x09\x09\x09\x09\x09css: 'cursor' put: 'pointer';\x0a\x09\x09\x09\x09\x09css: 'right' put: '0'; css: 'position' put: 'absolute'\x0a\x09\x09\x09]\x0a\x09\x09]\x0a\x09]",
+messageSends: ["contents:", "at:", "pages", "css:put:", "div", "with:", "ifTrue:", ">", "onClick:", "prev", "span", "<", "size", "next"],
 referencedClasses: []
 }),
 smalltalk.GuidePanel);
@@ -3098,13 +3279,33 @@ selector: "renderBodyOn:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "#AADDAA"]);smalltalk.send($rec, "_css_put_", ["width", "400px"]);smalltalk.send($rec, "_css_put_", ["padding", "5px"]);return smalltalk.send($rec, "_with_", [function () {self['@body'] = smalltalk.send(html, "_div", []);return self['@navi'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["height", "40px"]);}]);}(smalltalk.send(html, "_div", [])));
+    var div = nil;
+    div = smalltalk.send(html, "_div", []);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["background", "#b0430b"]);smalltalk.send($rec, "_class_", ["animated"]);smalltalk.send($rec, "_css_put_", ["color", "white"]);smalltalk.send($rec, "_css_put_", ["width", "500px"]);smalltalk.send($rec, "_css_put_", ["z-index", "1"]);smalltalk.send($rec, "_css_put_", ["padding", "10px"]);return smalltalk.send($rec, "_with_", [function () {self['@body'] = smalltalk.send(html, "_div", []);return self['@navi'] = smalltalk.send(smalltalk.send(html, "_div", []), "_css_put_", ["height", "20px"]);}]);}(div));
     smalltalk.send(self, "_draw", []);
+    smalltalk.send(function () {return smalltalk.send(div, "_toggleClass_", ["fadeInUp"]);}, "_valueWithTimeout_", [0]);
     return self;
 },
 args: ["html"],
-source: "renderBodyOn: html\x0a\x09html div css: 'background' put: '#AADDAA';\x0a\x09\x09css: 'width' put: '400px'; css: 'padding' put: '5px'; with:[\x0a\x09\x09body := html div. \x0a\x09\x09navi := html div css: 'height' put: '40px'.\x0a\x09].\x0a\x09self draw",
-messageSends: ["css:put:", "with:", "div", "draw"],
+source: "renderBodyOn: html\x0a\x09| div |\x0a\x09div := html div.\x0a\x09div css: 'background' put: '#b0430b';\x0a\x09\x09class: 'animated';\x0a\x09\x09css: 'color' put: 'white';\x0a\x09\x09css: 'width' put: '500px'; \x0a\x09\x09css: 'z-index' put: '1';\x0a\x09\x09css: 'padding' put: '10px'; with:[\x0a\x09\x09body := html div. \x0a\x09\x09navi := html div css: 'height' put: '20px'.\x0a\x09].\x0a\x09self draw.\x0a\x0a\x09[ div toggleClass: 'fadeInUp'] valueWithTimeout: 0",
+messageSends: ["div", "css:put:", "class:", "with:", "draw", "valueWithTimeout:", "toggleClass:"],
+referencedClasses: []
+}),
+smalltalk.GuidePanel);
+
+smalltalk.addMethod(
+"_style",
+smalltalk.method({
+selector: "style",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (tag) {return smalltalk.send(tag, "_css_put_", ["font-size", "18px"]);};
+    return self;
+},
+args: [],
+source: "style\x0a\x09^ [ :tag |\x0a\x09\x09tag css: 'font-size' put: '18px'\x0a\x09]",
+messageSends: ["css:put:"],
 referencedClasses: []
 }),
 smalltalk.GuidePanel);
@@ -3113,18 +3314,325 @@ smalltalk.GuidePanel);
 
 smalltalk.addClass('LLorMLAdventPanel', smalltalk.GuidePanel, [], 'DyNagoya');
 smalltalk.addMethod(
+"_Page",
+smalltalk.method({
+selector: "Page",
+category: 'not yet classified',
+fn: function () {
+    if (typeof Page === "undefined" || Page == null) {
+        Page = objectThatDelegatesTo(OMeta, {html: function () {var $elf = this, _fromIdx = this.input.idx, body;return this._many(function () {return function () {body = this._apply("sentence");return console.log("a" + body);}.call(this);});}, sentence: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._apply("eol");return function () {console.log("b" + body);return body;}.call(this);}.call(this);}, eol: function () {var $elf = this, _fromIdx = this.input.idx, body;return function () {body = this._consumedBy(function () {return this._many(function () {return function () {this._not(function () {return this._apply("cr");});return this._apply("char");}.call(this);});});this._or(function () {return this._apply("cr");}, function () {return this._apply("empty");});return body;}.call(this);}, cr: function () {var $elf = this, _fromIdx = this.input.idx, r;return function () {r = this._apply("char");return this._pred(r.charCodeAt(0) == 10);}.call(this);}});
+    }
+    return Page;
+},
+args: [],
+source: "ometa Page {\x0a  html = (sentence: body -> console.log(\x22a\x22+body))* ,\x0a  sentence = eol:body -> { console.log(\x22b\x22+body);return body},\x0a  eol = <( ~cr char )*>:body (cr | empty) -> body,\x0a  cr = char:r ?{r.charCodeAt(0) == 10}\x0a}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_code_",
+smalltalk.method({
+selector: "code:",
+category: 'not yet classified',
+fn: function (block) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_codeStyle", [])]);return smalltalk.send($rec, "_with_", [block]);}(smalltalk.send(typeof html == "undefined" ? nil : html, "_div", [])));
+    return self;
+},
+args: ["block"],
+source: "code: block\x0a  html div style: self codeStyle; with: block.",
+messageSends: ["style:", "codeStyle", "with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_codeOn_with_",
+smalltalk.method({
+selector: "codeOn:with:",
+category: 'not yet classified',
+fn: function (html, str) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [str]);
+    return self;
+},
+args: ["html", "str"],
+source: "codeOn: html with:str\x0a\x22  WorkspaceDialog new print: (str, '\x0a').\x22\x0a  html div with: str",
+messageSends: ["with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_codeStyle",
+smalltalk.method({
+selector: "codeStyle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "background: #341029; padding-left: 5px; opacity:0.9; font-size: 16px;";
+    return self;
+},
+args: [],
+source: "codeStyle\x0a  ^ 'background: #341029; padding-left: 5px; opacity:0.9; font-size: 16px;'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_codes_on_",
+smalltalk.method({
+selector: "codes:on:",
+category: 'not yet classified',
+fn: function (block, html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_codeStyle", [])]);return smalltalk.send($rec, "_with_", [block]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["block", "html"],
+source: "codes: block on: html\x0a  html div style: self codeStyle; with: block.",
+messageSends: ["style:", "codeStyle", "with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_l_with_",
+smalltalk.method({
+selector: "l:with:",
+category: 'not yet classified',
+fn: function (html, aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [aString]);
+    return self;
+},
+args: ["html", "aString"],
+source: "l: html with: aString\x0a  html div with: aString",
+messageSends: ["with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_p_with_",
+smalltalk.method({
+selector: "p:with:",
+category: 'not yet classified',
+fn: function (html, block) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [block]);
+    return self;
+},
+args: ["html", "block"],
+source: "p: html with: block\x0a  html div with: block",
+messageSends: ["with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page1",
+smalltalk.method({
+selector: "page1",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "\u3053\u306E\u30DA\u30FC\u30B8\u306FAmber Smalltalk\u3068\u3044\u3046Javascript\u3067\u5B9F\u88C5\u3055\u308C\u305FSmalltalk\u51E6\u7406\u7CFB\u4E0A\u3067\u52D5\u4F5C\u3057\u3066\u3044\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u53F3\u4E0B\u306E\u300CWorkspace\u300D\u3068\u3044\u3046\u30A6\u30A3\u30F3\u30C9\u30A6\u3067Smalltalk\u3092\u5B9F\u884C\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002"]);}]);return smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "\u3053\u3053\u3067\u306F\u3001Smalltalk\u81EA\u4F53\u306E\u8AAC\u660E\u306F\u3057\u307E\u305B\u3093\u3002"]);return smalltalk.send(self, "_s_with_", [html, "Workspace\u304B\u3089Smalltalk\u3092\u5B9F\u884C\u3059\u308B\u3053\u3068\u3067\u3001Smalltalk\u306B\u3088\u308BWeb\u30DA\u30FC\u30B8\u306E\u4F5C\u6210\u3092\u4F53\u9A13\u3057\u3066\u3082\u3089\u3046\u3053\u3068\u3092\u76EE\u7684\u3068\u3057\u3066\u3044\u307E\u3059\u3002"]);}]);};
+    return self;
+},
+args: [],
+source: "page1\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with: 'このページはAmber SmalltalkというJavascriptで実装されたSmalltalk処理系上で動作しています。'.\x0a  self s: html with: '右下の「Workspace」というウィンドウでSmalltalkを実行することができます。'.\x0a].\x0aself p: html with: [\x0a  self s: html with: 'ここでは、Smalltalk自体の説明はしません。'.\x0a  self s: html with: 'WorkspaceからSmalltalkを実行することで、SmalltalkによるWebページの作成を体験してもらうことを目的としています。'.\x0a]\x0a]",
+messageSends: ["p:with:", "s:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page10",
+smalltalk.method({
+selector: "page10",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "Smalltalk\u306E\u3061\u3083\u3093\u3068\u3057\u305F\u8AAC\u660E\u306F\u6B21\u306E\u30EA\u30F3\u30AF\u304C\u53C2\u8003\u306B\u306A\u308A\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {return smalltalk.send(self, "_codeOn_with_", [html, "RecommendedLinks show"]);}, html]);};
+    return self;
+},
+args: [],
+source: "page10\x0a\x09^ [ :html |\x0aself s: html with: 'Smalltalkのちゃんとした説明は次のリンクが参考になります。'.\x0aself codes: [\x0a  self codeOn: html with: 'RecommendedLinks show'.\x0a] on: html\x0a]",
+messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page2",
+smalltalk.method({
+selector: "page2",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "Workspace\u4E0A\u3067\u300CDoIt\u300D\u3092\u30AF\u30EA\u30C3\u30AF\u3059\u308B\u3068\u3001\u9078\u629E\u3055\u308C\u305F\u7BC4\u56F2\u306E\u30B3\u30FC\u30C9\u3092\u5B9F\u884C\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u30B3\u30FC\u30C9\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u306A\u3044\u5834\u5408\u306F\u3001\u30AB\u30FC\u30BD\u30EB\u304C\u3042\u308B\u884C\u306E\u30B3\u30FC\u30C9\u304C\u5B9F\u884C\u3055\u308C\u307E\u3059\u3002"]);}]);smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "Workspace\u4E0A\u3067\u4E0B\u8A18\u306E\u30B3\u30FC\u30C9\u3092\u3072\u3068\u3064\u305A\u3064\u5B9F\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u753B\u9762\u304C\u5207\u308A\u66FF\u308F\u308B\u3068\u601D\u3044\u307E\u3059\u3002"]);}]);return function ($rec) {smalltalk.send($rec, "_style_", [smalltalk.send(self, "_codeStyle", [])]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "Links show."]);smalltalk.send(self, "_codeOn_with_", [html, "AboutSmalltalk show."]);return smalltalk.send(self, "_codeOn_with_", [html, "Screen title: '\u3053\u3053\u306B\u30BF\u30A4\u30C8\u30EB\u3092\u3044\u308C\u3066\u306D'."]);}]);}(smalltalk.send(html, "_div", []));};
+    return self;
+},
+args: [],
+source: "page2\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with: 'Workspace上で「DoIt」をクリックすると、選択された範囲のコードを実行します。'.\x0a  self s: html with: 'コードが選択されていない場合は、カーソルがある行のコードが実行されます。'\x0a].\x0aself p: html with: [\x0a  self s: html with: 'Workspace上で下記のコードをひとつずつ実行してください。'.\x0a  self s: html with: '画面が切り替わると思います。'.\x0a].\x0a\x0ahtml div style: self codeStyle; with: [\x0a  self codeOn: html with: 'Links show.'.\x0a  self codeOn: html with: 'AboutSmalltalk show.'.\x0a  self codeOn: html with: 'Screen title: ''ここにタイトルをいれてね''.'.\x0a]\x0a\x0a]",
+messageSends: ["p:with:", "s:with:", "style:", "codeStyle", "with:", "codeOn:with:", "div"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page3",
+smalltalk.method({
+selector: "page3",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "Smalltalk\u3067HTML\u3092\u4F5C\u308B\u305F\u3081\u306B\u3001Amber\u3067\u306FHTMLCanvas\u30AF\u30E9\u30B9\u3092\u7528\u610F\u3057\u3066\u3044\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "HTMLCanvas\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u300Ch1\u30BF\u30B0\u3092\u4F5C\u3063\u3066\u300D\u3068\u304B\u300Ca\u30BF\u30B0\u4F5C\u3063\u3066\u300D\u3068\u304A\u9858\u3044\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u304A\u9858\u3044\u3059\u308B\u3053\u3068\u3092\u300C\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308B\u300D\u3068\u3044\u3044\u307E\u3059\u3002"]);}]);smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "\u4E0B\u8A18\u306E\u30B3\u30FC\u30C9\u3067HTMLCanvas\u30AD\u30E3\u30F3\u30D0\u30B9\u3092\u53D6\u308A\u51FA\u305B\u307E\u3059\u3002\u3053\u3053\u3067\u306Fhtml\u3068\u3044\u3046\u5909\u6570\u306B\u683C\u7D0D\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "HTMLCanvas\u306B\u30BF\u30B0\u3092\u4F5C\u3063\u3066\u3082\u3089\u3046\u3088\u3046\u306B\u304A\u9858\u3044\u3057\u3066\u307F\u307E\u3059\u3002"]);}]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "html := Screen htmlCanvas."]);smalltalk.send(self, "_codeOn_with_", [html, "html h2: '\u898B\u51FA\u3057\uFF11'."]);return smalltalk.send(self, "_codeOn_with_", [html, "html div with: 'some'."]);}, html]);};
+    return self;
+},
+args: [],
+source: "page3\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with: 'SmalltalkでHTMLを作るために、AmberではHTMLCanvasクラスを用意しています。'.\x0a  self s: html with: 'HTMLCanvasのオブジェクトに「h1タグを作って」とか「aタグ作って」とお願いします。'.\x0a  self s: html with: 'オブジェクトにお願いすることを「メッセージを送る」といいます。'.\x0a].\x0a\x0aself p: html with: [\x0a  self s: html with: '下記のコードでHTMLCanvasキャンバスを取り出せます。ここではhtmlという変数に格納します。'.\x0a  self s: html with: 'HTMLCanvasにタグを作ってもらうようにお願いしてみます。'.\x0a].\x0aself codes: [ \x0a  self codeOn: html with: 'html := Screen htmlCanvas.'.\x0a  self codeOn: html with: 'html h2: ''見出し１''.'.\x0a  self codeOn: html with: 'html div with: ''some''.'.\x0a] on: html.\x0a\x0a]",
+messageSends: ["p:with:", "s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page4",
+smalltalk.method({
+selector: "page4",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "HtmlCanvas\u30AF\u30E9\u30B9\u306B\u300C\u30BF\u30B0\u3092\u4F5C\u3063\u3066\u300D\u3068\u304A\u9858\u3044\u3059\u308B\u3068TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u8FD4\u3057\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u300Cstyle\u306F\u3053\u308C\u3067\u300D\u3068\u304B\u304A\u9858\u3044\u3067\u304D\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u8907\u6570\u306E\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308B\u5834\u5408\u3001\u30BB\u30DF\u30B3\u30ED\u30F3\u3092\u4F7F\u3044\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {return smalltalk.send(self, "_codeOn_with_", [html, "html div style: 'color:red; font-size:3em'; with: 'some'."]);}, html]);};
+    return self;
+},
+args: [],
+source: "page4\x0a\x09^ [ :html |\x0aself s: html with:'HtmlCanvasクラスに「タグを作って」とお願いするとTagBrushのオブジェクトを返します。'.\x0aself s: html with:'TagBrushのオブジェクトに「styleはこれで」とかお願いできます。'.\x0aself s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.\x0aself codes: [\x0a  self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.\x0a] on: html\x0a\x0a]",
+messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page5",
+smalltalk.method({
+selector: "page5",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_p_with_", [html, function () {smalltalk.send(self, "_s_with_", [html, "\u6587\u5B57\u3060\u3051\u3067\u306F\u3055\u307F\u3057\u3044\u3067\u3059\u306D\u3002\u7D75\u3092\u63CF\u304D\u307E\u3057\u3087\u3046\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u8272\u3084\u30DA\u30F3\u306E\u592A\u3055\u3092\u5909\u3048\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u7D75\u3092\u63CF\u3044\u305F\u3089\u3001\u305D\u308C\u3092\u8868\u793A\u3059\u308Bimg\u30BF\u30B0\u3092\u8FFD\u52A0\u3057\u3066\u307F\u307E\u3059\u3002"]);}]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "editor := ImageEditor new width: 400; height: 300; open."]);smalltalk.send(self, "_codeOn_with_", [html, "editor color: '#FF0000'."]);smalltalk.send(self, "_codeOn_with_", [html, "editor size: 10."]);return smalltalk.send(self, "_codeOn_with_", [html, "html img src: ', editor src,'"]);}, html]);};
+    return self;
+},
+args: [],
+source: "page5\x0a\x09^ [ :html |\x0aself p: html with:[\x0a  self s: html with: '文字だけではさみしいですね。絵を描きましょう。'.\x0a  self s: html with: '色やペンの太さを変えることもできます。'.\x0a  self s: html with: '絵を描いたら、それを表示するimgタグを追加してみます。'.\x0a].\x0a\x0aself codes: [\x0a  self codeOn: html with: 'editor := ImageEditor new width: 400; height: 300; open.'.\x0a  self codeOn: html with: 'editor color: ''#FF0000''.'.\x0a  self codeOn: html with: 'editor size: 10.'.\x0a  self codeOn: html with: 'html img src: '', editor src,'''.\x0a] on: html.\x0a\x0a]",
+messageSends: ["p:with:", "s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page6",
+smalltalk.method({
+selector: "page6",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "\u753B\u50CF\u3092\u63CF\u753B\u3059\u308B\u305F\u3081\u306EIcon\u30AF\u30E9\u30B9\u3092\u7528\u610F\u3057\u3066\u304A\u304D\u307E\u3057\u305F\u3002"]);smalltalk.send(self, "_s_with_", [html, "Icon\u30AF\u30E9\u30B9\u306E\u5B50\u30AF\u30E9\u30B9\u3092\u4F5C\u3063\u3066\u3001imageUrl\u30E1\u30BD\u30C3\u30C9\u306B\u753B\u50CF\u30C7\u30FC\u30BF\u3092\u8FD4\u3059\u3088\u3046\u306B\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "Icon subclass: #YourImage"]);smalltalk.send(self, "_codeOn_with_", [html, "YourImage compile: 'imageUrl ^''', editor src, ''''"]);smalltalk.send(self, "_codeOn_with_", [html, "image := YourImage new."]);return smalltalk.send(self, "_codeOn_with_", [html, "Screen put: image."]);}, html]);};
+    return self;
+},
+args: [],
+source: "page6\x0a\x09^ [ :html |\x0aself s: html with: '画像を描画するためのIconクラスを用意しておきました。'.\x0aself s: html with: 'Iconクラスの子クラスを作って、imageUrlメソッドに画像データを返すようにします。'.\x0aself codes: [\x0a  self codeOn: html with: 'Icon subclass: #YourImage'.\x0a  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, '''''''''.\x0a  self codeOn: html with: 'image := YourImage new.'.\x0a  self codeOn: html with: 'Screen put: image.'.\x0a] on: html.\x0a\x0a]",
+messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page7",
+smalltalk.method({
+selector: "page7",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "\u751F\u6210\u3057\u305F\u30AF\u30E9\u30B9\u3092amber\u306EIDE\u3067\u898B\u3066\u307F\u307E\u3057\u3087\u3046\u3002"]);smalltalk.send(self, "_codes_on_", [function () {return smalltalk.send(self, "_codeOn_with_", [html, "YourImage browse"]);}, html]);smalltalk.send(self, "_s_with_", [html, "Icon\u306E\u5B50\u30AF\u30E9\u30B9\u304C\u4F5C\u3089\u308C\u3066\u3044\u308B\u3053\u3068\u304C\u78BA\u8A8D\u3067\u304D\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u307E\u305F\u3001\u30C9\u30E9\u30C3\u30B0\u30A2\u30F3\u30C9\u30C9\u30ED\u30C3\u30D7\u3067\u597D\u304D\u306A\u5834\u6240\u306B\u79FB\u52D5\u3067\u304D\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "\u753B\u50CF\u3092\u79FB\u52D5\u3059\u308B\u3068\u5834\u6240\u3092\u8FD4\u3059\u30E1\u30BD\u30C3\u30C9\u3082\u66F8\u304D\u5909\u308F\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u307E\u3059\u3002"]);};
+    return self;
+},
+args: [],
+source: "page7\x0a\x09^ [ :html |\x0aself s: html with: '生成したクラスをamberのIDEで見てみましょう。'.\x0aself codes: [\x0a  self codeOn: html with: 'YourImage browse'.\x0a] on: html.\x0aself s: html with: 'Iconの子クラスが作られていることが確認できます。'.\x0aself s: html with: 'また、ドラッグアンドドロップで好きな場所に移動できます。'.\x0aself s: html with: '画像を移動すると場所を返すメソッドも書き変わるようになっています。'.\x0a\x0a]",
+messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page8",
+smalltalk.method({
+selector: "page8",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u3082\u7528\u610F\u3057\u3066\u304A\u304D\u307E\u3057\u305F\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "image araburi"]);return smalltalk.send(self, "_codeOn_with_", [html, "[ image araburi ] valueWithInterval: 1000"]);}, html]);};
+    return self;
+},
+args: [],
+source: "page8\x0a\x09^ [ :html |\x0aself s: html with: 'アニメーションも用意しておきました。'.\x0aself codes: [\x0a  self codeOn: html with: 'image araburi'.\x0a  self codeOn: html with: '[ image araburi ] valueWithInterval: 1000'.\x0a] on: html.\x0a\x0a]",
+messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_page9",
+smalltalk.method({
+selector: "page9",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function (html) {smalltalk.send(self, "_l_with_", [html, "\u4ECA\u56DE\u306F\u3001Workspace\u3092\u4F7F\u3063\u3066\u5BFE\u8A71\u7684\u306B\u30DA\u30FC\u30B8\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u30B3\u30FC\u30C9\u306B\u843D\u3068\u3059\u5834\u5408\u3001Amber Smalltalk\u3067\u306FWidget\u30AF\u30E9\u30B9\u3092\u7D99\u627F\u3057\u3066\u3001\u90E8\u54C1\u3092\u4F5C\u6210\u3057\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "Widget\u30AF\u30E9\u30B9\u306E\u5B50\u30AF\u30E9\u30B9\u306FrenderOn:\u30E1\u30BD\u30C3\u30C9\u306B\u90E8\u54C1\u306E\u898B\u305F\u76EE\u3092\u5B9F\u88C5\u3057\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "renderOn:\u306E\u5F15\u6570\u304B\u3089HTMLCanvas\u304C\u6E21\u3055\u308C\u308B\u306E\u3067\u3001\u305D\u308C\u3092\u4F7F\u3063\u3066HTML\u3092\u4F5C\u308B\u30B3\u30FC\u30C9\u3092\u8A18\u8FF0\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_s_with_", [html, "WebDAV\u30B5\u30FC\u30D0\u30FC\u3092\u4F7F\u3048\u3070\u3001\u30D6\u30E9\u30A6\u30B6\u304B\u3089\u30B3\u30FC\u30C9\u306E\u30B3\u30DF\u30C3\u30C8\u3082\u53EF\u80FD\u3067\u3059\u3002"]);};
+    return self;
+},
+args: [],
+source: "page9\x0a\x09^ [ :html |\x0aself l: html with: '今回は、Workspaceを使って対話的にページを作成しました。'.\x0aself s: html with: 'コードに落とす場合、Amber SmalltalkではWidgetクラスを継承して、部品を作成します。'.\x0aself s: html with: 'Widgetクラスの子クラスはrenderOn:メソッドに部品の見た目を実装します。'.\x0aself s: html with: 'renderOn:の引数からHTMLCanvasが渡されるので、それを使ってHTMLを作るコードを記述します。'.\x0aself s: html with: 'WebDAVサーバーを使えば、ブラウザからコードのコミットも可能です。'.\x0a\x0a]",
+messageSends: ["l:with:", "s:with:"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
 "_pages",
 smalltalk.method({
 selector: "pages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return [function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["hello"]);}, function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["world"]);}, function (html) {return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["bye"]);}];
+    return [smalltalk.send(self, "_page1", []), smalltalk.send(self, "_page2", []), smalltalk.send(self, "_page3", []), smalltalk.send(self, "_page4", []), smalltalk.send(self, "_page5", []), smalltalk.send(self, "_page6", []), smalltalk.send(self, "_page7", []), smalltalk.send(self, "_page8", []), smalltalk.send(self, "_page9", []), smalltalk.send(self, "_page10", [])];
     return self;
 },
 args: [],
-source: "pages\x0a\x09^ {\x0a\x09\x09[ :html | html div with: 'hello'].\x0a\x09\x09[ :html | html div with: 'world'].\x0a\x09\x09[ :html | html div with: 'bye']\x0a\x09}",
-messageSends: ["with:", "div"],
+source: "pages\x0a\x09^ {\x0a\x09\x09self page1.\x0a\x09\x09self page2.\x0a\x09\x09self page3.\x0a\x09\x09self page4.\x0a\x09\x09self page5.\x0a\x09\x09self page6.\x0a\x09\x09self page7.\x0a\x09\x09self page8.\x0a\x09\x09self page9.\x0a\x09\x09self page10\x0a\x09}",
+messageSends: ["page1", "page2", "page3", "page4", "page5", "page6", "page7", "page8", "page9", "page10"],
+referencedClasses: []
+}),
+smalltalk.LLorMLAdventPanel);
+
+smalltalk.addMethod(
+"_s_with_",
+smalltalk.method({
+selector: "s:with:",
+category: 'not yet classified',
+fn: function (html, aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [aString]);
+    return self;
+},
+args: ["html", "aString"],
+source: "s: html with: aString\x0a  html span with: aString",
+messageSends: ["with:", "span"],
 referencedClasses: []
 }),
 smalltalk.LLorMLAdventPanel);
@@ -5350,6 +5858,23 @@ fn: function (aBlock) {
 args: ["aBlock"],
 source: "add: aBlock\x0a\x09Screen new page do: aBlock",
 messageSends: ["do:", "page", "new"],
+referencedClasses: ["Screen"]
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_htmlCanvas",
+smalltalk.method({
+selector: "htmlCanvas",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_page", []), "_body", []);
+    return self;
+},
+args: [],
+source: "htmlCanvas\x0a\x09^ Screen new page body",
+messageSends: ["body", "page", "new"],
 referencedClasses: ["Screen"]
 }),
 smalltalk.Screen.klass);

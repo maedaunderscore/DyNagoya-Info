@@ -680,6 +680,27 @@ fn: function () {
 smalltalk.SourceArea);
 
 smalltalk.addMethod(
+"_printOnly_",
+smalltalk.method({
+selector: "printOnly:",
+fn: function (aString) {
+    var self = this;
+    var start = nil;
+    var stop = nil;
+    start = smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_new", []);
+    stop = smalltalk.send(smalltalk.HashedCollection || HashedCollection, "_new", []);
+    smalltalk.send(start, "_at_put_", ["line", smalltalk.send(smalltalk.send(self['@editor'], "_getCursor_", [false]), "_line", [])]);
+    smalltalk.send(start, "_at_put_", ["ch", smalltalk.send(smalltalk.send(self['@editor'], "_getCursor_", [false]), "_ch", [])]);
+    smalltalk.send(stop, "_at_put_", ["line", smalltalk.send(start, "_at_", ["line"])]);
+    smalltalk.send(stop, "_at_put_", ["ch", ($receiver = ($receiver = smalltalk.send(start, "_at_", ["ch"])).klass === smalltalk.Number ? $receiver + smalltalk.send(aString, "_size", []) : smalltalk.send($receiver, "__plus", [smalltalk.send(aString, "_size", [])])).klass === smalltalk.Number ? $receiver + 2 : smalltalk.send($receiver, "__plus", [2])]);
+    smalltalk.send(self['@editor'], "_replaceSelection_", [smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@editor'], "_getSelection", []), "__comma", [" "]), "__comma", [aString]), "__comma", [" "])]);
+    smalltalk.send(self['@editor'], "_setCursor_", [smalltalk.send(self['@editor'], "_getCursor_", [true])]);
+    return self;
+}
+}),
+smalltalk.SourceArea);
+
+smalltalk.addMethod(
 "_receiver",
 smalltalk.method({
 selector: "receiver",
