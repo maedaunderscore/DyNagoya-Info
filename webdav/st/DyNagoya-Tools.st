@@ -393,7 +393,7 @@ doesNotUnderstand: aMessage
 
 height: aInt
 	widget height: aInt.
-	super height: aInt + 50
+	super height: aInt + 65
 !
 
 initialize
@@ -723,6 +723,7 @@ initialize
 !
 
 renderOn: html
+	html div with: 'ここに何か描きましょう。'.
 	canvas := html canvas 
 		css: 'border' put: 'solid 1px black';
 		css: 'background' put: 'white'.

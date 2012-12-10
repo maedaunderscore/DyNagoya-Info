@@ -450,6 +450,18 @@ fn: function (aString) {
 smalltalk.Class);
 
 smalltalk.addMethod(
+"_subclass_",
+smalltalk.method({
+selector: "subclass:",
+fn: function (aString) {
+    var self = this;
+    return smalltalk.send(self, "_subclass_instanceVariableNames_package_", [aString, "", nil]);
+    return self;
+}
+}),
+smalltalk.Class);
+
+smalltalk.addMethod(
 "_subclass_instanceVariableNames_",
 smalltalk.method({
 selector: "subclass:instanceVariableNames:",

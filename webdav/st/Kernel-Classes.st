@@ -207,6 +207,11 @@ rename: aString
 
 !Class methodsFor: 'class creation'!
 
+subclass: aString
+	"Kept for compatibility."
+	^self subclass: aString instanceVariableNames: '' package: nil
+!
+
 subclass: aString instanceVariableNames: anotherString
 	"Kept for compatibility."
 	^self subclass: aString instanceVariableNames: anotherString package: nil

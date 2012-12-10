@@ -108,6 +108,11 @@ Widget subclass: #DraggableWidget
 
 !DraggableWidget methodsFor: 'not yet classified'!
 
+araburi
+	self class asJQuery 
+		toggleClass: 'tada'
+!
+
 dragOption
 	| callback |
 	callback := [ :e :ui || x y |
@@ -138,7 +143,7 @@ style
 		(self y) >>= [ 'top:', %1, ';' ]
 	   } 
 	   |> [ %1 select: [ %1 notNil ] ]
-	   |> [ %1 inject: 'position:fixed;' into: [ %1, %2] ]
+	   >>= [ %1 inject: 'position:fixed;' into: [ %1, %2] ]
 !
 
 x
@@ -354,6 +359,10 @@ y
   ^'518px'
 ! !
 
+Icon subclass: #YourImage
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
 DraggableWidget subclass: #PipelineDesc
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -480,11 +489,11 @@ width
 !
 
 x
-  ^'502px'
+  ^'552px'
 !
 
 y
-  ^'83px'
+  ^'72px'
 ! !
 
 Dolphin class instanceVariableNames: 's'!
@@ -577,7 +586,7 @@ showMessage
 
 start
   WorkspaceDialog new  |> self bottomPosition; open; big.
-"  TranscriptDialog new |> self topPosition ; open."
+  TranscriptDialog new |> self topPosition "; open".
 
    self screenPreparation.
   LoginPanel show.
@@ -1264,7 +1273,11 @@ renderBody: html
 	self renderTitle: html.
 
 	html div style: 'font-size: 30px'; with:[
-		html span with: 'この記事は、LL/ML Advent Calendarの12日目の記事です。'.
+		html span with: 'この記事は、'.
+		html a href: 'http://partake.in/events/9658f376-6ce3-4217-b392-b05d3de60021';
+			with: 'LL/ML Advent Calendar';
+			target: '_blank'.
+		html span: 'の12日目の記事です。'.
 	].
 	html div style: 'font-size: 30px'; with:[
 		html span with: 'なお、私はこのカレンダーに関連するつぶやきをしていないのに捕捉され、'.
@@ -1874,7 +1887,7 @@ self codes: [
   self codeOn: html with: 'editor := ImageEditor new width: 400; height: 300; open.'.
   self codeOn: html with: 'editor color: ''#FF0000''.'.
   self codeOn: html with: 'editor size: 10.'.
-  self codeOn: html with: 'html img src: '', editor src,'''.
+  self codeOn: html with: 'html img src: editor src'.
 ] on: html.
 
 ]
@@ -1882,10 +1895,9 @@ self codes: [
 
 page6
 	^ [ :html |
-self s: html with: '画像を描画するためのIconクラスを用意しておきました。'.
-self s: html with: 'Iconクラスの子クラスを作って、imageUrlメソッドに画像データを返すようにします。'.
+self s: html with: '画像を描画するためのYourImageクラスを用意しておきました。'.
+self s: html with: 'YourImageクラスのimageUrlメソッドに画像データを返すようにします。'.
 self codes: [
-  self codeOn: html with: 'Icon subclass: #YourImage'.
   self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, '''''''''.
   self codeOn: html with: 'image := YourImage new.'.
   self codeOn: html with: 'Screen put: image.'.
@@ -1900,7 +1912,7 @@ self s: html with: '生成したクラスをamberのIDEで見てみましょう�
 self codes: [
   self codeOn: html with: 'YourImage browse'.
 ] on: html.
-self s: html with: 'Iconの子クラスが作られていることが確認できます。'.
+self s: html with: 'urlImageメソッドが作られていることが確認できます。'.
 self s: html with: 'また、ドラッグアンドドロップで好きな場所に移動できます。'.
 self s: html with: '画像を移動すると場所を返すメソッドも書き変わるようになっています。'.
 
@@ -1911,7 +1923,6 @@ page8
 	^ [ :html |
 self s: html with: 'アニメーションも用意しておきました。'.
 self codes: [
-  self codeOn: html with: 'image araburi'.
   self codeOn: html with: '[ image araburi ] valueWithInterval: 1000'.
 ] on: html.
 

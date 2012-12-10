@@ -741,7 +741,7 @@ selector: "height:",
 fn: function (aInt) {
     var self = this;
     smalltalk.send(self['@widget'], "_height_", [aInt]);
-    smalltalk.send(self, "_height_", [($receiver = aInt).klass === smalltalk.Number ? $receiver + 50 : smalltalk.send($receiver, "__plus", [50])], smalltalk.ImageEditor.superclass || nil);
+    smalltalk.send(self, "_height_", [($receiver = aInt).klass === smalltalk.Number ? $receiver + 65 : smalltalk.send($receiver, "__plus", [65])], smalltalk.ImageEditor.superclass || nil);
     return self;
 }
 }),
@@ -1340,6 +1340,7 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html) {
     var self = this;
+    smalltalk.send(smalltalk.send(html, "_div", []), "_with_", ["\u3053\u3053\u306B\u4F55\u304B\u63CF\u304D\u307E\u3057\u3087\u3046\u3002"]);
     self['@canvas'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "solid 1px black"]);return smalltalk.send($rec, "_css_put_", ["background", "white"]);}(smalltalk.send(html, "_canvas", []));
     smalltalk.send(self, "_width_", [self['@width']]);
     smalltalk.send(self, "_height_", [self['@height']]);
