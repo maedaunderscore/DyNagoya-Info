@@ -363,6 +363,11 @@ Icon subclass: #YourImage
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
 
+!YourImage methodsFor: 'not yet classified'!
+
+x ^ 0
+! !
+
 DraggableWidget subclass: #PipelineDesc
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
@@ -1287,7 +1292,7 @@ renderBody: html
 	html div style: 'font-size: 30px; padding-top: 15px;'; with:[
 		html div with: [
 			html span css: 'font-weight' put: 'bold'; with: '『参加します』'.
-			html span with: 'なんて言わないんだぜ、俺たちの世界じゃ・・・'.
+			html span with: '・・・そんな言葉は使う必要がねーんだ。'.
 		].
 		html div with: [
 			html span css: 'font-weight' put: 'bold'; with: '『参加することになっていた！』'.
@@ -1308,7 +1313,7 @@ renderTitle: html
 			html span with: 'ake your page'
 		].
 		html div with: [
-			html span with: 'with Amber Sma'.
+			html span with: 'on Amber Sma'.
 			html span |> self strong; with: 'LL'.
 			html span with: 'ta'.
 			html span |> self strong; with: 'L'.
@@ -1817,7 +1822,7 @@ page10
 	^ [ :html |
 self s: html with: 'Smalltalkのちゃんとした説明は次のリンクが参考になります。'.
 self codes: [
-  self codeOn: html with: 'RecommendedLinks show'.
+  self codeOn: html with: 'RecommendedLinks show.'.
 ] on: html
 ]
 !
@@ -1870,6 +1875,7 @@ self s: html with:'TagBrushのオブジェクトに「styleはこれで」とか
 self s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.
 self codes: [
   self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.
+  self codeOn: html with: 'html img src: ''/images/ani.jpg''; width: 400.'.
 ] on: html
 
 ]
@@ -1878,18 +1884,20 @@ self codes: [
 page5
 	^ [ :html |
 self p: html with:[
-  self s: html with: '文字だけではさみしいですね。絵を描きましょう。'.
+  self s: html with: 'おっと著作権的にアウトな画像が表示されてしまいました。'.
+  self s: html with: '自力でトレースしましょう。'.
   self s: html with: '色やペンの太さを変えることもできます。'.
-  self s: html with: '絵を描いたら、それを表示するimgタグを追加してみます。'.
 ].
 
 self codes: [
   self codeOn: html with: 'editor := ImageEditor new width: 400; height: 300; open.'.
   self codeOn: html with: 'editor color: ''#FF0000''.'.
   self codeOn: html with: 'editor size: 10.'.
-  self codeOn: html with: 'html img src: editor src'.
 ] on: html.
-
+  self s: html with: '絵を描いたら、それを表示するimgタグを追加してみます。'.
+self codes: [
+  self codeOn: html with: 'html img src: editor src.'.
+] on: html
 ]
 !
 
@@ -1898,7 +1906,7 @@ page6
 self s: html with: '画像を描画するためのYourImageクラスを用意しておきました。'.
 self s: html with: 'YourImageクラスのimageUrlメソッドに画像データを返すようにします。'.
 self codes: [
-  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, '''''''''.
+  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, ''''''''.'.
   self codeOn: html with: 'image := YourImage new.'.
   self codeOn: html with: 'Screen put: image.'.
 ] on: html.
@@ -1910,7 +1918,7 @@ page7
 	^ [ :html |
 self s: html with: '生成したクラスをamberのIDEで見てみましょう。'.
 self codes: [
-  self codeOn: html with: 'YourImage browse'.
+  self codeOn: html with: 'YourImage browse.'.
 ] on: html.
 self s: html with: 'urlImageメソッドが作られていることが確認できます。'.
 self s: html with: 'また、ドラッグアンドドロップで好きな場所に移動できます。'.
@@ -1923,7 +1931,7 @@ page8
 	^ [ :html |
 self s: html with: 'アニメーションも用意しておきました。'.
 self codes: [
-  self codeOn: html with: '[ image araburi ] valueWithInterval: 1000'.
+  self codeOn: html with: '[ image araburi ] valueWithInterval: 1000.'.
 ] on: html.
 
 ]
