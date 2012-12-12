@@ -598,6 +598,40 @@ referencedClasses: []
 }),
 smalltalk.Icon);
 
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    return 0;
+    return self;
+},
+args: [],
+source: "x ^ 0",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Icon);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    return 0;
+    return self;
+},
+args: [],
+source: "y ^ 0",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Icon);
+
 
 
 smalltalk.addClass('Logo', smalltalk.Icon, [], 'DyNagoya');
@@ -651,26 +685,6 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Logo);
-
-
-
-smalltalk.addClass('YourImage', smalltalk.Icon, [], 'DyNagoya');
-smalltalk.addMethod(
-"_x",
-smalltalk.method({
-selector: "x",
-category: 'not yet classified',
-fn: function () {
-    var self = this;
-    return 0;
-    return self;
-},
-args: [],
-source: "x ^ 0",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.YourImage);
 
 
 
@@ -2640,11 +2654,11 @@ selector: "list",
 category: 'link',
 fn: function () {
     var self = this;
-    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u6587\u6CD5\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6FA4\u3055\u3093\u306E\u672C\u304C\u6885\u6FA4\u3055\u3093\u306B\u3088\u308APDF\u5316\uFF01\uFF01\uFF01 "]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"]), smalltalk.send(self, "_link_url_description_", ["Squeak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6", "http://squab.no-ip.com:8080/mosaren/", "MOSA\u767A\u884C\u306E\u30E1\u30FC\u30EB\u30DE\u30AC\u30B8\u30F3\u300CMOSA Developer News\u300D\u3001\u7565\u79F0\u201C\u30E2\u30B5\u4F1D\u201D\u3067 2007-04-17\u3000\u7B2C248\u53F7\u307E\u3067\u9023\u8F09\u3055\u308C\u305F\u3001\u300CSqueak\u3067\u306F\u3058\u3081\u308BSmalltalk\u5165\u9580\u300D\u306E\u30D0\u30C3\u30AF\u30CA\u30F3\u30D0\u30FC\u30FB\u30A2\u30FC\u30AB\u30A4\u30D6\u30DA\u30FC\u30B8\u3067\u3059\u3002\u57F7\u7B46\u6642\u70B9\u306E\u53E4\u3044\u60C5\u5831\u3084\u30EA\u30F3\u30AF\u3092\u542B\u3093\u3067\u3044\u308B\u306E\u3067\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002"])];
+    return [smalltalk.send(self, "_link_url_description_", ["Amber Smalltalk", "http://amber-lang.net/", "\u300CLearn\u300D\u304B\u3089Smalltalk\u306E\u6587\u6CD5\u306E\u52C9\u5F37\u304C\u59CB\u3081\u308C\u308B\u3002"]), smalltalk.send(self, "_link_url_description_", ["\u81EA\u7531\u81EA\u5728Squeak\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0 PDF\u7248", "http://www.box.com/s/bbc7kz53el13ktbxeed4", "\u6885\u6FA4\u3055\u3093\u306E\u672C\u304C\u6885\u6FA4\u3055\u3093\u306B\u3088\u308APDF\u5316\uFF01\uFF01\uFF01 "]), smalltalk.send(self, "_link_url_description_", ["A Smalltalk by the Seaside", "http://www.asmalltalkbytheseaside.com/", "Amber\u3067\u4F5C\u3089\u308C\u305F\u30B2\u30FC\u30E0\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u30B2\u30FC\u30E0\u306E\u30B5\u30F3\u30D7\u30EB"])];
     return self;
 },
 args: [],
-source: "list\x0a\x09^ {\x0a\x09\x09self \x0a\x09\x09\x09link: 'Amber Smalltalk'\x0a\x09\x09\x09url: 'http://amber-lang.net/'\x0a\x09\x09\x09description: '「Learn」からSmalltalkの文法の勉強が始めれる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: '自由自在Squeakプログラミング PDF版'\x0a\x09\x09\x09url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'\x0a\x09\x09\x09description: '梅澤さんの本が梅澤さんによりPDF化！！！ '.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'A Smalltalk by the Seaside'\x0a\x09\x09\x09url: 'http://www.asmalltalkbytheseaside.com/'\x0a\x09\x09\x09description: 'Amberで作られたゲームライブラリとゲームのサンプル'.\x0a\x09\x09self\x0a\x09\x09\x09link: 'SqueakではじめるSmalltalk入門・アーカイブ'\x0a\x09\x09\x09url: 'http://squab.no-ip.com:8080/mosaren/'\x0a\x09\x09\x09description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'\x0a\x09}\x0a\x09\x09",
+source: "list\x0a\x09^ {\x0a\x09\x09self \x0a\x09\x09\x09link: 'Amber Smalltalk'\x0a\x09\x09\x09url: 'http://amber-lang.net/'\x0a\x09\x09\x09description: '「Learn」からSmalltalkの文法の勉強が始めれる。'.\x0a\x09\x09self\x0a\x09\x09\x09link: '自由自在Squeakプログラミング PDF版'\x0a\x09\x09\x09url: 'http://www.box.com/s/bbc7kz53el13ktbxeed4'\x0a\x09\x09\x09description: '梅澤さんの本が梅澤さんによりPDF化！！！ '.\x0a\x09\x09self\x09\x09\x09\x0a\x09\x09\x09link: 'A Smalltalk by the Seaside'\x0a\x09\x09\x09url: 'http://www.asmalltalkbytheseaside.com/'\x0a\x09\x09\x09description: 'Amberで作られたゲームライブラリとゲームのサンプル'\x0a\x09}\x0a\x09\x09",
 messageSends: ["link:url:description:"],
 referencedClasses: []
 }),
@@ -2675,13 +2689,13 @@ selector: "renderBody:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    smalltalk.send(html, "_h1_", ["Links"]);
-    smalltalk.send(smalltalk.send(html, "_tag_", ["dl"]), "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);
+    smalltalk.send(html, "_h1_", ["\u304A\u3059\u3059\u3081\u30EA\u30F3\u30AF"]);
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["font-size", "2em"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(self, "_list", []), "_do_", [function (link) {smalltalk.send(smalltalk.send(html, "_tag_", ["dt"]), "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_at_put_", ["target", "_blank"]);smalltalk.send($rec, "_href_", [smalltalk.send(link, "_at_", [2])]);return smalltalk.send($rec, "_with_", [smalltalk.send(link, "_at_", [1])]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(smalltalk.send(html, "_tag_", ["dd"]), "_with_", [smalltalk.send(link, "_at_", [3])]);}]);}]);}(smalltalk.send(html, "_tag_", ["dl"])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09html h1: 'Links'.\x0a\x09(html tag: 'dl') with: [\x0a\x09\x09self list do: [ :link |\x0a\x09\x09\x09(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].\x0a\x09\x09\x09(html tag: 'dd') with: (link at: 3)\x0a\x09\x09]\x0a\x09]\x0a",
-messageSends: ["h1:", "with:", "tag:", "do:", "list", "at:put:", "href:", "at:", "a"],
+source: "renderBody: html\x0a\x09html h1: 'おすすめリンク'.\x0a\x09(html tag: 'dl') css: 'font-size' put: '2em'; with: [\x0a\x09\x09self list do: [ :link |\x0a\x09\x09\x09(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].\x0a\x09\x09\x09(html tag: 'dd') with: (link at: 3)\x0a\x09\x09]\x0a\x09]\x0a",
+messageSends: ["h1:", "css:put:", "with:", "do:", "list", "tag:", "at:put:", "href:", "at:", "a"],
 referencedClasses: []
 }),
 smalltalk.RecommendedLinks);
@@ -3546,11 +3560,11 @@ selector: "page4",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return function (html) {smalltalk.send(self, "_s_with_", [html, "HTMLCanvas\u30AF\u30E9\u30B9\u306B\u300C\u30BF\u30B0\u3092\u4F5C\u3063\u3066\u300D\u3068\u304A\u9858\u3044\u3059\u308B\u3068TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u8FD4\u3057\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u300Cstyle\u306F\u3053\u308C\u3067\u300D\u3068\u304B\u304A\u9858\u3044\u3067\u304D\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u8907\u6570\u306E\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308B\u5834\u5408\u3001\u30BB\u30DF\u30B3\u30ED\u30F3\u3092\u4F7F\u3044\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "html div style: 'color:red; font-size:3em'; with: 'some'."]);return smalltalk.send(self, "_codeOn_with_", [html, "html img src: '/images/ani.jpg'; width: 400."]);}, html]);};
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "HTMLCanvas\u30AF\u30E9\u30B9\u306B\u300C\u30BF\u30B0\u3092\u4F5C\u3063\u3066\u300D\u3068\u304A\u9858\u3044\u3059\u308B\u3068TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u8FD4\u3057\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "TagBrush\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u300Cstyle\u306F\u3053\u308C\u3067\u300D\u3068\u304B\u304A\u9858\u3044\u3067\u304D\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u8907\u6570\u306E\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308B\u5834\u5408\u3001\u30BB\u30DF\u30B3\u30ED\u30F3\u3092\u4F7F\u3044\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "html div style: 'color:red; font-size:3em'; with: 'some'."]);return smalltalk.send(self, "_codeOn_with_", [html, "html img src: '/images/ani2.jpg'; width: 400."]);}, html]);};
     return self;
 },
 args: [],
-source: "page4\x0a\x09^ [ :html |\x0aself s: html with:'HTMLCanvasクラスに「タグを作って」とお願いするとTagBrushのオブジェクトを返します。'.\x0aself s: html with:'TagBrushのオブジェクトに「styleはこれで」とかお願いできます。'.\x0aself s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.\x0aself codes: [\x0a  self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.\x0a  self codeOn: html with: 'html img src: ''/images/ani.jpg''; width: 400.'.\x0a] on: html\x0a\x0a]",
+source: "page4\x0a\x09^ [ :html |\x0aself s: html with:'HTMLCanvasクラスに「タグを作って」とお願いするとTagBrushのオブジェクトを返します。'.\x0aself s: html with:'TagBrushのオブジェクトに「styleはこれで」とかお願いできます。'.\x0aself s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.\x0aself codes: [\x0a  self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.\x0a  self codeOn: html with: 'html img src: ''/images/ani2.jpg''; width: 400.'.\x0a] on: html\x0a\x0a]",
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
@@ -3580,11 +3594,11 @@ selector: "page6",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return function (html) {smalltalk.send(self, "_s_with_", [html, "\u753B\u50CF\u3092\u63CF\u753B\u3059\u308B\u305F\u3081\u306EYourImage\u30AF\u30E9\u30B9\u3092\u7528\u610F\u3057\u3066\u304A\u304D\u307E\u3057\u305F\u3002"]);smalltalk.send(self, "_s_with_", [html, "YourImage\u30AF\u30E9\u30B9\u306EimageUrl\u30E1\u30BD\u30C3\u30C9\u306B\u753B\u50CF\u30C7\u30FC\u30BF\u3092\u8FD4\u3059\u3088\u3046\u306B\u3057\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "YourImage compile: 'imageUrl ^''', editor src, ''''."]);smalltalk.send(self, "_codeOn_with_", [html, "image := YourImage new."]);return smalltalk.send(self, "_codeOn_with_", [html, "Screen put: image."]);}, html]);};
+    return function (html) {smalltalk.send(self, "_s_with_", [html, "\u753B\u50CF\u3092\u63CF\u753B\u3059\u308B\u305F\u3081\u306EYourImage\u30AF\u30E9\u30B9\u3092\u4F5C\u308A\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u30B5\u30D6\u30AF\u30E9\u30B9\u306E\u4F5C\u6210\u306F\u89AA\u30AF\u30E9\u30B9\u306B\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308A\u307E\u3059\u3002"]);smalltalk.send(self, "_s_with_", [html, "\u30E1\u30BD\u30C3\u30C9\u306E\u8FFD\u52A0\u306F\u30AF\u30E9\u30B9\u306B\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u9001\u308A\u307E\u3059\u3002"]);return smalltalk.send(self, "_codes_on_", [function () {smalltalk.send(self, "_codeOn_with_", [html, "Icon subclass: #YourImage."]);smalltalk.send(self, "_codeOn_with_", [html, "YourImage compile: 'imageUrl ^''', editor src, ''''."]);smalltalk.send(self, "_codeOn_with_", [html, "image := YourImage new."]);return smalltalk.send(self, "_codeOn_with_", [html, "Screen put: image."]);}, html]);};
     return self;
 },
 args: [],
-source: "page6\x0a\x09^ [ :html |\x0aself s: html with: '画像を描画するためのYourImageクラスを用意しておきました。'.\x0aself s: html with: 'YourImageクラスのimageUrlメソッドに画像データを返すようにします。'.\x0aself codes: [\x0a  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, ''''''''.'.\x0a  self codeOn: html with: 'image := YourImage new.'.\x0a  self codeOn: html with: 'Screen put: image.'.\x0a] on: html.\x0a\x0a]",
+source: "page6\x0a\x09^ [ :html |\x0aself s: html with: '画像を描画するためのYourImageクラスを作ります。'.\x0aself s: html with: 'サブクラスの作成は親クラスにメッセージを送ります。'.\x0aself s: html with: 'メソッドの追加はクラスにメッセージを送ります。'.\x0aself codes: [\x0a  self codeOn: html with: 'Icon subclass: #YourImage.'.\x0a  self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, ''''''''.'.\x0a  self codeOn: html with: 'image := YourImage new.'.\x0a  self codeOn: html with: 'Screen put: image.'.\x0a] on: html.\x0a\x0a]",
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),

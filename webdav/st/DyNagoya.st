@@ -339,6 +339,12 @@ imageUrl
 
 renderBodyOn: html
 	html img src: self imageUrl
+!
+
+x ^ 0
+!
+
+y ^ 0
 ! !
 
 Icon subclass: #Logo
@@ -357,15 +363,6 @@ x
 
 y
   ^'518px'
-! !
-
-Icon subclass: #YourImage
-	instanceVariableNames: ''
-	package: 'DyNagoya'!
-
-!YourImage methodsFor: 'not yet classified'!
-
-x ^ 0
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -1440,11 +1437,7 @@ list
 		self			
 			link: 'A Smalltalk by the Seaside'
 			url: 'http://www.asmalltalkbytheseaside.com/'
-			description: 'Amberで作られたゲームライブラリとゲームのサンプル'.
-		self
-			link: 'SqueakではじめるSmalltalk入門・アーカイブ'
-			url: 'http://squab.no-ip.com:8080/mosaren/'
-			description: 'MOSA発行のメールマガジン「MOSA Developer News」、略称“モサ伝”で 2007-04-17　第248号まで連載された、「SqueakではじめるSmalltalk入門」のバックナンバー・アーカイブページです。執筆時点の古い情報やリンクを含んでいるので注意してください。'
+			description: 'Amberで作られたゲームライブラリとゲームのサンプル'
 	}
 ! !
 
@@ -1462,8 +1455,8 @@ open
 !RecommendedLinks methodsFor: 'rendering'!
 
 renderBody: html
-	html h1: 'Links'.
-	(html tag: 'dl') with: [
+	html h1: 'おすすめリンク'.
+	(html tag: 'dl') css: 'font-size' put: '2em'; with: [
 		self list do: [ :link |
 			(html tag: 'dt') with: [ html a at: 'target' put: '_blank'; href: (link at: 2); with: (link at: 1) ].
 			(html tag: 'dd') with: (link at: 3)
@@ -1875,7 +1868,7 @@ self s: html with:'TagBrushのオブジェクトに「styleはこれで」とか
 self s: html with:'複数のメッセージを送る場合、セミコロンを使います。'.
 self codes: [
   self codeOn: html with: 'html div style: ''color:red; font-size:3em''; with: ''some''.'.
-  self codeOn: html with: 'html img src: ''/images/ani.jpg''; width: 400.'.
+  self codeOn: html with: 'html img src: ''/images/ani2.jpg''; width: 400.'.
 ] on: html
 
 ]
@@ -1903,9 +1896,11 @@ self codes: [
 
 page6
 	^ [ :html |
-self s: html with: '画像を描画するためのYourImageクラスを用意しておきました。'.
-self s: html with: 'YourImageクラスのimageUrlメソッドに画像データを返すようにします。'.
+self s: html with: '画像を描画するためのYourImageクラスを作ります。'.
+self s: html with: 'サブクラスの作成は親クラスにメッセージを送ります。'.
+self s: html with: 'メソッドの追加はクラスにメッセージを送ります。'.
 self codes: [
+  self codeOn: html with: 'Icon subclass: #YourImage.'.
   self codeOn: html with: 'YourImage compile: ''imageUrl ^'''''', editor src, ''''''''.'.
   self codeOn: html with: 'image := YourImage new.'.
   self codeOn: html with: 'Screen put: image.'.
