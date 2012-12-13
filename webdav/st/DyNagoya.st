@@ -1300,7 +1300,7 @@ renderBody: html
 	html div css: 'padding-top' put: '10px'; 
 		css: 'font-size' put: '16px';
 		with: '※ このページはMBA 13inch + Firefox で確認しています。'.
-	[ LLorMLAdventPanel show ] valueWithTimeout: 10000
+	[ LLorMLAdventPanel show ] valueWithTimeout: 5000
 !
 
 renderTitle: html
