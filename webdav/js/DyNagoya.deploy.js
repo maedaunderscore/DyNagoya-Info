@@ -1444,7 +1444,7 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "meeting11",
 fn: function () {
-    return this._Events().matchAll("DyNagoya MTG #11 \u306F \n2012/12/16\u306E18:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - \u3044\u308B\u304B\u306E\u3057\u3063\u307D\u3092\u52D5\u304B\u3059\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "dynagoya");
+    return this._Events().matchAll("DyNagoya MTG #11 \u306F \n2012/12/16\u306E18:00:00\u301C20:00:00\u306B\nAikitaya \u3067\n - \u3044\u308B\u304B\u306E\u3057\u3063\u307D\u3092\u52D5\u304B\u3059\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "dynagoya");
 }
 }),
 smalltalk.Event.klass);
@@ -3013,6 +3013,45 @@ fn: function () {
 }
 }),
 smalltalk.ATeam);
+
+
+
+smalltalk.addClass('Aikitaya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u4F0A\u52E2\u5C711\u4E01\u76EE4-3";
+    return self;
+}
+}),
+smalltalk.Aikitaya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+fn: function () {
+    var self = this;
+    return "\u3042\u3044\u304D\u305F\u3084";
+    return self;
+}
+}),
+smalltalk.Aikitaya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+fn: function () {
+    var self = this;
+    return "http://tabelog.com/aichi/A2301/A230105/23005788/";
+    return self;
+}
+}),
+smalltalk.Aikitaya);
 
 
 
