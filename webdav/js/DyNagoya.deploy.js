@@ -1154,7 +1154,7 @@ smalltalk.method({
 selector: "introductionForDyNagoya",
 fn: function () {
     var self = this;
-    return "\u52D5\u7684\u8A00\u8A9E\u3001\u7279\u306BSmalltalk\u3092\u4E2D\u5FC3\u3068\u3057\u305F\u96C6\u307E\u308A<a href=\"http://dynagoya.info/index.html\" target=\"_blank\">\u30DA\u30FC\u30B8</a>";
+    return "\u52D5\u7684\u8A00\u8A9E\u3001\u7279\u306BSmalltalk\u306E\u96C6\u307E\u308A\u3002<a href=\"http://dynagoya.info/index.html\" target=\"_blank\">\u30DA\u30FC\u30B8</a>";
     return self;
 }
 }),
@@ -1279,7 +1279,7 @@ smalltalk.method({
 selector: "tweetMessage",
 fn: function () {
     var self = this;
-    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u6B21\u56DE\u306E\u30DF\u30FC\u30C6\u30A3\u30F3\u30B0\u306F", "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" \u5834\u6240:"]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [" \u3067\u958B\u50AC\u3057\u307E\u3059\u3002\u8A73\u7D30\u306F\u3053\u3061\u3089 \u2192 http://dynagoya.info/"]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u6B21\u56DE", "__comma", [self['@title']]), "__comma", ["\u306F"]), "__comma", [smalltalk.send(self, "_formatPeriod", [])]), "__comma", [" \u5834\u6240:"]), "__comma", [smalltalk.send(self['@place'], "_name", [])]), "__comma", [" \u3067\u958B\u50AC\u3057\u307E\u3059\u3002\u8A73\u7D30\u306F\u3053\u3061\u3089 \u2192 http://dynagoya.info/"]);
     return self;
 }
 }),
