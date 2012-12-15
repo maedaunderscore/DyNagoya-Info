@@ -616,7 +616,8 @@ Widget subclass: #Event
 	instanceVariableNames: 'title date start end place detail fixed introduction'
 	package: 'DyNagoya'!
 !Event commentStamp!
-Event latest addToDSTokai
+Event browser onPage; openClassMethod: 'kctnagoya'; openClassMethod: 'latest'.
+Event latest addToDSTokai.
 Event latest tweet!
 
 !Event methodsFor: 'Twitter'!
@@ -630,7 +631,8 @@ tweet
 !
 
 tweetMessage
-	^ '次回のミーティングは',
+	^ '次回',
+	title, 'は',
 	(self formatPeriod),
 	' 場所:', (place name),
 	' で開催します。詳細はこちら → http://dynagoya.info/'
@@ -751,7 +753,7 @@ introduction: aStr
 !
 
 introductionForDyNagoya
-  ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
+  ^ '動的言語、特にSmalltalkの集まり。<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
 !
 
 introductionForKCTNagoya
