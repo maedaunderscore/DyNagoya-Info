@@ -613,7 +613,7 @@ topPosition
 ! !
 
 Widget subclass: #Event
-	instanceVariableNames: 'title date start end place detail fixed'
+	instanceVariableNames: 'title date start end place detail fixed introduction'
 	package: 'DyNagoya'!
 !Event commentStamp!
 Event latest addToDSTokai
@@ -680,7 +680,7 @@ addToDSTokai
   window 
 	open: (self 
 		gcalUrl: self dstokaiId 
-		description: self descriptionForDSTokai) 
+		description: (introduction, self description)) 
 	target: '_blank'
 !
 
@@ -744,6 +744,18 @@ ifJS
 		]);
 	return ret;
 '
+!
+
+introduction: aStr
+  introduction := (self perform: 'introductionFor', aStr)
+!
+
+introductionForDyNagoya
+  ^ '動的言語、特にSmalltalkを中心とした集まり<a href="http://dynagoya.info/index.html" target="_blank">ページ</a>'
+!
+
+introductionForKCTNagoya
+  ^ '圏論を勉強しましょう。<a href="http://proofcafe.org/instiki/kctnagoya/show/HomePage" target="_blank">ページ</a>'
 ! !
 
 !Event methodsFor: 'participation'!
@@ -788,6 +800,8 @@ ometa Events  {
   fromTo :from :to = seq(from) <( ~seq(to) char )*>:body seq(to) -> body,
   eol = <( ~cr char )*>:body (cr | empty) -> body,
   cr = char:r ?{r.charCodeAt(0) == 10},
+  dynagoya = meeting: m -> { m._introduction_("DyNagoya") },
+  kctnagoya = meeting: m -> { m._introduction_("KCTNagoya") },
   meeting = 
 	fromTo('', 'は'): title spaces 
 	date:date 'の' time:from '〜' time:to 'に' spaces
@@ -816,6 +830,15 @@ jointStStudy02
 'SqueakからHaskellを使ってみた(@tomooda)'.
 'Seasideを使ったラピッドプロトタイピング(@kuritar)'
 }
+!
+
+grammer Events:kctnagoya > kctnagoya
+
+けんろん勉強会(kctnagoya) は 
+2012/12/16の14:30:00〜17:30:00に
+JoseiKaikan で
+ - Basic Category Theory for Computer Scientists を読む
+ - 次回以降どうするか決める
 !
 
 latest
@@ -954,7 +977,7 @@ Imoni で
  - NGKのネタを考える
 !
 
-grammer Events:meeting > meeting11
+grammer Events:dynagoya > meeting11
 
 DyNagoya MTG #11 は 
 2012/12/16の18:00:00〜20:00:00に
@@ -2357,6 +2380,24 @@ name
 
 url
 	^ 'http://partake.in/events/5e2b77db-4d10-4f7d-bba9-50d1890b104d'
+! !
+
+Place subclass: #JoseiKaikan
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!JoseiKaikan methodsFor: 'not yet classified'!
+
+address
+	^ '名古屋市中区大井町7番25号'
+!
+
+name
+	^ '名古屋市女性会館'
+!
+
+url
+	^ 'http://www.city.nagoya.jp/kurashi/category/19-5-4-2-0-0-0-0-0-0.html'
 ! !
 
 Place subclass: #Kako
