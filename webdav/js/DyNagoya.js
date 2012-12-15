@@ -3971,4 +3971,2841 @@ fn: function () {
     var self = this;
     var html = nil;
     html = smalltalk.send(smalltalk.HTMLCanvas || HTMLCanvas, "_onJQuery_", [smalltalk.send(unescape("%23participants"), "_asJQuery", [])]);
-    smalltalk.send(smalltalk.send(html, "_root", []), "_
+    smalltalk.send(smalltalk.send(html, "_root", []), "_empty", []);
+    smalltalk.send(smalltalk.send(self, "_new", []), "_renderOn_", [html]);
+    return self;
+},
+args: [],
+source: "render\x0a\x09| html |\x0a\x09html := HTMLCanvas onJQuery: '#participants' asJQuery.\x0a\x09html root empty.\x0a\x09self new renderOn: html.",
+messageSends: ["onJQuery:", "asJQuery", "empty", "root", "renderOn:", "new"],
+referencedClasses: ["HTMLCanvas"]
+}),
+smalltalk.ParticipantsList.klass);
+
+
+smalltalk.addClass('Participation', smalltalk.RemoteObject, [], 'DyNagoya');
+smalltalk.Participation.comment="Participation event: 'meeting02' name: 'maeda_'\x0aParticipation event: 'meeting02' name: 'bleis'\x0a\x0aParticipation list: 'meeting02' callback: [ :list | console log: list size ]\x0aParticipation list: 'meeting02' callback: [ :list | list inspect ] \x0a\x0aParticipation list: 'meeting02' callback: [ :list | list do: [:each | each delete] ] "
+
+smalltalk.addMethod(
+"_afterDelete",
+smalltalk.method({
+selector: "afterDelete",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+},
+args: [],
+source: "afterDelete\x0a\x09^ [ ParticipantsList render ]",
+messageSends: ["render"],
+referencedClasses: ["ParticipantsList"]
+}),
+smalltalk.Participation.klass);
+
+smalltalk.addMethod(
+"_afterPut",
+smalltalk.method({
+selector: "afterPut",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return function () {return smalltalk.send(smalltalk.ParticipantsList || ParticipantsList, "_render", []);};
+    return self;
+},
+args: [],
+source: "afterPut\x0a\x09^ [ ParticipantsList render ]",
+messageSends: ["render"],
+referencedClasses: ["ParticipantsList"]
+}),
+smalltalk.Participation.klass);
+
+
+smalltalk.addClass('Place', smalltalk.Widget, [], 'DyNagoya');
+smalltalk.Place.comment="DialogBox new widget: (Edelweiss new); open "
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "address",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+"_gCalString",
+smalltalk.method({
+selector: "gCalString",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self, "_address", []), "__comma", [unescape("%28")]), "__comma", [smalltalk.send(self, "_name", [])]), "__comma", [unescape("%29")]);
+    return self;
+},
+args: [],
+source: "gCalString\x0a  ^ (self address), '(', (self name), ')'",
+messageSends: [",", "address", "name"],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "name",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'accessing',
+fn: function (html) {
+    var self = this;
+    smalltalk.send(smalltalk.send(html, "_h2", []), "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [unescape("%u5834%u6240%uFF1A")]);(function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send(self, "_url", [])]);smalltalk.send($rec, "_at_put_", ["target", "_blank"]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_name", [])]);}(smalltalk.send(html, "_a", [])));return smalltalk.send(smalltalk.GoogleMap || GoogleMap, "_link_address_", [html, smalltalk.send(self, "_address", [])]);}]);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html h2 with:[ \x0a\x09\x09html span with: '場所：'.\x0a\x09\x09html a href: self url; at: 'target' put: '_blank'; with: self name. \x0a\x09\x09GoogleMap link: html address: self address \x0a\x09]\x0a",
+messageSends: ["with:", "h2", "span", "href:", "url", "at:put:", "name", "a", "link:address:", "address"],
+referencedClasses: ["GoogleMap"]
+}),
+smalltalk.Place);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "url",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Place);
+
+
+smalltalk.addMethod(
+"_openInDialog",
+smalltalk.method({
+selector: "openInDialog",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(self, "_new", [])]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return self;
+},
+args: [],
+source: "openInDialog\x0a\x09DialogBox new widget: (self new); open ",
+messageSends: ["widget:", "new", "open"],
+referencedClasses: ["DialogBox"]
+}),
+smalltalk.Place.klass);
+
+
+smalltalk.addClass('ATeam', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u897F%u533A%u725B%u5CF6%u753A6%u756A1%u53F7%20%u540D%u53E4%u5C4B%u30EB%u30FC%u30BB%u30F3%u30C8%u30BF%u30EF%u30FC32F");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市西区牛島町6番1号 名古屋ルーセントタワー32F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u682A%u5F0F%u4F1A%u793E%u30A8%u30A4%u30C1%u30FC%u30E0");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '株式会社エイチーム'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.a-tm.co.jp/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.a-tm.co.jp/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ATeam);
+
+
+
+smalltalk.addClass('AmiyakiTei', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u4ECA\u6C602\u4E01\u76EE1-34";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市千種区今池2丁目1-34'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u3042\u307F\u3084\u304D\u4EAD \u5343\u7A2E\u5E97";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'あみやき亭 千種店'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://www.amiyakitei.co.jp/shop2.html#area_nagoya";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.amiyakitei.co.jp/shop2.html#area_nagoya'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AmiyakiTei);
+
+
+
+smalltalk.addClass('AnyWhere', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ ''",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u672A%u5B9A");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '未定'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ ''",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.AnyWhere);
+
+
+
+smalltalk.addClass('Bambi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u6771\u533A\u6CC9\u4E00\u4E01\u76EE4-5 \u30B0\u30E9\u30F3\u30C9\u30FC\u30EB\u30B7\u30E3\u30C8\u30FC1F";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市東区泉一丁目4-5 グランドールシャトー1F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u55AB\u8336\u30D0\u30F3\u30D3";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '喫茶バンビ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://r.tabelog.com/aichi/A2301/A230104/23040019/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230104/23040019/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Bambi);
+
+
+
+smalltalk.addClass('BondCoffee', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%u30FC%uFF11%uFF11%u30FC%uFF16");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区栄１ー１１ー６'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30DC%u30F3%u30C9%u30B3%u30FC%u30D2%u30FC");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'ボンドコーヒー'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.bondcoffee.jp/index.html");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.bondcoffee.jp/index.html'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BondCoffee);
+
+
+
+smalltalk.addClass('Captina', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Captina);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30D7%u30C1%u30FC%u30CA%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'カプチーナ 大名古屋ビル店'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Captina);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.dainagoya-building.com/cgi-bin/shop/page.cgi%3Fact%3Dpage%26id%3D5");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.dainagoya-building.com/cgi-bin/shop/page.cgi?act=page&id=5'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Captina);
+
+
+
+smalltalk.addClass('Doerya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-25-20");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区錦3-25-20'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u30CF\u30F3\u30D0\u30FC\u30B0\u30CF\u30A6\u30B9\u6E90(\u65E7\u3069\u3048\u308A\u3083\u3042)";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'ハンバーグハウス源(旧どえりゃあ)'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://second.gensg.jp/gen/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://second.gensg.jp/gen/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Doerya);
+
+
+
+smalltalk.addClass('DyNagoyaBuilding', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂング'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0%20");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '大名古屋ビルヂング '",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.dainagoya-building.com/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.dainagoya-building.com/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBuilding);
+
+
+
+smalltalk.addClass('Edelweiss', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u6771%u685C1-10-1");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市東区東桜1-10-1'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30A8%u30FC%u30C7%u30EB%u30EF%u30A4%u30B9");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'エーデルワイス'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www8.ocn.ne.jp/%7Eedel/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www8.ocn.ne.jp/~edel/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Edelweiss);
+
+
+
+smalltalk.addClass('Hakkaku', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C53-28-12%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u30C2%u30F3%u30B0B1");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中村区名駅3-28-12 大名古屋ビルヂングB1'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u6D6A%u82B1%u308D%u3070%u305F%20%u516B%u89D2%20%u5927%u540D%u53E4%u5C4B%u30D3%u30EB%u5E97%20");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '浪花ろばた 八角 大名古屋ビル店 '",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.gnavi.co.jp/n004601/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.gnavi.co.jp/n004601/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hakkaku);
+
+
+
+smalltalk.addClass('Hina', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u5927\u98084-1-12";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中区大須4-1-12'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u967D\u83DC(\u3072\u306A)";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '陽菜(ひな)'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://r.tabelog.com/aichi/A2301/A230103/23040495/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230103/23040495/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Hina);
+
+
+
+smalltalk.addClass('Imoni', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u7DD1\u533A\u5927\u9AD8\u753A\u5B57\u9AD8\u5C71\uFF11\uFF0D\uFF11";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市緑区大高町字高山１－１'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Imoni);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u828B\u716E\u4F1A#2";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '名古屋芋煮会#2'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Imoni);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://partake.in/events/5e2b77db-4d10-4f7d-bba9-50d1890b104d";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://partake.in/events/5e2b77db-4d10-4f7d-bba9-50d1890b104d'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Imoni);
+
+
+
+smalltalk.addClass('JoseiKaikan', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u5927\u4E95\u753A7\u756A25\u53F7";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区大井町7番25号'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.JoseiKaikan);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u5973\u6027\u4F1A\u9928";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '名古屋市女性会館'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.JoseiKaikan);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://www.city.nagoya.jp/kurashi/category/19-5-4-2-0-0-0-0-0-0.html";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.city.nagoya.jp/kurashi/category/19-5-4-2-0-0-0-0-0-0.html'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.JoseiKaikan);
+
+
+
+smalltalk.addClass('Kako', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u540D%u99C55-30-4%u3000%u540D%u99C5KD%u30D3%u30EB1F");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中村区名駅5-30-4　名駅KDビル1F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "Coffee shop KAKO";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'Coffee shop KAKO'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.coffeekako.com/index.html");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.coffeekako.com/index.html'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kako);
+
+
+
+smalltalk.addClass('Kakureya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u56DB\u8C37\u901A1-8 \u30E9\u30D5\u30A9\u30FC\u30EC\u56DB\u30C4\u8C37B1";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市千種区四谷通1-8 ラフォーレ四ツ谷B1'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kakureya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u6D1E\u98DF\u7A7A\u9593 \u96A0\u308C\u5BB6";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '洞食空間 隠れ家'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kakureya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://gourmet.walkerplus.com/157158314001/index.html";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://gourmet.walkerplus.com/157158314001/index.html'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Kakureya);
+
+
+
+smalltalk.addClass('Katatumuri', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u4E38%u306E%u51852-14-15%20%u6CB3%u5408%u30D3%u30EB%u3000%uFF12%uFF26");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中区丸の内2-14-15 河合ビル　２Ｆ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30BF%u30C4%u30E0%u30EA");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'カタツムリ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230102/23007756/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230102/23007756/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Katatumuri);
+
+
+
+smalltalk.addClass('Lancia', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u662D%u548C%u533A%u96BC%u4EBA%u753A1-4%20%u6E05%u697D%u30D3%u30EB1F");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市昭和区隼人町1-4 清楽ビル1F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30B5%u30E9%u30C0%u30B7%u30E7%u30C3%u30D7%20Lancia%20");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'サラダショップ Lancia '",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230108/23005243/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230108/23005243/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Lancia);
+
+
+
+smalltalk.addClass('LokantaAYHAN', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u6804%uFF11%uFF0D%uFF11%uFF14%uFF0D%uFF12%uFF18");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区栄１－１４－２８'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Lokanta%20AYHAN%20%u30ED%u30AB%u30F3%u30BF%u30A2%u30A4%u30CF%u30F3");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'Lokanta AYHAN ロカンタアイハン'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+"_notice",
+smalltalk.method({
+selector: "notice",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u65E5%u66DC%u65E5%u4F11%u307F");
+    return self;
+},
+args: [],
+source: "notice\x0a  ^ '日曜日休み'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//star.gmobb.jp/lokanta_ayhan/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://star.gmobb.jp/lokanta_ayhan/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.LokantaAYHAN);
+
+
+
+smalltalk.addClass('Maruichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u68043-8-102");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中区栄3-8-102'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u70AD%u706B%u713C%u304D%u9CE5%20%u307E%u308B%u3044%u3061");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '炭火焼き鳥 まるいち'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//r.tabelog.com/aichi/A2301/A230103/23030942/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://r.tabelog.com/aichi/A2301/A230103/23030942/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Maruichi);
+
+
+
+smalltalk.addClass('Mattariya', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u5343\u7A2E\u533A\u5185\u5C71\uFF13-20-19";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市千種区内山３-20-19'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Mattariya);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u307E\u3063\u305F\u308A\u3084 \u5343\u7A2E";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'まったりや 千種'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Mattariya);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://www.hotpepper.jp/strJ000725580";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.hotpepper.jp/strJ000725580'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Mattariya);
+
+
+
+smalltalk.addClass('Moyorino', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u5BAE%u6839%u53F01-4-16%201F");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市千種区宮根台1-4-16 1F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Moyorino%20%28%u30E2%u30E8%u30EA%u30CE%29");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'Moyorino (モヨリノ)'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//moyo-reno.com/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://moyo-reno.com/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Moyorino);
+
+
+
+smalltalk.addClass('NewCast', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u6771%u533A%u8475%uFF13%u4E01%u76EE%uFF12%uFF12%u2212%uFF18");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市東区葵３丁目２２−８'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30CB%u30E5%u30FC%u30AD%u30E3%u30B9%u30C8");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'ニューキャスト'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.xmldo.jp/about/seminarroom/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.xmldo.jp/about/seminarroom/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.NewCast);
+
+
+
+smalltalk.addClass('Syushin', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u9326%uFF11%uFF0D%uFF11%uFF13%uFF0D%uFF13%uFF11%u30DF%u30C4%u30EF%u30D3%u30EB%uFF11%uFF26");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市中区錦１－１３－３１ミツワビル１Ｆ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u5C45%u9152%u5C4B%20%u9152%u795E");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '居酒屋 酒神'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.hotpepper.jp/strJ000021742/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.hotpepper.jp/strJ000021742/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Syushin);
+
+
+
+smalltalk.addClass('Tagen', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u611B%u77E5%u770C%u540D%u53E4%u5C4B%u5E02%u5343%u7A2E%u533A%u4E0D%u8001%u753A");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市千種区不老町'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5927%u5B66%u591A%u5143%u6570%u7406%u79D1%u5B66%u68DF");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '名古屋大学多元数理科学棟'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.math.nagoya-u.ac.jp/ja/direction/campus.html");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.math.nagoya-u.ac.jp/ja/direction/campus.html'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tagen);
+
+
+
+smalltalk.addClass('Takoichi', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u540D\u53E4\u5C4B\u5E02\u4E2D\u533A\u5927\u98083-10-11";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区大須3-10-11'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u305F\u3053\u3044\u3061 \u5927\u9808\u5E97";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'たこいち 大須店'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_tel",
+smalltalk.method({
+selector: "tel",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\uFF10\uFF15\uFF12\uFF0D\uFF12\uFF15\uFF11\uFF0D\uFF13\uFF10\uFF13\uFF13";
+    return self;
+},
+args: [],
+source: "tel\x0a  ^ '０５２－２５１－３０３３'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Takoichi);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://tako1.net/";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://tako1.net/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Takoichi);
+
+
+
+smalltalk.addClass('Vinceness', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u533A%u93263-6-29%20%u30B5%u30A6%u30B9%u30CF%u30A6%u30B9B1");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中区錦3-6-29 サウスハウスB1'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u30AB%u30D5%u30A7%20%u30F4%u30A1%u30F3%u30B5%u30F3%u30CC%u30C9%u30A5");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'カフェ ヴァンサンヌドゥ'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi%3Fcategory%3D5%26page%3D1");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.cafe-deux.com/cgi-bin/cafe-deuxcom/siteup.cgi?category=5&page=1'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Vinceness);
+
+
+
+smalltalk.addClass('WindMonad', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u611B\u77E5\u770C\u540D\u53E4\u5C4B\u5E02\u7DD1\u533A\u9CF4\u6D77\u753A\u5927\u6E05\u6C3469\u221247";
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '愛知県名古屋市緑区鳴海町大清水69−47'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.WindMonad);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "\u98A8\u306E\u30E2\u30CA\u30C9";
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ '風のモナド'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.WindMonad);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return "http://www.facebook.com/IhatovuCultureSchool";
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.facebook.com/IhatovuCultureSchool'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.WindMonad);
+
+
+
+smalltalk.addClass('ZTres', smalltalk.Place, [], 'DyNagoya');
+smalltalk.addMethod(
+"_address",
+smalltalk.method({
+selector: "address",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("%u540D%u53E4%u5C4B%u5E02%u4E2D%u6751%u533A%u693F%u753A3%u756A19%u53F7%u30A6%u30A4%u30F3%u30B0%u30D3%u30EB2F");
+    return self;
+},
+args: [],
+source: "address\x0a\x09^ '名古屋市中村区椿町3番19号ウイングビル2F'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+"_name",
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("Cafe%20Z-TRES");
+    return self;
+},
+args: [],
+source: "name\x0a\x09^ 'Cafe Z-TRES'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+smalltalk.addMethod(
+"_url",
+smalltalk.method({
+selector: "url",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return unescape("http%3A//www.forvex.co.jp/ztres/");
+    return self;
+},
+args: [],
+source: "url\x0a\x09^ 'http://www.forvex.co.jp/ztres/'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ZTres);
+
+
+
+smalltalk.addClass('ScheduleEditor', smalltalk.Widget, ['source', 'klazz'], 'DyNagoya');
+smalltalk.addMethod(
+"_apply",
+smalltalk.method({
+selector: "apply",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_evaluate_", [smalltalk.send(self['@source'], "_val", [])]);
+    return self;
+},
+args: [],
+source: "apply\x0a  klazz new evaluate: source val",
+messageSends: ["evaluate:", "new", "val"],
+referencedClasses: []
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_handleKeys_",
+smalltalk.method({
+selector: "handleKeys:",
+category: 'not yet classified',
+fn: function (anEvent) {
+    var self = this;
+    if (anEvent.ctrlKey) {
+        if (anEvent.keyCode === 190) {
+            self._apply();
+            anEvent.preventDefault();
+            return false;
+        }
+    }
+    return self;
+},
+args: ["anEvent"],
+source: "handleKeys: anEvent\x0a    <\x0a\x09if(anEvent.ctrlKey) {\x0a\x09\x09if(anEvent.keyCode === 190) { // ctrl + greater\x0a\x09\x09\x09self._apply();\x0a\x09\x09\x09anEvent.preventDefault();\x0a\x09\x09\x09return false;\x0a\x09\x09}\x0a\x09}\x0a    >",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_klazz_",
+smalltalk.method({
+selector: "klazz:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    self['@klazz'] = aClass;
+    return self;
+},
+args: ["aClass"],
+source: "klazz: aClass\x0a\x09klazz := aClass\x0a  ",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@source'] = function ($rec) {smalltalk.send($rec, "_css_put_", ["position", "absolute"]);smalltalk.send($rec, "_css_put_", ["width", "95%"]);smalltalk.send($rec, "_css_put_", ["height", "98%"]);smalltalk.send($rec, "_css_put_", ["left", "12px"]);smalltalk.send($rec, "_css_put_", ["right", "12px"]);smalltalk.send($rec, "_css_put_", ["top", "2px"]);smalltalk.send($rec, "_css_put_", ["bottom", "2px"]);smalltalk.send($rec, "_val_", [smalltalk.send(smalltalk.send(self['@klazz'], "_new", []), "_source", [])]);return smalltalk.send($rec, "_onKeyDown_", [function (thisisplaceholder1) {return smalltalk.send(self, "_handleKeys_", [thisisplaceholder1]);}]);}(smalltalk.send(html, "_textarea", []));
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09source := html textarea \x0a\x09\x09css: 'position' put: 'absolute';\x0a\x09\x09css: 'width' put: '95%';\x0a\x09\x09css: 'height' put: '98%';\x0a\x09\x09css: 'left' put: '12px';\x0a\x09\x09css: 'right' put: '12px';\x0a\x09\x09css: 'top' put: '2px';\x0a\x09\x09css: 'bottom' put: '2px';\x0a\x09\x09val: (klazz new source);\x0a\x09\x09onKeyDown: [ self handleKeys: %1 ]\x0a",
+messageSends: ["css:put:", "val:", "source", "new", "onKeyDown:", "handleKeys:", "textarea"],
+referencedClasses: []
+}),
+smalltalk.ScheduleEditor);
+
+smalltalk.addMethod(
+"_source",
+smalltalk.method({
+selector: "source",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@source'];
+    return self;
+},
+args: [],
+source: "source\x0a  ^ source",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ScheduleEditor);
+
+
+smalltalk.addMethod(
+"_open_",
+smalltalk.method({
+selector: "open:",
+category: 'not yet classified',
+fn: function (aClass) {
+    var self = this;
+    var this_ = nil;
+    this_ = smalltalk.send(self, "_new", []);
+    smalltalk.send(this_, "_klazz_", [aClass]);
+    (function ($rec) {smalltalk.send($rec, "_widget_", [this_]);smalltalk.send($rec, "_modal_", [false]);smalltalk.send($rec, "_width_", ["50%"]);smalltalk.send($rec, "_title_", ["Schedule Editor"]);smalltalk.send($rec, "_height_", [400]);smalltalk.send($rec, "_button_action_", ["apply", function () {return smalltalk.send(this_, "_apply", []);}]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", [])));
+    return smalltalk.send(smalltalk.send(this_, "_source", []), "_css_put_", ["font-size", "1.5em"]);
+    return self;
+},
+args: ["aClass"],
+source: "open: aClass\x0a\x09| this |\x0a\x09this := self new.\x0a\x09this klazz: aClass.\x0a\x09DialogBox new widget: this; modal: false; width: '50%'; title: 'Schedule Editor'; height: 400; \x0a\x09\x09button: 'apply' action: [ this apply ];\x0a\x09open.\x0a\x09^ this source css: 'font-size' put: '1.5em'",
+messageSends: ["new", "klazz:", "widget:", "modal:", "width:", "title:", "height:", "button:action:", "apply", "open", "css:put:", "source"],
+referencedClasses: ["DialogBox"]
+}),
+smalltalk.ScheduleEditor.klass);
+
+
+smalltalk.addClass('Screen', smalltalk.Widget, ['index', 'page'], 'DyNagoya');
+smalltalk.addMethod(
+"_animateIn_method_",
+smalltalk.method({
+selector: "animateIn:method:",
+category: 'private',
+fn: function (jq, aString) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_show", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq));
+    smalltalk.send(function () {return smalltalk.send(jq, "_toggleClass_", [aString]);}, "_valueWithTimeout_", [1000]);
+    return self;
+},
+args: ["jq", "aString"],
+source: "animateIn: jq method: aString\x0a  jq show; toggleClass: aString.\x0a  [jq toggleClass: aString]  valueWithTimeout:1000\x0a",
+messageSends: ["show", "toggleClass:", "valueWithTimeout:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_animateOut_method_",
+smalltalk.method({
+selector: "animateOut:method:",
+category: 'private',
+fn: function (jq, aString) {
+    var self = this;
+    smalltalk.send(jq, "_toggleClass_", [aString]);
+    smalltalk.send(function () {return function ($rec) {smalltalk.send($rec, "_hide", []);return smalltalk.send($rec, "_toggleClass_", [aString]);}(jq);}, "_valueWithTimeout_", [1000]);
+    return self;
+},
+args: ["jq", "aString"],
+source: "animateOut: jq method: aString\x0a  jq toggleClass: aString.\x0a  [jq hide; toggleClass: aString]  valueWithTimeout:1000",
+messageSends: ["toggleClass:", "valueWithTimeout:", "hide"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_current",
+smalltalk.method({
+selector: "current",
+category: 'private',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("#layer", "__comma", [self['@index']]), "_asJQuery", []);
+    return self;
+},
+args: [],
+source: "current\x0a\x09^ ('#layer', index) asJQuery",
+messageSends: ["asJQuery", ","],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_fade_",
+smalltalk.method({
+selector: "fade:",
+category: 'action',
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_flip_before_after_", [aPage, "fadeOutDown", "fadeInUp"]);
+    return self;
+},
+args: ["aPage"],
+source: "fade: aPage\x0a\x09self flip: aPage before: 'fadeOutDown' after: 'fadeInUp'",
+messageSends: ["flip:before:after:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_flip_",
+smalltalk.method({
+selector: "flip:",
+category: 'action',
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_skew_", [aPage]);
+    return aPage;
+    return self;
+},
+args: ["aPage"],
+source: "flip: aPage\x0a\x09self skew: aPage.\x0a\x09^ aPage",
+messageSends: ["skew:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_flip_before_after_",
+smalltalk.method({
+selector: "flip:before:after:",
+category: 'action',
+fn: function (aPage, beforeMethod, afterMethod) {
+    var self = this;
+    smalltalk.send(self, "_animateOut_method_", [smalltalk.send(self, "_current", []), beforeMethod]);
+    smalltalk.send(self, "_nextIndex", []);
+    self['@page'] = aPage;
+    smalltalk.send(aPage, "_updateToJQuery_", [smalltalk.send(self, "_current", [])]);
+    smalltalk.send(self, "_animateIn_method_", [smalltalk.send(self, "_current", []), afterMethod]);
+    return self;
+},
+args: ["aPage", "beforeMethod", "afterMethod"],
+source: "flip: aPage before: beforeMethod after: afterMethod\x0a\x09self animateOut: (self current) method: beforeMethod.\x0a\x09self nextIndex.\x0a\x09page := aPage.\x0a\x09aPage updateToJQuery: (self current).\x0a\x09self animateIn: (self current) method: afterMethod",
+messageSends: ["animateOut:method:", "current", "nextIndex", "updateToJQuery:", "animateIn:method:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function () {
+    var self = this;
+    self['@index'] = 1;
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09index := 1",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_layers",
+smalltalk.method({
+selector: "layers",
+category: 'private',
+fn: function () {
+    var self = this;
+    return ["#layer1", "#layer2"];
+    return self;
+},
+args: [],
+source: "layers\x0a\x09^ { '#layer1'. '#layer2' }",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_nextIndex",
+smalltalk.method({
+selector: "nextIndex",
+category: 'private',
+fn: function () {
+    var self = this;
+    self['@index'] = ($receiver = smalltalk.send(self['@index'], "_\\\\", [smalltalk.send(smalltalk.send(self, "_layers", []), "_size", [])])).klass === smalltalk.Number ? $receiver + 1 : smalltalk.send($receiver, "__plus", [1]);
+    return self['@index'];
+    return self;
+},
+args: [],
+source: "nextIndex\x0a\x09index := index \x5c\x5c (self layers size ) + 1.\x0a\x09^ index",
+messageSends: ["+", "\x5c\x5c\x5c\x5c", "size", "layers"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_page",
+smalltalk.method({
+selector: "page",
+category: 'private',
+fn: function () {
+    var self = this;
+    return self['@page'];
+    return self;
+},
+args: [],
+source: "page\x0a  ^ page",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_id_", ["screen"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(1, "_to_", [2]), "_do_", [function (thisisplaceholder1) {return function ($rec) {smalltalk.send($rec, "_id_", [smalltalk.send("layer", "__comma", [thisisplaceholder1])]);return smalltalk.send($rec, "_class_", ["animated"]);}(smalltalk.send(html, "_div", []));}]);}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html div id: 'screen'; with: [\x0a\x09\x09(1 to: 2 ) do: [ html div id: 'layer', %1; class: 'animated' ]\x0a\x09]",
+messageSends: ["id:", "with:", "do:", "to:", ",", "class:", "div"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_roll_",
+smalltalk.method({
+selector: "roll:",
+category: 'action',
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_flip_before_after_", [aPage, "rollOut", "rollIn"]);
+    return self;
+},
+args: ["aPage"],
+source: "roll: aPage\x0a\x09self flip: aPage before: 'rollOut' after: 'rollIn'",
+messageSends: ["flip:before:after:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+smalltalk.addMethod(
+"_skew_",
+smalltalk.method({
+selector: "skew:",
+category: 'action',
+fn: function (aPage) {
+    var self = this;
+    smalltalk.send(self, "_flip_before_after_", [aPage, "lightSpeedOut", "lightSpeedIn"]);
+    return self;
+},
+args: ["aPage"],
+source: "skew: aPage\x0a\x09self flip: aPage before: 'lightSpeedOut' after: 'lightSpeedIn'",
+messageSends: ["flip:before:after:"],
+referencedClasses: []
+}),
+smalltalk.Screen);
+
+
+smalltalk.Screen.klass.iVarNames = ['single'];
+smalltalk.addMethod(
+"_add_",
+smalltalk.method({
+selector: "add:",
+category: 'not yet classified',
+fn: function (aBlock) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_page", []), "_do_", [aBlock]);
+    return self;
+},
+args: ["aBlock"],
+source: "add: aBlock\x0a\x09Screen new page do: aBlock",
+messageSends: ["do:", "page", "new"],
+referencedClasses: ["Screen"]
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_htmlCanvas",
+smalltalk.method({
+selector: "htmlCanvas",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_page", []), "_body", []);
+    return self;
+},
+args: [],
+source: "htmlCanvas\x0a\x09^ Screen new page body",
+messageSends: ["body", "page", "new"],
+referencedClasses: ["Screen"]
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_new",
+smalltalk.method({
+selector: "new",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    ($receiver = self['@single']) == nil || $receiver == undefined ? function () {return self['@single'] = smalltalk.send(self, "_new", [], smalltalk.Screen.klass.superclass || nil);}() : $receiver;
+    return self['@single'];
+    return self;
+},
+args: [],
+source: "new\x0a\x09single ifNil: [ \x0a\x09\x09single := super new.\x0a\x09].\x0a\x09\x0a\x09^ single",
+messageSends: ["ifNil:", "new"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_put_",
+smalltalk.method({
+selector: "put:",
+category: 'not yet classified',
+fn: function (aWidget) {
+    var self = this;
+    smalltalk.send(aWidget, "_appendToJQuery_", [smalltalk.send(smalltalk.send(self, "_new", []), "_current", [])]);
+    return self;
+},
+args: ["aWidget"],
+source: "put:  aWidget\x0a\x09aWidget appendToJQuery: self new current",
+messageSends: ["appendToJQuery:", "current", "new"],
+referencedClasses: []
+}),
+smalltalk.Screen.klass);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.Screen || Screen, "_new", []), "_flip_", [smalltalk.send(smalltalk.send(smalltalk.Page || Page, "_new", []), "_title_", [aString])]);
+    return self;
+},
+args: ["aString"],
+source: "title: aString\x0a\x09Screen new flip:  (Page new title: aString)",
+messageSends: ["flip:", "new", "title:"],
+referencedClasses: ["Screen", "Page"]
+}),
+smalltalk.Screen.klass);
+
+
+smalltalk.addClass('SeminarSession', smalltalk.Widget, ['title', 'start', 'end', 'body', 'long', 'isDone'], 'DyNagoya');
+smalltalk.addMethod(
+"_done",
+smalltalk.method({
+selector: "done",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@isDone'] = true;
+    smalltalk.send(self['@body'], "__gt_gt_eq", [function (thisisplaceholder1) {return smalltalk.send(self, "_drawBackground_", [thisisplaceholder1]);}]);
+    return smalltalk.send(smalltalk.send(smalltalk.send(self, "_class", []), "__eq", [smalltalk.RestSession || RestSession]), "_not", []);
+    return self;
+},
+args: [],
+source: "done\x0a\x09isDone := true.\x0a\x09body >>= [ self drawBackground: %1].\x0a\x09^ ((self class) = RestSession) not",
+messageSends: [">>=", "drawBackground:", "not", "=", "class"],
+referencedClasses: ["RestSession"]
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_drawBackground_",
+smalltalk.method({
+selector: "drawBackground:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    ($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}() : nil : smalltalk.send($receiver, "_ifTrue_", [function () {return smalltalk.send(html, "_css_put_", ["background", "gray"]);}]);
+    return self;
+},
+args: ["html"],
+source: "drawBackground: html\x0a\x09isDone ifTrue: [\x0a\x09\x09html css: 'background' put: 'gray'\x0a\x09]",
+messageSends: ["ifTrue:", "css:put:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_end_",
+smalltalk.method({
+selector: "end:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@end'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
+    return self;
+},
+args: ["aString"],
+source: "end: aString\x0a\x09end := moment value: aString value: 'HH:mm'",
+messageSends: ["value:value:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@isDone'] = false;
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09isDone := false",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_isDone_",
+smalltalk.method({
+selector: "isDone:",
+category: 'not yet classified',
+fn: function (aBool) {
+    var self = this;
+    self['@isDone'] = aBool;
+    return self;
+},
+args: ["aBool"],
+source: "isDone: aBool\x0a\x09isDone := aBool",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_long",
+smalltalk.method({
+selector: "long",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@long'];
+    return self;
+},
+args: [],
+source: "long\x0a\x09^long",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_long_",
+smalltalk.method({
+selector: "long:",
+category: 'not yet classified',
+fn: function (aMinutes) {
+    var self = this;
+    self['@long'] = aMinutes;
+    return self;
+},
+args: ["aMinutes"],
+source: "long: aMinutes\x0a\x09long := aMinutes",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_minCode",
+smalltalk.method({
+selector: "minCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send("min", "__comma", [($receiver = self['@isDone']).klass === smalltalk.Boolean ? $receiver ? function () {return "!";}() : function () {return "";}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return "!";}, function () {return "";}])]);
+    return self;
+},
+args: [],
+source: "minCode\x0a  ^'min', \x0a    (isDone ifTrue: [ '!' ] ifFalse: [ '' ])",
+messageSends: [",", "ifTrue:ifFalse:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self;
+},
+args: [],
+source: "redraw\x0a\x09",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    self['@body'] = smalltalk.send(html, "_div", []);
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09body := html div",
+messageSends: ["div"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_setEnd_",
+smalltalk.method({
+selector: "setEnd:",
+category: 'not yet classified',
+fn: function (aTime) {
+    var self = this;
+    self['@end'] = aTime;
+    ($receiver = self['@start']) != nil && $receiver != undefined ? function () {return self['@long'] = smalltalk.send(self['@end'], "_diff_unit_", [self['@start'], "minutes"]);}() : nil;
+    return self;
+},
+args: ["aTime"],
+source: "setEnd: aTime\x0a\x09end := aTime.\x0a\x09start ifNotNil: [\x0a\x09\x09long := end diff: start unit: 'minutes'\x0a\x09]",
+messageSends: ["ifNotNil:", "diff:unit:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_start_",
+smalltalk.method({
+selector: "start:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@start'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
+    return self;
+},
+args: ["aString"],
+source: "start: aString\x0a\x09start := moment value: aString value: 'HH:mm'",
+messageSends: ["value:value:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_title_",
+smalltalk.method({
+selector: "title:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@title'] = aString;
+    return self;
+},
+args: ["aString"],
+source: "title: aString\x0a\x09title := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_update_",
+smalltalk.method({
+selector: "update:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    smalltalk.send(self, "_updateTime_", [from]);
+    smalltalk.send(self, "_redraw", []);
+    return self['@end'];
+    return self;
+},
+args: ["from"],
+source: "update: from\x0a\x09self updateTime: from.\x0a\x09self redraw.\x0a\x09^ end",
+messageSends: ["updateTime:", "redraw"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    var end = nil;
+    self['@start'] = smalltalk.send(from, "_clone", []);
+    self['@end'] = smalltalk.send(smalltalk.send(from, "_clone", []), "_add_min_", ["m", self['@long']]);
+    return self;
+},
+args: ["from"],
+source: "updateTime: from\x0a\x09| end |\x0a\x09start := from clone.\x0a\x09end := from clone add: 'm' min: long.",
+messageSends: ["clone", "add:min:"],
+referencedClasses: []
+}),
+smalltalk.SeminarSession);
+
+
+
+smalltalk.addClass('BufferSession', smalltalk.SeminarSession, ['deadline'], 'DyNagoya');
+smalltalk.addMethod(
+"_adjust",
+smalltalk.method({
+selector: "adjust",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    var t = nil;
+    t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@end'], self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@end'];}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@end'];}, function () {return self['@deadline'];}]);
+    t = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [self['@start'], t])).klass === smalltalk.Boolean ? $receiver ? function () {return t;}() : function () {return self['@start'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return t;}, function () {return self['@start'];}]);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(t, "_clone", [])]);
+    return smalltalk.send(self['@end'], "_clone", []);
+    return self;
+},
+args: [],
+source: "adjust\x0a\x09| t |\x0a\x09t := (TimeSchedulePage isOrdered: end and: deadline)\x0a\x09\x09ifTrue: [ end ] ifFalse: [ deadline ].\x0a\x09t := (TimeSchedulePage isOrdered: start and: t)\x0a\x09\x09ifTrue: [ t ] ifFalse: [ start ].\x0a\x09self setEnd: t clone.\x0a\x09^ end clone",
+messageSends: ["ifTrue:ifFalse:", "isOrdered:and:", "setEnd:", "clone"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u30D0\u30C3\u30D5\u30A1(", "__comma", [smalltalk.send(self['@deadline'], "_format_", ["HH:mm"])]), "__comma", ["\u307E\u3067)"]);
+    return self;
+},
+args: [],
+source: "asCode\x0a  ^ 'バッファ(', \x0a\x09(deadline format: 'HH:mm'),\x0a\x09'まで)'",
+messageSends: [",", "format:"],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_deadline_",
+smalltalk.method({
+selector: "deadline:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@deadline'] = smalltalk.send(typeof moment == "undefined" ? nil : moment, "_value_value_", [aString, "HH:mm"]);
+    return self;
+},
+args: ["aString"],
+source: "deadline: aString\x0a\x09deadline := moment value: aString value: 'HH:mm'",
+messageSends: ["value:value:"],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@title'] = "\u4F11\u61A9";
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09title := '休憩'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.BufferSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    var t = nil;
+    self['@start'] = ($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [from, self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return from;}() : function () {return self['@deadline'];}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return from;}, function () {return self['@deadline'];}]);
+    smalltalk.send(self, "_setEnd_", [($receiver = smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_isOrdered_and_", [from, self['@deadline']])).klass === smalltalk.Boolean ? $receiver ? function () {return self['@deadline'];}() : function () {return from;}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return self['@deadline'];}, function () {return from;}])]);
+    return self['@end'];
+    return self;
+},
+args: ["from"],
+source: "updateTime: from\x0a\x09| t |\x0a\x09start := (TimeSchedulePage isOrdered: from and: deadline)\x0a\x09\x09ifTrue: [ from ] ifFalse: [ deadline ].\x0a\x09self setEnd:( (TimeSchedulePage isOrdered: from and: deadline)\x0a\x09\x09ifTrue: [ deadline ] ifFalse: [ from ]).\x0a\x09^ end",
+messageSends: ["ifTrue:ifFalse:", "isOrdered:and:", "setEnd:"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.BufferSession);
+
+
+
+smalltalk.addClass('RestSession', smalltalk.SeminarSession, [], 'DyNagoya');
+smalltalk.addMethod(
+"_adjust",
+smalltalk.method({
+selector: "adjust",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_adjust_", [self['@end']])]);
+    return smalltalk.send(self['@end'], "_clone", []);
+    return self;
+},
+args: [],
+source: "adjust\x0a\x09self setEnd: (TimeSchedulePage adjust: end).\x0a\x09^ end clone",
+messageSends: ["setEnd:", "adjust:", "clone"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.RestSession);
+
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u4F11\u61A9 : ", "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
+    return self;
+},
+args: [],
+source: "asCode\x0a  ^ '休憩 : ' , long, self minCode",
+messageSends: [",", "minCode"],
+referencedClasses: []
+}),
+smalltalk.RestSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    self['@title'] = "\u4F11\u61A9";
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09title := '休憩'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.RestSession);
+
+smalltalk.addMethod(
+"_updateTime_",
+smalltalk.method({
+selector: "updateTime:",
+category: 'not yet classified',
+fn: function (from) {
+    var self = this;
+    smalltalk.send(self, "_updateTime_", [from], smalltalk.RestSession.superclass || nil);
+    smalltalk.send(self, "_setEnd_", [smalltalk.send(smalltalk.TimeSchedulePage || TimeSchedulePage, "_adjust_", [self['@end']])]);
+    return self['@end'];
+    return self;
+},
+args: ["from"],
+source: "updateTime: from\x0a\x09super updateTime: from.\x0a\x09self setEnd: (TimeSchedulePage adjust: end).\x0a\x09^ end",
+messageSends: ["updateTime:", "setEnd:", "adjust:"],
+referencedClasses: ["TimeSchedulePage"]
+}),
+smalltalk.RestSession);
+
+
+
+smalltalk.addClass('TalkSession', smalltalk.SeminarSession, ['speaker'], 'DyNagoya');
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self['@title'], "__comma", ["["]), "__comma", [self['@speaker']]), "__comma", ["] : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
+    return self;
+},
+args: [],
+source: "asCode\x0a  ^ title, '[', speaker, '] : ', long, self minCode",
+messageSends: [",", "minCode"],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_drawTitle",
+smalltalk.method({
+selector: "drawTitle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send("\u300C", "__comma", [self['@title']]), "__comma", ["\u300D"]);
+    return self;
+},
+args: [],
+source: "drawTitle\x0a\x09^ '「', title, '」'",
+messageSends: [","],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_redraw",
+smalltalk.method({
+selector: "redraw",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_css_put_", ["border", "1px solid black"]);smalltalk.send($rec, "_css_put_", ["margin", "1px"]);smalltalk.send($rec, "_css_put_", ["padding", "2px"]);return smalltalk.send($rec, "_css_put_", ["font-size", "20px"]);}(self['@body']));
+    smalltalk.send(self, "_drawBackground_", [self['@body']]);
+    smalltalk.send(self['@body'], "_contents_", [function (html) {(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(smalltalk.send(self['@start'], "_format_", ["HH:mm"]), "__comma", ["\u301C"]), "__comma", [smalltalk.send(self['@end'], "_format_", ["HH:mm"])])]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));(function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(self, "_speakerLink_with_", [html, self['@speaker']])]);smalltalk.send($rec, "_css_put_", ["margin", "0 5px"]);smalltalk.send($rec, "_css_put_", ["width", "200px"]);return smalltalk.send($rec, "_css_put_", ["display", "inline-block"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [smalltalk.send(self, "_drawTitle", [])]);}]);
+    return self;
+},
+args: [],
+source: "redraw\x0a\x09body css: 'border' put: '1px solid black'; css: 'margin' put: '1px'; css: 'padding' put: '2px';\x0a\x09\x09css: 'font-size' put: '20px'.  \x0a\x09self drawBackground: body.\x0a\x09body contents: [ :html |\x0a\x09\x09html span with: (start format: 'HH:mm'), '〜' , (end format: 'HH:mm'); css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: (self speakerLink: html with: speaker);\x0a\x09\x09\x09css: 'margin' put: '0 5px'; css: 'width' put: '200px'; css: 'display' put: 'inline-block'.\x0a\x09\x09html span with: self drawTitle\x0a\x09]",
+messageSends: ["css:put:", "drawBackground:", "contents:", "with:", ",", "format:", "span", "speakerLink:with:", "drawTitle"],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_speaker_",
+smalltalk.method({
+selector: "speaker:",
+category: 'not yet classified',
+fn: function (aString) {
+    var self = this;
+    self['@speaker'] = aString;
+    return self;
+},
+args: ["aString"],
+source: "speaker: aString\x0a\x09speaker := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_speakerLink_",
+smalltalk.method({
+selector: "speakerLink:",
+category: 'not yet classified',
+fn: function (name) {
+    var self = this;
+    var $early = {};
+    try {
+        ($receiver = smalltalk.send(name, "_match_", ["^@"])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [smalltalk.send("@", "__comma", [name])]);}(smalltalk.send(typeof html == "undefined" ? nil : html, "_a", []));}];}();}() : function () {return function () {throw $early = [""];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [smalltalk.send("@", "__comma", [name])]);}(smalltalk.send(typeof html == "undefined" ? nil : html, "_a", []));}];}();}, function () {return function () {throw $early = [""];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: ["name"],
+source: "speakerLink: name\x0a\x09(name match: '^@') \x0a\x09\x09ifTrue: [ ^ [ html a href: 'http://twitter.com/', name; with: '@',name ] ]\x0a\x09\x09ifFalse: [ ^ '' ]",
+messageSends: ["ifTrue:ifFalse:", "match:", "href:", ",", "with:", "a"],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+smalltalk.addMethod(
+"_speakerLink_with_",
+smalltalk.method({
+selector: "speakerLink:with:",
+category: 'not yet classified',
+fn: function (html, name) {
+    var self = this;
+    var $early = {};
+    try {
+        ($receiver = smalltalk.send(name, "_match_", ["^@"])).klass === smalltalk.Boolean ? $receiver ? function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [name]);}(smalltalk.send(html, "_a", []));}];}();}() : function () {return function () {throw $early = [name];}();}() : smalltalk.send($receiver, "_ifTrue_ifFalse_", [function () {return function () {throw $early = [function () {return function ($rec) {smalltalk.send($rec, "_href_", [smalltalk.send("http://twitter.com/", "__comma", [name])]);return smalltalk.send($rec, "_with_", [name]);}(smalltalk.send(html, "_a", []));}];}();}, function () {return function () {throw $early = [name];}();}]);
+        return self;
+    } catch (e) {
+        if (e === $early) {
+            return e[0];
+        }
+        throw e;
+    }
+},
+args: ["html", "name"],
+source: "speakerLink: html with: name\x0a\x09(name match: '^@') \x0a\x09\x09ifTrue: [ ^ [ html a href: 'http://twitter.com/', name; with: name ] ]\x0a\x09\x09ifFalse: [ ^ name ]",
+messageSends: ["ifTrue:ifFalse:", "match:", "href:", ",", "with:", "a"],
+referencedClasses: []
+}),
+smalltalk.TalkSession);
+
+
+
+smalltalk.addClass('OtherSession', smalltalk.TalkSession, [], 'DyNagoya');
+smalltalk.addMethod(
+"_asCode",
+smalltalk.method({
+selector: "asCode",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send("\u301C", "__comma", [self['@title']]), "__comma", ["\u301C : "]), "__comma", [self['@long']]), "__comma", [smalltalk.send(self, "_minCode", [])]);
+    return self;
+},
+args: [],
+source: "asCode\x0a  ^ '〜', title, '〜 : ', long, self minCode",
+messageSends: [",", "minCode"],
+referencedClasses: []
+}),
+smalltalk.OtherSession);
+
+smalltalk.addMethod(
+"_drawTitle",
+smalltalk.method({
+selector: "drawTitle",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return self['@title'];
+    return self;
+},
+args: [],
+source: "drawTitle\x0a\x09^ title",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.OtherSession);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(self, "_initialize", [], smalltalk.OtherSession.superclass || nil);
+    self['@speaker'] = "";
+    return self;
+},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a\x09speaker := ''",
+messageSends: ["initialize"],
+referencedClasses: []
+}),
+smalltalk.OtherSession);
+
+
+
+smalltalk.addClass('ToolBar', smalltalk.Widget, ['menu'], 'DyNagoya');
+smalltalk.addMethod(
+"_clearMenus",
+smalltalk.method({
+selector: "clearMenus",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    smalltalk.send(smalltalk.send(smalltalk.send(unescape("a.menu%2C%20.dropdown-toggle"), "_asJQuery", []), "_parent_", ["li"]), "_removeClass_", ["open"]);
+    return self;
+},
+args: [],
+source: "clearMenus\x0a\x09('a.menu, .dropdown-toggle' asJQuery parent: 'li') removeClass: 'open'",
+messageSends: ["removeClass:", "parent:", "asJQuery"],
+referencedClasses: []
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+"_renderAbout_",
+smalltalk.method({
+selector: "renderAbout:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["dropdown class"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_class_", [unescape("dropdown-toggle")]);smalltalk.send($rec, "_at_put_", [unescape("data-toggle"), "dropdown"]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.send("li.dropdown", "_asJQuery", []), "_addClass_", ["open"]);}]);return smalltalk.send($rec, "_with_", ["Menu"]);}(smalltalk.send(html, "_a", [])));return function ($rec) {smalltalk.send($rec, "_class_", [unescape("dropdown-menu")]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutDyNagoya || AboutDyNagoya, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About DyNagoya"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.AboutSmalltalk || AboutSmalltalk, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["About Smalltalk"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {smalltalk.send(smalltalk.Links || Links, "_pan", []);return smalltalk.send(self, "_clearMenus", []);}]);return smalltalk.send($rec, "_with_", ["Links"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_li", [])));
+    smalltalk.send(smalltalk.send(unescape("%23container"), "_asJQuery", []), "_bind_do_", ["click", function () {return smalltalk.send(self, "_clearMenus", []);}]);
+    return self;
+},
+args: ["html"],
+source: "renderAbout: html\x0a  html li class: 'dropdown class'; with: [ \x0a\x09html a style: 'cursor: pointer'; class: 'dropdown-toggle'; at: 'data-toggle' put: 'dropdown'; onClick: [ 'li.dropdown' asJQuery addClass: 'open'  ]; with: 'Menu'.\x0a\x09html ul class: 'dropdown-menu'; with: [\x0a\x09\x09html li: [ html a style: 'cursor: pointer';onClick: [ AboutDyNagoya pan. self clearMenus ]; with: 'About DyNagoya' ].\x0a\x09\x09html li: [ html a style: 'cursor: pointer'; onClick: [ AboutSmalltalk pan. self clearMenus ]; with: 'About Smalltalk' ].\x0a\x09\x09html li: [ html a style: 'cursor: pointer'; onClick: [ Links pan. self clearMenus ]; with: 'Links' ]\x0a\x09]\x0a  ].\x0a  '#container' asJQuery bind: 'click' do: [self clearMenus ]",
+messageSends: ["class:", "with:", "style:", "at:put:", "onClick:", "addClass:", "asJQuery", "a", "li:", "pan", "clearMenus", "ul", "li", "bind:do:"],
+referencedClasses: ["AboutDyNagoya", "AboutSmalltalk", "Links"]
+}),
+smalltalk.ToolBar);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html) {
+    var self = this;
+    (function ($rec) {smalltalk.send($rec, "_class_", ["fill"]);return smalltalk.send($rec, "_with_", [function () {return function ($rec) {smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_style_", ["float:right"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {return smalltalk.send(smalltalk.send(smalltalk.Login || Login, "_new", []), "_appendToBrush_", [smalltalk.send(html, "_li", [])]);}]);}(smalltalk.send(html, "_ul", [])));return function ($rec) {smalltalk.send($rec, "_style_", ["float:left"]);smalltalk.send($rec, "_class_", ["nav"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.Browser || Browser, "_openOn_", [smalltalk.EntryPoint || EntryPoint]);}]);return smalltalk.send($rec, "_with_", ["Browser"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_style_", ["cursor: pointer"]);smalltalk.send($rec, "_onClick_", [function () {return function ($rec) {smalltalk.send($rec, "_widget_", [smalltalk.send(smalltalk.SourceArea || SourceArea, "_new", [])]);smalltalk.send($rec, "_fontSize_", ["20px"]);smalltalk.send($rec, "_title_", ["Workspace"]);smalltalk.send($rec, "_modal_", [false]);return smalltalk.send($rec, "_open", []);}(smalltalk.send(smalltalk.DialogBox || DialogBox, "_new", []));}]);return smalltalk.send($rec, "_with_", ["Workspace"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("%23")]);smalltalk.send($rec, "_onClick_", [function () {return smalltalk.send(smalltalk.EntryPoint || EntryPoint, "_start", []);}]);return smalltalk.send($rec, "_with_", ["Redraw"]);}(smalltalk.send(html, "_a", []));}]);smalltalk.send(self, "_renderAbout_", [html]);smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("http%3A//twitter.com/dynagoya_info")]);return smalltalk.send($rec, "_with_", ["Twitter"]);}(smalltalk.send(html, "_a", []));}]);return smalltalk.send(html, "_li_", [function () {return function ($rec) {smalltalk.send($rec, "_href_", [unescape("https%3A//github.com/maeda-/DyNagoya-Info")]);return smalltalk.send($rec, "_with_", ["GitHub"]);}(smalltalk.send(html, "_a", []));}]);}]);}(smalltalk.send(html, "_ul", []));}]);}(smalltalk.send(html, "_div", []));}]);}(smalltalk.send(html, "_div", [])));
+    return self;
+},
+args: ["html"],
+source: "renderOn: html\x0a\x09html div class: 'fill'; with:[\x0a\x09\x09html div class: 'container'; with:[\x0a\x09\x09\x09html ul style: 'float:right'; class: 'nav'; with:[\x0a\x09\x09\x09\x09Login new appendToBrush: html li.\x0a\x09\x09\x09].\x0a\x09\x09\x09html ul style: 'float:left'; class: 'nav'; with:[\x0a\x09\x09\x09\x09html li: [ html a href: '#'; onClick: [ Browser openOn: EntryPoint ]; with: 'Browser' ].\x0a\x09\x09\x09\x09html li: [ html a style: 'cursor: pointer'; onClick: [ DialogBox new widget: (SourceArea new); fontSize: '20px'; title: 'Workspace'; modal: false; open ]; with: 'Workspace' ].\x0a\x09\x09\x09\x09html li: [ html a href: '#'; onClick: [ EntryPoint start ]; with: 'Redraw' ].\x0a\x09\x09\x09\x09self renderAbout: html.\x0a\x09\x09\x09\x09html li: [ html a href: 'http://twitter.com/dynagoya_info'; with: 'Twitter' ].\x0a\x09\x09\x09\x09html li: [ html a href: 'https://github.com/maeda-/DyNagoya-Info'; with: 'GitHub' ].\x0a\x09\x09\x09]\x0a\x09\x09]\x0a\x09]",
+messageSends: ["class:", "with:", "style:", "appendToBrush:", "new", "li", "ul", "li:", "href:", "onClick:", "openOn:", "a", "widget:", "fontSize:", "title:", "modal:", "open", "start", "renderAbout:", "div"],
+referencedClasses: ["Login", "Browser", "EntryPoint", "SourceArea", "DialogBox"]
+}),
+smalltalk.ToolBar);
+
+
+
+smalltalk.addClass('Tooltip', smalltalk.Object, [], 'DyNagoya');
+
+smalltalk.addMethod(
+"_close",
+smalltalk.method({
+selector: "close",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    $.powerTip.closeTip();
+    return self;
+},
+args: [],
+source: "close\x0a  (< $.powerTip.closeTip() >)",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Tooltip.klass);
+
+smalltalk.addMethod(
+"_on_with_",
+smalltalk.method({
+selector: "on:with:",
+category: 'not yet classified',
+fn: function (selector, str) {
+    var self = this;
+    smalltalk.send(smalltalk.send(selector, "_asJQuery", []), "_powerTip_", [smalltalk.HashedCollection._fromPairs_([smalltalk.send("placement", "__minus_gt", ["ne"])])]);
+    $(selector).data("powertip", str);
+    return $.powerTip.showTip($(selector));
+    return self;
+},
+args: ["selector", "str"],
+source: "on: selector with: str\x0a  selector asJQuery  powerTip: #{ 'placement' -> 'ne'}.\x0a\x22  selector asJQuery data: 'powertip' with: 'abc'.\x22\x0a  (< $(selector).data('powertip', str) >).\x0a  ^ (< $.powerTip.showTip($(selector)) >)",
+messageSends: ["powerTip:", "asJQuery", "->"],
+referencedClasses: []
+}),
+smalltalk.Tooltip.klass);
+
+
