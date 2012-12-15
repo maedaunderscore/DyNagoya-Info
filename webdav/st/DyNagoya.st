@@ -2568,6 +2568,24 @@ url
 	^ 'http://moyo-reno.com/'
 ! !
 
+Place subclass: #Nato
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!Nato methodsFor: 'not yet classified'!
+
+address
+	^ '愛知県名古屋市中区金山2-1-21 '
+!
+
+name
+	^ '菜と、'
+!
+
+url
+	^ 'http://r.gnavi.co.jp/n903800/'
+! !
+
 Place subclass: #NewCast
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
