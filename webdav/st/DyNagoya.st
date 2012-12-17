@@ -491,11 +491,11 @@ width
 !
 
 x
-  ^'552px'
+  ^'434px'
 !
 
 y
-  ^'72px'
+  ^'184px'
 ! !
 
 Dolphin class instanceVariableNames: 's'!
@@ -844,7 +844,7 @@ JoseiKaikan で
 !
 
 latest
-	^ self meeting11
+	^ self kctnagoya
 !
 
 meeting02
