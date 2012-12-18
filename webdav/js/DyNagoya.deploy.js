@@ -2006,7 +2006,7 @@ smalltalk.method({
 selector: "asCode",
 fn: function () {
     var self = this;
-    return smalltalk.send(self['@sessions'], "_inject_into_", ["grammer Sessions:list > sessions", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}]);
+    return smalltalk.send(self['@sessions'], "_inject_into_", ["grammar Sessions:list > sessions", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}]);
     return self;
 }
 }),

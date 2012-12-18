@@ -1828,7 +1828,7 @@ fn: function () {
     return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2012/12/16\u306E14:30:00\u301C17:30:00\u306B\nJoseiKaikan \u3067\n - Basic Category Theory for Computer Scientists \u3092\u8AAD\u3080\n - \u6B21\u56DE\u4EE5\u964D\u3069\u3046\u3059\u308B\u304B\u6C7A\u3081\u308B", "kctnagoya");
 },
 args: [],
-source: "grammer Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
+source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1996,7 +1996,7 @@ fn: function () {
     return this._Events().matchAll("DyNagoya MTG #10 \u306F \n2012/11/10\u306E12:00:00\u301C15:00:00\u306B\nImoni \u3067\n - OMeta\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u30C1\u30E5\u30FC\u30CB\u30F3\u30B0\n - OMeta\u540D\u524D\u7A7A\u9593\u3092\u3061\u3083\u3093\u3068\u3059\u308B\n - NGK\u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "meeting");
 },
 args: [],
-source: "grammer Events:meeting > meeting10 \x0a\x0aDyNagoya MTG #10 は \x0a2012/11/10の12:00:00〜15:00:00に\x0aImoni で\x0a - OMetaパフォーマンスチューニング\x0a - OMeta名前空間をちゃんとする\x0a - NGKのネタを考える",
+source: "grammar Events:meeting > meeting10 \x0a\x0aDyNagoya MTG #10 は \x0a2012/11/10の12:00:00〜15:00:00に\x0aImoni で\x0a - OMetaパフォーマンスチューニング\x0a - OMeta名前空間をちゃんとする\x0a - NGKのネタを考える",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2011,7 +2011,7 @@ fn: function () {
     return this._Events().matchAll("DyNagoya MTG #11 \u306F \n2012/12/16\u306E18:00:00\u301C20:00:00\u306B\nAikitaya \u3067\n - \u3044\u308B\u304B\u306E\u3057\u3063\u307D\u3092\u52D5\u304B\u3059\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "dynagoya");
 },
 args: [],
-source: "grammer Events:dynagoya > meeting11\x0a\x0aDyNagoya MTG #11 は \x0a2012/12/16の18:00:00〜20:00:00に\x0aAikitaya で\x0a - いるかのしっぽを動かす\x0a - Maker Faire のネタを考える",
+source: "grammar Events:dynagoya > meeting11\x0a\x0aDyNagoya MTG #11 は \x0a2012/12/16の18:00:00〜20:00:00に\x0aAikitaya で\x0a - いるかのしっぽを動かす\x0a - Maker Faire のネタを考える",
 messageSends: [],
 referencedClasses: []
 }),
@@ -2776,11 +2776,11 @@ selector: "asCode",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return smalltalk.send(self['@sessions'], "_inject_into_", ["grammer Sessions:list > sessions", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}]);
+    return smalltalk.send(self['@sessions'], "_inject_into_", ["grammar Sessions:list > sessions", function (thisisplaceholder1, thisisplaceholder2) {return smalltalk.send(smalltalk.send(thisisplaceholder1, "__comma", ["\n"]), "__comma", [smalltalk.send(thisisplaceholder2, "_asCode", [])]);}]);
     return self;
 },
 args: [],
-source: "asCode\x0a\x09^ sessions inject: 'grammer Sessions:list > sessions'\x0a\x09\x09into: [ %1, '\x0a', %2 asCode]",
+source: "asCode\x0a\x09^ sessions inject: 'grammar Sessions:list > sessions'\x0a\x09\x09into: [ %1, '\x0a', %2 asCode]",
 messageSends: ["inject:into:", ",", "asCode"],
 referencedClasses: []
 }),
@@ -3170,7 +3170,7 @@ fn: function () {
     return this._Sessions().matchAll("\u301C\u30BF\u30A4\u30E0\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u3092\u6C7A\u3081\u308B\u301C : 15min\n\u30E2\u30CA\u30E2\u30CA\u3044\u3046\u30E2\u30CA\u30C9\u5165\u9580[@hiratara] : 105min\n\u4F11\u61A9 : 15min\nCoq\u306B\u3088\u308BMaybe\u30E2\u30CA\u30C9\u3092\u8A3C\u660E(+ Coq\u5165\u9580)[@mzp] : 30min\n\u4F11\u61A9 : 5min\nCoq\u306B\u3088\u308BKleisli\u69CB\u6210\u306E\u8AAC\u660E[@t6s] : 40min\n\u4F11\u61A9 : 5min\n\u30E2\u30C3\u30B8\u3068\u30EF\u30C9\u30E9\u30FC\u3068Strong Monad\u3068Free\u30E2\u30CA\u30C9[@t6s] : 30min\n\u4F11\u61A9 : 5min\n\u4F59\u30E2\u30CA\u30C9[@uskz] : 50min\n\u30D0\u30C3\u30D5\u30A1(18:20\u307E\u3067)\n\u301C \u61C7\u89AA\u4F1A\uFF08\u30D3\u30A2\u30D0\u30C3\u30B7\u30E5\uFF09 \u301C : 130min", "list");
 },
 args: [],
-source: "grammer Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 105min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min\x0a休憩 : 5min\x0aCoqによるKleisli構成の説明[@t6s] : 40min\x0a休憩 : 5min\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 30min\x0a休憩 : 5min\x0a余モナド[@uskz] : 50min\x0aバッファ(18:20まで)\x0a〜 懇親会（ビアバッシュ） 〜 : 130min",
+source: "grammar Sessions:list > sessions\x0a〜タイムスケジュールを決める〜 : 15min\x0aモナモナいうモナド入門[@hiratara] : 105min\x0a休憩 : 15min\x0aCoqによるMaybeモナドを証明(+ Coq入門)[@mzp] : 30min\x0a休憩 : 5min\x0aCoqによるKleisli構成の説明[@t6s] : 40min\x0a休憩 : 5min\x0aモッジとワドラーとStrong MonadとFreeモナド[@t6s] : 30min\x0a休憩 : 5min\x0a余モナド[@uskz] : 50min\x0aバッファ(18:20まで)\x0a〜 懇親会（ビアバッシュ） 〜 : 130min",
 messageSends: [],
 referencedClasses: []
 }),

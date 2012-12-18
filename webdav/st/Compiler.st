@@ -665,7 +665,7 @@ accept: aVisitor
 ! !
 
 MethodNode subclass: #OMetaDefineNode
-	instanceVariableNames: 'grammerName grammerBody'
+	instanceVariableNames: 'grammarName grammarBody'
 	package: 'Compiler'!
 
 !OMetaDefineNode methodsFor: 'visiting'!
@@ -675,23 +675,23 @@ accept: aVisitor
 !
 
 body
-   ^ grammerBody
+   ^ grammarBody
 !
 
 body: aString
-   grammerBody := aString
+   grammarBody := aString
 !
 
 name
-   ^ grammerName
+   ^ grammarName
 !
 
 name: aString
-   grammerName := aString
+   grammarName := aString
 ! !
 
 MethodNode subclass: #OMetaNode
-	instanceVariableNames: 'grammerName grammerBody rule'
+	instanceVariableNames: 'grammarName grammarBody rule'
 	package: 'Compiler'!
 
 !OMetaNode methodsFor: 'visiting'!
@@ -701,19 +701,19 @@ accept: aVisitor
 !
 
 body
-   ^ grammerBody
+   ^ grammarBody
 !
 
 body: aString
-   grammerBody := aString
+   grammarBody := aString
 !
 
 name
-   ^ grammerName
+   ^ grammarName
 !
 
 name: aString
-   grammerName := aString
+   grammarName := aString
 !
 
 rule

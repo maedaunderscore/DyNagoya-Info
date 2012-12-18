@@ -834,7 +834,7 @@ jointStStudy02
 }
 !
 
-grammer Events:kctnagoya > kctnagoya
+grammar Events:kctnagoya > kctnagoya
 
 けんろん勉強会(kctnagoya) は 
 2012/12/16の14:30:00〜17:30:00に
@@ -969,7 +969,7 @@ meeting09
 		}
 !
 
-grammer Events:meeting > meeting10 
+grammar Events:meeting > meeting10 
 
 DyNagoya MTG #10 は 
 2012/11/10の12:00:00〜15:00:00に
@@ -979,7 +979,7 @@ Imoni で
  - NGKのネタを考える
 !
 
-grammer Events:dynagoya > meeting11
+grammar Events:dynagoya > meeting11
 
 DyNagoya MTG #11 は 
 2012/12/16の18:00:00〜20:00:00に
@@ -1496,7 +1496,7 @@ Page subclass: #TimeSchedulePage
 !TimeSchedulePage methodsFor: 'not yet classified'!
 
 asCode
-	^ sessions inject: 'grammer Sessions:list > sessions'
+	^ sessions inject: 'grammar Sessions:list > sessions'
 		into: [ %1, '
 ', %2 asCode]
 !
@@ -1618,7 +1618,7 @@ TimeSchedulePage subclass: #Wakame
 
 !Wakame methodsFor: 'accessing'!
 
-grammer Sessions:list > sessions
+grammar Sessions:list > sessions
 〜タイムスケジュールを決める〜 : 15min
 モナモナいうモナド入門[@hiratara] : 105min
 休憩 : 15min

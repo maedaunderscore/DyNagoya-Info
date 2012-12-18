@@ -1057,7 +1057,7 @@ smalltalk.MethodNode);
 
 
 
-smalltalk.addClass('OMetaDefineNode', smalltalk.MethodNode, ['grammerName', 'grammerBody'], 'Compiler');
+smalltalk.addClass('OMetaDefineNode', smalltalk.MethodNode, ['grammarName', 'grammarBody'], 'Compiler');
 smalltalk.addMethod(
 "_accept_",
 smalltalk.method({
@@ -1076,7 +1076,7 @@ smalltalk.method({
 selector: "body",
 fn: function () {
     var self = this;
-    return self['@grammerBody'];
+    return self['@grammarBody'];
     return self;
 }
 }),
@@ -1088,7 +1088,7 @@ smalltalk.method({
 selector: "body:",
 fn: function (aString) {
     var self = this;
-    self['@grammerBody'] = aString;
+    self['@grammarBody'] = aString;
     return self;
 }
 }),
@@ -1100,7 +1100,7 @@ smalltalk.method({
 selector: "name",
 fn: function () {
     var self = this;
-    return self['@grammerName'];
+    return self['@grammarName'];
     return self;
 }
 }),
@@ -1112,7 +1112,7 @@ smalltalk.method({
 selector: "name:",
 fn: function (aString) {
     var self = this;
-    self['@grammerName'] = aString;
+    self['@grammarName'] = aString;
     return self;
 }
 }),
@@ -1120,7 +1120,7 @@ smalltalk.OMetaDefineNode);
 
 
 
-smalltalk.addClass('OMetaNode', smalltalk.MethodNode, ['grammerName', 'grammerBody', 'rule'], 'Compiler');
+smalltalk.addClass('OMetaNode', smalltalk.MethodNode, ['grammarName', 'grammarBody', 'rule'], 'Compiler');
 smalltalk.addMethod(
 "_accept_",
 smalltalk.method({
@@ -1139,7 +1139,7 @@ smalltalk.method({
 selector: "body",
 fn: function () {
     var self = this;
-    return self['@grammerBody'];
+    return self['@grammarBody'];
     return self;
 }
 }),
@@ -1151,7 +1151,7 @@ smalltalk.method({
 selector: "body:",
 fn: function (aString) {
     var self = this;
-    self['@grammerBody'] = aString;
+    self['@grammarBody'] = aString;
     return self;
 }
 }),
@@ -1163,7 +1163,7 @@ smalltalk.method({
 selector: "name",
 fn: function () {
     var self = this;
-    return self['@grammerName'];
+    return self['@grammarName'];
     return self;
 }
 }),
@@ -1175,7 +1175,7 @@ smalltalk.method({
 selector: "name:",
 fn: function (aString) {
     var self = this;
-    self['@grammerName'] = aString;
+    self['@grammarName'] = aString;
     return self;
 }
 }),

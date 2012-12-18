@@ -4139,13 +4139,13 @@ smalltalk.parser = (function(){
         var savedPos5 = pos;
         var result25 = parse_ws();
         if (result25 !== null) {
-          if (input.substr(pos, 7) === "grammer") {
-            var result26 = "grammer";
+          if (input.substr(pos, 7) === "grammar") {
+            var result26 = "grammar";
             pos += 7;
           } else {
             var result26 = null;
             if (reportMatchFailures) {
-              matchFailed("\"grammer\"");
+              matchFailed("\"grammar\"");
             }
           }
           if (result26 !== null) {
