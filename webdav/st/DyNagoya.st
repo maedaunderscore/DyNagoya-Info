@@ -557,6 +557,7 @@ messages
 	^{
 	 'Type one of below lines on workspace, then click "DoIt"'.
 	 '    AboutDyNagoya show         "to see what DyNagoya is"'.
+	 '    TutorialPanel show              "to start amber tutorial"'.
 	 '    Links show                           "to see Links about our interest"'.
 	 '    Browser open                       "to open default class browser"'.
 	'    Page browser onDialog          "to open browser on Dialog"'.
@@ -592,7 +593,7 @@ start
 
    self screenPreparation.
   LoginPanel show.
-"  self showMessage."
+  self showMessage.
 !
 
 startPage
@@ -1325,7 +1326,7 @@ renderBody: html
 	html div css: 'padding-top' put: '10px'; 
 		css: 'font-size' put: '16px';
 		with: '※ このページはMBA 13inch + Firefox で確認しています。'.
-	[ LLorMLAdventPanel show ] valueWithTimeout: 5000
+	[ TutorialPanel show ] valueWithTimeout: 5000
 !
 
 renderTitle: html
@@ -1783,11 +1784,11 @@ style
 	]
 ! !
 
-GuidePanel subclass: #LLorMLAdventPanel
+GuidePanel subclass: #TutorialPanel
 	instanceVariableNames: ''
 	package: 'DyNagoya'!
 
-!LLorMLAdventPanel methodsFor: 'not yet classified'!
+!TutorialPanel methodsFor: 'not yet classified'!
 
 ometa Page {
   html = (sentence: body -> console.log("a"+body))* ,
