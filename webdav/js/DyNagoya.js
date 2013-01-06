@@ -1147,11 +1147,11 @@ selector: "messages",
 category: 'not yet classified',
 fn: function () {
     var self = this;
-    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    Page browser onDialog          \"to open browser on Dialog\"", "    Icon browser onPage open: Logo method: 'x'", "     JSViewer onDialog               \"to show js code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
+    return ["Type one of below lines on workspace, then click \"DoIt\"", "    AboutDyNagoya show         \"to see what DyNagoya is\"", "    TutorialPanel show              \"to start amber tutorial\"", "    Links show                           \"to see Links about our interest\"", "    Browser open                       \"to open default class browser\"", "    Page browser onDialog          \"to open browser on Dialog\"", "    Icon browser onPage open: Logo method: 'x'", "     JSViewer onDialog               \"to show js code will be emitted\"", "     ParserEditor onDialog          \"to modify parser\""];
     return self;
 },
 args: [],
-source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    Page browser onDialog          \x22to open browser on Dialog\x22'.\x0a\x09 '    Icon browser onPage open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to show js code will be emitted\x22'.\x0a\x09'     ParserEditor onDialog          \x22to modify parser\x22'\x0a\x09}\x0a",
+source: "messages\x0a\x09^{\x0a\x09 'Type one of below lines on workspace, then click \x22DoIt\x22'.\x0a\x09 '    AboutDyNagoya show         \x22to see what DyNagoya is\x22'.\x0a\x09 '    TutorialPanel show              \x22to start amber tutorial\x22'.\x0a\x09 '    Links show                           \x22to see Links about our interest\x22'.\x0a\x09 '    Browser open                       \x22to open default class browser\x22'.\x0a\x09'    Page browser onDialog          \x22to open browser on Dialog\x22'.\x0a\x09 '    Icon browser onPage open: Logo method: ''x'''.\x0a\x09'     JSViewer onDialog               \x22to show js code will be emitted\x22'.\x0a\x09'     ParserEditor onDialog          \x22to modify parser\x22'\x0a\x09}\x0a",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1221,11 +1221,12 @@ fn: function () {
     smalltalk.send(smalltalk.send(smalltalk.TranscriptDialog || TranscriptDialog, "_new", []), "_|_gt", [smalltalk.send(self, "_topPosition", [])]);
     smalltalk.send(self, "_screenPreparation", []);
     smalltalk.send(smalltalk.LoginPanel || LoginPanel, "_show", []);
+    smalltalk.send(self, "_showMessage", []);
     return self;
 },
 args: [],
-source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition \x22; open\x22.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a\x22  self showMessage.\x22",
-messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show"],
+source: "start\x0a  WorkspaceDialog new  |> self bottomPosition; open; big.\x0a  TranscriptDialog new |> self topPosition \x22; open\x22.\x0a\x0a   self screenPreparation.\x0a  LoginPanel show.\x0a  self showMessage.",
+messageSends: ["|>", "bottomPosition", "open", "big", "new", "topPosition", "screenPreparation", "show", "showMessage"],
 referencedClasses: ["WorkspaceDialog", "TranscriptDialog", "LoginPanel"]
 }),
 smalltalk.EntryPoint.klass);
@@ -2576,13 +2577,13 @@ fn: function (html) {
     (function ($rec) {smalltalk.send($rec, "_style_", ["font-size: 30px"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u306A\u304A\u3001\u79C1\u306F\u3053\u306E\u30AB\u30EC\u30F3\u30C0\u30FC\u306B\u95A2\u9023\u3059\u308B\u3064\u3076\u3084\u304D\u3092\u3057\u3066\u3044\u306A\u3044\u306E\u306B\u6355\u6349\u3055\u308C\u3001"]);return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u53C2\u52A0\u767B\u9332\u3057\u3066\u306A\u3044\u306E\u306B\u53C2\u52A0\u306B\u306A\u3063\u3066\u3044\u307E\u3057\u305F\u3002"]);}]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_style_", ["font-size: 30px; padding-top: 15px;"]);return smalltalk.send($rec, "_with_", [function () {smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["font-weight", "bold"]);return smalltalk.send($rec, "_with_", ["\u300E\u53C2\u52A0\u3057\u307E\u3059\u300F"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u30FB\u30FB\u30FB\u305D\u3093\u306A\u8A00\u8449\u306F\u4F7F\u3046\u5FC5\u8981\u304C\u306D\u30FC\u3093\u3060\u3002"]);}]);return smalltalk.send(smalltalk.send(html, "_div", []), "_with_", [function () {(function ($rec) {smalltalk.send($rec, "_css_put_", ["font-weight", "bold"]);return smalltalk.send($rec, "_with_", ["\u300E\u53C2\u52A0\u3059\u308B\u3053\u3068\u306B\u306A\u3063\u3066\u3044\u305F\uFF01\u300F"]);}(smalltalk.send(html, "_span", [])));return smalltalk.send(smalltalk.send(html, "_span", []), "_with_", ["\u306A\u3089\u8A00\u3063\u3066\u3082\u3044\u3044\u30C3\uFF01\uFF01"]);}]);}]);}(smalltalk.send(html, "_div", [])));
     (function ($rec) {smalltalk.send($rec, "_css_put_", ["padding-top", "10px"]);smalltalk.send($rec, "_css_put_", ["font-size", "16px"]);return smalltalk.send($rec, "_with_", ["\u203B \u3053\u306E\u30DA\u30FC\u30B8\u306FMBA 13inch + Firefox \u3067\u78BA\u8A8D\u3057\u3066\u3044\u307E\u3059\u3002"]);}(smalltalk.send(html, "_div", [])));
-    smalltalk.send(function () {return smalltalk.send(smalltalk.LLorMLAdventPanel || LLorMLAdventPanel, "_show", []);}, "_valueWithTimeout_", [5000]);
+    smalltalk.send(function () {return smalltalk.send(smalltalk.TutorialPanel || TutorialPanel, "_show", []);}, "_valueWithTimeout_", [5000]);
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09self renderTitle: html.\x0a\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'この記事は、'.\x0a\x09\x09html a href: 'http://partake.in/events/9658f376-6ce3-4217-b392-b05d3de60021';\x0a\x09\x09\x09with: 'LL/ML Advent Calendar';\x0a\x09\x09\x09target: '_blank'.\x0a\x09\x09html span: 'の12日目の記事です。'.\x0a\x09].\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'なお、私はこのカレンダーに関連するつぶやきをしていないのに捕捉され、'.\x0a\x09\x09html span with: '参加登録してないのに参加になっていました。'.\x0a\x09].\x0a\x0a\x09html div style: 'font-size: 30px; padding-top: 15px;'; with:[\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加します』'.\x0a\x09\x09\x09html span with: '・・・そんな言葉は使う必要がねーんだ。'.\x0a\x09\x09].\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加することになっていた！』'.\x0a\x09\x09\x09html span with: 'なら言ってもいいッ！！'\x0a\x09\x09].\x0a\x09].\x0a\x0a\x09html div css: 'padding-top' put: '10px'; \x0a\x09\x09css: 'font-size' put: '16px';\x0a\x09\x09with: '※ このページはMBA 13inch + Firefox で確認しています。'.\x0a\x09[ LLorMLAdventPanel show ] valueWithTimeout: 5000",
+source: "renderBody: html\x0a\x09self renderTitle: html.\x0a\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'この記事は、'.\x0a\x09\x09html a href: 'http://partake.in/events/9658f376-6ce3-4217-b392-b05d3de60021';\x0a\x09\x09\x09with: 'LL/ML Advent Calendar';\x0a\x09\x09\x09target: '_blank'.\x0a\x09\x09html span: 'の12日目の記事です。'.\x0a\x09].\x0a\x09html div style: 'font-size: 30px'; with:[\x0a\x09\x09html span with: 'なお、私はこのカレンダーに関連するつぶやきをしていないのに捕捉され、'.\x0a\x09\x09html span with: '参加登録してないのに参加になっていました。'.\x0a\x09].\x0a\x0a\x09html div style: 'font-size: 30px; padding-top: 15px;'; with:[\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加します』'.\x0a\x09\x09\x09html span with: '・・・そんな言葉は使う必要がねーんだ。'.\x0a\x09\x09].\x0a\x09\x09html div with: [\x0a\x09\x09\x09html span css: 'font-weight' put: 'bold'; with: '『参加することになっていた！』'.\x0a\x09\x09\x09html span with: 'なら言ってもいいッ！！'\x0a\x09\x09].\x0a\x09].\x0a\x0a\x09html div css: 'padding-top' put: '10px'; \x0a\x09\x09css: 'font-size' put: '16px';\x0a\x09\x09with: '※ このページはMBA 13inch + Firefox で確認しています。'.\x0a\x09[ TutorialPanel show ] valueWithTimeout: 5000",
 messageSends: ["renderTitle:", "style:", "with:", "span", "href:", "target:", "a", "span:", "div", "css:put:", "valueWithTimeout:", "show"],
-referencedClasses: ["LLorMLAdventPanel"]
+referencedClasses: ["TutorialPanel"]
 }),
 smalltalk.LLorMLAdventPage);
 
@@ -3430,7 +3431,7 @@ smalltalk.GuidePanel);
 
 
 
-smalltalk.addClass('LLorMLAdventPanel', smalltalk.GuidePanel, [], 'DyNagoya');
+smalltalk.addClass('TutorialPanel', smalltalk.GuidePanel, [], 'DyNagoya');
 smalltalk.addMethod(
 "_Page",
 smalltalk.method({
@@ -3447,7 +3448,7 @@ source: "ometa Page {\x0a  html = (sentence: body -> console.log(\x22a\x22+body)
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_code_",
@@ -3464,7 +3465,7 @@ source: "code: block\x0a  html div style: self codeStyle; with: block.",
 messageSends: ["style:", "codeStyle", "with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_codeOn_with_",
@@ -3481,7 +3482,7 @@ source: "codeOn: html with:str\x0a\x22  WorkspaceDialog new print: (str, '\x0a')
 messageSends: ["with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_codeStyle",
@@ -3498,7 +3499,7 @@ source: "codeStyle\x0a  ^ 'background: #341029; padding-left: 5px; opacity:0.9; 
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_codes_on_",
@@ -3515,7 +3516,7 @@ source: "codes: block on: html\x0a  html div style: self codeStyle; with: block.
 messageSends: ["style:", "codeStyle", "with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_l_with_",
@@ -3532,7 +3533,7 @@ source: "l: html with: aString\x0a  html div with: aString",
 messageSends: ["with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_p_with_",
@@ -3549,7 +3550,7 @@ source: "p: html with: block\x0a  html div with: block",
 messageSends: ["with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page1",
@@ -3566,7 +3567,7 @@ source: "page1\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with
 messageSends: ["p:with:", "s:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page10",
@@ -3583,7 +3584,7 @@ source: "page10\x0a\x09^ [ :html |\x0aself s: html with: 'Smalltalkのちゃん�
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page2",
@@ -3600,7 +3601,7 @@ source: "page2\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with
 messageSends: ["p:with:", "s:with:", "style:", "codeStyle", "with:", "codeOn:with:", "div"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page3",
@@ -3617,7 +3618,7 @@ source: "page3\x0a\x09^ [ :html |\x0aself p: html with: [\x0a  self s: html with
 messageSends: ["p:with:", "s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page4",
@@ -3634,7 +3635,7 @@ source: "page4\x0a\x09^ [ :html |\x0aself s: html with:'HTMLCanvasクラスに�
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page5",
@@ -3651,7 +3652,7 @@ source: "page5\x0a\x09^ [ :html |\x0aself p: html with:[\x0a  self s: html with:
 messageSends: ["p:with:", "s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page6",
@@ -3668,7 +3669,7 @@ source: "page6\x0a\x09^ [ :html |\x0aself s: html with: '画像を描画する�
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page7",
@@ -3685,7 +3686,7 @@ source: "page7\x0a\x09^ [ :html |\x0aself s: html with: '生成したクラス�
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page8",
@@ -3702,7 +3703,7 @@ source: "page8\x0a\x09^ [ :html |\x0aself s: html with: 'アニメーション�
 messageSends: ["s:with:", "codes:on:", "codeOn:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_page9",
@@ -3719,7 +3720,7 @@ source: "page9\x0a\x09^ [ :html |\x0aself l: html with: '今回は、Workspace�
 messageSends: ["l:with:", "s:with:"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_pages",
@@ -3736,7 +3737,7 @@ source: "pages\x0a\x09^ {\x0a\x09\x09self page1.\x0a\x09\x09self page2.\x0a\x09\
 messageSends: ["page1", "page2", "page3", "page4", "page5", "page6", "page7", "page8", "page9", "page10"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 smalltalk.addMethod(
 "_s_with_",
@@ -3753,7 +3754,7 @@ source: "s: html with: aString\x0a  html span with: aString",
 messageSends: ["with:", "span"],
 referencedClasses: []
 }),
-smalltalk.LLorMLAdventPanel);
+smalltalk.TutorialPanel);
 
 
 
