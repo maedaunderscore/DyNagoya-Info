@@ -589,7 +589,7 @@ showMessage
 
 start
   WorkspaceDialog new  |> self bottomPosition; open; big.
-  TranscriptDialog new |> self topPosition "; open".
+  TranscriptDialog new |> self topPosition ; open.
 
    self screenPreparation.
   LoginPanel show.
