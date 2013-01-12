@@ -1825,11 +1825,22 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya",
 category: 'events',
-fn: function () {
-    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2012/12/16\u306E14:30:00\u301C17:30:00\u306B\nJoseiKaikan \u3067\n - Basic Category Theory for Computer Scientists \u3092\u8AAD\u3080\n - \u6B21\u56DE\u4EE5\u964D\u3069\u3046\u3059\u308B\u304B\u6C7A\u3081\u308B", "kctnagoya");
-},
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む\x0a","kctnagoya"); },
 args: [],
-source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
+source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_kctnagoya201212",
+smalltalk.method({
+selector: "kctnagoya201212",
+category: 'events',
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める","kctnagoya"); },
+args: [],
+source: "grammar Events:kctnagoya > kctnagoya201212\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
 messageSends: [],
 referencedClasses: []
 }),
