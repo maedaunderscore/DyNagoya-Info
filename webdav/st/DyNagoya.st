@@ -237,7 +237,7 @@ Board subclass: #DyNagoyaBoard
 !DyNagoyaBoard methodsFor: 'accessing'!
 
 x
-  ^'34px'
+  ^'44px'
 !
 
 y
@@ -331,11 +331,11 @@ imageUrl
 !
 
 x
-  ^'57px'
+  ^'88px'
 !
 
 y
-  ^'668px'
+  ^'659px'
 ! !
 
 !HowToJoin methodsFor: 'rendering'!
