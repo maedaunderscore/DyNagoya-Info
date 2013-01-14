@@ -77,8 +77,8 @@ h1, h2, h3 {
     font-family: 'Tahoma', 'Istok Web';
     font-weight: normal;
     color: #442905;
-    line-height: 1.2;
-    margin: 0;
+    line-height: 1;
+    margin: 0.2em;
 }
 
 h1 {
