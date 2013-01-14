@@ -1402,7 +1402,7 @@ smalltalk.EntryPoint.klass);
 
 
 smalltalk.addClass('Event', smalltalk.Widget, ['title', 'date', 'start', 'end', 'place', 'detail', 'fixed', 'introduction'], 'DyNagoya');
-smalltalk.Event.comment="\x0aEvent browser onPage; openClassMethod: 'kctnagoya'; openClassMethod: 'latest'.\x0aEvent latest addToDSTokai.\x0aEvent latest tweet\x0a\x0a"
+smalltalk.Event.comment="\x0aEvent browser onPage; openClassMethod: 'kctnagoya'; openClassMethod: 'latestKct'.\x0aEvent latestKct addToDSTokai.\x0aEvent latestKct tweet\x0a\x0a"
 smalltalk.addMethod(
 "_addToCalendar",
 smalltalk.method({
