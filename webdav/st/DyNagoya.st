@@ -210,20 +210,64 @@ DraggableWidget subclass: #Board
 !Board methodsFor: 'accessing'!
 
 x
-  ^'32px'
+  ^'31px'
 !
 
 y
-  ^'18px'
+  ^'342px'
 ! !
 
 !Board methodsFor: 'rendering'!
+
+event
+	^ Event latest
+!
 
 renderBodyOn: html
 	html div 
 		class: 'alert-message block-message warning ui-draggable';
 		style: 'margin: 10px';
-		with: Event latest
+		with: self event
+! !
+
+Board subclass: #DyNagoyaBoard
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!DyNagoyaBoard methodsFor: 'accessing'!
+
+x
+  ^'34px'
+!
+
+y
+  ^'393px'
+! !
+
+!DyNagoyaBoard methodsFor: 'not yet classified'!
+
+event
+	^ Event latestDyNagoya
+! !
+
+Board subclass: #KctBoard
+	instanceVariableNames: ''
+	package: 'DyNagoya'!
+
+!KctBoard methodsFor: 'accessing'!
+
+x
+  ^'36px'
+!
+
+y
+  ^'40px'
+! !
+
+!KctBoard methodsFor: 'not yet classified'!
+
+event
+	^ Event latestKct
 ! !
 
 DraggableWidget subclass: #DSLforHtml
@@ -287,11 +331,11 @@ imageUrl
 !
 
 x
-  ^'60px'
+  ^'57px'
 !
 
 y
-  ^'505px'
+  ^'668px'
 ! !
 
 !HowToJoin methodsFor: 'rendering'!
@@ -358,11 +402,11 @@ imageUrl
 !
 
 x
-  ^'822px'
+  ^'979px'
 !
 
 y
-  ^'518px'
+  ^'538px'
 ! !
 
 DraggableWidget subclass: #PipelineDesc
@@ -491,11 +535,11 @@ width
 !
 
 x
-  ^'434px'
+  ^'717px'
 !
 
 y
-  ^'184px'
+  ^'106px'
 ! !
 
 Dolphin class instanceVariableNames: 's'!
@@ -857,6 +901,14 @@ latest
 	^ self kctnagoya
 !
 
+latestDyNagoya
+	^ self meeting12
+!
+
+latestKct
+	^ self kctnagoya
+!
+
 meeting02
 	^ self new 
 		title: 'DyNagoya MTG ＃02';
@@ -995,6 +1047,15 @@ DyNagoya MTG #11 は
 2012/12/16の18:00:00〜20:00:00に
 Aikitaya で
  - いるかのしっぽを動かす
+ - Maker Faire のネタを考える
+!
+
+grammar Events:dynagoya > meeting12
+
+DyNagoya MTG #12 は 
+2013/01/20の18:00:00〜20:00:00に
+Aikitaya で
+ - 電子工作で挫折した事の報告
  - Maker Faire のネタを考える
 ! !
 
@@ -1686,7 +1747,8 @@ Page subclass: #TopPage
 renderBody: html
 		html div 
 			with: Dolphin new;
-			with: Board new;
+			with: KctBoard new;
+			with: DyNagoyaBoard new;
 			with: Logo new;
 			with: HowToJoin new
 ! !
