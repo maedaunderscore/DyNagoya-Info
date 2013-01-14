@@ -661,9 +661,9 @@ Widget subclass: #Event
 	instanceVariableNames: 'title date start end place detail fixed introduction'
 	package: 'DyNagoya'!
 !Event commentStamp!
-Event browser onPage; openClassMethod: 'kctnagoya'; openClassMethod: 'latest'.
-Event latest addToDSTokai.
-Event latest tweet!
+Event browser onPage; openClassMethod: 'kctnagoya'; openClassMethod: 'latestKct'.
+Event latestKct addToDSTokai.
+Event latestKct tweet!
 
 !Event methodsFor: 'Twitter'!
 
