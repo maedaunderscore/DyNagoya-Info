@@ -329,19 +329,36 @@ smalltalk.Announcement);
 
 smalltalk.addClass('Board', smalltalk.DraggableWidget, [], 'DyNagoya');
 smalltalk.addMethod(
+"_event",
+smalltalk.method({
+selector: "event",
+category: 'rendering',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Event || Event, "_latest", []);
+    return self;
+},
+args: [],
+source: "event\x0a\x09^ Event latest",
+messageSends: ["latest"],
+referencedClasses: ["Event"]
+}),
+smalltalk.Board);
+
+smalltalk.addMethod(
 "_renderBodyOn_",
 smalltalk.method({
 selector: "renderBodyOn:",
 category: 'rendering',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_class_", ["alert-message block-message warning ui-draggable"]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Event || Event, "_latest", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_class_", ["alert-message block-message warning ui-draggable"]);smalltalk.send($rec, "_style_", ["margin: 10px"]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_event", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09class: 'alert-message block-message warning ui-draggable';\x0a\x09\x09style: 'margin: 10px';\x0a\x09\x09with: Event latest",
-messageSends: ["class:", "style:", "with:", "latest", "div"],
-referencedClasses: ["Event"]
+source: "renderBodyOn: html\x0a\x09html div \x0a\x09\x09class: 'alert-message block-message warning ui-draggable';\x0a\x09\x09style: 'margin: 10px';\x0a\x09\x09with: self event",
+messageSends: ["class:", "style:", "with:", "event", "div"],
+referencedClasses: []
 }),
 smalltalk.Board);
 
@@ -352,11 +369,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "32px";
+    return "31px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'32px'",
+source: "x\x0a  ^'31px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -369,15 +386,123 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "18px";
+    return "342px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'18px'",
+source: "y\x0a  ^'342px'",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Board);
+
+
+
+smalltalk.addClass('DyNagoyaBoard', smalltalk.Board, [], 'DyNagoya');
+smalltalk.addMethod(
+"_event",
+smalltalk.method({
+selector: "event",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Event || Event, "_latestDyNagoya", []);
+    return self;
+},
+args: [],
+source: "event\x0a\x09^ Event latestDyNagoya",
+messageSends: ["latestDyNagoya"],
+referencedClasses: ["Event"]
+}),
+smalltalk.DyNagoyaBoard);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "34px";
+    return self;
+},
+args: [],
+source: "x\x0a  ^'34px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBoard);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "393px";
+    return self;
+},
+args: [],
+source: "y\x0a  ^'393px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.DyNagoyaBoard);
+
+
+
+smalltalk.addClass('KctBoard', smalltalk.Board, [], 'DyNagoya');
+smalltalk.addMethod(
+"_event",
+smalltalk.method({
+selector: "event",
+category: 'not yet classified',
+fn: function () {
+    var self = this;
+    return smalltalk.send(smalltalk.Event || Event, "_latestKct", []);
+    return self;
+},
+args: [],
+source: "event\x0a\x09^ Event latestKct",
+messageSends: ["latestKct"],
+referencedClasses: ["Event"]
+}),
+smalltalk.KctBoard);
+
+smalltalk.addMethod(
+"_x",
+smalltalk.method({
+selector: "x",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "36px";
+    return self;
+},
+args: [],
+source: "x\x0a  ^'36px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.KctBoard);
+
+smalltalk.addMethod(
+"_y",
+smalltalk.method({
+selector: "y",
+category: 'accessing',
+fn: function () {
+    var self = this;
+    return "40px";
+    return self;
+},
+args: [],
+source: "y\x0a  ^'40px'",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.KctBoard);
 
 
 
@@ -534,11 +659,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "60px";
+    return "57px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'60px'",
+source: "x\x0a  ^'57px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -551,11 +676,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "505px";
+    return "668px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'505px'",
+source: "y\x0a  ^'668px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -659,11 +784,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "822px";
+    return "979px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'822px'",
+source: "x\x0a  ^'979px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -676,11 +801,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "518px";
+    return "538px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'518px'",
+source: "y\x0a  ^'538px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1001,11 +1126,11 @@ selector: "x",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "434px";
+    return "717px";
     return self;
 },
 args: [],
-source: "x\x0a  ^'434px'",
+source: "x\x0a  ^'717px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1018,11 +1143,11 @@ selector: "y",
 category: 'accessing',
 fn: function () {
     var self = this;
-    return "184px";
+    return "106px";
     return self;
 },
 args: [],
-source: "y\x0a  ^'184px'",
+source: "y\x0a  ^'106px'",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1825,7 +1950,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya",
 category: 'events',
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む\x0a","kctnagoya"); },
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/01/20\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080\n", "kctnagoya");
+},
 args: [],
 source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む\x0a",
 messageSends: [],
@@ -1838,7 +1965,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya201212",
 category: 'events',
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める","kctnagoya"); },
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2012/12/16\u306E14:30:00\u301C17:30:00\u306B\nJoseiKaikan \u3067\n - Basic Category Theory for Computer Scientists \u3092\u8AAD\u3080\n - \u6B21\u56DE\u4EE5\u964D\u3069\u3046\u3059\u308B\u304B\u6C7A\u3081\u308B", "kctnagoya");
+},
 args: [],
 source: "grammar Events:kctnagoya > kctnagoya201212\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
 messageSends: [],
@@ -1858,6 +1987,40 @@ fn: function () {
 },
 args: [],
 source: "latest\x0a\x09^ self kctnagoya",
+messageSends: ["kctnagoya"],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_latestDyNagoya",
+smalltalk.method({
+selector: "latestDyNagoya",
+category: 'events',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_meeting12", []);
+    return self;
+},
+args: [],
+source: "latestDyNagoya\x0a\x09^ self meeting12",
+messageSends: ["meeting12"],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_latestKct",
+smalltalk.method({
+selector: "latestKct",
+category: 'events',
+fn: function () {
+    var self = this;
+    return smalltalk.send(self, "_kctnagoya", []);
+    return self;
+},
+args: [],
+source: "latestKct\x0a\x09^ self kctnagoya",
 messageSends: ["kctnagoya"],
 referencedClasses: []
 }),
@@ -2024,6 +2187,21 @@ fn: function () {
 },
 args: [],
 source: "grammar Events:dynagoya > meeting11\x0a\x0aDyNagoya MTG #11 は \x0a2012/12/16の18:00:00〜20:00:00に\x0aAikitaya で\x0a - いるかのしっぽを動かす\x0a - Maker Faire のネタを考える",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting12",
+smalltalk.method({
+selector: "meeting12",
+category: 'events',
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #12 \u306F \n2013/01/20\u306E18:00:00\u301C20:00:00\u306B\nAikitaya \u3067\n - \u96FB\u5B50\u5DE5\u4F5C\u3067\u632B\u6298\u3057\u305F\u4E8B\u306E\u5831\u544A\n - Maker Faire \u306E\u30CD\u30BF\u3092\u8003\u3048\u308B", "dynagoya");
+},
+args: [],
+source: "grammar Events:dynagoya > meeting12\x0a\x0aDyNagoya MTG #12 は \x0a2013/01/20の18:00:00〜20:00:00に\x0aAikitaya で\x0a - 電子工作で挫折した事の報告\x0a - Maker Faire のネタを考える",
 messageSends: [],
 referencedClasses: []
 }),
@@ -3232,13 +3410,13 @@ selector: "renderBody:",
 category: 'not yet classified',
 fn: function (html) {
     var self = this;
-    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Board || Board, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.HowToJoin || HowToJoin, "_new", [])]);}(smalltalk.send(html, "_div", [])));
+    (function ($rec) {smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Dolphin || Dolphin, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.KctBoard || KctBoard, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.DyNagoyaBoard || DyNagoyaBoard, "_new", [])]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.Logo || Logo, "_new", [])]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.HowToJoin || HowToJoin, "_new", [])]);}(smalltalk.send(html, "_div", [])));
     return self;
 },
 args: ["html"],
-source: "renderBody: html\x0a\x09\x09html div \x0a\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09with: Board new;\x0a\x09\x09\x09with: Logo new;\x0a\x09\x09\x09with: HowToJoin new",
+source: "renderBody: html\x0a\x09\x09html div \x0a\x09\x09\x09with: Dolphin new;\x0a\x09\x09\x09with: KctBoard new;\x0a\x09\x09\x09with: DyNagoyaBoard new;\x0a\x09\x09\x09with: Logo new;\x0a\x09\x09\x09with: HowToJoin new",
 messageSends: ["with:", "new", "div"],
-referencedClasses: ["Dolphin", "Board", "Logo", "HowToJoin"]
+referencedClasses: ["Dolphin", "KctBoard", "DyNagoyaBoard", "Logo", "HowToJoin"]
 }),
 smalltalk.TopPage);
 
