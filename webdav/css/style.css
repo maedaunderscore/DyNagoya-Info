@@ -78,6 +78,7 @@ h1, h2, h3 {
     font-weight: normal;
     color: #442905;
     line-height: 1.2;
+    margin: 0;
 }
 
 h1 {
