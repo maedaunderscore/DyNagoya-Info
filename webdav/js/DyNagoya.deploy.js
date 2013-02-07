@@ -1406,9 +1406,7 @@ smalltalk.addMethod(
 "_kctnagoya",
 smalltalk.method({
 selector: "kctnagoya",
-fn: function () {
-    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/01/20\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080\n", "kctnagoya");
-}
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜13:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); }
 }),
 smalltalk.Event.klass);
 
@@ -1419,6 +1417,14 @@ selector: "kctnagoya201212",
 fn: function () {
     return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2012/12/16\u306E14:30:00\u301C17:30:00\u306B\nJoseiKaikan \u3067\n - Basic Category Theory for Computer Scientists \u3092\u8AAD\u3080\n - \u6B21\u56DE\u4EE5\u964D\u3069\u3046\u3059\u308B\u304B\u6C7A\u3081\u308B", "kctnagoya");
 }
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_kctnagoya201301",
+smalltalk.method({
+selector: "kctnagoya201301",
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); }
 }),
 smalltalk.Event.klass);
 

@@ -882,7 +882,7 @@ jointStStudy02
 grammar Events:kctnagoya > kctnagoya
 
 けんろん勉強会(kctnagoya) は 
-2013/01/20の11:00:00〜17:00:00に
+2013/02/17の11:00:00〜13:00:00に
 JoseiKaikan で
  - 各自予習した内容を話す
  - Basic Category Theory for Computer Scientists のCCCのところを読む
@@ -895,6 +895,15 @@ grammar Events:kctnagoya > kctnagoya201212
 JoseiKaikan で
  - Basic Category Theory for Computer Scientists を読む
  - 次回以降どうするか決める
+!
+
+grammar Events:kctnagoya > kctnagoya201301
+
+けんろん勉強会(kctnagoya) は 
+2013/01/20の11:00:00〜17:00:00に
+JoseiKaikan で
+ - 各自予習した内容を話す
+ - Basic Category Theory for Computer Scientists のCCCのところを読む
 !
 
 latest
