@@ -1950,11 +1950,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya",
 category: 'events',
-fn: function () {
-    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/01/20\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080\n", "kctnagoya");
-},
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜13:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); },
 args: [],
-source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む\x0a",
+source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜13:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1970,6 +1968,19 @@ fn: function () {
 },
 args: [],
 source: "grammar Events:kctnagoya > kctnagoya201212\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2012/12/16の14:30:00〜17:30:00に\x0aJoseiKaikan で\x0a - Basic Category Theory for Computer Scientists を読む\x0a - 次回以降どうするか決める",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_kctnagoya201301",
+smalltalk.method({
+selector: "kctnagoya201301",
+category: 'events',
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); },
+args: [],
+source: "grammar Events:kctnagoya > kctnagoya201301\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/01/20の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む",
 messageSends: [],
 referencedClasses: []
 }),
