@@ -1406,9 +1406,7 @@ smalltalk.addMethod(
 "_kctnagoya",
 smalltalk.method({
 selector: "kctnagoya",
-fn: function () {
-    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/02/17\u306E11:00:00\u301C13:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080", "kctnagoya");
-}
+fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); }
 }),
 smalltalk.Event.klass);
 
