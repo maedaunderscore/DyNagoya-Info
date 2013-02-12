@@ -2225,11 +2225,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "meeting13",
 category: 'events',
-fn: function () {
-    return this._Events().matchAll("DyNagoya MTG #13 \u306F \n2013/02/17\u306E14:30:00\u301C16:30:00\u306B\nAnyWhere \u3067\n - \u9332\u97F3\u3057\u305F\u97F3\u3092\u805E\u304F\n - \u6C34\u306E\u53EF\u80FD\u6027\u3092\u6A21\u7D22\u3059\u308B", "dynagoya");
-},
+fn: function (){ return this._Events().matchAll("DyNagoya MTG #13 は \x0a2013/02/17の17:00:00〜20:00:00に\x0aAnyWhere で\x0a - 録音した音を聞く\x0a - 水の可能性を模索する","dynagoya"); },
 args: [],
-source: "grammar Events:dynagoya > meeting13\x0a\x0aDyNagoya MTG #13 は \x0a2013/02/17の14:30:00〜16:30:00に\x0aAnyWhere で\x0a - 録音した音を聞く\x0a - 水の可能性を模索する",
+source: "grammar Events:dynagoya > meeting13\x0a\x0aDyNagoya MTG #13 は \x0a2013/02/17の17:00:00〜20:00:00に\x0aAnyWhere で\x0a - 録音した音を聞く\x0a - 水の可能性を模索する",
 messageSends: [],
 referencedClasses: []
 }),

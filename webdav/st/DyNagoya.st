@@ -1071,7 +1071,7 @@ Aikitaya で
 grammar Events:dynagoya > meeting13
 
 DyNagoya MTG #13 は 
-2013/02/17の14:30:00〜16:30:00に
+2013/02/17の17:00:00〜20:00:00に
 AnyWhere で
  - 録音した音を聞く
  - 水の可能性を模索する
