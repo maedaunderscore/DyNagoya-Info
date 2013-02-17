@@ -756,7 +756,7 @@ gcalParams: src desc: aStr
 	| base |
 	base := {
 		'ctz=Asia/Tokyo'.
-		'ctext=', (Util encode: title).
+		'ctext=', (Util encode: '[名古屋]', title).
 		'details=', (Util encode: aStr).
 		'location=', (Util encode: place gCalString).
 		'dates=', (Util encode: ((self format: start) , '/', (self format: end)))

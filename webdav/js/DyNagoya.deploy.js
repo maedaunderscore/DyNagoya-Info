@@ -1183,8 +1183,8 @@ selector: "gcalParams:desc:",
 fn: function (src, aStr) {
     var self = this;
     var base = nil;
-    base = [unescape("ctz%3DAsia/Tokyo"), smalltalk.send(unescape("ctext%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [self['@title']])]), smalltalk.send(unescape("details%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [aStr])]), smalltalk.send(unescape("location%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(self['@place'], "_gCalString", [])])]), smalltalk.send(unescape("dates%3D"), "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(smalltalk.send(smalltalk.send(self, "_format_", [self['@start']]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])])])];
-    ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send(unescape("src%3D"), "__comma", [src])]);}() : nil;
+    base = ["ctz=Asia/Tokyo", smalltalk.send("ctext=", "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send("[\u540D\u53E4\u5C4B]", "__comma", [self['@title']])])]), smalltalk.send("details=", "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [aStr])]), smalltalk.send("location=", "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(self['@place'], "_gCalString", [])])]), smalltalk.send("dates=", "__comma", [smalltalk.send(smalltalk.Util || Util, "_encode_", [smalltalk.send(smalltalk.send(smalltalk.send(self, "_format_", [self['@start']]), "__comma", ["/"]), "__comma", [smalltalk.send(self, "_format_", [self['@end']])])])])];
+    ($receiver = src) != nil && $receiver != undefined ? function () {return smalltalk.send(base, "_add_", [smalltalk.send("src=", "__comma", [src])]);}() : nil;
     return base;
     return self;
 }
@@ -1406,7 +1406,9 @@ smalltalk.addMethod(
 "_kctnagoya",
 smalltalk.method({
 selector: "kctnagoya",
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); }
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/02/17\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080", "kctnagoya");
+}
 }),
 smalltalk.Event.klass);
 
@@ -1596,7 +1598,9 @@ smalltalk.addMethod(
 "_meeting13",
 smalltalk.method({
 selector: "meeting13",
-fn: function (){ return this._Events().matchAll("DyNagoya MTG #13 は \x0a2013/02/17の17:00:00〜20:00:00に\x0aAnyWhere で\x0a - 録音した音を聞く\x0a - 水の可能性を模索する","dynagoya"); }
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #13 \u306F \n2013/02/17\u306E17:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - \u9332\u97F3\u3057\u305F\u97F3\u3092\u805E\u304F\n - \u6C34\u306E\u53EF\u80FD\u6027\u3092\u6A21\u7D22\u3059\u308B", "dynagoya");
+}
 }),
 smalltalk.Event.klass);
 
