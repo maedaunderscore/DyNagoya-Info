@@ -1950,7 +1950,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya",
 category: 'events',
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/03/10の13:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - 1. 数物系のための圏論\x0a - 2．Basic Category Theory for Computer Scientists","kctnagoya"); },
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/03/10\u306E13:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - 1. \u6570\u7269\u7CFB\u306E\u305F\u3081\u306E\u570F\u8AD6\n - 2\uFF0EBasic Category Theory for Computer Scientists", "kctnagoya");
+},
 args: [],
 source: "grammar Events:kctnagoya > kctnagoya\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/03/10の13:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - 1. 数物系のための圏論\x0a - 2．Basic Category Theory for Computer Scientists",
 messageSends: [],
@@ -1993,7 +1995,9 @@ smalltalk.addMethod(
 smalltalk.method({
 selector: "kctnagoya201302",
 category: 'events',
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); },
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/02/17\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080", "kctnagoya");
+},
 args: [],
 source: "grammar Events:kctnagoya > kctnagoya201302\x0a\x0aけんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む",
 messageSends: [],
@@ -2025,12 +2029,12 @@ selector: "latestDyNagoya",
 category: 'events',
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting13", []);
+    return smalltalk.send(self, "_meeting14", []);
     return self;
 },
 args: [],
-source: "latestDyNagoya\x0a\x09^ self meeting13",
-messageSends: ["meeting13"],
+source: "latestDyNagoya\x0a\x09^ self meeting14",
+messageSends: ["meeting14"],
 referencedClasses: []
 }),
 smalltalk.Event.klass);
@@ -2243,6 +2247,21 @@ fn: function () {
 },
 args: [],
 source: "grammar Events:dynagoya > meeting13\x0a\x0aDyNagoya MTG #13 は \x0a2013/02/17の17:00:00〜20:00:00に\x0aAnyWhere で\x0a - 録音した音を聞く\x0a - 水の可能性を模索する",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting14",
+smalltalk.method({
+selector: "meeting14",
+category: 'events',
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #14 \u306F \n2013/03/10\u306E17:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - Ambelm\u69CB\u60F3\u306E\u767A\u8868\n - \u793E\u540D(\u5C4B\u53F7)\u3092\u8003\u3048\u308B\n", "dynagoya");
+},
+args: [],
+source: "grammar Events:dynagoya > meeting14\x0a\x0aDyNagoya MTG #14 は \x0a2013/03/10の17:00:00〜20:00:00に\x0aAnyWhere で\x0a - Ambelm構想の発表\x0a - 社名(屋号)を考える\x0a",
 messageSends: [],
 referencedClasses: []
 }),
