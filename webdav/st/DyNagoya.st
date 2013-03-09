@@ -921,7 +921,7 @@ latest
 !
 
 latestDyNagoya
-	^ self meeting13
+	^ self meeting14
 !
 
 latestKct
@@ -1085,6 +1085,15 @@ DyNagoya MTG #13 は
 AnyWhere で
  - 録音した音を聞く
  - 水の可能性を模索する
+!
+
+grammar Events:dynagoya > meeting14
+
+DyNagoya MTG #14 は 
+2013/03/10の17:00:00〜20:00:00に
+AnyWhere で
+ - Ambelm構想の発表
+ - 社名(屋号)を考える
 ! !
 
 Widget subclass: #JSViewer

@@ -1406,7 +1406,9 @@ smalltalk.addMethod(
 "_kctnagoya",
 smalltalk.method({
 selector: "kctnagoya",
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/03/10の13:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - 1. 数物系のための圏論\x0a - 2．Basic Category Theory for Computer Scientists","kctnagoya"); }
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/03/10\u306E13:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - 1. \u6570\u7269\u7CFB\u306E\u305F\u3081\u306E\u570F\u8AD6\n - 2\uFF0EBasic Category Theory for Computer Scientists", "kctnagoya");
+}
 }),
 smalltalk.Event.klass);
 
@@ -1434,7 +1436,9 @@ smalltalk.addMethod(
 "_kctnagoya201302",
 smalltalk.method({
 selector: "kctnagoya201302",
-fn: function (){ return this._Events().matchAll("けんろん勉強会(kctnagoya) は \x0a2013/02/17の11:00:00〜17:00:00に\x0aJoseiKaikan で\x0a - 各自予習した内容を話す\x0a - Basic Category Theory for Computer Scientists のCCCのところを読む","kctnagoya"); }
+fn: function () {
+    return this._Events().matchAll("\u3051\u3093\u308D\u3093\u52C9\u5F37\u4F1A(kctnagoya) \u306F \n2013/02/17\u306E11:00:00\u301C17:00:00\u306B\nJoseiKaikan \u3067\n - \u5404\u81EA\u4E88\u7FD2\u3057\u305F\u5185\u5BB9\u3092\u8A71\u3059\n - Basic Category Theory for Computer Scientists \u306ECCC\u306E\u3068\u3053\u308D\u3092\u8AAD\u3080", "kctnagoya");
+}
 }),
 smalltalk.Event.klass);
 
@@ -1456,7 +1460,7 @@ smalltalk.method({
 selector: "latestDyNagoya",
 fn: function () {
     var self = this;
-    return smalltalk.send(self, "_meeting13", []);
+    return smalltalk.send(self, "_meeting14", []);
     return self;
 }
 }),
@@ -1606,6 +1610,16 @@ smalltalk.method({
 selector: "meeting13",
 fn: function () {
     return this._Events().matchAll("DyNagoya MTG #13 \u306F \n2013/02/17\u306E17:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - \u9332\u97F3\u3057\u305F\u97F3\u3092\u805E\u304F\n - \u6C34\u306E\u53EF\u80FD\u6027\u3092\u6A21\u7D22\u3059\u308B", "dynagoya");
+}
+}),
+smalltalk.Event.klass);
+
+smalltalk.addMethod(
+"_meeting14",
+smalltalk.method({
+selector: "meeting14",
+fn: function () {
+    return this._Events().matchAll("DyNagoya MTG #14 \u306F \n2013/03/10\u306E17:00:00\u301C20:00:00\u306B\nAnyWhere \u3067\n - Ambelm\u69CB\u60F3\u306E\u767A\u8868\n - \u793E\u540D(\u5C4B\u53F7)\u3092\u8003\u3048\u308B\n", "dynagoya");
 }
 }),
 smalltalk.Event.klass);
